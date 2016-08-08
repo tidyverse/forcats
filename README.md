@@ -12,3 +12,23 @@ You can install forcats from github with:
 # install.packages("devtools")
 devtools::install_github("forcats/hadley")
 ```
+
+## Key functions:
+
+Change order of levels:
+
+* `fct_inorder()`: order by first appearance of each level,
+* `fct_infreq()`: order by frequency.
+* `fct_reorder()`: order by summary of another value.
+* `fct_relevel()`: re-order "by hand".
+
+Change value of levels:
+
+* `fct_collapse()`: lump rare levels into "other".
+* `fct_recode()`: manually recode levels.
+
+A few other helpers:
+
+* `fct_c()`: concatenate factors using union of levels.
+
+
