@@ -7,12 +7,13 @@
 #' @export
 #' @examples
 #' x <- factor(c("apple", "bear", "banana", "dear"))
-#' fct_relevel(x, fruit = "apple", fruit = "banana")
+#' fct_recode(x, fruit = "apple", fruit = "banana")
 #'
 #' # If you make a mistake you'll get a warning
-#' fct_relevel(x, fruit = "apple", fruit = "bananana")
-fct_relevel <- function(x, ...) {
+#' fct_recode(x, fruit = "apple", fruit = "bananana")
+fct_recode <- function(x, ...) {
   new_levels <- c(...)
+  stopifnot(is.character(new_levels))
 
   # Match old levels with new levels
   old_levels <- levels(x)
