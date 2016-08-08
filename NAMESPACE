@@ -2,3 +2,5 @@
 
 export(fct_collapse)
 export(fct_relevel)
+export(fct_reorder)
+importFrom(stats,median)
