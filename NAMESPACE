@@ -2,6 +2,7 @@
 
 export(fct_c)
 export(fct_collapse)
+export(fct_drop)
 export(fct_infreq)
 export(fct_inorder)
 export(fct_recode)

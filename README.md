@@ -30,6 +30,7 @@ Change value of levels:
 A few other helpers:
 
 * `fct_c()`: concatenate factors using union of levels.
+* `fct_drop()`: same as `base::droplevels()`.
 
 ## Caveats
 
