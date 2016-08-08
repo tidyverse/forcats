@@ -9,3 +9,5 @@ Description: Perform useful operations on factors.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/hadley/forcats
+BugReports: https://github.com/hadley/forcats/issues
