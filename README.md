@@ -10,7 +10,7 @@ You can install forcats from github with:
 
 ```R
 # install.packages("devtools")
-devtools::install_github("forcats/hadley")
+devtools::install_github("hadley/forcats")
 ```
 
 ## Key functions:
