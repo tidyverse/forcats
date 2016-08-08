@@ -1,0 +1,11 @@
+Package: forcats
+Title: Tools for working with categorical variables (factors)
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
+    person("RStudio", role = "cph")
+  )
+Description: Perform useful operations on factors.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
