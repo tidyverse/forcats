@@ -14,3 +14,4 @@ BugReports: https://github.com/hadley/forcats/issues
 Imports:
     tibble
 RoxygenNote: 5.0.1
+Suggests: ggplot2

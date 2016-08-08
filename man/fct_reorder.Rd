@@ -2,15 +2,21 @@
 % Please edit documentation in R/reorder.R
 \name{fct_reorder}
 \alias{fct_reorder}
+\alias{fct_reorder2}
 \title{Reorder the levels of a function according to another variable}
 \usage{
-fct_reorder(x, y, fun = median, ...)
+fct_reorder(f, x, fun = median, ...)
+
+fct_reorder2(f, x, y, fun = last2, ...)
 }
 \arguments{
-\item{x}{A factor}
+\item{f}{A factor}
 
-\item{y, fun}{fun The levels of \code{x} will be reordered so that \code{fun}
+\item{x, y}{fun The levels of \code{f} will be reordered so that \code{fun}
 apply to each group is in ascending order.}
+
+\item{fun}{An summary function. It should take one vector for
+\code{fct_reorder}, and two vectors for \code{fct_reorder2}.}
 
 \item{...}{Other arguments passed on to \code{fun}. A common argument is
 \code{na.rm = TRUE}.}
@@ -27,5 +33,16 @@ a non-position aesthetic.
 \examples{
 boxplot(Sepal.Width ~ Species, data = iris)
 boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width), data = iris)
+
+chks <- subset(ChickWeight, as.integer(Chick) < 20)
+
+if (require("ggplot2")) {
+ggplot(chks, aes(Time, weight, colour = Chick)) +
+  geom_point() +
+  geom_line()
+ggplot(chks, aes(Time, weight, colour = fct_reorder2(Chick, Time, weight))) +
+  geom_point() +
+  geom_line()
+}
 }
 
