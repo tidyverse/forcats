@@ -11,3 +11,6 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/hadley/forcats
 BugReports: https://github.com/hadley/forcats/issues
+Imports:
+    tibble
+RoxygenNote: 5.0.1
