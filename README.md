@@ -31,4 +31,7 @@ A few other helpers:
 
 * `fct_c()`: concatenate factors using union of levels.
 
+## Caveats
 
+* This was written in two hours of frenzied coding.
+* There are no unit tests
