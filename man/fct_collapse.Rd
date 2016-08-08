@@ -4,13 +4,18 @@
 \alias{fct_collapse}
 \title{Collapse rare levels into "other".}
 \usage{
-fct_collapse(x, threshold = 0.1, other_level = "Other")
+fct_collapse(x, n, prop, other_level = "Other")
 }
 \arguments{
 \item{x}{A factor.}
 
-\item{threshold}{Values with less than this proportion of entries will
-be collpased}
+\item{n, prop}{Either specify \code{n} or \code{prop}.
+
+  If you specify \code{n}, only the most common \code{n} values will be kept
+  (unless there are ties, in which case it will keep more).
+
+  If you specify \code{prop}, only values that appear at least that
+  commonly will be kept.}
 
 \item{other_level}{Value of level used for "other" values.}
 }
@@ -20,6 +25,7 @@ Collapse rare levels into "other".
 \examples{
 x <- factor(letters[rpois(100, 5)])
 x
-fct_collapse(x)
+fct_collapse(x, n = 3)
+fct_collapse(x, prop = 0.1)
 }
 
