@@ -21,6 +21,7 @@
 #' boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width), data = iris)
 #'
 #' chks <- subset(ChickWeight, as.integer(Chick) < 20)
+#' chks <- transform(ChickWeight, )
 #'
 #' if (require("ggplot2")) {
 #' ggplot(chks, aes(Time, weight, colour = Chick)) +
@@ -28,7 +29,8 @@
 #'   geom_line()
 #' ggplot(chks, aes(Time, weight, colour = fct_reorder2(Chick, Time, weight))) +
 #'   geom_point() +
-#'   geom_line()
+#'   geom_line() +
+#'   labs(colour = "Chick")
 #' }
 fct_reorder <- function(f, x, fun = median, ...) {
   f <- check_factor(f)
