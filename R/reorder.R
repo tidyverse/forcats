@@ -20,8 +20,8 @@
 #' boxplot(Sepal.Width ~ Species, data = iris)
 #' boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width), data = iris)
 #'
-#' chks <- subset(ChickWeight, as.integer(Chick) < 20)
-#' chks <- transform(ChickWeight, )
+#' chks <- subset(ChickWeight, as.integer(Chick) < 10)
+#' chks <- transform(chks, Chick = fct_shuffle(Chick))
 #'
 #' if (require("ggplot2")) {
 #' ggplot(chks, aes(Time, weight, colour = Chick)) +
@@ -50,12 +50,12 @@ fct_reorder2 <- function(f, x, y, fun = last2, ...) {
   f <- check_factor(f)
   stopifnot(length(f) == length(x), length(x) == length(y))
 
-  summary <- tapply(seq_along(x), factor(f), function(i) fun(x[i], y[i], ...))
+  summary <- tapply(seq_along(x), as.factor(f), function(i) fun(x[i], y[i], ...))
   if (!is.numeric(summary)) {
     stop("`fun` must return a single number per group", call. = FALSE)
   }
 
-  factor(f, levels = levels(f)[order(summary)])
+  factor(f, levels = levels(f)[order(summary, decreasing = TRUE)])
 }
 
 last2 <- function(x, y) {
