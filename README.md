@@ -30,8 +30,10 @@ Change value of levels:
 A few other helpers:
 
 * `fct_c()`: concatenate factors using union of levels.
+* `fct_unify()`: ensure list of factors all share the same levels.
 * `fct_drop()`: same as `base::droplevels()`.
 * `fct_rev()`: reverse factor levels.
+* `lvl_union()`: finds union of levels from list of factors.
 
 ## Caveats
 
