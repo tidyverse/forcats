@@ -10,7 +10,7 @@ fct_inorder(f)
 fct_infreq(f)
 }
 \arguments{
-\item{f}{As factor}
+\item{f}{A factor}
 }
 \description{
 Reorders levels in order of first appearance or frequency.

@@ -1,6 +1,6 @@
 #' Collapse rare levels into "other".
 #'
-#' @param x A factor.
+#' @param f A factor.
 #' @param n,prop Either specify \code{n} or \code{prop}.
 #'
 #'   If you specify \code{n}, only the most common \code{n} values will be kept
@@ -15,9 +15,10 @@
 #' x
 #' fct_collapse(x, n = 3)
 #' fct_collapse(x, prop = 0.1)
-fct_collapse <- function(x, n, prop, other_level = "Other") {
+fct_collapse <- function(f, n, prop, other_level = "Other") {
+  f <- check_factor(f)
 
-  count <- fct_count(x)
+  count <- fct_count(f)
 
   if (!xor(missing(n), missing(prop))) {
     stop("You must specify one of `n` or `prop`", call = FALSE)
@@ -29,15 +30,15 @@ fct_collapse <- function(x, n, prop, other_level = "Other") {
     new_levels <- ifelse(count$prop > prop, count$level, other_level)
   }
 
-  levels(x) <- new_levels
-  x
+  levels(f) <- new_levels
+  f
 }
 
-fct_count <- function(x) {
-  stopifnot(is.factor(x))
+fct_count <- function(f) {
+  f <- check_factor(f)
 
   tibble::tibble(
-    level = levels(x),
-    n = tabulate(x, nbins = nlevels(x))
+    level = levels(f),
+    n = tabulate(f, nbins = nlevels(f))
   )
 }

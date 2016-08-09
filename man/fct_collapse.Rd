@@ -4,10 +4,10 @@
 \alias{fct_collapse}
 \title{Collapse rare levels into "other".}
 \usage{
-fct_collapse(x, n, prop, other_level = "Other")
+fct_collapse(f, n, prop, other_level = "Other")
 }
 \arguments{
-\item{x}{A factor.}
+\item{f}{A factor.}
 
 \item{n, prop}{Either specify \code{n} or \code{prop}.
 

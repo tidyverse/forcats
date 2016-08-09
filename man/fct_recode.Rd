@@ -4,10 +4,10 @@
 \alias{fct_recode}
 \title{Change the levels of a factor}
 \usage{
-fct_recode(x, ...)
+fct_recode(f, ...)
 }
 \arguments{
-\item{x}{A factor}
+\item{f}{A factor.}
 
 \item{...}{A sequence of named character vectors where the
 name gives the new level, and the value gives the old level.

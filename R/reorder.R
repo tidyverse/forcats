@@ -31,6 +31,7 @@
 #'   geom_line()
 #' }
 fct_reorder <- function(f, x, fun = median, ...) {
+  f <- check_factor(f)
   stopifnot(length(f) == length(x))
 
   summary <- tapply(x, factor(f), fun, ...)
@@ -44,6 +45,7 @@ fct_reorder <- function(f, x, fun = median, ...) {
 #' @export
 #' @rdname fct_reorder
 fct_reorder2 <- function(f, x, y, fun = last2, ...) {
+  f <- check_factor(f)
   stopifnot(length(f) == length(x), length(x) == length(y))
 
   summary <- tapply(seq_along(x), factor(f), function(i) fun(x[i], y[i], ...))

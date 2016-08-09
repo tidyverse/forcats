@@ -9,5 +9,7 @@
 #' f
 #' fct_drop(f)
 fct_drop <- function(f) {
+  f <- check_factor(f)
+
   factor(f)
 }

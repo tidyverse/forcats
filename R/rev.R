@@ -8,5 +8,6 @@
 #' f <- factor(c("a", "b", "c"))
 #' fct_rev(f)
 fct_rev <- function(f) {
+  f <- check_factor(f)
   factor(f, levels = rev(levels(f)))
 }

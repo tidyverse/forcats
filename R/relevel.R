@@ -3,7 +3,7 @@
 #' This is a generalisaton of \code{\link[stats]{relevel}} that allows you to
 #' move any number of levels to the front.
 #'
-#' @param f A factor
+#' @param f A factor.
 #' @param ... Character vector of levels. Any levels not mentioned will be
 #'   left in existing order, after the explicitly mentioned levels.
 #' @export
@@ -16,6 +16,8 @@
 #' # You'll get a warning if the levels don't exist
 #' fct_relevel(f, "d")
 fct_relevel <- function(f, ...) {
+  f <- check_factor(f)
+
   first_levels <- c(..., character())
   stopifnot(is.character(first_levels))
 
