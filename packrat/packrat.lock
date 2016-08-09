@@ -1,0 +1,106 @@
+PackratFormat: 1.4
+PackratVersion: 0.4.7.1
+RVersion: 3.3.1
+Repos: CRAN=https://cran.rstudio.com/
+
+Package: RColorBrewer
+Source: CRAN
+Version: 1.1-2
+Hash: c0d56cd15034f395874c870141870c25
+
+Package: Rcpp
+Source: CRAN
+Version: 0.12.6
+Hash: 79f89fabd832de0a2e60aa05d9027f32
+
+Package: assertthat
+Source: CRAN
+Version: 0.1
+Hash: 0afb92b59b02593c70ff8046700ba9d3
+
+Package: colorspace
+Source: CRAN
+Version: 1.2-6
+Hash: 00bb12245cd975c450cc4a960884fa15
+
+Package: dichromat
+Source: CRAN
+Version: 2.0-0
+Hash: 08eed0c80510af29bb15f840ccfe37ce
+
+Package: digest
+Source: CRAN
+Version: 0.6.10
+Hash: 87165608ca8aeb0958835c3c5b52b6b7
+
+Package: ggplot2
+Source: CRAN
+Version: 2.1.0
+Hash: 50e297b0191179c39c7dcae0eff72b51
+Requires: digest, gtable, plyr, reshape2, scales
+
+Package: gtable
+Source: CRAN
+Version: 0.2.0
+Hash: cd78381a9d3fea966ac39bd0daaf5554
+
+Package: labeling
+Source: CRAN
+Version: 0.3
+Hash: ecf589b42cd284b03a4beb9665482d3e
+
+Package: lazyeval
+Source: CRAN
+Version: 0.2.0
+Hash: 3d6e7608e65bbf5cb170dab1e3c9ed8b
+
+Package: magrittr
+Source: CRAN
+Version: 1.5
+Hash: bdc4d48c3135e8f3b399536ddf160df4
+
+Package: munsell
+Source: CRAN
+Version: 0.4.3
+Hash: f96d896947fcaf9b6d0074002e9f4f9d
+Requires: colorspace
+
+Package: packrat
+Source: CRAN
+Version: 0.4.7-1
+Hash: 16ca16d36eb18d1d16113606ecc5c400
+
+Package: plyr
+Source: CRAN
+Version: 1.8.4
+Hash: e76f4b6b2ba5cb8309b10308cea03967
+Requires: Rcpp
+
+Package: reshape2
+Source: CRAN
+Version: 1.4.1
+Hash: 55a31e20f8a216855e138ca83756a4b0
+Requires: Rcpp, plyr, stringr
+
+Package: scales
+Source: CRAN
+Version: 0.4.0
+Hash: 99ca163a301d7c1d959424a2cccdcacd
+Requires: RColorBrewer, Rcpp, dichromat, labeling, munsell, plyr
+
+Package: stringi
+Source: CRAN
+Version: 1.1.1
+Hash: 48f2afc5dfecb65ba32a87d38b3533ff
+
+Package: stringr
+Source: CRAN
+Version: 1.0.0
+Hash: 2676dd5f88890910962b733b0f9540e1
+Requires: magrittr, stringi
+
+Package: tibble
+Source: CRAN
+Version: 1.1
+Hash: 5467b4aa158b2d984538f7ffde17171c
+Requires: Rcpp, assertthat, lazyeval
