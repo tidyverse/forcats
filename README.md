@@ -18,21 +18,22 @@ devtools::install_github("hadley/forcats")
 
 Change order of levels:
 
-* `fct_inorder()`: order by first appearance of each level,
-* `fct_infreq()`: order by frequency.
+* `fct_relevel()`: move specified level up front.
+* `fct_inorder()`: order by first appearance of each level.
 * `fct_reorder()`: order by summary of another value.
-* `fct_relevel()`: re-order "by hand".
-* `fct_shift()`: shift order to the left/right.
+* `fct_infreq()`:  order by frequency.
+* `fct_shuffle()`: randomly shuffle order of levels
+* `fct_rev()`:     reverse order of levels
+* `fct_shift()`:   shift levels to the left/right.
 
 Change value of levels:
 
-* `fct_collapse()`: lump rare levels into "other".
-* `fct_recode()`: manually recode levels.
+* `fct_collapse()`: lump rarest (or most common) levels into "other".
+* `fct_recode()`:   manually recode levels.
 
 A few other helpers:
 
-* `fct_c()`: concatenate factors using union of levels.
-* `fct_unify()`: ensure list of factors all share the same levels.
-* `fct_drop()`: same as `base::droplevels()`.
-* `fct_rev()`: reverse factor levels.
-* `lvl_union()`: finds union of levels from list of factors.
+* `fct_c()`:      concatenate factors using union of levels.
+* `fct_unify()`:  ensure list of factors share the same levels.
+* `fct_drop()`:   drop levels without data (same as `base::droplevels()`).
+* `lvls_union()`: finds union of levels from list of factors.
