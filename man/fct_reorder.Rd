@@ -5,9 +5,9 @@
 \alias{fct_reorder2}
 \title{Reorder the levels of a function according to another variable}
 \usage{
-fct_reorder(f, x, fun = median, ...)
+fct_reorder(f, x, fun = median, ..., .desc = FALSE)
 
-fct_reorder2(f, x, y, fun = last2, ...)
+fct_reorder2(f, x, y, fun = last2, ..., .desc = TRUE)
 }
 \arguments{
 \item{f}{A factor}
@@ -20,6 +20,10 @@ apply to each group is in ascending order.}
 
 \item{...}{Other arguments passed on to \code{fun}. A common argument is
 \code{na.rm = TRUE}.}
+
+\item{.desc}{Order in descending order? Note the default is different
+between \code{fct_reorder} and \code{fct_reorder2}, in order to
+match the default ordering of factors in the legend.}
 }
 \description{
 \code{fct_reorder} is useful for 1d displays where the factor is mapped to
@@ -33,6 +37,7 @@ a non-position aesthetic.
 \examples{
 boxplot(Sepal.Width ~ Species, data = iris)
 boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width), data = iris)
+boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width, .desc = TRUE), data = iris)
 
 chks <- subset(ChickWeight, as.integer(Chick) < 10)
 chks <- transform(chks, Chick = fct_shuffle(Chick))
@@ -41,6 +46,8 @@ if (require("ggplot2")) {
 ggplot(chks, aes(Time, weight, colour = Chick)) +
   geom_point() +
   geom_line()
+
+# Note that lines match order in legend
 ggplot(chks, aes(Time, weight, colour = fct_reorder2(Chick, Time, weight))) +
   geom_point() +
   geom_line() +
