@@ -22,8 +22,8 @@ Change order of levels:
 * `fct_inorder()`: order by first appearance of each level.
 * `fct_reorder()`: order by summary of another value.
 * `fct_infreq()`:  order by frequency.
-* `fct_shuffle()`: randomly shuffle order of levels
-* `fct_rev()`:     reverse order of levels
+* `fct_shuffle()`: randomly shuffle order of levels.
+* `fct_rev()`:     reverse order of levels.
 * `fct_shift()`:   shift levels to the left/right.
 
 Change value of levels:
@@ -34,6 +34,8 @@ Change value of levels:
 A few other helpers:
 
 * `fct_c()`:      concatenate factors using union of levels.
+* `fct_count()`:  count occurences of levels, optionally sorting by frequency.
 * `fct_unify()`:  ensure list of factors share the same levels.
+* `fct_unique()`: compute from levels of factor.
 * `fct_drop()`:   drop levels without data (same as `base::droplevels()`).
 * `lvls_union()`: finds union of levels from list of factors.

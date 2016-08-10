@@ -27,37 +27,29 @@
 fct_collapse <- function(f, n, prop, other_level = "Other") {
   f <- check_factor(f)
 
-  count <- fct_count(f)
+  levels <- levels(f)
+  count <- table(f)
 
   if (!xor(missing(n), missing(prop))) {
     stop("You must specify one of `n` or `prop`", call = FALSE)
   } else if (!missing(n)) {
     if (n < 0) {
-      rank <- rank(count$n, ties = "min")
+      rank <- rank(count, ties = "min")
       n <- -n
     } else {
-      rank <- rank(-count$n, ties = "min")
+      rank <- rank(-count, ties = "min")
     }
 
-    new_levels <- ifelse(rank <= n, count$level, other_level)
+    new_levels <- ifelse(rank <= n, levels, other_level)
 
   } else if (!missing(prop)) {
-    count$prop <- count$n / sum(count$n)
+    prop_n <- count / sum(count)
     if (prop < 0) {
-      new_levels <- ifelse(count$prop <= -prop, count$level, other_level)
+      new_levels <- ifelse(prop_n <= -prop, levels, other_level)
     } else {
-      new_levels <- ifelse(count$prop > prop, count$level, other_level)
+      new_levels <- ifelse(prop_n > prop, levels, other_level)
     }
   }
 
   lvls_revalue(f, new_levels)
-}
-
-fct_count <- function(f) {
-  f <- check_factor(f)
-
-  tibble::tibble(
-    level = levels(f),
-    n = tabulate(f, nbins = nlevels(f))
-  )
 }
