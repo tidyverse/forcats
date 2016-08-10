@@ -17,7 +17,7 @@ fct_c <- function(fs) {
 
   levels <- lvls_union(fs)
   all <- unlist(fct_unify(fs, levels))
-  factor(all, levels = levels)
+  factor(all, levels = levels, exclude = NULL)
 }
 
 #' Unify the levels in a list of factors
@@ -32,5 +32,5 @@ fct_c <- function(fs) {
 fct_unify <- function(fs, levels = lvls_union(fs)) {
   fs <- check_factor_list(fs)
 
-  lapply(fs, factor, levels = levels)
+  lapply(fs, lvls_expand, new_levels = levels)
 }

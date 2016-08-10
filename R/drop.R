@@ -11,5 +11,5 @@
 fct_drop <- function(f) {
   f <- check_factor(f)
 
-  factor(f)
+  factor(f, exclude = NULL)
 }

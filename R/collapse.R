@@ -50,8 +50,7 @@ fct_collapse <- function(f, n, prop, other_level = "Other") {
     }
   }
 
-  levels(f) <- new_levels
-  f
+  lvls_revalue(f, new_levels)
 }
 
 fct_count <- function(f) {

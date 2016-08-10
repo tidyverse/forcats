@@ -31,7 +31,6 @@ fct_recode <- function(f, ...) {
   }
 
   old_levels[idx] <- names(new_levels)
-  levels(f) <- old_levels
 
-  f
+  lvls_revalue(f, old_levels)
 }

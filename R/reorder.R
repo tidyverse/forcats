@@ -41,7 +41,7 @@ fct_reorder <- function(f, x, fun = median, ...) {
     stop("`fun` must return a single number per group", call. = FALSE)
   }
 
-  factor(f, levels = levels(f)[order(summary)])
+  lvls_reorder(f, order(summary))
 }
 
 #' @export
@@ -55,7 +55,7 @@ fct_reorder2 <- function(f, x, y, fun = last2, ...) {
     stop("`fun` must return a single number per group", call. = FALSE)
   }
 
-  factor(f, levels = levels(f)[order(summary, decreasing = TRUE)])
+  lvls_reorder(f, order(summary, decreasing = TRUE))
 }
 
 last2 <- function(x, y) {
@@ -75,14 +75,13 @@ last2 <- function(x, y) {
 fct_inorder <- function(f) {
   f <- check_factor(f)
 
-  factor(f, levels = levels(f)[as.integer(f[!duplicated(f)])])
+  lvls_reorder(f, as.integer(f)[!duplicated(f)])
 }
 
 #' @export
 #' @rdname fct_inorder
 fct_infreq <- function(f) {
   f <- check_factor(f)
-  count <- fct_count(f)
 
-  factor(f, levels = count$level[order(count$n, decreasing = TRUE)])
+  lvls_reorder(f, order(table(f), decreasing = TRUE))
 }
