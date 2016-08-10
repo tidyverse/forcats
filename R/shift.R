@@ -10,11 +10,15 @@
 #' @examples
 #' x <- factor(weekdays(Sys.Date()), levels = c("Sunday", "Monday", "Tuesday",
 #'             "Wednesday", "Thursday", "Friday", "Saturday"), ordered = TRUE)
+#' x
 #' fct_shift(x)
 #' fct_shift(x, left_by = 1)    # The same
 fct_shift <- function(f, left_by = 1L) {
   stopifnot(length(left_by) == 1L)
-  mark <- left_by %% nlevels(f)
-  new_levels <- levels(f)[c(seq(mark + 1, nlevels(f)), seq_len(mark))]
-  factor(f, levels = new_levels, ordered = TRUE)
+  factor(f, levels = shift(levels(f), left_by))
+}
+
+shift <- function(x, n) {
+  idx <- ((seq_along(x) - 1) + n) %% length(x) + 1
+  x[idx]
 }

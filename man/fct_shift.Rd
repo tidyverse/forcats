@@ -19,6 +19,7 @@ with different conventions on the starting point.
 \examples{
 x <- factor(weekdays(Sys.Date()), levels = c("Sunday", "Monday", "Tuesday",
             "Wednesday", "Thursday", "Friday", "Saturday"), ordered = TRUE)
+x
 fct_shift(x)
 fct_shift(x, left_by = 1)    # The same
 }
