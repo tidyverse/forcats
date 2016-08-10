@@ -35,8 +35,3 @@ A few other helpers:
 * `fct_drop()`: same as `base::droplevels()`.
 * `fct_rev()`: reverse factor levels.
 * `lvl_union()`: finds union of levels from list of factors.
-
-## Caveats
-
-* This was written in two hours of frenzied coding.
-* There are few tests
