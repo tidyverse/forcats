@@ -30,10 +30,6 @@ match the default ordering of factors in the legend.}
 position; \code{fct_reorder2} for 2d displays where the factor is mapped to
 a non-position aesthetic.
 }
-\details{
-\code{fct_reorder} is currently an almost exact copy of
-\code{\link[stats]{reorder}} but it may change in the future.
-}
 \examples{
 boxplot(Sepal.Width ~ Species, data = iris)
 boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width), data = iris)

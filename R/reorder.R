@@ -4,9 +4,6 @@
 #' position; \code{fct_reorder2} for 2d displays where the factor is mapped to
 #' a non-position aesthetic.
 #'
-#' \code{fct_reorder} is currently an almost exact copy of
-#' \code{\link[stats]{reorder}} but it may change in the future.
-#'
 #' @param f A factor
 #' @param x,y fun The levels of \code{f} will be reordered so that \code{fun}
 #'    apply to each group is in ascending order.
