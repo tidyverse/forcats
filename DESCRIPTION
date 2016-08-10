@@ -15,4 +15,5 @@ Imports:
     tibble
 RoxygenNote: 5.0.1
 Suggests: ggplot2,
-    testthat
+    testthat,
+    covr
