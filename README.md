@@ -22,6 +22,7 @@ Change order of levels:
 * `fct_infreq()`: order by frequency.
 * `fct_reorder()`: order by summary of another value.
 * `fct_relevel()`: re-order "by hand".
+* `fct_shift()`: shift order to the left/right.
 
 Change value of levels:
 
