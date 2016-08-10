@@ -4,7 +4,7 @@
 \alias{fct_unify}
 \title{Unify the levels in a list of factors}
 \usage{
-fct_unify(fs, levels = lvl_union(fs))
+fct_unify(fs, levels = lvls_union(fs))
 }
 \arguments{
 \item{fs}{A list of factors}

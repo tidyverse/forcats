@@ -38,4 +38,4 @@ A few other helpers:
 ## Caveats
 
 * This was written in two hours of frenzied coding.
-* There are no unit tests
+* There are few tests
