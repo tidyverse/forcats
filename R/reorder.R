@@ -36,7 +36,7 @@ fct_reorder <- function(f, x, fun = median, ...) {
   f <- check_factor(f)
   stopifnot(length(f) == length(x))
 
-  summary <- tapply(x, factor(f), fun, ...)
+  summary <- tapply(x, as.factor(f), fun, ...)
   if (!is.numeric(summary)) {
     stop("`fun` must return a single number per group", call. = FALSE)
   }
