@@ -36,7 +36,7 @@ fct_reorder <- function(f, x, fun = median, ...) {
   f <- check_factor(f)
   stopifnot(length(f) == length(x))
 
-  summary <- tapply(x, factor(f), fun, ...)
+  summary <- tapply(x, f, fun, ...)
   if (!is.numeric(summary)) {
     stop("`fun` must return a single number per group", call. = FALSE)
   }
@@ -50,7 +50,7 @@ fct_reorder2 <- function(f, x, y, fun = last2, ...) {
   f <- check_factor(f)
   stopifnot(length(f) == length(x), length(x) == length(y))
 
-  summary <- tapply(seq_along(x), as.factor(f), function(i) fun(x[i], y[i], ...))
+  summary <- tapply(seq_along(x), f, function(i) fun(x[i], y[i], ...))
   if (!is.numeric(summary)) {
     stop("`fun` must return a single number per group", call. = FALSE)
   }
