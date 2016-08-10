@@ -33,10 +33,10 @@ fct_collapse <- function(f, n, prop, other_level = "Other") {
     stop("You must specify one of `n` or `prop`", call = FALSE)
   } else if (!missing(n)) {
     if (n < 0) {
-      rank <- rank(count$n, ties = "first")
+      rank <- rank(count$n, ties = "min")
       n <- -n
     } else {
-      rank <- rank(-count$n, ties = "first")
+      rank <- rank(-count$n, ties = "min")
     }
 
     new_levels <- ifelse(rank <= n, count$level, other_level)
