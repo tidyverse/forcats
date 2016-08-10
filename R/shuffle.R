@@ -8,5 +8,6 @@
 #' fct_shuffle(f)
 fct_shuffle <- function(f) {
   f <- check_factor(f)
-  factor(f, levels = sample(levels(f)))
+
+  lvls_reorder(f, sample(lvls_seq(f)))
 }

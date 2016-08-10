@@ -2,30 +2,39 @@
 % Please edit documentation in R/collapse.R
 \name{fct_collapse}
 \alias{fct_collapse}
-\title{Collapse rare levels into "other".}
+\title{Collapse least/most common levels into "other".}
 \usage{
 fct_collapse(f, n, prop, other_level = "Other")
 }
 \arguments{
 \item{f}{A factor.}
 
-\item{n, prop}{Either specify \code{n} or \code{prop}.
+\item{n, prop}{Use either \code{n} or \code{prop}.
 
-  If you specify \code{n}, only the most common \code{n} values will be kept
-  (unless there are ties, in which case it will keep more).
+  Positive \code{n} preserves the most common \code{n} values.
+  Negative \code{n} preserves the least common \code{-n} values.
+  It there are ties, you will get at least \code{abs(n)} values.
 
-  If you specify \code{prop}, only values that appear at least that
-  commonly will be kept.}
+  Positive \code{prop}, preserves values that appear at least
+  \code{prop} of the time. Negative \code{prop}, preserves values that
+  appear at most \code{-prop} of the time.}
 
 \item{other_level}{Value of level used for "other" values.}
 }
 \description{
-Collapse rare levels into "other".
+Collapse least/most common levels into "other".
 }
 \examples{
 x <- factor(letters[rpois(100, 5)])
 x
+table(x)
+
+# Use positive values to collapse the rarest
 fct_collapse(x, n = 3)
 fct_collapse(x, prop = 0.1)
+
+# Use negative values to collapse the most common
+fct_collapse(x, n = -3)
+fct_collapse(x, prop = -0.1)
 }
 

@@ -1,20 +1,29 @@
-#' Collapse rare levels into "other".
+#' Collapse least/most common levels into "other".
 #'
 #' @param f A factor.
-#' @param n,prop Either specify \code{n} or \code{prop}.
+#' @param n,prop Use either \code{n} or \code{prop}.
 #'
-#'   If you specify \code{n}, only the most common \code{n} values will be kept
-#'   (unless there are ties, in which case it will keep more).
+#'   Positive \code{n} preserves the most common \code{n} values.
+#'   Negative \code{n} preserves the least common \code{-n} values.
+#'   It there are ties, you will get at least \code{abs(n)} values.
 #'
-#'   If you specify \code{prop}, only values that appear at least that
-#'   commonly will be kept.
+#'   Positive \code{prop}, preserves values that appear at least
+#'   \code{prop} of the time. Negative \code{prop}, preserves values that
+#'   appear at most \code{-prop} of the time.
 #' @param other_level Value of level used for "other" values.
 #' @export
 #' @examples
 #' x <- factor(letters[rpois(100, 5)])
 #' x
+#' table(x)
+#'
+#' # Use positive values to collapse the rarest
 #' fct_collapse(x, n = 3)
 #' fct_collapse(x, prop = 0.1)
+#'
+#' # Use negative values to collapse the most common
+#' fct_collapse(x, n = -3)
+#' fct_collapse(x, prop = -0.1)
 fct_collapse <- function(f, n, prop, other_level = "Other") {
   f <- check_factor(f)
 
@@ -23,15 +32,25 @@ fct_collapse <- function(f, n, prop, other_level = "Other") {
   if (!xor(missing(n), missing(prop))) {
     stop("You must specify one of `n` or `prop`", call = FALSE)
   } else if (!missing(n)) {
-    rank <- rank(-count$n, ties = "first")
+    if (n < 0) {
+      rank <- rank(count$n, ties = "min")
+      n <- -n
+    } else {
+      rank <- rank(-count$n, ties = "min")
+    }
+
     new_levels <- ifelse(rank <= n, count$level, other_level)
+
   } else if (!missing(prop)) {
     count$prop <- count$n / sum(count$n)
-    new_levels <- ifelse(count$prop > prop, count$level, other_level)
+    if (prop < 0) {
+      new_levels <- ifelse(count$prop <= -prop, count$level, other_level)
+    } else {
+      new_levels <- ifelse(count$prop > prop, count$level, other_level)
+    }
   }
 
-  levels(f) <- new_levels
-  f
+  lvls_revalue(f, new_levels)
 }
 
 fct_count <- function(f) {

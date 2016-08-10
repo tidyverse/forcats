@@ -9,5 +9,6 @@
 #' fct_rev(f)
 fct_rev <- function(f) {
   f <- check_factor(f)
-  factor(f, levels = rev(levels(f)))
+
+  lvls_reorder(f, rev(lvls_seq(f)))
 }

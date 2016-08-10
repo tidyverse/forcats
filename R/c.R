@@ -15,9 +15,9 @@ fct_c <- function(fs) {
     return(factor())
   }
 
-  levels <- lvl_union(fs)
+  levels <- lvls_union(fs)
   all <- unlist(fct_unify(fs, levels))
-  factor(all, levels = levels)
+  factor(all, levels = levels, exclude = NULL)
 }
 
 #' Unify the levels in a list of factors
@@ -29,20 +29,8 @@ fct_c <- function(fs) {
 #' @examples
 #' fs <- list(factor("a"), factor("b"), factor(c("a", "b")))
 #' fct_unify(fs)
-fct_unify <- function(fs, levels = lvl_union(fs)) {
+fct_unify <- function(fs, levels = lvls_union(fs)) {
   fs <- check_factor_list(fs)
 
-  lapply(fs, factor, levels = levels)
-}
-
-#' Find all levels in a list of factors
-#'
-#' @param fs A list of factors.
-#' @export
-#' @examples
-#' fs <- list(factor("a"), factor("b"), factor(c("a", "b")))
-#' lvl_union(fs)
-lvl_union <- function(fs) {
-  fs <- check_factor_list(fs)
-  Reduce(function(x, y) union(x, levels(y)), fs, init = character())
+  lapply(fs, lvls_expand, new_levels = levels)
 }

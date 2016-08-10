@@ -29,6 +29,7 @@ fct_relevel <- function(f, ...) {
     first_levels <- intersect(first_levels, old_levels)
   }
 
-  factor(f, levels = c(first_levels, setdiff(old_levels, first_levels)))
+  new_levels <- c(first_levels, setdiff(old_levels, first_levels))
 
+  lvls_reorder(f, match(new_levels, old_levels))
 }
