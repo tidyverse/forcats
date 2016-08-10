@@ -4,21 +4,26 @@
 #' with different conventions on the starting point.
 #'
 #' @param f A factor.
-#' @param left_by A numeric indicating the amount that the levels will be
-#' shifted left by. Negative values shift the levels to the right.
+#' @param n Positive values shift to the left; negative values shift to
+#'   the right.
 #' @export
 #' @examples
-#' x <- factor(weekdays(Sys.Date()), levels = c("Sunday", "Monday", "Tuesday",
-#'             "Wednesday", "Thursday", "Friday", "Saturday"), ordered = TRUE)
+#' x <- factor(
+#'   c("Mon", "Tue", "Wed"),
+#'   levels = c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"),
+#'   ordered = TRUE
+#' )
 #' x
 #' fct_shift(x)
-#' fct_shift(x, left_by = 1)    # The same
-fct_shift <- function(f, left_by = 1L) {
-  stopifnot(length(left_by) == 1L)
-  factor(f, levels = shift(levels(f), left_by))
+#' fct_shift(x, 2)
+#' fct_shift(x, -1)
+fct_shift <- function(f, n = 1L) {
+  lvls_reorder(f, shift(nlevels(f), n))
 }
 
-shift <- function(x, n) {
-  idx <- ((seq_along(x) - 1) + n) %% length(x) + 1
-  x[idx]
+shift <- function(m, n) {
+  stopifnot(is.numeric(m), length(m) == 1L)
+  stopifnot(is.numeric(n), length(n) == 1L)
+
+  ((seq_len(m) - 1) + n) %% m + 1
 }
