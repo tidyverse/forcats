@@ -28,7 +28,7 @@ Change order of levels:
 
 Change value of levels:
 
-* `fct_collapse()`: lump rarest (or most common) levels into "other".
+* `fct_lump()`: lump rarest (or most common) levels into "other".
 * `fct_recode()`:   manually recode levels.
 
 A few other helpers:

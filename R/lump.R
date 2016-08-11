@@ -1,4 +1,4 @@
-#' Collapse least/most common levels into "other".
+#' Lump together least/most common levels into "other".
 #'
 #' @param f A factor.
 #' @param n,prop Use either \code{n} or \code{prop}.
@@ -18,13 +18,13 @@
 #' table(x)
 #'
 #' # Use positive values to collapse the rarest
-#' fct_collapse(x, n = 3)
-#' fct_collapse(x, prop = 0.1)
+#' fct_lump(x, n = 3)
+#' fct_lump(x, prop = 0.1)
 #'
 #' # Use negative values to collapse the most common
-#' fct_collapse(x, n = -3)
-#' fct_collapse(x, prop = -0.1)
-fct_collapse <- function(f, n, prop, other_level = "Other") {
+#' fct_lump(x, n = -3)
+#' fct_lump(x, prop = -0.1)
+fct_lump <- function(f, n, prop, other_level = "Other") {
   f <- check_factor(f)
 
   levels <- levels(f)
