@@ -1,6 +1,6 @@
 check_factor <- function(f) {
   if (is.character(f)) {
-    f <- factor(f)
+    factor(f)
   } else if (is.factor(f)) {
     f
   } else {
