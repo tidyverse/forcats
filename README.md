@@ -35,6 +35,7 @@ A few other helpers:
 
 * `fct_c()`:      concatenate factors using union of levels.
 * `fct_count()`:  count occurences of levels, optionally sorting by frequency.
+* `fct_expand()`: add new levels to a factor.
 * `fct_unify()`:  ensure list of factors share the same levels.
 * `fct_unique()`: compute from levels of factor.
 * `fct_drop()`:   drop levels without data (same as `base::droplevels()`).
