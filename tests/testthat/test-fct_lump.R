@@ -20,3 +20,25 @@ test_that("negative values drop most common" ,{
   expect_equal(levels(fct_lump(f, n = -1)), c("Other", "c", "d"))
   expect_equal(levels(fct_lump(f, prop = -0.2)), c("Other", "c", "d"))
 })
+
+
+
+# Default -----------------------------------------------------------------
+
+test_that("lumps smallest", {
+  expect_equal(lump_test(c(1, 2, 3, 6)), "Xbcd")
+  expect_equal(lump_test(c(1, 2, 3, 7)), "XXXd")
+
+  expect_equal(lump_test(c(1, 2, 3, 7, 13)), "XXXde")
+  expect_equal(lump_test(c(1, 2, 3, 7, 14)), "XXXXe")
+})
+
+test_that("doesn't lump if none small enough", {
+  expect_equal(lump_test(c(2, 2, 4)), "abc")
+})
+
+test_that("order doesn't matter", {
+  expect_equal(lump_test(c(2, 2, 5)), "XXc")
+  expect_equal(lump_test(c(2, 5, 2)), "XbX")
+  expect_equal(lump_test(c(5, 2, 2)), "aXX")
+})

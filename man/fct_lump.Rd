@@ -9,7 +9,10 @@ fct_lump(f, n, prop, other_level = "Other")
 \arguments{
 \item{f}{A factor.}
 
-\item{n, prop}{Use either \code{n} or \code{prop}.
+\item{n, prop}{If both \code{n} and \code{prop} are missing, \code{fct_lump} lumps
+  together the least frequent levels into "other", while ensuring that
+  "other" is still the smallest level. It's particularly useful in
+  conjunction with \code{\link{fct_inorder}()}.
 
   Positive \code{n} preserves the most common \code{n} values.
   Negative \code{n} preserves the least common \code{-n} values.
@@ -25,9 +28,15 @@ fct_lump(f, n, prop, other_level = "Other")
 Lump together least/most common levels into "other".
 }
 \examples{
+x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
+x \%>\% table()
+x \%>\% fct_lump() \%>\% table()
+x \%>\% fct_lump() \%>\% fct_inorder() \%>\% table()
+
 x <- factor(letters[rpois(100, 5)])
 x
 table(x)
+table(fct_lump(x))
 
 # Use positive values to collapse the rarest
 fct_lump(x, n = 3)
