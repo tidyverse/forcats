@@ -12,7 +12,8 @@ LazyData: true
 URL: https://github.com/hadley/forcats
 BugReports: https://github.com/hadley/forcats/issues
 Imports:
-    tibble
+    tibble,
+    magrittr
 RoxygenNote: 5.0.1
 Suggests: ggplot2,
     testthat,
