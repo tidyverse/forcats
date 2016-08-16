@@ -11,11 +11,15 @@ gss <- readxl::read_excel("data-raw/GSS.xls")
 vars <- readxl::read_excel("data-raw/GSS.xls", sheet = 2)
 names(gss) <- vars$Name
 
+na <- c("Not applicable", "No answer", "Don't know")
+
 gss_cat <- gss %>%
   filter(!is.na(id_)) %>%
   select(-id_) %>%
   mutate(
-    year = as.integer(year)
+    year = as.integer(year),
+    age = as.integer(readr::parse_number(age, na = na)), # ignore 148 "or older"
+    tvhours = as.integer(readr::parse_double(tvhours, na = na))
   )
 
 # From .do file, copy factor definitions (to get levels)
