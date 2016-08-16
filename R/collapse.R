@@ -3,6 +3,7 @@
 #' @param f A factor
 #' @param ... A series of named character vectors. The levels in
 #'   each vector will be replaced with the name.
+#' @export
 #' @examples
 #' fct_collapse(gss_cat$partyid,
 #'   missing = c("No answer", "Don't know"),
