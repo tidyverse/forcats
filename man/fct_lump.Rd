@@ -22,7 +22,8 @@ fct_lump(f, n, prop, other_level = "Other")
   \code{prop} of the time. Negative \code{prop}, preserves values that
   appear at most \code{-prop} of the time.}
 
-\item{other_level}{Value of level used for "other" values.}
+\item{other_level}{Value of level used for "other" values. Always
+placed at end of levels.}
 }
 \description{
 Lump together least/most common levels into "other".

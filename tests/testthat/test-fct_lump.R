@@ -17,8 +17,8 @@ test_that("ties are respected", {
 
 test_that("negative values drop most common" ,{
   f <- c("a", "a", "a", "a", "b", "b", "b", "b", "c", "d")
-  expect_equal(levels(fct_lump(f, n = -1)), c("Other", "c", "d"))
-  expect_equal(levels(fct_lump(f, prop = -0.2)), c("Other", "c", "d"))
+  expect_equal(levels(fct_lump(f, n = -1)), c("c", "d", "Other"))
+  expect_equal(levels(fct_lump(f, prop = -0.2)), c("c", "d", "Other"))
 })
 
 

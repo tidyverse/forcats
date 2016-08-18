@@ -14,7 +14,8 @@
 #'   Positive \code{prop}, preserves values that appear at least
 #'   \code{prop} of the time. Negative \code{prop}, preserves values that
 #'   appear at most \code{-prop} of the time.
-#' @param other_level Value of level used for "other" values.
+#' @param other_level Value of level used for "other" values. Always
+#'   placed at end of levels.
 #' @export
 #' @examples
 #' x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
@@ -61,7 +62,12 @@ fct_lump <- function(f, n, prop, other_level = "Other") {
     }
   }
 
-  lvls_revalue(f, new_levels)
+  f <- lvls_revalue(f, new_levels)
+
+  # Place other at end
+  levels <- levels(f)
+  other_back <- c(setdiff(levels, other_level), other_level)
+  lvls_reorder(f, match(other_back, levels))
 }
 
 # Lump together smallest groups, ensuring that the collective
