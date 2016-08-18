@@ -21,7 +21,7 @@ Change order of levels:
 * `fct_relevel()`: move specified level up front.
 * `fct_inorder()`: order by first appearance of each level.
 * `fct_reorder()`: order by summary of another value.
-* `fct_infreq()`:  order by frequency.
+*  (same as `stats::reorder()`)`fct_infreq()`:  order by frequency.
 * `fct_shuffle()`: randomly shuffle order of levels.
 * `fct_rev()`:     reverse order of levels.
 * `fct_shift()`:   shift levels to the left/right.
