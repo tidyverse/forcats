@@ -1,4 +1,4 @@
-# forcats
+# forcats 🐈🐈🐈🐈
 
 [![Travis-CI Build Status](https://travis-ci.org/hadley/forcats.svg?branch=master)](https://travis-ci.org/hadley/forcats)
 [![Coverage Status](https://img.shields.io/codecov/c/github/hadley/forcats/master.svg)](https://codecov.io/github/hadley/forcats?branch=master)
