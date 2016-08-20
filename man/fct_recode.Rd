@@ -12,7 +12,7 @@ fct_recode(f, ...)
 \item{...}{A sequence of named character vectors where the
 name gives the new level, and the value gives the old level.
 Levels not otherwise mentioned will be left as is. Levels can
-be removed by naming them NULL.}
+be removed by naming them \code{NULL}.}
 }
 \description{
 Change the levels of a factor
