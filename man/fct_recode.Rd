@@ -11,7 +11,8 @@ fct_recode(f, ...)
 
 \item{...}{A sequence of named character vectors where the
 name gives the new level, and the value gives the old level.
-Levels not otherwise mentioned will be left as is.}
+Levels not otherwise mentioned will be left as is. Levels can
+be removed by naming them NULL.}
 }
 \description{
 Change the levels of a factor
@@ -22,5 +23,8 @@ fct_recode(x, fruit = "apple", fruit = "banana")
 
 # If you make a mistake you'll get a warning
 fct_recode(x, fruit = "apple", fruit = "bananana")
+
+# If you name the level NULL it will be removed
+fct_recode(x, NULL = "apple", fruit = "banana")
 }
 
