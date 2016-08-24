@@ -4,13 +4,15 @@
 #' the values nor the order of the levels are preserved.
 #'
 #' @param f A factor
+#' @param prefix A character prefix to insert in front of the random labels.
 #' @export
 #' @examples
 #' gss_cat$relig %>% fct_count()
 #' gss_cat$relig %>% fct_anon() %>% fct_count()
 #' gss_cat$relig %>% fct_anon() %>% fct_count()
-fct_anon <- function(f) {
-  levels <- zero_pad(seq_len(nlevels(f)))
+#' gss_cat$relig %>% fct_anon("X") %>% fct_count()
+fct_anon <- function(f, prefix = "") {
+  levels <- paste0(prefix, zero_pad(seq_len(nlevels(f))))
 
   f <- lvls_revalue(f, sample(levels))
   lvls_reorder(f, match(levels, levels(f)))
