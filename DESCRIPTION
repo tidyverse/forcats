@@ -5,7 +5,10 @@ Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
     person("RStudio", role = "cph")
   )
-Description: Perform useful operations on factors.
+Description: Helpers for reordering factor levels (including moving
+    specified levels to front, ordering by first appearance, reversing, and
+    randomly shuffling), and tools for modifying factor levels (including
+    collapsing rare levels into other, anonymising, and manually recoding).
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
