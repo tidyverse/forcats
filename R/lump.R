@@ -16,6 +16,8 @@
 #'   appear at most \code{-prop} of the time.
 #' @param other_level Value of level used for "other" values. Always
 #'   placed at end of levels.
+#' @param ties.method A character string specifying how ties are
+#'   treated. See \code{\link{rank}} for details
 #' @export
 #' @examples
 #' x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
@@ -35,6 +37,11 @@
 #' # Use negative values to collapse the most common
 #' fct_lump(x, n = -3)
 #' fct_lump(x, prop = -0.1)
+#'
+#' # Use ties.method to control how tied factors are collapsed
+#' fct_lump(x, n = 6)
+#' fct_lump(x, n = 6, ties.method = "max")
+#'
 fct_lump <- function(f, n, prop, other_level = "Other", ties.method = c("min", "average", "first", "last", "random", "max")) {
   f <- check_factor(f)
   ties.method <- match.arg(ties.method)
