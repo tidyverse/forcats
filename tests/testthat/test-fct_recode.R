@@ -13,3 +13,17 @@ test_that("can collapse levels", {
 
   expect_equal(fct_recode(f1, a = "a1", a = "a2", b = "b1", b = "b2"), f2)
 })
+
+test_that("can recode multiple levels to NA", {
+  f1 <- factor(c("a1", "empty", "a2", "b", "missing"))
+  f2 <- factor(c("a", NA, "a", "b", NA))
+
+  expect_equal(fct_recode(f1, NULL = "missing", NULL = "empty", a = "a1", a = "a2"), f2)
+})
+
+test_that("can just remove levels", {
+  f1 <- factor(c("a", "missing"))
+  f2 <- factor(c("a", NA))
+
+  expect_equal(fct_recode(f1, NULL = "missing"), f2)
+})
