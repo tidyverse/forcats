@@ -35,8 +35,9 @@
 #' # Use negative values to collapse the most common
 #' fct_lump(x, n = -3)
 #' fct_lump(x, prop = -0.1)
-fct_lump <- function(f, n, prop, other_level = "Other") {
+fct_lump <- function(f, n, prop, other_level = "Other", ties.method = c("min", "average", "first", "last", "random", "max")) {
   f <- check_factor(f)
+  ties.method <- match.arg(ties.method)
 
   levels <- levels(f)
   count <- table(f)
@@ -45,10 +46,10 @@ fct_lump <- function(f, n, prop, other_level = "Other") {
     new_levels <- ifelse(!in_smallest(table(f)), levels, other_level)
   } else if (!missing(n)) {
     if (n < 0) {
-      rank <- rank(count, ties = "min")
+      rank <- rank(count, ties = ties.method)
       n <- -n
     } else {
-      rank <- rank(-count, ties = "min")
+      rank <- rank(-count, ties = ties.method)
     }
 
     new_levels <- ifelse(rank <= n, levels, other_level)
