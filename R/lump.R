@@ -66,7 +66,7 @@ fct_lump <- function(f, n, prop, other_level = "Other") {
 
   # Place other at end
   levels <- levels(f)
-  other_back <- c(setdiff(levels, other_level), other_level)
+  other_back <- c(setdiff(levels, other_level), intersect(levels, other_level))
   lvls_reorder(f, match(other_back, levels))
 }
 
