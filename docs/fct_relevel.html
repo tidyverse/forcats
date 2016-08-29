@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>fct_relevel. forcats 0.1.0.9000</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">forcats 0.1.0.9000</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Change the order of levels in a factor</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='fct_relevel.html'>fct_relevel</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>f</dt>
+      <dd>A factor.</dd>
+      <dt>...</dt>
+      <dd>Character vector of levels. Any levels not mentioned will be
+left in existing order, after the explicitly mentioned levels.</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>This is a generalisaton of <code><a href='http://www.rdocumentation.org/packages/stats/topics/relevel'>relevel</a></code> that allows you to
+move any number of levels to the front.</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="symbol">f</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">"a"</span><span class="keyword">,</span> <span class="string">"b"</span><span class="keyword">,</span> <span class="string">"c"</span><span class="keyword">)</span><span class="keyword">)</span>
+<span class="functioncall"><a href='fct_relevel.html'>fct_relevel</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">)</span></div>
+<div class='output'>[1] a b c
+Levels: a b c
+</div>
+<div class='input'><span class="functioncall"><a href='fct_relevel.html'>fct_relevel</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">,</span> <span class="string">"c"</span><span class="keyword">)</span></div>
+<div class='output'>[1] a b c
+Levels: c a b
+</div>
+<div class='input'><span class="functioncall"><a href='fct_relevel.html'>fct_relevel</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">,</span> <span class="string">"b"</span><span class="keyword">,</span> <span class="string">"a"</span><span class="keyword">)</span></div>
+<div class='output'>[1] a b c
+Levels: b a c
+</div>
+<div class='input'>
+<span class="comment"># You'll get a warning if the levels don't exist</span>
+<span class="functioncall"><a href='fct_relevel.html'>fct_relevel</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">,</span> <span class="string">"d"</span><span class="keyword">)</span></div>
+<strong class='warning'>Warning message:
+Unknown levels in `f`: d</strong>
+<div class='output'>[1] a b c
+Levels: a b c
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>fct_relevel</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>fct_anon. forcats 0.1.0.9000</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">forcats 0.1.0.9000</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Anonymise factor levels</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='fct_anon.html'>fct_anon</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">,</span> <span class="argument">prefix</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">""</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>f</dt>
+      <dd>A factor</dd>
+      <dt>prefix</dt>
+      <dd>A character prefix to insert in front of the random labels.</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Replaces factor levels with arbitary numeric identifiers. Neither
+the values nor the order of the levels are preserved.</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="symbol">gss_cat</span><span class="keyword">$</span><span class="symbol">relig</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='fct_count.html'>fct_count</a></span><span class="keyword">(</span><span class="keyword">)</span></div>
+<div class='output'># A tibble: 16 × 2
+                         f     n
+                    &lt;fctr&gt; &lt;int&gt;
+1                No answer    93
+2               Don&#39;t know    15
+3  Inter-nondenominational   109
+4          Native american    23
+5                Christian   689
+6       Orthodox-christian    95
+7             Moslem/islam   104
+8            Other eastern    32
+9                 Hinduism    71
+10                Buddhism   147
+11                   Other   224
+12                    None  3523
+13                  Jewish   388
+14                Catholic  5124
+15              Protestant 10846
+16          Not applicable     0
+</div>
+<div class='input'><span class="symbol">gss_cat</span><span class="keyword">$</span><span class="symbol">relig</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='fct_anon.html'>fct_anon</a></span><span class="keyword">(</span><span class="keyword">)</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='fct_count.html'>fct_count</a></span><span class="keyword">(</span><span class="keyword">)</span></div>
+<div class='output'># A tibble: 16 × 2
+        f     n
+   &lt;fctr&gt; &lt;int&gt;
+1      01    32
+2      02    71
+3      03  5124
+4      04 10846
+5      05   224
+6      06    95
+7      07   109
+8      08    15
+9      09    93
+10     10   689
+11     11   104
+12     12   147
+13     13  3523
+14     14   388
+15     15    23
+16     16     0
+</div>
+<div class='input'><span class="symbol">gss_cat</span><span class="keyword">$</span><span class="symbol">relig</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='fct_anon.html'>fct_anon</a></span><span class="keyword">(</span><span class="keyword">)</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='fct_count.html'>fct_count</a></span><span class="keyword">(</span><span class="keyword">)</span></div>
+<div class='output'># A tibble: 16 × 2
+        f     n
+   &lt;fctr&gt; &lt;int&gt;
+1      01   689
+2      02   104
+3      03     0
+4      04   109
+5      05 10846
+6      06  3523
+7      07    93
+8      08   388
+9      09    71
+10     10   147
+11     11    15
+12     12    32
+13     13    23
+14     14    95
+15     15   224
+16     16  5124
+</div>
+<div class='input'><span class="symbol">gss_cat</span><span class="keyword">$</span><span class="symbol">relig</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='fct_anon.html'>fct_anon</a></span><span class="keyword">(</span><span class="string">"X"</span><span class="keyword">)</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='fct_count.html'>fct_count</a></span><span class="keyword">(</span><span class="keyword">)</span></div>
+<div class='output'># A tibble: 16 × 2
+        f     n
+   &lt;fctr&gt; &lt;int&gt;
+1     X01    95
+2     X02   388
+3     X03     0
+4     X04  5124
+5     X05   147
+6     X06 10846
+7     X07  3523
+8     X08   224
+9     X09    32
+10    X10    15
+11    X11   104
+12    X12    71
+13    X13   689
+14    X14    23
+15    X15   109
+16    X16    93
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>fct_anon</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

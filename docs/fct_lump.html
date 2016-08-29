@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>fct_lump. forcats 0.1.0.9000</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">forcats 0.1.0.9000</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Lump together least/most common levels into &quot;other&quot;.</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">,</span> <span class="symbol">n</span><span class="keyword">,</span> <span class="symbol">prop</span><span class="keyword">,</span> <span class="argument">other_level</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"Other"</span><span class="keyword">,</span> <span class="argument">ties.method</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">"min"</span><span class="keyword">,</span>
+  <span class="string">"average"</span><span class="keyword">,</span> <span class="string">"first"</span><span class="keyword">,</span> <span class="string">"last"</span><span class="keyword">,</span> <span class="string">"random"</span><span class="keyword">,</span> <span class="string">"max"</span><span class="keyword">)</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>f</dt>
+      <dd>A factor.</dd>
+      <dt>n, prop</dt>
+      <dd>If both <code>n</code> and <code>prop</code> are missing, <code>fct_lump</code> lumps
+  together the least frequent levels into &quot;other&quot;, while ensuring that
+  &quot;other&quot; is still the smallest level. It&#39;s particularly useful in
+  conjunction with <code><a href='fct_inorder.html'>fct_inorder</a>()</code>.
+
+  Positive <code>n</code> preserves the most common <code>n</code> values.
+  Negative <code>n</code> preserves the least common <code>-n</code> values.
+  It there are ties, you will get at least <code>abs(n)</code> values.
+
+  Positive <code>prop</code>, preserves values that appear at least
+  <code>prop</code> of the time. Negative <code>prop</code>, preserves values that
+  appear at most <code>-prop</code> of the time.</dd>
+      <dt>other_level</dt>
+      <dd>Value of level used for &quot;other&quot; values. Always
+placed at end of levels.</dd>
+      <dt>ties.method</dt>
+      <dd>A character string specifying how ties are
+treated. See <code><a href='http://www.rdocumentation.org/packages/base/topics/rank'>rank</a></code> for details</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Lump together least/most common levels into &quot;other&quot;.</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="symbol">x</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span><span class="keyword">(</span><span class="symbol">LETTERS</span><span class="keyword">[</span><span class="number">1</span><span class="keyword">:</span><span class="number">9</span><span class="keyword">]</span><span class="keyword">,</span> <span class="argument">times</span> <span class="argument">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">40</span><span class="keyword">,</span> <span class="number">10</span><span class="keyword">,</span> <span class="number">5</span><span class="keyword">,</span> <span class="number">27</span><span class="keyword">,</span> <span class="number">1</span><span class="keyword">,</span> <span class="number">1</span><span class="keyword">,</span> <span class="number">1</span><span class="keyword">,</span> <span class="number">1</span><span class="keyword">,</span> <span class="number">1</span><span class="keyword">)</span><span class="keyword">)</span><span class="keyword">)</span>
+<span class="symbol">x</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/table'>table</a></span><span class="keyword">(</span><span class="keyword">)</span></div>
+<div class='output'>.
+ A  B  C  D  E  F  G  H  I 
+40 10  5 27  1  1  1  1  1 
+</div>
+<div class='input'><span class="symbol">x</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="keyword">)</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/table'>table</a></span><span class="keyword">(</span><span class="keyword">)</span></div>
+<div class='output'>.
+    A     D Other 
+   40    27    20 
+</div>
+<div class='input'><span class="symbol">x</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="keyword">)</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='fct_inorder.html'>fct_inorder</a></span><span class="keyword">(</span><span class="keyword">)</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/table'>table</a></span><span class="keyword">(</span><span class="keyword">)</span></div>
+<div class='output'>.
+    A Other     D 
+   40    20    27 
+</div>
+<div class='input'>
+<span class="symbol">x</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span><span class="keyword">(</span><span class="symbol">letters</span><span class="keyword">[</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/stats/topics/Poisson'>rpois</a></span><span class="keyword">(</span><span class="number">100</span><span class="keyword">,</span> <span class="number">5</span><span class="keyword">)</span><span class="keyword">]</span><span class="keyword">)</span>
+<span class="symbol">x</span></div>
+<div class='output'>  [1] e c g d d c g f f c b b b c d c d d f e c a f h b g f f c h j f g l c e g b d d b c a c c e h
+ [48] f f e e g g j g e b i i e c e d f e g c e c d d l g c f g f i b f i e b h e e e g g d e d d f
+ [95] g f d f b c
+Levels: a b c d e f g h i j l
+</div>
+<div class='input'><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/table'>table</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span></div>
+<div class='output'>x
+ a  b  c  d  e  f  g  h  i  j  l 
+ 2 10 16 14 16 16 14  4  4  2  2 
+</div>
+<div class='input'><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/table'>table</a></span><span class="keyword">(</span><span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">)</span></div>
+<div class='output'>
+ a  b  c  d  e  f  g  h  i  j  l 
+ 2 10 16 14 16 16 14  4  4  2  2 
+</div>
+<div class='input'>
+<span class="comment"># Use positive values to collapse the rarest</span>
+<span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">n</span> <span class="argument">=</span> <span class="number">3</span><span class="keyword">)</span></div>
+<div class='output'>  [1] e     c     Other Other Other c     Other f     f     c     Other Other Other c     Other
+ [16] c     Other Other f     e     c     Other f     Other Other Other f     f     c     Other
+ [31] Other f     Other Other c     e     Other Other Other Other Other c     Other c     c    
+ [46] e     Other f     f     e     e     Other Other Other Other e     Other Other Other e    
+ [61] c     e     Other f     e     Other c     e     c     Other Other Other Other c     f    
+ [76] Other f     Other Other f     Other e     Other Other e     e     e     Other Other Other
+ [91] e     Other Other f     Other f     Other f     Other c    
+Levels: c e f Other
+</div>
+<div class='input'><span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">prop</span> <span class="argument">=</span> <span class="number">0.1</span><span class="keyword">)</span></div>
+<div class='output'>  [1] e     c     g     d     d     c     g     f     f     c     Other Other Other c     d    
+ [16] c     d     d     f     e     c     Other f     Other Other g     f     f     c     Other
+ [31] Other f     g     Other c     e     g     Other d     d     Other c     Other c     c    
+ [46] e     Other f     f     e     e     g     g     Other g     e     Other Other Other e    
+ [61] c     e     d     f     e     g     c     e     c     d     d     Other g     c     f    
+ [76] g     f     Other Other f     Other e     Other Other e     e     e     g     g     d    
+ [91] e     d     d     f     g     f     d     f     Other c    
+Levels: c d e f g Other
+</div>
+<div class='input'>
+<span class="comment"># Use negative values to collapse the most common</span>
+<span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">n</span> <span class="argument">=</span> <span class="keyword">-</span><span class="number">3</span><span class="keyword">)</span></div>
+<div class='output'>  [1] Other Other Other Other Other Other Other Other Other Other Other Other Other Other Other
+ [16] Other Other Other Other Other Other a     Other Other Other Other Other Other Other Other
+ [31] j     Other Other l     Other Other Other Other Other Other Other Other a     Other Other
+ [46] Other Other Other Other Other Other Other Other j     Other Other Other Other Other Other
+ [61] Other Other Other Other Other Other Other Other Other Other Other l     Other Other Other
+ [76] Other Other Other Other Other Other Other Other Other Other Other Other Other Other Other
+ [91] Other Other Other Other Other Other Other Other Other Other
+Levels: a j l Other
+</div>
+<div class='input'><span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">prop</span> <span class="argument">=</span> <span class="keyword">-</span><span class="number">0.1</span><span class="keyword">)</span></div>
+<div class='output'>  [1] Other Other Other Other Other Other Other Other Other Other b     b     b     Other Other
+ [16] Other Other Other Other Other Other a     Other h     b     Other Other Other Other h    
+ [31] j     Other Other l     Other Other Other b     Other Other b     Other a     Other Other
+ [46] Other h     Other Other Other Other Other Other j     Other Other b     i     i     Other
+ [61] Other Other Other Other Other Other Other Other Other Other Other l     Other Other Other
+ [76] Other Other i     b     Other i     Other b     h     Other Other Other Other Other Other
+ [91] Other Other Other Other Other Other Other Other b     Other
+Levels: a b h i j l Other
+</div>
+<div class='input'>
+<span class="comment"># Use ties.method to control how tied factors are collapsed</span>
+<span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">n</span> <span class="argument">=</span> <span class="number">6</span><span class="keyword">)</span></div>
+<div class='output'>  [1] e     c     g     d     d     c     g     f     f     c     b     b     b     c     d    
+ [16] c     d     d     f     e     c     Other f     Other b     g     f     f     c     Other
+ [31] Other f     g     Other c     e     g     b     d     d     b     c     Other c     c    
+ [46] e     Other f     f     e     e     g     g     Other g     e     b     Other Other e    
+ [61] c     e     d     f     e     g     c     e     c     d     d     Other g     c     f    
+ [76] g     f     Other b     f     Other e     b     Other e     e     e     g     g     d    
+ [91] e     d     d     f     g     f     d     f     b     c    
+Levels: b c d e f g Other
+</div>
+<div class='input'><span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">n</span> <span class="argument">=</span> <span class="number">6</span><span class="keyword">,</span> <span class="argument">ties.method</span> <span class="argument">=</span> <span class="string">"max"</span><span class="keyword">)</span></div>
+<div class='output'>  [1] e     c     g     d     d     c     g     f     f     c     b     b     b     c     d    
+ [16] c     d     d     f     e     c     Other f     Other b     g     f     f     c     Other
+ [31] Other f     g     Other c     e     g     b     d     d     b     c     Other c     c    
+ [46] e     Other f     f     e     e     g     g     Other g     e     b     Other Other e    
+ [61] c     e     d     f     e     g     c     e     c     d     d     Other g     c     f    
+ [76] g     f     Other b     f     Other e     b     Other e     e     e     g     g     d    
+ [91] e     d     d     f     g     f     d     f     b     c    
+Levels: b c d e f g Other
+</div>
+<div class='input'></div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>fct_lump</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>fct_reorder. forcats 0.1.0.9000</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">forcats 0.1.0.9000</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Reorder the levels of a function according to another variable</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='fct_reorder.html'>fct_reorder</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">,</span> <span class="symbol">x</span><span class="keyword">,</span> <span class="argument">fun</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="symbol">median</span><span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">,</span> <span class="argument">.desc</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">)</span>
+
+<span class="functioncall"><a href='fct_reorder.html'>fct_reorder2</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">,</span> <span class="symbol">x</span><span class="keyword">,</span> <span class="symbol">y</span><span class="keyword">,</span> <span class="argument">fun</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="symbol">last2</span><span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">,</span> <span class="argument">.desc</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">TRUE</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>f</dt>
+      <dd>A factor</dd>
+      <dt>x, y</dt>
+      <dd>fun The levels of <code>f</code> will be reordered so that <code>fun</code>
+apply to each group is in ascending order.</dd>
+      <dt>fun</dt>
+      <dd>An summary function. It should take one vector for
+<code>fct_reorder</code>, and two vectors for <code>fct_reorder2</code>.</dd>
+      <dt>...</dt>
+      <dd>Other arguments passed on to <code>fun</code>. A common argument is
+<code>na.rm = TRUE</code>.</dd>
+      <dt>.desc</dt>
+      <dd>Order in descending order? Note the default is different
+between <code>fct_reorder</code> and <code>fct_reorder2</code>, in order to
+match the default ordering of factors in the legend.</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p><code>fct_reorder</code> is useful for 1d displays where the factor is mapped to
+position; <code>fct_reorder2</code> for 2d displays where the factor is mapped to
+a non-position aesthetic.</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="functioncall"><a href='http://www.rdocumentation.org/packages/graphics/topics/boxplot'>boxplot</a></span><span class="keyword">(</span><span class="symbol">Sepal.Width</span> <span class="keyword">~</span> <span class="symbol">Species</span><span class="keyword">,</span> <span class="argument">data</span> <span class="argument">=</span> <span class="symbol">iris</span><span class="keyword">)</span></div>
+<p><img src='fct_reorder-2.png' alt='' width='540' height='400' /></p>
+<div class='input'><span class="functioncall"><a href='http://www.rdocumentation.org/packages/graphics/topics/boxplot'>boxplot</a></span><span class="keyword">(</span><span class="symbol">Sepal.Width</span> <span class="keyword">~</span> <span class="functioncall"><a href='fct_reorder.html'>fct_reorder</a></span><span class="keyword">(</span><span class="symbol">Species</span><span class="keyword">,</span> <span class="symbol">Sepal.Width</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">data</span> <span class="argument">=</span> <span class="symbol">iris</span><span class="keyword">)</span></div>
+<p><img src='fct_reorder-4.png' alt='' width='540' height='400' /></p>
+<div class='input'><span class="functioncall"><a href='http://www.rdocumentation.org/packages/graphics/topics/boxplot'>boxplot</a></span><span class="keyword">(</span><span class="symbol">Sepal.Width</span> <span class="keyword">~</span> <span class="functioncall"><a href='fct_reorder.html'>fct_reorder</a></span><span class="keyword">(</span><span class="symbol">Species</span><span class="keyword">,</span> <span class="symbol">Sepal.Width</span><span class="keyword">,</span> <span class="argument">.desc</span> <span class="argument">=</span> <span class="number">TRUE</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">data</span> <span class="argument">=</span> <span class="symbol">iris</span><span class="keyword">)</span></div>
+<p><img src='fct_reorder-6.png' alt='' width='540' height='400' /></p>
+<div class='input'>
+<span class="symbol">chks</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/subset'>subset</a></span><span class="keyword">(</span><span class="symbol">ChickWeight</span><span class="keyword">,</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/integer'>as.integer</a></span><span class="keyword">(</span><span class="symbol">Chick</span><span class="keyword">)</span> <span class="keyword">&lt;</span> <span class="number">10</span><span class="keyword">)</span>
+<span class="symbol">chks</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/transform'>transform</a></span><span class="keyword">(</span><span class="symbol">chks</span><span class="keyword">,</span> <span class="argument">Chick</span> <span class="argument">=</span> <span class="functioncall"><a href='fct_shuffle.html'>fct_shuffle</a></span><span class="keyword">(</span><span class="symbol">Chick</span><span class="keyword">)</span><span class="keyword">)</span>
+
+<span class="keyword">if</span> <span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/library'>require</a></span><span class="keyword">(</span><span class="string">"ggplot2"</span><span class="keyword">)</span><span class="keyword">)</span> <span class="keyword">{</span>
+<span class="functioncall"><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span><span class="keyword">(</span><span class="symbol">chks</span><span class="keyword">,</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span><span class="keyword">(</span><span class="symbol">Time</span><span class="keyword">,</span> <span class="symbol">weight</span><span class="keyword">,</span> <span class="argument">colour</span> <span class="argument">=</span> <span class="symbol">Chick</span><span class="keyword">)</span><span class="keyword">)</span> <span class="keyword">+</span>
+  <span class="functioncall"><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span><span class="keyword">(</span><span class="keyword">)</span> <span class="keyword">+</span>
+  <span class="functioncall"><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_path'>geom_line</a></span><span class="keyword">(</span><span class="keyword">)</span>
+
+<span class="comment"># Note that lines match order in legend</span>
+<span class="functioncall"><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span><span class="keyword">(</span><span class="symbol">chks</span><span class="keyword">,</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span><span class="keyword">(</span><span class="symbol">Time</span><span class="keyword">,</span> <span class="symbol">weight</span><span class="keyword">,</span> <span class="argument">colour</span> <span class="argument">=</span> <span class="functioncall"><a href='fct_reorder.html'>fct_reorder2</a></span><span class="keyword">(</span><span class="symbol">Chick</span><span class="keyword">,</span> <span class="symbol">Time</span><span class="keyword">,</span> <span class="symbol">weight</span><span class="keyword">)</span><span class="keyword">)</span><span class="keyword">)</span> <span class="keyword">+</span>
+  <span class="functioncall"><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span><span class="keyword">(</span><span class="keyword">)</span> <span class="keyword">+</span>
+  <span class="functioncall"><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_path'>geom_line</a></span><span class="keyword">(</span><span class="keyword">)</span> <span class="keyword">+</span>
+  <span class="functioncall"><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span><span class="keyword">(</span><span class="argument">colour</span> <span class="argument">=</span> <span class="string">"Chick"</span><span class="keyword">)</span>
+<span class="keyword">}</span></div>
+<p><img src='fct_reorder-8.png' alt='' width='540' height='400' /></p></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>fct_reorder</li><li>fct_reorder2</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

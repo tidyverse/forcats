@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>fct_shift. forcats 0.1.0.9000</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">forcats 0.1.0.9000</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Shift the order of levels of a factor</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='fct_shift.html'>fct_shift</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">,</span> <span class="argument">n</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">1L</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>f</dt>
+      <dd>A factor.</dd>
+      <dt>n</dt>
+      <dd>Positive values shift to the left; negative values shift to
+the right.</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>This is useful when the levels of an ordered factor are actually cyclical,
+with different conventions on the starting point.</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="symbol">x</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span><span class="keyword">(</span>
+  <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">"Mon"</span><span class="keyword">,</span> <span class="string">"Tue"</span><span class="keyword">,</span> <span class="string">"Wed"</span><span class="keyword">)</span><span class="keyword">,</span>
+  <span class="argument">levels</span> <span class="argument">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">"Sun"</span><span class="keyword">,</span> <span class="string">"Mon"</span><span class="keyword">,</span> <span class="string">"Tue"</span><span class="keyword">,</span> <span class="string">"Wed"</span><span class="keyword">,</span> <span class="string">"Thu"</span><span class="keyword">,</span> <span class="string">"Fri"</span><span class="keyword">,</span> <span class="string">"Sat"</span><span class="keyword">)</span><span class="keyword">,</span>
+  <span class="argument">ordered</span> <span class="argument">=</span> <span class="number">TRUE</span>
+<span class="keyword">)</span>
+<span class="symbol">x</span></div>
+<div class='output'>[1] Mon Tue Wed
+Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat
+</div>
+<div class='input'><span class="functioncall"><a href='fct_shift.html'>fct_shift</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span></div>
+<div class='output'>[1] Mon Tue Wed
+Levels: Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat &lt; Sun
+</div>
+<div class='input'><span class="functioncall"><a href='fct_shift.html'>fct_shift</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="number">2</span><span class="keyword">)</span></div>
+<div class='output'>[1] Mon Tue Wed
+Levels: Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat &lt; Sun &lt; Mon
+</div>
+<div class='input'><span class="functioncall"><a href='fct_shift.html'>fct_shift</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="keyword">-</span><span class="number">1</span><span class="keyword">)</span></div>
+<div class='output'>[1] Mon Tue Wed
+Levels: Sat &lt; Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>fct_shift</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
