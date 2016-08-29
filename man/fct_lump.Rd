@@ -26,7 +26,7 @@ fct_lump(f, n, prop, other_level = "Other", ties.method = c("min",
 \item{other_level}{Value of level used for "other" values. Always
 placed at end of levels.}
 
-\item{ties.method}{a character string specifying how ties are
+\item{ties.method}{A character string specifying how ties are
 treated. See \code{\link{rank}} for details}
 }
 \description{

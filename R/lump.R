@@ -42,7 +42,8 @@
 #' fct_lump(x, n = 6)
 #' fct_lump(x, n = 6, ties.method = "max")
 #'
-fct_lump <- function(f, n, prop, other_level = "Other", ties.method = c("min", "average", "first", "last", "random", "max")) {
+fct_lump <- function(f, n, prop, other_level = "Other",
+                     ties.method = c("min", "average", "first", "last", "random", "max")) {
   f <- check_factor(f)
   ties.method <- match.arg(ties.method)
 

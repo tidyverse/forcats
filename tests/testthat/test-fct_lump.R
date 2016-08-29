@@ -21,7 +21,36 @@ test_that("negative values drop most common" ,{
   expect_equal(levels(fct_lump(f, prop = -0.2)), c("c", "d", "Other"))
 })
 
+test_that("return original factor when all element satisfy n / p condition", {
+  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
 
+  expect_equal(levels(fct_lump(f, n = 4)), c("a", "b", "c", "d", "e", "f", "g"))
+  expect_equal(levels(fct_lump(f, n = 10)), c("a", "b", "c", "d", "e", "f", "g"))
+  expect_equal(levels(fct_lump(f, n = -10)), c("a", "b", "c", "d", "e", "f", "g"))
+
+  expect_equal(levels(fct_lump(f, prop = 0.01)), c("a", "b", "c", "d", "e", "f", "g"))
+  expect_equal(levels(fct_lump(f, prop = -1)), c("a", "b", "c", "d", "e", "f", "g"))
+})
+
+test_that("different behaviour when apply tie function", {
+  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
+
+  expect_equal(levels(fct_lump(f, n = 4, ties.method = "min")),
+               c("a", "b", "c", "d", "e", "f", "g"))
+  expect_equal(levels(fct_lump(f, n = 4, ties.method = "max")),
+               c("a", "b", "Other" ))
+
+  # Rank of c, d, e, f, g is (3+4+5+6+7)/5 = 5
+  expect_equal(levels(fct_lump(f, n = 4, ties.method = "average")),
+               c("a", "b", "Other" ))
+  expect_equal(levels(fct_lump(f, n = 5, ties.method = "average")),
+               c("a", "b", "c", "d", "e", "f", "g"))
+
+  expect_equal(levels(fct_lump(f, n = 4, ties.method = "first")),
+               c("a", "b", "c", "d", "Other"))
+  expect_equal(levels(fct_lump(f, n = 4, ties.method = "last")),
+               c("a", "b", "f", "g", "Other"))
+})
 
 # Default -----------------------------------------------------------------
 
