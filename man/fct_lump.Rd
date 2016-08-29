@@ -4,7 +4,8 @@
 \alias{fct_lump}
 \title{Lump together least/most common levels into "other".}
 \usage{
-fct_lump(f, n, prop, other_level = "Other")
+fct_lump(f, n, prop, other_level = "Other", ties.method = c("min",
+  "average", "first", "last", "random", "max"))
 }
 \arguments{
 \item{f}{A factor.}
@@ -24,6 +25,9 @@ fct_lump(f, n, prop, other_level = "Other")
 
 \item{other_level}{Value of level used for "other" values. Always
 placed at end of levels.}
+
+\item{ties.method}{A character string specifying how ties are
+treated. See \code{\link{rank}} for details}
 }
 \description{
 Lump together least/most common levels into "other".
@@ -46,5 +50,10 @@ fct_lump(x, prop = 0.1)
 # Use negative values to collapse the most common
 fct_lump(x, n = -3)
 fct_lump(x, prop = -0.1)
+
+# Use ties.method to control how tied factors are collapsed
+fct_lump(x, n = 6)
+fct_lump(x, n = 6, ties.method = "max")
+
 }
 
