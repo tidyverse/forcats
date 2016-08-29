@@ -109,85 +109,85 @@ treated. See <code><a href='http://www.rdocumentation.org/packages/base/topics/r
 <div class='input'>
 <span class="symbol">x</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span><span class="keyword">(</span><span class="symbol">letters</span><span class="keyword">[</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/stats/topics/Poisson'>rpois</a></span><span class="keyword">(</span><span class="number">100</span><span class="keyword">,</span> <span class="number">5</span><span class="keyword">)</span><span class="keyword">]</span><span class="keyword">)</span>
 <span class="symbol">x</span></div>
-<div class='output'>  [1] e c g d d c g f f c b b b c d c d d f e c a f h b g f f c h j f g l c e g b d d b c a c c e h
- [48] f f e e g g j g e b i i e c e d f e g c e c d d l g c f g f i b f i e b h e e e g g d e d d f
- [95] g f d f b c
-Levels: a b c d e f g h i j l
+<div class='output'>  [1] b d e f e g d f e c c c d c f e g b c d g d h e c d c b f g c e f d f f e d d d c h f d g h f
+ [48] f d c b b f c h h e h h c f e f d b e c b f e c h d b f e e f d c g f g d d e c a b d c g e f
+ [95] d f f g g e
+Levels: a b c d e f g h
 </div>
 <div class='input'><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/table'>table</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span></div>
 <div class='output'>x
- a  b  c  d  e  f  g  h  i  j  l 
- 2 10 16 14 16 16 14  4  4  2  2 
+ a  b  c  d  e  f  g  h 
+ 1  9 17 19 16 20 10  8 
 </div>
 <div class='input'><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/table'>table</a></span><span class="keyword">(</span><span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">)</span></div>
 <div class='output'>
- a  b  c  d  e  f  g  h  i  j  l 
- 2 10 16 14 16 16 14  4  4  2  2 
+    b     c     d     e     f     g     h Other 
+    9    17    19    16    20    10     8     1 
 </div>
 <div class='input'>
 <span class="comment"># Use positive values to collapse the rarest</span>
 <span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">n</span> <span class="argument">=</span> <span class="number">3</span><span class="keyword">)</span></div>
-<div class='output'>  [1] e     c     Other Other Other c     Other f     f     c     Other Other Other c     Other
- [16] c     Other Other f     e     c     Other f     Other Other Other f     f     c     Other
- [31] Other f     Other Other c     e     Other Other Other Other Other c     Other c     c    
- [46] e     Other f     f     e     e     Other Other Other Other e     Other Other Other e    
- [61] c     e     Other f     e     Other c     e     c     Other Other Other Other c     f    
- [76] Other f     Other Other f     Other e     Other Other e     e     e     Other Other Other
- [91] e     Other Other f     Other f     Other f     Other c    
-Levels: c e f Other
+<div class='output'>  [1] Other d     Other f     Other Other d     f     Other c     c     c     d     c     f    
+ [16] Other Other Other c     d     Other d     Other Other c     d     c     Other f     Other
+ [31] c     Other f     d     f     f     Other d     d     d     c     Other f     d     Other
+ [46] Other f     f     d     c     Other Other f     c     Other Other Other Other Other c    
+ [61] f     Other f     d     Other Other c     Other f     Other c     Other d     Other f    
+ [76] Other Other f     d     c     Other f     Other d     d     Other c     Other Other d    
+ [91] c     Other Other f     d     f     f     Other Other Other
+Levels: c d f Other
 </div>
 <div class='input'><span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">prop</span> <span class="argument">=</span> <span class="number">0.1</span><span class="keyword">)</span></div>
-<div class='output'>  [1] e     c     g     d     d     c     g     f     f     c     Other Other Other c     d    
- [16] c     d     d     f     e     c     Other f     Other Other g     f     f     c     Other
- [31] Other f     g     Other c     e     g     Other d     d     Other c     Other c     c    
- [46] e     Other f     f     e     e     g     g     Other g     e     Other Other Other e    
- [61] c     e     d     f     e     g     c     e     c     d     d     Other g     c     f    
- [76] g     f     Other Other f     Other e     Other Other e     e     e     g     g     d    
- [91] e     d     d     f     g     f     d     f     Other c    
-Levels: c d e f g Other
+<div class='output'>  [1] Other d     e     f     e     Other d     f     e     c     c     c     d     c     f    
+ [16] e     Other Other c     d     Other d     Other e     c     d     c     Other f     Other
+ [31] c     e     f     d     f     f     e     d     d     d     c     Other f     d     Other
+ [46] Other f     f     d     c     Other Other f     c     Other Other e     Other Other c    
+ [61] f     e     f     d     Other e     c     Other f     e     c     Other d     Other f    
+ [76] e     e     f     d     c     Other f     Other d     d     e     c     Other Other d    
+ [91] c     Other e     f     d     f     f     Other Other e    
+Levels: c d e f Other
 </div>
 <div class='input'>
 <span class="comment"># Use negative values to collapse the most common</span>
 <span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">n</span> <span class="argument">=</span> <span class="keyword">-</span><span class="number">3</span><span class="keyword">)</span></div>
-<div class='output'>  [1] Other Other Other Other Other Other Other Other Other Other Other Other Other Other Other
- [16] Other Other Other Other Other Other a     Other Other Other Other Other Other Other Other
- [31] j     Other Other l     Other Other Other Other Other Other Other Other a     Other Other
- [46] Other Other Other Other Other Other Other Other j     Other Other Other Other Other Other
- [61] Other Other Other Other Other Other Other Other Other Other Other l     Other Other Other
- [76] Other Other Other Other Other Other Other Other Other Other Other Other Other Other Other
+<div class='output'>  [1] b     Other Other Other Other Other Other Other Other Other Other Other Other Other Other
+ [16] Other Other b     Other Other Other Other h     Other Other Other Other b     Other Other
+ [31] Other Other Other Other Other Other Other Other Other Other Other h     Other Other Other
+ [46] h     Other Other Other Other b     b     Other Other h     h     Other h     h     Other
+ [61] Other Other Other Other b     Other Other b     Other Other Other h     Other b     Other
+ [76] Other Other Other Other Other Other Other Other Other Other Other Other a     b     Other
  [91] Other Other Other Other Other Other Other Other Other Other
-Levels: a j l Other
+Levels: a b h Other
 </div>
 <div class='input'><span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">prop</span> <span class="argument">=</span> <span class="keyword">-</span><span class="number">0.1</span><span class="keyword">)</span></div>
-<div class='output'>  [1] Other Other Other Other Other Other Other Other Other Other b     b     b     Other Other
- [16] Other Other Other Other Other Other a     Other h     b     Other Other Other Other h    
- [31] j     Other Other l     Other Other Other b     Other Other b     Other a     Other Other
- [46] Other h     Other Other Other Other Other Other j     Other Other b     i     i     Other
- [61] Other Other Other Other Other Other Other Other Other Other Other l     Other Other Other
- [76] Other Other i     b     Other i     Other b     h     Other Other Other Other Other Other
- [91] Other Other Other Other Other Other Other Other b     Other
-Levels: a b h i j l Other
+<div class='output'>  [1] b     Other Other Other Other g     Other Other Other Other Other Other Other Other Other
+ [16] Other g     b     Other Other g     Other h     Other Other Other Other b     Other g    
+ [31] Other Other Other Other Other Other Other Other Other Other Other h     Other Other g    
+ [46] h     Other Other Other Other b     b     Other Other h     h     Other h     h     Other
+ [61] Other Other Other Other b     Other Other b     Other Other Other h     Other b     Other
+ [76] Other Other Other Other Other g     Other g     Other Other Other Other a     b     Other
+ [91] Other g     Other Other Other Other Other g     g     Other
+Levels: a b g h Other
 </div>
 <div class='input'>
 <span class="comment"># Use ties.method to control how tied factors are collapsed</span>
 <span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">n</span> <span class="argument">=</span> <span class="number">6</span><span class="keyword">)</span></div>
-<div class='output'>  [1] e     c     g     d     d     c     g     f     f     c     b     b     b     c     d    
- [16] c     d     d     f     e     c     Other f     Other b     g     f     f     c     Other
- [31] Other f     g     Other c     e     g     b     d     d     b     c     Other c     c    
- [46] e     Other f     f     e     e     g     g     Other g     e     b     Other Other e    
- [61] c     e     d     f     e     g     c     e     c     d     d     Other g     c     f    
- [76] g     f     Other b     f     Other e     b     Other e     e     e     g     g     d    
- [91] e     d     d     f     g     f     d     f     b     c    
+<div class='output'>  [1] b     d     e     f     e     g     d     f     e     c     c     c     d     c     f    
+ [16] e     g     b     c     d     g     d     Other e     c     d     c     b     f     g    
+ [31] c     e     f     d     f     f     e     d     d     d     c     Other f     d     g    
+ [46] Other f     f     d     c     b     b     f     c     Other Other e     Other Other c    
+ [61] f     e     f     d     b     e     c     b     f     e     c     Other d     b     f    
+ [76] e     e     f     d     c     g     f     g     d     d     e     c     Other b     d    
+ [91] c     g     e     f     d     f     f     g     g     e    
 Levels: b c d e f g Other
 </div>
 <div class='input'><span class="functioncall"><a href='fct_lump.html'>fct_lump</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">n</span> <span class="argument">=</span> <span class="number">6</span><span class="keyword">,</span> <span class="argument">ties.method</span> <span class="argument">=</span> <span class="string">"max"</span><span class="keyword">)</span></div>
-<div class='output'>  [1] e     c     g     d     d     c     g     f     f     c     b     b     b     c     d    
- [16] c     d     d     f     e     c     Other f     Other b     g     f     f     c     Other
- [31] Other f     g     Other c     e     g     b     d     d     b     c     Other c     c    
- [46] e     Other f     f     e     e     g     g     Other g     e     b     Other Other e    
- [61] c     e     d     f     e     g     c     e     c     d     d     Other g     c     f    
- [76] g     f     Other b     f     Other e     b     Other e     e     e     g     g     d    
- [91] e     d     d     f     g     f     d     f     b     c    
+<div class='output'>  [1] b     d     e     f     e     g     d     f     e     c     c     c     d     c     f    
+ [16] e     g     b     c     d     g     d     Other e     c     d     c     b     f     g    
+ [31] c     e     f     d     f     f     e     d     d     d     c     Other f     d     g    
+ [46] Other f     f     d     c     b     b     f     c     Other Other e     Other Other c    
+ [61] f     e     f     d     b     e     c     b     f     e     c     Other d     b     f    
+ [76] e     e     f     d     c     g     f     g     d     d     e     c     Other b     d    
+ [91] c     g     e     f     d     f     f     g     g     e    
 Levels: b c d e f g Other
 </div>
 <div class='input'></div></pre>

@@ -75,15 +75,15 @@ exist will be silently ignored.</dd>
     <h2 id="examples">Examples</h2>
     <pre class="examples"><div class='input'><span class="symbol">f</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span><span class="keyword">(</span><span class="symbol">letters</span><span class="keyword">[</span><span class="number">1</span><span class="keyword">:</span><span class="number">3</span><span class="keyword">]</span><span class="keyword">,</span> <span class="number">20</span><span class="keyword">,</span> <span class="argument">replace</span> <span class="argument">=</span> <span class="number">TRUE</span><span class="keyword">)</span><span class="keyword">)</span>
 <span class="symbol">f</span></div>
-<div class='output'> [1] a a b a b b b a c a c c a b b b a c a a
+<div class='output'> [1] a a a a a a a b c c b b a b a c a c a b
 Levels: a b c
 </div>
 <div class='input'><span class="functioncall"><a href='fct_expand.html'>fct_expand</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">,</span> <span class="string">"d"</span><span class="keyword">,</span> <span class="string">"e"</span><span class="keyword">,</span> <span class="string">"f"</span><span class="keyword">)</span></div>
-<div class='output'> [1] a a b a b b b a c a c c a b b b a c a a
+<div class='output'> [1] a a a a a a a b c c b b a b a c a c a b
 Levels: a b c d e f
 </div>
 <div class='input'><span class="functioncall"><a href='fct_expand.html'>fct_expand</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">,</span> <span class="symbol">letters</span><span class="keyword">[</span><span class="number">1</span><span class="keyword">:</span><span class="number">6</span><span class="keyword">]</span><span class="keyword">)</span></div>
-<div class='output'> [1] a a b a b b b a c a c c a b b b a c a a
+<div class='output'> [1] a a a a a a a b c c b b a b a c a c a b
 Levels: a b c d e f
 </div></pre>
   </div>

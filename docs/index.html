@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>Index. forcats 0.1.0.9000</title>
+<title>Home. forcats 0.1.0.9000</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -51,73 +51,69 @@
       
       <div class="row">
   <div class="span8">
-    <h2>Function reference</h2>
+    <h1>forcats 🐈🐈🐈🐈</h1>
 
-    <h3></h3>
-    
+<p><a href="https://travis-ci.org/hadley/forcats"><img src="https://travis-ci.org/hadley/forcats.svg?branch=master" alt="Travis-CI Build Status"/></a>
+<a href="https://codecov.io/github/hadley/forcats?branch=master"><img src="https://img.shields.io/codecov/c/github/hadley/forcats/master.svg" alt="Coverage Status"/></a></p>
 
-    <ul class="index">
-        
-      <li>
-        <code><a href="fct_anon.html">fct_anon</a></code><br />Anonymise factor levels</li>
-            
-      <li>
-        <code><a href="fct_c.html">fct_c</a></code><br />Concatenate factors, unioning levels.</li>
-            
-      <li>
-        <code><a href="fct_collapse.html">fct_collapse</a></code><br />Collapse factors into groups.</li>
-            
-      <li>
-        <code><a href="fct_count.html">fct_count</a></code><br />Count entries in a factor</li>
-            
-      <li>
-        <code><a href="fct_drop.html">fct_drop</a></code><br />Drop unnused levels</li>
-            
-      <li>
-        <code><a href="fct_expand.html">fct_expand</a></code><br />Add additional levels to a factor</li>
-            
-      <li>
-        <code><a href="fct_explicit_na.html">fct_explicit_na</a></code><br />Make missing values explicit</li>
-            
-      <li>
-        <code><a href="fct_inorder.html">fct_inorder</a></code>(fct_infreq)<br />Reorders levels in order of first appearance or frequency.</li>
-            
-      <li>
-        <code><a href="fct_lump.html">fct_lump</a></code><br />Lump together least/most common levels into &quot;other&quot;.</li>
-            
-      <li>
-        <code><a href="fct_recode.html">fct_recode</a></code><br />Change the levels of a factor</li>
-            
-      <li>
-        <code><a href="fct_relevel.html">fct_relevel</a></code><br />Change the order of levels in a factor</li>
-            
-      <li>
-        <code><a href="fct_reorder.html">fct_reorder</a></code>(fct_reorder2)<br />Reorder the levels of a function according to another variable</li>
-            
-      <li>
-        <code><a href="fct_rev.html">fct_rev</a></code><br />Reverse the levels of a factor</li>
-            
-      <li>
-        <code><a href="fct_shift.html">fct_shift</a></code><br />Shift the order of levels of a factor</li>
-            
-      <li>
-        <code><a href="fct_shuffle.html">fct_shuffle</a></code><br />Randomly permute the levels of a factor</li>
-            
-      <li>
-        <code><a href="fct_unify.html">fct_unify</a></code><br />Unify the levels in a list of factors</li>
-            
-      <li>
-        <code><a href="fct_unique.html">fct_unique</a></code><br />Unique values of a factor</li>
-            
-      <li>
-        <code><a href="gss_cat.html">gss_cat</a></code><br />A sample of categorical variables from the General Social survey</li>
-            
-      <li>
-        <code><a href="lvls.html">lvls</a></code>(lvls_expand, lvls_reorder, lvls_revalue)<br />Low-level functions for manipulating levels</li>
-            
-      <li>
-        <code><a href="lvls_union.html">lvls_union</a></code><br />Find all levels in a list of factors</li>
-    
+<p>forcats provides tools for <strong>cat</strong>egorical variables (forcats is an anagram of factors).</p>
+
+<h2>Installation</h2>
+
+<p>You can install forcats from github with:</p>
+
+<pre><code class="R"># install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;hadley/forcats&quot;)
+</code></pre>
+
+<h2>Key functions:</h2>
+
+<p>Change order of levels:</p>
+
+<ul>
+<li><code>fct_relevel()</code>: move specified level up front.</li>
+<li><code>fct_inorder()</code>: order by first appearance of each level.</li>
+<li><code>fct_reorder()</code>: order by summary of another value.
+(same as <code>stats::reorder()</code>)</li>
+<li><code>fct_infreq()</code>:  order by frequency.</li>
+<li><code>fct_shuffle()</code>: randomly shuffle order of levels.</li>
+<li><code>fct_rev()</code>:     reverse order of levels.</li>
+<li><code>fct_shift()</code>:   shift levels to the left/right.</li>
+</ul>
+
+<p>Change value of levels:</p>
+
+<ul>
+<li><code>fct_anon()</code>:     anonymise factor levels.</li>
+<li><code>fct_lump()</code>:     lump rarest (or most common) levels into &ldquo;other&rdquo;.</li>
+<li><code>fct_recode()</code>:   manually recode levels.</li>
+</ul>
+
+<p>Add new levels:</p>
+
+<ul>
+<li><code>fct_expand()</code>:      add new levels to a factor.</li>
+<li><code>fct_explicit_na()</code>: turn missing values into an explicit factor.</li>
+</ul>
+
+<p>A few other helpers:</p>
+
+<ul>
+<li><code>fct_c()</code>:      concatenate factors using union of levels.</li>
+<li><code>fct_count()</code>:  count occurences of levels, optionally sorting by frequency.</li>
+<li><code>fct_unify()</code>:  ensure list of factors share the same levels.</li>
+<li><code>fct_unique()</code>: compute from levels of factor.</li>
+<li><code>fct_drop()</code>:   drop levels without data (same as <code>base::droplevels()</code>).</li>
+<li><code>lvls_union()</code>: finds union of levels from list of factors.</li>
+</ul>
+
+  </div>
+
+  <div class="span3 offset1 sidebar">
+        <h2>Authors</h2>
+    <ul>
+      <li><a href='mailto:hadley@rstudio.com'>Hadley Wickham</a> [aut, cre]</li>
+      <li>RStudio [cph]</li>
     </ul>
   </div>
 </div>
