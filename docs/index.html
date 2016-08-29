@@ -53,8 +53,8 @@
   <div class="span8">
     <h1>forcats 🐈🐈🐈🐈</h1>
 
-<p><a href="https://cran.r-project.org/package=forcats"><img src="http://www.r-pkg.org/badges/version/forcats" alt="TravCRAN_Status_Badge"/></a>
-<a href="https://travis-ci.org/hadley/forcats"><img src="https://travis-ci.org/hadley/forcats.svg?branch=master" alt="is-CI Build Status"/></a>
+<p><a href="https://cran.r-project.org/package=forcats"><img src="http://www.r-pkg.org/badges/version/forcats" alt="CRAN_Status_Badge"/></a>
+<a href="https://travis-ci.org/hadley/forcats"><img src="https://travis-ci.org/hadley/forcats.svg?branch=master" alt="Travis-CI Build Status"/></a>
 <a href="https://codecov.io/github/hadley/forcats?branch=master"><img src="https://img.shields.io/codecov/c/github/hadley/forcats/master.svg" alt="Coverage Status"/></a></p>
 
 <p>forcats provides tools for <strong>cat</strong>egorical variables (forcats is an anagram of factors).</p>
@@ -72,40 +72,57 @@ devtools::install_github(&quot;hadley/forcats&quot;)
 <p>Change order of levels:</p>
 
 <ul>
-<li><code>fct_relevel()</code>: move specified level up front.</li>
-<li><code>fct_inorder()</code>: order by first appearance of each level.</li>
-<li><code>fct_reorder()</code>: order by summary of another value.
-(same as <code>stats::reorder()</code>)</li>
-<li><code>fct_infreq()</code>:  order by frequency.</li>
-<li><code>fct_shuffle()</code>: randomly shuffle order of levels.</li>
-<li><code>fct_rev()</code>:     reverse order of levels.</li>
-<li><code>fct_shift()</code>:   shift levels to the left/right.</li>
+<li><p><a href="https://hadley.github.io/forcats/fct_relevel.html"><code>fct_relevel()</code></a>: 
+move specified level up front.</p></li>
+<li><p><a href="https://hadley.github.io/forcats/fct_inorder.html"><code>fct_inorder()</code></a>: 
+order by first appearance of each level.</p></li>
+<li><p><a href="https://hadley.github.io/forcats/fct_reorder.html"><code>fct_reorder()</code></a>: 
+order by summary of another value (same as <code>stats::reorder()</code>).</p></li>
+<li><p><a href="https://hadley.github.io/forcats/fct_infreq.html"><code>fct_infreq()</code></a>:<br/>
+order by frequency.</p></li>
+<li><p><a href="https://hadley.github.io/forcats/fct_shuffle.html"><code>fct_shuffle()</code></a>: 
+randomly shuffle order of levels.</p></li>
+<li><p><a href="https://hadley.github.io/forcats/fct_rev.html"><code>fct_rev()</code></a>:
+reverse order of levels.</p></li>
+<li><p><a href="https://hadley.github.io/forcats/fct_reshift.html"><code>fct_shift()</code></a>:
+shift levels to the left/right.</p></li>
 </ul>
 
 <p>Change value of levels:</p>
 
 <ul>
-<li><code>fct_anon()</code>:     anonymise factor levels.</li>
-<li><code>fct_lump()</code>:     lump rarest (or most common) levels into &ldquo;other&rdquo;.</li>
-<li><code>fct_recode()</code>:   manually recode levels.</li>
+<li><p><a href="https://hadley.github.io/forcats/fct_anon.html"><code>fct_anon()</code></a>:
+anonymise factor levels.</p></li>
+<li><p><a href="https://hadley.github.io/forcats/fct_relump.html"><code>fct_lump()</code></a>: 
+lump rarest (or most common) levels into &ldquo;other&rdquo;.</p></li>
+<li><p><a href="https://hadley.github.io/forcats/fct_recode.html"><code>fct_recode()</code></a>:
+manually recode levels.</p></li>
 </ul>
 
 <p>Add new levels:</p>
 
 <ul>
-<li><code>fct_expand()</code>:      add new levels to a factor.</li>
-<li><code>fct_explicit_na()</code>: turn missing values into an explicit factor.</li>
+<li><p><a href="https://hadley.github.io/forcats/fct_expand.html"><code>fct_expand()</code></a>:
+add new levels to a factor.</p></li>
+<li><p><a href="https://hadley.github.io/forcats/fct_explicit_na.html"><code>fct_explicit_na()</code></a>: 
+turn missing values into an explicit factor.</p></li>
 </ul>
 
 <p>A few other helpers:</p>
 
 <ul>
-<li><code>fct_c()</code>:      concatenate factors using union of levels.</li>
-<li><code>fct_count()</code>:  count occurences of levels, optionally sorting by frequency.</li>
-<li><code>fct_unify()</code>:  ensure list of factors share the same levels.</li>
-<li><code>fct_unique()</code>: compute from levels of factor.</li>
-<li><code>fct_drop()</code>:   drop levels without data (same as <code>base::droplevels()</code>).</li>
-<li><code>lvls_union()</code>: finds union of levels from list of factors.</li>
+<li><p><a href="https://hadley.github.io/forcats/fct_c.html"><code>fct_c()</code></a>:
+concatenate factors using union of levels.</p></li>
+<li><p><a href="https://hadley.github.io/forcats/fct_count.html"><code>fct_count()</code></a>:<br/>
+count occurences of levels, optionally sorting by frequency.</p></li>
+<li><p><a href="https://hadley.github.io/forcats/fct_unify.html"><code>fct_unify()</code></a>:<br/>
+ensure list of factors share the same levels.</p></li>
+<li><p><a href="https://hadley.github.io/forcats/fct_unique.html"><code>fct_unique()</code></a>: 
+compute from levels of factor.</p></li>
+<li><p><a href="https://hadley.github.io/forcats/fct_drop.html"><code>fct_drop()</code></a>:
+drop levels without data (same as <code>base::droplevels()</code>).</p></li>
+<li><p><a href="https://hadley.github.io/forcats/lvls_union.html"><code>lvls_union()</code></a>: 
+finds union of levels from list of factors.</p></li>
 </ul>
 
   </div>
