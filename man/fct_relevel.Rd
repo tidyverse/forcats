@@ -4,23 +4,26 @@
 \alias{fct_relevel}
 \title{Change the order of levels in a factor}
 \usage{
-fct_relevel(f, ...)
+fct_relevel(f, ..., .last = FALSE)
 }
 \arguments{
 \item{f}{A factor.}
 
 \item{...}{Character vector of levels. Any levels not mentioned will be
 left in existing order, after the explicitly mentioned levels.}
+
+\item{.last}{A logical indicating whether the target level(s) should be placed last. Defaults to FALSE.}
 }
 \description{
 This is a generalisaton of \code{\link[stats]{relevel}} that allows you to
-move any number of levels to the front.
+move any number of levels to appear first or last in the levels list.
 }
 \examples{
-f <- factor(c("a", "b", "c"))
+f <- factor(c(letters[1:5]))
 fct_relevel(f)
 fct_relevel(f, "c")
 fct_relevel(f, "b", "a")
+fct_relevel(f, "b", "a", .last = TRUE)
 
 # You'll get a warning if the levels don't exist
 fct_relevel(f, "d")

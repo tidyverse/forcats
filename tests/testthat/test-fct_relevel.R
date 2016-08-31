@@ -13,3 +13,11 @@ test_that("moves supplied levels to front", {
   f2 <- fct_relevel(f1, "c", "b")
   expect_equal(levels(f2), c("c", "b", "a", "d"))
 })
+
+
+test_that("moves supplied levels to the end", {
+  f1 <- factor(c("a", "b", "c", "d"))
+
+  f2 <- fct_relevel(f1, "c", "b", .last = TRUE)
+  expect_equal(levels(f2), c("a", "d", "c", "b"))
+})
