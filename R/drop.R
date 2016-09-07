@@ -1,4 +1,4 @@
-#' Drop unnused levels
+#' Drop unused levels
 #'
 #' Same as \code{\link{droplevels}()}, but with consistent name scheme.
 #'
