@@ -43,7 +43,7 @@ Change order of levels:
 * [`fct_rev()`](https://hadley.github.io/forcats/fct_rev.html):
   reverse order of levels.
 
-* [`fct_shift()`](https://hadley.github.io/forcats/fct_reshift.html):
+* [`fct_shift()`](https://hadley.github.io/forcats/fct_shift.html):
   shift levels to the left/right.
 
 Change value of levels:
