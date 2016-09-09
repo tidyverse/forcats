@@ -8,13 +8,13 @@ forcats provides tools for **cat**egorical variables (forcats is an anagram of f
 
 ## Installation
 
-You can install forcthe released version of forcats from CRAN with:
+You can install the released version of forcats from CRAN with:
 
 ```R
 install.packages("forcats")
 ```
 
-Or the development versionm github with:
+Or the development version from github with:
 
 ```R
 # install.packages("devtools")
