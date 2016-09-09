@@ -48,8 +48,11 @@ test_that("different behaviour when apply tie function", {
 
   expect_equal(levels(fct_lump(f, n = 4, ties.method = "first")),
                c("a", "b", "c", "d", "Other"))
-  expect_equal(levels(fct_lump(f, n = 4, ties.method = "last")),
-               c("a", "b", "f", "g", "Other"))
+
+  if (getRversion() >= "3.3.0") {
+    expect_equal(levels(fct_lump(f, n = 4, ties.method = "last")),
+                 c("a", "b", "f", "g", "Other"))
+  }
 })
 
 # Default -----------------------------------------------------------------
