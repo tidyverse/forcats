@@ -6,5 +6,4 @@
 #' other, anonymising, and manually recoding).
 #'
 #' @name forcats
-#' @docType package
-NULL
+"_PACKAGE"
