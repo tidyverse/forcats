@@ -1,6 +1,6 @@
-# forcats 🐈🐈🐈🐈
+# forcats
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
+[CRAN_Status_Badge](http://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
 [![Travis-CI Build Status](https://travis-ci.org/hadley/forcats.svg?branch=master)](https://travis-ci.org/hadley/forcats)
 [![Coverage Status](https://img.shields.io/codecov/c/github/hadley/forcats/master.svg)](https://codecov.io/github/hadley/forcats?branch=master)
 
@@ -34,7 +34,7 @@ Change order of levels:
 * [`fct_reorder()`](https://hadley.github.io/forcats/fct_reorder.html): 
   order by summary of another value (same as `stats::reorder()`).
 
-* [`fct_infreq()`](https://hadley.github.io/forcats/fct_infreq.html):  
+* [`fct_infreq()`](https://hadley.github.io/forcats/fct_inorder.html):  
   order by frequency.
 
 * [`fct_shuffle()`](https://hadley.github.io/forcats/fct_shuffle.html): 
@@ -43,7 +43,7 @@ Change order of levels:
 * [`fct_rev()`](https://hadley.github.io/forcats/fct_rev.html):
   reverse order of levels.
 
-* [`fct_shift()`](https://hadley.github.io/forcats/fct_reshift.html):
+* [`fct_shift()`](https://hadley.github.io/forcats/fct_shift.html):
   shift levels to the left/right.
 
 Change value of levels:
@@ -51,7 +51,7 @@ Change value of levels:
 * [`fct_anon()`](https://hadley.github.io/forcats/fct_anon.html):
   anonymise factor levels.
 
-* [`fct_lump()`](https://hadley.github.io/forcats/fct_relump.html): 
+* [`fct_lump()`](https://hadley.github.io/forcats/fct_lump.html): 
   lump rarest (or most common) levels into "other".
 
 * [`fct_recode()`](https://hadley.github.io/forcats/fct_recode.html):
