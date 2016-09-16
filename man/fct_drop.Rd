@@ -2,7 +2,7 @@
 % Please edit documentation in R/drop.R
 \name{fct_drop}
 \alias{fct_drop}
-\title{Drop unnused levels}
+\title{Drop unused levels}
 \usage{
 fct_drop(f)
 }
