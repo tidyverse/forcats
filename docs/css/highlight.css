@@ -1,11 +1,9 @@
 /* Syntax highlighting ---------------------------------------------------- */
 
-pre .input {
-  border-left: 3px solid #ccc;
-  padding-left: 0.5em;
-}
-pre .output {
-  background-color: #eee;
+.examples .output {
+  border-left: 4px solid #ccc;
+  margin-left: -10px;
+  padding-left: 6px;
 }
 
 .number {color:rgb(21,20,181);}
@@ -13,7 +11,7 @@ pre .output {
 .string {color:#375D81 ;}
 .keyword {font-weight:bolder ;color:black;}
 .argument {color:#264D66 ;}
-.comment {color: #4C886B;}
+.comment {color: #333;}
 .formalargs {color: #264D66;}
 .eqformalargs {color:#264D66;}
 .slot {font-style:italic;}
@@ -22,7 +20,5 @@ pre .output {
 
 pre img {
   background-color: #fff;
-  border: 1px solid #ccc;
   display: block;
-  margin: 0.5em auto 0.5em auto;
 }

@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset="utf-8">
-<title>Home. forcats</title>
+<title>fct_shuffle. forcats</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
@@ -19,8 +19,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- from staticdocs -->
-<link href="css/highlight.css" rel="stylesheet">
-<link href="css/staticdocs.css" rel="stylesheet">
+<link href="../css/highlight.css" rel="stylesheet">
+<link href="../css/staticdocs.css" rel="stylesheet">
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -49,15 +49,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">forcats</a>
+      <a class="navbar-brand" href="../index.html">forcats</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="../index.html">Home</a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -74,29 +74,36 @@
         
         </header>
 
-        <div class="row">
+        <div class="page-header">
+  <h1>Randomly permute the levels of a factor</h1>
+</div>
+
+<div class="row">
   <div class="col-md-9">
-    <h1>forcats</h1>
+    
+    <p>Randomly permute the levels of a factor</p>
+    
 
-<p><a href="https://cran.r-project.org/package=forcats"><img src="http://www.r-pkg.org/badges/version/forcats" alt="CRAN_Status_Badge"/></a>
-<a href="https://travis-ci.org/hadley/forcats"><img src="https://travis-ci.org/hadley/forcats.svg?branch=master" alt="Travis-CI Build Status"/></a>
-<a href="https://codecov.io/github/hadley/forcats?branch=master"><img src="https://img.shields.io/codecov/c/github/hadley/forcats/master.svg" alt="Coverage Status"/></a></p>
-
-<p>forcats provides tools for <strong>cat</strong>egorical variables (forcats is an anagram of factors).</p>
-
-<h2>Installation</h2>
-
-<p>You can install the released version of forcats from CRAN with:</p>
-
-<pre><code class="R">install.packages(&quot;forcats&quot;)
-</code></pre>
-
-<p>Or the development version from github with:</p>
-
-<pre><code class="R"># install.packages(&quot;devtools&quot;)
-devtools::install_github(&quot;hadley/forcats&quot;)
-</code></pre>
-
+    <pre><span class="functioncall"><a href='fct_shuffle.html'>fct_shuffle</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl class="dl-horizontal">
+      <dt>f</dt>
+      <dd>A factor</dd>
+    </dl>
+        
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="symbol">f</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">"a"</span><span class="keyword">,</span> <span class="string">"b"</span><span class="keyword">,</span> <span class="string">"c"</span><span class="keyword">)</span><span class="keyword">)</span>
+<span class="functioncall"><a href='fct_shuffle.html'>fct_shuffle</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">)</span></div>
+<div class='output'>[1] a b c
+Levels: b c a
+</div>
+<div class='input'><span class="functioncall"><a href='fct_shuffle.html'>fct_shuffle</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">)</span></div>
+<div class='output'>[1] a b c
+Levels: a b c
+</div></pre>
+  </div>
+  <div class="col-md-3">
   </div>
 </div>
 

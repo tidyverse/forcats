@@ -1,0 +1,45 @@
+bootswatch: cerulean
+
+reference:
+  - title: Change order of levels
+    desc: >
+      Keep the values of the levels the same, but change their order.
+      These are particularly useful for models, tables, and visualisations.
+    contents:
+    - fct_relevel
+    - fct_inorder
+    - fct_reorder
+    - fct_infreq
+    - fct_shuffle
+    - fct_rev
+    - fct_shift
+
+  - title: Change value of levels
+    desc: >
+      Change factor levels, while preserving order (as much as possible)
+    contents:
+    - fct_anon
+    - fct_collapse
+    - fct_lump
+    - fct_recode
+
+  - title: Add new levels
+    desc: >
+      Leave existing data as is, but add more levels.
+    contents:
+    - fct_expand
+    - fct_explicit_na
+
+  - title: Data
+    contents:
+    - gss_cat
+
+  - title: Other helpers
+    contents:
+    - fct_c
+    - fct_count
+    - fct_unify
+    - fct_unique
+    - fct_drop
+    - lvls
+    - lvls_union
