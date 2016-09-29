@@ -3,33 +3,24 @@
   <head>
   <meta charset="utf-8">
 <title>Home. forcats</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 
-<!-- Latest compiled and minified CSS -->
+<!-- Bootstrap -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- staticdocs -->
+<link href="staticdocs.css" rel="stylesheet">
 
-<!-- from staticdocs -->
-<link href="css/highlight.css" rel="stylesheet">
-<link href="css/staticdocs.css" rel="stylesheet">
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
+<!-- mathjax -->
 <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
@@ -59,6 +50,9 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="news/index.html">News</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -76,27 +70,15 @@
 
         <div class="row">
   <div class="col-md-9">
-    <h1>forcats</h1>
-
-<p><a href="https://cran.r-project.org/package=forcats"><img src="http://www.r-pkg.org/badges/version/forcats" alt="CRAN_Status_Badge"/></a>
-<a href="https://travis-ci.org/hadley/forcats"><img src="https://travis-ci.org/hadley/forcats.svg?branch=master" alt="Travis-CI Build Status"/></a>
-<a href="https://codecov.io/github/hadley/forcats?branch=master"><img src="https://img.shields.io/codecov/c/github/hadley/forcats/master.svg" alt="Coverage Status"/></a></p>
-
+    <h1 id="forcats">forcats</h1>
+<p><a href="https://cran.r-project.org/package=forcats"><img src="http://www.r-pkg.org/badges/version/forcats" alt="CRAN_Status_Badge" /></a> <a href="https://travis-ci.org/hadley/forcats"><img src="https://travis-ci.org/hadley/forcats.svg?branch=master" alt="Travis-CI Build Status" /></a> <a href="https://codecov.io/github/hadley/forcats?branch=master"><img src="https://img.shields.io/codecov/c/github/hadley/forcats/master.svg" alt="Coverage Status" /></a></p>
 <p>forcats provides tools for <strong>cat</strong>egorical variables (forcats is an anagram of factors).</p>
-
-<h2>Installation</h2>
-
+<h2 id="installation">Installation</h2>
 <p>You can install the released version of forcats from CRAN with:</p>
-
-<pre><code class="R">install.packages(&quot;forcats&quot;)
-</code></pre>
-
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;forcats&quot;</span>)</code></pre></div>
 <p>Or the development version from github with:</p>
-
-<pre><code class="R"># install.packages(&quot;devtools&quot;)
-devtools::install_github(&quot;hadley/forcats&quot;)
-</code></pre>
-
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages(&quot;devtools&quot;)</span>
+devtools::<span class="kw">install_github</span>(<span class="st">&quot;hadley/forcats&quot;</span>)</code></pre></div>
   </div>
 </div>
 
