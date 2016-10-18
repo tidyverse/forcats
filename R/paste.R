@@ -20,6 +20,5 @@ fct_paste <- function(..., sep=" ") {
 
   new_factor_lvls <- do.call( my_paste , do.call( expand.grid, fcts ) )
 
-  print(new_factor_lvls)
   factor(do.call(my_paste, input_fct), levels=new_factor_lvls)
 }
