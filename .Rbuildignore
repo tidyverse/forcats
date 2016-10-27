@@ -5,3 +5,5 @@
 ^data-raw$
 ^cran-comments\.md$
 ^docs$
+^README\.Rmd$
+^README-.*\.png$

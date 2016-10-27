@@ -3,7 +3,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body>
-    <div class="container template-home">
+    <div class="container template-vignette">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -37,18 +37,23 @@
 
       
       </header><div class="row">
-  <div class="contents col-md-9">
-    <div id="forcats" class="section level1">
+  <div class="col-md-9">
+    
+
+    
+    
+<div class="contents">
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+<div id="forcats" class="section level1">
+
 
 <div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"> </a>Overview</h2>
-
-<p>forcats provides tools for <strong>cat</strong>egorical variables (forcats is an anagram of factors).</p>
+<h2 class="hasAnchor"><a href="#overview" class="anchor"> </a>Overview</h2>
+<p>R uses <strong>factors</strong> to handle categorical variables, variables that have a fixed and known set of possible values. Historically, factors were much easier to work with than character vectors, so many base R functions automatically convert character vectors to factors. (For more historical context, I recommend <a href="http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/"><em>stringsAsFactors: An unauthorized biography</em></a> by Roger Peng, and <a href="http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh"><em>stringsAsFactors = &lt;sigh&gt;</em></a> by Thomas Lumley.) These days, making factors automatically is longer so helpful, so packages in the <a href="http://tidyverse.org">tidyverse</a> never create them automatically.</p>
+<p>However, factors are still useful when you have true categorical data, and when you want to override the ordering of character vectors to improve display. The goal of the <strong>forcats</strong> package is to provide a suite of useful tools that solve common problems with factors. If you&rsquo;re not familiar with strings, the best place to start is the <a href="http://r4ds.had.co.nz/factors.html">chapter on factors</a> in R for Data Science.</p>
 </div>
 <div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"> </a>Installation</h2>
+<h2 class="hasAnchor"><a href="#installation" class="anchor"> </a>Installation</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The easiest way to get forcats is to install the whole tidyverse:</span>
 <span class="kw">install.packages</span>(<span class="st">"tidyverse"</span>)
 
@@ -59,10 +64,50 @@
 <span class="co"># install.packages("devtools")</span>
 devtools::<span class="kw">install_github</span>(<span class="st">"tidyverse/forcats"</span>)</code></pre></div>
 </div>
+<div id="usage" class="section level2">
+<h2 class="hasAnchor"><a href="#usage" class="anchor"> </a>Usage</h2>
+<p>forcats is not part of the core tidyverse, so you need to load it explicitly:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(forcats)</code></pre></div>
+<p>Factors are used to describe categorical variables with a fixed and known set of <strong>levels</strong>. You can create factors with the base <code>factor()</code> or <code>readr::parse_factor()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"Dec"</span>, <span class="st">"Apr"</span>, <span class="st">"Jan"</span>, <span class="st">"Mar"</span>)
+month_levels &lt;-<span class="st"> </span><span class="kw">c</span>(
+  <span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span>, 
+  <span class="st">"Jul"</span>, <span class="st">"Aug"</span>, <span class="st">"Sep"</span>, <span class="st">"Oct"</span>, <span class="st">"Nov"</span>, <span class="st">"Dec"</span>
+)
+
+<span class="kw">factor</span>(x1, month_levels)
+<span class="co">#&gt; [1] Dec Apr Jan Mar</span>
+<span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span>
+
+<span class="kw">parse_factor</span>(x1, month_levels)
+<span class="co">#&gt; [1] Dec Apr Jan Mar</span>
+<span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></code></pre></div>
+<p>The advantage of <code>parse_factor()</code> is that it will generate a warning if values of <code>x</code> are not valid levels:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"Dec"</span>, <span class="st">"Apr"</span>, <span class="st">"Jam"</span>, <span class="st">"Mar"</span>)
+
+<span class="kw">factor</span>(x2, month_levels)
+<span class="co">#&gt; [1] Dec  Apr  &lt;NA&gt; Mar </span>
+<span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span>
+
+<span class="kw">parse_factor</span>(x2, month_levels)
+<span class="co">#&gt; Warning: 1 parsing failure.</span>
+<span class="co">#&gt; row col           expected actual</span>
+<span class="co">#&gt;   3  -- value in level set    Jam</span>
+<span class="co">#&gt; [1] Dec  Apr  &lt;NA&gt; Mar </span>
+<span class="co">#&gt; attr(,"problems")</span>
+<span class="co">#&gt; # A tibble: 1 &times; 4</span>
+<span class="co">#&gt;     row   col           expected actual</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;int&gt;              &lt;chr&gt;  &lt;chr&gt;</span>
+<span class="co">#&gt; 1     3    NA value in level set    Jam</span>
+<span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></code></pre></div>
+<p>Once you have the factor, forcats provides helpers for solving common problems.</p>
+</div>
+</div>
 </div>
   </div>
 
-  <div class="col-md-3" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Links</h2><ul class="list-unstyled"><li>Download from CRAN at <a href="https://cran.r-project.org/package=forcats">https://cran.r-project.org/package=forcats</a></li>
 <li>Browse source code at <a href="https://github.com/tidyverse/forcats">https://github.com/tidyverse/forcats</a></li>
 <li>Report a bug at <a href="https://github.com/tidyverse/forcats/issues">https://github.com/tidyverse/forcats/issues</a></li>
@@ -71,13 +116,14 @@ devtools::<span class="kw">install_github</span>(<span class="st">"tidyverse/for
 </ul><h2>License</h2>
 <p><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></p>
 
-  <html><body><h2>Dev status</h2><ul class="list-unstyled"><li><a href="https://cran.r-project.org/package=forcats">
+      <html><body><h2>Dev status</h2><ul class="list-unstyled"><li><a href="https://cran.r-project.org/package=forcats">
   <img src="http://www.r-pkg.org/badges/version/forcats" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://travis-ci.org/tidyverse/forcats">
   <img src="https://travis-ci.org/tidyverse/forcats.svg?branch=master" alt="Travis-CI Build Status"></a></li>
 <li><a href="https://codecov.io/github/tidyverse/forcats?branch=master">
   <img src="https://img.shields.io/codecov/c/github/tidyverse/forcats/master.svg" alt="Coverage Status"></a></li>
 </ul></body></html></div>
+
 </div>
 
 
