@@ -12,13 +12,13 @@ Description: Helpers for reordering factor levels (including moving
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-URL: https://hadley.github.io/forcats/, https://github.com/hadley/forcats
-BugReports: https://github.com/hadley/forcats/issues
+URL: https://forcats.tidyverse.org, https://github.com/tidyverse/forcats
+BugReports: https://github.com/tidyverse/forcats/issues
 Depends: R (>= 2.10)
 Imports:
     tibble,
     magrittr
-RoxygenNote: 5.0.1
+RoxygenNote: 5.0.1.9000
 Suggests:
     ggplot2,
     testthat,

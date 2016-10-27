@@ -1,4 +1,8 @@
-bootswatch: cerulean
+template:
+  package: tidytemplate
+  default_assets: false
+home:
+  strip_header: true
 
 reference:
   - title: Change order of levels

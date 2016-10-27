@@ -4,11 +4,30 @@
 \name{forcats}
 \alias{forcats}
 \alias{forcats-package}
+\alias{forcats-package}
 \title{forcats.}
 \description{
 Helpers for reordering factor levels (including moving specified levels to
 front, ordering by first appearance, reversing, and randomly shuffling), and
 tools for modifying factor levels (including collapsing rare levels into
 other, anonymising, and manually recoding).
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://hadley.github.io/forcats/}
+  \item \url{https://github.com/hadley/forcats}
+  \item Report bugs at \url{https://github.com/hadley/forcats/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Hadley Wickham \email{hadley@rstudio.com}
+
+Other contributors:
+\itemize{
+  \item RStudio [copyright holder]
+}
+
 }
 

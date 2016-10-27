@@ -2,9 +2,9 @@
 % Please edit documentation in R/lvls.R
 \name{lvls}
 \alias{lvls}
-\alias{lvls_expand}
 \alias{lvls_reorder}
 \alias{lvls_revalue}
+\alias{lvls_expand}
 \title{Low-level functions for manipulating levels}
 \usage{
 lvls_reorder(f, idx)
