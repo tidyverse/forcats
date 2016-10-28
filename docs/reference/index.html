@@ -54,11 +54,25 @@
         <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../news/index.html">News</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    News
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Release notes</li>
+    <li>
+      <a href="../articles/releases/forcats-0.1.0.html">Version 0.1.0</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="../news/index.html">Change log</a>
+    </li>
+  </ul>
 </li>
         <li>
-  <a href="https://github.com/hadley/forcats">
+  <a href="https://github.com/tidyverse/forcats">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -82,46 +96,46 @@
       <h2 id="section-change-order-of-levels" class="hasAnchor"><a href="#section-change-order-of-levels" class="anchor"></a>Change order of levels</h2>
       <p class="section-desc"><p>Keep the values of the levels the same, but change their order. These are particularly useful for models, tables, and visualisations.</p></p>
 
-      <p><a href="fct_inorder.html">Reorders levels in order of first appearance or frequency.</a></p>
+      <p><a href="fct_inorder.html">Reorder factors levels by first appearance or frequency</a></p>
       <ul>
         <li><code><a href="fct_inorder.html">fct_inorder</a></code></li><li><code><a href="fct_inorder.html">fct_infreq</a></code></li>
       </ul>
-      <p><a href="fct_relevel.html">Change the order of levels in a factor</a></p>
+      <p><a href="fct_relevel.html">Reorder factor levels by hand</a></p>
       <ul>
         <li><code><a href="fct_relevel.html">fct_relevel</a></code></li>
       </ul>
-      <p><a href="fct_reorder.html">Reorder the levels of a function according to another variable</a></p>
+      <p><a href="fct_reorder.html">Reorder factor levels by sorting along another variable</a></p>
       <ul>
         <li><code><a href="fct_reorder.html">fct_reorder</a></code></li><li><code><a href="fct_reorder.html">fct_reorder2</a></code></li>
       </ul>
-      <p><a href="fct_rev.html">Reverse the levels of a factor</a></p>
+      <p><a href="fct_rev.html">Reverse order of factor levels</a></p>
       <ul>
         <li><code><a href="fct_rev.html">fct_rev</a></code></li>
       </ul>
-      <p><a href="fct_shift.html">Shift the order of levels of a factor</a></p>
+      <p><a href="fct_shift.html">Shift factor levels to left or right, wrapping around at end</a></p>
       <ul>
         <li><code><a href="fct_shift.html">fct_shift</a></code></li>
       </ul>
-      <p><a href="fct_shuffle.html">Randomly permute the levels of a factor</a></p>
+      <p><a href="fct_shuffle.html">Randomly permute factor levels</a></p>
       <ul>
         <li><code><a href="fct_shuffle.html">fct_shuffle</a></code></li>
       </ul>
           <h2 id="section-change-value-of-levels" class="hasAnchor"><a href="#section-change-value-of-levels" class="anchor"></a>Change value of levels</h2>
-      <p class="section-desc"><p>Change factor levels, while preserving order (as much as possible)</p></p>
+      <p class="section-desc"><p>Change factor levels, while preserving order (as much as possible).</p></p>
 
       <p><a href="fct_anon.html">Anonymise factor levels</a></p>
       <ul>
         <li><code><a href="fct_anon.html">fct_anon</a></code></li>
       </ul>
-      <p><a href="fct_collapse.html">Collapse factors into groups.</a></p>
+      <p><a href="fct_collapse.html">Collapse factor levels into manually defined groups</a></p>
       <ul>
         <li><code><a href="fct_collapse.html">fct_collapse</a></code></li>
       </ul>
-      <p><a href="fct_lump.html">Lump together least/most common levels into &quot;other&quot;.</a></p>
+      <p><a href="fct_lump.html">Lump together least/most common factor levels into &quot;other&quot;</a></p>
       <ul>
         <li><code><a href="fct_lump.html">fct_lump</a></code></li>
       </ul>
-      <p><a href="fct_recode.html">Change the levels of a factor</a></p>
+      <p><a href="fct_recode.html">Change factor levels by hand</a></p>
       <ul>
         <li><code><a href="fct_recode.html">fct_recode</a></code></li>
       </ul>
@@ -136,17 +150,10 @@
       <ul>
         <li><code><a href="fct_explicit_na.html">fct_explicit_na</a></code></li>
       </ul>
-          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
-      <p class="section-desc"></p>
-
-      <p><a href="gss_cat.html">A sample of categorical variables from the General Social survey</a></p>
-      <ul>
-        <li><code><a href="gss_cat.html">gss_cat</a></code></li>
-      </ul>
           <h2 id="section-other-helpers" class="hasAnchor"><a href="#section-other-helpers" class="anchor"></a>Other helpers</h2>
       <p class="section-desc"></p>
 
-      <p><a href="fct_c.html">Concatenate factors, unioning levels.</a></p>
+      <p><a href="fct_c.html">Concatenate factors, combining levels</a></p>
       <ul>
         <li><code><a href="fct_c.html">fct_c</a></code></li>
       </ul>
@@ -174,6 +181,13 @@
       <ul>
         <li><code><a href="lvls.html">lvls</a></code></li><li><code><a href="lvls.html">lvls_reorder</a></code></li><li><code><a href="lvls.html">lvls_revalue</a></code></li><li><code><a href="lvls.html">lvls_expand</a></code></li>
       </ul>
+          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+      <p class="section-desc"></p>
+
+      <p><a href="gss_cat.html">A sample of categorical variables from the General Social survey</a></p>
+      <ul>
+        <li><code><a href="gss_cat.html">gss_cat</a></code></li>
+      </ul>
     
     </div>
   </div>
@@ -184,8 +198,8 @@
       <li><a href="#section-change-order-of-levels">Change order of levels</a></li>
       <li><a href="#section-change-value-of-levels">Change value of levels</a></li>
       <li><a href="#section-add-new-levels">Add new levels</a></li>
-      <li><a href="#section-data">Data</a></li>
       <li><a href="#section-other-helpers">Other helpers</a></li>
+      <li><a href="#section-data">Data</a></li>
     </ul>
   </div>
 </div>

@@ -22,9 +22,21 @@
       <ul class="nav navbar-nav navbar-right"><li>
   <a href="reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="news/index.html">News</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    News
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li class="dropdown-header">Release notes</li>
+    <li>
+      <a href="articles/releases/forcats-0.1.0.html">Version 0.1.0</a>
+    </li>
+    <li class="divider">
+    </li><li>
+      <a href="news/index.html">Change log</a>
+    </li>
+  </ul></li>
         <li>
   <a href="https://github.com/tidyverse/forcats">
     <span class="fa fa-github fa-lg"></span>
@@ -64,12 +76,12 @@
 <span class="co"># install.packages("devtools")</span>
 devtools::<span class="kw">install_github</span>(<span class="st">"tidyverse/forcats"</span>)</code></pre></div>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor"><a href="#usage" class="anchor"> </a>Usage</h2>
+<div id="getting-started" class="section level2">
+<h2 class="hasAnchor"><a href="#getting-started" class="anchor"> </a>Getting started</h2>
 <p>forcats is not part of the core tidyverse, so you need to load it explicitly:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 <span class="kw">library</span>(forcats)</code></pre></div>
-<p>Factors are used to describe categorical variables with a fixed and known set of <strong>levels</strong>. You can create factors with the base <code>factor()</code> or <code>readr::parse_factor()</code>:</p>
+<p>Factors are used to describe categorical variables with a fixed and known set of <strong>levels</strong>. You can create factors with the base <code>factor()</code> or <a href="http://readr.tidyverse.org/reference/parse_factor.html"><code>readr::parse_factor()</code></a>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"Dec"</span>, <span class="st">"Apr"</span>, <span class="st">"Jan"</span>, <span class="st">"Mar"</span>)
 month_levels &lt;-<span class="st"> </span><span class="kw">c</span>(
   <span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span>, 
@@ -111,6 +123,7 @@ month_levels &lt;-<span class="st"> </span><span class="kw">c</span>(
     <h2>Links</h2><ul class="list-unstyled"><li>Download from CRAN at <a href="https://cran.r-project.org/package=forcats">https://cran.r-project.org/package=forcats</a></li>
 <li>Browse source code at <a href="https://github.com/tidyverse/forcats">https://github.com/tidyverse/forcats</a></li>
 <li>Report a bug at <a href="https://github.com/tidyverse/forcats/issues">https://github.com/tidyverse/forcats/issues</a></li>
+<li>Learn more at <a href="http://r4ds.had.co.nz/factors.html">http://r4ds.had.co.nz/factors.html</a></li>
 </ul><h2>Authors</h2><ul class="list-unstyled"><li><a href="http://hadley.nz">Hadley Wickham</a><br><small class="roles">Author, maintainer</small></li>
 <li><a href="https://www.rstudio.com"><img src="http://tidyverse.org/rstudio-logo.svg" height="24"></a><br><small class="roles">Copyright&nbsp;holder</small></li>
 </ul><h2>License</h2>
