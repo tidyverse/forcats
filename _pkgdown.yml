@@ -1,8 +1,12 @@
 template:
   package: tidytemplate
   default_assets: false
+
 home:
   strip_header: true
+  links:
+  - text: Learn more at R4DS
+    href: http://r4ds.had.co.nz/factors.html
 
 reference:
   - title: Change order of levels
