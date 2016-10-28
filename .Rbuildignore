@@ -9,3 +9,4 @@
 ^README-.*\.png$
 ^logo\.png$
 ^_pkgdown\.yml$
+^vignettes$
