@@ -111,126 +111,35 @@ each vector will be replaced with the name.</dd>
       <a class="anchor" href="#examples"></a>
       Examples
     </h2>
-    <pre class="examples"><div class='input'><span class='fu'>fct_collapse</span>(<span class='no'>gss_cat</span>$<span class='no'>partyid</span>,
+    <pre class="examples"><div class='input'><span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>gss_cat</span>$<span class='no'>partyid</span>)</div><div class='output co'>#&gt; # A tibble: 10 × 2
+#&gt;                     f     n
+#&gt;                &lt;fctr&gt; &lt;int&gt;
+#&gt; 1           No answer   154
+#&gt; 2          Don&#39;t know     1
+#&gt; 3         Other party   393
+#&gt; 4   Strong republican  2314
+#&gt; 5  Not str republican  3032
+#&gt; 6        Ind,near rep  1791
+#&gt; 7         Independent  4119
+#&gt; 8        Ind,near dem  2499
+#&gt; 9    Not str democrat  3690
+#&gt; 10    Strong democrat  3490
+#&gt; </div><div class='input'>
+<span class='no'>partyid2</span> <span class='kw'>&lt;-</span> <span class='fu'>fct_collapse</span>(<span class='no'>gss_cat</span>$<span class='no'>partyid</span>,
   <span class='kw'>missing</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"No answer"</span>, <span class='st'>"Don't know"</span>),
   <span class='kw'>other</span> <span class='kw'>=</span> <span class='st'>"Other party"</span>,
   <span class='kw'>rep</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Strong republican"</span>, <span class='st'>"Not str republican"</span>),
   <span class='kw'>ind</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Ind,near rep"</span>, <span class='st'>"Independent"</span>, <span class='st'>"Ind,near dem"</span>),
   <span class='kw'>dem</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Not str democrat"</span>, <span class='st'>"Strong democrat"</span>)
-)</div><div class='output co'>#&gt;    [1] ind     rep     ind     ind     dem     dem     rep     ind     dem    
-#&gt;   [10] rep     dem     ind     dem     rep     ind     dem     rep     ind    
-#&gt;   [19] dem     ind     ind     rep     ind     ind     dem     dem     dem    
-#&gt;   [28] rep     dem     ind     ind     dem     dem     ind     ind     dem    
-#&gt;   [37] ind     ind     ind     rep     ind     ind     dem     ind     ind    
-#&gt;   [46] dem     rep     ind     rep     rep     rep     rep     dem     rep    
-#&gt;   [55] dem     ind     ind     ind     dem     rep     rep     rep     dem    
-#&gt;   [64] ind     ind     ind     rep     dem     dem     ind     dem     dem    
-#&gt;   [73] ind     dem     dem     ind     dem     dem     dem     rep     dem    
-#&gt;   [82] rep     dem     ind     dem     dem     ind     dem     ind     dem    
-#&gt;   [91] rep     ind     dem     ind     rep     rep     ind     ind     rep    
-#&gt;  [100] ind     dem     rep     ind     dem     dem     rep     dem     dem    
-#&gt;  [109] dem     ind     ind     dem     dem     dem     ind     dem     ind    
-#&gt;  [118] ind     ind     rep     dem     dem     dem     ind     ind     ind    
-#&gt;  [127] ind     ind     dem     dem     ind     ind     ind     ind     ind    
-#&gt;  [136] ind     dem     dem     ind     dem     rep     dem     dem     dem    
-#&gt;  [145] rep     dem     dem     ind     dem     dem     ind     dem     rep    
-#&gt;  [154] rep     dem     ind     dem     ind     rep     ind     dem     ind    
-#&gt;  [163] ind     ind     ind     ind     rep     dem     rep     dem     ind    
-#&gt;  [172] rep     rep     rep     ind     other   dem     rep     rep     rep    
-#&gt;  [181] ind     ind     rep     missing dem     dem     dem     dem     dem    
-#&gt;  [190] dem     dem     dem     dem     dem     dem     dem     dem     rep    
-#&gt;  [199] ind     rep     dem     dem     ind     rep     ind     dem     ind    
-#&gt;  [208] ind     dem     rep     dem     rep     dem     rep     ind     ind    
-#&gt;  [217] ind     dem     rep     dem     dem     dem     ind     other   ind    
-#&gt;  [226] dem     other   ind     rep     dem     ind     dem     dem     ind    
-#&gt;  [235] ind     ind     rep     dem     dem     ind     rep     rep     rep    
-#&gt;  [244] dem     rep     dem     ind     dem     dem     dem     ind     dem    
-#&gt;  [253] rep     dem     ind     rep     rep     rep     rep     ind     ind    
-#&gt;  [262] ind     dem     rep     dem     ind     ind     ind     dem     other  
-#&gt;  [271] other   ind     dem     ind     ind     dem     dem     dem     dem    
-#&gt;  [280] dem     rep     ind     ind     ind     ind     dem     ind     ind    
-#&gt;  [289] dem     dem     dem     dem     ind     dem     rep     rep     dem    
-#&gt;  [298] dem     dem     dem     dem     ind     ind     dem     rep     ind    
-#&gt;  [307] dem     other   rep     ind     rep     ind     ind     ind     dem    
-#&gt;  [316] ind     ind     dem     ind     ind     dem     dem     ind     rep    
-#&gt;  [325] rep     ind     ind     rep     dem     rep     ind     ind     dem    
-#&gt;  [334] dem     rep     ind     ind     dem     ind     other   ind     ind    
-#&gt;  [343] ind     ind     ind     rep     ind     ind     dem     rep     ind    
-#&gt;  [352] ind     ind     ind     dem     rep     ind     rep     ind     ind    
-#&gt;  [361] ind     dem     dem     ind     dem     ind     dem     dem     rep    
-#&gt;  [370] ind     dem     ind     ind     other   dem     ind     other   dem    
-#&gt;  [379] dem     ind     ind     rep     rep     dem     rep     rep     dem    
-#&gt;  [388] dem     ind     rep     dem     ind     ind     ind     dem     rep    
-#&gt;  [397] rep     dem     ind     dem     ind     ind     dem     ind     dem    
-#&gt;  [406] ind     ind     rep     dem     rep     rep     dem     rep     dem    
-#&gt;  [415] ind     dem     rep     ind     rep     dem     ind     rep     dem    
-#&gt;  [424] ind     dem     dem     rep     ind     dem     dem     dem     ind    
-#&gt;  [433] dem     rep     ind     ind     ind     rep     dem     dem     dem    
-#&gt;  [442] rep     ind     ind     dem     dem     rep     rep     dem     ind    
-#&gt;  [451] dem     dem     rep     rep     ind     rep     ind     ind     ind    
-#&gt;  [460] rep     ind     rep     dem     dem     rep     ind     ind     dem    
-#&gt;  [469] ind     dem     dem     dem     ind     other   dem     dem     rep    
-#&gt;  [478] rep     rep     rep     rep     rep     dem     dem     dem     dem    
-#&gt;  [487] dem     dem     ind     dem     dem     dem     ind     rep     dem    
-#&gt;  [496] dem     dem     ind     ind     ind     other   ind     dem     dem    
-#&gt;  [505] ind     ind     ind     rep     dem     dem     dem     dem     ind    
-#&gt;  [514] ind     dem     dem     dem     dem     dem     dem     dem     ind    
-#&gt;  [523] dem     ind     ind     ind     dem     dem     dem     dem     dem    
-#&gt;  [532] dem     ind     ind     ind     ind     ind     rep     dem     ind    
-#&gt;  [541] dem     dem     ind     rep     dem     dem     rep     dem     ind    
-#&gt;  [550] dem     dem     dem     dem     dem     dem     ind     dem     ind    
-#&gt;  [559] ind     ind     ind     rep     ind     ind     rep     rep     ind    
-#&gt;  [568] other   dem     dem     dem     ind     dem     dem     rep     dem    
-#&gt;  [577] dem     dem     ind     ind     ind     dem     dem     ind     dem    
-#&gt;  [586] ind     ind     ind     rep     ind     dem     other   dem     ind    
-#&gt;  [595] rep     ind     ind     ind     ind     ind     ind     other   dem    
-#&gt;  [604] dem     dem     dem     ind     ind     ind     rep     rep     rep    
-#&gt;  [613] rep     rep     rep     dem     dem     ind     ind     rep     dem    
-#&gt;  [622] rep     ind     ind     dem     dem     rep     ind     ind     dem    
-#&gt;  [631] ind     dem     ind     ind     other   dem     ind     ind     dem    
-#&gt;  [640] other   dem     ind     ind     ind     ind     ind     dem     ind    
-#&gt;  [649] ind     ind     ind     ind     dem     dem     dem     ind     ind    
-#&gt;  [658] ind     ind     dem     ind     rep     dem     rep     rep     rep    
-#&gt;  [667] ind     rep     ind     dem     rep     ind     ind     ind     dem    
-#&gt;  [676] dem     ind     other   dem     rep     ind     ind     rep     rep    
-#&gt;  [685] dem     rep     rep     ind     ind     ind     dem     dem     rep    
-#&gt;  [694] rep     rep     dem     ind     dem     ind     ind     dem     ind    
-#&gt;  [703] dem     dem     ind     ind     ind     rep     other   dem     ind    
-#&gt;  [712] dem     dem     rep     ind     rep     ind     dem     ind     ind    
-#&gt;  [721] dem     rep     rep     dem     ind     ind     rep     dem     ind    
-#&gt;  [730] dem     ind     rep     dem     ind     rep     dem     dem     ind    
-#&gt;  [739] rep     rep     rep     rep     ind     dem     rep     ind     ind    
-#&gt;  [748] ind     rep     dem     dem     other   ind     ind     dem     rep    
-#&gt;  [757] ind     ind     dem     ind     other   ind     rep     dem     rep    
-#&gt;  [766] rep     dem     dem     dem     ind     rep     ind     rep     ind    
-#&gt;  [775] ind     dem     rep     ind     rep     ind     ind     dem     dem    
-#&gt;  [784] rep     rep     ind     rep     rep     ind     rep     ind     ind    
-#&gt;  [793] missing ind     dem     ind     ind     dem     ind     rep     dem    
-#&gt;  [802] ind     ind     rep     dem     ind     ind     dem     dem     dem    
-#&gt;  [811] ind     rep     ind     ind     ind     ind     ind     dem     dem    
-#&gt;  [820] rep     ind     ind     ind     ind     ind     ind     ind     ind    
-#&gt;  [829] ind     ind     ind     rep     ind     rep     ind     rep     rep    
-#&gt;  [838] ind     rep     rep     ind     rep     rep     rep     rep     dem    
-#&gt;  [847] ind     ind     ind     rep     dem     rep     dem     rep     rep    
-#&gt;  [856] ind     rep     rep     ind     dem     dem     ind     rep     ind    
-#&gt;  [865] ind     ind     dem     ind     ind     ind     rep     ind     ind    
-#&gt;  [874] ind     ind     ind     ind     ind     dem     ind     rep     dem    
-#&gt;  [883] ind     dem     dem     ind     ind     ind     rep     dem     dem    
-#&gt;  [892] rep     dem     rep     rep     rep     dem     rep     dem     ind    
-#&gt;  [901] ind     rep     rep     ind     ind     rep     dem     ind     dem    
-#&gt;  [910] rep     dem     rep     ind     ind     dem     ind     ind     ind    
-#&gt;  [919] ind     rep     dem     ind     ind     rep     ind     ind     ind    
-#&gt;  [928] ind     ind     ind     ind     ind     ind     rep     ind     rep    
-#&gt;  [937] dem     ind     ind     dem     dem     dem     dem     ind     ind    
-#&gt;  [946] rep     rep     ind     rep     ind     ind     ind     ind     dem    
-#&gt;  [955] dem     dem     dem     dem     ind     dem     ind     dem     dem    
-#&gt;  [964] dem     rep     ind     rep     dem     ind     dem     ind     rep    
-#&gt;  [973] rep     dem     dem     rep     rep     ind     rep     ind     ind    
-#&gt;  [982] dem     ind     rep     ind     rep     rep     missing rep     dem    
-#&gt;  [991] ind     dem     rep     rep     dem     ind     dem     ind     dem    
-#&gt; [1000] dem    
-#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 20483 entries ]
-#&gt; Levels: missing other rep ind dem
+)
+<span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>partyid2</span>)</div><div class='output co'>#&gt; # A tibble: 5 × 2
+#&gt;         f     n
+#&gt;    &lt;fctr&gt; &lt;int&gt;
+#&gt; 1 missing   155
+#&gt; 2   other   393
+#&gt; 3     rep  5346
+#&gt; 4     ind  8409
+#&gt; 5     dem  7180
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
