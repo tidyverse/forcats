@@ -52,3 +52,20 @@ reference:
     contents:
     - gss_cat
 
+
+navbar:
+  left:
+  - text: Reference
+    href: reference/index.html
+  - text: News
+    menu:
+      - text: "Release notes"
+      - text: "Version 0.1.0"
+        href: articles/releases/forcats-0.1.0.html
+      - text: "------------------"
+      - text: "Change log"
+        href: news/index.html
+  right:
+  - icon: fa-github fa-lg
+    href: https://github.com/tidyverse/forcats
+
