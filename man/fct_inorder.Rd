@@ -3,7 +3,7 @@
 \name{fct_inorder}
 \alias{fct_inorder}
 \alias{fct_infreq}
-\title{Reorders levels in order of first appearance or frequency.}
+\title{Reorder factors levels by first appearance or frequency}
 \usage{
 fct_inorder(f)
 
@@ -13,7 +13,7 @@ fct_infreq(f)
 \item{f}{A factor}
 }
 \description{
-Reorders levels in order of first appearance or frequency.
+Reorder factors levels by first appearance or frequency
 }
 \examples{
 f <- factor(c("b", "b", "a", "c", "c", "c"))

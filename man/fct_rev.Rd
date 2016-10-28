@@ -2,7 +2,7 @@
 % Please edit documentation in R/rev.R
 \name{fct_rev}
 \alias{fct_rev}
-\title{Reverse the levels of a factor}
+\title{Reverse order of factor levels}
 \usage{
 fct_rev(f)
 }

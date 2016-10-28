@@ -1,4 +1,4 @@
-#' Reorder the levels of a function according to another variable
+#' Reorder factor levels by sorting along another variable
 #'
 #' \code{fct_reorder} is useful for 1d displays where the factor is mapped to
 #' position; \code{fct_reorder2} for 2d displays where the factor is mapped to
@@ -66,7 +66,7 @@ last2 <- function(x, y) {
 }
 
 
-#' Reorders levels in order of first appearance or frequency.
+#' Reorder factors levels by first appearance or frequency
 #'
 #' @param f A factor
 #' @export

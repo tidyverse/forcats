@@ -1,4 +1,4 @@
-#' Collapse factors into groups.
+#' Collapse factor levels into manually defined groups
 #'
 #' @param f A factor
 #' @param ... A series of named character vectors. The levels in

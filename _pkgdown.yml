@@ -24,7 +24,7 @@ reference:
 
   - title: Change value of levels
     desc: >
-      Change factor levels, while preserving order (as much as possible)
+      Change factor levels, while preserving order (as much as possible).
     contents:
     - fct_anon
     - fct_collapse
@@ -38,10 +38,6 @@ reference:
     - fct_expand
     - fct_explicit_na
 
-  - title: Data
-    contents:
-    - gss_cat
-
   - title: Other helpers
     contents:
     - fct_c
@@ -51,3 +47,8 @@ reference:
     - fct_drop
     - lvls
     - lvls_union
+
+  - title: Data
+    contents:
+    - gss_cat
+

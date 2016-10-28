@@ -1,4 +1,4 @@
-#' Lump together least/most common levels into "other".
+#' Lump together least/most common factor levels into "other"
 #'
 #' @param f A factor.
 #' @param n,prop

@@ -2,7 +2,7 @@
 % Please edit documentation in R/collapse.R
 \name{fct_collapse}
 \alias{fct_collapse}
-\title{Collapse factors into groups.}
+\title{Collapse factor levels into manually defined groups}
 \usage{
 fct_collapse(f, ...)
 }
@@ -13,7 +13,7 @@ fct_collapse(f, ...)
 each vector will be replaced with the name.}
 }
 \description{
-Collapse factors into groups.
+Collapse factor levels into manually defined groups
 }
 \examples{
 fct_collapse(gss_cat$partyid,

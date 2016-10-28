@@ -3,7 +3,7 @@
 \name{fct_reorder}
 \alias{fct_reorder}
 \alias{fct_reorder2}
-\title{Reorder the levels of a function according to another variable}
+\title{Reorder factor levels by sorting along another variable}
 \usage{
 fct_reorder(f, x, fun = median, ..., .desc = FALSE)
 

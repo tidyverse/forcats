@@ -2,7 +2,7 @@
 % Please edit documentation in R/relevel.R
 \name{fct_relevel}
 \alias{fct_relevel}
-\title{Change the order of levels in a factor}
+\title{Reorder factor levels by hand}
 \usage{
 fct_relevel(f, ...)
 }

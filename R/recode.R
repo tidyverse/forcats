@@ -1,4 +1,4 @@
-#' Change the levels of a factor
+#' Change factor levels by hand
 #'
 #' @param f A factor.
 #' @param ... A sequence of named character vectors where the

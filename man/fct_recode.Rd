@@ -2,7 +2,7 @@
 % Please edit documentation in R/recode.R
 \name{fct_recode}
 \alias{fct_recode}
-\title{Change the levels of a factor}
+\title{Change factor levels by hand}
 \usage{
 fct_recode(f, ...)
 }
@@ -15,7 +15,7 @@ Levels not otherwise mentioned will be left as is. Levels can
 be removed by naming them \code{NULL}.}
 }
 \description{
-Change the levels of a factor
+Change factor levels by hand
 }
 \examples{
 x <- factor(c("apple", "bear", "banana", "dear"))

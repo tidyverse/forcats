@@ -1,4 +1,4 @@
-#' Reverse the levels of a factor
+#' Reverse order of factor levels
 #'
 #' This is sometimes useful when plotting a factor
 #'

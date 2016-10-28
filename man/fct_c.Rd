@@ -2,7 +2,7 @@
 % Please edit documentation in R/c.R
 \name{fct_c}
 \alias{fct_c}
-\title{Concatenate factors, unioning levels.}
+\title{Concatenate factors, combining levels}
 \usage{
 fct_c(fs)
 }

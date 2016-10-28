@@ -1,4 +1,4 @@
-#' Shift the order of levels of a factor
+#' Shift factor levels to left or right, wrapping around at end
 #'
 #' This is useful when the levels of an ordered factor are actually cyclical,
 #' with different conventions on the starting point.

@@ -1,4 +1,4 @@
-#' Randomly permute the levels of a factor
+#' Randomly permute factor levels
 #'
 #' @param f A factor
 #' @export

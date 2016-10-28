@@ -1,4 +1,4 @@
-#' Concatenate factors, unioning levels.
+#' Concatenate factors, combining levels
 #'
 #' This is useful way of patching together factors from multiple sources
 #' that really should have the same levels but don't.

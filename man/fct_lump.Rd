@@ -2,7 +2,7 @@
 % Please edit documentation in R/lump.R
 \name{fct_lump}
 \alias{fct_lump}
-\title{Lump together least/most common levels into "other".}
+\title{Lump together least/most common factor levels into "other"}
 \usage{
 fct_lump(f, n, prop, other_level = "Other", ties.method = c("min",
   "average", "first", "last", "random", "max"))
@@ -30,7 +30,7 @@ placed at end of levels.}
 treated. See \code{\link{rank}} for details}
 }
 \description{
-Lump together least/most common levels into "other".
+Lump together least/most common factor levels into "other"
 }
 \examples{
 x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
