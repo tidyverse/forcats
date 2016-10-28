@@ -27,8 +27,8 @@ install.packages("readr")
 devtools::install_github("tidyverse/forcats")
 ```
 
-Usage
------
+Getting started
+---------------
 
 forcats is not part of the core tidyverse, so you need to load it explicitly:
 
@@ -37,7 +37,7 @@ library(tidyverse)
 library(forcats)
 ```
 
-Factors are used to describe categorical variables with a fixed and known set of **levels**. You can create factors with the base `factor()` or `readr::parse_factor()`:
+Factors are used to describe categorical variables with a fixed and known set of **levels**. You can create factors with the base `factor()` or [`readr::parse_factor()`](http://readr.tidyverse.org/reference/parse_factor.html):
 
 ``` r
 x1 <- c("Dec", "Apr", "Jan", "Mar")
