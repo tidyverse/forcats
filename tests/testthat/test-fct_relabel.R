@@ -6,6 +6,12 @@ test_that("identity", {
   expect_identical(fct_relabel(f1, identity), f1)
 })
 
+test_that("error if not function", {
+  f1 <- factor("a")
+
+  expect_error(fct_relabel(f1, 1), "expected function, got")
+})
+
 test_that("error if level not character", {
   f1 <- factor("a")
 
