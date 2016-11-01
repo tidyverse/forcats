@@ -14,6 +14,7 @@ test_that("error if level not character", {
 
 test_that("total collapse", {
   f1 <- factor(letters)
+  new_levels <- function(x) rep("1", length(x))
 
-  expect_identical(fct_relabel(f1, function(x) "1"), factor(rep("1", length(f1))))
+  expect_identical(fct_relabel(f1, new_levels), factor(new_levels(letters)))
 })
