@@ -1,7 +1,9 @@
 #' Automatically relabel factor levels, collapse as necessary
 #'
 #' @param f A factor
-#' @param fun A function that is applied to each level.
+#' @param fun A function that is applied to each level. Must accept one
+#'   character argument and return a character vector of the same length as its
+#'   input.
 #' @export
 #' @examples
 #' fct_count(gss_cat$rincome)
