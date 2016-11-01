@@ -11,17 +11,17 @@ fct_lump(f, n, prop, other_level = "Other", ties.method = c("min",
 \item{f}{A factor.}
 
 \item{n, prop}{If both \code{n} and \code{prop} are missing, \code{fct_lump} lumps
-  together the least frequent levels into "other", while ensuring that
-  "other" is still the smallest level. It's particularly useful in
-  conjunction with \code{\link{fct_inorder}()}.
+together the least frequent levels into "other", while ensuring that
+"other" is still the smallest level. It's particularly useful in
+conjunction with \code{\link{fct_inorder}()}.
 
-  Positive \code{n} preserves the most common \code{n} values.
-  Negative \code{n} preserves the least common \code{-n} values.
-  It there are ties, you will get at least \code{abs(n)} values.
+Positive \code{n} preserves the most common \code{n} values.
+Negative \code{n} preserves the least common \code{-n} values.
+It there are ties, you will get at least \code{abs(n)} values.
 
-  Positive \code{prop}, preserves values that appear at least
-  \code{prop} of the time. Negative \code{prop}, preserves values that
-  appear at most \code{-prop} of the time.}
+Positive \code{prop}, preserves values that appear at least
+\code{prop} of the time. Negative \code{prop}, preserves values that
+appear at most \code{-prop} of the time.}
 
 \item{other_level}{Value of level used for "other" values. Always
 placed at end of levels.}

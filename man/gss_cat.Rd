@@ -5,15 +5,15 @@
 \alias{gss_cat}
 \title{A sample of categorical variables from the General Social survey}
 \format{\describe{
- \item{year}{year of survey, 2000--2014}
- \item{age}{age. Maximum age truncated to 89.}
- \item{marital}{marital status}
- \item{race}{race}
- \item{rincome}{reported income}
- \item{partyid}{party affiliation}
- \item{relig}{religion}
- \item{denom}{denomination}
- \item{tvhours}{hours per day watching tv}
+\item{year}{year of survey, 2000--2014}
+\item{age}{age. Maximum age truncated to 89.}
+\item{marital}{marital status}
+\item{race}{race}
+\item{rincome}{reported income}
+\item{partyid}{party affiliation}
+\item{relig}{religion}
+\item{denom}{denomination}
+\item{tvhours}{hours per day watching tv}
 }}
 \source{
 Downloaded from \url{https://gssdataexplorer.norc.org/}.
