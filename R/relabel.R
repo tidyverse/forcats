@@ -23,9 +23,13 @@
 #'   convert_income)
 #' fct_count(rincome2)
 fct_relabel <- function(f, fun) {
-  new_levels <- fun(levels(f))
+  old_levels <- levels(f)
+  new_levels <- fun(old_levels)
   if (!is.character(new_levels)) {
     stop("levels must be character, got ", class(new_levels), call. = FALSE)
+  }
+  if (length(new_levels) != length(old_levels)) {
+    stop("expected ", length(old_levels), " new levels, got ", length(new_levels), call. = FALSE)
   }
   levels(f) <- new_levels
   f
