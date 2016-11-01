@@ -24,3 +24,9 @@ test_that("total collapse", {
 
   expect_identical(fct_relabel(f1, new_levels), factor(new_levels(letters)))
 })
+
+test_that("additional arguments", {
+  f1 <- factor(letters)
+
+  expect_identical(fct_relabel(f1, paste0, "."), factor(paste0(letters, ".")))
+})

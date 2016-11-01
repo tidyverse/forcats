@@ -4,6 +4,7 @@
 #' @param fun A function that is applied to each level. Must accept one
 #'   character argument and return a character vector of the same length as its
 #'   input.
+#' @param ... Additional arguments to `fun`.
 #' @export
 #' @examples
 #' fct_count(gss_cat$rincome)
@@ -22,9 +23,9 @@
 #' rincome2 <- fct_relabel(gss_cat$rincome,
 #'   convert_income)
 #' fct_count(rincome2)
-fct_relabel <- function(f, fun) {
+fct_relabel <- function(f, fun, ...) {
   old_levels <- levels(f)
-  new_levels <- fun(old_levels)
+  new_levels <- fun(old_levels, ...)
   if (!is.character(new_levels)) {
     stop("levels must be character, got ", class(new_levels), call. = FALSE)
   }

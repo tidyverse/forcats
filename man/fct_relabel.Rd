@@ -4,7 +4,7 @@
 \alias{fct_relabel}
 \title{Automatically relabel factor levels, collapse as necessary}
 \usage{
-fct_relabel(f, fun)
+fct_relabel(f, fun, ...)
 }
 \arguments{
 \item{f}{A factor}
@@ -12,6 +12,8 @@ fct_relabel(f, fun)
 \item{fun}{A function that is applied to each level. Must accept one
 character argument and return a character vector of the same length as its
 input.}
+
+\item{...}{Additional arguments to `fun`.}
 }
 \description{
 Automatically relabel factor levels, collapse as necessary
