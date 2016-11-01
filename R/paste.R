@@ -2,23 +2,19 @@
 #'
 #' Order is cartesian product of all levels.
 #'
+#' @details
 #' This is sometimes useful when plotting a factor
 #'
 #' @param ... Factors to be united.
-#' @param sep Separtor to use
-#' @export
+#' @param drop if drop is TRUE, unused factor levels are dropped from the result. 
+#'   The default is to retain all factor levels.
+#' @param sep Separtor to use 
+#' @param lex.order if TRUE the resulting factor will be lexically ordered 
+#' @export 
 #' @examples
 #' f <- factor(c("a", "b", "c"))
 #' g <- factor(c("x", "y", "z"))
 #' fct_paste(f, g, sep="-")
-fct_paste <- function(..., sep=" ") {
-  input_fct <- Map(check_factor, list(...))
-
-  my_paste <- function(...) do.call(paste, append(list(...), list(sep=sep)))
-
-  fcts <- Map(function(fct) as.character(levels(fct)), input_fct)
-
-  new_factor_lvls <- do.call( my_paste , do.call( expand.grid, fcts ) )
-
-  factor(do.call(my_paste, input_fct), levels=new_factor_lvls)
+fct_paste <- function(..., drop = FALSE, sep=" ", lex.order = FALSE) {
+  interaction(..., drop=drop, sep=sep, lex.order = lex.order)
 }
