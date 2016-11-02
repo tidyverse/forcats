@@ -104,27 +104,24 @@ a non-position aesthetic.</p>
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>f</dt>
-      <dd>A factor</dd>
+      <dd><p>A factor</p></dd>
       <dt>x, y</dt>
-      <dd>fun The levels of <code>f</code> will be reordered so that <code>fun</code>
-apply to each group is in ascending order.</dd>
+      <dd><p>fun The levels of <code>f</code> will be reordered so that <code>fun</code>
+apply to each group is in ascending order.</p></dd>
       <dt>fun</dt>
-      <dd>An summary function. It should take one vector for
-<code>fct_reorder</code>, and two vectors for <code>fct_reorder2</code>.</dd>
+      <dd><p>An summary function. It should take one vector for
+<code>fct_reorder</code>, and two vectors for <code>fct_reorder2</code>.</p></dd>
       <dt>...</dt>
-      <dd>Other arguments passed on to <code>fun</code>. A common argument is
-<code>na.rm = TRUE</code>.</dd>
+      <dd><p>Other arguments passed on to <code>fun</code>. A common argument is
+<code>na.rm = TRUE</code>.</p></dd>
       <dt>.desc</dt>
-      <dd>Order in descending order? Note the default is different
+      <dd><p>Order in descending order? Note the default is different
 between <code>fct_reorder</code> and <code>fct_reorder2</code>, in order to
-match the default ordering of factors in the legend.</dd>
+match the default ordering of factors in the legend.</p></dd>
     </dl>
     
 
-    <h2 class="hasAnchor" id="examples">
-      <a class="anchor" href="#examples"></a>
-      Examples
-    </h2>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><img src='fct_reorder-2.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><img src='fct_reorder-4.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><img src='fct_reorder-6.png' alt='' width='540' height='400' /><div class='input'>
 <span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='fu'>subset</span>(<span class='no'>ChickWeight</span>, <span class='fu'>as.integer</span>(<span class='no'>Chick</span>) <span class='kw'>&lt;</span> <span class='fl'>10</span>)
 <span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='fu'>transform</span>(<span class='no'>chks</span>, <span class='kw'>Chick</span> <span class='kw'>=</span> <span class='fu'><a href='fct_shuffle.html'>fct_shuffle</a></span>(<span class='no'>Chick</span>))
@@ -161,6 +158,16 @@ match the default ordering of factors in the legend.</dd>
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' height='24' /></a>.</p>
   <p>Site built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
 </div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67989-18', 'auto');
+  ga('send', 'pageview');
+</script>
       </footer>
    </div>
 
