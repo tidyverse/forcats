@@ -20,7 +20,7 @@ Installation
 install.packages("tidyverse")
 
 # Alternatively, install just forcats:
-install.packages("readr")
+install.packages("forcats")
 
 # Or the the development version from GitHub:
 # install.packages("devtools")
