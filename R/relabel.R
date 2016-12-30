@@ -24,13 +24,13 @@
 #' fct_count(rincome2)
 fct_relabel <- function(f, fun, ...) {
   if (!is.function(fun)) {
-    stop("Expected function, got ", class(fun), call. = FALSE)
+    stop("Expected function, got ", class(fun)[[1L]], call. = FALSE)
   }
 
   old_levels <- levels(f)
   new_levels <- fun(old_levels, ...)
   if (!is.character(new_levels)) {
-    stop("Levels must be character, got ", class(new_levels), call. = FALSE)
+    stop("Levels must be character, got ", class(new_levels)[[1L]], call. = FALSE)
   }
   if (length(new_levels) != length(old_levels)) {
     stop("Expected ", length(old_levels), " new levels, got ", length(new_levels), call. = FALSE)
