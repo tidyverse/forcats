@@ -29,12 +29,6 @@ fct_relabel <- function(f, fun, ...) {
 
   old_levels <- levels(f)
   new_levels <- fun(old_levels, ...)
-  if (!is.character(new_levels)) {
-    stop("Levels must be character, got ", class(new_levels)[[1L]], call. = FALSE)
-  }
-  if (length(new_levels) != length(old_levels)) {
-    stop("Expected ", length(old_levels), " new levels, got ", length(new_levels), call. = FALSE)
-  }
-  levels(f) <- new_levels
-  f
+
+  lvls_revalue(f, new_levels)
 }
