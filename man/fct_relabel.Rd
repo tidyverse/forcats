@@ -13,7 +13,7 @@ fct_relabel(f, fun, ...)
 character argument and return a character vector of the same length as its
 input.}
 
-\item{...}{Additional arguments to `fun`.}
+\item{...}{Additional arguments to \code{fun}.}
 }
 \description{
 Automatically relabel factor levels, collapse as necessary
@@ -36,4 +36,3 @@ rincome2 <- fct_relabel(gss_cat$rincome,
   convert_income)
 fct_count(rincome2)
 }
-
