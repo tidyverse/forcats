@@ -1,5 +1,8 @@
 # forcats 0.1.1.9000
 
+* `fct_drop()` gains `only` argument to restrict which levels are dropped (#69)
+  and no longer adds `NA` level if not present (#52).
+
 * `fct_relevel()` gains `after` argument so you can also move levels
   to the end (or any other position you like) (#29).
 

@@ -4,16 +4,24 @@
 \alias{fct_drop}
 \title{Drop unused levels}
 \usage{
-fct_drop(f)
+fct_drop(f, only)
 }
 \arguments{
 \item{f}{A factor}
+
+\item{only}{A character vector restricting the set of levels to be dropped.
+If supplied, only levels that have no entries and appear in this vector
+will be removed.}
 }
 \description{
-Same as \code{\link{droplevels}()}, but with consistent name scheme.
+Compared to \code{base::droplevels()} does not drop \code{NA} levels that have values.
 }
 \examples{
 f <- factor(c("a", "b"), levels = c("a", "b", "c"))
 f
 fct_drop(f)
+
+# Set only to restrict which levels to drop
+fct_drop(f, only = "a")
+fct_drop(f, only = "c")
 }
