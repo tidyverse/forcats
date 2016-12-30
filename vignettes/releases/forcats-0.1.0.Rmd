@@ -127,6 +127,6 @@ ggplot(by_age, aes(age, prop)) +
 
 ## Learning more
 
-You can learn more about forcats in [R for data science](http://r4ds.had.co.nz/factors.html), and on the [forcats website](https://hadley.github.io/forcats/).
+You can learn more about forcats in [R for data science](http://r4ds.had.co.nz/factors.html), and on the [forcats website](http://forcats.tidyverse.org/).
 
 Please [let me know](https://github.com/hadley/forcats/issues) if you have other problems with factors that forcats doesn't help with!
