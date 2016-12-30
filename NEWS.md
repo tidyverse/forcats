@@ -1,5 +1,8 @@
 # forcats 0.1.1.9000
 
+* `fct_relevel()` gains `after` argument so you can also move levels
+  to the end (or any other position you like) (#29).
+
 * New `as_factor()` which behaves identically across platforms (#39).
 
 * `fct_c()` can take either a list of factors or individual factors (#42).

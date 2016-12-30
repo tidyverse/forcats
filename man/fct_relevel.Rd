@@ -4,23 +4,28 @@
 \alias{fct_relevel}
 \title{Reorder factor levels by hand}
 \usage{
-fct_relevel(f, ...)
+fct_relevel(f, ..., after = 0L)
 }
 \arguments{
 \item{f}{A factor.}
 
 \item{...}{Character vector of levels. Any levels not mentioned will be
 left in existing order, after the explicitly mentioned levels.}
+
+\item{after}{Where should the new values be placed?}
 }
 \description{
 This is a generalisaton of \code{\link[stats]{relevel}} that allows you to
-move any number of levels to the front.
+move any number of levels to any location.
 }
 \examples{
 f <- factor(c("a", "b", "c"))
 fct_relevel(f)
 fct_relevel(f, "c")
 fct_relevel(f, "b", "a")
+
+# Move to end
+fct_relevel(f, "a", after = 2)
 
 # You'll get a warning if the levels don't exist
 fct_relevel(f, "d")

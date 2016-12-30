@@ -1,11 +1,12 @@
 #' Reorder factor levels by hand
 #'
 #' This is a generalisaton of \code{\link[stats]{relevel}} that allows you to
-#' move any number of levels to the front.
+#' move any number of levels to any location.
 #'
 #' @param f A factor.
 #' @param ... Character vector of levels. Any levels not mentioned will be
 #'   left in existing order, after the explicitly mentioned levels.
+#' @param after Where should the new values be placed?
 #' @export
 #' @examples
 #' f <- factor(c("a", "b", "c"))
@@ -13,9 +14,12 @@
 #' fct_relevel(f, "c")
 #' fct_relevel(f, "b", "a")
 #'
+#' # Move to end
+#' fct_relevel(f, "a", after = 2)
+#'
 #' # You'll get a warning if the levels don't exist
 #' fct_relevel(f, "d")
-fct_relevel <- function(f, ...) {
+fct_relevel <- function(f, ..., after = 0L) {
   f <- check_factor(f)
 
   first_levels <- c(..., character())
@@ -29,7 +33,7 @@ fct_relevel <- function(f, ...) {
     first_levels <- intersect(first_levels, old_levels)
   }
 
-  new_levels <- c(first_levels, setdiff(old_levels, first_levels))
+  new_levels <- append(setdiff(old_levels, first_levels), first_levels, after = after)
 
   lvls_reorder(f, match(new_levels, old_levels))
 }
