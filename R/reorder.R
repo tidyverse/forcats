@@ -5,8 +5,9 @@
 #' a non-position aesthetic.
 #'
 #' @param f A factor
-#' @param x,y fun The levels of \code{f} will be reordered so that \code{fun}
-#'    apply to each group is in ascending order.
+#' @param x,y fun The levels of `f` are reordered so that the values
+#'    of `fun(x)` (for `fct_reorder()`) and `fun(x, y)` (for `fct_reorder2()`)
+#'    are in ascending order.
 #' @param fun An summary function. It should take one vector for
 #'   \code{fct_reorder}, and two vectors for \code{fct_reorder2}.
 #' @param ... Other arguments passed on to \code{fun}. A common argument is

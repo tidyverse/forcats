@@ -12,8 +12,9 @@ fct_reorder2(f, x, y, fun = last2, ..., .desc = TRUE)
 \arguments{
 \item{f}{A factor}
 
-\item{x, y}{fun The levels of \code{f} will be reordered so that \code{fun}
-apply to each group is in ascending order.}
+\item{x, y}{fun The levels of \code{f} are reordered so that the values
+of \code{fun(x)} (for \code{fct_reorder()}) and \code{fun(x, y)} (for \code{fct_reorder2()})
+are in ascending order.}
 
 \item{fun}{An summary function. It should take one vector for
 \code{fct_reorder}, and two vectors for \code{fct_reorder2}.}
