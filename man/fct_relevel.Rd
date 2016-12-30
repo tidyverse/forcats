@@ -15,7 +15,7 @@ left in existing order, after the explicitly mentioned levels.}
 \item{after}{Where should the new values be placed?}
 }
 \description{
-This is a generalisaton of \code{\link[stats]{relevel}} that allows you to
+This is a generalisaton of \code{\link[stats:relevel]{stats::relevel()}} that allows you to
 move any number of levels to any location.
 }
 \examples{

@@ -1,12 +1,12 @@
 #' Low-level functions for manipulating levels
 #'
-#' \code{lvls_reorder} leaves values as is, but changes the order.
-#' \code{lvls_revalue} changes the values of existing levels; there must
+#' `lvls_reorder` leaves values as is, but changes the order.
+#' `lvls_revalue` changes the values of existing levels; there must
 #' be one new level for each old level.
-#' \code{lvls_extend} extends the set of levels; the new level must
+#' `lvls_extend` extends the set of levels; the new level must
 #' include the old levels.
 #'
-#' These functions are less helpful than the higher-level \code{fct_} functions,
+#' These functions are less helpful than the higher-level `fct_` functions,
 #' but are safer than the very low-level manipulation of levels directly,
 #' because they are more specific, and hence can more carefully check their
 #' arguments.
@@ -15,7 +15,7 @@
 #' @param idx A integer index, with one integer for each existing level
 #' @param new_levels A character vector of new levels
 #' @param ordered A logical which determines the "ordered" status of the
-#'   output factor. \code{NA} preserves the existing status of the factor.
+#'   output factor. `NA` preserves the existing status of the factor.
 #' @name lvls
 #' @examples
 #' f <- factor(c("a", "b", "c"))

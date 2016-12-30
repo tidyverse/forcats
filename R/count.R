@@ -1,9 +1,9 @@
 #' Count entries in a factor
 #'
 #' @param f A factor
-#' @param sort If \code{TRUE}, sort the result so that most common values
+#' @param sort If `TRUE`, sort the result so that most common values
 #'   float to the top.
-#' @return A tibble with columns \code{f} and \code{n}
+#' @return A tibble with columns `f` and `n`
 #' @export
 #' @examples
 #' f <- factor(sample(letters)[rpois(1000, 10)])
