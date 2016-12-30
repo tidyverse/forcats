@@ -1,5 +1,7 @@
 # forcats 0.1.1.9000
 
+* New `as_factor()` which behaves identically across platforms (#39).
+
 * `fct_c()` can take either a list of factors or individual factors (#42).
 
 * `lvls_reorder()`, `fct_inorder()`, and `fct_infreq()` gain an `ordered`
