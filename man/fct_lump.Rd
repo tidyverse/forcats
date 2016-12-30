@@ -27,7 +27,7 @@ appear at most \code{-prop} of the time.}
 placed at end of levels.}
 
 \item{ties.method}{A character string specifying how ties are
-treated. See \code{\link{rank}} for details}
+treated. See \code{\link[=rank]{rank()}} for details}
 }
 \description{
 Lump together least/most common factor levels into "other"
