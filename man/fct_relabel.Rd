@@ -32,7 +32,6 @@ convert_income <- function(x) {
 
 convert_income(levels(gss_cat$rincome))
 
-rincome2 <- fct_relabel(gss_cat$rincome,
-  convert_income)
+rincome2 <- fct_relabel(gss_cat$rincome, convert_income)
 fct_count(rincome2)
 }
