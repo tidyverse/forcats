@@ -68,6 +68,7 @@ last2 <- function(x, y) {
 
 #' Reorder factors levels by first appearance or frequency
 #'
+#' @inheritParams lvls_reorder
 #' @param f A factor
 #' @export
 #' @examples
@@ -75,16 +76,18 @@ last2 <- function(x, y) {
 #' f
 #' fct_inorder(f)
 #' fct_infreq(f)
-fct_inorder <- function(f) {
+#'
+#' fct_inorder(f, ordered = TRUE)
+fct_inorder <- function(f, ordered = NA) {
   f <- check_factor(f)
 
-  lvls_reorder(f, as.integer(f)[!duplicated(f)])
+  lvls_reorder(f, as.integer(f)[!duplicated(f)], ordered = ordered)
 }
 
 #' @export
 #' @rdname fct_inorder
-fct_infreq <- function(f) {
+fct_infreq <- function(f, ordered = NA) {
   f <- check_factor(f)
 
-  lvls_reorder(f, order(table(f), decreasing = TRUE))
+  lvls_reorder(f, order(table(f), decreasing = TRUE), ordered = ordered)
 }

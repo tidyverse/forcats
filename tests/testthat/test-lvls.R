@@ -1,22 +1,5 @@
 context("lvls")
 
-# lvls_reorder ------------------------------------------------------------
-
-test_that("changes levels, not values", {
-  f1 <- factor(c("a", "b"))
-  f2 <- factor(c("a", "b"), levels = c("b", "a"))
-
-  expect_equal(lvls_reorder(f1, 2:1), f2)
-})
-
-test_that("must have one integer per level", {
-  f <- factor(c("a", "b", "c"))
-
-  expect_error(lvls_reorder(f, c(1, 2)), "one integer for each level")
-  expect_error(lvls_reorder(f, c(1, 2, 2)), "one integer for each level")
-  expect_error(lvls_reorder(f, c(1, 2.5)), "one integer for each level")
-})
-
 # lvls_expand -------------------------------------------------------------
 
 test_that("changes levels, not values", {

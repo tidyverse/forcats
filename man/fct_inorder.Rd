@@ -5,12 +5,15 @@
 \alias{fct_infreq}
 \title{Reorder factors levels by first appearance or frequency}
 \usage{
-fct_inorder(f)
+fct_inorder(f, ordered = NA)
 
-fct_infreq(f)
+fct_infreq(f, ordered = NA)
 }
 \arguments{
 \item{f}{A factor}
+
+\item{ordered}{A logical which determines the "ordered" status of the
+output factor. \code{NA} preserves the existing status of the factor.}
 }
 \description{
 Reorder factors levels by first appearance or frequency
@@ -20,4 +23,6 @@ f <- factor(c("b", "b", "a", "c", "c", "c"))
 f
 fct_inorder(f)
 fct_infreq(f)
+
+fct_inorder(f, ordered = TRUE)
 }

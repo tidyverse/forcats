@@ -14,6 +14,8 @@
 #' @param f A factor
 #' @param idx A integer index, with one integer for each existing level
 #' @param new_levels A character vector of new levels
+#' @param ordered A logical which determines the "ordered" status of the
+#'   output factor. \code{NA} preserves the existing status of the factor.
 #' @name lvls
 #' @examples
 #' f <- factor(c("a", "b", "c"))
@@ -24,7 +26,7 @@ NULL
 
 #' @export
 #' @rdname lvls
-lvls_reorder <- function(f, idx) {
+lvls_reorder <- function(f, idx, ordered = NA) {
   f <- check_factor(f)
   if (!is.numeric(idx)) {
     stop("`idx` must be numeric", call. = FALSE)
@@ -33,7 +35,7 @@ lvls_reorder <- function(f, idx) {
     stop("`idx` must contain one integer for each level of `f`", call. = FALSE)
   }
 
-  refactor(f, levels(f)[idx])
+  refactor(f, levels(f)[idx], ordered = ordered)
 }
 
 #' @export
@@ -70,8 +72,12 @@ lvls_seq <- function(f) {
   seq_along(levels(f))
 }
 
-refactor <- function(f, new_levels) {
-  new_f <- factor(f, levels = new_levels, exclude = NULL)
+refactor <- function(f, new_levels, ordered = NA) {
+  if (is.na(ordered)) {
+    ordered <- is.ordered(f)
+  }
+
+  new_f <- factor(f, levels = new_levels, exclude = NULL, ordered = ordered)
   attributes(new_f) <- utils::modifyList(attributes(f), attributes(new_f))
   new_f
 }
