@@ -27,3 +27,14 @@ test_that("can just remove levels", {
 
   expect_equal(fct_recode(f1, NULL = "missing"), f2)
 })
+
+
+# check_recode_levels -----------------------------------------------------
+
+test_that("new levels must be character", {
+  expect_error(check_recode_levels(a = 1), "Problems at positions: 1")
+})
+
+test_that("new levels must be length 1", {
+  expect_error(check_recode_levels(a = c("a", "b")), "Problems at positions: 1")
+})
