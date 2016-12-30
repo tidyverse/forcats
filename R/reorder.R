@@ -1,7 +1,7 @@
 #' Reorder factor levels by sorting along another variable
 #'
-#' \code{fct_reorder} is useful for 1d displays where the factor is mapped to
-#' position; \code{fct_reorder2} for 2d displays where the factor is mapped to
+#' `fct_reorder` is useful for 1d displays where the factor is mapped to
+#' position; `fct_reorder2` for 2d displays where the factor is mapped to
 #' a non-position aesthetic.
 #'
 #' @param f A factor
@@ -9,11 +9,11 @@
 #'    of `fun(x)` (for `fct_reorder()`) and `fun(x, y)` (for `fct_reorder2()`)
 #'    are in ascending order.
 #' @param fun An summary function. It should take one vector for
-#'   \code{fct_reorder}, and two vectors for \code{fct_reorder2}.
-#' @param ... Other arguments passed on to \code{fun}. A common argument is
-#'   \code{na.rm = TRUE}.
+#'   `fct_reorder`, and two vectors for `fct_reorder2`.
+#' @param ... Other arguments passed on to `fun`. A common argument is
+#'   `na.rm = TRUE`.
 #' @param .desc Order in descending order? Note the default is different
-#'   between \code{fct_reorder} and \code{fct_reorder2}, in order to
+#'   between `fct_reorder` and `fct_reorder2`, in order to
 #'   match the default ordering of factors in the legend.
 #' @importFrom stats median
 #' @export

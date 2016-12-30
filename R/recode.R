@@ -4,7 +4,7 @@
 #' @param ... A sequence of named character vectors where the
 #'   name gives the new level, and the value gives the old level.
 #'   Levels not otherwise mentioned will be left as is. Levels can
-#'   be removed by naming them \code{NULL}.
+#'   be removed by naming them `NULL`.
 #' @export
 #' @examples
 #' x <- factor(c("apple", "bear", "banana", "dear"))

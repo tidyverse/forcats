@@ -2,22 +2,22 @@
 #'
 #' @param f A factor.
 #' @param n,prop
-#'   If both \code{n} and \code{prop} are missing, \code{fct_lump} lumps
+#'   If both `n` and `prop` are missing, `fct_lump` lumps
 #'   together the least frequent levels into "other", while ensuring that
 #'   "other" is still the smallest level. It's particularly useful in
 #'   conjunction with \code{\link{fct_inorder}()}.
 #'
-#'   Positive \code{n} preserves the most common \code{n} values.
-#'   Negative \code{n} preserves the least common \code{-n} values.
-#'   It there are ties, you will get at least \code{abs(n)} values.
+#'   Positive `n` preserves the most common `n` values.
+#'   Negative `n` preserves the least common `-n` values.
+#'   It there are ties, you will get at least `abs(n)` values.
 #'
-#'   Positive \code{prop}, preserves values that appear at least
-#'   \code{prop} of the time. Negative \code{prop}, preserves values that
-#'   appear at most \code{-prop} of the time.
+#'   Positive `prop`, preserves values that appear at least
+#'   `prop` of the time. Negative `prop`, preserves values that
+#'   appear at most `-prop` of the time.
 #' @param other_level Value of level used for "other" values. Always
 #'   placed at end of levels.
 #' @param ties.method A character string specifying how ties are
-#'   treated. See \code{\link{rank}} for details
+#'   treated. See [rank()] for details
 #' @export
 #' @examples
 #' x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))

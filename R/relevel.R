@@ -1,6 +1,6 @@
 #' Reorder factor levels by hand
 #'
-#' This is a generalisaton of \code{\link[stats]{relevel}} that allows you to
+#' This is a generalisaton of [stats::relevel()] that allows you to
 #' move any number of levels to any location.
 #'
 #' @param f A factor.
