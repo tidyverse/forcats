@@ -27,4 +27,3 @@ fct_shift(x)
 fct_shift(x, 2)
 fct_shift(x, -1)
 }
-

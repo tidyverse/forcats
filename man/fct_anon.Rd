@@ -21,4 +21,3 @@ gss_cat$relig \%>\% fct_anon() \%>\% fct_count()
 gss_cat$relig \%>\% fct_anon() \%>\% fct_count()
 gss_cat$relig \%>\% fct_anon("X") \%>\% fct_count()
 }
-

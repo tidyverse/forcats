@@ -17,4 +17,3 @@ f <- factor(c("a", "b", "c"))
 fct_shuffle(f)
 fct_shuffle(f)
 }
-

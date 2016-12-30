@@ -16,4 +16,3 @@ Find all levels in a list of factors
 fs <- list(factor("a"), factor("b"), factor(c("a", "b")))
 lvls_union(fs)
 }
-

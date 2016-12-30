@@ -22,4 +22,3 @@ table(f1)
 f2 <- fct_explicit_na(f1)
 table(f2)
 }
-

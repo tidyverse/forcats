@@ -16,4 +16,3 @@ This is sometimes useful when plotting a factor
 f <- factor(c("a", "b", "c"))
 fct_rev(f)
 }
-

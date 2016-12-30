@@ -27,4 +27,3 @@ partyid2 <- fct_collapse(gss_cat$partyid,
 )
 fct_count(partyid2)
 }
-

@@ -27,4 +27,3 @@ fct_recode(x, fruit = "apple", fruit = "bananana")
 # If you name the level NULL it will be removed
 fct_recode(x, NULL = "apple", fruit = "banana")
 }
-

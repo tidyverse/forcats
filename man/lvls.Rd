@@ -39,4 +39,3 @@ lvls_reorder(f, 3:1)
 lvls_revalue(f, c("apple", "banana", "carrot"))
 lvls_expand(f, c("a", "b", "c", "d"))
 }
-

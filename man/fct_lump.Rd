@@ -56,4 +56,3 @@ fct_lump(x, n = 6)
 fct_lump(x, n = 6, ties.method = "max")
 
 }
-

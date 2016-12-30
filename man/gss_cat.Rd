@@ -31,4 +31,3 @@ fct_count(gss_cat$relig)
 fct_count(fct_lump(gss_cat$relig))
 }
 \keyword{datasets}
-

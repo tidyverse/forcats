@@ -17,4 +17,3 @@ that really should have the same levels but don't.
 fs <- list(factor("a"), factor("b"), factor(c("a", "b")))
 fct_c(fs)
 }
-

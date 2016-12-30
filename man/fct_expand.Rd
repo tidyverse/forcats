@@ -21,4 +21,3 @@ f
 fct_expand(f, "d", "e", "f")
 fct_expand(f, letters[1:6])
 }
-

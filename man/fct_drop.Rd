@@ -17,4 +17,3 @@ f <- factor(c("a", "b"), levels = c("a", "b", "c"))
 f
 fct_drop(f)
 }
-

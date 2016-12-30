@@ -24,4 +24,3 @@ table(f)
 fct_count(f)
 fct_count(f, sort = TRUE)
 }
-

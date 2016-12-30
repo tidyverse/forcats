@@ -25,4 +25,3 @@ fct_relevel(f, "b", "a")
 # You'll get a warning if the levels don't exist
 fct_relevel(f, "d")
 }
-
