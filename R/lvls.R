@@ -48,7 +48,10 @@ lvls_revalue <- function(f, new_levels) {
   }
 
   if (length(new_levels) != nlevels(f)) {
-    stop("`new_levels` must be the same length as `levels(f)`.", call. = FALSE)
+    stop(
+      "`new_levels` must be the same length as `levels(f)`: expected ",
+      nlevels(f), " new levels, got ", length(new_levels), ".",
+      call. = FALSE)
   }
 
   levels(f) <- new_levels

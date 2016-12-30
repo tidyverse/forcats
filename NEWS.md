@@ -1,5 +1,7 @@
 # forcats 0.1.1.9000
 
+* New `fct_relabel()` allows relabeling factor levels programmatically (#50, @krlmlr).
+
 * `fct_drop()` gains `only` argument to restrict which levels are dropped (#69)
   and no longer adds `NA` level if not present (#52).
 
