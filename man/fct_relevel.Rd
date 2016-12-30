@@ -9,24 +9,34 @@ fct_relevel(f, ..., after = 0L)
 \arguments{
 \item{f}{A factor.}
 
-\item{...}{Character vector of levels. Any levels not mentioned will be
-left in existing order, after the explicitly mentioned levels.}
+\item{...}{Character vector of levels. Any levels not mentioned will be left
+in existing order, after the explicitly mentioned levels.}
 
 \item{after}{Where should the new values be placed?}
 }
 \description{
-This is a generalisaton of \code{\link[stats:relevel]{stats::relevel()}} that allows you to
-move any number of levels to any location.
+This is a generalisaton of [stats::relevel()] that allows you to move any
+number of levels to any location.
 }
 \examples{
-f <- factor(c("a", "b", "c"))
+f <- factor(c("a", "b", "c", "d"))
 fct_relevel(f)
 fct_relevel(f, "c")
 fct_relevel(f, "b", "a")
 
-# Move to end
+# Move to the third position
 fct_relevel(f, "a", after = 2)
 
+# Relevel to the end
+fct_relevel(f, "a", after = Inf)
+fct_relevel(f, "a", after = 3)
+
+# Using 'Inf' instead of an integer is useful when the number
+# of levels is unknown, or in a vectorised operation
+x <- list(f, factor(c("y", "a", "z")))
+lapply(x, fct_relevel, "a", after = Inf)
+
 # You'll get a warning if the levels don't exist
-fct_relevel(f, "d")
+fct_relevel(f, "e")
 }
+
