@@ -15,7 +15,7 @@ in existing order, after the explicitly mentioned levels.}
 \item{after}{Where should the new values be placed?}
 }
 \description{
-This is a generalisaton of [stats::relevel()] that allows you to move any
+This is a generalisaton of \code{\link[stats:relevel]{stats::relevel()}} that allows you to move any
 number of levels to any location.
 }
 \examples{
@@ -31,12 +31,14 @@ fct_relevel(f, "a", after = 2)
 fct_relevel(f, "a", after = Inf)
 fct_relevel(f, "a", after = 3)
 
-# Using 'Inf' instead of an integer is useful when the number
-# of levels is unknown, or in a vectorised operation
-x <- list(f, factor(c("y", "a", "z")))
-lapply(x, fct_relevel, "a", after = Inf)
+# Using 'Inf' allows you to relevel to the end when the number
+# of levels is unknown or variable (e.g. vectorised operations)
+df  <- forcats::gss_cat[, c("rincome", "denom")]
+lapply(df, levels)
+
+df2 <- lapply(df, fct_relevel, "Don't know", after = Inf)
+lapply(df2, levels)
 
 # You'll get a warning if the levels don't exist
 fct_relevel(f, "e")
 }
-
