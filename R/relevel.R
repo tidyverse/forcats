@@ -21,10 +21,13 @@
 #' fct_relevel(f, "a", after = Inf)
 #' fct_relevel(f, "a", after = 3)
 #'
-#' # Using 'Inf' instead of an integer is useful when the number
-#' # of levels is unknown, or in a vectorised operation
-#' x <- list(f, factor(c("y", "a", "z")))
-#' lapply(x, fct_relevel, "a", after = Inf)
+#' # Using 'Inf' allows you to relevel to the end when the number
+#' # of levels is unknown or variable (e.g. vectorised operations)
+#' df  <- forcats::gss_cat[, c("rincome", "denom")]
+#' lapply(df, levels)
+#'
+#' df2 <- lapply(df, fct_relevel, "Don't know", after = Inf)
+#' lapply(df2, levels)
 #'
 #' # You'll get a warning if the levels don't exist
 #' fct_relevel(f, "e")
