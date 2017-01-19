@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reorder factor levels by sorting along another variable — fct_reorder • forcats</title>
+<title>Convert input to a factor. — as_factor • forcats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -88,62 +88,49 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Reorder factor levels by sorting along another variable</h1>
+    <h1>Convert input to a factor.</h1>
     </div>
 
     
-    <p><code>fct_reorder</code> is useful for 1d displays where the factor is mapped to
-position; <code>fct_reorder2</code> for 2d displays where the factor is mapped to
-a non-position aesthetic.</p>
+    <p>Compared to base R, this function creates levels in the order in which
+they appear, which will be the same on every platform (base R sorts in
+the current locale which can vary from place to place).</p>
     
 
-    <pre><span class='fu'>fct_reorder</span>(<span class='no'>f</span>, <span class='no'>x</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>median</span>, <span class='no'>...</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre><span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
-<span class='fu'>fct_reorder2</span>(<span class='no'>f</span>, <span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>last2</span>, <span class='no'>...</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='co'># S3 method for factor</span>
+<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for character</span>
+<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>f</dt>
-      <dd><p>A factor</p></dd>
-      <dt>x, y</dt>
-      <dd><p>fun The levels of <code>f</code> are reordered so that the values
-of <code>fun(x)</code> (for <code>fct_reorder()</code>) and <code>fun(x, y)</code> (for <code>fct_reorder2()</code>)
-are in ascending order.</p></dd>
-      <dt>fun</dt>
-      <dd><p>An summary function. It should take one vector for
-<code>fct_reorder</code>, and two vectors for <code>fct_reorder2</code>.</p></dd>
+      <dt>x</dt>
+      <dd><p>Object to coerce to a factor.</p></dd>
       <dt>...</dt>
-      <dd><p>Other arguments passed on to <code>fun</code>. A common argument is
-<code>na.rm = TRUE</code>.</p></dd>
-      <dt>.desc</dt>
-      <dd><p>Order in descending order? Note the default is different
-between <code>fct_reorder</code> and <code>fct_reorder2</code>, in order to
-match the default ordering of factors in the legend.</p></dd>
+      <dd><p>Other arguments passed down to method.</p></dd>
     </dl>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This is a generic function.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><img src='fct_reorder-2.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><img src='fct_reorder-4.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><img src='fct_reorder-6.png' alt='' width='540' height='400' /><div class='input'>
-<span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='fu'>subset</span>(<span class='no'>ChickWeight</span>, <span class='fu'>as.integer</span>(<span class='no'>Chick</span>) <span class='kw'>&lt;</span> <span class='fl'>10</span>)
-<span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='fu'>transform</span>(<span class='no'>chks</span>, <span class='kw'>Chick</span> <span class='kw'>=</span> <span class='fu'><a href='fct_shuffle.html'>fct_shuffle</a></span>(<span class='no'>Chick</span>))
-
-<span class='kw'>if</span> (<span class='fu'>require</span>(<span class='st'>"ggplot2"</span>)) {
-<span class='fu'>ggplot</span>(<span class='no'>chks</span>, <span class='fu'>aes</span>(<span class='no'>Time</span>, <span class='no'>weight</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>Chick</span>)) +
-  <span class='fu'>geom_point</span>() +
-  <span class='fu'>geom_line</span>()
-
-<span class='co'># Note that lines match order in legend</span>
-<span class='fu'>ggplot</span>(<span class='no'>chks</span>, <span class='fu'>aes</span>(<span class='no'>Time</span>, <span class='no'>weight</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='fu'>fct_reorder2</span>(<span class='no'>Chick</span>, <span class='no'>Time</span>, <span class='no'>weight</span>))) +
-  <span class='fu'>geom_point</span>() +
-  <span class='fu'>geom_line</span>() +
-  <span class='fu'>labs</span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"Chick"</span>)
-}</div><img src='fct_reorder-8.png' alt='' width='540' height='400' /></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"a"</span>, <span class='st'>"z"</span>, <span class='st'>"g"</span>)
+<span class='fu'>as_factor</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] a z g
+#&gt; Levels: a z g</div><div class='input'><span class='fu'>as.factor</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] a z g
+#&gt; Levels: a g z</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#details">Details</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

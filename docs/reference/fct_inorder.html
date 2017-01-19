@@ -95,14 +95,17 @@
     <p>Reorder factors levels by first appearance or frequency</p>
     
 
-    <pre><span class='fu'>fct_inorder</span>(<span class='no'>f</span>)
+    <pre><span class='fu'>fct_inorder</span>(<span class='no'>f</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
 
-<span class='fu'>fct_infreq</span>(<span class='no'>f</span>)</pre>
+<span class='fu'>fct_infreq</span>(<span class='no'>f</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>f</dt>
       <dd><p>A factor</p></dd>
+      <dt>ordered</dt>
+      <dd><p>A logical which determines the "ordered" status of the
+output factor. <code>NA</code> preserves the existing status of the factor.</p></dd>
     </dl>
     
 
@@ -111,7 +114,9 @@
 <span class='no'>f</span></div><div class='output co'>#&gt; [1] b b a c c c
 #&gt; Levels: a b c</div><div class='input'><span class='fu'>fct_inorder</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; [1] b b a c c c
 #&gt; Levels: b a c</div><div class='input'><span class='fu'>fct_infreq</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; [1] b b a c c c
-#&gt; Levels: c b a</div></pre>
+#&gt; Levels: c b a</div><div class='input'>
+<span class='fu'>fct_inorder</span>(<span class='no'>f</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] b b a c c c
+#&gt; Levels: b &lt; a &lt; c</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

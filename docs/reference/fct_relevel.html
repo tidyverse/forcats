@@ -92,31 +92,80 @@
     </div>
 
     
-    <p>This is a generalisaton of <code><a href='http://www.rdocumentation.org/packages/stats/topics/relevel'>relevel</a></code> that allows you to
-move any number of levels to the front.</p>
+    <p>This is a generalisaton of <code><a href='http://www.rdocumentation.org/packages/stats/topics/relevel'>stats::relevel()</a></code> that allows you to move any
+number of levels to any location.</p>
     
 
-    <pre><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='no'>...</span>)</pre>
+    <pre><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='no'>...</span>, <span class='kw'>after</span> <span class='kw'>=</span> <span class='fl'>0L</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>f</dt>
       <dd><p>A factor.</p></dd>
       <dt>...</dt>
-      <dd><p>Character vector of levels. Any levels not mentioned will be
-left in existing order, after the explicitly mentioned levels.</p></dd>
+      <dd><p>Character vector of levels. Any levels not mentioned will be left
+in existing order, after the explicitly mentioned levels.</p></dd>
+      <dt>after</dt>
+      <dd><p>Where should the new values be placed?</p></dd>
     </dl>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='fu'>c</span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>))
-<span class='fu'>fct_relevel</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; [1] a b c
-#&gt; Levels: a b c</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"c"</span>)</div><div class='output co'>#&gt; [1] a b c
-#&gt; Levels: c a b</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"b"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; [1] a b c
-#&gt; Levels: b a c</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='fu'>c</span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span>))
+<span class='fu'>fct_relevel</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; [1] a b c d
+#&gt; Levels: a b c d</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"c"</span>)</div><div class='output co'>#&gt; [1] a b c d
+#&gt; Levels: c a b d</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"b"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; [1] a b c d
+#&gt; Levels: b a c d</div><div class='input'>
+<span class='co'># Move to the third position</span>
+<span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"a"</span>, <span class='kw'>after</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; [1] a b c d
+#&gt; Levels: b c a d</div><div class='input'>
+<span class='co'># Relevel to the end</span>
+<span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"a"</span>, <span class='kw'>after</span> <span class='kw'>=</span> <span class='fl'>Inf</span>)</div><div class='output co'>#&gt; [1] a b c d
+#&gt; Levels: b c d a</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"a"</span>, <span class='kw'>after</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; [1] a b c d
+#&gt; Levels: b c d a</div><div class='input'>
+<span class='co'># Using 'Inf' allows you to relevel to the end when the number</span>
+<span class='co'># of levels is unknown or variable (e.g. vectorised operations)</span>
+<span class='no'>df</span>  <span class='kw'>&lt;-</span> <span class='kw'>forcats</span><span class='kw'>::</span><span class='no'>gss_cat</span>[, <span class='fu'>c</span>(<span class='st'>"rincome"</span>, <span class='st'>"denom"</span>)]
+<span class='fu'>lapply</span>(<span class='no'>df</span>, <span class='no'>levels</span>)</div><div class='output co'>#&gt; $rincome
+#&gt;  [1] "No answer"      "Don't know"     "Refused"        "$25000 or more"
+#&gt;  [5] "$20000 - 24999" "$15000 - 19999" "$10000 - 14999" "$8000 to 9999" 
+#&gt;  [9] "$7000 to 7999"  "$6000 to 6999"  "$5000 to 5999"  "$4000 to 4999" 
+#&gt; [13] "$3000 to 3999"  "$1000 to 2999"  "Lt $1000"       "Not applicable"
+#&gt; 
+#&gt; $denom
+#&gt;  [1] "No answer"            "Don't know"           "No denomination"     
+#&gt;  [4] "Other"                "Episcopal"            "Presbyterian-dk wh"  
+#&gt;  [7] "Presbyterian, merged" "Other presbyterian"   "United pres ch in us"
+#&gt; [10] "Presbyterian c in us" "Lutheran-dk which"    "Evangelical luth"    
+#&gt; [13] "Other lutheran"       "Wi evan luth synod"   "Lutheran-mo synod"   
+#&gt; [16] "Luth ch in america"   "Am lutheran"          "Methodist-dk which"  
+#&gt; [19] "Other methodist"      "United methodist"     "Afr meth ep zion"    
+#&gt; [22] "Afr meth episcopal"   "Baptist-dk which"     "Other baptists"      
+#&gt; [25] "Southern baptist"     "Nat bapt conv usa"    "Nat bapt conv of am" 
+#&gt; [28] "Am bapt ch in usa"    "Am baptist asso"      "Not applicable"      
+#&gt; </div><div class='input'>
+<span class='no'>df2</span> <span class='kw'>&lt;-</span> <span class='fu'>lapply</span>(<span class='no'>df</span>, <span class='no'>fct_relevel</span>, <span class='st'>"Don't know"</span>, <span class='kw'>after</span> <span class='kw'>=</span> <span class='fl'>Inf</span>)
+<span class='fu'>lapply</span>(<span class='no'>df2</span>, <span class='no'>levels</span>)</div><div class='output co'>#&gt; $rincome
+#&gt;  [1] "No answer"      "Refused"        "$25000 or more" "$20000 - 24999"
+#&gt;  [5] "$15000 - 19999" "$10000 - 14999" "$8000 to 9999"  "$7000 to 7999" 
+#&gt;  [9] "$6000 to 6999"  "$5000 to 5999"  "$4000 to 4999"  "$3000 to 3999" 
+#&gt; [13] "$1000 to 2999"  "Lt $1000"       "Not applicable" "Don't know"    
+#&gt; 
+#&gt; $denom
+#&gt;  [1] "No answer"            "No denomination"      "Other"               
+#&gt;  [4] "Episcopal"            "Presbyterian-dk wh"   "Presbyterian, merged"
+#&gt;  [7] "Other presbyterian"   "United pres ch in us" "Presbyterian c in us"
+#&gt; [10] "Lutheran-dk which"    "Evangelical luth"     "Other lutheran"      
+#&gt; [13] "Wi evan luth synod"   "Lutheran-mo synod"    "Luth ch in america"  
+#&gt; [16] "Am lutheran"          "Methodist-dk which"   "Other methodist"     
+#&gt; [19] "United methodist"     "Afr meth ep zion"     "Afr meth episcopal"  
+#&gt; [22] "Baptist-dk which"     "Other baptists"       "Southern baptist"    
+#&gt; [25] "Nat bapt conv usa"    "Nat bapt conv of am"  "Am bapt ch in usa"   
+#&gt; [28] "Am baptist asso"      "Not applicable"       "Don't know"          
+#&gt; </div><div class='input'>
 <span class='co'># You'll get a warning if the levels don't exist</span>
-<span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"d"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown levels in `f`: d</span></div><div class='output co'>#&gt; [1] a b c
-#&gt; Levels: a b c</div></pre>
+<span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"e"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown levels in `f`: e</span></div><div class='output co'>#&gt; [1] a b c d
+#&gt; Levels: a b c d</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

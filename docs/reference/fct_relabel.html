@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reorder factor levels by sorting along another variable — fct_reorder • forcats</title>
+<title>Automatically relabel factor levels, collapse as necessary — fct_relabel • forcats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -88,56 +88,75 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Reorder factor levels by sorting along another variable</h1>
+    <h1>Automatically relabel factor levels, collapse as necessary</h1>
     </div>
 
     
-    <p><code>fct_reorder</code> is useful for 1d displays where the factor is mapped to
-position; <code>fct_reorder2</code> for 2d displays where the factor is mapped to
-a non-position aesthetic.</p>
+    <p>Automatically relabel factor levels, collapse as necessary</p>
     
 
-    <pre><span class='fu'>fct_reorder</span>(<span class='no'>f</span>, <span class='no'>x</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>median</span>, <span class='no'>...</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='fu'>fct_reorder2</span>(<span class='no'>f</span>, <span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>last2</span>, <span class='no'>...</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre><span class='fu'>fct_relabel</span>(<span class='no'>f</span>, <span class='no'>fun</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>f</dt>
       <dd><p>A factor</p></dd>
-      <dt>x, y</dt>
-      <dd><p>fun The levels of <code>f</code> are reordered so that the values
-of <code>fun(x)</code> (for <code>fct_reorder()</code>) and <code>fun(x, y)</code> (for <code>fct_reorder2()</code>)
-are in ascending order.</p></dd>
       <dt>fun</dt>
-      <dd><p>An summary function. It should take one vector for
-<code>fct_reorder</code>, and two vectors for <code>fct_reorder2</code>.</p></dd>
+      <dd><p>A function that is applied to each level. Must accept one
+character argument and return a character vector of the same length as its
+input.</p></dd>
       <dt>...</dt>
-      <dd><p>Other arguments passed on to <code>fun</code>. A common argument is
-<code>na.rm = TRUE</code>.</p></dd>
-      <dt>.desc</dt>
-      <dd><p>Order in descending order? Note the default is different
-between <code>fct_reorder</code> and <code>fct_reorder2</code>, in order to
-match the default ordering of factors in the legend.</p></dd>
+      <dd><p>Additional arguments to <code>fun</code>.</p></dd>
     </dl>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><img src='fct_reorder-2.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><img src='fct_reorder-4.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><img src='fct_reorder-6.png' alt='' width='540' height='400' /><div class='input'>
-<span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='fu'>subset</span>(<span class='no'>ChickWeight</span>, <span class='fu'>as.integer</span>(<span class='no'>Chick</span>) <span class='kw'>&lt;</span> <span class='fl'>10</span>)
-<span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='fu'>transform</span>(<span class='no'>chks</span>, <span class='kw'>Chick</span> <span class='kw'>=</span> <span class='fu'><a href='fct_shuffle.html'>fct_shuffle</a></span>(<span class='no'>Chick</span>))
+    <pre class="examples"><div class='input'><span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>gss_cat</span>$<span class='no'>rincome</span>)</div><div class='output co'>#&gt; # A tibble: 16 × 2
+#&gt;                 f     n
+#&gt;            &lt;fctr&gt; &lt;int&gt;
+#&gt; 1       No answer   183
+#&gt; 2      Don't know   267
+#&gt; 3         Refused   975
+#&gt; 4  $25000 or more  7363
+#&gt; 5  $20000 - 24999  1283
+#&gt; 6  $15000 - 19999  1048
+#&gt; 7  $10000 - 14999  1168
+#&gt; 8   $8000 to 9999   340
+#&gt; 9   $7000 to 7999   188
+#&gt; 10  $6000 to 6999   215
+#&gt; 11  $5000 to 5999   227
+#&gt; 12  $4000 to 4999   226
+#&gt; 13  $3000 to 3999   276
+#&gt; 14  $1000 to 2999   395
+#&gt; 15       Lt $1000   286
+#&gt; 16 Not applicable  7043</div><div class='input'>
+<span class='no'>convert_income</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>) {
+  <span class='no'>regex</span> <span class='kw'>&lt;-</span> <span class='st'>"^(?:Lt |)[$]([0-9]+).*$"</span>
+  <span class='no'>is_range</span> <span class='kw'>&lt;-</span> <span class='fu'>grepl</span>(<span class='no'>regex</span>, <span class='no'>x</span>)
+  <span class='no'>num_income</span> <span class='kw'>&lt;-</span> <span class='fu'>as.numeric</span>(<span class='fu'>gsub</span>(<span class='no'>regex</span>, <span class='st'>"\\1"</span>, <span class='no'>x</span>[<span class='no'>is_range</span>]))
+  <span class='no'>num_income</span> <span class='kw'>&lt;-</span> <span class='fu'>trunc</span>(<span class='no'>num_income</span> / <span class='fl'>5000</span>) * <span class='fl'>5000</span>
+  <span class='no'>x</span>[<span class='no'>is_range</span>] <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(<span class='st'>"Gt $"</span>, <span class='no'>num_income</span>)
+  <span class='no'>x</span>
+}
 
-<span class='kw'>if</span> (<span class='fu'>require</span>(<span class='st'>"ggplot2"</span>)) {
-<span class='fu'>ggplot</span>(<span class='no'>chks</span>, <span class='fu'>aes</span>(<span class='no'>Time</span>, <span class='no'>weight</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>Chick</span>)) +
-  <span class='fu'>geom_point</span>() +
-  <span class='fu'>geom_line</span>()
-
-<span class='co'># Note that lines match order in legend</span>
-<span class='fu'>ggplot</span>(<span class='no'>chks</span>, <span class='fu'>aes</span>(<span class='no'>Time</span>, <span class='no'>weight</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='fu'>fct_reorder2</span>(<span class='no'>Chick</span>, <span class='no'>Time</span>, <span class='no'>weight</span>))) +
-  <span class='fu'>geom_point</span>() +
-  <span class='fu'>geom_line</span>() +
-  <span class='fu'>labs</span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"Chick"</span>)
-}</div><img src='fct_reorder-8.png' alt='' width='540' height='400' /></pre>
+<span class='fu'>convert_income</span>(<span class='fu'>levels</span>(<span class='no'>gss_cat</span>$<span class='no'>rincome</span>))</div><div class='output co'>#&gt;  [1] "No answer"      "Don't know"     "Refused"        "Gt $25000"     
+#&gt;  [5] "Gt $20000"      "Gt $15000"      "Gt $10000"      "Gt $5000"      
+#&gt;  [9] "Gt $5000"       "Gt $5000"       "Gt $5000"       "Gt $0"         
+#&gt; [13] "Gt $0"          "Gt $0"          "Gt $0"          "Not applicable"</div><div class='input'>
+<span class='no'>rincome2</span> <span class='kw'>&lt;-</span> <span class='fu'>fct_relabel</span>(<span class='no'>gss_cat</span>$<span class='no'>rincome</span>, <span class='no'>convert_income</span>)
+<span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>rincome2</span>)</div><div class='output co'>#&gt; # A tibble: 10 × 2
+#&gt;                 f     n
+#&gt;            &lt;fctr&gt; &lt;int&gt;
+#&gt; 1       No answer   183
+#&gt; 2      Don't know   267
+#&gt; 3         Refused   975
+#&gt; 4       Gt $25000  7363
+#&gt; 5       Gt $20000  1283
+#&gt; 6       Gt $15000  1048
+#&gt; 7       Gt $10000  1168
+#&gt; 8        Gt $5000   970
+#&gt; 9           Gt $0  1183
+#&gt; 10 Not applicable  7043</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

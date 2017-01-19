@@ -99,7 +99,7 @@ be one new level for each old level.
 include the old levels.</p>
     
 
-    <pre><span class='fu'>lvls_reorder</span>(<span class='no'>f</span>, <span class='no'>idx</span>)
+    <pre><span class='fu'>lvls_reorder</span>(<span class='no'>f</span>, <span class='no'>idx</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
 
 <span class='fu'>lvls_revalue</span>(<span class='no'>f</span>, <span class='no'>new_levels</span>)
 
@@ -111,6 +111,9 @@ include the old levels.</p>
       <dd><p>A factor</p></dd>
       <dt>idx</dt>
       <dd><p>A integer index, with one integer for each existing level</p></dd>
+      <dt>ordered</dt>
+      <dd><p>A logical which determines the "ordered" status of the
+output factor. <code>NA</code> preserves the existing status of the factor.</p></dd>
       <dt>new_levels</dt>
       <dd><p>A character vector of new levels</p></dd>
     </dl>

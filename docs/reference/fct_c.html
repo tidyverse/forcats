@@ -96,17 +96,26 @@
 that really should have the same levels but don't.</p>
     
 
-    <pre><span class='fu'>fct_c</span>(<span class='no'>fs</span>)</pre>
+    <pre><span class='fu'>fct_c</span>(<span class='no'>fs</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>fs</dt>
-      <dd><p>A list of factors</p></dd>
+      <dd><p>A factor, or list of factors.</p></dd>
+      <dt>...</dt>
+      <dd><p>Individual factors</p></dd>
     </dl>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>fs</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='fu'>factor</span>(<span class='st'>"a"</span>), <span class='fu'>factor</span>(<span class='st'>"b"</span>), <span class='fu'>factor</span>(<span class='fu'>c</span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>)))
+    <pre class="examples"><div class='input'><span class='no'>fa</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='st'>"a"</span>)
+<span class='no'>fb</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='st'>"b"</span>)
+<span class='no'>fab</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='fu'>c</span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>))
+
+<span class='fu'>c</span>(<span class='no'>fa</span>, <span class='no'>fb</span>, <span class='no'>fab</span>)</div><div class='output co'>#&gt; [1] 1 1 1 2</div><div class='input'><span class='fu'>fct_c</span>(<span class='no'>fa</span>, <span class='no'>fb</span>, <span class='no'>fab</span>)</div><div class='output co'>#&gt; [1] a b a b
+#&gt; Levels: a b</div><div class='input'>
+<span class='co'># You can also pass a list of factors as the first argument</span>
+<span class='no'>fs</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='no'>fa</span>, <span class='no'>fb</span>, <span class='no'>fab</span>)
 <span class='fu'>fct_c</span>(<span class='no'>fs</span>)</div><div class='output co'>#&gt; [1] a b a b
 #&gt; Levels: a b</div></pre>
   </div>

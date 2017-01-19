@@ -92,15 +92,19 @@
     </div>
 
     
-    <p>Same as <code>droplevels()</code>, but with consistent name scheme.</p>
+    <p>Compared to <code>base::droplevels()</code> does not drop <code>NA</code> levels that have values.</p>
     
 
-    <pre><span class='fu'>fct_drop</span>(<span class='no'>f</span>)</pre>
+    <pre><span class='fu'>fct_drop</span>(<span class='no'>f</span>, <span class='no'>only</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>f</dt>
       <dd><p>A factor</p></dd>
+      <dt>only</dt>
+      <dd><p>A character vector restricting the set of levels to be dropped.
+If supplied, only levels that have no entries and appear in this vector
+will be removed.</p></dd>
     </dl>
     
 
@@ -108,6 +112,10 @@
     <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='fu'>c</span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>), <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>))
 <span class='no'>f</span></div><div class='output co'>#&gt; [1] a b
 #&gt; Levels: a b c</div><div class='input'><span class='fu'>fct_drop</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; [1] a b
+#&gt; Levels: a b</div><div class='input'>
+<span class='co'># Set only to restrict which levels to drop</span>
+<span class='fu'>fct_drop</span>(<span class='no'>f</span>, <span class='kw'>only</span> <span class='kw'>=</span> <span class='st'>"a"</span>)</div><div class='output co'>#&gt; [1] a b
+#&gt; Levels: a b c</div><div class='input'><span class='fu'>fct_drop</span>(<span class='no'>f</span>, <span class='kw'>only</span> <span class='kw'>=</span> <span class='st'>"c"</span>)</div><div class='output co'>#&gt; [1] a b
 #&gt; Levels: a b</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

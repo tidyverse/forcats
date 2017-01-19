@@ -96,13 +96,24 @@
     <div id="forcats-0-1-1-9000" class="section level1">
 <h1 class="hasAnchor">
 <a href="#forcats-0-1-1-9000" class="anchor"> </a>forcats 0.1.1.9000</h1>
+<ul>
+<li><p>New <code><a href="../reference/fct_relabel.html">fct_relabel()</a></code> allows relabeling factor levels programmatically (#50, @krlmlr).</p></li>
+<li><p><code><a href="../reference/fct_drop.html">fct_drop()</a></code> gains <code>only</code> argument to restrict which levels are dropped (#69) and no longer adds <code>NA</code> level if not present (#52).</p></li>
+<li><p><code><a href="../reference/fct_relevel.html">fct_relevel()</a></code> gains <code>after</code> argument so you can also move levels to the end (or any other position you like) (#29).</p></li>
+<li><p>New <code><a href="../reference/as_factor.html">as_factor()</a></code> which behaves identically across platforms (#39).</p></li>
+<li><p><code><a href="../reference/fct_c.html">fct_c()</a></code> can take either a list of factors or individual factors (#42).</p></li>
+<li><p><code><a href="../reference/lvls.html">lvls_reorder()</a></code>, <code><a href="../reference/fct_inorder.html">fct_inorder()</a></code>, and <code><a href="../reference/fct_inorder.html">fct_infreq()</a></code> gain an <code>ordered</code> argument, allowing you to override the existing “ordered” status (#54).</p></li>
+<li><p><code><a href="../reference/fct_recode.html">fct_recode()</a></code> is now checks that each new value is of length 1 (#56).</p></li>
+</ul>
 </div>
     <div id="forcats-0-1-1" class="section level1">
 <h1 class="hasAnchor">
 <a href="#forcats-0-1-1" class="anchor"> </a>forcats 0.1.1</h1>
-<ul><li><p>Minor fixes for R CMD check</p></li>
+<ul>
+<li><p>Minor fixes for R CMD check</p></li>
 <li><p>Add package docs</p></li>
-</ul></div>
+</ul>
+</div>
     </div>
   </div>
 
