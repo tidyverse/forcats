@@ -72,12 +72,12 @@ fct_lump <- function(f, n, prop, other_level = "Other",
     }
   }
 
-  f <- lvls_revalue(f, new_levels)
-
-  # Place other at end
-  levels <- levels(f)
-  other_back <- c(setdiff(levels, other_level), intersect(levels, other_level))
-  lvls_reorder(f, match(other_back, levels))
+  if (other_level %in% new_levels) {
+    f <- lvls_revalue(f, new_levels)
+    fct_relevel(f, other_level, after = Inf)
+  } else {
+    f
+  }
 }
 
 # Lump together smallest groups, ensuring that the collective
