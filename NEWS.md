@@ -1,4 +1,4 @@
-# forcats 0.1.1.9000
+# forcats 0.2.0
 
 ## New functions
 

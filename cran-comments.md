@@ -1,10 +1,6 @@
-This is a minor release to fix a failing on R-oldrel.
-
-----
-
 ## Test environments
-* local OS X install, R 3.3.1
-* ubuntu 12.04 (on travis-ci), R 3.3.1
+* local OS X install, R 3.3.2
+* ubuntu 12.04 (on travis-ci), R 3.3.2
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -13,4 +9,6 @@ This is a minor release to fix a failing on R-oldrel.
 
 ## Reverse dependencies
 
-There are currently no reverse dependencies.
+I ran R CMD check on all 2 revdeps and did not find any problems. 
+
+Summary at https://github.com/tidyverse/forcats/tree/master/revdep
