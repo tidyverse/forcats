@@ -14,7 +14,7 @@ collapsing rare levels into other, 'anonymising', and manually 'recoding').
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://forcats.tidyverse.org}
+  \item \url{http://forcats.tidyverse.org}
   \item \url{https://github.com/tidyverse/forcats}
   \item Report bugs at \url{https://github.com/tidyverse/forcats/issues}
 }
