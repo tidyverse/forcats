@@ -56,3 +56,6 @@ fct_lump(x, n = 6)
 fct_lump(x, n = 6, ties.method = "max")
 
 }
+\seealso{
+\code{\link[=fct_other]{fct_other()}} to convert specified levels to other.
+}

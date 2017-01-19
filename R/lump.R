@@ -19,6 +19,7 @@
 #' @param ties.method A character string specifying how ties are
 #'   treated. See [rank()] for details
 #' @export
+#' @seealso [fct_other()] to convert specified levels to other.
 #' @examples
 #' x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
 #' x %>% table()
