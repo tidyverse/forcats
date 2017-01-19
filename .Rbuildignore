@@ -10,3 +10,4 @@
 ^logo\.png$
 ^_pkgdown\.yml$
 ^vignettes$
+^revdep$
