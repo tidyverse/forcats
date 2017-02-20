@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>forcats: Tools for Working with Categorical Variables (Factors) — forcats-package • forcats</title>
+<title>Replace levels with "other" — fct_other • forcats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -88,43 +88,64 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>forcats: Tools for Working with Categorical Variables (Factors)</h1>
+    <h1>Replace levels with "other"</h1>
     </div>
 
     
-    <p>Helpers for reordering factor levels (including moving
-specified levels to front, ordering by first appearance, reversing, and
-randomly shuffling), and tools for modifying factor levels (including
-collapsing rare levels into other, 'anonymising', and manually 'recoding').</p>
+    <p>Replace levels with "other"</p>
     
 
-        
+    <pre><span class='fu'>fct_other</span>(<span class='no'>f</span>, <span class='no'>keep</span>, <span class='no'>drop</span>, <span class='kw'>other_level</span> <span class='kw'>=</span> <span class='st'>"Other"</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <dl class="dl-horizontal">
+      <dt>f</dt>
+      <dd><p>A factor.</p></dd>
+      <dt>keep, drop</dt>
+      <dd><p><code>keep</code> will preserve listed levels, replacing all others
+<code>other_level</code>. <code>drop</code> will replace listed levels with <code>other_level</code>
+keep as they are.</p></dd>
+      <dt>other_level</dt>
+      <dd><p>Value of level used for "other" values. Always
+placed at end of levels.</p></dd>
+    </dl>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Useful links:</p><ul>
-<li><p><a href = 'http://forcats.tidyverse.org'>http://forcats.tidyverse.org</a></p></li>
-<li><p><a href = 'https://github.com/tidyverse/forcats'>https://github.com/tidyverse/forcats</a></p></li>
-<li><p>Report bugs at <a href = 'https://github.com/tidyverse/forcats/issues'>https://github.com/tidyverse/forcats/issues</a></p></li>
-</ul>
+    <p><code><a href='fct_lump.html'>fct_lump()</a></code> to automatically convert the rarest (or most
+common) levels to "other".</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='fu'>rep</span>(<span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>9</span>], <span class='kw'>times</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>40</span>, <span class='fl'>10</span>, <span class='fl'>5</span>, <span class='fl'>27</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>)))
+
+<span class='fu'>fct_other</span>(<span class='no'>x</span>, <span class='kw'>keep</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='st'>"B"</span>))</div><div class='output co'>#&gt;  [1] A     A     A     A     A     A     A     A     A     A     A     A    
+#&gt; [13] A     A     A     A     A     A     A     A     A     A     A     A    
+#&gt; [25] A     A     A     A     A     A     A     A     A     A     A     A    
+#&gt; [37] A     A     A     A     B     B     B     B     B     B     B     B    
+#&gt; [49] B     B     Other Other Other Other Other Other Other Other Other Other
+#&gt; [61] Other Other Other Other Other Other Other Other Other Other Other Other
+#&gt; [73] Other Other Other Other Other Other Other Other Other Other Other Other
+#&gt; [85] Other Other Other
+#&gt; Levels: A B Other</div><div class='input'><span class='fu'>fct_other</span>(<span class='no'>x</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='st'>"B"</span>))</div><div class='output co'>#&gt;  [1] Other Other Other Other Other Other Other Other Other Other Other Other
+#&gt; [13] Other Other Other Other Other Other Other Other Other Other Other Other
+#&gt; [25] Other Other Other Other Other Other Other Other Other Other Other Other
+#&gt; [37] Other Other Other Other Other Other Other Other Other Other Other Other
+#&gt; [49] Other Other C     C     C     C     C     D     D     D     D     D    
+#&gt; [61] D     D     D     D     D     D     D     D     D     D     D     D    
+#&gt; [73] D     D     D     D     D     D     D     D     D     D     E     F    
+#&gt; [85] G     H     I    
+#&gt; Levels: C D E F G H I Other</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#see-also">See also</a></li>
-          </ul>
-
-    <h2>Author</h2>
-    
-<strong>Maintainer</strong>: Hadley Wickham <a href='mailto:hadley@rstudio.com'>hadley@rstudio.com</a>
-
-Other contributors:
-<ul>
-<li><p>RStudio [copyright holder, funder]</p></li>
-</ul>
-
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
