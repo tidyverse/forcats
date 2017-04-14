@@ -84,13 +84,13 @@
 
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
-<a href="#overview" class="anchor"> </a>Overview</h2>
+<a href="#overview" class="anchor"></a>Overview</h2>
 <p>R uses <strong>factors</strong> to handle categorical variables, variables that have a fixed and known set of possible values. Historically, factors were much easier to work with than character vectors, so many base R functions automatically convert character vectors to factors. (For more historical context, I recommend <a href="http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/"><em>stringsAsFactors: An unauthorized biography</em></a> by Roger Peng, and <a href="http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh"><em>stringsAsFactors = &lt;sigh&gt;</em></a> by Thomas Lumley.) These days, making factors automatically is no longer so helpful, so packages in the <a href="http://tidyverse.org">tidyverse</a> never create them automatically.</p>
 <p>However, factors are still useful when you have true categorical data, and when you want to override the ordering of character vectors to improve display. The goal of the <strong>forcats</strong> package is to provide a suite of useful tools that solve common problems with factors. If you’re not familiar with strings, the best place to start is the <a href="http://r4ds.had.co.nz/factors.html">chapter on factors</a> in R for Data Science.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation" class="anchor"> </a>Installation</h2>
+<a href="#installation" class="anchor"></a>Installation</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The easiest way to get forcats is to install the whole tidyverse:</span>
 <span class="kw">install.packages</span>(<span class="st">"tidyverse"</span>)
 
@@ -103,7 +103,7 @@ devtools::<span class="kw">install_github</span>(<span class="st">"tidyverse/for
 </div>
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
-<a href="#getting-started" class="anchor"> </a>Getting started</h2>
+<a href="#getting-started" class="anchor"></a>Getting started</h2>
 <p>forcats is not part of the core tidyverse, so you need to load it explicitly:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 <span class="kw">library</span>(forcats)</code></pre></div>
@@ -166,14 +166,12 @@ month_levels &lt;-<span class="st"> </span><span class="kw">c</span>(
 <li>
 <a href="https://www.rstudio.com"><img src="http://tidyverse.org/rstudio-logo.svg" height="24"></a> <br><small class="roles"> Copyright holder, funder </small> </li>
 </ul>
-<html><body>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=forcats"><img src="http://www.r-pkg.org/badges/version/forcats" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://travis-ci.org/tidyverse/forcats"><img src="https://travis-ci.org/tidyverse/forcats.svg?branch=master" alt="Travis-CI Build Status"></a></li>
 <li><a href="https://codecov.io/github/tidyverse/forcats?branch=master"><img src="https://img.shields.io/codecov/c/github/tidyverse/forcats/master.svg" alt="Coverage Status"></a></li>
 </ul>
-</body></html>
 </div>
 
 </div>

@@ -29,7 +29,9 @@ reference:
     - fct_anon
     - fct_collapse
     - fct_lump
+    - fct_other
     - fct_recode
+    - fct_relabel
 
   - title: Add new levels
     desc: >
@@ -40,6 +42,7 @@ reference:
 
   - title: Other helpers
     contents:
+    - as_factor
     - fct_c
     - fct_count
     - fct_unify

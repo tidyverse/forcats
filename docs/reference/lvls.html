@@ -102,24 +102,33 @@ be one new level for each old level.
 include the old levels.</p>
     
 
-    <pre><span class='fu'>lvls_reorder</span>(<span class='no'>f</span>, <span class='no'>idx</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
+    <pre class="usage"><span class='fu'>lvls_reorder</span>(<span class='no'>f</span>, <span class='no'>idx</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
 
 <span class='fu'>lvls_revalue</span>(<span class='no'>f</span>, <span class='no'>new_levels</span>)
 
 <span class='fu'>lvls_expand</span>(<span class='no'>f</span>, <span class='no'>new_levels</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>f</dt>
-      <dd><p>A factor</p></dd>
-      <dt>idx</dt>
-      <dd><p>A integer index, with one integer for each existing level</p></dd>
-      <dt>ordered</dt>
-      <dd><p>A logical which determines the "ordered" status of the
-output factor. <code>NA</code> preserves the existing status of the factor.</p></dd>
-      <dt>new_levels</dt>
-      <dd><p>A character vector of new levels</p></dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>f</th>
+      <td><p>A factor</p></td>
+    </tr>
+    <tr>
+      <th>idx</th>
+      <td><p>A integer index, with one integer for each existing level</p></td>
+    </tr>
+    <tr>
+      <th>ordered</th>
+      <td><p>A logical which determines the "ordered" status of the
+output factor. <code>NA</code> preserves the existing status of the factor.</p></td>
+    </tr>
+    <tr>
+      <th>new_levels</th>
+      <td><p>A character vector of new levels</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 

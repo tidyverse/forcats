@@ -98,15 +98,19 @@
     <p>Lump together least/most common factor levels into "other"</p>
     
 
-    <pre><span class='fu'>fct_lump</span>(<span class='no'>f</span>, <span class='no'>n</span>, <span class='no'>prop</span>, <span class='kw'>other_level</span> <span class='kw'>=</span> <span class='st'>"Other"</span>, <span class='kw'>ties.method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"min"</span>,
+    <pre class="usage"><span class='fu'>fct_lump</span>(<span class='no'>f</span>, <span class='no'>n</span>, <span class='no'>prop</span>, <span class='kw'>other_level</span> <span class='kw'>=</span> <span class='st'>"Other"</span>, <span class='kw'>ties.method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"min"</span>,
   <span class='st'>"average"</span>, <span class='st'>"first"</span>, <span class='st'>"last"</span>, <span class='st'>"random"</span>, <span class='st'>"max"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>f</dt>
-      <dd><p>A factor.</p></dd>
-      <dt>n, prop</dt>
-      <dd><p>If both <code>n</code> and <code>prop</code> are missing, <code>fct_lump</code> lumps
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>f</th>
+      <td><p>A factor.</p></td>
+    </tr>
+    <tr>
+      <th>n, prop</th>
+      <td><p>If both <code>n</code> and <code>prop</code> are missing, <code>fct_lump</code> lumps
 together the least frequent levels into "other", while ensuring that
 "other" is still the smallest level. It's particularly useful in
 conjunction with <code><a href='fct_inorder.html'>fct_inorder</a>()</code>.</p>
@@ -115,14 +119,19 @@ Negative <code>n</code> preserves the least common <code>-n</code> values.
 It there are ties, you will get at least <code>abs(n)</code> values.</p>
 <p>Positive <code>prop</code>, preserves values that appear at least
 <code>prop</code> of the time. Negative <code>prop</code>, preserves values that
-appear at most <code>-prop</code> of the time.</p></dd>
-      <dt>other_level</dt>
-      <dd><p>Value of level used for "other" values. Always
-placed at end of levels.</p></dd>
-      <dt>ties.method</dt>
-      <dd><p>A character string specifying how ties are
-treated. See <code>rank()</code> for details</p></dd>
-    </dl>
+appear at most <code>-prop</code> of the time.</p></td>
+    </tr>
+    <tr>
+      <th>other_level</th>
+      <td><p>Value of level used for "other" values. Always
+placed at end of levels.</p></td>
+    </tr>
+    <tr>
+      <th>ties.method</th>
+      <td><p>A character string specifying how ties are
+treated. See <code>rank()</code> for details</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

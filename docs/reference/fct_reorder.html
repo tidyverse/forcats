@@ -100,29 +100,40 @@ position; <code>fct_reorder2</code> for 2d displays where the factor is mapped t
 a non-position aesthetic.</p>
     
 
-    <pre><span class='fu'>fct_reorder</span>(<span class='no'>f</span>, <span class='no'>x</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>median</span>, <span class='no'>...</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>fct_reorder</span>(<span class='no'>f</span>, <span class='no'>x</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>median</span>, <span class='no'>...</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>fct_reorder2</span>(<span class='no'>f</span>, <span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>last2</span>, <span class='no'>...</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>f</dt>
-      <dd><p>A factor</p></dd>
-      <dt>x, y</dt>
-      <dd><p>The levels of <code>f</code> are reordered so that the values
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>f</th>
+      <td><p>A factor</p></td>
+    </tr>
+    <tr>
+      <th>x, y</th>
+      <td><p>The levels of <code>f</code> are reordered so that the values
 of <code>fun(x)</code> (for <code>fct_reorder()</code>) and <code>fun(x, y)</code> (for <code>fct_reorder2()</code>)
-are in ascending order.</p></dd>
-      <dt>fun</dt>
-      <dd><p>An summary function. It should take one vector for
-<code>fct_reorder</code>, and two vectors for <code>fct_reorder2</code>.</p></dd>
-      <dt>...</dt>
-      <dd><p>Other arguments passed on to <code>fun</code>. A common argument is
-<code>na.rm = TRUE</code>.</p></dd>
-      <dt>.desc</dt>
-      <dd><p>Order in descending order? Note the default is different
+are in ascending order.</p></td>
+    </tr>
+    <tr>
+      <th>fun</th>
+      <td><p>An summary function. It should take one vector for
+<code>fct_reorder</code>, and two vectors for <code>fct_reorder2</code>.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other arguments passed on to <code>fun</code>. A common argument is
+<code>na.rm = TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>.desc</th>
+      <td><p>Order in descending order? Note the default is different
 between <code>fct_reorder</code> and <code>fct_reorder2</code>, in order to
-match the default ordering of factors in the legend.</p></dd>
-    </dl>
+match the default ordering of factors in the legend.</p></td>
+    </tr>
+    </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
