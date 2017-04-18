@@ -28,6 +28,13 @@ test_that("can just remove levels", {
   expect_equal(fct_recode(f1, NULL = "missing"), f2)
 })
 
+test_that("can pass arguments as list", {
+  f1 <- factor(c("a", "b", "c"))
+  f2 <- factor(c("y", "y", "z"))
+  args <- list(y="a", y="b")
+  
+  expect_equal(fct_recode(f1, args, z="c"))
+})
 
 # check_recode_levels -----------------------------------------------------
 
