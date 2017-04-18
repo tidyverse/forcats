@@ -1,6 +1,8 @@
 #' Change factor levels by hand
 #'
 #' @param f A factor.
+#' @param .levels A list of named character vectors where the
+#'.  name gives the new level and the value gives the old level.
 #' @param ... A sequence of named character vectors where the
 #'   name gives the new level, and the value gives the old level.
 #'   Levels not otherwise mentioned will be left as is. Levels can
@@ -9,6 +11,9 @@
 #' @examples
 #' x <- factor(c("apple", "bear", "banana", "dear"))
 #' fct_recode(x, fruit = "apple", fruit = "banana")
+#' 
+#' recoding <- list(fruit="apple", fruit="banana")
+#' fct_recode(x, recoding)
 #'
 #' # If you make a mistake you'll get a warning
 #' fct_recode(x, fruit = "apple", fruit = "bananana")
