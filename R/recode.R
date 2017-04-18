@@ -15,10 +15,16 @@
 #'
 #' # If you name the level NULL it will be removed
 #' fct_recode(x, NULL = "apple", fruit = "banana")
-fct_recode <- function(f, ...) {
+fct_recode <- function(f, .levels, ...) {
   f <- check_factor(f)
 
-  new_levels <- check_recode_levels(...)
+  if (missing(.levels)) {
+    .levels = list(...)
+  } else {
+    .levels <- c(.levels, list(...))
+  }
+  
+  new_levels <- check_recode_levels(.levels)
 
   # Remove any named NULL and finish if all NULLs
   nulls <- names(new_levels) == "NULL"
@@ -45,8 +51,7 @@ fct_recode <- function(f, ...) {
   lvls_revalue(f, old_levels)
 }
 
-check_recode_levels <- function(...) {
-  levels <- list(...)
+check_recode_levels <- function(levels) {
 
   is_ok <- function(x) is.character(x) && length(x) == 1
   ok <- vapply(levels, is_ok, logical(1))
