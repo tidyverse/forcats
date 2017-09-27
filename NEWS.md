@@ -1,5 +1,7 @@
 # forcats 0.2.0.9000
 
+* `as_factor()` and `fct_inorder()` accept NA levels (#98).
+
 # forcats 0.2.0
 
 ## New functions
