@@ -82,7 +82,9 @@ last2 <- function(x, y) {
 fct_inorder <- function(f, ordered = NA) {
   f <- check_factor(f)
 
-  lvls_reorder(f, as.integer(f)[!duplicated(f)], ordered = ordered)
+  idx <- as.integer(f)[!duplicated(f)]
+  idx <- idx[!is.na(idx)]
+  lvls_reorder(f, idx, ordered = ordered)
 }
 
 #' @export
