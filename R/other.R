@@ -2,8 +2,8 @@
 #'
 #' @inheritParams fct_lump
 #' @param keep,drop `keep` will preserve listed levels, replacing all others
-#'   `other_level`. `drop` will replace listed levels with `other_level`
-#'   keep as they are.
+#'   with `other_level`. `drop` will replace listed levels with `other_level`,
+#'   keeping all others as they are.
 #' @seealso [fct_lump()] to automatically convert the rarest (or most
 #'    common) levels to "other".
 #' @export
