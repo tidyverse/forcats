@@ -11,13 +11,13 @@
 #'   Negative `n` preserves the least common `-n` values.
 #'   It there are ties, you will get at least `abs(n)` values.
 #'
-#'   Positive `prop`, preserves values that appear at least
-#'   `prop` of the time. Negative `prop`, preserves values that
+#'   Positive `prop` preserves values that appear at least
+#'   `prop` of the time. Negative `prop` preserves values that
 #'   appear at most `-prop` of the time.
 #' @param other_level Value of level used for "other" values. Always
 #'   placed at end of levels.
 #' @param ties.method A character string specifying how ties are
-#'   treated. See [rank()] for details
+#'   treated. See [rank()] for details.
 #' @export
 #' @seealso [fct_other()] to convert specified levels to other.
 #' @examples
