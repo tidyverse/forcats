@@ -19,15 +19,15 @@ Positive \code{n} preserves the most common \code{n} values.
 Negative \code{n} preserves the least common \code{-n} values.
 It there are ties, you will get at least \code{abs(n)} values.
 
-Positive \code{prop}, preserves values that appear at least
-\code{prop} of the time. Negative \code{prop}, preserves values that
+Positive \code{prop} preserves values that appear at least
+\code{prop} of the time. Negative \code{prop} preserves values that
 appear at most \code{-prop} of the time.}
 
 \item{other_level}{Value of level used for "other" values. Always
 placed at end of levels.}
 
 \item{ties.method}{A character string specifying how ties are
-treated. See \code{\link[=rank]{rank()}} for details}
+treated. See \code{\link[=rank]{rank()}} for details.}
 }
 \description{
 Lump together least/most common factor levels into "other"
