@@ -3,7 +3,7 @@
 #' `lvls_reorder` leaves values as they are, but changes the order.
 #' `lvls_revalue` changes the values of existing levels; there must
 #' be one new level for each old level.
-#' `lvls_extend` extends the set of levels; the new level must
+#' `lvls_expand` expands the set of levels; the new levels must
 #' include the old levels.
 #'
 #' These functions are less helpful than the higher-level `fct_` functions,
