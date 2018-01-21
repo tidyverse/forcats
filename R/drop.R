@@ -1,6 +1,6 @@
 #' Drop unused levels
 #'
-#' Compared to `base::droplevels()` does not drop `NA` levels that have values.
+#' Compared to `base::droplevels()`, does not drop `NA` levels that have values.
 #'
 #' @param f A factor.
 #' @param only A character vector restricting the set of levels to be dropped.

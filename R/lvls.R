@@ -1,6 +1,6 @@
 #' Low-level functions for manipulating levels
 #'
-#' `lvls_reorder` leaves values as is, but changes the order.
+#' `lvls_reorder` leaves values as they are, but changes the order.
 #' `lvls_revalue` changes the values of existing levels; there must
 #' be one new level for each old level.
 #' `lvls_extend` extends the set of levels; the new level must

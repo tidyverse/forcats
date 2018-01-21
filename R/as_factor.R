@@ -1,8 +1,8 @@
 #' Convert input to a factor.
 #'
 #' Compared to base R, this function creates levels in the order in which
-#' they appear, which will be the same on every platform (base R sorts in
-#' the current locale which can vary from place to place).
+#' they appear, which will be the same on every platform. (Base R sorts in
+#' the current locale which can vary from place to place.)
 #'
 #' This is a generic function.
 #'
