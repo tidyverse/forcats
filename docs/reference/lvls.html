@@ -95,10 +95,10 @@
     </div>
 
     
-    <p><code>lvls_reorder</code> leaves values as is, but changes the order.
+    <p><code>lvls_reorder</code> leaves values as they are, but changes the order.
 <code>lvls_revalue</code> changes the values of existing levels; there must
 be one new level for each old level.
-<code>lvls_extend</code> extends the set of levels; the new level must
+<code>lvls_expand</code> expands the set of levels; the new levels must
 include the old levels.</p>
     
 
@@ -113,11 +113,11 @@ include the old levels.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>f</th>
-      <td><p>A factor</p></td>
+      <td><p>A factor.</p></td>
     </tr>
     <tr>
       <th>idx</th>
-      <td><p>A integer index, with one integer for each existing level</p></td>
+      <td><p>A integer index, with one integer for each existing level.</p></td>
     </tr>
     <tr>
       <th>ordered</th>
@@ -126,7 +126,7 @@ output factor. <code>NA</code> preserves the existing status of the factor.</p><
     </tr>
     <tr>
       <th>new_levels</th>
-      <td><p>A character vector of new levels</p></td>
+      <td><p>A character vector of new levels.</p></td>
     </tr>
     </table>
     

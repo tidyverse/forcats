@@ -7,7 +7,7 @@
 fct_unique(f)
 }
 \arguments{
-\item{f}{A factor}
+\item{f}{A factor.}
 }
 \description{
 Unique values of a factor

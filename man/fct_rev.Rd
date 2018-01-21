@@ -7,10 +7,10 @@
 fct_rev(f)
 }
 \arguments{
-\item{f}{A factor}
+\item{f}{A factor.}
 }
 \description{
-This is sometimes useful when plotting a factor
+This is sometimes useful when plotting a factor.
 }
 \examples{
 f <- factor(c("a", "b", "c"))
