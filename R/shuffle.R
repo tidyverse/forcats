@@ -1,6 +1,6 @@
 #' Randomly permute factor levels
 #'
-#' @param f A factor
+#' @param f A factor.
 #' @export
 #' @examples
 #' f <- factor(c("a", "b", "c"))

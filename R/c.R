@@ -4,7 +4,7 @@
 #' that really should have the same levels but don't.
 #'
 #' @param fs A factor, or list of factors.
-#' @param ... Individual factors
+#' @param ... Individual factors.
 #' @export
 #' @examples
 #' fa <- factor("a")

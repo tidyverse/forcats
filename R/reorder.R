@@ -4,7 +4,7 @@
 #' position; `fct_reorder2` for 2d displays where the factor is mapped to
 #' a non-position aesthetic.
 #'
-#' @param f A factor
+#' @param f A factor.
 #' @param x,y The levels of `f` are reordered so that the values
 #'    of `fun(x)` (for `fct_reorder()`) and `fun(x, y)` (for `fct_reorder2()`)
 #'    are in ascending order.

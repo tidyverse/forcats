@@ -1,6 +1,6 @@
 #' Unique values of a factor
 #'
-#' @param f A factor
+#' @param f A factor.
 #' @export
 #' @examples
 #' f <- factor(letters[rpois(100, 10)])

@@ -11,9 +11,9 @@
 #' because they are more specific, and hence can more carefully check their
 #' arguments.
 #'
-#' @param f A factor
-#' @param idx A integer index, with one integer for each existing level
-#' @param new_levels A character vector of new levels
+#' @param f A factor.
+#' @param idx A integer index, with one integer for each existing level.
+#' @param new_levels A character vector of new levels.
 #' @param ordered A logical which determines the "ordered" status of the
 #'   output factor. `NA` preserves the existing status of the factor.
 #' @name lvls
