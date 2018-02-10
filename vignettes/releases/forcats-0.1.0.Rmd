@@ -115,6 +115,7 @@ by_age <- gss_cat %>%
   filter(!is.na(age)) %>%
   group_by(age, marital) %>%
   count() %>%
+  ungroup() %>%  
   mutate(prop = n / sum(n))
 
 ggplot(by_age, aes(age, prop)) +
