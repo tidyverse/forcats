@@ -10,17 +10,18 @@ Description: Helpers for reordering factor levels (including moving
     randomly shuffling), and tools for modifying factor levels (including
     collapsing rare levels into other, 'anonymising', and manually 'recoding').
 License: GPL-3
-Encoding: UTF-8
-LazyData: true
 URL: http://forcats.tidyverse.org, https://github.com/tidyverse/forcats
 BugReports: https://github.com/tidyverse/forcats/issues
-Depends: R (>= 2.10)
-Imports:
-    tibble,
-    magrittr
+Depends: 
+    R (>= 2.10)
+Imports: 
+    magrittr,
+    tibble
+Suggests: 
+    covr,
+    ggplot2,
+    testthat
+Encoding: UTF-8
+LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
-Suggests:
-    ggplot2,
-    testthat,
-    covr
