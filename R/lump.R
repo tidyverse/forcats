@@ -14,6 +14,8 @@
 #'   Positive `prop` preserves values that appear at least
 #'   `prop` of the time. Negative `prop` preserves values that
 #'   appear at most `-prop` of the time.
+#' @param weights An optional numeric vector giving weights for frequency of
+#'   each value (not level) in f.
 #' @param other_level Value of level used for "other" values. Always
 #'   placed at end of levels.
 #' @param ties.method A character string specifying how ties are
@@ -39,20 +41,36 @@
 #' fct_lump(x, n = -3)
 #' fct_lump(x, prop = -0.1)
 #'
+#' # Use weighted frequencies
+#' w <- c(rep(2, 50), rep(1, 50))
+#' fct_lump(x, n = 5, weights = w)
+#'
 #' # Use ties.method to control how tied factors are collapsed
 #' fct_lump(x, n = 6)
 #' fct_lump(x, n = 6, ties.method = "max")
 #'
-fct_lump <- function(f, n, prop, other_level = "Other",
+fct_lump <- function(f, n, prop, weights = NULL, other_level = "Other",
                      ties.method = c("min", "average", "first", "last", "random", "max")) {
   f <- check_factor(f)
   ties.method <- match.arg(ties.method)
 
+  if (!is.null(weights)) {
+    if (!is.numeric(weights)) {
+      stop("`weights` must be a numeric vector", call. = FALSE)
+    } else if (length(f) != length(weights)) {
+      stop("Different lengths of `f` and `weights`", call. = FALSE)
+    }
+  }
+
   levels <- levels(f)
-  count <- table(f)
+  if (is.null(weights)) {
+    count <- table(f)
+  } else {
+    count <- tapply(weights, f, FUN = sum)
+  }
 
   if (!xor(missing(n), missing(prop))) {
-    new_levels <- ifelse(!in_smallest(table(f)), levels, other_level)
+    new_levels <- ifelse(!in_smallest(count), levels, other_level)
   } else if (!missing(n)) {
     if (n < 0) {
       rank <- rank(count, ties = ties.method)
