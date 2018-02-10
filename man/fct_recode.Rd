@@ -4,10 +4,13 @@
 \alias{fct_recode}
 \title{Change factor levels by hand}
 \usage{
-fct_recode(f, ...)
+fct_recode(f, .levels, ...)
 }
 \arguments{
 \item{f}{A factor.}
+
+\item{.levels}{A list of named character vectors where the
+.  name gives the new level and the value gives the old level.}
 
 \item{...}{A sequence of named character vectors where the
 name gives the new level, and the value gives the old level.
@@ -20,6 +23,9 @@ Change factor levels by hand
 \examples{
 x <- factor(c("apple", "bear", "banana", "dear"))
 fct_recode(x, fruit = "apple", fruit = "banana")
+
+recoding <- list(fruit="apple", fruit="banana")
+fct_recode(x, recoding)
 
 # If you make a mistake you'll get a warning
 fct_recode(x, fruit = "apple", fruit = "bananana")

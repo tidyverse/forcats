@@ -1,6 +1,8 @@
 #' Change factor levels by hand
 #'
 #' @param f A factor.
+#' @param .levels A list of named character vectors where the
+#'.  name gives the new level and the value gives the old level.
 #' @param ... A sequence of named character vectors where the
 #'   name gives the new level, and the value gives the old level.
 #'   Levels not otherwise mentioned will be left as is. Levels can
@@ -9,16 +11,25 @@
 #' @examples
 #' x <- factor(c("apple", "bear", "banana", "dear"))
 #' fct_recode(x, fruit = "apple", fruit = "banana")
+#' 
+#' recoding <- list(fruit="apple", fruit="banana")
+#' fct_recode(x, recoding)
 #'
 #' # If you make a mistake you'll get a warning
 #' fct_recode(x, fruit = "apple", fruit = "bananana")
 #'
 #' # If you name the level NULL it will be removed
 #' fct_recode(x, NULL = "apple", fruit = "banana")
-fct_recode <- function(f, ...) {
+fct_recode <- function(f, .levels, ...) {
   f <- check_factor(f)
 
-  new_levels <- check_recode_levels(...)
+  if (missing(.levels)) {
+    .levels = list(...)
+  } else {
+    .levels <- c(.levels, list(...))
+  }
+  
+  new_levels <- check_recode_levels(.levels)
 
   # Remove any named NULL and finish if all NULLs
   nulls <- names(new_levels) == "NULL"
@@ -45,8 +56,7 @@ fct_recode <- function(f, ...) {
   lvls_revalue(f, old_levels)
 }
 
-check_recode_levels <- function(...) {
-  levels <- list(...)
+check_recode_levels <- function(levels) {
 
   is_ok <- function(x) is.character(x) && length(x) == 1
   ok <- vapply(levels, is_ok, logical(1))

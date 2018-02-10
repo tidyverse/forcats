@@ -28,13 +28,20 @@ test_that("can just remove levels", {
   expect_equal(fct_recode(f1, NULL = "missing"), f2)
 })
 
+test_that("can pass arguments as list", {
+  f1 <- factor(c("a", "b", "c"))
+  f2 <- factor(c("y", "y", "z"))
+  args <- list(y="a", y="b")
+  
+  expect_equal(fct_recode(f1, args, z="c"), f2)
+})
 
 # check_recode_levels -----------------------------------------------------
 
 test_that("new levels must be character", {
-  expect_error(check_recode_levels(a = 1), "Problems at positions: 1")
+  expect_error(check_recode_levels(list(a = 1)), "Problems at positions: 1")
 })
 
 test_that("new levels must be length 1", {
-  expect_error(check_recode_levels(a = c("a", "b")), "Problems at positions: 1")
+  expect_error(check_recode_levels(list(a = c("a", "b"))), "Problems at positions: 1")
 })
