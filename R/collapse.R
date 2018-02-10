@@ -15,9 +15,11 @@
 #'   dem = c("Not str democrat", "Strong democrat")
 #' )
 #' fct_count(partyid2)
-fct_collapse <- function(f, ...) {
+fct_collapse <- function(f, ..., other_level = "Other") {
   new <- list(...)
-
+  
+  new[[other_level]] <- setdiff(levels(f), unlist(new))
+  
   levs <- as.list(unlist(new, use.names = FALSE))
   names(levs) <- names(new)[rep(seq_along(new), vapply(new, length, integer(1)))]
 
