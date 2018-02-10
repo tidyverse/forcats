@@ -7,7 +7,6 @@
 ^docs$
 ^README\.Rmd$
 ^README-.*\.png$
-^logo\.png$
 ^_pkgdown\.yml$
 ^vignettes$
 ^revdep$
