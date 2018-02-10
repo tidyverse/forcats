@@ -1,6 +1,6 @@
 #' Automatically relabel factor levels, collapse as necessary
 #'
-#' @param f A factor
+#' @param f A factor.
 #' @param fun A function that is applied to each level. Must accept one
 #'   character argument and return a character vector of the same length as its
 #'   input.

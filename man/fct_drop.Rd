@@ -7,14 +7,14 @@
 fct_drop(f, only)
 }
 \arguments{
-\item{f}{A factor}
+\item{f}{A factor.}
 
 \item{only}{A character vector restricting the set of levels to be dropped.
 If supplied, only levels that have no entries and appear in this vector
 will be removed.}
 }
 \description{
-Compared to \code{base::droplevels()} does not drop \code{NA} levels that have values.
+Compared to \code{base::droplevels()}, does not drop \code{NA} levels that have values.
 }
 \examples{
 f <- factor(c("a", "b"), levels = c("a", "b", "c"))

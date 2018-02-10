@@ -1,10 +1,10 @@
 #' Concatenate factors, combining levels
 #'
-#' This is useful way of patching together factors from multiple sources
+#' This is a useful way of patching together factors from multiple sources
 #' that really should have the same levels but don't.
 #'
 #' @param fs A factor, or list of factors.
-#' @param ... Individual factors
+#' @param ... Individual factors.
 #' @export
 #' @examples
 #' fa <- factor("a")

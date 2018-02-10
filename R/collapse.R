@@ -1,6 +1,6 @@
 #' Collapse factor levels into manually defined groups
 #'
-#' @param f A factor
+#' @param f A factor.
 #' @param ... A series of named character vectors. The levels in
 #'   each vector will be replaced with the name.
 #' @export

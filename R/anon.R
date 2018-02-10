@@ -3,7 +3,7 @@
 #' Replaces factor levels with arbitary numeric identifiers. Neither
 #' the values nor the order of the levels are preserved.
 #'
-#' @param f A factor
+#' @param f A factor.
 #' @param prefix A character prefix to insert in front of the random labels.
 #' @export
 #' @examples

@@ -14,20 +14,20 @@ lvls_revalue(f, new_levels)
 lvls_expand(f, new_levels)
 }
 \arguments{
-\item{f}{A factor}
+\item{f}{A factor.}
 
-\item{idx}{A integer index, with one integer for each existing level}
+\item{idx}{A integer index, with one integer for each existing level.}
 
 \item{ordered}{A logical which determines the "ordered" status of the
 output factor. \code{NA} preserves the existing status of the factor.}
 
-\item{new_levels}{A character vector of new levels}
+\item{new_levels}{A character vector of new levels.}
 }
 \description{
-\code{lvls_reorder} leaves values as is, but changes the order.
+\code{lvls_reorder} leaves values as they are, but changes the order.
 \code{lvls_revalue} changes the values of existing levels; there must
 be one new level for each old level.
-\code{lvls_extend} extends the set of levels; the new level must
+\code{lvls_expand} expands the set of levels; the new levels must
 include the old levels.
 }
 \details{

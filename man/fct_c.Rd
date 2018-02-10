@@ -9,10 +9,10 @@ fct_c(fs, ...)
 \arguments{
 \item{fs}{A factor, or list of factors.}
 
-\item{...}{Individual factors}
+\item{...}{Individual factors.}
 }
 \description{
-This is useful way of patching together factors from multiple sources
+This is a useful way of patching together factors from multiple sources
 that really should have the same levels but don't.
 }
 \examples{

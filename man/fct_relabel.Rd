@@ -7,7 +7,7 @@
 fct_relabel(f, fun, ...)
 }
 \arguments{
-\item{f}{A factor}
+\item{f}{A factor.}
 
 \item{fun}{A function that is applied to each level. Must accept one
 character argument and return a character vector of the same length as its

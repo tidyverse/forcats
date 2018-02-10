@@ -7,7 +7,7 @@
 fct_anon(f, prefix = "")
 }
 \arguments{
-\item{f}{A factor}
+\item{f}{A factor.}
 
 \item{prefix}{A character prefix to insert in front of the random labels.}
 }

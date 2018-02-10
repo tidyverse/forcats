@@ -7,13 +7,13 @@
 fct_count(f, sort = FALSE)
 }
 \arguments{
-\item{f}{A factor}
+\item{f}{A factor.}
 
-\item{sort}{If \code{TRUE}, sort the result so that most common values
+\item{sort}{If \code{TRUE}, sort the result so that the most common values
 float to the top.}
 }
 \value{
-A tibble with columns \code{f} and \code{n}
+A tibble with columns \code{f} and \code{n}.
 }
 \description{
 Count entries in a factor

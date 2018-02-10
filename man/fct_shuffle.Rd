@@ -7,7 +7,7 @@
 fct_shuffle(f)
 }
 \arguments{
-\item{f}{A factor}
+\item{f}{A factor.}
 }
 \description{
 Randomly permute factor levels

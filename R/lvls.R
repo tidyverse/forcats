@@ -1,9 +1,9 @@
 #' Low-level functions for manipulating levels
 #'
-#' `lvls_reorder` leaves values as is, but changes the order.
+#' `lvls_reorder` leaves values as they are, but changes the order.
 #' `lvls_revalue` changes the values of existing levels; there must
 #' be one new level for each old level.
-#' `lvls_extend` extends the set of levels; the new level must
+#' `lvls_expand` expands the set of levels; the new levels must
 #' include the old levels.
 #'
 #' These functions are less helpful than the higher-level `fct_` functions,
@@ -11,9 +11,9 @@
 #' because they are more specific, and hence can more carefully check their
 #' arguments.
 #'
-#' @param f A factor
-#' @param idx A integer index, with one integer for each existing level
-#' @param new_levels A character vector of new levels
+#' @param f A factor.
+#' @param idx A integer index, with one integer for each existing level.
+#' @param new_levels A character vector of new levels.
 #' @param ordered A logical which determines the "ordered" status of the
 #'   output factor. `NA` preserves the existing status of the factor.
 #' @name lvls
