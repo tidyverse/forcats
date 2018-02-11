@@ -23,14 +23,14 @@ Positive \code{prop} preserves values that appear at least
 \code{prop} of the time. Negative \code{prop} preserves values that
 appear at most \code{-prop} of the time.}
 
+\item{w}{An optional numeric vector giving weights for frequency of
+each value (not level) in f.}
+
 \item{other_level}{Value of level used for "other" values. Always
 placed at end of levels.}
 
 \item{ties.method}{A character string specifying how ties are
 treated. See \code{\link[=rank]{rank()}} for details.}
-
-\item{weights}{An optional numeric vector giving weights for frequency of
-each value (not level) in f.}
 }
 \description{
 Lump together least/most common factor levels into "other"
@@ -56,7 +56,7 @@ fct_lump(x, prop = -0.1)
 
 # Use weighted frequencies
 w <- c(rep(2, 50), rep(1, 50))
-fct_lump(x, n = 5, weights = w)
+fct_lump(x, n = 5, w = w)
 
 # Use ties.method to control how tied factors are collapsed
 fct_lump(x, n = 6)

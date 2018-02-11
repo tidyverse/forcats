@@ -14,7 +14,7 @@
 #'   Positive `prop` preserves values that appear at least
 #'   `prop` of the time. Negative `prop` preserves values that
 #'   appear at most `-prop` of the time.
-#' @param weights An optional numeric vector giving weights for frequency of
+#' @param w An optional numeric vector giving weights for frequency of
 #'   each value (not level) in f.
 #' @param other_level Value of level used for "other" values. Always
 #'   placed at end of levels.
@@ -43,7 +43,7 @@
 #'
 #' # Use weighted frequencies
 #' w <- c(rep(2, 50), rep(1, 50))
-#' fct_lump(x, n = 5, weights = w)
+#' fct_lump(x, n = 5, w = w)
 #'
 #' # Use ties.method to control how tied factors are collapsed
 #' fct_lump(x, n = 6)
