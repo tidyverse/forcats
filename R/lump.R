@@ -49,26 +49,19 @@
 #' fct_lump(x, n = 6)
 #' fct_lump(x, n = 6, ties.method = "max")
 #'
-fct_lump <- function(f, n, prop, weights = NULL, other_level = "Other",
+fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
                      ties.method = c("min", "average", "first", "last", "random", "max")) {
   f <- check_factor(f)
+  w <- check_weights(w, length(f))
   ties.method <- match.arg(ties.method)
 
-  if (!is.null(weights)) {
-    if (!is.numeric(weights)) {
-      stop("`weights` must be a numeric vector", call. = FALSE)
-    } else if (length(f) != length(weights)) {
-      stop("Different lengths of `f` and `weights`", call. = FALSE)
-    }
-  }
-
   levels <- levels(f)
-  if (is.null(weights)) {
+  if (is.null(w)) {
     count <- as.vector(table(f))
     total <- length(f)
   } else {
-    count <- as.vector(tapply(weights, f, FUN = sum))
-    total <- sum(weights)
+    count <- as.vector(tapply(w, f, FUN = sum))
+    total <- sum(w)
   }
 
   if (!xor(missing(n), missing(prop))) {
@@ -126,4 +119,32 @@ in_smallest <- function(x) {
   to_lump <- seq_along(x) >= idx
   # Undo initial ordering
   to_lump[order(ord_x)]
+}
+
+check_weights <- function(w, n = length(w)) {
+  if (is.null(w)) {
+    return(w)
+  }
+
+  if (!is.numeric(w)) {
+    stop("`w` must be a numeric vector", call. = FALSE)
+  }
+
+  if (length(w) != n) {
+    stop(
+      "`w` must be the same length as `f` (", n, "), not length ", length(w),
+      call. = FALSE
+    )
+  }
+
+  bad <- w < 0 | is.na(w)
+  if (any(bad)) {
+    stop(
+      "All `w` must be non-negative and non-missing. Problems at positions: ",
+      paste0(which(bad), collapse = ", "),
+      call. = FALSE
+    )
+  }
+
+  w
 }

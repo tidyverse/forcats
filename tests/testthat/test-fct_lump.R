@@ -61,29 +61,14 @@ test_that("NAs included in total", {
   o1 <- fct_lump(f, prop = 0.10)
   expect_equal(levels(o1), c("a", "Other"))
 
-  o2 <- fct_lump(f, weights = rep(1, 10), prop = 0.10)
+  o2 <- fct_lump(f, w = rep(1, 10), prop = 0.10)
   expect_equal(levels(o2), c("a", "Other"))
 })
 
 test_that("bad weights generate error messages", {
-  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
-
-  w <- c(
-    "one",
-    "three",
-    "four",
-    "five",
-    "nine",
-    "twenty",
-    "three",
-    "seven",
-    "twelve",
-    "two"
-  )
-  expect_error(fct_lump(f, n = 2, weight = w), "must be a numeric vector")
-
-  w <- c(1, 2, 3, 4, 5, 6, 7, 8, 9)
-  expect_error(fct_lump(f, n = 4, weight = w), "Different lengths")
+  expect_error(fct_lump(letters, w = letters), "must be a numeric vector")
+  expect_error(fct_lump(letters, w = 1:10), "must be the same length")
+  expect_error(fct_lump(letters, w = rep(-1, 26)), "must be non-negative")
 })
 
 test_that("values are correctly weighted", {
@@ -99,25 +84,25 @@ test_that("values are correctly weighted", {
     "g"
   )
 
-  expect_equal(levels(fct_lump(f, weights = w)), levels(fct_lump(f2)))
+  expect_equal(levels(fct_lump(f, w = w)), levels(fct_lump(f2)))
   expect_equal(
-    levels(fct_lump(f, n = 1, weights = w)),
+    levels(fct_lump(f, n = 1, w = w)),
     levels(fct_lump(f2, n = 1))
   )
   expect_equal(
-    levels(fct_lump(f, n = -2, weights = w, ties.method = "first")),
+    levels(fct_lump(f, n = -2, w = w, ties.method = "first")),
     levels(fct_lump(f2, n = -2, ties.method = "first"))
   )
   expect_equal(
-    levels(fct_lump(f, n = 99, weights = w)),
+    levels(fct_lump(f, n = 99, w = w)),
     levels(fct_lump(f2, n = 99))
   )
   expect_equal(
-    levels(fct_lump(f, prop = 0.01, weights = w)),
+    levels(fct_lump(f, prop = 0.01, w = w)),
     levels(fct_lump(f2, prop = 0.01))
   )
   expect_equal(
-    levels(fct_lump(f, prop = -0.25, weights = w, ties.method = "max")),
+    levels(fct_lump(f, prop = -0.25, w = w, ties.method = "max")),
     levels(fct_lump(f2, prop = -0.25, ties.method = "max"))
   )
 })
