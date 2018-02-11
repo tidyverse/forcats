@@ -1,5 +1,7 @@
 # forcats 0.2.0.9000
 
+* `fct_drop()` now preserves attributes (#83).
+
 * `lvls_revalue()` preserves NA levels.
 
 * `fct_lump()` correctly acccounts for `NA` values in input (#41)

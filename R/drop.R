@@ -26,5 +26,5 @@ fct_drop <- function(f, only) {
     to_drop <- intersect(to_drop, only)
   }
 
-  factor(f, levels = setdiff(levels, to_drop))
+  refactor(f, new_levels = setdiff(levels, to_drop))
 }
