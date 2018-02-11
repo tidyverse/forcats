@@ -1,8 +1,9 @@
 #' Reorder factor levels by sorting along another variable
 #'
-#' `fct_reorder` is useful for 1d displays where the factor is mapped to
-#' position; `fct_reorder2` for 2d displays where the factor is mapped to
-#' a non-position aesthetic.
+#' `fct_reorder()` is useful for 1d displays where the factor is mapped to
+#' position; `fct_reorder2()` for 2d displays where the factor is mapped to
+#' a non-position aesthetic. `last2()` is a helper for `fct_reorder2()`;
+#' it finds the last value of `y` when sorted by `x`.
 #'
 #' @param f A factor.
 #' @param x,y The levels of `f` are reordered so that the values
@@ -62,6 +63,8 @@ fct_reorder2 <- function(f, x, y, fun = last2, ..., .desc = TRUE) {
   lvls_reorder(f, order(summary, decreasing = .desc))
 }
 
+#' @export
+#' @rdname fct_reorder
 last2 <- function(x, y) {
   y[order(x, na.last = FALSE)][length(y)]
 }

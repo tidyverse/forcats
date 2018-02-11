@@ -4,7 +4,7 @@
 \alias{fct_lump}
 \title{Lump together least/most common factor levels into "other"}
 \usage{
-fct_lump(f, n, prop, weights = NULL, other_level = "Other",
+fct_lump(f, n, prop, w = NULL, other_level = "Other",
   ties.method = c("min", "average", "first", "last", "random", "max"))
 }
 \arguments{
@@ -23,14 +23,14 @@ Positive \code{prop} preserves values that appear at least
 \code{prop} of the time. Negative \code{prop} preserves values that
 appear at most \code{-prop} of the time.}
 
-\item{weights}{An optional numeric vector giving weights for frequency of
-each value (not level) in f.}
-
 \item{other_level}{Value of level used for "other" values. Always
 placed at end of levels.}
 
 \item{ties.method}{A character string specifying how ties are
 treated. See \code{\link[=rank]{rank()}} for details.}
+
+\item{weights}{An optional numeric vector giving weights for frequency of
+each value (not level) in f.}
 }
 \description{
 Lump together least/most common factor levels into "other"

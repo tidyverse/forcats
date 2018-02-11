@@ -3,11 +3,14 @@
 \name{fct_reorder}
 \alias{fct_reorder}
 \alias{fct_reorder2}
+\alias{last2}
 \title{Reorder factor levels by sorting along another variable}
 \usage{
 fct_reorder(f, x, fun = median, ..., .desc = FALSE)
 
 fct_reorder2(f, x, y, fun = last2, ..., .desc = TRUE)
+
+last2(x, y)
 }
 \arguments{
 \item{f}{A factor.}
@@ -27,9 +30,10 @@ between \code{fct_reorder} and \code{fct_reorder2}, in order to
 match the default ordering of factors in the legend.}
 }
 \description{
-\code{fct_reorder} is useful for 1d displays where the factor is mapped to
-position; \code{fct_reorder2} for 2d displays where the factor is mapped to
-a non-position aesthetic.
+\code{fct_reorder()} is useful for 1d displays where the factor is mapped to
+position; \code{fct_reorder2()} for 2d displays where the factor is mapped to
+a non-position aesthetic. \code{last2()} is a helper for \code{fct_reorder2()};
+it finds the last value of \code{y} when sorted by \code{x}.
 }
 \examples{
 boxplot(Sepal.Width ~ Species, data = iris)
