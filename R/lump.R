@@ -64,9 +64,9 @@ fct_lump <- function(f, n, prop, weights = NULL, other_level = "Other",
 
   levels <- levels(f)
   if (is.null(weights)) {
-    count <- table(f)
+    count <- as.vector(table(f))
   } else {
-    count <- tapply(weights, f, FUN = sum)
+    count <- as.vector(tapply(weights, f, FUN = sum))
   }
 
   if (!xor(missing(n), missing(prop))) {
