@@ -55,6 +55,16 @@ test_that("different behaviour when apply tie function", {
   }
 })
 
+test_that("NAs included in total", {
+  f <- factor(c("a", "a", "b", rep(NA, 7)))
+
+  o1 <- fct_lump(f, prop = 0.10)
+  expect_equal(levels(o1), c("a", "Other"))
+
+  o2 <- fct_lump(f, weights = rep(1, 10), prop = 0.10)
+  expect_equal(levels(o2), c("a", "Other"))
+})
+
 test_that("bad weights generate error messages", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
 
