@@ -5,7 +5,7 @@
 #' a non-position aesthetic. `last2()` is a helper for `fct_reorder2()`;
 #' it finds the last value of `y` when sorted by `x`.
 #'
-#' @param f A factor.
+#' @param f A factor (or character vector).
 #' @param x,y The levels of `f` are reordered so that the values
 #'    of `fun(x)` (for `fct_reorder()`) and `fun(x, y)` (for `fct_reorder2()`)
 #'    are in ascending order.

@@ -7,7 +7,7 @@
 fct_expand(f, ...)
 }
 \arguments{
-\item{f}{A factor.}
+\item{f}{A factor (or character vector).}
 
 \item{...}{Additional levels to add to the factor.  Levels that already
 exist will be silently ignored.}

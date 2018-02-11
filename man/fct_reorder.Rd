@@ -13,7 +13,7 @@ fct_reorder2(f, x, y, fun = last2, ..., .desc = TRUE)
 last2(x, y)
 }
 \arguments{
-\item{f}{A factor.}
+\item{f}{A factor (or character vector).}
 
 \item{x, y}{The levels of \code{f} are reordered so that the values
 of \code{fun(x)} (for \code{fct_reorder()}) and \code{fun(x, y)} (for \code{fct_reorder2()})

@@ -7,7 +7,7 @@
 fct_relevel(f, ..., after = 0L)
 }
 \arguments{
-\item{f}{A factor.}
+\item{f}{A factor (or character vector).}
 
 \item{...}{Character vector of levels. Any levels not mentioned will be left
 in existing order, after the explicitly mentioned levels.}

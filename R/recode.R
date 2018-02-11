@@ -1,6 +1,6 @@
 #' Change factor levels by hand
 #'
-#' @param f A factor.
+#' @param f A factor (or character vector).
 #' @param ... A sequence of named character vectors where the
 #'   name gives the new level, and the value gives the old level.
 #'   Levels not otherwise mentioned will be left as is. Levels can

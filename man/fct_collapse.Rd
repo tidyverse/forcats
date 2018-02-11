@@ -7,7 +7,7 @@
 fct_collapse(f, ...)
 }
 \arguments{
-\item{f}{A factor.}
+\item{f}{A factor (or character vector).}
 
 \item{...}{A series of named character vectors. The levels in
 each vector will be replaced with the name.}

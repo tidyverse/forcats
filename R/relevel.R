@@ -3,7 +3,7 @@
 #' This is a generalisaton of [stats::relevel()] that allows you to move any
 #' number of levels to any location.
 #'
-#' @param f A factor.
+#' @param f A factor (or character vector).
 #' @param ... Character vector of levels. Any levels not mentioned will be left
 #'   in existing order, after the explicitly mentioned levels.
 #' @param after Where should the new values be placed?

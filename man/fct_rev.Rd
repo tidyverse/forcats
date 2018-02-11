@@ -7,7 +7,7 @@
 fct_rev(f)
 }
 \arguments{
-\item{f}{A factor.}
+\item{f}{A factor (or character vector).}
 }
 \description{
 This is sometimes useful when plotting a factor.

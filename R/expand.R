@@ -1,6 +1,6 @@
 #' Add additional levels to a factor
 #'
-#' @param f A factor.
+#' @param f A factor (or character vector).
 #' @param ... Additional levels to add to the factor.  Levels that already
 #'    exist will be silently ignored.
 #' @export
