@@ -51,11 +51,23 @@ lvls_revalue <- function(f, new_levels) {
     stop(
       "`new_levels` must be the same length as `levels(f)`: expected ",
       nlevels(f), " new levels, got ", length(new_levels), ".",
-      call. = FALSE)
+      call. = FALSE
+    )
   }
 
-  levels(f) <- new_levels
-  f
+  if (anyDuplicated(new_levels)) {
+    # Collapse levels, creating a new factor
+    u_levels <- unique(new_levels)
+    index <- match(new_levels, u_levels)
+
+    out <- index[f]
+    attributes(out) <- attributes(f)
+    attr(out, "levels") <- u_levels
+    out
+  } else {
+    attr(f, "levels") <- new_levels
+    f
+  }
 }
 
 #' @export

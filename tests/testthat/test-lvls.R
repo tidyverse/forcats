@@ -24,6 +24,19 @@ test_that("changes values and levels", {
   expect_equal(lvls_revalue(f1, c("b", "a")), f2)
 })
 
+test_that("can collapse values", {
+  f1 <- factor(c("a", "b"))
+  f2 <- factor(c("a", "a"))
+
+  expect_equal(lvls_revalue(f1, c("a", "a")), f2)
+})
+
+test_that("preserves missing values", {
+  f1 <- factor(c("a", NA), exclude = NULL)
+  f2 <- lvls_revalue(f1, levels(f1))
+  expect_equal(levels(f2), levels(f1))
+})
+
 test_that("`new_levels` must be a character", {
   f1 <- factor(c("a", "b"))
   expect_error(lvls_revalue(f1, 1:5), "character vector")
