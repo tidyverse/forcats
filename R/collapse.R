@@ -1,6 +1,6 @@
 #' Collapse factor levels into manually defined groups
 #'
-#' @param f A factor.
+#' @param .f A factor.
 #' @param ... A series of named character vectors. The levels in
 #'   each vector will be replaced with the name.
 #' @export
@@ -15,11 +15,11 @@
 #'   dem = c("Not str democrat", "Strong democrat")
 #' )
 #' fct_count(partyid2)
-fct_collapse <- function(f, ...) {
-  new <- list(...)
+fct_collapse <- function(.f, ...) {
+  new <- rlang::dots_list(...)
 
   levs <- as.list(unlist(new, use.names = FALSE))
   names(levs) <- names(new)[rep(seq_along(new), vapply(new, length, integer(1)))]
 
-  do.call(fct_recode, c(list(quote(f)), levs))
+  fct_recode(.f, !!!levs)
 }

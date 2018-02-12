@@ -3,8 +3,8 @@
 #' This is a useful way of patching together factors from multiple sources
 #' that really should have the same levels but don't.
 #'
-#' @param fs A factor, or list of factors.
-#' @param ... Individual factors.
+#' @param ... Individual factors. Uses tidy dots, so you can splice in a list
+#'   of factors with `!!!`.
 #' @export
 #' @examples
 #' fa <- factor("a")
@@ -14,15 +14,11 @@
 #' c(fa, fb, fab)
 #' fct_c(fa, fb, fab)
 #'
-#' # You can also pass a list of factors as the first argument
+#' # You can also pass a list of factors with !!!
 #' fs <- list(fa, fb, fab)
-#' fct_c(fs)
-fct_c <- function(fs, ...) {
-  if (is.list(fs)) {
-    fs <- c(fs, list(...))
-  } else {
-    fs <- c(list(fs), list(...))
-  }
+#' fct_c(!!!fs)
+fct_c <- function(...) {
+  fs <- rlang::dots_list(...)
   fs <- check_factor_list(fs)
 
   if (length(fs) == 0) {
@@ -30,7 +26,7 @@ fct_c <- function(fs, ...) {
   }
 
   levels <- lvls_union(fs)
-  all <- unlist(fct_unify(fs, levels))
+  all <- unlist(fct_unify(fs, levels), use.names = FALSE)
   factor(all, levels = levels, exclude = NULL)
 }
 

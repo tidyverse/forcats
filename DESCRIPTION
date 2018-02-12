@@ -16,6 +16,7 @@ Depends:
     R (>= 3.1)
 Imports: 
     magrittr,
+    rlang,
     tibble
 Suggests: 
     covr,

@@ -4,10 +4,10 @@
 \alias{fct_collapse}
 \title{Collapse factor levels into manually defined groups}
 \usage{
-fct_collapse(f, ...)
+fct_collapse(.f, ...)
 }
 \arguments{
-\item{f}{A factor.}
+\item{.f}{A factor.}
 
 \item{...}{A series of named character vectors. The levels in
 each vector will be replaced with the name.}
