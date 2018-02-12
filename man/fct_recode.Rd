@@ -7,7 +7,7 @@
 fct_recode(.f, ...)
 }
 \arguments{
-\item{.f}{A factor.}
+\item{.f}{A factor (or character vector).}
 
 \item{...}{A sequence of named character vectors where the
 name gives the new level, and the value gives the old level.

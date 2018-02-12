@@ -5,11 +5,11 @@
 #' a non-position aesthetic. `last2()` is a helper for `fct_reorder2()`;
 #' it finds the last value of `y` when sorted by `x`.
 #'
-#' @param .f A factor.
-#' @param .x,.y The levels of `.f` are reordered so that the values
-#'    of `.fun(.x)` (for `fct_reorder()`) and `.fun(.x, .y)`
-#'    (for `fct_reorder2()`) are in ascending order.
-#' @param .fun An summary function. It should take one vector for
+#' @param .f A factor (or character vector).
+#' @param .x,.y The levels of `f` are reordered so that the values
+#'    of `.fun(.x)` (for `fct_reorder()`) and `fun(.x, .y)` (for `fct_reorder2()`)
+#'    are in ascending order.
+#' @param .fun n summary function. It should take one vector for
 #'   `fct_reorder`, and two vectors for `fct_reorder2`.
 #' @param ... Other arguments passed on to `.fun`. A common argument is
 #'   `na.rm = TRUE`.

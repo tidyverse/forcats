@@ -7,7 +7,7 @@
 fct_count(f, sort = FALSE)
 }
 \arguments{
-\item{f}{A factor.}
+\item{f}{A factor (or character vector).}
 
 \item{sort}{If \code{TRUE}, sort the result so that the most common values
 float to the top.}

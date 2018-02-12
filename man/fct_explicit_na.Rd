@@ -7,7 +7,7 @@
 fct_explicit_na(f, na_level = "(Missing)")
 }
 \arguments{
-\item{f}{A factor.}
+\item{f}{A factor (or character vector).}
 
 \item{na_level}{Level to use for missing values.}
 }

@@ -8,7 +8,7 @@ fct_lump(f, n, prop, w = NULL, other_level = "Other",
   ties.method = c("min", "average", "first", "last", "random", "max"))
 }
 \arguments{
-\item{f}{A factor.}
+\item{f}{A factor (or character vector).}
 
 \item{n, prop}{If both \code{n} and \code{prop} are missing, \code{fct_lump} lumps
 together the least frequent levels into "other", while ensuring that

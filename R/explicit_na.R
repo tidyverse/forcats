@@ -3,7 +3,7 @@
 #' This gives missing value an explicit factor level, ensuring that they
 #' appear in summaries and on plots.
 #'
-#' @param f A factor.
+#' @param f A factor (or character vector).
 #' @param na_level Level to use for missing values.
 #' @export
 #' @examples
