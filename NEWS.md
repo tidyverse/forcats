@@ -1,7 +1,7 @@
 # forcats 0.2.0.9000
 
-# `fct_relabel()` now accepts objects coercible to functions 
-  by `rlang::as_function` (#91)
+* `fct_relabel()` now accepts objects coercible to functions 
+  by `rlang::as_function` (#91, @alistaire47)
 
 * `fct_drop()` now preserves attributes (#83).
 

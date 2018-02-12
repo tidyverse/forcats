@@ -37,9 +37,11 @@ test_that("additional arguments", {
   expect_identical(fct_relabel(f1, paste0, "."), factor(paste0(letters, ".")))
 })
 
-test_that("function coercion", {
+test_that("formulas are coerced to functions", {
   f1 <- factor(letters)
 
-  expect_identical(fct_relabel(f1, ~paste0(.x, ".")),
-                   factor(paste0(letters, ".")))
+  expect_identical(
+    fct_relabel(f1, ~paste0(.x, ".")),
+    factor(paste0(letters, "."))
+  )
 })
