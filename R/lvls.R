@@ -11,7 +11,7 @@
 #' because they are more specific, and hence can more carefully check their
 #' arguments.
 #'
-#' @param f A factor.
+#' @param f A factor (or character vector).
 #' @param idx A integer index, with one integer for each existing level.
 #' @param new_levels A character vector of new levels.
 #' @param ordered A logical which determines the "ordered" status of the
@@ -73,6 +73,8 @@ lvls_revalue <- function(f, new_levels) {
 #' @export
 #' @rdname lvls
 lvls_expand <- function(f, new_levels) {
+  f <- check_factor(f)
+
   missing <- setdiff(levels(f), new_levels)
   if (length(missing) > 0) {
     stop(

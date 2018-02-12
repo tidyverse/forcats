@@ -15,11 +15,11 @@ last2(.x, .y)
 \arguments{
 \item{.f}{A factor (or character vector).}
 
-\item{.x, .y}{The levels of \code{.f} are reordered so that the values
-of \code{.fun(.x)} (for \code{fct_reorder()}) and \code{.fun(.x, .y)}
-(for \code{fct_reorder2()}) are in ascending order.}
+\item{.x, .y}{The levels of \code{f} are reordered so that the values
+of \code{.fun(.x)} (for \code{fct_reorder()}) and \code{fun(.x, .y)} (for \code{fct_reorder2()})
+are in ascending order.}
 
-\item{.fun}{An summary function. It should take one vector for
+\item{.fun}{n summary function. It should take one vector for
 \code{fct_reorder}, and two vectors for \code{fct_reorder2}.}
 
 \item{...}{Other arguments passed on to \code{.fun}. A common argument is

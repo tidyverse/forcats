@@ -14,7 +14,7 @@ lvls_revalue(f, new_levels)
 lvls_expand(f, new_levels)
 }
 \arguments{
-\item{f}{A factor.}
+\item{f}{A factor (or character vector).}
 
 \item{idx}{A integer index, with one integer for each existing level.}
 
