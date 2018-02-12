@@ -1,5 +1,17 @@
 # forcats 0.2.0.9000
 
+* [API] `fct_c()` now requires explicit splicing with `!!!` if you have a
+  list of factors that you want to combine. This is consistent with an emerging
+  standards for handling `...` throughout the tidyverse.
+
+* [API] `fct_reorder()` and `fct_reorder2()` have renamed `fun` to `.fun` to
+  avoid spurious matching of named arguments.
+
+* All functions that take `...` use "tidy" dots: this means that you use can
+  `!!!` to splice in a list of values, and trailing empty arguments are 
+  automatically removed. Additionally, all other arguments gain a `.` prefix
+  in order to avoid unhelpful matching of named arguments (#110).
+
 * `fct_drop()` now preserves attributes (#83).
 
 * `lvls_revalue()` preserves NA levels.
