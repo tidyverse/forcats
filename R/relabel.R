@@ -1,9 +1,9 @@
 #' Automatically relabel factor levels, collapse as necessary
 #'
 #' @param f A factor.
-#' @param fun A function that is applied to each level. Must accept one
-#'   character argument and return a character vector of the same length as its
-#'   input.
+#' @param fun A function or something coercible to one by [rlang::as_function()]
+#'   that is applied to each level. Must accept one character argument and
+#'   return a character vector of the same length as its input.
 #' @param ... Additional arguments to `fun`.
 #' @export
 #' @examples
@@ -22,10 +22,14 @@
 #'
 #' rincome2 <- fct_relabel(gss_cat$rincome, convert_income)
 #' fct_count(rincome2)
+#'
+#'
+#' fct_count(gss_cat$partyid)
+#'
+#' partyid2 <- fct_relabel(gss_cat$partyid, ~gsub(",", ", ", .x))
+#' fct_count(partyid2)
 fct_relabel <- function(f, fun, ...) {
-  if (!is.function(fun)) {
-    stop("Expected function, got ", class(fun)[[1L]], call. = FALSE)
-  }
+  fun <- rlang::as_function(fun)
 
   old_levels <- levels(f)
   new_levels <- fun(old_levels, ...)

@@ -9,9 +9,9 @@ fct_relabel(f, fun, ...)
 \arguments{
 \item{f}{A factor.}
 
-\item{fun}{A function that is applied to each level. Must accept one
-character argument and return a character vector of the same length as its
-input.}
+\item{fun}{A function or something coercible to one by \code{\link[rlang:as_function]{rlang::as_function()}}
+that is applied to each level. Must accept one character argument and
+return a character vector of the same length as its input.}
 
 \item{...}{Additional arguments to \code{fun}.}
 }
@@ -34,4 +34,10 @@ convert_income(levels(gss_cat$rincome))
 
 rincome2 <- fct_relabel(gss_cat$rincome, convert_income)
 fct_count(rincome2)
+
+
+fct_count(gss_cat$partyid)
+
+partyid2 <- fct_relabel(gss_cat$partyid, ~gsub(",", ", ", .x))
+fct_count(partyid2)
 }
