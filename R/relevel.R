@@ -3,9 +3,10 @@
 #' This is a generalisaton of [stats::relevel()] that allows you to move any
 #' number of levels to any location.
 #'
-#' @param f A factor.
+#' @param .f A factor (or character vector).
 #' @param ... Character vector of levels. Any levels not mentioned will be left
-#'   in existing order, after the explicitly mentioned levels.
+#'   in existing order, after the explicitly mentioned levels. Supports tidy
+#'   dots.
 #' @param after Where should the new values be placed?
 #' @export
 #' @examples
@@ -31,12 +32,10 @@
 #'
 #' # You'll get a warning if the levels don't exist
 #' fct_relevel(f, "e")
-fct_relevel <- function(f, ..., after = 0L) {
-  f <- check_factor(f)
+fct_relevel <- function(.f, ..., after = 0L) {
+  f <- check_factor(.f)
 
-  first_levels <- c(..., character())
-  stopifnot(is.character(first_levels))
-
+  first_levels <- rlang::chr(...)
   old_levels <- levels(f)
 
   unknown <- setdiff(first_levels, old_levels)

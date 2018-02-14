@@ -4,12 +4,11 @@
 \alias{fct_c}
 \title{Concatenate factors, combining levels}
 \usage{
-fct_c(fs, ...)
+fct_c(...)
 }
 \arguments{
-\item{fs}{A factor, or list of factors.}
-
-\item{...}{Individual factors.}
+\item{...}{Individual factors. Uses tidy dots, so you can splice in a list
+of factors with \code{!!!}.}
 }
 \description{
 This is a useful way of patching together factors from multiple sources
@@ -23,7 +22,7 @@ fab <- factor(c("a", "b"))
 c(fa, fb, fab)
 fct_c(fa, fb, fab)
 
-# You can also pass a list of factors as the first argument
+# You can also pass a list of factors with !!!
 fs <- list(fa, fb, fab)
-fct_c(fs)
+fct_c(!!!fs)
 }

@@ -2,7 +2,7 @@
 #'
 #' Compared to `base::droplevels()`, does not drop `NA` levels that have values.
 #'
-#' @param f A factor.
+#' @param f A factor (or character vector).
 #' @param only A character vector restricting the set of levels to be dropped.
 #'   If supplied, only levels that have no entries and appear in this vector
 #'   will be removed.

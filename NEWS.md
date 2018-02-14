@@ -3,13 +3,29 @@
 * `fct_relabel()` now accepts objects coercible to functions 
   by `rlang::as_function` (#91, @alistaire47)
 
+* Increase test coverage from 80% to 99%.
+
+* `fct_explicit_na()` also replaces NAs encoded in levels.
+
+* [API] `fct_c()` now requires explicit splicing with `!!!` if you have a
+  list of factors that you want to combine. This is consistent with an emerging
+  standards for handling `...` throughout the tidyverse.
+
+* [API] `fct_reorder()` and `fct_reorder2()` have renamed `fun` to `.fun` to
+  avoid spurious matching of named arguments.
+
+* All functions that take `...` use "tidy" dots: this means that you use can
+  `!!!` to splice in a list of values, and trailing empty arguments are 
+  automatically removed. Additionally, all other arguments gain a `.` prefix
+  in order to avoid unhelpful matching of named arguments (#110).
+
 * `fct_drop()` now preserves attributes (#83).
 
 * `lvls_revalue()` preserves NA levels.
 
 * `fct_lump()` correctly acccounts for `NA` values in input (#41)
 
-* `fct_expand()` correctly handles character vectors (#99).
+* `fct_expand()` and `lvls_expand()` now also take character vectors (#99).
 
 * `as_factor()` and `fct_inorder()` accept NA levels (#98).
 

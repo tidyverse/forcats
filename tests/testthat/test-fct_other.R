@@ -14,3 +14,10 @@ test_that("drops levels in drop", {
   # other always placed at end
   expect_equal(levels(x2), c("b", "Other"))
 })
+
+test_that("must supply exactly one of drop and keep", {
+  f <- factor(c("a", "b"))
+
+  expect_error(fct_other(f), "supply one of")
+  expect_error(fct_other(f, keep = "a", drop = "a"), "supply one of")
+})

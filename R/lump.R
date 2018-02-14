@@ -1,6 +1,6 @@
 #' Lump together least/most common factor levels into "other"
 #'
-#' @param f A factor.
+#' @param f A factor (or character vector).
 #' @param n,prop
 #'   If both `n` and `prop` are missing, `fct_lump` lumps
 #'   together the least frequent levels into "other", while ensuring that

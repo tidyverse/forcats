@@ -4,12 +4,12 @@
 \alias{fct_relabel}
 \title{Automatically relabel factor levels, collapse as necessary}
 \usage{
-fct_relabel(f, fun, ...)
+fct_relabel(.f, .fun, ...)
 }
 \arguments{
-\item{f}{A factor.}
+\item{.f}{A factor.}
 
-\item{fun}{A bare or character function name or an actual function in
+\item{.fun}{A bare or character function name or an actual function in
 formula, quosure, or ordinary notation to be applied to each level. Must
 accept one character argument and return a character vector of the same
 length as its input.}

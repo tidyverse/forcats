@@ -24,11 +24,11 @@
 #' convert_income(levels(gss_cat$rincome))
 #' rincome2 <- fct_relabel(gss_cat$rincome, convert_income)
 #' fct_count(rincome2)
-fct_relabel <- function(f, fun, ...) {
-  fun <- rlang::as_function(fun)
+fct_relabel <- function(.f, .fun, ...) {
+  .fun <- rlang::as_function(.fun)
 
-  old_levels <- levels(f)
-  new_levels <- fun(old_levels, ...)
+  old_levels <- levels(.f)
+  new_levels <- .fun(old_levels, ...)
 
-  lvls_revalue(f, new_levels)
+  lvls_revalue(.f, new_levels)
 }

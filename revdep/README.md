@@ -1,40 +1,57 @@
-# Setup
+# Platform
 
-## Platform
-
-|setting  |value                        |
+|field    |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.3.2 (2016-10-31) |
-|system   |x86_64, darwin13.4.0         |
-|ui       |RStudio (1.0.136)            |
+|version  |R version 3.4.2 (2017-09-28) |
+|os       |macOS High Sierra 10.13.3    |
+|system   |x86_64, darwin15.6.0         |
+|ui       |X11                          |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Chicago              |
-|date     |2017-01-19                   |
+|date     |2018-02-12                   |
 
-## Packages
+# Dependencies
 
-|package  |*  |version    |date       |source                       |
-|:--------|:--|:----------|:----------|:----------------------------|
-|covr     |   |2.2.2      |2017-01-05 |cran (@2.2.2)                |
-|forcats  |*  |0.1.1.9000 |2017-01-19 |local (tidyverse/forcats@NA) |
-|ggplot2  |*  |2.2.1      |2016-12-30 |cran (@2.2.1)                |
-|magrittr |   |1.5        |2014-11-22 |cran (@1.5)                  |
-|testthat |*  |1.0.2      |2016-04-23 |cran (@1.0.2)                |
-|tibble   |*  |1.2        |2016-08-26 |cran (@1.2)                  |
+|package    |old   |new        |Δ  |
+|:----------|:-----|:----------|:--|
+|forcats    |0.2.0 |0.2.0.9000 |*  |
+|assertthat |0.2.0 |0.2.0      |   |
+|cli        |1.0.0 |1.0.0      |   |
+|crayon     |1.3.4 |1.3.4      |   |
+|magrittr   |1.5   |1.5        |   |
+|pillar     |1.1.0 |1.1.0      |   |
+|rlang      |0.1.6 |0.1.6      |   |
+|tibble     |1.4.2 |1.4.2      |   |
+|utf8       |1.1.3 |1.1.3      |   |
 
-# Check results
-2 packages
+# Revdeps
 
-## tidyquant (0.2.0)
-Maintainer: Matt Dancho <mdancho@gmail.com>  
-Bug reports: https://github.com/mdancho84/tidyquant/issues
+## All (23)
 
-0 errors | 0 warnings | 0 notes
-
-## tidyverse (1.0.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/tidyverse/issues
-
-0 errors | 0 warnings | 0 notes
+|package                                        |version |error |warning |note |
+|:----------------------------------------------|:-------|:-----|:-------|:----|
+|bupaR                                          |0.3.2   |      |        |     |
+|descriptr                                      |0.4.0   |      |        |     |
+|evaluator                                      |0.1.1   |      |        |     |
+|factorMerger                                   |0.3.2   |      |        |     |
+|forwards                                       |0.1.0   |      |        |     |
+|ggjoy                                          |0.4.0   |      |        |     |
+|[ggridges](problems.md#ggridges)               |0.4.1   |      |        |1    |
+|glue                                           |1.2.0   |      |        |     |
+|[haven](problems.md#haven)                     |1.1.1   |      |        |2    |
+|iotables                                       |0.2.4   |      |        |     |
+|[MetamapsDB](problems.md#metamapsdb)           |0.0.2   |      |        |1    |
+|[naniar](problems.md#naniar)                   |0.2.0   |      |        |1    |
+|[noaastormevents](problems.md#noaastormevents) |0.1.0   |      |        |2    |
+|[nzelect](problems.md#nzelect)                 |0.4.0   |      |        |2    |
+|OutliersO3                                     |0.5.4   |      |        |     |
+|processmapR                                    |0.2.1   |      |        |     |
+|[questionr](problems.md#questionr)             |0.6.2   |      |        |2    |
+|[railtrails](problems.md#railtrails)           |0.0.3   |      |        |1    |
+|[sjPlot](problems.md#sjplot)                   |2.4.1   |      |        |1    |
+|[sweep](problems.md#sweep)                     |0.2.0   |      |        |1    |
+|[tidyquant](problems.md#tidyquant)             |0.5.3   |1     |2       |1    |
+|[tidyverse](problems.md#tidyverse)             |1.2.1   |      |1       |1    |
+|[timetk](problems.md#timetk)                   |0.1.0   |      |        |1    |
 

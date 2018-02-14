@@ -7,7 +7,7 @@
 fct_drop(f, only)
 }
 \arguments{
-\item{f}{A factor.}
+\item{f}{A factor (or character vector).}
 
 \item{only}{A character vector restricting the set of levels to be dropped.
 If supplied, only levels that have no entries and appear in this vector

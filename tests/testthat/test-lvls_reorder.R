@@ -7,6 +7,11 @@ test_that("changes levels, not values", {
   expect_equal(lvls_reorder(f1, 2:1), f2)
 })
 
+test_that("idx must be numeric", {
+  f <- factor(c("a", "b"))
+  expect_error(lvls_reorder(f, "a"), "must be numeric")
+})
+
 test_that("must have one integer per level", {
   f <- factor(c("a", "b", "c"))
 

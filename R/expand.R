@@ -1,6 +1,6 @@
 #' Add additional levels to a factor
 #'
-#' @param f A factor.
+#' @param f A factor (or character vector).
 #' @param ... Additional levels to add to the factor.  Levels that already
 #'    exist will be silently ignored.
 #' @export
@@ -12,8 +12,6 @@
 fct_expand <- function(f, ...) {
   f <- check_factor(f)
 
-  new_levels <- c(..., character())
-  stopifnot(is.character(new_levels))
-
+  new_levels <- rlang::chr(...)
   lvls_expand(f, union(levels(f), new_levels))
 }

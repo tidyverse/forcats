@@ -1,10 +1,10 @@
 #' Change factor levels by hand
 #'
-#' @param f A factor.
+#' @param .f A factor (or character vector).
 #' @param ... A sequence of named character vectors where the
 #'   name gives the new level, and the value gives the old level.
 #'   Levels not otherwise mentioned will be left as is. Levels can
-#'   be removed by naming them `NULL`.
+#'   be removed by naming them `NULL`. Uses tidy dots.
 #' @export
 #' @examples
 #' x <- factor(c("apple", "bear", "banana", "dear"))
@@ -15,8 +15,8 @@
 #'
 #' # If you name the level NULL it will be removed
 #' fct_recode(x, NULL = "apple", fruit = "banana")
-fct_recode <- function(f, ...) {
-  f <- check_factor(f)
+fct_recode <- function(.f, ...) {
+  f <- check_factor(.f)
 
   new_levels <- check_recode_levels(...)
 
@@ -46,7 +46,7 @@ fct_recode <- function(f, ...) {
 }
 
 check_recode_levels <- function(...) {
-  levels <- list(...)
+  levels <- rlang::dots_list(...)
 
   is_ok <- function(x) is.character(x) && length(x) == 1
   ok <- vapply(levels, is_ok, logical(1))
