@@ -9,10 +9,12 @@ fct_relabel(.f, .fun, ...)
 \arguments{
 \item{.f}{A factor.}
 
-\item{.fun}{A bare or character function name or an actual function in
-formula, quosure, or ordinary notation to be applied to each level. Must
-accept one character argument and return a character vector of the same
-length as its input.}
+\item{.fun}{A function to be applied to each level. Must accept one
+character argument and return a character vector of the same length as
+its input.
+
+You can also use \code{~} to create as shorthand (in the style of purrr).
+\code{~ paste(., "x")} is equivalent to \code{function(.) paste(., "x")}}
 
 \item{...}{Additional arguments to \code{fun}.}
 }
@@ -21,7 +23,7 @@ Automatically relabel factor levels, collapse as necessary
 }
 \examples{
 gss_cat$partyid \%>\% fct_count()
-gss_cat$partyid \%>\% fct_relabel(~gsub(",", ", ", .x)) \%>\% fct_count()
+gss_cat$partyid \%>\% fct_relabel(~ gsub(",", ", ", .x)) \%>\% fct_count()
 
 convert_income <- function(x) {
   regex <- "^(?:Lt |)[$]([0-9]+).*$"

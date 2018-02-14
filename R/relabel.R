@@ -1,15 +1,17 @@
 #' Automatically relabel factor levels, collapse as necessary
 #'
 #' @param .f A factor.
-#' @param .fun A bare or character function name or an actual function in
-#'   formula, quosure, or ordinary notation to be applied to each level. Must
-#'   accept one character argument and return a character vector of the same
-#'   length as its input.
+#' @param .fun A function to be applied to each level. Must accept one
+#'   character argument and return a character vector of the same length as
+#'   its input.
+#'
+#'   You can also use `~` to create as shorthand (in the style of purrr).
+#'   `~ paste(., "x")` is equivalent to `function(.) paste(., "x")`
 #' @param ... Additional arguments to `fun`.
 #' @export
 #' @examples
 #' gss_cat$partyid %>% fct_count()
-#' gss_cat$partyid %>% fct_relabel(~gsub(",", ", ", .x)) %>% fct_count()
+#' gss_cat$partyid %>% fct_relabel(~ gsub(",", ", ", .x)) %>% fct_count()
 #'
 #' convert_income <- function(x) {
 #'   regex <- "^(?:Lt |)[$]([0-9]+).*$"
