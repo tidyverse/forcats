@@ -1,5 +1,7 @@
 # forcats 0.2.0.9000
 
+* Increase test coverage from 80% to 99%.
+
 * `fct_explicit_na()` also replaces NAs encoded in levels.
 
 * [API] `fct_c()` now requires explicit splicing with `!!!` if you have a
