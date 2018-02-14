@@ -33,7 +33,3 @@ check_factor_list <- function(fs) {
 
   fs
 }
-
-`%||%` <- function(a, b) {
-  if (is.null(a)) b else a
-}
