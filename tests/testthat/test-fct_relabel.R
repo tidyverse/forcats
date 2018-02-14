@@ -9,7 +9,7 @@ test_that("identity", {
 test_that("error if not function", {
   f1 <- factor("a")
 
-  expect_error(fct_relabel(f1, 1), "Expected function, got")
+  expect_error(fct_relabel(f1, 1), "function")
 })
 
 test_that("error if level not character", {
@@ -35,4 +35,13 @@ test_that("additional arguments", {
   f1 <- factor(letters)
 
   expect_identical(fct_relabel(f1, paste0, "."), factor(paste0(letters, ".")))
+})
+
+test_that("formulas are coerced to functions", {
+  f1 <- factor(letters)
+
+  expect_identical(
+    fct_relabel(f1, ~paste0(.x, ".")),
+    factor(paste0(letters, "."))
+  )
 })

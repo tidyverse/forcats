@@ -1,5 +1,8 @@
 # forcats 0.2.0.9000
 
+* `fct_relabel()` now accepts objects coercible to functions 
+  by `rlang::as_function` (#91, @alistaire47)
+
 * Increase test coverage from 80% to 99%.
 
 * `fct_explicit_na()` also replaces NAs encoded in levels.
