@@ -1,14 +1,13 @@
 #' Automatically relabel factor levels, collapse as necessary
 #'
-#' @param f A factor.
-#' @param fun A bare or character function name or an actual function in
+#' @param .f A factor.
+#' @param .fun A bare or character function name or an actual function in
 #'   formula, quosure, or ordinary notation to be applied to each level. Must
 #'   accept one character argument and return a character vector of the same
 #'   length as its input.
 #' @param ... Additional arguments to `fun`.
 #' @export
 #' @examples
-#'
 #' gss_cat$partyid %>% fct_count()
 #' gss_cat$partyid %>% fct_relabel(~gsub(",", ", ", .x)) %>% fct_count()
 #'

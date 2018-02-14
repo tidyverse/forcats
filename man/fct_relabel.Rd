@@ -20,7 +20,6 @@ length as its input.}
 Automatically relabel factor levels, collapse as necessary
 }
 \examples{
-
 gss_cat$partyid \%>\% fct_count()
 gss_cat$partyid \%>\% fct_relabel(~gsub(",", ", ", .x)) \%>\% fct_count()
 
