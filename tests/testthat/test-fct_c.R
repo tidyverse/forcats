@@ -11,3 +11,7 @@ test_that("uses tidy_dots", {
 test_that("all inputs must be factors", {
   expect_error(fct_c("a"), "must be factors")
 })
+
+test_that("empty input yields empty factor", {
+  expect_equal(fct_c(), factor())
+})
