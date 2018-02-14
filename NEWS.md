@@ -1,5 +1,7 @@
 # forcats 0.2.0.9000
 
+* `fct_explicit_na()` also replaces NAs encoded in levels.
+
 * [API] `fct_c()` now requires explicit splicing with `!!!` if you have a
   list of factors that you want to combine. This is consistent with an emerging
   standards for handling `...` throughout the tidyverse.
