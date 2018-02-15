@@ -89,7 +89,8 @@ factor(x2, month_levels)
 
 parse_factor(x2, month_levels)
 #> Warning: 1 parsing failure.
-#> row # A tibble: 1 x 4 col     row   col expected           actual expected   <int> <int> <chr>              <chr>  actual 1     3    NA value in level set Jam
+#> row col           expected actual
+#>   3  -- value in level set    Jam
 #> [1] Dec  Apr  <NA> Mar 
 #> attr(,"problems")
 #> # A tibble: 1 x 4
