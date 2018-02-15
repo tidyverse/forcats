@@ -91,60 +91,52 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<pre class="sourceCode r" id="cb1"><code class="sourceCode r"><div class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># The easiest way to get forcats is to install the whole tidyverse:</span></div>
-<div class="sourceLine" id="cb1-2" data-line-number="2">
-<span class="kw">install.packages</span>(<span class="st">"tidyverse"</span>)</div>
-<div class="sourceLine" id="cb1-3" data-line-number="3"></div>
-<div class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># Alternatively, install just forcats:</span></div>
-<div class="sourceLine" id="cb1-5" data-line-number="5">
-<span class="kw">install.packages</span>(<span class="st">"forcats"</span>)</div>
-<div class="sourceLine" id="cb1-6" data-line-number="6"></div>
-<div class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># Or the the development version from GitHub:</span></div>
-<div class="sourceLine" id="cb1-8" data-line-number="8"><span class="co"># install.packages("devtools")</span></div>
-<div class="sourceLine" id="cb1-9" data-line-number="9">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"tidyverse/forcats"</span>)</div></code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># The easiest way to get forcats is to install the whole tidyverse:</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">"tidyverse"</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># Alternatively, install just forcats:</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">install.packages</span>(<span class="st">"forcats"</span>)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># Or the the development version from GitHub:</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"tidyverse/forcats"</span>)</a></code></pre></div>
 </div>
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting started</h2>
 <p>forcats is now part of the core tidyverse, so you do not need to load it explicitly:</p>
-<pre class="sourceCode r" id="cb2"><code class="sourceCode r"><div class="sourceLine" id="cb2-1" data-line-number="1">
-<span class="kw">library</span>(tidyverse)</div></code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>Factors are used to describe categorical variables with a fixed and known set of <strong>levels</strong>. You can create factors with the base <code>factor()</code> or <a href="http://readr.tidyverse.org/reference/parse_factor.html"><code><a href="http://www.rdocumentation.org/packages/readr/topics/parse_factor">readr::parse_factor()</a></code></a>:</p>
-<pre class="sourceCode r" id="cb3"><code class="sourceCode r"><div class="sourceLine" id="cb3-1" data-line-number="1">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"Dec"</span>, <span class="st">"Apr"</span>, <span class="st">"Jan"</span>, <span class="st">"Mar"</span>)</div>
-<div class="sourceLine" id="cb3-2" data-line-number="2">month_levels &lt;-<span class="st"> </span><span class="kw">c</span>(</div>
-<div class="sourceLine" id="cb3-3" data-line-number="3">  <span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span>, </div>
-<div class="sourceLine" id="cb3-4" data-line-number="4">  <span class="st">"Jul"</span>, <span class="st">"Aug"</span>, <span class="st">"Sep"</span>, <span class="st">"Oct"</span>, <span class="st">"Nov"</span>, <span class="st">"Dec"</span>
-</div>
-<div class="sourceLine" id="cb3-5" data-line-number="5">)</div>
-<div class="sourceLine" id="cb3-6" data-line-number="6"></div>
-<div class="sourceLine" id="cb3-7" data-line-number="7">
-<span class="kw">factor</span>(x1, month_levels)</div>
-<div class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; [1] Dec Apr Jan Mar</span></div>
-<div class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></div>
-<div class="sourceLine" id="cb3-10" data-line-number="10"></div>
-<div class="sourceLine" id="cb3-11" data-line-number="11">
-<span class="kw">parse_factor</span>(x1, month_levels)</div>
-<div class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; [1] Dec Apr Jan Mar</span></div>
-<div class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></div></code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"Dec"</span>, <span class="st">"Apr"</span>, <span class="st">"Jan"</span>, <span class="st">"Mar"</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">month_levels &lt;-<span class="st"> </span><span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">  <span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span>, </a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">  <span class="st">"Jul"</span>, <span class="st">"Aug"</span>, <span class="st">"Sep"</span>, <span class="st">"Oct"</span>, <span class="st">"Nov"</span>, <span class="st">"Dec"</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">)</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw">factor</span>(x1, month_levels)</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; [1] Dec Apr Jan Mar</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="kw">parse_factor</span>(x1, month_levels)</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; [1] Dec Apr Jan Mar</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></a></code></pre></div>
 <p>The advantage of <code>parse_factor()</code> is that it will generate a warning if values of <code>x</code> are not valid levels:</p>
-<pre class="sourceCode r" id="cb4"><code class="sourceCode r"><div class="sourceLine" id="cb4-1" data-line-number="1">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"Dec"</span>, <span class="st">"Apr"</span>, <span class="st">"Jam"</span>, <span class="st">"Mar"</span>)</div>
-<div class="sourceLine" id="cb4-2" data-line-number="2"></div>
-<div class="sourceLine" id="cb4-3" data-line-number="3">
-<span class="kw">factor</span>(x2, month_levels)</div>
-<div class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; [1] Dec  Apr  &lt;NA&gt; Mar </span></div>
-<div class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></div>
-<div class="sourceLine" id="cb4-6" data-line-number="6"></div>
-<div class="sourceLine" id="cb4-7" data-line-number="7">
-<span class="kw">parse_factor</span>(x2, month_levels)</div>
-<div class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; Warning: 1 parsing failure.</span></div>
-<div class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; row # A tibble: 1 x 4 col     row   col expected           actual expected   &lt;int&gt; &lt;int&gt; &lt;chr&gt;              &lt;chr&gt;  actual 1     3    NA value in level set Jam</span></div>
-<div class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; [1] Dec  Apr  &lt;NA&gt; Mar </span></div>
-<div class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; attr(,"problems")</span></div>
-<div class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; # A tibble: 1 x 4</span></div>
-<div class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;     row   col expected           actual</span></div>
-<div class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;              &lt;chr&gt; </span></div>
-<div class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; 1     3    NA value in level set Jam   </span></div>
-<div class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></div></code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"Dec"</span>, <span class="st">"Apr"</span>, <span class="st">"Jam"</span>, <span class="st">"Mar"</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">factor</span>(x2, month_levels)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; [1] Dec  Apr  &lt;NA&gt; Mar </span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="kw">parse_factor</span>(x2, month_levels)</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; Warning: 1 parsing failure.</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; row # A tibble: 1 x 4 col     row   col expected           actual expected   &lt;int&gt; &lt;int&gt; &lt;chr&gt;              &lt;chr&gt;  actual 1     3    NA value in level set Jam</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; [1] Dec  Apr  &lt;NA&gt; Mar </span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; attr(,"problems")</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; # A tibble: 1 x 4</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;     row   col expected           actual</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;              &lt;chr&gt; </span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; 1     3    NA value in level set Jam   </span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></a></code></pre></div>
 <p>Once you have the factor, forcats provides helpers for solving common problems.</p>
 </div>
 </div>

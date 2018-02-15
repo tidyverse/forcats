@@ -83,117 +83,96 @@
 <p>I’m excited to announce <strong>forcats</strong>, a new package <strong>for</strong> <strong>cat</strong>egorical variable<strong>s</strong>, or factors. Factors have a bad rap in R because they often turn up when you don’t want them. That’s because historically, factors were more convenient than character vectors, as discussed in <a href="http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/"><em>stringsAsFactors: An unauthorized biography</em></a> by Roger Peng, and <a href="http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh"><em>stringsAsFactors = &lt;sigh&gt;</em></a> by Thomas Lumley.</p>
 <p>If you use packages from the tidyverse (like <a href="http://r4ds.had.co.nz/tibbles.html">tibble</a> and <a href="http://r4ds.had.co.nz/data-import.html">readr</a>) you don’t need to worry about getting factors when you don’t want them. But factors are a useful data structure in their own right, particularly for modelling and visualisation, because they allow you to control the order of the levels. Working with factors in base R can be a little frustrating because of a handful of missing tools. The goal of forcats is to fill in those missing pieces so you can access the power of factors with a minimum of pain.</p>
 <p>Install forcats with:</p>
-<pre class="sourceCode r" id="cb1"><code class="sourceCode r"><div class="sourceLine" id="cb1-1" data-line-number="1">
-<span class="kw">install.packages</span>(<span class="st">"forcats"</span>)</div></code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"forcats"</span>)</a></code></pre></div>
 <p>forcats provides two main types of tools to change either the <strong>values</strong> or the <strong>order</strong> of the levels. I’ll call out some of the most important functions below, using using the included <code>gss_cat</code> dataset which contains a selection of categorical variables from the <a href="http://gss.norc.org">General Social Survey</a>.</p>
-<pre class="sourceCode r" id="cb2"><code class="sourceCode r"><div class="sourceLine" id="cb2-1" data-line-number="1">
-<span class="kw">library</span>(dplyr)</div>
-<div class="sourceLine" id="cb2-2" data-line-number="2">
-<span class="kw">library</span>(ggplot2)</div>
-<div class="sourceLine" id="cb2-3" data-line-number="3">
-<span class="kw">library</span>(forcats)</div>
-<div class="sourceLine" id="cb2-4" data-line-number="4"></div>
-<div class="sourceLine" id="cb2-5" data-line-number="5">gss_cat</div>
-<div class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; # A tibble: 21,483 x 9</span></div>
-<div class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;    year marital         age race  rincome  partyid   relig  denom  tvhours</span></div>
-<div class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;   &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt;     &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt;</span></div>
-<div class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; 1  2000 Never married    26 White $8000 t… Ind,near… Prote… South…      12</span></div>
-<div class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; 2  2000 Divorced         48 White $8000 t… Not str … Prote… Bapti…      NA</span></div>
-<div class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; 3  2000 Widowed          67 White Not app… Independ… Prote… No de…       2</span></div>
-<div class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; 4  2000 Never married    39 White Not app… Ind,near… Ortho… Not a…       4</span></div>
-<div class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; 5  2000 Divorced         25 White Not app… Not str … None   Not a…       1</span></div>
-<div class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 6  2000 Married          25 White $20000 … Strong d… Prote… South…      NA</span></div>
-<div class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; # ... with 2.148e+04 more rows</span></div></code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">library</span>(forcats)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">gss_cat</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; # A tibble: 21,483 x 9</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;    year marital         age race  rincome  partyid   relig  denom  tvhours</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;   &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt;     &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; 1  2000 Never married    26 White $8000 t… Ind,near… Prote… South…      12</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; 2  2000 Divorced         48 White $8000 t… Not str … Prote… Bapti…      NA</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; 3  2000 Widowed          67 White Not app… Independ… Prote… No de…       2</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; 4  2000 Never married    39 White Not app… Ind,near… Ortho… Not a…       4</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; 5  2000 Divorced         25 White Not app… Not str … None   Not a…       1</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 6  2000 Married          25 White $20000 … Strong d… Prote… South…      NA</span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; # ... with 2.148e+04 more rows</span></a></code></pre></div>
 <div id="change-level-values" class="section level2">
 <h2 class="hasAnchor">
 <a href="#change-level-values" class="anchor"></a>Change level values</h2>
 <p>You can recode specified factor levels with <a href="https://hadley.github.io/forcats/fct_recode.html"><code><a href="../../reference/fct_recode.html">fct_recode()</a></code></a>:</p>
-<pre class="sourceCode r" id="cb3"><code class="sourceCode r"><div class="sourceLine" id="cb3-1" data-line-number="1">gss_cat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/tally.html">count</a></span>(partyid)</div>
-<div class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; # A tibble: 10 x 2</span></div>
-<div class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;   partyid                n</span></div>
-<div class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;   &lt;fct&gt;              &lt;int&gt;</span></div>
-<div class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 1 No answer            154</span></div>
-<div class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 2 Don't know             1</span></div>
-<div class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 3 Other party          393</span></div>
-<div class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 4 Strong republican   2314</span></div>
-<div class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 5 Not str republican  3032</span></div>
-<div class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 6 Ind,near rep        1791</span></div>
-<div class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; # ... with 4 more rows</span></div>
-<div class="sourceLine" id="cb3-12" data-line-number="12"></div>
-<div class="sourceLine" id="cb3-13" data-line-number="13">gss_cat <span class="op">%&gt;%</span>
-</div>
-<div class="sourceLine" id="cb3-14" data-line-number="14">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">partyid =</span> <span class="kw"><a href="../../reference/fct_recode.html">fct_recode</a></span>(partyid,</div>
-<div class="sourceLine" id="cb3-15" data-line-number="15">    <span class="st">"Republican, strong"</span>    =<span class="st"> "Strong republican"</span>,</div>
-<div class="sourceLine" id="cb3-16" data-line-number="16">    <span class="st">"Republican, weak"</span>      =<span class="st"> "Not str republican"</span>,</div>
-<div class="sourceLine" id="cb3-17" data-line-number="17">    <span class="st">"Independent, near rep"</span> =<span class="st"> "Ind,near rep"</span>,</div>
-<div class="sourceLine" id="cb3-18" data-line-number="18">    <span class="st">"Independent, near dem"</span> =<span class="st"> "Ind,near dem"</span>,</div>
-<div class="sourceLine" id="cb3-19" data-line-number="19">    <span class="st">"Democrat, weak"</span>        =<span class="st"> "Not str democrat"</span>,</div>
-<div class="sourceLine" id="cb3-20" data-line-number="20">    <span class="st">"Democrat, strong"</span>      =<span class="st"> "Strong democrat"</span>
-</div>
-<div class="sourceLine" id="cb3-21" data-line-number="21">  )) <span class="op">%&gt;%</span>
-</div>
-<div class="sourceLine" id="cb3-22" data-line-number="22">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/tally.html">count</a></span>(partyid)</div>
-<div class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt; # A tibble: 10 x 2</span></div>
-<div class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt;   partyid                   n</span></div>
-<div class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt;   &lt;fct&gt;                 &lt;int&gt;</span></div>
-<div class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; 1 No answer               154</span></div>
-<div class="sourceLine" id="cb3-27" data-line-number="27"><span class="co">#&gt; 2 Don't know                1</span></div>
-<div class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">#&gt; 3 Other party             393</span></div>
-<div class="sourceLine" id="cb3-29" data-line-number="29"><span class="co">#&gt; 4 Republican, strong     2314</span></div>
-<div class="sourceLine" id="cb3-30" data-line-number="30"><span class="co">#&gt; 5 Republican, weak       3032</span></div>
-<div class="sourceLine" id="cb3-31" data-line-number="31"><span class="co">#&gt; 6 Independent, near rep  1791</span></div>
-<div class="sourceLine" id="cb3-32" data-line-number="32"><span class="co">#&gt; # ... with 4 more rows</span></div></code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">gss_cat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/tally.html">count</a></span>(partyid)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; # A tibble: 10 x 2</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;   partyid                n</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;   &lt;fct&gt;              &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 1 No answer            154</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 2 Don't know             1</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 3 Other party          393</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 4 Strong republican   2314</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 5 Not str republican  3032</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 6 Ind,near rep        1791</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; # ... with 4 more rows</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">gss_cat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">partyid =</span> <span class="kw"><a href="../../reference/fct_recode.html">fct_recode</a></span>(partyid,</a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">    <span class="st">"Republican, strong"</span>    =<span class="st"> "Strong republican"</span>,</a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">    <span class="st">"Republican, weak"</span>      =<span class="st"> "Not str republican"</span>,</a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">    <span class="st">"Independent, near rep"</span> =<span class="st"> "Ind,near rep"</span>,</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">    <span class="st">"Independent, near dem"</span> =<span class="st"> "Ind,near dem"</span>,</a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">    <span class="st">"Democrat, weak"</span>        =<span class="st"> "Not str democrat"</span>,</a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">    <span class="st">"Democrat, strong"</span>      =<span class="st"> "Strong democrat"</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21">  )) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/tally.html">count</a></span>(partyid)</a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt; # A tibble: 10 x 2</span></a>
+<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt;   partyid                   n</span></a>
+<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt;   &lt;fct&gt;                 &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; 1 No answer               154</span></a>
+<a class="sourceLine" id="cb3-27" data-line-number="27"><span class="co">#&gt; 2 Don't know                1</span></a>
+<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">#&gt; 3 Other party             393</span></a>
+<a class="sourceLine" id="cb3-29" data-line-number="29"><span class="co">#&gt; 4 Republican, strong     2314</span></a>
+<a class="sourceLine" id="cb3-30" data-line-number="30"><span class="co">#&gt; 5 Republican, weak       3032</span></a>
+<a class="sourceLine" id="cb3-31" data-line-number="31"><span class="co">#&gt; 6 Independent, near rep  1791</span></a>
+<a class="sourceLine" id="cb3-32" data-line-number="32"><span class="co">#&gt; # ... with 4 more rows</span></a></code></pre></div>
 <p>Note that unmentioned levels are left as is, and the order of the levels is preserved.</p>
 <p><a href="https://hadley.github.io/forcats/fct_relump.html"><code><a href="../../reference/fct_lump.html">fct_lump()</a></code></a> allows you to lump the rarest (or most common) levels in to a new “other” level. The default behaviour is to collapse the smallest levels in to other, ensuring that it’s still the smallest level. For the religion variable that tells us that Protestants out number all other religions, which is interesting, but we probably want more level.</p>
-<pre class="sourceCode r" id="cb4"><code class="sourceCode r"><div class="sourceLine" id="cb4-1" data-line-number="1">gss_cat <span class="op">%&gt;%</span><span class="st"> </span>
-</div>
-<div class="sourceLine" id="cb4-2" data-line-number="2">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">relig =</span> <span class="kw"><a href="../../reference/fct_lump.html">fct_lump</a></span>(relig)) <span class="op">%&gt;%</span><span class="st"> </span>
-</div>
-<div class="sourceLine" id="cb4-3" data-line-number="3">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/tally.html">count</a></span>(relig)</div>
-<div class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; # A tibble: 2 x 2</span></div>
-<div class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;   relig          n</span></div>
-<div class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;   &lt;fct&gt;      &lt;int&gt;</span></div>
-<div class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 1 Protestant 10846</span></div>
-<div class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 2 Other      10637</span></div></code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">gss_cat <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">relig =</span> <span class="kw"><a href="../../reference/fct_lump.html">fct_lump</a></span>(relig)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/tally.html">count</a></span>(relig)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; # A tibble: 2 x 2</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;   relig          n</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;   &lt;fct&gt;      &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 1 Protestant 10846</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 2 Other      10637</span></a></code></pre></div>
 <p>Alternatively you can supply a number of levels to keep, <code>n</code>, or minimum proportion for inclusion, <code>prop</code>. If you use negative values, <code><a href="../../reference/fct_lump.html">fct_lump()</a></code> will change direction, and combine the most common values while preserving the rarest.</p>
-<pre class="sourceCode r" id="cb5"><code class="sourceCode r"><div class="sourceLine" id="cb5-1" data-line-number="1">gss_cat <span class="op">%&gt;%</span><span class="st"> </span>
-</div>
-<div class="sourceLine" id="cb5-2" data-line-number="2">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">relig =</span> <span class="kw"><a href="../../reference/fct_lump.html">fct_lump</a></span>(relig, <span class="dt">n =</span> <span class="dv">5</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
-</div>
-<div class="sourceLine" id="cb5-3" data-line-number="3">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/tally.html">count</a></span>(relig)</div>
-<div class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; # A tibble: 6 x 2</span></div>
-<div class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;   relig          n</span></div>
-<div class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   &lt;fct&gt;      &lt;int&gt;</span></div>
-<div class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 1 Christian    689</span></div>
-<div class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 2 None        3523</span></div>
-<div class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 3 Jewish       388</span></div>
-<div class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 4 Catholic    5124</span></div>
-<div class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; 5 Protestant 10846</span></div>
-<div class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; 6 Other        913</span></div>
-<div class="sourceLine" id="cb5-13" data-line-number="13"></div>
-<div class="sourceLine" id="cb5-14" data-line-number="14">gss_cat <span class="op">%&gt;%</span><span class="st"> </span>
-</div>
-<div class="sourceLine" id="cb5-15" data-line-number="15">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">relig =</span> <span class="kw"><a href="../../reference/fct_lump.html">fct_lump</a></span>(relig, <span class="dt">prop =</span> <span class="fl">-0.10</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
-</div>
-<div class="sourceLine" id="cb5-16" data-line-number="16">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/tally.html">count</a></span>(relig)</div>
-<div class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; # A tibble: 12 x 2</span></div>
-<div class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt;   relig                       n</span></div>
-<div class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;   &lt;fct&gt;                   &lt;int&gt;</span></div>
-<div class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; 1 No answer                  93</span></div>
-<div class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; 2 Don't know                 15</span></div>
-<div class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt; 3 Inter-nondenominational   109</span></div>
-<div class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt; 4 Native american            23</span></div>
-<div class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt; 5 Christian                 689</span></div>
-<div class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt; 6 Orthodox-christian         95</span></div>
-<div class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt; # ... with 6 more rows</span></div></code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">gss_cat <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">relig =</span> <span class="kw"><a href="../../reference/fct_lump.html">fct_lump</a></span>(relig, <span class="dt">n =</span> <span class="dv">5</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/tally.html">count</a></span>(relig)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; # A tibble: 6 x 2</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;   relig          n</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   &lt;fct&gt;      &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 1 Christian    689</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 2 None        3523</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 3 Jewish       388</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 4 Catholic    5124</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; 5 Protestant 10846</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; 6 Other        913</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">gss_cat <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">relig =</span> <span class="kw"><a href="../../reference/fct_lump.html">fct_lump</a></span>(relig, <span class="dt">prop =</span> <span class="fl">-0.10</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/tally.html">count</a></span>(relig)</a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; # A tibble: 12 x 2</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt;   relig                       n</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;   &lt;fct&gt;                   &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; 1 No answer                  93</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; 2 Don't know                 15</span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt; 3 Inter-nondenominational   109</span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt; 4 Native american            23</span></a>
+<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt; 5 Christian                 689</span></a>
+<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt; 6 Orthodox-christian         95</span></a>
+<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt; # ... with 6 more rows</span></a></code></pre></div>
 </div>
 <div id="change-level-order" class="section level2">
 <h2 class="hasAnchor">
@@ -206,59 +185,33 @@
 <li><p><a href="https://hadley.github.io/forcats/fct_rev.html"><code><a href="../../reference/fct_rev.html">fct_rev()</a></code></a> reverses the order of levels.</p></li>
 </ul>
 <p><a href="https://hadley.github.io/forcats/fct_reorder.html"><code><a href="../../reference/fct_reorder.html">fct_reorder()</a></code></a> and <code><a href="../../reference/fct_reorder.html">fct_reorder2()</a></code> are useful for visualisations. <code><a href="../../reference/fct_reorder.html">fct_reorder()</a></code> reorders the factor levels by another variable. This is useful when you map a categorical variable to position, as shown in the following example which shows the average number of hours spent watching television across religions.</p>
-<pre class="sourceCode r" id="cb6"><code class="sourceCode r"><div class="sourceLine" id="cb6-1" data-line-number="1">relig &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span>
-</div>
-<div class="sourceLine" id="cb6-2" data-line-number="2">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(relig) <span class="op">%&gt;%</span>
-</div>
-<div class="sourceLine" id="cb6-3" data-line-number="3">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span>(</div>
-<div class="sourceLine" id="cb6-4" data-line-number="4">    <span class="dt">age =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</div>
-<div class="sourceLine" id="cb6-5" data-line-number="5">    <span class="dt">tvhours =</span> <span class="kw">mean</span>(tvhours, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</div>
-<div class="sourceLine" id="cb6-6" data-line-number="6">    <span class="dt">n =</span> <span class="kw"><a href="http://dplyr.tidyverse.org/reference/n.html">n</a></span>()</div>
-<div class="sourceLine" id="cb6-7" data-line-number="7">  )</div>
-<div class="sourceLine" id="cb6-8" data-line-number="8"></div>
-<div class="sourceLine" id="cb6-9" data-line-number="9">
-<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(relig, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(tvhours, relig)) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</div>
-<div class="sourceLine" id="cb6-10" data-line-number="10"></div>
-<div class="sourceLine" id="cb6-11" data-line-number="11">
-<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(relig, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(tvhours, <span class="kw"><a href="../../reference/fct_reorder.html">fct_reorder</a></span>(relig, tvhours))) <span class="op">+</span>
-</div>
-<div class="sourceLine" id="cb6-12" data-line-number="12">
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</div></code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">relig &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(relig) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span>(</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">    <span class="dt">age =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">    <span class="dt">tvhours =</span> <span class="kw">mean</span>(tvhours, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">    <span class="dt">n =</span> <span class="kw"><a href="http://dplyr.tidyverse.org/reference/n.html">n</a></span>()</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">  )</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(relig, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(tvhours, relig)) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(relig, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(tvhours, <span class="kw"><a href="../../reference/fct_reorder.html">fct_reorder</a></span>(relig, tvhours))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</a></code></pre></div>
 <p><img src="forcats-0.1.0_files/figure-html/reorder-1.png" width="50%"><img src="forcats-0.1.0_files/figure-html/reorder-2.png" width="50%"></p>
 <p><code><a href="../../reference/fct_reorder.html">fct_reorder2()</a></code> extends the same idea to plots where a factor is mapped to another aesthetic, like colour. The defaults are designed to make legends easier to read for line plots, as shown in the following example looking at marital status by age.</p>
-<pre class="sourceCode r" id="cb7"><code class="sourceCode r"><div class="sourceLine" id="cb7-1" data-line-number="1">by_age &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span>
-</div>
-<div class="sourceLine" id="cb7-2" data-line-number="2">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="op">!</span><span class="kw">is.na</span>(age)) <span class="op">%&gt;%</span>
-</div>
-<div class="sourceLine" id="cb7-3" data-line-number="3">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(age, marital) <span class="op">%&gt;%</span>
-</div>
-<div class="sourceLine" id="cb7-4" data-line-number="4">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/tally.html">count</a></span>() <span class="op">%&gt;%</span>
-</div>
-<div class="sourceLine" id="cb7-5" data-line-number="5">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="op">%&gt;%</span><span class="st">  </span>
-</div>
-<div class="sourceLine" id="cb7-6" data-line-number="6">
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))</div>
-<div class="sourceLine" id="cb7-7" data-line-number="7"></div>
-<div class="sourceLine" id="cb7-8" data-line-number="8">
-<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(by_age, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(age, prop)) <span class="op">+</span>
-</div>
-<div class="sourceLine" id="cb7-9" data-line-number="9">
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">colour =</span> marital))</div>
-<div class="sourceLine" id="cb7-10" data-line-number="10"></div>
-<div class="sourceLine" id="cb7-11" data-line-number="11">
-<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(by_age, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(age, prop)) <span class="op">+</span>
-</div>
-<div class="sourceLine" id="cb7-12" data-line-number="12">
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">colour =</span> <span class="kw"><a href="../../reference/fct_reorder.html">fct_reorder2</a></span>(marital, age, prop))) <span class="op">+</span>
-</div>
-<div class="sourceLine" id="cb7-13" data-line-number="13">
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">colour =</span> <span class="st">"marital"</span>)</div></code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">by_age &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="op">!</span><span class="kw">is.na</span>(age)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(age, marital) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/tally.html">count</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="op">%&gt;%</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(by_age, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(age, prop)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">colour =</span> marital))</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(by_age, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(age, prop)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">colour =</span> <span class="kw"><a href="../../reference/fct_reorder.html">fct_reorder2</a></span>(marital, age, prop))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">colour =</span> <span class="st">"marital"</span>)</a></code></pre></div>
 <p><img src="forcats-0.1.0_files/figure-html/reorder2-1.png" width="50%"><img src="forcats-0.1.0_files/figure-html/reorder2-2.png" width="50%"></p>
 </div>
 <div id="learning-more" class="section level2">
