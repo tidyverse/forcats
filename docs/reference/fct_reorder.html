@@ -95,36 +95,39 @@
     </div>
 
     
-    <p><code>fct_reorder</code> is useful for 1d displays where the factor is mapped to
-position; <code>fct_reorder2</code> for 2d displays where the factor is mapped to
-a non-position aesthetic.</p>
+    <p><code>fct_reorder()</code> is useful for 1d displays where the factor is mapped to
+position; <code>fct_reorder2()</code> for 2d displays where the factor is mapped to
+a non-position aesthetic. <code>last2()</code> is a helper for <code>fct_reorder2()</code>;
+it finds the last value of <code>y</code> when sorted by <code>x</code>.</p>
     
 
-    <pre class="usage"><span class='fu'>fct_reorder</span>(<span class='no'>f</span>, <span class='no'>x</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>median</span>, <span class='no'>...</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>fct_reorder</span>(<span class='no'>.f</span>, <span class='no'>.x</span>, <span class='kw'>.fun</span> <span class='kw'>=</span> <span class='no'>median</span>, <span class='no'>...</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>fct_reorder2</span>(<span class='no'>f</span>, <span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>last2</span>, <span class='no'>...</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>fct_reorder2</span>(<span class='no'>.f</span>, <span class='no'>.x</span>, <span class='no'>.y</span>, <span class='kw'>.fun</span> <span class='kw'>=</span> <span class='no'>last2</span>, <span class='no'>...</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='fu'>last2</span>(<span class='no'>.x</span>, <span class='no'>.y</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>f</th>
-      <td><p>A factor.</p></td>
+      <th>.f</th>
+      <td><p>A factor (or character vector).</p></td>
     </tr>
     <tr>
-      <th>x, y</th>
+      <th>.x, .y</th>
       <td><p>The levels of <code>f</code> are reordered so that the values
-of <code>fun(x)</code> (for <code>fct_reorder()</code>) and <code>fun(x, y)</code> (for <code>fct_reorder2()</code>)
+of <code>.fun(.x)</code> (for <code>fct_reorder()</code>) and <code>fun(.x, .y)</code> (for <code>fct_reorder2()</code>)
 are in ascending order.</p></td>
     </tr>
     <tr>
-      <th>fun</th>
-      <td><p>An summary function. It should take one vector for
+      <th>.fun</th>
+      <td><p>n summary function. It should take one vector for
 <code>fct_reorder</code>, and two vectors for <code>fct_reorder2</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Other arguments passed on to <code>fun</code>. A common argument is
+      <td><p>Other arguments passed on to <code>.fun</code>. A common argument is
 <code>na.rm = TRUE</code>.</p></td>
     </tr>
     <tr>
@@ -137,21 +140,21 @@ match the default ordering of factors in the legend.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><img src='fct_reorder-2.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><img src='fct_reorder-4.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><img src='fct_reorder-6.png' alt='' width='540' height='400' /><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='img'><img src='fct_reorder-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='img'><img src='fct_reorder-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='input'>
 <span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='fu'>subset</span>(<span class='no'>ChickWeight</span>, <span class='fu'>as.integer</span>(<span class='no'>Chick</span>) <span class='kw'>&lt;</span> <span class='fl'>10</span>)
 <span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='fu'>transform</span>(<span class='no'>chks</span>, <span class='kw'>Chick</span> <span class='kw'>=</span> <span class='fu'><a href='fct_shuffle.html'>fct_shuffle</a></span>(<span class='no'>Chick</span>))
 
 <span class='kw'>if</span> (<span class='fu'>require</span>(<span class='st'>"ggplot2"</span>)) {
-<span class='fu'>ggplot</span>(<span class='no'>chks</span>, <span class='fu'>aes</span>(<span class='no'>Time</span>, <span class='no'>weight</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>Chick</span>)) +
-  <span class='fu'>geom_point</span>() +
-  <span class='fu'>geom_line</span>()
+<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>chks</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='no'>Time</span>, <span class='no'>weight</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>Chick</span>)) +
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() +
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_path'>geom_line</a></span>()
 
 <span class='co'># Note that lines match order in legend</span>
-<span class='fu'>ggplot</span>(<span class='no'>chks</span>, <span class='fu'>aes</span>(<span class='no'>Time</span>, <span class='no'>weight</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='fu'>fct_reorder2</span>(<span class='no'>Chick</span>, <span class='no'>Time</span>, <span class='no'>weight</span>))) +
-  <span class='fu'>geom_point</span>() +
-  <span class='fu'>geom_line</span>() +
-  <span class='fu'>labs</span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"Chick"</span>)
-}</div><img src='fct_reorder-8.png' alt='' width='540' height='400' /></pre>
+<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>chks</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='no'>Time</span>, <span class='no'>weight</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='fu'>fct_reorder2</span>(<span class='no'>Chick</span>, <span class='no'>Time</span>, <span class='no'>weight</span>))) +
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() +
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_path'>geom_line</a></span>() +
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"Chick"</span>)
+}</div><div class='output co'>#&gt; <span class='message'>Loading required package: ggplot2</span></div><div class='img'><img src='fct_reorder-3.png' alt='' width='700' height='432.632880098887' /></div><div class='img'><img src='fct_reorder-4.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -171,7 +174,7 @@ match the default ordering of factors in the legend.</p></td>
 
 <div class="author">
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' height='24' /></a>.</p>
-  <p>Site built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
 <script>

@@ -49,12 +49,11 @@ devtools::install_github("tidyverse/forcats")
 
 ## Getting started
 
-forcats is not part of the core tidyverse, so you need to load it
+forcats is now part of the core tidyverse, so you do not need to load it
 explicitly:
 
 ``` r
 library(tidyverse)
-library(forcats)
 ```
 
 Factors are used to describe categorical variables with a fixed and

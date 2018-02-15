@@ -98,14 +98,14 @@
     <p>Collapse factor levels into manually defined groups</p>
     
 
-    <pre class="usage"><span class='fu'>fct_collapse</span>(<span class='no'>f</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>fct_collapse</span>(<span class='no'>.f</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>f</th>
-      <td><p>A factor.</p></td>
+      <th>.f</th>
+      <td><p>A factor (or character vector).</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -116,19 +116,19 @@ each vector will be replaced with the name.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>gss_cat</span>$<span class='no'>partyid</span>)</div><div class='output co'>#&gt; # A tibble: 10 × 2
-#&gt;                     f     n
-#&gt;                &lt;fctr&gt; &lt;int&gt;
-#&gt; 1           No answer   154
-#&gt; 2          Don't know     1
-#&gt; 3         Other party   393
-#&gt; 4   Strong republican  2314
-#&gt; 5  Not str republican  3032
-#&gt; 6        Ind,near rep  1791
-#&gt; 7         Independent  4119
-#&gt; 8        Ind,near dem  2499
-#&gt; 9    Not str democrat  3690
-#&gt; 10    Strong democrat  3490</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>gss_cat</span>$<span class='no'>partyid</span>)</div><div class='output co'>#&gt; # A tibble: 10 x 2
+#&gt;    f                      n
+#&gt;    &lt;fct&gt;              &lt;int&gt;
+#&gt;  1 No answer            154
+#&gt;  2 Don't know             1
+#&gt;  3 Other party          393
+#&gt;  4 Strong republican   2314
+#&gt;  5 Not str republican  3032
+#&gt;  6 Ind,near rep        1791
+#&gt;  7 Independent         4119
+#&gt;  8 Ind,near dem        2499
+#&gt;  9 Not str democrat    3690
+#&gt; 10 Strong democrat     3490</div><div class='input'>
 <span class='no'>partyid2</span> <span class='kw'>&lt;-</span> <span class='fu'>fct_collapse</span>(<span class='no'>gss_cat</span>$<span class='no'>partyid</span>,
   <span class='kw'>missing</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"No answer"</span>, <span class='st'>"Don't know"</span>),
   <span class='kw'>other</span> <span class='kw'>=</span> <span class='st'>"Other party"</span>,
@@ -136,14 +136,14 @@ each vector will be replaced with the name.</p></td>
   <span class='kw'>ind</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Ind,near rep"</span>, <span class='st'>"Independent"</span>, <span class='st'>"Ind,near dem"</span>),
   <span class='kw'>dem</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Not str democrat"</span>, <span class='st'>"Strong democrat"</span>)
 )
-<span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>partyid2</span>)</div><div class='output co'>#&gt; # A tibble: 5 × 2
-#&gt;         f     n
-#&gt;    &lt;fctr&gt; &lt;int&gt;
+<span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>partyid2</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 2
+#&gt;   f           n
+#&gt;   &lt;fct&gt;   &lt;int&gt;
 #&gt; 1 missing   155
-#&gt; 2   other   393
-#&gt; 3     rep  5346
-#&gt; 4     ind  8409
-#&gt; 5     dem  7180</div></pre>
+#&gt; 2 other     393
+#&gt; 3 rep      5346
+#&gt; 4 ind      8409
+#&gt; 5 dem      7180</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -163,7 +163,7 @@ each vector will be replaced with the name.</p></td>
 
 <div class="author">
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' height='24' /></a>.</p>
-  <p>Site built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
 <script>

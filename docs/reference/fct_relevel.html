@@ -99,19 +99,20 @@
 number of levels to any location.</p>
     
 
-    <pre class="usage"><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='no'>...</span>, <span class='kw'>after</span> <span class='kw'>=</span> <span class='fl'>0L</span>)</pre>
+    <pre class="usage"><span class='fu'>fct_relevel</span>(<span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>after</span> <span class='kw'>=</span> <span class='fl'>0L</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>f</th>
-      <td><p>A factor.</p></td>
+      <th>.f</th>
+      <td><p>A factor (or character vector).</p></td>
     </tr>
     <tr>
       <th>...</th>
       <td><p>Character vector of levels. Any levels not mentioned will be left
-in existing order, after the explicitly mentioned levels.</p></td>
+in existing order, after the explicitly mentioned levels. Supports tidy
+dots.</p></td>
     </tr>
     <tr>
       <th>after</th>
@@ -135,7 +136,7 @@ in existing order, after the explicitly mentioned levels.</p></td>
 #&gt; Levels: b c d a</div><div class='input'>
 <span class='co'># Using 'Inf' allows you to relevel to the end when the number</span>
 <span class='co'># of levels is unknown or variable (e.g. vectorised operations)</span>
-<span class='no'>df</span>  <span class='kw'>&lt;-</span> <span class='kw'>forcats</span><span class='kw'>::</span><span class='no'>gss_cat</span>[, <span class='fu'>c</span>(<span class='st'>"rincome"</span>, <span class='st'>"denom"</span>)]
+<span class='no'>df</span>  <span class='kw'>&lt;-</span> <span class='kw pkg'>forcats</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/forcats/topics/gss_cat'>gss_cat</a></span>[, <span class='fu'>c</span>(<span class='st'>"rincome"</span>, <span class='st'>"denom"</span>)]
 <span class='fu'>lapply</span>(<span class='no'>df</span>, <span class='no'>levels</span>)</div><div class='output co'>#&gt; $rincome
 #&gt;  [1] "No answer"      "Don't know"     "Refused"        "$25000 or more"
 #&gt;  [5] "$20000 - 24999" "$15000 - 19999" "$10000 - 14999" "$8000 to 9999" 
@@ -195,7 +196,7 @@ in existing order, after the explicitly mentioned levels.</p></td>
 
 <div class="author">
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' height='24' /></a>.</p>
-  <p>Site built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
 <script>

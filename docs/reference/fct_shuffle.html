@@ -105,7 +105,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>f</th>
-      <td><p>A factor.</p></td>
+      <td><p>A factor (or character vector).</p></td>
     </tr>
     </table>
     
@@ -113,8 +113,8 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='fu'>c</span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>))
 <span class='fu'>fct_shuffle</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; [1] a b c
-#&gt; Levels: c a b</div><div class='input'><span class='fu'>fct_shuffle</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; [1] a b c
-#&gt; Levels: b a c</div></pre>
+#&gt; Levels: b c a</div><div class='input'><span class='fu'>fct_shuffle</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; [1] a b c
+#&gt; Levels: a b c</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -134,7 +134,7 @@
 
 <div class="author">
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' height='24' /></a>.</p>
-  <p>Site built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
 <script>

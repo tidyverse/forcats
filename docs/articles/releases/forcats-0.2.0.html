@@ -85,40 +85,48 @@
 <li><p><code><a href="../../reference/as_factor.html">as_factor()</a></code> is a generic version of <code>as.factor()</code>, which creates factors from character vectors ordered by appearance, rather than alphabetically. This ensures means that <code><a href="../../reference/as_factor.html">as_factor(x)</a></code> will always return the same result, regardless of the current locale.</p></li>
 <li>
 <p><code><a href="../../reference/fct_other.html">fct_other()</a></code> makes it easier to convert selected levels to “other”:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">rep</span>(LETTERS[<span class="dv">1</span>:<span class="dv">6</span>], <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)))
-
-x %&gt;%<span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../../reference/fct_other.html">fct_other</a></span>(<span class="dt">keep =</span> <span class="kw">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>)) %&gt;%<span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../../reference/fct_count.html">fct_count</a></span>()
-<span class="co">#&gt; # A tibble: 3 × 2</span>
-<span class="co">#&gt;        f     n</span>
-<span class="co">#&gt;   &lt;fctr&gt; &lt;int&gt;</span>
-<span class="co">#&gt; 1      A    10</span>
-<span class="co">#&gt; 2      B     5</span>
-<span class="co">#&gt; 3  Other     4</span>
-
-x %&gt;%<span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../../reference/fct_other.html">fct_other</a></span>(<span class="dt">drop =</span> <span class="kw">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>)) %&gt;%<span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../../reference/fct_count.html">fct_count</a></span>()
-<span class="co">#&gt; # A tibble: 5 × 2</span>
-<span class="co">#&gt;        f     n</span>
-<span class="co">#&gt;   &lt;fctr&gt; &lt;int&gt;</span>
-<span class="co">#&gt; 1      C     1</span>
-<span class="co">#&gt; 2      D     1</span>
-<span class="co">#&gt; 3      E     1</span>
-<span class="co">#&gt; 4      F     1</span>
-<span class="co">#&gt; 5  Other    15</span></code></pre></div>
+<pre class="sourceCode r" id="cb1"><code class="sourceCode r"><div class="sourceLine" id="cb1-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">rep</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>], <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)))</div>
+<div class="sourceLine" id="cb1-2" data-line-number="2"></div>
+<div class="sourceLine" id="cb1-3" data-line-number="3">x <span class="op">%&gt;%</span><span class="st"> </span>
+</div>
+<div class="sourceLine" id="cb1-4" data-line-number="4">
+<span class="st">  </span><span class="kw"><a href="../../reference/fct_other.html">fct_other</a></span>(<span class="dt">keep =</span> <span class="kw">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+</div>
+<div class="sourceLine" id="cb1-5" data-line-number="5">
+<span class="st">  </span><span class="kw"><a href="../../reference/fct_count.html">fct_count</a></span>()</div>
+<div class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt; # A tibble: 3 x 2</span></div>
+<div class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt;   f         n</span></div>
+<div class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt;   &lt;fct&gt; &lt;int&gt;</span></div>
+<div class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt; 1 A        10</span></div>
+<div class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">#&gt; 2 B         5</span></div>
+<div class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#&gt; 3 Other     4</span></div>
+<div class="sourceLine" id="cb1-12" data-line-number="12"></div>
+<div class="sourceLine" id="cb1-13" data-line-number="13">x <span class="op">%&gt;%</span><span class="st"> </span>
+</div>
+<div class="sourceLine" id="cb1-14" data-line-number="14">
+<span class="st">  </span><span class="kw"><a href="../../reference/fct_other.html">fct_other</a></span>(<span class="dt">drop =</span> <span class="kw">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+</div>
+<div class="sourceLine" id="cb1-15" data-line-number="15">
+<span class="st">  </span><span class="kw"><a href="../../reference/fct_count.html">fct_count</a></span>()</div>
+<div class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt; # A tibble: 5 x 2</span></div>
+<div class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">#&gt;   f         n</span></div>
+<div class="sourceLine" id="cb1-18" data-line-number="18"><span class="co">#&gt;   &lt;fct&gt; &lt;int&gt;</span></div>
+<div class="sourceLine" id="cb1-19" data-line-number="19"><span class="co">#&gt; 1 C         1</span></div>
+<div class="sourceLine" id="cb1-20" data-line-number="20"><span class="co">#&gt; 2 D         1</span></div>
+<div class="sourceLine" id="cb1-21" data-line-number="21"><span class="co">#&gt; 3 E         1</span></div>
+<div class="sourceLine" id="cb1-22" data-line-number="22"><span class="co">#&gt; 4 F         1</span></div>
+<div class="sourceLine" id="cb1-23" data-line-number="23"><span class="co">#&gt; 5 Other    15</span></div></code></pre>
 </li>
 <li>
 <p><code><a href="../../reference/fct_relabel.html">fct_relabel()</a></code> allows programmatic relabeling of levels:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">factor</span>(letters[<span class="dv">1</span>:<span class="dv">3</span>])
-x
-<span class="co">#&gt; [1] a b c</span>
-<span class="co">#&gt; Levels: a b c</span>
-
-x %&gt;%<span class="st"> </span><span class="kw"><a href="../../reference/fct_relabel.html">fct_relabel</a></span>(function(x) <span class="kw">paste0</span>(<span class="st">"-"</span>, x, <span class="st">"-"</span>))
-<span class="co">#&gt; [1] -a- -b- -c-</span>
-<span class="co">#&gt; Levels: -a- -b- -c-</span></code></pre></div>
+<pre class="sourceCode r" id="cb2"><code class="sourceCode r"><div class="sourceLine" id="cb2-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">factor</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])</div>
+<div class="sourceLine" id="cb2-2" data-line-number="2">x</div>
+<div class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; [1] a b c</span></div>
+<div class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; Levels: a b c</span></div>
+<div class="sourceLine" id="cb2-5" data-line-number="5"></div>
+<div class="sourceLine" id="cb2-6" data-line-number="6">x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../../reference/fct_relabel.html">fct_relabel</a></span>(<span class="cf">function</span>(x) <span class="kw">paste0</span>(<span class="st">"-"</span>, x, <span class="st">"-"</span>))</div>
+<div class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; [1] -a- -b- -c-</span></div>
+<div class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; Levels: -a- -b- -c-</span></div></code></pre>
 </li>
 </ul>
 <p>There were a number of other minor improvements and bug fixes. You can see a full list in the <a href="http://forcats.tidyverse.org/news/index.html#forcats-0-2-0">release notes</a></p>
@@ -137,7 +145,7 @@ x %&gt;%<span class="st"> </span><span class="kw"><a href="../../reference/fct_r
 
 <div class="author">
   <p>Developed by <a href="http://hadley.nz">Hadley Wickham</a>, <a href="https://www.rstudio.com"><img src="http://tidyverse.org/rstudio-logo.svg" height="24"></a>.</p>
-  <p>Site built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
 <script>

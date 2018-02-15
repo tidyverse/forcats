@@ -98,15 +98,15 @@
     <p>Lump together least/most common factor levels into "other"</p>
     
 
-    <pre class="usage"><span class='fu'>fct_lump</span>(<span class='no'>f</span>, <span class='no'>n</span>, <span class='no'>prop</span>, <span class='kw'>other_level</span> <span class='kw'>=</span> <span class='st'>"Other"</span>, <span class='kw'>ties.method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"min"</span>,
-  <span class='st'>"average"</span>, <span class='st'>"first"</span>, <span class='st'>"last"</span>, <span class='st'>"random"</span>, <span class='st'>"max"</span>))</pre>
+    <pre class="usage"><span class='fu'>fct_lump</span>(<span class='no'>f</span>, <span class='no'>n</span>, <span class='no'>prop</span>, <span class='kw'>w</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>other_level</span> <span class='kw'>=</span> <span class='st'>"Other"</span>,
+  <span class='kw'>ties.method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"min"</span>, <span class='st'>"average"</span>, <span class='st'>"first"</span>, <span class='st'>"last"</span>, <span class='st'>"random"</span>, <span class='st'>"max"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>f</th>
-      <td><p>A factor.</p></td>
+      <td><p>A factor (or character vector).</p></td>
     </tr>
     <tr>
       <th>n, prop</th>
@@ -120,6 +120,11 @@ It there are ties, you will get at least <code>abs(n)</code> values.</p>
 <p>Positive <code>prop</code> preserves values that appear at least
 <code>prop</code> of the time. Negative <code>prop</code> preserves values that
 appear at most <code>-prop</code> of the time.</p></td>
+    </tr>
+    <tr>
+      <th>w</th>
+      <td><p>An optional numeric vector giving weights for frequency of
+each value (not level) in f.</p></td>
     </tr>
     <tr>
       <th>other_level</th>
@@ -196,6 +201,18 @@ treated. See <code>rank()</code> for details.</p></td>
 #&gt;  [85] Other Other Other a     b     Other Other g     Other Other Other Other
 #&gt;  [97] Other g     g     Other
 #&gt; Levels: a b g h Other</div><div class='input'>
+<span class='co'># Use weighted frequencies</span>
+<span class='no'>w</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fu'>rep</span>(<span class='fl'>2</span>, <span class='fl'>50</span>), <span class='fu'>rep</span>(<span class='fl'>1</span>, <span class='fl'>50</span>))
+<span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>w</span> <span class='kw'>=</span> <span class='no'>w</span>)</div><div class='output co'>#&gt;   [1] Other d     e     f     e     g     d     f     e     c     c     c    
+#&gt;  [13] d     c     f     e     g     Other c     d     g     d     Other e    
+#&gt;  [25] c     d     c     Other f     g     c     e     f     d     f     f    
+#&gt;  [37] e     d     d     d     c     Other f     d     g     Other f     f    
+#&gt;  [49] d     c     Other Other f     c     Other Other e     Other Other c    
+#&gt;  [61] f     e     f     d     Other e     c     Other f     e     c     Other
+#&gt;  [73] d     Other f     e     e     f     d     c     g     f     g     d    
+#&gt;  [85] d     e     c     Other Other d     c     g     e     f     d     f    
+#&gt;  [97] f     g     g     e    
+#&gt; Levels: c d e f g Other</div><div class='input'>
 <span class='co'># Use ties.method to control how tied factors are collapsed</span>
 <span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>6</span>)</div><div class='output co'>#&gt;   [1] b     d     e     f     e     g     d     f     e     c     c     c    
 #&gt;  [13] d     c     f     e     g     b     c     d     g     d     Other e    
@@ -238,7 +255,7 @@ treated. See <code>rank()</code> for details.</p></td>
 
 <div class="author">
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' height='24' /></a>.</p>
-  <p>Site built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
 <script>

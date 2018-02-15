@@ -116,48 +116,47 @@
     
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p>Downloaded from <a href = 'https://gssdataexplorer.norc.org/'>https://gssdataexplorer.norc.org/</a>.</p>
+    <p>Downloaded from <a href='https://gssdataexplorer.norc.org/'>https://gssdataexplorer.norc.org/</a>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>gss_cat</span></div><div class='output co'>#&gt; # A tibble: 21,483 × 9
-#&gt;     year       marital   age   race        rincome            partyid
-#&gt;    &lt;int&gt;        &lt;fctr&gt; &lt;int&gt; &lt;fctr&gt;         &lt;fctr&gt;             &lt;fctr&gt;
-#&gt; 1   2000 Never married    26  White  $8000 to 9999       Ind,near rep
-#&gt; 2   2000      Divorced    48  White  $8000 to 9999 Not str republican
-#&gt; 3   2000       Widowed    67  White Not applicable        Independent
-#&gt; 4   2000 Never married    39  White Not applicable       Ind,near rep
-#&gt; 5   2000      Divorced    25  White Not applicable   Not str democrat
-#&gt; 6   2000       Married    25  White $20000 - 24999    Strong democrat
-#&gt; 7   2000 Never married    36  White $25000 or more Not str republican
-#&gt; 8   2000      Divorced    44  White  $7000 to 7999       Ind,near dem
-#&gt; 9   2000       Married    44  White $25000 or more   Not str democrat
-#&gt; 10  2000       Married    47  White $25000 or more  Strong republican
-#&gt; # ... with 21,473 more rows, and 3 more variables: relig &lt;fctr&gt;, denom &lt;fctr&gt;,
-#&gt; #   tvhours &lt;int&gt;</div><div class='input'>
-<span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>gss_cat</span>$<span class='no'>relig</span>)</div><div class='output co'>#&gt; # A tibble: 16 × 2
-#&gt;                          f     n
-#&gt;                     &lt;fctr&gt; &lt;int&gt;
-#&gt; 1                No answer    93
-#&gt; 2               Don't know    15
-#&gt; 3  Inter-nondenominational   109
-#&gt; 4          Native american    23
-#&gt; 5                Christian   689
-#&gt; 6       Orthodox-christian    95
-#&gt; 7             Moslem/islam   104
-#&gt; 8            Other eastern    32
-#&gt; 9                 Hinduism    71
-#&gt; 10                Buddhism   147
-#&gt; 11                   Other   224
-#&gt; 12                    None  3523
-#&gt; 13                  Jewish   388
-#&gt; 14                Catholic  5124
-#&gt; 15              Protestant 10846
-#&gt; 16          Not applicable     0</div><div class='input'><span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='fu'><a href='fct_lump.html'>fct_lump</a></span>(<span class='no'>gss_cat</span>$<span class='no'>relig</span>))</div><div class='output co'>#&gt; # A tibble: 2 × 2
-#&gt;            f     n
-#&gt;       &lt;fctr&gt; &lt;int&gt;
+    <pre class="examples"><div class='input'><span class='no'>gss_cat</span></div><div class='output co'>#&gt; # A tibble: 21,483 x 9
+#&gt;     year marital         age race  rincome        partyid  relig  denom tvhours
+#&gt;    &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;          &lt;fct&gt;    &lt;fct&gt;  &lt;fct&gt;   &lt;int&gt;
+#&gt;  1  2000 Never married    26 White $8000 to 9999  Ind,nea… Prote… Sout…      12
+#&gt;  2  2000 Divorced         48 White $8000 to 9999  Not str… Prote… Bapt…      NA
+#&gt;  3  2000 Widowed          67 White Not applicable Indepen… Prote… No d…       2
+#&gt;  4  2000 Never married    39 White Not applicable Ind,nea… Ortho… Not …       4
+#&gt;  5  2000 Divorced         25 White Not applicable Not str… None   Not …       1
+#&gt;  6  2000 Married          25 White $20000 - 24999 Strong … Prote… Sout…      NA
+#&gt;  7  2000 Never married    36 White $25000 or more Not str… Chris… Not …       3
+#&gt;  8  2000 Divorced         44 White $7000 to 7999  Ind,nea… Prote… Luth…      NA
+#&gt;  9  2000 Married          44 White $25000 or more Not str… Prote… Other       0
+#&gt; 10  2000 Married          47 White $25000 or more Strong … Prote… Sout…       3
+#&gt; # ... with 21,473 more rows</div><div class='input'>
+<span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>gss_cat</span>$<span class='no'>relig</span>)</div><div class='output co'>#&gt; # A tibble: 16 x 2
+#&gt;    f                           n
+#&gt;    &lt;fct&gt;                   &lt;int&gt;
+#&gt;  1 No answer                  93
+#&gt;  2 Don't know                 15
+#&gt;  3 Inter-nondenominational   109
+#&gt;  4 Native american            23
+#&gt;  5 Christian                 689
+#&gt;  6 Orthodox-christian         95
+#&gt;  7 Moslem/islam              104
+#&gt;  8 Other eastern              32
+#&gt;  9 Hinduism                   71
+#&gt; 10 Buddhism                  147
+#&gt; 11 Other                     224
+#&gt; 12 None                     3523
+#&gt; 13 Jewish                    388
+#&gt; 14 Catholic                 5124
+#&gt; 15 Protestant              10846
+#&gt; 16 Not applicable              0</div><div class='input'><span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='fu'><a href='fct_lump.html'>fct_lump</a></span>(<span class='no'>gss_cat</span>$<span class='no'>relig</span>))</div><div class='output co'>#&gt; # A tibble: 2 x 2
+#&gt;   f              n
+#&gt;   &lt;fct&gt;      &lt;int&gt;
 #&gt; 1 Protestant 10846
-#&gt; 2      Other 10637</div></pre>
+#&gt; 2 Other      10637</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -180,7 +179,7 @@
 
 <div class="author">
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' height='24' /></a>.</p>
-  <p>Site built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
 <script>

@@ -98,21 +98,21 @@
     <p>Change factor levels by hand</p>
     
 
-    <pre class="usage"><span class='fu'>fct_recode</span>(<span class='no'>f</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>fct_recode</span>(<span class='no'>.f</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>f</th>
-      <td><p>A factor.</p></td>
+      <th>.f</th>
+      <td><p>A factor (or character vector).</p></td>
     </tr>
     <tr>
       <th>...</th>
       <td><p>A sequence of named character vectors where the
 name gives the new level, and the value gives the old level.
 Levels not otherwise mentioned will be left as is. Levels can
-be removed by naming them <code>NULL</code>.</p></td>
+be removed by naming them <code>NULL</code>. Uses tidy dots.</p></td>
     </tr>
     </table>
     
@@ -146,7 +146,7 @@ be removed by naming them <code>NULL</code>.</p></td>
 
 <div class="author">
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' height='24' /></a>.</p>
-  <p>Site built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
 <script>

@@ -99,18 +99,15 @@
 that really should have the same levels but don't.</p>
     
 
-    <pre class="usage"><span class='fu'>fct_c</span>(<span class='no'>fs</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>fct_c</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>fs</th>
-      <td><p>A factor, or list of factors.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
-      <td><p>Individual factors.</p></td>
+      <td><p>Individual factors. Uses tidy dots, so you can splice in a list
+of factors with <code>!!!</code>.</p></td>
     </tr>
     </table>
     
@@ -122,9 +119,9 @@ that really should have the same levels but don't.</p>
 
 <span class='fu'>c</span>(<span class='no'>fa</span>, <span class='no'>fb</span>, <span class='no'>fab</span>)</div><div class='output co'>#&gt; [1] 1 1 1 2</div><div class='input'><span class='fu'>fct_c</span>(<span class='no'>fa</span>, <span class='no'>fb</span>, <span class='no'>fab</span>)</div><div class='output co'>#&gt; [1] a b a b
 #&gt; Levels: a b</div><div class='input'>
-<span class='co'># You can also pass a list of factors as the first argument</span>
+<span class='co'># You can also pass a list of factors with !!!</span>
 <span class='no'>fs</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='no'>fa</span>, <span class='no'>fb</span>, <span class='no'>fab</span>)
-<span class='fu'>fct_c</span>(<span class='no'>fs</span>)</div><div class='output co'>#&gt; [1] a b a b
+<span class='fu'>fct_c</span>(!!!<span class='no'>fs</span>)</div><div class='output co'>#&gt; [1] a b a b
 #&gt; Levels: a b</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -145,7 +142,7 @@ that really should have the same levels but don't.</p>
 
 <div class="author">
   <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' height='24' /></a>.</p>
-  <p>Site built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
 <script>
