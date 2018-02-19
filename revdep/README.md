@@ -5,11 +5,11 @@
 |version  |R version 3.4.2 (2017-09-28) |
 |os       |macOS High Sierra 10.13.3    |
 |system   |x86_64, darwin15.6.0         |
-|ui       |X11                          |
+|ui       |RStudio                      |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Chicago              |
-|date     |2018-02-12                   |
+|date     |2018-02-19                   |
 
 # Dependencies
 
@@ -27,7 +27,7 @@
 
 # Revdeps
 
-## All (23)
+## All (24)
 
 |package                                        |version |error |warning |note |
 |:----------------------------------------------|:-------|:-----|:-------|:----|
@@ -51,6 +51,7 @@
 |[railtrails](problems.md#railtrails)           |0.0.3   |      |        |1    |
 |[sjPlot](problems.md#sjplot)                   |2.4.1   |      |        |1    |
 |[sweep](problems.md#sweep)                     |0.2.0   |      |        |1    |
+|[tidyLPA](problems.md#tidylpa)                 |0.1.2   |      |        |1    |
 |[tidyquant](problems.md#tidyquant)             |0.5.3   |1     |2       |1    |
 |[tidyverse](problems.md#tidyverse)             |1.2.1   |      |1       |1    |
 |[timetk](problems.md#timetk)                   |0.1.0   |      |        |1    |

@@ -78,9 +78,9 @@ Version: 0.4.0
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  5.3Mb
+      installed size is  5.1Mb
       sub-directories of 1Mb or more:
-        data   5.0Mb
+        data   4.8Mb
     ```
 
 *   checking data for non-ASCII characters ... NOTE
@@ -139,6 +139,18 @@ Version: 0.2.0
       All declared Imports should be used.
     ```
 
+# tidyLPA
+
+Version: 0.1.2
+
+## In both
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Namespace in Imports field not imported from: ‘purrr’
+      All declared Imports should be used.
+    ```
+
 # tidyquant
 
 Version: 0.5.3
@@ -155,7 +167,7 @@ Version: 0.5.3
       10: typeof(x)
       11: duplicate(quo)
       
-      ══ testthat results  ═══════════════════════════════════════════════════════════
+      ══ testthat results  ═══════════════════════════════════════════════════════════════════════════════════════
       OK: 149 SKIPPED: 2 FAILED: 5
       1. Failure: Test returns tibble with correct rows and columns. (@test_tq_get_key_stats.R#15) 
       2. Failure: Test returns tibble with correct rows and columns. (@test_tq_get_key_stats.R#17) 
@@ -182,25 +194,25 @@ Version: 0.5.3
     ```
     ...
     
-    The following object is masked from 'package:dplyr':
+    Warning in download.file(url, destfile = tmp, quiet = TRUE) :
+      URL 'http://download.finance.yahoo.com/d/quotes.csv?s=AAPL&f=aa2a5bb4b6c1c4dd1ee7e8e9f6ghjj1j2j4j5j6kk3k4k5ll1mm3m4m5m6m7m8nopp2p5p6qrr1r5r6r7s6s7t8vwxy&e=.csv': status was 'Couldn't resolve host name'
+    Warning: x = 'AAPL', get = 'key.stats': Error in download.file(url, destfile = tmp, quiet = TRUE): cannot open URL 'http://download.finance.yahoo.com/d/quotes.csv?s=AAPL&f=aa2a5bb4b6c1c4dd1ee7e8e9f6ghjj1j2j4j5j6kk3k4k5ll1mm3m4m5m6m7m8nopp2p5p6qrr1r5r6r7s6s7t8vwxy&e=.csv'
     
-        as_tibble
-    
-    The following object is masked from 'package:tibble':
-    
-        as_tibble
-    
-    Getting holdings for SP500
-    Getting data...
-    
-    additional arguments ignored in warning()
-    Warning in fun_transmute(eval(parse(text = x)), OHLC = FALSE, ...) :
-      missing values removed from data
-    Warning: x = 'AAPL', get = 'key.ratios': Error in value[[3L]](cond): object 'key_ratios' not found
-    
-    Quitting from lines 175-178 (TQ01-core-functions-in-tidyquant.Rmd) 
+    Warning in download.file(url, destfile = tmp, quiet = TRUE) :
+      URL 'http://download.finance.yahoo.com/d/quotes.csv?s=AAPL&f=aa2a5bb4b6c1c4dd1ee7e8e9f6ghjj1j2j4j5j6kk3k4k5ll1mm3m4m5m6m7m8nopp2p5p6qrr1r5r6r7s6s7t8vwxy&e=.csv': status was 'Couldn't resolve host name'
+    Warning: x = 'AAPL', get = 'key.stats': Error in download.file(url, destfile = tmp, quiet = TRUE): cannot open URL 'http://download.finance.yahoo.com/d/quotes.csv?s=AAPL&f=aa2a5bb4b6c1c4dd1ee7e8e9f6ghjj1j2j4j5j6kk3k4k5ll1mm3m4m5m6m7m8nopp2p5p6qrr1r5r6r7s6s7t8vwxy&e=.csv'
+     Removing AAPL.
+    Warning in download.file(url, destfile = tmp, quiet = TRUE) :
+      URL 'http://download.finance.yahoo.com/d/quotes.csv?s=FB&f=aa2a5bb4b6c1c4dd1ee7e8e9f6ghjj1j2j4j5j6kk3k4k5ll1mm3m4m5m6m7m8nopp2p5p6qrr1r5r6r7s6s7t8vwxy&e=.csv': status was 'Couldn't resolve host name'
+    Warning: x = 'FB', get = 'key.stats': Error in download.file(url, destfile = tmp, quiet = TRUE): cannot open URL 'http://download.finance.yahoo.com/d/quotes.csv?s=FB&f=aa2a5bb4b6c1c4dd1ee7e8e9f6ghjj1j2j4j5j6kk3k4k5ll1mm3m4m5m6m7m8nopp2p5p6qrr1r5r6r7s6s7t8vwxy&e=.csv'
+     Removing FB.
+    Warning in download.file(url, destfile = tmp, quiet = TRUE) :
+      URL 'http://download.finance.yahoo.com/d/quotes.csv?s=GOOG&f=aa2a5bb4b6c1c4dd1ee7e8e9f6ghjj1j2j4j5j6kk3k4k5ll1mm3m4m5m6m7m8nopp2p5p6qrr1r5r6r7s6s7t8vwxy&e=.csv': status was 'Couldn't resolve host name'
+    Warning: x = 'GOOG', get = 'key.stats': Error in download.file(url, destfile = tmp, quiet = TRUE): cannot open URL 'http://download.finance.yahoo.com/d/quotes.csv?s=GOOG&f=aa2a5bb4b6c1c4dd1ee7e8e9f6ghjj1j2j4j5j6kk3k4k5ll1mm3m4m5m6m7m8nopp2p5p6qrr1r5r6r7s6s7t8vwxy&e=.csv'
+     Removing GOOG.
+    Quitting from lines 211-214 (TQ01-core-functions-in-tidyquant.Rmd) 
     Error: processing vignette 'TQ01-core-functions-in-tidyquant.Rmd' failed with diagnostics:
-    no applicable method for 'filter_' applied to an object of class "logical"
+    object 'Ask' not found
     Execution halted
     ```
 

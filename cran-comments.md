@@ -1,14 +1,15 @@
 ## Test environments
-* local OS X install, R 3.3.2
-* ubuntu 12.04 (on travis-ci), R 3.3.2
-* win-builder (devel and release)
+* local: R-release (OS X)
+* win-builder: R-devel
+* travis: R 3.1, R 3.2, R-oldrel, R-release, R-devel
 
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
 
-## Reverse dependencies
+## revdepcheck results
 
-I ran R CMD check on all 2 revdeps and did not find any problems. 
+We checked 24 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
-Summary at https://github.com/tidyverse/forcats/tree/master/revdep
+ * We saw 0 new problems
+ * We failed to check 0 packages
