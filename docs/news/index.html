@@ -97,21 +97,42 @@
 
     <div class="contents">
     <div class="section level1">
-<h1>forcats 0.2.0.9000</h1>
+<h1>forcats 0.3.0.9000</h1>
+</div>
+    <div class="section level1">
+<h1>forcats 0.3.0</h1>
+<div class="section level2">
+<h2>API changes</h2>
 <ul>
-<li><p><code><a href="../reference/fct_relabel.html">fct_relabel()</a></code> now accepts objects coercible to functions by <code><a href="http://www.rdocumentation.org/packages/rlang/topics/as_function">rlang::as_function</a></code> (#91, @alistaire47)</p></li>
-<li><p>Increase test coverage from 80% to 99%.</p></li>
-<li><p><code><a href="../reference/fct_explicit_na.html">fct_explicit_na()</a></code> also replaces NAs encoded in levels.</p></li>
-<li><p>[API] <code><a href="../reference/fct_c.html">fct_c()</a></code> now requires explicit splicing with <code>!!!</code> if you have a list of factors that you want to combine. This is consistent with an emerging standards for handling <code>...</code> throughout the tidyverse.</p></li>
-<li><p>[API] <code><a href="../reference/fct_reorder.html">fct_reorder()</a></code> and <code><a href="../reference/fct_reorder.html">fct_reorder2()</a></code> have renamed <code>fun</code> to <code>.fun</code> to avoid spurious matching of named arguments.</p></li>
+<li><p><code><a href="../reference/fct_c.html">fct_c()</a></code> now requires explicit splicing with <code>!!!</code> if you have a list of factors that you want to combine. This is consistent with an emerging standards for handling <code>...</code> throughout the tidyverse.</p></li>
+<li><p><code><a href="../reference/fct_reorder.html">fct_reorder()</a></code> and <code><a href="../reference/fct_reorder.html">fct_reorder2()</a></code> have renamed <code>fun</code> to <code>.fun</code> to avoid spurious matching of named arguments.</p></li>
+</ul>
+</div>
+<div class="section level2">
+<h2>New features</h2>
+<ul>
 <li><p>All functions that take <code>...</code> use “tidy” dots: this means that you use can <code>!!!</code> to splice in a list of values, and trailing empty arguments are automatically removed. Additionally, all other arguments gain a <code>.</code> prefix in order to avoid unhelpful matching of named arguments (#110).</p></li>
-<li><p><code><a href="../reference/fct_drop.html">fct_drop()</a></code> now preserves attributes (#83).</p></li>
-<li><p><code><a href="../reference/lvls.html">lvls_revalue()</a></code> preserves NA levels.</p></li>
-<li><p><code><a href="../reference/fct_lump.html">fct_lump()</a></code> correctly acccounts for <code>NA</code> values in input (#41)</p></li>
-<li><p><code><a href="../reference/fct_expand.html">fct_expand()</a></code> and <code><a href="../reference/lvls.html">lvls_expand()</a></code> now also take character vectors (#99).</p></li>
-<li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> and <code><a href="../reference/fct_inorder.html">fct_inorder()</a></code> accept NA levels (#98).</p></li>
 <li><p><code><a href="../reference/fct_lump.html">fct_lump()</a></code> gains <code>w</code> argument (#70, @wilkox) to weight value frequencies before lumping them together (#68).</p></li>
 </ul>
+</div>
+<div class="section level2">
+<h2>Improvements to NA handling</h2>
+<ul>
+<li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> and <code><a href="../reference/fct_inorder.html">fct_inorder()</a></code> accept NA levels (#98).</p></li>
+<li><p><code><a href="../reference/fct_explicit_na.html">fct_explicit_na()</a></code> also replaces NAs encoded in levels.</p></li>
+<li><p><code><a href="../reference/fct_lump.html">fct_lump()</a></code> correctly acccounts for <code>NA</code> values in input (#41)</p></li>
+<li><p><code><a href="../reference/lvls.html">lvls_revalue()</a></code> preserves NA levels.</p></li>
+</ul>
+</div>
+<div class="section level2">
+<h2>Minor improvements and bug fixes</h2>
+<ul>
+<li><p>Test coverage increased from 80% to 99%.</p></li>
+<li><p><code><a href="../reference/fct_drop.html">fct_drop()</a></code> now preserves attributes (#83).</p></li>
+<li><p><code><a href="../reference/fct_expand.html">fct_expand()</a></code> and <code><a href="../reference/lvls.html">lvls_expand()</a></code> now also take character vectors (#99).</p></li>
+<li><p><code><a href="../reference/fct_relabel.html">fct_relabel()</a></code> now accepts objects coercible to functions by <code><a href="http://www.rdocumentation.org/packages/rlang/topics/as_function">rlang::as_function</a></code> (#91, @alistaire47)</p></li>
+</ul>
+</div>
 </div>
     <div class="section level1">
 <h1>forcats 0.2.0</h1>
@@ -148,7 +169,8 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#NA">0.2.0.9000</a></li>
+        <li><a href="#NA">0.3.0.9000</a></li>
+        <li><a href="#NA">0.3.0</a></li>
         <li><a href="#NA">0.2.0</a></li>
         <li><a href="#NA">0.1.1</a></li>
       </ul>
