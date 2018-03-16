@@ -75,7 +75,10 @@
     <div class="page-header toc-ignore">
       <h1>forcats 0.1.0</h1>
             
-          </div>
+      
+      <small>Source: <a href="https:/github.com/tidyverse/forcats/blob/master/vignettes/releases/forcats-0.1.0.Rmd"><code>vignettes/releases/forcats-0.1.0.Rmd</code></a></small>
+
+    </div>
 
     
     
@@ -100,7 +103,9 @@
 <a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; 5  2000 Divorced         25 White Not app… Not str … None   Not a…       1</span></a>
 <a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 6  2000 Married          25 White $20000 … Strong d… Prote… South…      NA</span></a>
 <a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; # ... with 2.148e+04 more rows</span></a></code></pre></div>
-<section id="change-level-values" class="level2"><h2>Change level values</h2>
+<div id="change-level-values" class="section level2">
+<h2 class="hasAnchor">
+<a href="#change-level-values" class="anchor"></a>Change level values</h2>
 <p>You can recode specified factor levels with <a href="https://hadley.github.io/forcats/fct_recode.html"><code><a href="../../reference/fct_recode.html">fct_recode()</a></code></a>:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">gss_cat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/tally.html">count</a></span>(partyid)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; # A tibble: 10 x 2</span></a>
@@ -171,7 +176,10 @@
 <a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt; 5 Christian                 689</span></a>
 <a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt; 6 Orthodox-christian         95</span></a>
 <a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt; # ... with 6 more rows</span></a></code></pre></div>
-</section><section id="change-level-order" class="level2"><h2>Change level order</h2>
+</div>
+<div id="change-level-order" class="section level2">
+<h2 class="hasAnchor">
+<a href="#change-level-order" class="anchor"></a>Change level order</h2>
 <p>There are four simple helpers for common operations:</p>
 <ul>
 <li><p><a href="https://hadley.github.io/forcats/fct_relevel.html"><code><a href="../../reference/fct_relevel.html">fct_relevel()</a></code></a> is similar to <code><a href="http://www.rdocumentation.org/packages/stats/topics/relevel">stats::relevel()</a></code> but allows you to move any number of levels to the front.</p></li>
@@ -208,10 +216,13 @@
 <a class="sourceLine" id="cb7-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">colour =</span> <span class="kw"><a href="../../reference/fct_reorder.html">fct_reorder2</a></span>(marital, age, prop))) <span class="op">+</span></a>
 <a class="sourceLine" id="cb7-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">colour =</span> <span class="st">"marital"</span>)</a></code></pre></div>
 <p><img src="forcats-0.1.0_files/figure-html/reorder2-1.png" width="50%"><img src="forcats-0.1.0_files/figure-html/reorder2-2.png" width="50%"></p>
-</section><section id="learning-more" class="level2"><h2>Learning more</h2>
+</div>
+<div id="learning-more" class="section level2">
+<h2 class="hasAnchor">
+<a href="#learning-more" class="anchor"></a>Learning more</h2>
 <p>You can learn more about forcats in <a href="http://r4ds.had.co.nz/factors.html">R for data science</a>, and on the <a href="http://forcats.tidyverse.org/">forcats website</a>.</p>
 <p>Please <a href="https://github.com/hadley/forcats/issues">let me know</a> if you have other problems with factors that forcats doesn’t help with!</p>
-</section>
+</div>
 </div>
   </div>
 
@@ -235,7 +246,7 @@
 </div>
 
 <div class="author">
-  <p>Developed by <a href="http://hadley.nz">Hadley Wickham</a>, <a href="https://www.rstudio.com"><img src="http://tidyverse.org/rstudio-logo.svg" height="24"></a>.</p>
+  <p>Developed by <a href="http://hadley.nz">Hadley Wickham</a>, <a href="https://www.rstudio.com"><img src="http://tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.</p>
   <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 

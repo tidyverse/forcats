@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • forcats</title>
+<title>Changelog • forcats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -92,71 +92,85 @@
 
   <div class="col-md-9">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+      <h1>Change log <small></small></h1>
     </div>
 
     <div class="contents">
-    <div class="section level1">
-<h1>forcats 0.3.0.9000</h1>
+    <div id="forcats-0-3-0-9000" class="section level1">
+<h1 class="page-header">
+<a href="#forcats-0-3-0-9000" class="anchor"></a>forcats 0.3.0.9000<small> Unreleased </small>
+</h1>
 </div>
-    <div class="section level1">
-<h1>forcats 0.3.0</h1>
-<div class="section level2">
-<h2>API changes</h2>
+    <div id="forcats-0-3-0" class="section level1">
+<h1 class="page-header">
+<a href="#forcats-0-3-0" class="anchor"></a>forcats 0.3.0<small> 2018-02-19 </small>
+</h1>
+<div id="api-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#api-changes" class="anchor"></a>API changes</h2>
 <ul>
 <li><p><code><a href="../reference/fct_c.html">fct_c()</a></code> now requires explicit splicing with <code>!!!</code> if you have a list of factors that you want to combine. This is consistent with an emerging standards for handling <code>...</code> throughout the tidyverse.</p></li>
 <li><p><code><a href="../reference/fct_reorder.html">fct_reorder()</a></code> and <code><a href="../reference/fct_reorder.html">fct_reorder2()</a></code> have renamed <code>fun</code> to <code>.fun</code> to avoid spurious matching of named arguments.</p></li>
 </ul>
 </div>
-<div class="section level2">
-<h2>New features</h2>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
-<li><p>All functions that take <code>...</code> use “tidy” dots: this means that you use can <code>!!!</code> to splice in a list of values, and trailing empty arguments are automatically removed. Additionally, all other arguments gain a <code>.</code> prefix in order to avoid unhelpful matching of named arguments (#110).</p></li>
-<li><p><code><a href="../reference/fct_lump.html">fct_lump()</a></code> gains <code>w</code> argument (#70, @wilkox) to weight value frequencies before lumping them together (#68).</p></li>
+<li><p>All functions that take <code>...</code> use “tidy” dots: this means that you use can <code>!!!</code> to splice in a list of values, and trailing empty arguments are automatically removed. Additionally, all other arguments gain a <code>.</code> prefix in order to avoid unhelpful matching of named arguments (<a href='https://github.com/tidyverse/forcats/issues/110'>#110</a>).</p></li>
+<li><p><code><a href="../reference/fct_lump.html">fct_lump()</a></code> gains <code>w</code> argument (<a href='https://github.com/tidyverse/forcats/issues/70'>#70</a>, <a href='http://github.com/wilkox'>@wilkox</a>) to weight value frequencies before lumping them together (<a href='https://github.com/tidyverse/forcats/issues/68'>#68</a>).</p></li>
 </ul>
 </div>
-<div class="section level2">
-<h2>Improvements to NA handling</h2>
+<div id="improvements-to-na-handling" class="section level2">
+<h2 class="hasAnchor">
+<a href="#improvements-to-na-handling" class="anchor"></a>Improvements to NA handling</h2>
 <ul>
-<li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> and <code><a href="../reference/fct_inorder.html">fct_inorder()</a></code> accept NA levels (#98).</p></li>
+<li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> and <code><a href="../reference/fct_inorder.html">fct_inorder()</a></code> accept NA levels (<a href='https://github.com/tidyverse/forcats/issues/98'>#98</a>).</p></li>
 <li><p><code><a href="../reference/fct_explicit_na.html">fct_explicit_na()</a></code> also replaces NAs encoded in levels.</p></li>
-<li><p><code><a href="../reference/fct_lump.html">fct_lump()</a></code> correctly acccounts for <code>NA</code> values in input (#41)</p></li>
+<li><p><code><a href="../reference/fct_lump.html">fct_lump()</a></code> correctly acccounts for <code>NA</code> values in input (<a href='https://github.com/tidyverse/forcats/issues/41'>#41</a>)</p></li>
 <li><p><code><a href="../reference/lvls.html">lvls_revalue()</a></code> preserves NA levels.</p></li>
 </ul>
 </div>
-<div class="section level2">
-<h2>Minor improvements and bug fixes</h2>
+<div id="minor-improvements-and-bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-improvements-and-bug-fixes" class="anchor"></a>Minor improvements and bug fixes</h2>
 <ul>
 <li><p>Test coverage increased from 80% to 99%.</p></li>
-<li><p><code><a href="../reference/fct_drop.html">fct_drop()</a></code> now preserves attributes (#83).</p></li>
-<li><p><code><a href="../reference/fct_expand.html">fct_expand()</a></code> and <code><a href="../reference/lvls.html">lvls_expand()</a></code> now also take character vectors (#99).</p></li>
-<li><p><code><a href="../reference/fct_relabel.html">fct_relabel()</a></code> now accepts objects coercible to functions by <code><a href="http://www.rdocumentation.org/packages/rlang/topics/as_function">rlang::as_function</a></code> (#91, @alistaire47)</p></li>
+<li><p><code><a href="../reference/fct_drop.html">fct_drop()</a></code> now preserves attributes (<a href='https://github.com/tidyverse/forcats/issues/83'>#83</a>).</p></li>
+<li><p><code><a href="../reference/fct_expand.html">fct_expand()</a></code> and <code><a href="../reference/lvls.html">lvls_expand()</a></code> now also take character vectors (<a href='https://github.com/tidyverse/forcats/issues/99'>#99</a>).</p></li>
+<li><p><code><a href="../reference/fct_relabel.html">fct_relabel()</a></code> now accepts objects coercible to functions by <code><a href="http://www.rdocumentation.org/packages/rlang/topics/as_function">rlang::as_function</a></code> (<a href='https://github.com/tidyverse/forcats/issues/91'>#91</a>, <a href='http://github.com/alistaire47'>@alistaire47</a>)</p></li>
 </ul>
 </div>
 </div>
-    <div class="section level1">
-<h1>forcats 0.2.0</h1>
-<div class="section level2">
-<h2>New functions</h2>
+    <div id="forcats-0-2-0" class="section level1">
+<h1 class="page-header">
+<a href="#forcats-0-2-0" class="anchor"></a>forcats 0.2.0<small> 2017-01-23 </small>
+</h1>
+<div id="new-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-functions" class="anchor"></a>New functions</h2>
 <ul>
-<li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> which works like <code>as.factor()</code> but orders levels by appearance to avoid differences between locales (#39).</p></li>
-<li><p><code><a href="../reference/fct_other.html">fct_other()</a></code> makes it easier to convert selected levels to “other” (#40)</p></li>
-<li><p><code><a href="../reference/fct_relabel.html">fct_relabel()</a></code> allows programmatic relabeling of levels (#50, @krlmlr).</p></li>
+<li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> which works like <code>as.factor()</code> but orders levels by appearance to avoid differences between locales (<a href='https://github.com/tidyverse/forcats/issues/39'>#39</a>).</p></li>
+<li><p><code><a href="../reference/fct_other.html">fct_other()</a></code> makes it easier to convert selected levels to “other” (<a href='https://github.com/tidyverse/forcats/issues/40'>#40</a>)</p></li>
+<li><p><code><a href="../reference/fct_relabel.html">fct_relabel()</a></code> allows programmatic relabeling of levels (<a href='https://github.com/tidyverse/forcats/issues/50'>#50</a>, <a href='http://github.com/krlmlr'>@krlmlr</a>).</p></li>
 </ul>
 </div>
-<div class="section level2">
-<h2>Minor improvements and bug fixes</h2>
+<div id="minor-improvements-and-bug-fixes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-improvements-and-bug-fixes-1" class="anchor"></a>Minor improvements and bug fixes</h2>
 <ul>
-<li><p><code><a href="../reference/fct_c.html">fct_c()</a></code> can take either a list of factors or individual factors (#42).</p></li>
-<li><p><code><a href="../reference/fct_drop.html">fct_drop()</a></code> gains <code>only</code> argument to restrict which levels are dropped (#69) and no longer adds <code>NA</code> level if not present (#52).</p></li>
-<li><p><code><a href="../reference/fct_recode.html">fct_recode()</a></code> is now checks that each new value is of length 1 (#56).</p></li>
-<li><p><code><a href="../reference/fct_relevel.html">fct_relevel()</a></code> gains <code>after</code> argument so you can also move levels to the end (or any other position you like) (#29).</p></li>
-<li><p><code><a href="../reference/lvls.html">lvls_reorder()</a></code>, <code><a href="../reference/fct_inorder.html">fct_inorder()</a></code>, and <code><a href="../reference/fct_inorder.html">fct_infreq()</a></code> gain an <code>ordered</code> argument, allowing you to override the existing “ordered” status (#54).</p></li>
+<li><p><code><a href="../reference/fct_c.html">fct_c()</a></code> can take either a list of factors or individual factors (<a href='https://github.com/tidyverse/forcats/issues/42'>#42</a>).</p></li>
+<li><p><code><a href="../reference/fct_drop.html">fct_drop()</a></code> gains <code>only</code> argument to restrict which levels are dropped (<a href='https://github.com/tidyverse/forcats/issues/69'>#69</a>) and no longer adds <code>NA</code> level if not present (<a href='https://github.com/tidyverse/forcats/issues/52'>#52</a>).</p></li>
+<li><p><code><a href="../reference/fct_recode.html">fct_recode()</a></code> is now checks that each new value is of length 1 (<a href='https://github.com/tidyverse/forcats/issues/56'>#56</a>).</p></li>
+<li><p><code><a href="../reference/fct_relevel.html">fct_relevel()</a></code> gains <code>after</code> argument so you can also move levels to the end (or any other position you like) (<a href='https://github.com/tidyverse/forcats/issues/29'>#29</a>).</p></li>
+<li><p><code><a href="../reference/lvls.html">lvls_reorder()</a></code>, <code><a href="../reference/fct_inorder.html">fct_inorder()</a></code>, and <code><a href="../reference/fct_inorder.html">fct_infreq()</a></code> gain an <code>ordered</code> argument, allowing you to override the existing “ordered” status (<a href='https://github.com/tidyverse/forcats/issues/54'>#54</a>).</p></li>
 </ul>
 </div>
 </div>
-    <div class="section level1">
-<h1>forcats 0.1.1</h1>
+    <div id="forcats-0-1-1" class="section level1">
+<h1 class="page-header">
+<a href="#forcats-0-1-1" class="anchor"></a>forcats 0.1.1<small> 2016-09-16 </small>
+</h1>
 <ul>
 <li><p>Minor fixes for R CMD check</p></li>
 <li><p>Add package docs</p></li>
@@ -169,10 +183,10 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#NA">0.3.0.9000</a></li>
-        <li><a href="#NA">0.3.0</a></li>
-        <li><a href="#NA">0.2.0</a></li>
-        <li><a href="#NA">0.1.1</a></li>
+        <li><a href="#forcats-0-3-0-9000">0.3.0.9000</a></li>
+        <li><a href="#forcats-0-3-0">0.3.0</a></li>
+        <li><a href="#forcats-0-2-0">0.2.0</a></li>
+        <li><a href="#forcats-0-1-1">0.1.1</a></li>
       </ul>
     </div>
   </div>
@@ -185,7 +199,7 @@
 </div>
 
 <div class="author">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' height='24' /></a>.</p>
+  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.</p>
   <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
@@ -203,3 +217,4 @@
 
   </body>
 </html>
+
