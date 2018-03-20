@@ -1,0 +1,7 @@
+pandoc: 2.1.3
+pkgdown: 0.1.0.9000
+pkgdown_sha: b690316e0e84b38fcfb928558fed268e59b02b0a
+articles:
+  forcats-0.1.0: releases/forcats-0.1.0.html
+  forcats-0.2.0: releases/forcats-0.2.0.html
+
