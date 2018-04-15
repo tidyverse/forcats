@@ -63,6 +63,8 @@ navbar:
   - text: News
     menu:
       - text: "Release notes"
+      - text: "Version 0.3.0"
+        href: articles/releases/forcats-0.3.0.html
       - text: "Version 0.2.0"
         href: articles/releases/forcats-0.2.0.html
       - text: "Version 0.1.0"

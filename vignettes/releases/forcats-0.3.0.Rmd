@@ -1,0 +1,70 @@
+---
+title: "forcats 0.3.0"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  fig.width = 4,
+  fig.show = "hold",
+  fig.asp = 0.618
+)
+options(tibble.print_min = 6, tibble.print_max = 6)
+library(forcats)
+```
+
+We are pleased to announce that [forcats 0.3.0](http://forcats.tidyverse.org/) is now on CRAN. 
+
+The forcats package provides a suite of useful tools that solve common problems with factors in R. This version includes updates that resolve several of the "most popular" GitHub issues (as measured by reactions), some of which are highlighted below. For a complete set of changes, please see the [release notes](https://github.com/tidyverse/forcats/releases/tag/v0.3.0).
+
+You can install the latest version with:
+
+```{r, eval = FALSE}
+install.packages("forcats")
+```
+
+### Improvements to NA handling
+
+Closing out one of the most up-voted [issues](https://github.com/tidyverse/forcats/issues/89) in the tidyverse, `as_factor()` and `fct_inorder()` can accept NA levels. 
+
+`fct_inorder()` allows you to reorder factor levels by their first appearance. In this latest release, NAs are properly ignored.
+
+```{r fct_inorder}
+# forcats 0.3.0
+f <- factor(c("b", "b", NA, "a", "c", "c", "c", NA))
+f
+fct_inorder(f)
+```
+
+`fct_lump()` now correctly accounts for NA in input. `lvls_revalue()` preserves NA levels. Missing values, including NAs, can be given an explicit factor level using `fct_explicit_na()`, which ensures that missing values will appear in summaries and plots.
+
+### New features
+
+Consistent with other tidyverse packages, all functions that take `...` now use tidy dots. This means that you can use `!!!` to splice in a list of values, and trailing empty arguments are automatically removed. For example:
+
+```{r}
+fa <- factor("a")
+fb <- factor("b")
+fab <- factor(c("a", "b"))
+
+# You can pass a list of factors with !!!
+fs <- list(fa, fb, fab)
+fct_c(!!!fs)
+```
+
+All other arguments to functions that take `...` gain a `.` prefix in order to avoid unhelpful matching of named arguments.
+
+`fct_lump()` has a new argument, `w`, for weighing value frequencies before lumping them together. This is useful if you have pre-summarised data.
+
+### API changes
+
+We needed to make two backward incompatible changes in order to increase consistency across the tidyverse:
+
+* `fct_c()` now requires explicit splicing with `!!!` if you have a list of factors that you want to combine. See example, above.
+
+* `fct_reorder()` and `fct_reorder2()` have renamed `fun` to `.fun` to avoid spurious matching of named arguments.
+
+### Contributors
+
+A big thanks goes to the 30-plus people who made this release possible by opening issues and contributing code: [\@alistaire47](https://github.com/alistaire47), [\@antaldaniel](https://github.com/antaldaniel), [\@arhot](https://github.com/arhot), [\@BarkleyBG](https://github.com/BarkleyBG),  [\@camdenhu](https://github.com/camdenhu), [\@ColinFay](https://github.com/ColinFay), [\@dannyparsons](https://github.com/dannyparsons), [\@davechilders](https://github.com/davechilders), [\@dpavlic](https://github.com/dpavlic), [\@eclarke](https://github.com/eclarke), [\@econandrew](https://github.com/econandrew), [\@felipegerard](https://github.com/felipegerard), [\@geneanalyst](https://github.com/geneanalyst), [\@GlynisHumphrey](https://github.com/GlynisHumphrey), [\@gregrs-uk](https://github.com/gregrs-uk), [\@huftis](https://github.com/huftis), [\@instantkaffee](https://github.com/instantkaffee), [\@jmpsteen](https://github.com/jmpsteen), [\@jtr13](https://github.com/jtr13), [\@krlmlr](https://github.com/krlmlr), [\@michaellevy](https://github.com/michaellevy), [\@NBRAYKO](https://github.com/NBRAYKO), [\@pbiecek](https://github.com/pbiecek), [\@philstraforelli](https://github.com/philstraforelli), [\@robinsones](https://github.com/robinsones), [\@rtaph](https://github.com/rtaph), [\@s-fleck](https://github.com/s-fleck), [\@Tazinho](https://github.com/Tazinho), [\@thercast](https://github.com/thercast), [\@vspinu](https://github.com/vspinu), [\@whatevergeek](https://github.com/whatevergeek), [\@wilkox](https://github.com/wilkox), and [\@wkostelecki](https://github.com/wkostelecki).
