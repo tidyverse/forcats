@@ -63,6 +63,9 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="../articles/releases/forcats-0.3.0.html">Version 0.3.0</a>
+    </li>
+    <li>
       <a href="../articles/releases/forcats-0.2.0.html">Version 0.2.0</a>
     </li>
     <li>
@@ -88,204 +91,199 @@
       
       </header>
 
-      <div class="row">
-  <div class="col-md-9">
+<div class="row">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.3.0.9000</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    <table class="ref-index">
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <colgroup>
+      <col class="alias" />
+      <col class="title" />
+    </colgroup>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-change-order-of-levels" class="hasAnchor"><a href="#section-change-order-of-levels" class="anchor"></a>Change order of levels</h2>
-            <p class="section-desc"><p>Keep the values of the levels the same, but change their order. These are particularly useful for models, tables, and visualisations.</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_relevel.html">fct_relevel</a></code> </p>
-          </td>
-          <td><p>Reorder factor levels by hand</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_inorder.html">fct_inorder</a></code> <code><a href="fct_inorder.html">fct_infreq</a></code> </p>
-          </td>
-          <td><p>Reorder factors levels by first appearance or frequency</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_reorder.html">fct_reorder</a></code> <code><a href="fct_reorder.html">fct_reorder2</a></code> <code><a href="fct_reorder.html">last2</a></code> </p>
-          </td>
-          <td><p>Reorder factor levels by sorting along another variable</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_shuffle.html">fct_shuffle</a></code> </p>
-          </td>
-          <td><p>Randomly permute factor levels</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_rev.html">fct_rev</a></code> </p>
-          </td>
-          <td><p>Reverse order of factor levels</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_shift.html">fct_shift</a></code> </p>
-          </td>
-          <td><p>Shift factor levels to left or right, wrapping around at end</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-change-value-of-levels" class="hasAnchor"><a href="#section-change-value-of-levels" class="anchor"></a>Change value of levels</h2>
-            <p class="section-desc"><p>Change factor levels, while preserving order (as much as possible).</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_anon.html">fct_anon</a></code> </p>
-          </td>
-          <td><p>Anonymise factor levels</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_collapse.html">fct_collapse</a></code> </p>
-          </td>
-          <td><p>Collapse factor levels into manually defined groups</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_lump.html">fct_lump</a></code> </p>
-          </td>
-          <td><p>Lump together least/most common factor levels into "other"</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_other.html">fct_other</a></code> </p>
-          </td>
-          <td><p>Replace levels with "other"</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_recode.html">fct_recode</a></code> </p>
-          </td>
-          <td><p>Change factor levels by hand</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_relabel.html">fct_relabel</a></code> </p>
-          </td>
-          <td><p>Automatically relabel factor levels, collapse as necessary</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-add-new-levels" class="hasAnchor"><a href="#section-add-new-levels" class="anchor"></a>Add new levels</h2>
-            <p class="section-desc"><p>Leave existing data as is, but add more levels.</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_expand.html">fct_expand</a></code> </p>
-          </td>
-          <td><p>Add additional levels to a factor</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_explicit_na.html">fct_explicit_na</a></code> </p>
-          </td>
-          <td><p>Make missing values explicit</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-other-helpers" class="hasAnchor"><a href="#section-other-helpers" class="anchor"></a>Other helpers</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="as_factor.html">as_factor</a></code> </p>
-          </td>
-          <td><p>Convert input to a factor.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_c.html">fct_c</a></code> </p>
-          </td>
-          <td><p>Concatenate factors, combining levels</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_count.html">fct_count</a></code> </p>
-          </td>
-          <td><p>Count entries in a factor</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_unify.html">fct_unify</a></code> </p>
-          </td>
-          <td><p>Unify the levels in a list of factors</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_unique.html">fct_unique</a></code> </p>
-          </td>
-          <td><p>Unique values of a factor</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fct_drop.html">fct_drop</a></code> </p>
-          </td>
-          <td><p>Drop unused levels</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="lvls.html">lvls_reorder</a></code> <code><a href="lvls.html">lvls_revalue</a></code> <code><a href="lvls.html">lvls_expand</a></code> </p>
-          </td>
-          <td><p>Low-level functions for manipulating levels</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="lvls_union.html">lvls_union</a></code> </p>
-          </td>
-          <td><p>Find all levels in a list of factors</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="gss_cat.html">gss_cat</a></code> </p>
-          </td>
-          <td><p>A sample of categorical variables from the General Social survey</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-change-order-of-levels" class="hasAnchor"><a href="#section-change-order-of-levels" class="anchor"></a>Change order of levels</h2>
+          <p class="section-desc"><p>Keep the values of the levels the same, but change their order. These are particularly useful for models, tables, and visualisations.</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_relevel.html">fct_relevel()</a></code> </p>
+        </td>
+        <td><p>Reorder factor levels by hand</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_inorder.html">fct_inorder()</a></code> <code><a href="fct_inorder.html">fct_infreq()</a></code> </p>
+        </td>
+        <td><p>Reorder factors levels by first appearance or frequency</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_reorder.html">fct_reorder()</a></code> <code><a href="fct_reorder.html">fct_reorder2()</a></code> <code><a href="fct_reorder.html">last2()</a></code> </p>
+        </td>
+        <td><p>Reorder factor levels by sorting along another variable</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_shuffle.html">fct_shuffle()</a></code> </p>
+        </td>
+        <td><p>Randomly permute factor levels</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_rev.html">fct_rev()</a></code> </p>
+        </td>
+        <td><p>Reverse order of factor levels</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_shift.html">fct_shift()</a></code> </p>
+        </td>
+        <td><p>Shift factor levels to left or right, wrapping around at end</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-change-value-of-levels" class="hasAnchor"><a href="#section-change-value-of-levels" class="anchor"></a>Change value of levels</h2>
+          <p class="section-desc"><p>Change factor levels, while preserving order (as much as possible).</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_anon.html">fct_anon()</a></code> </p>
+        </td>
+        <td><p>Anonymise factor levels</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_collapse.html">fct_collapse()</a></code> </p>
+        </td>
+        <td><p>Collapse factor levels into manually defined groups</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_lump.html">fct_lump()</a></code> </p>
+        </td>
+        <td><p>Lump together least/most common factor levels into "other"</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_other.html">fct_other()</a></code> </p>
+        </td>
+        <td><p>Replace levels with "other"</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_recode.html">fct_recode()</a></code> </p>
+        </td>
+        <td><p>Change factor levels by hand</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_relabel.html">fct_relabel()</a></code> </p>
+        </td>
+        <td><p>Automatically relabel factor levels, collapse as necessary</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-add-new-levels" class="hasAnchor"><a href="#section-add-new-levels" class="anchor"></a>Add new levels</h2>
+          <p class="section-desc"><p>Leave existing data as is, but add more levels.</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_expand.html">fct_expand()</a></code> </p>
+        </td>
+        <td><p>Add additional levels to a factor</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_explicit_na.html">fct_explicit_na()</a></code> </p>
+        </td>
+        <td><p>Make missing values explicit</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-other-helpers" class="hasAnchor"><a href="#section-other-helpers" class="anchor"></a>Other helpers</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="as_factor.html">as_factor()</a></code> </p>
+        </td>
+        <td><p>Convert input to a factor.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_c.html">fct_c()</a></code> </p>
+        </td>
+        <td><p>Concatenate factors, combining levels</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_count.html">fct_count()</a></code> </p>
+        </td>
+        <td><p>Count entries in a factor</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_unify.html">fct_unify()</a></code> </p>
+        </td>
+        <td><p>Unify the levels in a list of factors</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_unique.html">fct_unique()</a></code> </p>
+        </td>
+        <td><p>Unique values of a factor</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fct_drop.html">fct_drop()</a></code> </p>
+        </td>
+        <td><p>Drop unused levels</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="lvls.html">lvls_reorder()</a></code> <code><a href="lvls.html">lvls_revalue()</a></code> <code><a href="lvls.html">lvls_expand()</a></code> </p>
+        </td>
+        <td><p>Low-level functions for manipulating levels</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="lvls_union.html">lvls_union()</a></code> </p>
+        </td>
+        <td><p>Find all levels in a list of factors</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="gss_cat.html">gss_cat</a></code> </p>
+        </td>
+        <td><p>A sample of categorical variables from the General Social survey</p></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -306,21 +304,23 @@
 </div>
 
 <div class="author">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' height='24' /></a>.</p>
+  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.</p>
   <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
 
-  ga('create', 'UA-67989-18', 'auto');
-  ga('send', 'pageview');
+ gtag('config', 'UA-115082821-1');
 </script>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

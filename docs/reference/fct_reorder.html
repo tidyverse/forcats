@@ -63,6 +63,9 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="../articles/releases/forcats-0.3.0.html">Version 0.3.0</a>
+    </li>
+    <li>
       <a href="../articles/releases/forcats-0.2.0.html">Version 0.2.0</a>
     </li>
     <li>
@@ -88,10 +91,12 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Reorder factor levels by sorting along another variable</h1>
+    <small>Source: <a href='https://github.com/tidyverse/forcats/blob/master/R/reorder.R'><code>R/reorder.R</code></a></small>
+    <div class="hidden name"><code>fct_reorder.Rd</code></div>
     </div>
 
     
@@ -107,7 +112,7 @@ it finds the last value of <code>y</code> when sorted by <code>x</code>.</p>
 
 <span class='fu'>last2</span>(<span class='no'>.x</span>, <span class='no'>.y</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -140,7 +145,7 @@ match the default ordering of factors in the legend.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='img'><img src='fct_reorder-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='img'><img src='fct_reorder-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='img'><img src='fct_reorder-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='img'><img src='fct_reorder-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>boxplot</span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='img'><img src='fct_reorder-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='fu'>subset</span>(<span class='no'>ChickWeight</span>, <span class='fu'>as.integer</span>(<span class='no'>Chick</span>) <span class='kw'>&lt;</span> <span class='fl'>10</span>)
 <span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='fu'>transform</span>(<span class='no'>chks</span>, <span class='kw'>Chick</span> <span class='kw'>=</span> <span class='fu'><a href='fct_shuffle.html'>fct_shuffle</a></span>(<span class='no'>Chick</span>))
 
@@ -154,7 +159,7 @@ match the default ordering of factors in the legend.</p></td>
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() +
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_path'>geom_line</a></span>() +
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"Chick"</span>)
-}</div><div class='output co'>#&gt; <span class='message'>Loading required package: ggplot2</span></div><div class='img'><img src='fct_reorder-3.png' alt='' width='700' height='432.632880098887' /></div><div class='img'><img src='fct_reorder-4.png' alt='' width='700' height='432.632880098887' /></div></pre>
+}</div><div class='img'><img src='fct_reorder-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -173,21 +178,23 @@ match the default ordering of factors in the legend.</p></td>
 </div>
 
 <div class="author">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' height='24' /></a>.</p>
+  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://www.rstudio.com'><img src='http://tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.</p>
   <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
 
-  ga('create', 'UA-67989-18', 'auto');
-  ga('send', 'pageview');
+ gtag('config', 'UA-115082821-1');
 </script>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+
