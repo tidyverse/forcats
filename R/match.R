@@ -2,7 +2,7 @@
 #'
 #' A validated version of `%in%` intended for use with logical subsetting.
 #' Performs matching between a factor and a set of levels to pose the question
-#' which of the elements of a factor match these levels?
+#' "which of the elements of a factor match these levels?"
 #'
 #' @md
 #' @rdname fct_match
@@ -21,6 +21,10 @@
 #'   for are all present before creating a logical vector. If a tested level is
 #'   not present, then an error is thrown rather than producing  a silent
 #'   `FALSE`.
+#'
+#'   Since a distinction can be made between `levels(f)` and `unique(f)` (the
+#'   latter excludes empty levels) the argument `allow_missing` can be
+#'   specified.
 #'
 #'   `fct_exclude` is a shortcut to `fct_match(inverse = TRUE)`.
 #'
@@ -44,15 +48,12 @@
 #' gss_cat$marital %>% fct_match("No answer", inverse = TRUE)
 #' gss_cat$marital %>% fct_exclude("No answer")
 #' ## importantly, misspelled levels throw an error
-#' \dontrun{
-#' gss_cat$marital %>% fct_match("Married", "Davorced")
-#' }
+#' \dontrun{gss_cat$marital %>% fct_match("Married", "Davorced")}
 #' ## match to levels()
 #' gss_cat$race %>% fct_match("Other", "Not applicable")
 #' ## match to unique()
 #' gss_cat$race %>% fct_match("Other", "Not applicable", allow_missing = TRUE)
 fct_match <- function(f, ..., inverse = FALSE, allow_missing = TRUE) {
-
   f <- check_factor(f)
 
   stopifnot(is.logical(inverse))
@@ -85,9 +86,6 @@ fct_exclude <- function(f, ..., allow_missing = TRUE) {
 #' @keywords internal
 #' @noRd
 validate_level_inputs <- function(factor, check) {
-  stopifnot(is.atomic(factor))
-  stopifnot(is.atomic(check))
-
   levels_present <- check %in% factor
   if (!all(levels_present)) {
     stop(
@@ -101,43 +99,3 @@ validate_level_inputs <- function(factor, check) {
   }
   NULL
 }
-
-# ## INITIAL MOTIVATION EXAMPLE:
-#
-# set.seed(1)
-#
-# ## with characters
-# testdf <- data.frame(
-#   a = 1:10,
-#   b = sample(c("W", "X_Y", "Z"), 10, replace = TRUE),
-#   stringsAsFactors = FALSE
-# )
-#
-# ## with factors
-# testdfF <- data.frame(
-#   a = 1:10,
-#   b = sample(c("W", "X_Y", "Z"), 10, replace = TRUE)
-# )
-#
-# testdf
-#
-# library(dplyr)
-#
-# ## only captures "Z", silently ignores the typo
-# testdf %>% filter(b %in% c("X Y", "Z"))
-#
-# ## identifies that the level is not present
-# testdf %>% filter(fct_match(b, "X Y", "Z"))
-#
-# ## correct filtering still works
-# testdf %>% filter(fct_match(b, "X_Y", "Z"))
-#
-# ## same results with factors (missing level)
-# testdfF %>% filter(fct_match(b, "X Y", "Z"))
-#
-# ## same results with factors (correct levels)
-# testdfF %>% filter(fct_match(b, "X_Y", "Z"))
-#
-# ## filter to inverse
-# testdf %>% filter(fct_match(b, "X_Y", "Z", inverse = TRUE))
-# testdf %>% filter(fct_exclude(b, "X_Y", "Z"))

@@ -27,7 +27,7 @@ present in \code{f}
 \description{
 A validated version of \code{\%in\%} intended for use with logical subsetting.
 Performs matching between a factor and a set of levels to pose the question
-which of the elements of a factor match these levels?
+"which of the elements of a factor match these levels?"
 }
 \details{
 Unlike \code{\%in\%}, which performs a basic yes/no test, this function
@@ -35,6 +35,10 @@ performs validation on the input vector to ensure that the levels tested
 for are all present before creating a logical vector. If a tested level is
 not present, then an error is thrown rather than producing  a silent
 \code{FALSE}.
+
+Since a distinction can be made between \code{levels(f)} and \code{unique(f)} (the
+latter excludes empty levels) the argument \code{allow_missing} can be
+specified.
 
 \code{fct_exclude} is a shortcut to \code{fct_match(inverse = TRUE)}.
 
@@ -55,9 +59,7 @@ gss_cat$marital \%>\% fct_match("Married", "Divorced")
 gss_cat$marital \%>\% fct_match("No answer", inverse = TRUE)
 gss_cat$marital \%>\% fct_exclude("No answer")
 ## importantly, misspelled levels throw an error
-\dontrun{
-gss_cat$marital \%>\% fct_match("Married", "Davorced")
-}
+\dontrun{gss_cat$marital \%>\% fct_match("Married", "Davorced")}
 ## match to levels()
 gss_cat$race \%>\% fct_match("Other", "Not applicable")
 ## match to unique()
