@@ -1,5 +1,11 @@
 # forcats 0.3.0.9000
 
+## New features
+
+* `fct_match()` and `fct_exclude()` perform validated matching, replacing 
+  the common pattern of `f %in% c("x", "y")` which silently returns `FALSE` 
+  if `"x"` or `"y"` is mis-specified. (#126, @jonocarroll).
+
 # forcats 0.3.0
 
 ## API changes
