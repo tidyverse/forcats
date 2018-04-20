@@ -18,7 +18,7 @@ fct_exclude(f, ..., allow_missing = TRUE)
 \item{inverse}{(logical) if \code{TRUE}, perform a "not match" operation.}
 
 \item{allow_missing}{(logical) if \code{TRUE}, allow matching to empty levels in
-.f}
+f}
 }
 \value{
 a logical vector determined by whether or not the levels in \code{...} are

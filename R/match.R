@@ -9,7 +9,7 @@
 #' @param f A factor (or character vector).
 #' @param inverse (logical) if `TRUE`, perform a "not match" operation.
 #' @param allow_missing (logical) if `TRUE`, allow matching to empty levels in
-#'   .f
+#'   f
 #' @param ... A series of characters for which the test "are these levels in
 #'   `f`?" should be performed.
 #'
