@@ -10,3 +10,4 @@
 ^_pkgdown\.yml$
 ^vignettes$
 ^revdep$
+^\.github$
