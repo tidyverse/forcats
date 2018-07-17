@@ -7,6 +7,7 @@
 #'   If supplied, only levels that have no entries and appear in this vector
 #'   will be removed.
 #' @export
+#' @seealso [fct_expand()] to add additional levels to a factor.
 #' @examples
 #' f <- factor(c("a", "b"), levels = c("a", "b", "c"))
 #' f
