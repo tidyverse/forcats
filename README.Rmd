@@ -22,8 +22,9 @@ knitr::opts_chunk$set(
 
 R uses __factors__ to handle categorical variables, variables that have a fixed and known set of possible values. Historically, factors were much easier to work with than character vectors, so many base R functions automatically convert character vectors to factors. (For historical context, I recommend [_stringsAsFactors: An unauthorized biography_](http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/) by Roger Peng, and [_stringsAsFactors = \<sigh\>_](http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh) by Thomas Lumley.  If you want to learn more about other approaches to working with factors and categorical data, I recommend [_Wrangling categorical data in R_](https://peerj.com/preprints/3163/), by Amelia McNamara and Nicholas Horton.) These days, making factors automatically is no longer so helpful, so packages in the [tidyverse](http://tidyverse.org) never create them automatically.
 
-However, factors are still useful when you have true categorical data, and when you want to override the ordering of character vectors to improve display. The goal of the __forcats__ package is to provide a suite of useful tools that solve common problems with factors. If you're not familiar with strings, the best place to start is the [chapter on factors](http://r4ds.had.co.nz/factors.html) in R for Data Science.
+However, factors are still useful when you have true categorical data, and when you want to override the ordering of character vectors to improve display. The goal of the __forcats__ package is to provide a suite of useful tools that solve common problems with factors. If you're not familiar with factors, the best place to start is the [chapter on factors](http://r4ds.had.co.nz/factors.html) in R for Data Science.
 
+- Explain what categorical data are. Give some example problems 
 ## Installation
 
 ```R
@@ -71,3 +72,11 @@ parse_factor(x2, month_levels)
 ```
 
 Once you have the factor, forcats provides helpers for solving common problems. 
+- fct_reorder
+- fct_collapse 
+- fct_infreq
+
+
+## Getting help
+
+If you encounter a clear bug, please file a minimal reproducible example on [github](https://github.com/tidyverse/dplyr/issues). For questions and other discussion, please use [community.rstudio.com](https://community.rstudio.com/), or the [manipulatr mailing list](https://groups.google.com/group/manipulatr).
