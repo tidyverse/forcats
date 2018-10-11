@@ -48,7 +48,7 @@ library(tidyverse)
 
 Let's try answering the question "what are the most common homeworlds of starwars characters?" Let's start off by making a barplot:
 
-```{r initial_plot}
+```{r initial-plot}
 ggplot(starwars, aes(x = hair_color)) + 
   geom_bar() + 
   coord_flip()
@@ -56,7 +56,7 @@ ggplot(starwars, aes(x = hair_color)) +
 
 That's okay, but it would be more helpful the graph was ordered by count. This is a case of an **unordered** categorical variable where we want it ordered by its frequency. To do so, we can use the function `fct_infreq()`: 
 
-```{r fct_infreq_hair}
+```{r fct-infreq-hair}
 ggplot(starwars, aes(x = fct_infreq(hair_color))) + 
   geom_bar() + 
   coord_flip()
@@ -66,7 +66,7 @@ Note that it automatically puts NA at the top, even though that doesn't have the
 
 What if we want to do a similar plot for skin color? 
 
-```{r fct_infreq_skin}
+```{r fct-infreq-skin}
 ggplot(starwars, aes(x = fct_infreq(skin_color))) + 
   geom_bar() + 
   coord_flip()
@@ -74,7 +74,7 @@ ggplot(starwars, aes(x = fct_infreq(skin_color))) +
 
 Here we have a lot of different skin colors - let's reduce it to only be the top 5. We can use `fct_lump()` to "lump" all the infrequent colors into one factor, "other." The argument `n` is the number of levels we want to keep.
 
-```{r fct_lump}
+```{r fct-lump}
 ggplot(starwars, aes(x = fct_lump(skin_color, n = 5))) + 
   geom_bar() + 
   coord_flip()
@@ -82,7 +82,7 @@ ggplot(starwars, aes(x = fct_lump(skin_color, n = 5))) +
 
 We could also have used `prop` instead, which keeps all the levels that appear at least `prop` of the time. For example, let's keep skin colors that at least 10% of the characters have: 
 
-```{r fct_lump_prop}
+```{r fct-lump-prop}
 ggplot(starwars, aes(x = fct_lump(skin_color, prop = .1))) + 
   geom_bar() + 
   coord_flip()
@@ -92,7 +92,7 @@ Only light and fair remain; everything else is other.
 
 What if we wanted to see if the average mass differed by eye color? We'll only look at the 6 most popular eye colors and remove `NA`s.  
 
-```{r fct_lump_mean}
+```{r fct-lump-mean}
 starwars %>%
   mutate(eye_color = fct_lump(eye_color, n = 6)) %>%
   group_by(eye_color) %>%
@@ -103,7 +103,7 @@ starwars %>%
 
 It looks like people (or at least one person) with orange eyes are definitely heavier! This graph would look nice though if it was ordered by `mean_mass`. We can do this with `fct_reorder()`, which reorders one variable by another. 
 
-```{r fct_reorder}
+```{r fct-reorder}
 starwars %>%
   mutate(eye_color = fct_lump(eye_color, n = 6)) %>%
   group_by(eye_color) %>%
@@ -115,7 +115,7 @@ starwars %>%
 
 Let's switch to using another dataset, `gss_cat`, the general social survey. What is the income distribution among the respondents? 
 
-```{r initial_plot2}
+```{r initial-plot2}
 ggplot(gss_cat, aes(x = rincome)) +
    geom_bar() + 
    coord_flip()
@@ -129,7 +129,7 @@ levels(gss_cat$rincome)
 
 But what if your factor came in the wrong order? Let's simulate that by reordering the levels of `rincome` randomly with `fct_shuffle()` and then plotting it again.
 
-```{r fct_shuffle}
+```{r fct-shuffle}
 ggplot(gss_cat, aes(x = fct_shuffle(rincome))) +
    geom_bar() + 
    coord_flip()
