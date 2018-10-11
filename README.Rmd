@@ -46,7 +46,7 @@ forcats is now part of the core tidyverse, so you do not need to load it explici
 library(tidyverse)
 ```
 
-Let's try answering the question "what are the most common homeworld of starwars characters?" Let's start off by making a barplot
+Let's try answering the question "what are the most common homeworlds of starwars characters?" Let's start off by making a barplot:
 
 ```{r initial_plot}
 ggplot(starwars, aes(x = hair_color)) + 
@@ -54,7 +54,7 @@ ggplot(starwars, aes(x = hair_color)) +
   coord_flip()
 ```
 
-That's okay, but it would be more helpful the graph was ordered by count. This is a case of an **unordered** categorical variable where we want it ordered by its frequency. We can use the function `fct_infreq`: 
+That's okay, but it would be more helpful the graph was ordered by count. This is a case of an **unordered** categorical variable where we want it ordered by its frequency. To do so, we can use the function `fct_infreq()`: 
 
 ```{r fct_infreq_hair}
 ggplot(starwars, aes(x = fct_infreq(hair_color))) + 
@@ -72,7 +72,7 @@ ggplot(starwars, aes(x = fct_infreq(skin_color))) +
   coord_flip()
 ```
 
-Here we have a lot of different skin colors - let's reduce it to only be the top 5. We can use `fct_lump` to "lump" all the infrequent colors into one factor, "other." The argument `n` is the number of levels we want to keep.
+Here we have a lot of different skin colors - let's reduce it to only be the top 5. We can use `fct_lump()` to "lump" all the infrequent colors into one factor, "other." The argument `n` is the number of levels we want to keep.
 
 ```{r fct_lump}
 ggplot(starwars, aes(x = fct_lump(skin_color, n = 5))) + 
@@ -90,7 +90,7 @@ ggplot(starwars, aes(x = fct_lump(skin_color, prop = .1))) +
 
 Only light and fair remain; everything else is other. 
 
-What if we wanted to see if the average mass differed by eye color? We'll only look at the 6 most popular eye colors and remove NAs.  
+What if we wanted to see if the average mass differed by eye color? We'll only look at the 6 most popular eye colors and remove `NA`s.  
 
 ```{r fct_lump_mean}
 starwars %>%
@@ -101,7 +101,7 @@ starwars %>%
   geom_col()
 ```
 
-It looks like people (or at least one person) with orange eyes is definitely heavier! This graph would look nice though if it was ordered by `mean_mass`. We can do this with `fct_reorder`, which reorders one variable by another. 
+It looks like people (or at least one person) with orange eyes are definitely heavier! This graph would look nice though if it was ordered by `mean_mass`. We can do this with `fct_reorder()`, which reorders one variable by another. 
 
 ```{r fct_reorder}
 starwars %>%
@@ -121,13 +121,13 @@ ggplot(gss_cat, aes(x = rincome)) +
    coord_flip()
 ```
 
-Notice that the income levels are in the correct order - they go from `"Lt $1000"` to `$25,000 or more`. This is not a coicidence. When you're working with ordinal data, where there is an order, you can have an ordered factor. You can examine them with the base function `levels`, which prints them in order:
+Notice that the income levels are in the correct order - they go from `"Lt $1000"` to `$25,000 or more`. This is not a coicidence. When you're working with ordinal data, where there is an order, you can have an ordered factor. You can examine them with the base function `levels()`, which prints them in order:
 
 ```{r}
 levels(gss_cat$rincome)
 ```
 
-But what if your factor came in the wrong order? Let's simulate that by reordering the levels of `rincome` randomly with `fct_shuffle` and then plotting it again.
+But what if your factor came in the wrong order? Let's simulate that by reordering the levels of `rincome` randomly with `fct_shuffle()` and then plotting it again.
 
 ```{r fct_shuffle}
 ggplot(gss_cat, aes(x = fct_shuffle(rincome))) +
@@ -137,7 +137,7 @@ ggplot(gss_cat, aes(x = fct_shuffle(rincome))) +
 
 How can we fix this and put it in the right order?
 
-We can use the function `fct_relevel` when we need to manually reorder our factor levels. In addition to the factor, you give it a character vector of level names and specify where you want to move them. It defaults to moving them to the front, but you can move them after another level with the argument `after`. If you want to move it to the end, you set `after` equal to `Inf`. 
+We can use the function `fct_relevel()` when we need to manually reorder our factor levels. In addition to the factor, you give it a character vector of level names, and specify where you want to move them. It defaults to moving them to the front, but you can move them after another level with the argument `after`. If you want to move it to the end, you set `after` equal to `Inf`. 
 
 For example, let's say we wanted to move `Lt $1000` and `$1000 to 2999` to the front. We would write:
 
