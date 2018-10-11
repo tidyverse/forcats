@@ -38,7 +38,7 @@ install.packages("forcats")
 devtools::install_github("tidyverse/forcats")
 ```
 
-## Getting started
+## Ordering by frequency
 
 forcats is now part of the core tidyverse, so you do not need to load it explicitly:
 
@@ -72,7 +72,9 @@ ggplot(starwars, aes(x = fct_infreq(skin_color))) +
   coord_flip()
 ```
 
-Here we have a lot of different skin colors - let's reduce it to only be the top 5. We can use `fct_lump()` to "lump" all the infrequent colors into one factor, "other." The argument `n` is the number of levels we want to keep.
+## Combining levels
+
+The previous plot has a lot of different skin colors - let's reduce it to only be the top 5. We can use `fct_lump()` to "lump" all the infrequent colors into one factor, "other." The argument `n` is the number of levels we want to keep.
 
 ```{r fct-lump}
 ggplot(starwars, aes(x = fct_lump(skin_color, n = 5))) + 
@@ -101,7 +103,9 @@ starwars %>%
   geom_col()
 ```
 
-It looks like people (or at least one person) with orange eyes are definitely heavier! This graph would look nice though if it was ordered by `mean_mass`. We can do this with `fct_reorder()`, which reorders one variable by another. 
+## Ordering by another variable
+
+It looks like people (or at least one person) with orange eyes are definitely heavier! That graph would look nicer though if it was ordered by `mean_mass`. We can do this with `fct_reorder()`, which reorders one variable by another. 
 
 ```{r fct-reorder}
 starwars %>%
@@ -112,6 +116,8 @@ starwars %>%
   ggplot(aes(x = eye_color, y = mean_mass)) + 
   geom_col()
 ```
+
+## Manually reordering
 
 Let's switch to using another dataset, `gss_cat`, the general social survey. What is the income distribution among the respondents? 
 
