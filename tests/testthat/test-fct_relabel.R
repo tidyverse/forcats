@@ -45,3 +45,10 @@ test_that("formulas are coerced to functions", {
     factor(paste0(letters, "."))
   )
 })
+
+test_that("string input is coerced to a factor", {
+  expect_identical(
+    fct_relabel(LETTERS[1:2], .fun=function(x) x),
+    factor(LETTERS[1:2])
+  )
+})
