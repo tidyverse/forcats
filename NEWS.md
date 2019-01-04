@@ -1,5 +1,7 @@
 # forcats 0.3.0.9000
 
+* `fct_relabel()` now accepts character input.
+
 # forcats 0.3.0
 
 ## API changes
