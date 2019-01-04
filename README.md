@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# forcats <img src="man/figures/logo.png" align="right" />
+# forcats <img src='man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
 
