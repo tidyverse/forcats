@@ -25,3 +25,6 @@ fct_drop(f)
 fct_drop(f, only = "a")
 fct_drop(f, only = "c")
 }
+\seealso{
+\code{\link[=fct_expand]{fct_expand()}} to add additional levels to a factor.
+}

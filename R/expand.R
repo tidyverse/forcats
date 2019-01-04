@@ -4,6 +4,7 @@
 #' @param ... Additional levels to add to the factor.  Levels that already
 #'    exist will be silently ignored.
 #' @export
+#' @seealso [fct_drop()] to drop unused factor levels.
 #' @examples
 #' f <- factor(sample(letters[1:3], 20, replace = TRUE))
 #' f
