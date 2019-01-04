@@ -1,5 +1,7 @@
 # forcats 0.3.0.9000
 
+* `fct_relabel()` now accepts character input.
+
 * `fct_reorder()` and `fct_reorder2()` can now work with functions
   that return values other than numbers (#147, @billdenney).
 
