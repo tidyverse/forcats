@@ -19,8 +19,9 @@ last2(.x, .y)
 of \code{.fun(.x)} (for \code{fct_reorder()}) and \code{fun(.x, .y)} (for \code{fct_reorder2()})
 are in ascending order.}
 
-\item{.fun}{n summary function. It should take one vector for
-\code{fct_reorder}, and two vectors for \code{fct_reorder2}.}
+\item{.fun}{n summary function. It should take one vector for \code{fct_reorder},
+and two vectors for \code{fct_reorder2} and return a value that is comparable by
+\code{xtfrm()} (typically the return will be a scalar).}
 
 \item{...}{Other arguments passed on to \code{.fun}. A common argument is
 \code{na.rm = TRUE}.}

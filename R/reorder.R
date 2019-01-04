@@ -9,8 +9,9 @@
 #' @param .x,.y The levels of `f` are reordered so that the values
 #'    of `.fun(.x)` (for `fct_reorder()`) and `fun(.x, .y)` (for `fct_reorder2()`)
 #'    are in ascending order.
-#' @param .fun n summary function. It should take one vector for
-#'   `fct_reorder`, and two vectors for `fct_reorder2`.
+#' @param .fun n summary function. It should take one vector for `fct_reorder`,
+#'   and two vectors for `fct_reorder2` and return a value that is comparable by
+#'   `xtfrm()` (typically the return will be a scalar).
 #' @param ... Other arguments passed on to `.fun`. A common argument is
 #'   `na.rm = TRUE`.
 #' @param .desc Order in descending order? Note the default is different
@@ -43,7 +44,14 @@ fct_reorder <- function(.f, .x, .fun = median, ..., .desc = FALSE) {
 
   summary <- tapply(.x, .f, .fun, ...)
   if (!is.numeric(summary)) {
-    stop("`fun` must return a single number per group", call. = FALSE)
+    summary <-
+      tryCatch(
+        xtfrm(summary),
+        error = function(e) NULL
+      )
+    if (is.null(summary)) {
+      stop("`.fun` must return a value per group that is comparable by `xtfrm()`.", call. = FALSE)
+    }
   }
 
   lvls_reorder(f, order(summary, decreasing = .desc))
@@ -57,7 +65,14 @@ fct_reorder2 <- function(.f, .x, .y, .fun = last2, ..., .desc = TRUE) {
 
   summary <- tapply(seq_along(.x), f, function(i) .fun(.x[i], .y[i], ...))
   if (!is.numeric(summary)) {
-    stop("`fun` must return a single number per group", call. = FALSE)
+    summary <-
+      tryCatch(
+        xtfrm(summary),
+        error = function(e) NULL
+      )
+    if (is.null(summary)) {
+      stop("`.fun` must return a value per group that is comparable by `xtfrm()`.", call. = FALSE)
+    }
   }
 
   lvls_reorder(.f, order(summary, decreasing = .desc))
