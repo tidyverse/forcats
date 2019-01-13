@@ -68,7 +68,7 @@ fct_match <- function(f, lvls, allow_missing = TRUE) {
 validate_level_inputs <- function(factor, check) {
   levels_present <- check %in% factor
   if (all(levels_present)) {
-    return(NULL)
+    return(TRUE)
   }
   stop(
     paste0(
