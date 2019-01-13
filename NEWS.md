@@ -4,7 +4,7 @@
 
 ## New features
 
-* `fct_match()` and `fct_exclude()` perform validated matching, replacing 
+* `fct_match()` performs validated matching, replacing 
   the common pattern of `f %in% c("x", "y")` which silently returns `FALSE` 
   if `"x"` or `"y"` is mis-specified. (#126, @jonocarroll).
 
