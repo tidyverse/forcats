@@ -1,5 +1,7 @@
 # forcats 0.3.0.9000
 
+* `fct_relabel()` now accepts character input.
+
 ## New features
 
 * `fct_match()` and `fct_exclude()` perform validated matching, replacing 

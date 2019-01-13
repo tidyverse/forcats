@@ -21,3 +21,6 @@ f
 fct_expand(f, "d", "e", "f")
 fct_expand(f, letters[1:6])
 }
+\seealso{
+\code{\link[=fct_drop]{fct_drop()}} to drop unused factor levels.
+}

@@ -12,11 +12,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# forcats <img src="man/figures/logo.png" align="right" />
+# forcats <img src='man/figures/logo.png' align="right" height="139" />
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
-[![Travis-CI Build Status](https://travis-ci.org/tidyverse/forcats.svg?branch=master)](https://travis-ci.org/tidyverse/forcats)
-[![Coverage Status](https://img.shields.io/codecov/c/github/tidyverse/forcats/master.svg)](https://codecov.io/github/tidyverse/forcats?branch=master)
+<!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
+[![Travis build status](https://travis-ci.org/tidyverse/forcats.svg?branch=master)](https://travis-ci.org/tidyverse/forcats)
+[![Codecov test coverage](https://codecov.io/gh/tidyverse/forcats/branch/master/graph/badge.svg)](https://codecov.io/gh/tidyverse/forcats?branch=master)
+<!-- badges: end -->
 
 ## Overview
 
@@ -40,10 +42,10 @@ devtools::install_github("tidyverse/forcats")
 
 ## Getting started
 
-forcats is now part of the core tidyverse, so you do not need to load it explicitly:
+forcats is part of the core tidyverse, so you can load it with `library(tidyverse)` or `library(forcats)`.
 
 ```{r setup, message = FALSE}
-library(tidyverse)
+library(forcats)
 ```
 
 Factors are used to describe categorical variables with a fixed and known set of __levels__. You can create factors with the base `factor()` or [`readr::parse_factor()`](http://readr.tidyverse.org/reference/parse_factor.html):
@@ -57,7 +59,7 @@ month_levels <- c(
 
 factor(x1, month_levels)
 
-parse_factor(x1, month_levels)
+readr::parse_factor(x1, month_levels)
 ```
 
 The advantage of `parse_factor()` is that it will generate a warning if values of `x` are not valid levels:
@@ -67,7 +69,7 @@ x2 <- c("Dec", "Apr", "Jam", "Mar")
 
 factor(x2, month_levels)
 
-parse_factor(x2, month_levels)
+readr::parse_factor(x2, month_levels)
 ```
 
 Once you have the factor, forcats provides helpers for solving common problems. 

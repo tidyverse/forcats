@@ -1,3 +1,5 @@
+^pkgdown$
+^\.covrignore$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.travis\.yml$
@@ -10,3 +12,4 @@
 ^_pkgdown\.yml$
 ^vignettes$
 ^revdep$
+^\.github$

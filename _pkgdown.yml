@@ -1,6 +1,7 @@
 template:
   package: tidytemplate
-  default_assets: false
+
+url: https://forcats.tidyverse.org
 
 home:
   strip_header: true
@@ -63,10 +64,12 @@ navbar:
   - text: News
     menu:
       - text: "Release notes"
+      - text: "Version 0.3.0"
+        href: https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/
       - text: "Version 0.2.0"
-        href: articles/releases/forcats-0.2.0.html
+        href: https://blog.rstudio.com/2017/04/12/tidyverse-updates/
       - text: "Version 0.1.0"
-        href: articles/releases/forcats-0.1.0.html
+        href: https://blog.rstudio.com/2016/08/31/forcats-0-1-0/
       - text: "------------------"
       - text: "Change log"
         href: news/index.html

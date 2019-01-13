@@ -1,13 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# forcats <img src="man/figures/logo.png" align="right" />
+# forcats <img src='man/figures/logo.png' align="right" height="139" />
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
-[![Travis-CI Build
-Status](https://travis-ci.org/tidyverse/forcats.svg?branch=master)](https://travis-ci.org/tidyverse/forcats)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/tidyverse/forcats/master.svg)](https://codecov.io/github/tidyverse/forcats?branch=master)
+<!-- badges: start -->
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
+[![Travis build
+status](https://travis-ci.org/tidyverse/forcats.svg?branch=master)](https://travis-ci.org/tidyverse/forcats)
+[![Codecov test
+coverage](https://codecov.io/gh/tidyverse/forcats/branch/master/graph/badge.svg)](https://codecov.io/gh/tidyverse/forcats?branch=master)
+<!-- badges: end -->
 
 ## Overview
 
@@ -49,11 +53,11 @@ devtools::install_github("tidyverse/forcats")
 
 ## Getting started
 
-forcats is now part of the core tidyverse, so you do not need to load it
-explicitly:
+forcats is part of the core tidyverse, so you can load it with
+`library(tidyverse)` or `library(forcats)`.
 
 ``` r
-library(tidyverse)
+library(forcats)
 ```
 
 Factors are used to describe categorical variables with a fixed and
@@ -72,7 +76,7 @@ factor(x1, month_levels)
 #> [1] Dec Apr Jan Mar
 #> Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 
-parse_factor(x1, month_levels)
+readr::parse_factor(x1, month_levels)
 #> [1] Dec Apr Jan Mar
 #> Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 ```
@@ -87,10 +91,9 @@ factor(x2, month_levels)
 #> [1] Dec  Apr  <NA> Mar 
 #> Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 
-parse_factor(x2, month_levels)
+readr::parse_factor(x2, month_levels)
 #> Warning: 1 parsing failure.
-#> row col           expected actual
-#>   3  -- value in level set    Jam
+#> row # A tibble: 1 x 4 col     row   col expected           actual expected   <int> <int> <chr>              <chr>  actual 1     3    NA value in level set Jam
 #> [1] Dec  Apr  <NA> Mar 
 #> attr(,"problems")
 #> # A tibble: 1 x 4
