@@ -1,6 +1,8 @@
 # forcats 0.3.0.9000
 
 * `fct_relabel()` now accepts character input.
+* `fct_collapse()` gains a `group_other` argument to allow you to group all 
+  un-named levels into `"Other"`. (#100, @AmeliaMN)
 
 # forcats 0.3.0
 
