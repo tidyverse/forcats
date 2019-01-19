@@ -9,7 +9,12 @@ forcats <img src='man/figures/logo.png' align="right" height="139" />
 Overview
 --------
 
-R uses **factors** to handle categorical variables, variables that have a fixed and known set of possible values. Factors are also helpful for reordering character vectors to improve display. The goal of the **forcats** package is to provide a suite of tools that solve common problems with factors, including changing the order of levels or the values. Some examples include: - `fct_reorder()`: Reordering a factor by another variable. - `fct_infreq()`: Reordering a factor by the frequency of values. - `fct_relevel()`: Changing the order of a factor by hand. - `fct_lump()`: Collapsing the least/most frequent values of a factor into "other".
+R uses **factors** to handle categorical variables, variables that have a fixed and known set of possible values. Factors are also helpful for reordering character vectors to improve display. The goal of the **forcats** package is to provide a suite of tools that solve common problems with factors, including changing the order of levels or the values. Some examples include:
+
+-   `fct_reorder()`: Reordering a factor by another variable.
+-   `fct_infreq()`: Reordering a factor by the frequency of values.
+-   `fct_relevel()`: Changing the order of a factor by hand.
+-   `fct_lump()`: Collapsing the least/most frequent values of a factor into "other".
 
 You can learn more about each of these in vignette("forcats").
 
