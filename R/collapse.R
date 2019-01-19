@@ -3,7 +3,7 @@
 #' @param .f A factor (or character vector).
 #' @param ... A series of named character vectors. The levels in
 #'   each vector will be replaced with the name.
-#' @param group_other Replace all levels not named in `...` to "Other"?
+#' @param group_other Replace all levels not named in `...` with "Other"?
 #' @export
 #' @examples
 #' fct_count(gss_cat$partyid)
