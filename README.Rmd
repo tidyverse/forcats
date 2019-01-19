@@ -10,7 +10,6 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-"
 )
-library(tidyverse)
 ```
 
 # forcats <img src='man/figures/logo.png' align="right" height="139" />
@@ -52,6 +51,8 @@ forcats is part of the core tidyverse, so you can load it with `library(tidyvers
 
 ```{r setup, message = FALSE}
 library(forcats)
+library(dplyr)
+library(ggplot2)
 ```
 
 ```{r}

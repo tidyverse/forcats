@@ -38,6 +38,8 @@ forcats is part of the core tidyverse, so you can load it with `library(tidyvers
 
 ``` r
 library(forcats)
+library(dplyr)
+library(ggplot2)
 ```
 
 ``` r
