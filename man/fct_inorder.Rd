@@ -11,9 +11,9 @@ fct_inorder(f, ordered = NA)
 
 fct_infreq(f, ordered = NA)
 
-fct_sort_num(f, ..., desc = FALSE)
+fct_sort_num(f, desc = FALSE)
 
-fct_sort_alpha(f, ..., desc = FALSE)
+fct_sort_alpha(f, desc = FALSE)
 }
 \arguments{
 \item{f}{A factor}

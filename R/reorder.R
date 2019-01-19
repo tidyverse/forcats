@@ -108,7 +108,7 @@ fct_infreq <- function(f, ordered = NA) {
 
 #' @export
 #' @rdname fct_inorder
-fct_sort_num <- function(f, ..., desc = FALSE) {
+fct_sort_num <- function(f, desc = FALSE) {
   f <- check_factor(f)
 
   num_levels <- suppressWarnings(as.numeric(levels(f)))
@@ -124,7 +124,7 @@ fct_sort_num <- function(f, ..., desc = FALSE) {
 
 #' @export
 #' @rdname fct_inorder
-fct_sort_alpha <- function(f, ..., desc = FALSE) {
+fct_sort_alpha <- function(f, desc = FALSE) {
   f <- check_factor(f)
 
   new_levels <- sort(levels(f), decreasing = desc)
