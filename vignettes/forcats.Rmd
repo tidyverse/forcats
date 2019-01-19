@@ -1,7 +1,6 @@
 ---
 title: "Introduction to forcats"
 author: "Emily Robinson"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
