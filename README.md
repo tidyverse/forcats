@@ -37,48 +37,6 @@ forcats is part of the core tidyverse, so you can load it with `library(tidyvers
 library(forcats)
 ```
 
-Factors are used to describe categorical variables with a fixed and known set of **levels**. You can create factors with the base `factor()` or [`readr::parse_factor()`](http://readr.tidyverse.org/reference/parse_factor.html):
-
-``` r
-x1 <- c("Dec", "Apr", "Jan", "Mar")
-month_levels <- c(
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-)
-
-factor(x1, month_levels)
-#> [1] Dec Apr Jan Mar
-#> Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
-
-readr::parse_factor(x1, month_levels)
-#> [1] Dec Apr Jan Mar
-#> Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
-```
-
-The advantage of `parse_factor()` is that it will generate a warning if values of `x` are not valid levels:
-
-``` r
-x2 <- c("Dec", "Apr", "Jam", "Mar")
-
-factor(x2, month_levels)
-#> [1] Dec  Apr  <NA> Mar 
-#> Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
-
-readr::parse_factor(x2, month_levels)
-#> Warning: 1 parsing failure.
-#> row col           expected actual
-#>   3  -- value in level set    Jam
-#> [1] Dec  Apr  <NA> Mar 
-#> attr(,"problems")
-#> # A tibble: 1 x 4
-#>     row   col expected           actual
-#>   <int> <int> <chr>              <chr> 
-#> 1     3    NA value in level set Jam   
-#> Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
-```
-
-Once you have the factor, forcats provides helpers for solving common problems.
-
 Resources
 ---------
 

@@ -52,32 +52,6 @@ forcats is part of the core tidyverse, so you can load it with `library(tidyvers
 library(forcats)
 ```
 
-Factors are used to describe categorical variables with a fixed and known set of __levels__. You can create factors with the base `factor()` or [`readr::parse_factor()`](http://readr.tidyverse.org/reference/parse_factor.html):
-
-```{r}
-x1 <- c("Dec", "Apr", "Jan", "Mar")
-month_levels <- c(
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-)
-
-factor(x1, month_levels)
-
-readr::parse_factor(x1, month_levels)
-```
-
-The advantage of `parse_factor()` is that it will generate a warning if values of `x` are not valid levels:
-
-```{r}
-x2 <- c("Dec", "Apr", "Jam", "Mar")
-
-factor(x2, month_levels)
-
-readr::parse_factor(x2, month_levels)
-```
-
-Once you have the factor, forcats provides helpers for solving common problems. 
-
 ## Resources 
 
 For a history of factors, I recommend [_stringsAsFactors: An unauthorized biography_](http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/) by Roger Peng, and [_stringsAsFactors = \<sigh\>_](http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh) by Thomas Lumley.  If you want to learn more about other approaches to working with factors and categorical data, I recommend [_Wrangling categorical data in R_](https://peerj.com/preprints/3163/), by Amelia McNamara and Nicholas Horton.) The R for Data Science book also has a [chapter on factors](http://r4ds.had.co.nz/factors.html).
