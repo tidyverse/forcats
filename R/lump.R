@@ -94,6 +94,7 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
 }
 
 #' @param min Preserves values that appear at least `min` number of times.
+#'
 #' @export
 #' @rdname fct_lump
 #' @examples
