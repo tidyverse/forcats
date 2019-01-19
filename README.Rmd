@@ -73,3 +73,5 @@ readr::parse_factor(x2, month_levels)
 ```
 
 Once you have the factor, forcats provides helpers for solving common problems. 
+
+Please note that the 'forcats' project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
