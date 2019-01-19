@@ -70,6 +70,14 @@ starwars %>%
 
 Only light and fair remain; everything else is other. 
 
+If you wanted to call it something than "other", you can change it with the argument `other_level`:
+
+```{r}
+starwars %>%
+  mutate(skin_color = fct_lump(skin_color, prop = .1, other_level = "extra")) %>%
+  count(skin_color, sort = TRUE)
+```
+
 What if we wanted to see if the average mass differed by eye color? We'll only look at the 6 most popular eye colors and remove `NA`s.  
 
 ```{r fct-lump-mean}
