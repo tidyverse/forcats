@@ -45,28 +45,27 @@ Note that `fct_infreq()` it automatically puts NA at the top, even though that d
 
 ## Combining levels
 
-Let's do a similar plot for skin color:
+Let's take a look at skin color now: 
 
-```{r fct-infreq-skin}
-ggplot(starwars, aes(x = fct_infreq(skin_color))) + 
-  geom_bar() + 
-  coord_flip()
+```{r}
+starwars %>%
+  count(skin_color, sort = TRUE)
 ```
 
-This has a lot of different skin colors - let's reduce it to only be the top 5. We can use `fct_lump()` to "lump" all the infrequent colors into one factor, "other." The argument `n` is the number of levels we want to keep.
+We see that there's 31 different skin colors - if we want to make a plot this would be way too many to display! Let's reduce it to only be the top 5. We can use `fct_lump()` to "lump" all the infrequent colors into one factor, "other." The argument `n` is the number of levels we want to keep.
 
-```{r fct-lump}
-ggplot(starwars, aes(x = fct_lump(skin_color, n = 5))) + 
-  geom_bar() + 
-  coord_flip()
+```{r}
+starwars %>%
+  mutate(skin_color = fct_lump(skin_color, n = 5)) %>%
+  count(skin_color, sort = TRUE)
 ```
 
 We could also have used `prop` instead, which keeps all the levels that appear at least `prop` of the time. For example, let's keep skin colors that at least 10% of the characters have: 
 
-```{r fct-lump-prop}
-ggplot(starwars, aes(x = fct_lump(skin_color, prop = .1))) + 
-  geom_bar() + 
-  coord_flip()
+```{r}
+starwars %>%
+  mutate(skin_color = fct_lump(skin_color, prop = .1)) %>%
+  count(skin_color, sort = TRUE)
 ```
 
 Only light and fair remain; everything else is other. 
@@ -79,13 +78,12 @@ avg_mass_eye_color <- starwars %>%
   group_by(eye_color) %>%
   summarise(mean_mass = mean(mass, na.rm = TRUE))
 
-ggplot(avg_mass_eye_color, aes(x = eye_color, y = mean_mass)) + 
-  geom_col()
+avg_mass_eye_color
 ```
 
 ## Ordering by another variable
 
-It looks like people (or at least one person) with orange eyes are definitely heavier! That graph would look nicer though if it was ordered by `mean_mass`. We can do this with `fct_reorder()`, which reorders one variable by another. 
+It looks like people (or at least one person) with orange eyes are definitely heavier! If we wanted to make a graph, it would be nice if it was ordered by `mean_mass`. We can do this with `fct_reorder()`, which reorders one variable by another. 
 
 ```{r fct-reorder}
 avg_mass_eye_color %>%
@@ -110,28 +108,29 @@ Notice that the income levels are in the correct order - they go from `"Lt $1000
 levels(gss_cat$rincome)
 ```
 
-But what if your factor came in the wrong order? Let's simulate that by reordering the levels of `rincome` randomly with `fct_shuffle()` and then plotting it again.
+But what if your factor came in the wrong order? Let's simulate that by reordering the levels of `rincome` randomly with `fct_shuffle()`:
 
-```{r fct-shuffle}
-ggplot(gss_cat, aes(x = fct_shuffle(rincome))) +
-   geom_bar() + 
-   coord_flip()
+```{r}
+reshuffled_income <- gss_cat$rincome %>%
+  fct_shuffle()
+
+levels(reshuffled_income)
 ```
 
-How can we fix this and put it in the right order?
+Now if we plotted it, it would show in this order, which is all over the place! How can we fix this and put it in the right order?
 
 We can use the function `fct_relevel()` when we need to manually reorder our factor levels. In addition to the factor, you give it a character vector of level names, and specify where you want to move them. It defaults to moving them to the front, but you can move them after another level with the argument `after`. If you want to move it to the end, you set `after` equal to `Inf`. 
 
 For example, let's say we wanted to move `Lt $1000` and `$1000 to 2999` to the front. We would write:
 
 ```{r}
-fct_relevel(gss_cat$rincome, c("Lt $1000", "$1000 to 2999")) %>%
+fct_relevel(reshuffled_income, c("Lt $1000", "$1000 to 2999")) %>%
   levels()
 ```
 
 What if we want to move them to the second and third place? 
 
 ```{r}
-fct_relevel(gss_cat$rincome, c("Lt $1000", "$1000 to 2999"), after = 1) %>%
+fct_relevel(reshuffled_income, c("Lt $1000", "$1000 to 2999"), after = 1) %>%
   levels()
 ```
