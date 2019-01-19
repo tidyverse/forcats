@@ -22,7 +22,13 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-R uses __factors__ to handle categorical variables, variables that have a fixed and known set of possible values, and are also helpful for reordering character vectors to improve display. The goal of the __forcats__ package is to provide a suite of tools that solve common problems with factors. 
+R uses __factors__ to handle categorical variables, variables that have a fixed and known set of possible values. Factors are also helpful for reordering character vectors to improve display. The goal of the __forcats__ package is to provide a suite of tools that solve common problems with factors. Some examples include: 
+  - `fct_reorder()`: Reordering a factor by another variable.
+  - `fct_infreq()`: Reordering a factor by the frequency of values.
+  - `fct_lump()`: Collapsing the least frequent values of a factor into "other".
+  - `fct_relevel()`: Manually changing the order of a factor.
+
+You can learn more about each of these in vignette("forcats"). 
 
 ## Installation
 
