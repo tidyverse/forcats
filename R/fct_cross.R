@@ -19,7 +19,7 @@
 fct_cross <- function(.f, ..., sep = ":", keep_empty = FALSE) {
   .f <- check_factor(.f)
 
-  flist <- rlang::quos(...)
+  flist <- list(...)
   if (length(flist) == 0) {
     return(.f)
   }
