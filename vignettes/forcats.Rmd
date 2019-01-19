@@ -104,13 +104,12 @@ avg_mass_eye_color %>%
 
 Let's switch to using another dataset, `gss_cat`, the general social survey. What is the income distribution among the respondents? 
 
-```{r initial-plot2}
-ggplot(gss_cat, aes(x = rincome)) +
-   geom_bar() + 
-   coord_flip()
+```{r}
+gss_cat %>%
+  count(rincome)
 ```
 
-Notice that the income levels are in the correct order - they go from `"Lt $1000"` to `$25,000 or more`. This is not a coincidence. When you're working with ordinal data, where there is an order, you can have an ordered factor. You can examine them with the base function `levels()`, which prints them in order:
+Notice that the income levels are in the correct order - they start with the non-answers and then go from highest to lowest. This is the same order you'd see if you plotted it as a bar chart. This is not a coincidence. When you're working with ordinal data, where there is an order, you can have an ordered factor. You can examine them with the base function `levels()`, which prints them in order:
 
 ```{r}
 levels(gss_cat$rincome)
