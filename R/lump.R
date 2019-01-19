@@ -74,22 +74,14 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
       rank <- rank(-count, ties = ties.method)
     }
 
-    if(sum(!(rank <= n)) == 1){
-      new_levels <- levels
-    } else {
-      new_levels <- ifelse(rank <= n, levels, other_level)
-    }
+    new_levels <- ifelse(rank <= n, levels, other_level)
 
   } else if (!missing(prop)) {
     prop_n <- count / total
     if (prop < 0) {
       new_levels <- ifelse(prop_n <= -prop, levels, other_level)
     } else {
-      if(sum(!(prop_n > prop)) == 1){
-        new_levels <- levels
-      } else {
-        new_levels <- ifelse(prop_n > prop, levels, other_level)
-      }
+      new_levels <- ifelse(prop_n > prop, levels, other_level)
     }
   }
 
