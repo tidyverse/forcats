@@ -24,9 +24,7 @@ fct_cross <- function(.f, ..., sep = ":", keep_empty = FALSE) {
     return(.f)
   }
 
-  .n <- vapply(.f, rlang::quo_name, character(1))
-  .n <- paste(.n, collapse = "_")
-  .data <- tibble::tibble(.f, !!!flist) %>% lapply(check_factor)
+  .data <- lapply(tibble::tibble(.f, !!!flist), check_factor)
   newf <- rlang::invoke(paste, .data, sep = sep)
 
   if (keep_empty) {
