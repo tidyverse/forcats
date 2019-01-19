@@ -16,14 +16,10 @@
 #' # If you name the level NULL it will be removed
 #' fct_recode(x, NULL = "apple", fruit = "banana")
 #'
-#' # When passing a named vector to rename levels use !!! to unquote
+#' # When passing a named vector to rename levels use !!! to splice
 #' x <- factor(c("apple", "bear", "banana", "dear"))
 #' levels <- c(fruit = "apple", fruit = "banana")
 #' fct_recode(x, !!!levels)
-#'
-#' # The above but within a dataframe
-#' x_df <- x %>% as_data_frame()
-#' x_df %>% mutate(value = fct_recode(value, !!!levels))
 fct_recode <- function(.f, ...) {
   f <- check_factor(.f)
 
