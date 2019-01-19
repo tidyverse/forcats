@@ -2,14 +2,14 @@
 % Please edit documentation in R/fct_cross.R
 \name{fct_cross}
 \alias{fct_cross}
-\title{Combine levels from two or more factors to create new factor}
+\title{Combine levels from two or more factors to create a new factor}
 \usage{
 fct_cross(.f, ..., sep = ":", keep_empty = FALSE)
 }
 \arguments{
 \item{.f}{A factor or character vector}
 
-\item{...}{additional factors or character vectors}
+\item{...}{Additional factors or character vectors}
 
 \item{sep}{A character string to separate the levels}
 
@@ -22,10 +22,10 @@ The new factor
 Computes a factor whose levels are all the combinations of the levels of the input factors.
 }
 \examples{
-fruit <- factor(c("apple","kiwi","apple","apple"))
-colour <- factor(c("green","green","red","green"))
-eaten <- c("yes","no","yes","no")
+fruit <- factor(c("apple", "kiwi", "apple", "apple"))
+colour <- factor(c("green", "green", "red", "green"))
+eaten <- c("yes", "no", "yes", "no")
 fct_cross(fruit, colour)
 fct_cross(fruit, colour, eaten)
-fct_cross(fruit, colour, keep_empty=TRUE)
+fct_cross(fruit, colour, keep_empty = TRUE)
 }
