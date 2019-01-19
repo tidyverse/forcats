@@ -93,26 +93,12 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
   }
 }
 
-#' Title
-#'
-#' @param f A factor (or character vector).
 #' @param min Preserves values that appear at least `min` number of times.
-#' @param w An optional numeric vector giving weights for frequency of
-#' each value (not level) in f.
-#' @param other_level Value of level used for "other" values. Always
-#'   placed at end of levels.
-#'
-<<<<<<< HEAD
 #' @export
-#'
+#' @rdname fct_lump
 #' @examples
 #' x <- factor(letters[rpois(100, 5)])
 #' fct_lump_min(x, min = 10)
-=======
-#' @return
-#' @export
-#'
-#' @examples
 fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
   f <- check_factor(f)
   w <- check_weights(w, length(f))
