@@ -77,7 +77,7 @@ ggplot(starwars, aes(x = eye_color)) +
   coord_flip()
 ```
 
-![](README-unordered-plot-1.png)
+![](man/figures/README-unordered-plot-1.png)
 
 ``` r
 starwars %>%
@@ -87,7 +87,7 @@ starwars %>%
   coord_flip()
 ```
 
-![](README-ordered-plot-1.png)
+![](man/figures/README-ordered-plot-1.png)
 
 Resources
 ---------
