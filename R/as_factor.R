@@ -13,6 +13,9 @@
 #' x <- c("a", "z", "g")
 #' as_factor(x)
 #' as.factor(x)
+#' y <- c("1.1", "11", "2.2", "22")
+#' as_factor(y)
+#' as.factor(y)
 as_factor <- function(x, ...) {
   UseMethod("as_factor")
 }
@@ -31,4 +34,19 @@ as_factor.character <- function(x, ...) {
     fct_inorder(x),
     label = attr(x, "label", exact = TRUE)
   )
+}
+
+#' @rdname as_factor
+#' @export
+as_factor.numeric <- function(x, ...) {
+
+  x <- as.character(x)
+
+  # Preserve label for future haven compatibility
+  ## I don't know what this is but it might be important? -kb
+  #structure(
+    fct_sort_num(x)
+    #label = attr(x, "label", exact = TRUE)
+  #)
+
 }

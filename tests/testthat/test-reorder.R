@@ -47,3 +47,18 @@ test_that("fct_infreq respects missing values", {
   f <- factor(c("a", "b", "b", NA, NA, NA), exclude = FALSE)
   expect_equal(levels(fct_infreq(f)), c(NA, "b", "a"))
 })
+
+test_that("fct_sort_num sorts in numeric order", {
+  f <- factor(c("3", "1", "1", "2"))
+  expect_equal(levels(fct_sort_num(f)), c("1", "2","3"))
+})
+
+test_that("fct_sort_num gives error for non-numeric levels", {
+ f <- factor(c("c", "a", "a", "b"))
+  expect_error(levels(fct_sort_num(f)), "level must be coercible to numeric")
+})
+
+test_that("fct_sort_alpha sorts in English alphabetical order", {
+  f <- factor(c("c", "a", "a", "b"))
+  expect_equal(levels(fct_sort_alpha(f)), c("a", "b","c"))
+})
