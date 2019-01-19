@@ -12,7 +12,7 @@ test_that("positive values keeps most commmon", {
 
 test_that("ties are respected", {
   f <- c("a", "a", "a", "b", "b", "b", "c")
-  expect_equal(levels(fct_lump(f, 1)), c("a", "b", "Other"))
+  expect_equal(levels(fct_lump(f, 1)), c("a", "b", "c"))
 })
 
 test_that("negative values drop most common" ,{
@@ -59,10 +59,10 @@ test_that("NAs included in total", {
   f <- factor(c("a", "a", "b", rep(NA, 7)))
 
   o1 <- fct_lump(f, prop = 0.10)
-  expect_equal(levels(o1), c("a", "Other"))
+  expect_equal(levels(o1), c("a", "b"))
 
   o2 <- fct_lump(f, w = rep(1, 10), prop = 0.10)
-  expect_equal(levels(o2), c("a", "Other"))
+  expect_equal(levels(o2), c("a", "b"))
 })
 
 test_that("bad weights generate error messages", {
@@ -105,6 +105,12 @@ test_that("values are correctly weighted", {
     levels(fct_lump(f, prop = -0.25, w = w, ties.method = "max")),
     levels(fct_lump(f2, prop = -0.25, ties.method = "max"))
   )
+})
+
+test_that("do not change the label when no lumping occurs", {
+  f <- c("a", "a", "a", "a", "b", "b", "b", "c", "c", "d")
+  expect_equal(levels(fct_lump(f, n = 3)), c("a", "b", "c", "d"))
+  expect_equal(levels(fct_lump(f, prop = 0.1)), c("a", "b", "c", "d"))
 })
 
 # Default -----------------------------------------------------------------
