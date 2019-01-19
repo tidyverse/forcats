@@ -3,26 +3,38 @@
 \name{fct_inorder}
 \alias{fct_inorder}
 \alias{fct_infreq}
-\title{Reorder factors levels by first appearance or frequency}
+\alias{fct_sort_num}
+\alias{fct_sort_alpha}
+\title{Reorder factors levels by first appearance, frequency, numeric order, or English alphabetical order.}
 \usage{
 fct_inorder(f, ordered = NA)
 
 fct_infreq(f, ordered = NA)
+
+fct_sort_num(f, ..., desc = FALSE)
+
+fct_sort_alpha(f, ..., desc = FALSE)
 }
 \arguments{
 \item{f}{A factor}
 
 \item{ordered}{A logical which determines the "ordered" status of the
 output factor. \code{NA} preserves the existing status of the factor.}
+
+\item{desc}{For numerical and alphabetic ordering, order in descending order?  Default is FALSE.}
 }
 \description{
-Reorder factors levels by first appearance or frequency
+Reorder factors levels by first appearance, frequency, numeric order, or English alphabetical order.
 }
 \examples{
 f <- factor(c("b", "b", "a", "c", "c", "c"))
 f
 fct_inorder(f)
 fct_infreq(f)
+fct_sort_alpha(f)
 
 fct_inorder(f, ordered = TRUE)
+
+f <- factor(sample(1:10))
+fct_sort_num(f)
 }
