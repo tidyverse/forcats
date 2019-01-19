@@ -102,10 +102,11 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
 #' @param other_level Value of level used for "other" values. Always
 #'   placed at end of levels.
 #'
-#' @return
 #' @export
 #'
 #' @examples
+#' x <- factor(letters[rpois(100, 5)])
+#' fct_lump_min(x, min = 10)
 fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
   f <- check_factor(f)
   w <- check_weights(w, length(f))
@@ -119,7 +120,7 @@ fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
     total <- sum(w)
   }
 
-  new_levels <- ifelse(count >= min_count, levels, other_level)
+  new_levels <- ifelse(count >= min, levels, other_level)
 
   if (other_level %in% new_levels) {
     f <- lvls_revalue(f, new_levels)
