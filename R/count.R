@@ -3,7 +3,7 @@
 #' @param f A factor (or character vector).
 #' @param sort If `TRUE`, sort the result so that the most common values
 #'   float to the top.
-#' @param prop If `TRUE`, compute the fraction of marginal table
+#' @param prop If `TRUE`, compute the fraction of marginal table.
 #' @return A tibble with columns `f`, `n` and `p`, if prop is `TRUE`.
 #' @export
 #' @examples
