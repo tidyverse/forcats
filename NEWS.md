@@ -2,6 +2,8 @@
 
 * `fct_relabel()` now accepts character input.
 
+* `fct_cross()` sreates a new factor containing the combined levels from two or more input factors, similar to `base::interaction` (@tslumley, #136)
+
 # forcats 0.3.0
 
 ## API changes
