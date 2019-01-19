@@ -4,6 +4,8 @@
 
 * `fct_count()` gains a parameter to compute the fraction of marginal table (@zhiiiyang, #146). 
 
+* `fct_lump()` now does not change the label if no lummping occurs (@zhiiiyang, #130). 
+
 # forcats 0.3.0
 
 ## API changes
