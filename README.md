@@ -9,7 +9,7 @@ forcats <img src='man/figures/logo.png' align="right" height="139" />
 Overview
 --------
 
-R uses **factors** to handle categorical variables, variables that have a fixed and known set of possible values. Factors are also helpful for reordering character vectors to improve display. The goal of the **forcats** package is to provide a suite of tools that solve common problems with factors. Some examples include: - `fct_reorder()`: Reordering a factor by another variable. - `fct_infreq()`: Reordering a factor by the frequency of values. - `fct_lump()`: Collapsing the least frequent values of a factor into "other". - `fct_relevel()`: Manually changing the order of a factor.
+R uses **factors** to handle categorical variables, variables that have a fixed and known set of possible values. Factors are also helpful for reordering character vectors to improve display. The goal of the **forcats** package is to provide a suite of tools that solve common problems with factors, including changing the order of levels or the values. Some examples include: - `fct_reorder()`: Reordering a factor by another variable. - `fct_infreq()`: Reordering a factor by the frequency of values. - `fct_relevel()`: Changing the order of a factor by hand. - `fct_lump()`: Collapsing the least/most frequent values of a factor into "other".
 
 You can learn more about each of these in vignette("forcats").
 
@@ -36,6 +36,58 @@ forcats is part of the core tidyverse, so you can load it with `library(tidyvers
 ``` r
 library(forcats)
 ```
+
+``` r
+starwars %>% 
+  filter(!is.na(species)) %>%
+  count(species, sort = TRUE)
+#> # A tibble: 37 x 2
+#>    species      n
+#>    <chr>    <int>
+#>  1 Human       35
+#>  2 Droid        5
+#>  3 Gungan       3
+#>  4 Kaminoan     2
+#>  5 Mirialan     2
+#>  6 Twi'lek      2
+#>  7 Wookiee      2
+#>  8 Zabrak       2
+#>  9 Aleena       1
+#> 10 Besalisk     1
+#> # … with 27 more rows
+```
+
+``` r
+starwars %>%
+  filter(!is.na(species)) %>%
+  mutate(species = fct_lump(species, n = 3)) %>%
+  count(species)
+#> # A tibble: 4 x 2
+#>   species     n
+#>   <fct>   <int>
+#> 1 Droid       5
+#> 2 Gungan      3
+#> 3 Human      35
+#> 4 Other      39
+```
+
+``` r
+ggplot(starwars, aes(x = eye_color)) + 
+  geom_bar() + 
+  coord_flip()
+```
+
+![](README-unordered-plot-1.png)
+
+``` r
+starwars %>%
+  mutate(eye_color = fct_infreq(eye_color)) %>%
+  ggplot(aes(x = eye_color)) + 
+  geom_bar() + 
+  coord_flip()
+```
+
+![](README-ordered-plot-1.png)
 
 Resources
 ---------
