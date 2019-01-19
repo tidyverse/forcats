@@ -1,107 +1,110 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# forcats <img src='man/figures/logo.png' align="right" height="139" />
+forcats <img src='man/figures/logo.png' align="right" height="139" />
+=====================================================================
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats) [![Travis build status](https://travis-ci.org/tidyverse/forcats.svg?branch=master)](https://travis-ci.org/tidyverse/forcats) [![Codecov test coverage](https://codecov.io/gh/tidyverse/forcats/branch/master/graph/badge.svg)](https://codecov.io/gh/tidyverse/forcats?branch=master) <!-- badges: end -->
 
-[![CRAN
-status](https://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
-[![Travis build
-status](https://travis-ci.org/tidyverse/forcats.svg?branch=master)](https://travis-ci.org/tidyverse/forcats)
-[![Codecov test
-coverage](https://codecov.io/gh/tidyverse/forcats/branch/master/graph/badge.svg)](https://codecov.io/gh/tidyverse/forcats?branch=master)
-<!-- badges: end -->
+Overview
+--------
 
-## Overview
+R uses **factors** to handle categorical variables, variables that have a fixed and known set of possible values. Factors are also helpful for reordering character vectors to improve display. The goal of the **forcats** package is to provide a suite of tools that solve common problems with factors, including changing the order of levels or the values. Some examples include:
 
-R uses **factors** to handle categorical variables, variables that have
-a fixed and known set of possible values. Historically, factors were
-much easier to work with than character vectors, so many base R
-functions automatically convert character vectors to factors. (For
-historical context, I recommend [*stringsAsFactors: An unauthorized
-biography*](http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/)
-by Roger Peng, and [*stringsAsFactors =
-\<sigh\>*](http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh)
-by Thomas Lumley. If you want to learn more about other approaches to
-working with factors and categorical data, I recommend [*Wrangling
-categorical data in R*](https://peerj.com/preprints/3163/), by Amelia
-McNamara and Nicholas Horton.) These days, making factors automatically
-is no longer so helpful, so packages in the
-[tidyverse](http://tidyverse.org) never create them automatically.
+-   `fct_reorder()`: Reordering a factor by another variable.
+-   `fct_infreq()`: Reordering a factor by the frequency of values.
+-   `fct_relevel()`: Changing the order of a factor by hand.
+-   `fct_lump()`: Collapsing the least/most frequent values of a factor into "other".
 
-However, factors are still useful when you have true categorical data,
-and when you want to override the ordering of character vectors to
-improve display. The goal of the **forcats** package is to provide a
-suite of useful tools that solve common problems with factors. If you’re
-not familiar with strings, the best place to start is the [chapter on
-factors](http://r4ds.had.co.nz/factors.html) in R for Data Science.
+You can learn more about each of these in `vignette("forcats")`. If you're new to factors, the best place to start is the [chapter on factors](http://r4ds.had.co.nz/factors.html) in R for Data Science.
 
-## Installation
+Installation
+------------
 
-``` r
-# The easiest way to get forcats is to install the whole tidyverse:
-install.packages("tidyverse")
+    # The easiest way to get forcats is to install the whole tidyverse:
+    install.packages("tidyverse")
 
-# Alternatively, install just forcats:
-install.packages("forcats")
+    # Alternatively, install just forcats:
+    install.packages("forcats")
 
-# Or the the development version from GitHub:
-# install.packages("devtools")
-devtools::install_github("tidyverse/forcats")
-```
+    # Or the the development version from GitHub:
+    # install.packages("devtools")
+    devtools::install_github("tidyverse/forcats")
 
-## Getting started
+Getting started
+---------------
 
-forcats is part of the core tidyverse, so you can load it with
-`library(tidyverse)` or `library(forcats)`.
+forcats is part of the core tidyverse, so you can load it with `library(tidyverse)` or `library(forcats)`.
 
 ``` r
 library(forcats)
+library(dplyr)
+library(ggplot2)
 ```
-
-Factors are used to describe categorical variables with a fixed and
-known set of **levels**. You can create factors with the base `factor()`
-or
-[`readr::parse_factor()`](http://readr.tidyverse.org/reference/parse_factor.html):
 
 ``` r
-x1 <- c("Dec", "Apr", "Jan", "Mar")
-month_levels <- c(
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-)
-
-factor(x1, month_levels)
-#> [1] Dec Apr Jan Mar
-#> Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
-
-readr::parse_factor(x1, month_levels)
-#> [1] Dec Apr Jan Mar
-#> Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+starwars %>% 
+  filter(!is.na(species)) %>%
+  count(species, sort = TRUE)
+#> # A tibble: 37 x 2
+#>    species      n
+#>    <chr>    <int>
+#>  1 Human       35
+#>  2 Droid        5
+#>  3 Gungan       3
+#>  4 Kaminoan     2
+#>  5 Mirialan     2
+#>  6 Twi'lek      2
+#>  7 Wookiee      2
+#>  8 Zabrak       2
+#>  9 Aleena       1
+#> 10 Besalisk     1
+#> # … with 27 more rows
 ```
-
-The advantage of `parse_factor()` is that it will generate a warning if
-values of `x` are not valid levels:
 
 ``` r
-x2 <- c("Dec", "Apr", "Jam", "Mar")
-
-factor(x2, month_levels)
-#> [1] Dec  Apr  <NA> Mar 
-#> Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
-
-readr::parse_factor(x2, month_levels)
-#> Warning: 1 parsing failure.
-#> row # A tibble: 1 x 4 col     row   col expected           actual expected   <int> <int> <chr>              <chr>  actual 1     3    NA value in level set Jam
-#> [1] Dec  Apr  <NA> Mar 
-#> attr(,"problems")
-#> # A tibble: 1 x 4
-#>     row   col expected           actual
-#>   <int> <int> <chr>              <chr> 
-#> 1     3    NA value in level set Jam   
-#> Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+starwars %>%
+  filter(!is.na(species)) %>%
+  mutate(species = fct_lump(species, n = 3)) %>%
+  count(species)
+#> # A tibble: 4 x 2
+#>   species     n
+#>   <fct>   <int>
+#> 1 Droid       5
+#> 2 Gungan      3
+#> 3 Human      35
+#> 4 Other      39
 ```
 
-Once you have the factor, forcats provides helpers for solving common
-problems.
+``` r
+ggplot(starwars, aes(x = eye_color)) + 
+  geom_bar() + 
+  coord_flip()
+```
+
+![](man/figures/README-unordered-plot-1.png)
+
+``` r
+starwars %>%
+  mutate(eye_color = fct_infreq(eye_color)) %>%
+  ggplot(aes(x = eye_color)) + 
+  geom_bar() + 
+  coord_flip()
+```
+
+![](man/figures/README-ordered-plot-1.png)
+
+More resources
+--------------
+
+For a history of factors, I recommend [*stringsAsFactors: An unauthorized biography*](http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/) by Roger Peng and [*stringsAsFactors = &lt;sigh&gt;*](http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh) by Thomas Lumley. If you want to learn more about other approaches to working with factors and categorical data, I recommend [*Wrangling categorical data in R*](https://peerj.com/preprints/3163/), by Amelia McNamara and Nicholas Horton.
+
+Getting help
+------------
+
+If you encounter a clear bug, please file a minimal reproducible example on [github](https://github.com/tidyverse/forcats/issues). For questions and other discussion, please use [community.rstudio.com](https://community.rstudio.com/).
+
+Code of Conduct
+---------------
+
+Please note that the 'forcats' project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
