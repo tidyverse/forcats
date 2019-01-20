@@ -3,17 +3,14 @@
 \name{fct_inorder}
 \alias{fct_inorder}
 \alias{fct_infreq}
-\alias{fct_sort_num}
-\alias{fct_sort_alpha}
-\title{Reorder factors levels by first appearance, frequency, numeric order, or English alphabetical order.}
+\alias{fct_inseq}
+\title{Reorder factors levels by first appearance, frequency, or numeric order.}
 \usage{
 fct_inorder(f, ordered = NA)
 
 fct_infreq(f, ordered = NA)
 
-fct_sort_num(f, desc = FALSE)
-
-fct_sort_alpha(f, desc = FALSE)
+fct_inseq(f, desc = FALSE)
 }
 \arguments{
 \item{f}{A factor}
@@ -21,20 +18,19 @@ fct_sort_alpha(f, desc = FALSE)
 \item{ordered}{A logical which determines the "ordered" status of the
 output factor. \code{NA} preserves the existing status of the factor.}
 
-\item{desc}{For numerical and alphabetic ordering, order in descending order?  Default is FALSE.}
+\item{desc}{For numerical ordering, order in descending order?  Default is FALSE.}
 }
 \description{
-Reorder factors levels by first appearance, frequency, numeric order, or English alphabetical order.
+Reorder factors levels by first appearance, frequency, or numeric order.
 }
 \examples{
 f <- factor(c("b", "b", "a", "c", "c", "c"))
 f
 fct_inorder(f)
 fct_infreq(f)
-fct_sort_alpha(f)
 
 fct_inorder(f, ordered = TRUE)
 
 f <- factor(sample(1:10))
-fct_sort_num(f)
+fct_inseq(f)
 }

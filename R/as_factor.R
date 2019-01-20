@@ -45,7 +45,7 @@ as_factor.numeric <- function(x, ...) {
   # Preserve label for future haven compatibility
   ## I don't know what this is but it might be important? -kb
   #structure(
-    fct_sort_num(x)
+    fct_inseq(x)
     #label = attr(x, "label", exact = TRUE)
   #)
 
