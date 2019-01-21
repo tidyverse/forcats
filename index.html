@@ -107,60 +107,92 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p>R uses <strong>factors</strong> to handle categorical variables, variables that have a fixed and known set of possible values. Historically, factors were much easier to work with than character vectors, so many base R functions automatically convert character vectors to factors. (For historical context, I recommend <a href="http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/"><em>stringsAsFactors: An unauthorized biography</em></a> by Roger Peng, and <a href="http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh"><em>stringsAsFactors = &lt;sigh&gt;</em></a> by Thomas Lumley. If you want to learn more about other approaches to working with factors and categorical data, I recommend <a href="https://peerj.com/preprints/3163/"><em>Wrangling categorical data in R</em></a>, by Amelia McNamara and Nicholas Horton.) These days, making factors automatically is no longer so helpful, so packages in the <a href="http://tidyverse.org">tidyverse</a> never create them automatically.</p>
-<p>However, factors are still useful when you have true categorical data, and when you want to override the ordering of character vectors to improve display. The goal of the <strong>forcats</strong> package is to provide a suite of useful tools that solve common problems with factors. If you’re not familiar with strings, the best place to start is the <a href="http://r4ds.had.co.nz/factors.html">chapter on factors</a> in R for Data Science.</p>
+<p>R uses <strong>factors</strong> to handle categorical variables, variables that have a fixed and known set of possible values. Factors are also helpful for reordering character vectors to improve display. The goal of the <strong>forcats</strong> package is to provide a suite of tools that solve common problems with factors, including changing the order of levels or the values. Some examples include:</p>
+<ul>
+<li>
+<code><a href="reference/fct_reorder.html">fct_reorder()</a></code>: Reordering a factor by another variable.</li>
+<li>
+<code><a href="reference/fct_inorder.html">fct_infreq()</a></code>: Reordering a factor by the frequency of values.</li>
+<li>
+<code><a href="reference/fct_relevel.html">fct_relevel()</a></code>: Changing the order of a factor by hand.</li>
+<li>
+<code><a href="reference/fct_lump.html">fct_lump()</a></code>: Collapsing the least/most frequent values of a factor into “other”.</li>
+</ul>
+<p>You can learn more about each of these in <code><a href="articles/forcats.html">vignette("forcats")</a></code>. If you’re new to factors, the best place to start is the <a href="http://r4ds.had.co.nz/factors.html">chapter on factors</a> in R for Data Science.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># The easiest way to get forcats is to install the whole tidyverse:</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"tidyverse"</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># Alternatively, install just forcats:</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"forcats"</span>)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># Or the the development version from GitHub:</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"tidyverse/forcats"</span>)</a></code></pre></div>
+<pre><code><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages"># The easiest way to get forcats is to install the whole tidyverse:
+install.packages("tidyverse")
+
+# Alternatively, install just forcats:
+install.packages("forcats")
+
+# Or the the development version from GitHub:
+# install.packages("devtools")
+devtools::install_github("tidyverse/forcats")</a></code></pre>
 </div>
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting started</h2>
 <p>forcats is part of the core tidyverse, so you can load it with <code><a href="https://www.rdocumentation.org/packages/base/topics/library">library(tidyverse)</a></code> or <code><a href="https://www.rdocumentation.org/packages/base/topics/library">library(forcats)</a></code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(forcats)</a></code></pre></div>
-<p>Factors are used to describe categorical variables with a fixed and known set of <strong>levels</strong>. You can create factors with the base <code><a href="https://www.rdocumentation.org/packages/base/topics/factor">factor()</a></code> or <a href="http://readr.tidyverse.org/reference/parse_factor.html"><code><a href="https://readr.tidyverse.org/reference/parse_factor.html">readr::parse_factor()</a></code></a>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">x1 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Dec"</span>, <span class="st">"Apr"</span>, <span class="st">"Jan"</span>, <span class="st">"Mar"</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">month_levels &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">  <span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span>, </a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">  <span class="st">"Jul"</span>, <span class="st">"Aug"</span>, <span class="st">"Sep"</span>, <span class="st">"Oct"</span>, <span class="st">"Nov"</span>, <span class="st">"Dec"</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">)</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">factor</a></span>(x1, month_levels)</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; [1] Dec Apr Jan Mar</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">readr<span class="op">::</span><span class="kw"><a href="https://readr.tidyverse.org/reference/parse_factor.html">parse_factor</a></span>(x1, month_levels)</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; [1] Dec Apr Jan Mar</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></a></code></pre></div>
-<p>The advantage of <code>parse_factor()</code> is that it will generate a warning if values of <code>x</code> are not valid levels:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">x2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Dec"</span>, <span class="st">"Apr"</span>, <span class="st">"Jam"</span>, <span class="st">"Mar"</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">factor</a></span>(x2, month_levels)</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; [1] Dec  Apr  &lt;NA&gt; Mar </span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">readr<span class="op">::</span><span class="kw"><a href="https://readr.tidyverse.org/reference/parse_factor.html">parse_factor</a></span>(x2, month_levels)</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; Warning: 1 parsing failure.</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; row col           expected actual</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;   3  -- value in level set    Jam</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; [1] Dec  Apr  &lt;NA&gt; Mar </span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; attr(,"problems")</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; # A tibble: 1 x 4</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;     row   col expected           actual</span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;              &lt;chr&gt; </span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; 1     3    NA value in level set Jam   </span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></a></code></pre></div>
-<p>Once you have the factor, forcats provides helpers for solving common problems.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(forcats)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">starwars <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(species)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(species, <span class="dt">sort =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; # A tibble: 37 x 2</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;    species      n</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;    &lt;chr&gt;    &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;  1 Human       35</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;  2 Droid        5</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;  3 Gungan       3</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;  4 Kaminoan     2</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;  5 Mirialan     2</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;  6 Twi'lek      2</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;  7 Wookiee      2</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;  8 Zabrak       2</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt;  9 Aleena       1</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; 10 Besalisk     1</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; # … with 27 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">starwars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(species)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">species =</span> <span class="kw"><a href="reference/fct_lump.html">fct_lump</a></span>(species, <span class="dt">n =</span> <span class="dv">3</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(species)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; # A tibble: 4 x 2</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;   species     n</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;   &lt;fct&gt;   &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 1 Droid       5</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 2 Gungan      3</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 3 Human      35</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; 4 Other      39</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(starwars, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> eye_color)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>()</a></code></pre></div>
+<p><img src="reference/figures/README-unordered-plot-1.png" width="700"></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">starwars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">eye_color =</span> <span class="kw"><a href="reference/fct_inorder.html">fct_infreq</a></span>(eye_color)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> eye_color)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>()</a></code></pre></div>
+<p><img src="reference/figures/README-ordered-plot-1.png" width="700"></p>
+</div>
+<div id="more-resources" class="section level2">
+<h2 class="hasAnchor">
+<a href="#more-resources" class="anchor"></a>More resources</h2>
+<p>For a history of factors, I recommend <a href="http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/"><em>stringsAsFactors: An unauthorized biography</em></a> by Roger Peng and <a href="http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh"><em>stringsAsFactors = &lt;sigh&gt;</em></a> by Thomas Lumley. If you want to learn more about other approaches to working with factors and categorical data, I recommend <a href="https://peerj.com/preprints/3163/"><em>Wrangling categorical data in R</em></a>, by Amelia McNamara and Nicholas Horton.</p>
+</div>
+<div id="getting-help" class="section level2">
+<h2 class="hasAnchor">
+<a href="#getting-help" class="anchor"></a>Getting help</h2>
+<p>If you encounter a clear bug, please file a minimal reproducible example on <a href="https://github.com/tidyverse/forcats/issues">github</a>. For questions and other discussion, please use <a href="https://community.rstudio.com/">community.rstudio.com</a>.</p>
+</div>
+<div id="code-of-conduct" class="section level2">
+<h2 class="hasAnchor">
+<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
+<p>Please note that the ‘forcats’ project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </div>

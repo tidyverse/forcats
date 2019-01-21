@@ -19,6 +19,9 @@
     <loc>https://forcats.tidyverse.org/reference/fct_count.html</loc>
   </url>
   <url>
+    <loc>https://forcats.tidyverse.org/reference/fct_cross.html</loc>
+  </url>
+  <url>
     <loc>https://forcats.tidyverse.org/reference/fct_drop.html</loc>
   </url>
   <url>
@@ -77,5 +80,8 @@
   </url>
   <url>
     <loc>https://forcats.tidyverse.org/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://forcats.tidyverse.org/articles/forcats.html</loc>
   </url>
 </urlset>

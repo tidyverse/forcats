@@ -133,6 +133,9 @@
 <ul>
 <li>
 <code><a href="../reference/fct_relabel.html">fct_relabel()</a></code> now accepts character input.</li>
+<li><p><code><a href="../reference/fct_collapse.html">fct_collapse()</a></code> gains a <code>group_other</code> argument to allow you to group all un-named levels into <code>"Other"</code>. (<a href='https://github.com/tidyverse/forcats/issues/100'>#100</a>, <a href='https://github.com/AmeliaMN'>@AmeliaMN</a>)</p></li>
+<li><p><code><a href="../reference/fct_cross.html">fct_cross()</a></code> creates a new factor containing the combined levels from two or more input factors, similar to <code><a href="https://www.rdocumentation.org/packages/base/topics/interaction">base::interaction</a></code> (<a href='https://github.com/tslumley'>@tslumley</a>, <a href='https://github.com/tidyverse/forcats/issues/136'>#136</a>)</p></li>
+<li><p><code><a href="../reference/fct_count.html">fct_count()</a></code> gains a parameter to compute the fraction of marginal table (<a href='https://github.com/zhiiiyang'>@zhiiiyang</a>, <a href='https://github.com/tidyverse/forcats/issues/146'>#146</a>).</p></li>
 </ul>
 </div>
     <div id="forcats-0-3-0" class="section level1">
@@ -172,7 +175,7 @@
 <li><p>Test coverage increased from 80% to 99%.</p></li>
 <li><p><code><a href="../reference/fct_drop.html">fct_drop()</a></code> now preserves attributes (<a href='https://github.com/tidyverse/forcats/issues/83'>#83</a>).</p></li>
 <li><p><code><a href="../reference/fct_expand.html">fct_expand()</a></code> and <code><a href="../reference/lvls.html">lvls_expand()</a></code> now also take character vectors (<a href='https://github.com/tidyverse/forcats/issues/99'>#99</a>).</p></li>
-<li><p><code><a href="../reference/fct_relabel.html">fct_relabel()</a></code> now accepts objects coercible to functions by <code><a href="https://www.rdocumentation.org/packages/rlang/topics/as_function">rlang::as_function</a></code> (<a href='https://github.com/tidyverse/forcats/issues/91'>#91</a>, <a href='https://github.com/alistaire47'>@alistaire47</a>)</p></li>
+<li><p><code><a href="../reference/fct_relabel.html">fct_relabel()</a></code> now accepts objects coercible to functions by <code><a href="https://rlang.r-lib.org/reference/as_function.html">rlang::as_function</a></code> (<a href='https://github.com/tidyverse/forcats/issues/91'>#91</a>, <a href='https://github.com/alistaire47'>@alistaire47</a>)</p></li>
 </ul>
 </div>
 </div>
