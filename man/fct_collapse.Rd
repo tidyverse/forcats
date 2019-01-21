@@ -12,7 +12,7 @@ fct_collapse(.f, ..., group_other = FALSE)
 \item{...}{A series of named character vectors. The levels in
 each vector will be replaced with the name.}
 
-\item{group_other}{Replace all levels not named in \code{...} to "Other"?}
+\item{group_other}{Replace all levels not named in \code{...} with "Other"?}
 }
 \description{
 Collapse factor levels into manually defined groups

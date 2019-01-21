@@ -4,16 +4,18 @@
 \alias{fct_count}
 \title{Count entries in a factor}
 \usage{
-fct_count(f, sort = FALSE)
+fct_count(f, sort = FALSE, prop = FALSE)
 }
 \arguments{
 \item{f}{A factor (or character vector).}
 
 \item{sort}{If \code{TRUE}, sort the result so that the most common values
 float to the top.}
+
+\item{prop}{If \code{TRUE}, compute the fraction of marginal table.}
 }
 \value{
-A tibble with columns \code{f} and \code{n}.
+A tibble with columns \code{f}, \code{n} and \code{p}, if prop is \code{TRUE}.
 }
 \description{
 Count entries in a factor
@@ -23,4 +25,5 @@ f <- factor(sample(letters)[rpois(1000, 10)])
 table(f)
 fct_count(f)
 fct_count(f, sort = TRUE)
+fct_count(f, sort = TRUE, prop = TRUE)
 }
