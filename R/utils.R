@@ -12,12 +12,10 @@ NULL
 
 
 check_factor <- function(f) {
-  if (is.character(f)) {
+  if (is.character(f) | is.numeric(f)) {
     factor(f)
   } else if (is.factor(f)) {
     f
-  } else if (is.numeric(f)) {
-    factor(as.character(f))
   } else {
     stop("`f` must be a factor (or character vector or numeric vector).", call. = FALSE)
   }

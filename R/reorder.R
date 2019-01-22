@@ -107,16 +107,16 @@ fct_infreq <- function(f, ordered = NA) {
 
 #' @export
 #' @rdname fct_inorder
-fct_inseq <- function(f, desc = FALSE) {
+fct_inseq <- function(f, ordered = NA) {
   f <- check_factor(f)
 
   num_levels <- suppressWarnings(as.numeric(levels(f)))
-  new_levels <- sort(num_levels, decreasing = desc)
+  new_levels <- sort(num_levels)
 
-  if(length(new_levels) == 0){
+  if (length(new_levels) == 0){
     stop("At least one existing level must be coercible to numeric.", call. = FALSE)
   }
 
-  refactor(f, new_levels)
+  refactor(f, new_levels, ordered = ordered)
 }
 

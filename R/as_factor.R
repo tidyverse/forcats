@@ -39,14 +39,5 @@ as_factor.character <- function(x, ...) {
 #' @rdname as_factor
 #' @export
 as_factor.numeric <- function(x, ...) {
-
-  x <- as.character(x)
-
-  # Preserve label for future haven compatibility
-  ## I don't know what this is but it might be important? -kb
-  #structure(
-    fct_inseq(x)
-    #label = attr(x, "label", exact = TRUE)
-  #)
-
+  x <- factor(x)
 }
