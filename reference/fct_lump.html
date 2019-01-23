@@ -139,7 +139,9 @@
     </div>
 
     <pre class="usage"><span class='fu'>fct_lump</span>(<span class='no'>f</span>, <span class='no'>n</span>, <span class='no'>prop</span>, <span class='kw'>w</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>other_level</span> <span class='kw'>=</span> <span class='st'>"Other"</span>,
-  <span class='kw'>ties.method</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"min"</span>, <span class='st'>"average"</span>, <span class='st'>"first"</span>, <span class='st'>"last"</span>, <span class='st'>"random"</span>, <span class='st'>"max"</span>))</pre>
+  <span class='kw'>ties.method</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"min"</span>, <span class='st'>"average"</span>, <span class='st'>"first"</span>, <span class='st'>"last"</span>, <span class='st'>"random"</span>, <span class='st'>"max"</span>))
+
+<span class='fu'>fct_lump_min</span>(<span class='no'>f</span>, <span class='no'>min</span>, <span class='kw'>w</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>other_level</span> <span class='kw'>=</span> <span class='st'>"Other"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -175,6 +177,10 @@ placed at end of levels.</p></td>
       <th>ties.method</th>
       <td><p>A character string specifying how ties are
 treated. See <code><a href='https://www.rdocumentation.org/packages/base/topics/rank'>rank()</a></code> for details.</p></td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td><p>Preserves values that appear at least <code>min</code> number of times.</p></td>
     </tr>
     </table>
     
@@ -273,7 +279,17 @@ treated. See <code><a href='https://www.rdocumentation.org/packages/base/topics/
 #&gt;  [85] d     e     c     Other b     d     c     g     e     f     d     f    
 #&gt;  [97] f     g     g     e    
 #&gt; Levels: b c d e f g Other</div><div class='input'>
-</div></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='no'>letters</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Poisson'>rpois</a></span>(<span class='fl'>100</span>, <span class='fl'>5</span>)])
+<span class='fu'>fct_lump_min</span>(<span class='no'>x</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt;   [1] c     f     Other g     g     Other g     e     g     Other e     d    
+#&gt;  [13] g     g     d     c     d     Other d     c     Other d     c     d    
+#&gt;  [25] d     f     f     d     e     d     Other d     d     e     f     f    
+#&gt;  [37] Other f     e     g     d     f     f     e     c     f     e     f    
+#&gt;  [49] c     d     f     e     g     e     c     g     f     c     d     c    
+#&gt;  [61] c     f     e     c     d     c     Other e     Other Other c     c    
+#&gt;  [73] f     c     d     f     c     g     f     e     Other d     Other c    
+#&gt;  [85] Other e     d     e     d     Other g     Other f     e     e     d    
+#&gt;  [97] Other Other Other g    
+#&gt; Levels: c d e f g Other</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
