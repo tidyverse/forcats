@@ -34,9 +34,34 @@ fct_sort_levels <- function(.f, .fun, ...) {
 
   old_levels <- levels(f)
   new_levels <- .fun(old_levels, ...)
-  stopifnot(
-    length(old_levels) == length(new_levels) &&
-      all(new_levels %in% old_levels)
-  )
+  if (!is.vector(new_levels)) {
+    stop(
+      paste("The result of `.fun(levels(.f))` must be a vector"),
+      call. = FALSE
+    )
+  }
+  if (length(old_levels) != length(new_levels)) {
+    stop(
+      paste(
+        "`.fun` must permute the levels of `.f`",
+        paste(" * Original factor-levels had length", length(old_levels)),
+        paste(" * New factor-levels have length", length(new_levels)),
+        sep = "\n"
+      ),
+      call. = FALSE
+    )
+  }
+  if (any(!new_levels %in% old_levels)) {
+    example <- setdiff(new_levels, old_levels)[1]
+    stop(
+      paste(
+        "`.fun` must permute the levels of `.f`",
+        paste0(" * New factor-levels contains '", example, "'"),
+        paste0(" * Original factor-levels do not contain '", example, "'"),
+        sep = "\n"
+      ),
+      call. = FALSE
+    )
+  }
   fct_relevel(f, new_levels)
 }
