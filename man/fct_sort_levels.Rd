@@ -2,7 +2,7 @@
 % Please edit documentation in R/sort_levels.R
 \name{fct_sort_levels}
 \alias{fct_sort_levels}
-\title{Automatically sort factor levels according to a user-defined function}
+\title{Sort factor levels according to a user-defined function}
 \usage{
 fct_sort_levels(.f, .fun, ...)
 }
@@ -16,23 +16,27 @@ the same length as it's input.}
 \item{...}{Additional arguments to \code{.fun}.}
 }
 \description{
-Automatically sort factor levels according to a user-defined function
+Sort factor levels according to a user-defined function
 }
 \examples{
-chromosomes <- c("chr2", "chr1", "chr10")
-chr_fac <- factor(chromosomes, levels = chromosomes)
-chr_fac
+medieval_experiment <- factor(
+  c("Control", "Comfrey", "Cropleek", "Bishopwort")
+)
+medieval_experiment
 
-# naive alphanumeric sorting "1" < "10" < "2"
-fct_sort_levels(chr_fac, sort)
+# Default (alphabetical) level-sorting:
+fct_sort_levels(medieval_experiment, sort)
 
- # number-based alphanumeric sorting "1" < "2" < "10"
- parse_number <- function(x){
-   as.numeric(gsub(".*?([[:digit:]]+).*", "\\\\1", x))
- }
- sort_numeric <- function(x){
-   x[order(parse_number(x))]
- }
- fct_sort_levels(chr_fac, sort_numeric)
+# Reversed ordering (equivalent to `fct_rev`):
+fct_sort_levels(medieval_experiment, sort, decreasing = TRUE)
+
+# Level-sorting with "Control" as the first level
+# (equivalent: `fct_relevel(medieval_experiment, "Control")`)
+fct_sort_levels(
+  medieval_experiment,
+  function(x) c("Control", sort(setdiff(x, "Control"))))
+
+# Randomised sorting of the levels:
+fct_sort_levels(medieval_experiment, sample)
 
 }

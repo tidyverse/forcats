@@ -8,21 +8,25 @@
 #' @param ... Additional arguments to `.fun`.
 #' @export
 #' @examples
-#' chromosomes <- c("chr2", "chr1", "chr10")
-#' chr_fac <- factor(chromosomes, levels = chromosomes)
-#' chr_fac
+#' medieval_experiment <- factor(
+#'   c("Control", "Comfrey", "Cropleek", "Bishopwort")
+#' )
+#' medieval_experiment
 #'
-#' # naive alphanumeric sorting "1" < "10" < "2"
-#' fct_sort_levels(chr_fac, sort)
+#' # Default (alphabetical) level-sorting:
+#' fct_sort_levels(medieval_experiment, sort)
 #'
-#'  # number-based alphanumeric sorting "1" < "2" < "10"
-#'  parse_number <- function(x){
-#'    as.numeric(gsub(".*?([[:digit:]]+).*", "\\1", x))
-#'  }
-#'  sort_numeric <- function(x){
-#'    x[order(parse_number(x))]
-#'  }
-#'  fct_sort_levels(chr_fac, sort_numeric)
+#' # Reversed ordering (equivalent to `fct_rev`):
+#' fct_sort_levels(medieval_experiment, sort, decreasing = TRUE)
+#'
+#' # Level-sorting with "Control" as the first level
+#' # (equivalent: `fct_relevel(medieval_experiment, "Control")`)
+#' fct_sort_levels(
+#'   medieval_experiment,
+#'   function(x) c("Control", sort(setdiff(x, "Control"))))
+#'
+#' # Randomised sorting of the levels:
+#' fct_sort_levels(medieval_experiment, sample)
 #'
 fct_sort_levels <- function(.f, .fun, ...) {
   f <- check_factor(.f)
