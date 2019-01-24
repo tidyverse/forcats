@@ -13,16 +13,22 @@ test_that(".fun should be a function", {
 
 # .fun(levels(.f)) should be the same length as levels(.f)
 # .fun(levels(.f)) should contain the same values as levels(.f)
+# .fun(levels(.f)) should be a vector
 test_that(
-  "level-set returned by fct_sort_levels should match the input levels", {
+  "Level-set returned by fct_sort_levels should match the input levels", {
   f1 <- factor(letters[1:3])
   expect_error(
     fct_sort_levels(f1, function(x) x[1:2]),
-    info = "Levels should be the same length"
+    info = "levels should be the same length"
   )
   expect_error(
     fct_sort_levels(f1, toupper),
-    info = "Contents of level-sets should be unchanged by fct_sort_levels"
+    info = "contents of level-sets should be unchanged by `fct_sort_levels`"
+  )
+
+  expect_error(
+    fct_sort_levels(f1, matrix),
+    info = "level-sets returned by `fct_sort_levels` should be a vector"
   )
 })
 
