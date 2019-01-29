@@ -39,5 +39,5 @@ as_factor.character <- function(x, ...) {
 #' @rdname as_factor
 #' @export
 as_factor.numeric <- function(x, ...) {
-  x <- factor(x)
+  factor(x)
 }

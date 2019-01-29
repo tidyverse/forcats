@@ -1,7 +1,11 @@
 # forcats 0.3.0.9000
 
 * `fct_relabel()` now accepts character input.
-* `as_factor` now has a numeric method. By default, orders factors in numeric order, unlike the other methods which default to order of appearance. (#145, @kbodwin)
+
+* `as_factor()` now has a numeric method. By default, orders factors in numeric 
+  order, unlike the other methods which default to order of appearance. 
+  (#145, @kbodwin)
+
 * `fct_inseq()` reorders labels in numeric order, if possible. (#145, @kbodwin)
 
 # forcats 0.3.0

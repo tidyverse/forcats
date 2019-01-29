@@ -75,7 +75,6 @@ last2 <- function(.x, .y) {
 #'
 #' @inheritParams lvls_reorder
 #' @param f A factor
-#' @param desc For numerical ordering, order in descending order?  Default is FALSE.
 #' @export
 #' @examples
 #' f <- factor(c("b", "b", "a", "c", "c", "c"))
@@ -87,7 +86,6 @@ last2 <- function(.x, .y) {
 #'
 #' f <- factor(sample(1:10))
 #' fct_inseq(f)
-
 fct_inorder <- function(f, ordered = NA) {
   f <- check_factor(f)
 
@@ -104,7 +102,6 @@ fct_infreq <- function(f, ordered = NA) {
   lvls_reorder(f, order(table(f), decreasing = TRUE), ordered = ordered)
 }
 
-
 #' @export
 #' @rdname fct_inorder
 fct_inseq <- function(f, ordered = NA) {
@@ -113,7 +110,7 @@ fct_inseq <- function(f, ordered = NA) {
   num_levels <- suppressWarnings(as.numeric(levels(f)))
   new_levels <- sort(num_levels)
 
-  if (length(new_levels) == 0){
+  if (length(new_levels) == 0) {
     stop("At least one existing level must be coercible to numeric.", call. = FALSE)
   }
 

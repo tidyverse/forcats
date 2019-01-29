@@ -10,15 +10,13 @@ fct_inorder(f, ordered = NA)
 
 fct_infreq(f, ordered = NA)
 
-fct_inseq(f, desc = FALSE)
+fct_inseq(f, ordered = NA)
 }
 \arguments{
 \item{f}{A factor}
 
 \item{ordered}{A logical which determines the "ordered" status of the
 output factor. \code{NA} preserves the existing status of the factor.}
-
-\item{desc}{For numerical ordering, order in descending order?  Default is FALSE.}
 }
 \description{
 Reorder factors levels by first appearance, frequency, or numeric order.
