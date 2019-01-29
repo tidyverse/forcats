@@ -4,13 +4,15 @@
 \alias{fct_collapse}
 \title{Collapse factor levels into manually defined groups}
 \usage{
-fct_collapse(.f, ...)
+fct_collapse(.f, ..., group_other = FALSE)
 }
 \arguments{
 \item{.f}{A factor (or character vector).}
 
 \item{...}{A series of named character vectors. The levels in
 each vector will be replaced with the name.}
+
+\item{group_other}{Replace all levels not named in \code{...} with "Other"?}
 }
 \description{
 Collapse factor levels into manually defined groups

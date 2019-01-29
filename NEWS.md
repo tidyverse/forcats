@@ -8,6 +8,15 @@
 
 * `fct_inseq()` reorders labels in numeric order, if possible. (#145, @kbodwin)
 
+* `fct_collapse()` gains a `group_other` argument to allow you to group all 
+  un-named levels into `"Other"`. (#100, @AmeliaMN)
+
+* `fct_cross()` creates a new factor containing the combined levels from two or more input factors, similar to `base::interaction` (@tslumley, #136)
+
+* `fct_count()` gains a parameter to compute the fraction of marginal table (@zhiiiyang, #146). 
+
+* `fct_lump_min()` preserves levels that appear at least `min` times (can also be used with the `w` weighted argument) (@robinsones, #142).
+
 # forcats 0.3.0
 
 ## API changes
