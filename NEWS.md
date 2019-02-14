@@ -1,5 +1,8 @@
 # forcats 0.3.0.9000
 
+* `fct_reorder()`, `fct_reorder2()` and `as_factor()` now use the ellipsis
+  package to warn if you pass in named components to ... (#174)
+
 * `fct_relabel()` now accepts character input.
 
 * `fct_collapse()` gains a `group_other` argument to allow you to group all 
