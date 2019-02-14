@@ -14,6 +14,7 @@
 #' as_factor(x)
 #' as.factor(x)
 as_factor <- function(x, ...) {
+  ellipsis::check_dots_used()
   UseMethod("as_factor")
 }
 
