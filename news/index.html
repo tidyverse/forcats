@@ -135,20 +135,30 @@
 <h1 class="page-header">
 <a href="#forcats-0-3-0-9000" class="anchor"></a>forcats 0.3.0.9000<small> Unreleased </small>
 </h1>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
-<li><p><code><a href="../reference/fct_match.html">fct_match()</a></code> performs validated matching, providing a safer alternative to <code>f %in% c("x", "y")</code> which silently returns <code>FALSE</code> if <code>"x"</code> or <code>"y"</code> are not levels of <code>f</code> (e.g. because of a typo) (<a href='https://github.com/tidyverse/forcats/issues/126'>#126</a>, <a href='https://github.com/jonocarroll'>@jonocarroll</a>).</p></li>
-<li><p><code><a href="../reference/fct_relabel.html">fct_relabel()</a></code> now accepts character input.</p></li>
-<li><p><code><a href="../reference/fct_reorder.html">fct_reorder()</a></code> and <code><a href="../reference/fct_reorder.html">fct_reorder2()</a></code> no longer require that the summary function return a numeric vector of length 1; instead it can return any orderable vector of length 1 (<a href='https://github.com/tidyverse/forcats/issues/147'>#147</a>).</p></li>
-<li><p><code><a href="../reference/fct_relevel.html">fct_relevel()</a></code> can now level factors using a function that is passed the current levels (<a href='https://github.com/tidyverse/forcats/issues/117'>#117</a>).</p></li>
-<li><p><code><a href="../reference/fct_reorder.html">fct_reorder()</a></code>, <code><a href="../reference/fct_reorder.html">fct_reorder2()</a></code> and <code><a href="../reference/as_factor.html">as_factor()</a></code> now use the ellipsis package to warn if you pass in named components to … (<a href='https://github.com/tidyverse/forcats/issues/174'>#174</a>)</p></li>
-<li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> now has a numeric method. By default, orders factors in numeric order, unlike the other methods which default to order of appearance. (<a href='https://github.com/tidyverse/forcats/issues/145'>#145</a>, <a href='https://github.com/kbodwin'>@kbodwin</a>)</p></li>
-<li><p><code><a href="../reference/fct_inorder.html">fct_inseq()</a></code> reorders labels in numeric order, if possible. (<a href='https://github.com/tidyverse/forcats/issues/145'>#145</a>, <a href='https://github.com/kbodwin'>@kbodwin</a>)</p></li>
 <li><p><code><a href="../reference/fct_collapse.html">fct_collapse()</a></code> gains a <code>group_other</code> argument to allow you to group all un-named levels into <code>"Other"</code>. (<a href='https://github.com/tidyverse/forcats/issues/100'>#100</a>, <a href='https://github.com/AmeliaMN'>@AmeliaMN</a>)</p></li>
 <li><p><code><a href="../reference/fct_cross.html">fct_cross()</a></code> creates a new factor containing the combined levels from two or more input factors, similar to <code><a href="https://www.rdocumentation.org/packages/base/topics/interaction">base::interaction</a></code> (<a href='https://github.com/tslumley'>@tslumley</a>, <a href='https://github.com/tidyverse/forcats/issues/136'>#136</a>)</p></li>
-<li><p><code><a href="../reference/fct_count.html">fct_count()</a></code> gains a parameter to compute the fraction of marginal table (<a href='https://github.com/zhiiiyang'>@zhiiiyang</a>, <a href='https://github.com/tidyverse/forcats/issues/146'>#146</a>).</p></li>
-<li><p><code><a href="../reference/fct_lump.html">fct_lump()</a></code> now does not change the label if no lumping occurs (<a href='https://github.com/zhiiiyang'>@zhiiiyang</a>, <a href='https://github.com/tidyverse/forcats/issues/130'>#130</a>).</p></li>
+<li><p><code><a href="../reference/fct_inorder.html">fct_inseq()</a></code> reorders labels in numeric order, if possible (<a href='https://github.com/tidyverse/forcats/issues/145'>#145</a>, <a href='https://github.com/kbodwin'>@kbodwin</a>).</p></li>
 <li><p><code><a href="../reference/fct_lump.html">fct_lump_min()</a></code> preserves levels that appear at least <code>min</code> times (can also be used with the <code>w</code> weighted argument) (<a href='https://github.com/robinsones'>@robinsones</a>, <a href='https://github.com/tidyverse/forcats/issues/142'>#142</a>).</p></li>
+<li><p><code><a href="../reference/fct_match.html">fct_match()</a></code> performs validated matching, providing a safer alternative to <code>f %in% c("x", "y")</code> which silently returns <code>FALSE</code> if <code>"x"</code> or <code>"y"</code> are not levels of <code>f</code> (e.g. because of a typo) (<a href='https://github.com/tidyverse/forcats/issues/126'>#126</a>, <a href='https://github.com/jonocarroll'>@jonocarroll</a>).</p></li>
+<li><p><code><a href="../reference/fct_relevel.html">fct_relevel()</a></code> can now level factors using a function that is passed the current levels (<a href='https://github.com/tidyverse/forcats/issues/117'>#117</a>).</p></li>
+<li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> now has a numeric method. By default, orders factors in numeric order, unlike the other methods which default to order of appearance. (<a href='https://github.com/tidyverse/forcats/issues/145'>#145</a>, <a href='https://github.com/kbodwin'>@kbodwin</a>)</p></li>
 </ul>
+</div>
+<div id="minor-bug-fixes-and-improvements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-bug-fixes-and-improvements" class="anchor"></a>Minor bug fixes and improvements</h2>
+<ul>
+<li><p><code><a href="../reference/fct_count.html">fct_count()</a></code> gains a parameter to also compute the proportion (<a href='https://github.com/zhiiiyang'>@zhiiiyang</a>, <a href='https://github.com/tidyverse/forcats/issues/146'>#146</a>).</p></li>
+<li><p><code><a href="../reference/fct_lump.html">fct_lump()</a></code> now does not change the label if no lumping occurs (<a href='https://github.com/zhiiiyang'>@zhiiiyang</a>, <a href='https://github.com/tidyverse/forcats/issues/130'>#130</a>).</p></li>
+<li><p><code><a href="../reference/fct_relabel.html">fct_relabel()</a></code> now accepts character input.</p></li>
+<li><p><code><a href="../reference/fct_reorder.html">fct_reorder()</a></code> and <code><a href="../reference/fct_reorder.html">fct_reorder2()</a></code> no longer require that the summary function return a numeric vector of length 1; instead it can return any orderable vector of length 1 (<a href='https://github.com/tidyverse/forcats/issues/147'>#147</a>).</p></li>
+<li><p><code><a href="../reference/fct_reorder.html">fct_reorder()</a></code>, <code><a href="../reference/fct_reorder.html">fct_reorder2()</a></code> and <code><a href="../reference/as_factor.html">as_factor()</a></code> now use the ellipsis package to warn if you pass in named components to <code>...</code> (<a href='https://github.com/tidyverse/forcats/issues/174'>#174</a>).</p></li>
+</ul>
+</div>
 </div>
     <div id="forcats-0-3-0" class="section level1">
 <h1 class="page-header">
@@ -162,9 +172,9 @@
 <li><p><code><a href="../reference/fct_reorder.html">fct_reorder()</a></code> and <code><a href="../reference/fct_reorder.html">fct_reorder2()</a></code> have renamed <code>fun</code> to <code>.fun</code> to avoid spurious matching of named arguments.</p></li>
 </ul>
 </div>
-<div id="new-features" class="section level2">
+<div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
+<a href="#new-features-1" class="anchor"></a>New features</h2>
 <ul>
 <li><p>All functions that take <code>...</code> use “tidy” dots: this means that you use can <code>!!!</code> to splice in a list of values, and trailing empty arguments are automatically removed. Additionally, all other arguments gain a <code>.</code> prefix in order to avoid unhelpful matching of named arguments (<a href='https://github.com/tidyverse/forcats/issues/110'>#110</a>).</p></li>
 <li><p><code><a href="../reference/fct_lump.html">fct_lump()</a></code> gains <code>w</code> argument (<a href='https://github.com/tidyverse/forcats/issues/70'>#70</a>, <a href='https://github.com/wilkox'>@wilkox</a>) to weight value frequencies before lumping them together (<a href='https://github.com/tidyverse/forcats/issues/68'>#68</a>).</p></li>
