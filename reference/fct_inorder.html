@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reorder factors levels by first appearance or frequency — fct_inorder • forcats</title>
+<title>Reorder factors levels by first appearance, frequency, or numeric order. — fct_inorder • forcats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -31,9 +31,9 @@
 
 
 
-<meta property="og:title" content="Reorder factors levels by first appearance or frequency — fct_inorder" />
+<meta property="og:title" content="Reorder factors levels by first appearance, frequency, or numeric order. — fct_inorder" />
 
-<meta property="og:description" content="Reorder factors levels by first appearance or frequency" />
+<meta property="og:description" content="Reorder factors levels by first appearance, frequency, or numeric order." />
 
 <meta property="og:image" content="https://forcats.tidyverse.org/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -129,20 +129,22 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Reorder factors levels by first appearance or frequency</h1>
+    <h1>Reorder factors levels by first appearance, frequency, or numeric order.</h1>
     <small class="dont-index">Source: <a href='https://github.com/tidyverse/forcats/blob/master/R/reorder.R'><code>R/reorder.R</code></a></small>
     <div class="hidden name"><code>fct_inorder.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Reorder factors levels by first appearance or frequency</p>
+    <p>Reorder factors levels by first appearance, frequency, or numeric order.</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>fct_inorder</span>(<span class='no'>f</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
 
-<span class='fu'>fct_infreq</span>(<span class='no'>f</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
+<span class='fu'>fct_infreq</span>(<span class='no'>f</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
+
+<span class='fu'>fct_inseq</span>(<span class='no'>f</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,7 +168,10 @@ output factor. <code>NA</code> preserves the existing status of the factor.</p><
 #&gt; Levels: b a c</div><div class='input'><span class='fu'>fct_infreq</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; [1] b b a c c c
 #&gt; Levels: c b a</div><div class='input'>
 <span class='fu'>fct_inorder</span>(<span class='no'>f</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] b b a c c c
-#&gt; Levels: b &lt; a &lt; c</div></pre>
+#&gt; Levels: b &lt; a &lt; c</div><div class='input'>
+<span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>))
+<span class='fu'>fct_inseq</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt;  [1] 1  4  5  8  3  7  2  6  9  10
+#&gt; Levels: 1 2 3 4 5 6 7 8 9 10</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

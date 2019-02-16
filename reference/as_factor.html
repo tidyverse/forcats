@@ -150,6 +150,9 @@ the current locale which can vary from place to place.)</p>
 <span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for character</span>
+<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for numeric</span>
 <span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -174,7 +177,10 @@ the current locale which can vary from place to place.)</p>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"z"</span>, <span class='st'>"g"</span>)
 <span class='fu'>as_factor</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] a z g
 #&gt; Levels: a z g</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>as.factor</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] a z g
-#&gt; Levels: a g z</div></pre>
+#&gt; Levels: a g z</div><div class='input'><span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"1.1"</span>, <span class='st'>"11"</span>, <span class='st'>"2.2"</span>, <span class='st'>"22"</span>)
+<span class='fu'>as_factor</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; [1] 1.1 11  2.2 22 
+#&gt; Levels: 1.1 11 2.2 22</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>as.factor</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; [1] 1.1 11  2.2 22 
+#&gt; Levels: 1.1 11 2.2 22</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
