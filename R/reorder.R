@@ -10,7 +10,8 @@
 #'    of `.fun(.x)` (for `fct_reorder()`) and `fun(.x, .y)` (for `fct_reorder2()`)
 #'    are in ascending order.
 #' @param .fun n summary function. It should take one vector for
-#'   `fct_reorder`, and two vectors for `fct_reorder2`.
+#'   `fct_reorder`, and two vectors for `fct_reorder2`, and return a single
+#'   value.
 #' @param ... Other arguments passed on to `.fun`. A common argument is
 #'   `na.rm = TRUE`.
 #' @param .desc Order in descending order? Note the default is different
@@ -43,8 +44,10 @@ fct_reorder <- function(.f, .x, .fun = median, ..., .desc = FALSE) {
   ellipsis::check_dots_used()
 
   summary <- tapply(.x, .f, .fun, ...)
-  if (!is.numeric(summary)) {
-    stop("`fun` must return a single number per group", call. = FALSE)
+  # This is a bit of a weak test, but should detect the most common case
+  # where `.fun` returns multiple values.
+  if (is.list(summary)) {
+    stop("`fun` must return a single value per group", call. = FALSE)
   }
 
   lvls_reorder(f, order(summary, decreasing = .desc))
@@ -58,8 +61,8 @@ fct_reorder2 <- function(.f, .x, .y, .fun = last2, ..., .desc = TRUE) {
   ellipsis::check_dots_used()
 
   summary <- tapply(seq_along(.x), f, function(i) .fun(.x[i], .y[i], ...))
-  if (!is.numeric(summary)) {
-    stop("`fun` must return a single number per group", call. = FALSE)
+  if (is.list(summary)) {
+    stop("`fun` must return a single value per group", call. = FALSE)
   }
 
   lvls_reorder(.f, order(summary, decreasing = .desc))

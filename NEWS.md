@@ -1,5 +1,9 @@
 # forcats 0.3.0.9000
 
+* `fct_reorder()` and `fct_reorder2()` no longer require that the summary 
+  function return a numeric vector of length 1; instead it can return any
+  orderable vector of length 1 (#147).
+
 * `fct_relevel()` can now level factors using a function that is passed the
   current levels (#117).
 
