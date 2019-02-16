@@ -113,6 +113,21 @@ test_that("do not change the label when no lumping occurs", {
   expect_equal(levels(fct_lump(f, prop = 0.1)), c("a", "b", "c", "d"))
 })
 
+test_that("fct_lump_min works when not weighted", {
+  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
+
+  expect_equal(levels(fct_lump_min(f, min = 3)), c("a", "Other"))
+  expect_equal(levels(fct_lump_min(f, min = 2)), c("a", "b", "Other"))
+})
+
+test_that("fct_lump_min works when weighted", {
+  f <- c("a", "b", "c", "d", "e")
+  w <- c( 0.2, 2,   6,   4,   1)
+
+  expect_equal(levels(fct_lump_min(f, min = 6, w = w)), c("c", "Other"))
+  expect_equal(levels(fct_lump_min(f, min = 1.5, w = w)), c("b", "c", "d", "Other"))
+})
+
 # Default -----------------------------------------------------------------
 
 test_that("lumps smallest", {

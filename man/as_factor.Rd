@@ -4,6 +4,7 @@
 \alias{as_factor}
 \alias{as_factor.factor}
 \alias{as_factor.character}
+\alias{as_factor.numeric}
 \title{Convert input to a factor.}
 \usage{
 as_factor(x, ...)
@@ -11,6 +12,8 @@ as_factor(x, ...)
 \method{as_factor}{factor}(x, ...)
 
 \method{as_factor}{character}(x, ...)
+
+\method{as_factor}{numeric}(x, ...)
 }
 \arguments{
 \item{x}{Object to coerce to a factor.}
@@ -29,4 +32,7 @@ This is a generic function.
 x <- c("a", "z", "g")
 as_factor(x)
 as.factor(x)
+y <- c("1.1", "11", "2.2", "22")
+as_factor(y)
+as.factor(y)
 }

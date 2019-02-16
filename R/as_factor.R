@@ -13,7 +13,11 @@
 #' x <- c("a", "z", "g")
 #' as_factor(x)
 #' as.factor(x)
+#' y <- c("1.1", "11", "2.2", "22")
+#' as_factor(y)
+#' as.factor(y)
 as_factor <- function(x, ...) {
+  ellipsis::check_dots_used()
   UseMethod("as_factor")
 }
 
@@ -31,4 +35,10 @@ as_factor.character <- function(x, ...) {
     fct_inorder(x),
     label = attr(x, "label", exact = TRUE)
   )
+}
+
+#' @rdname as_factor
+#' @export
+as_factor.numeric <- function(x, ...) {
+  factor(x)
 }

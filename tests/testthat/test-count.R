@@ -17,9 +17,10 @@ test_that("counts NA even when not in levels", {
 
 test_that("returns marginal table", {
   f <- factor(c("a", "a", "b"))
-  out <- fct_count(f)
+  out <- fct_count(f, prop = TRUE)
 
-  expect_equal(out$n, c(2, 1)/3)
+  expect_equal(out$n, c(2, 1))
+  expect_equal(out$p, c(2, 1) / 3)
 })
 
 test_that("sort = TRUE brings most frequent values to top", {
