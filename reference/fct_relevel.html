@@ -153,9 +153,12 @@ number of levels to any location.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Character vector of levels. Any levels not mentioned will be left
-in existing order, after the explicitly mentioned levels. Supports tidy
-dots.</p></td>
+      <td><p>Either a function (or formula), or character levels.</p>
+<p>A function will be called with the current levels, and the return
+value (which must be a character vector) will be used to relevel the
+function.</p>
+<p>Any levels not mentioned will be left in existing order, after the
+explicitly mentioned levels. Supports tidy dots.</p></td>
     </tr>
     <tr>
       <th>after</th>
@@ -165,10 +168,10 @@ dots.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span>))
+    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span>), <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span>, <span class='st'>"a"</span>))
 <span class='fu'>fct_relevel</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; [1] a b c d
-#&gt; Levels: a b c d</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"c"</span>)</div><div class='output co'>#&gt; [1] a b c d
-#&gt; Levels: c a b d</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"b"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; [1] a b c d
+#&gt; Levels: b c d a</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; [1] a b c d
+#&gt; Levels: a b c d</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"b"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; [1] a b c d
 #&gt; Levels: b a c d</div><div class='input'>
 <span class='co'># Move to the third position</span>
 <span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"a"</span>, <span class='kw'>after</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; [1] a b c d
@@ -177,6 +180,11 @@ dots.</p></td>
 <span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"a"</span>, <span class='kw'>after</span> <span class='kw'>=</span> <span class='fl'>Inf</span>)</div><div class='output co'>#&gt; [1] a b c d
 #&gt; Levels: b c d a</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"a"</span>, <span class='kw'>after</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; [1] a b c d
 #&gt; Levels: b c d a</div><div class='input'>
+<span class='co'># Revel with a function</span>
+<span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='no'>sort</span>)</div><div class='output co'>#&gt; [1] a b c d
+#&gt; Levels: a b c d</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='no'>sample</span>)</div><div class='output co'>#&gt; [1] a b c d
+#&gt; Levels: a c d b</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='no'>rev</span>)</div><div class='output co'>#&gt; [1] a b c d
+#&gt; Levels: a d c b</div><div class='input'>
 <span class='co'># Using 'Inf' allows you to relevel to the end when the number</span>
 <span class='co'># of levels is unknown or variable (e.g. vectorised operations)</span>
 <span class='no'>df</span>  <span class='kw'>&lt;-</span> <span class='kw pkg'>forcats</span><span class='kw ns'>::</span><span class='no'><a href='https://forcats.tidyverse.org/reference/gss_cat.html'>gss_cat</a></span>[, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"rincome"</span>, <span class='st'>"denom"</span>)]
@@ -219,7 +227,7 @@ dots.</p></td>
 #&gt; </div><div class='input'>
 <span class='co'># You'll get a warning if the levels don't exist</span>
 <span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"e"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown levels in `f`: e</span></div><div class='output co'>#&gt; [1] a b c d
-#&gt; Levels: a b c d</div></pre>
+#&gt; Levels: b c d a</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
