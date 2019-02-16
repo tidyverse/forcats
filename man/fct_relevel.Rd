@@ -9,9 +9,14 @@ fct_relevel(.f, ..., after = 0L)
 \arguments{
 \item{.f}{A factor (or character vector).}
 
-\item{...}{Character vector of levels. Any levels not mentioned will be left
-in existing order, after the explicitly mentioned levels. Supports tidy
-dots.}
+\item{...}{Either a function (or formula), or character levels.
+
+A function will be called with the current levels, and the return
+value (which must be a character vector) will be used to relevel the
+function.
+
+Any levels not mentioned will be left in existing order, after the
+explicitly mentioned levels. Supports tidy dots.}
 
 \item{after}{Where should the new values be placed?}
 }
@@ -20,9 +25,9 @@ This is a generalisaton of \code{\link[stats:relevel]{stats::relevel()}} that al
 number of levels to any location.
 }
 \examples{
-f <- factor(c("a", "b", "c", "d"))
+f <- factor(c("a", "b", "c", "d"), levels = c("b", "c", "d", "a"))
 fct_relevel(f)
-fct_relevel(f, "c")
+fct_relevel(f, "a")
 fct_relevel(f, "b", "a")
 
 # Move to the third position
@@ -31,6 +36,11 @@ fct_relevel(f, "a", after = 2)
 # Relevel to the end
 fct_relevel(f, "a", after = Inf)
 fct_relevel(f, "a", after = 3)
+
+# Revel with a function
+fct_relevel(f, sort)
+fct_relevel(f, sample)
+fct_relevel(f, rev)
 
 # Using 'Inf' allows you to relevel to the end when the number
 # of levels is unknown or variable (e.g. vectorised operations)

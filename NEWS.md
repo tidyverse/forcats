@@ -1,12 +1,37 @@
 # forcats 0.3.0.9000
 
-* `fct_relabel()` now accepts character input.
-
-## New features
-
 * `fct_match()` performs validated matching, replacing 
   the common pattern of `f %in% c("x", "y")` which silently returns `FALSE` 
   if `"x"` or `"y"` is mis-specified. (#126, @jonocarroll).
+
+* `fct_relabel()` now accepts character input.
+
+* `fct_reorder()` and `fct_reorder2()` no longer require that the summary 
+  function return a numeric vector of length 1; instead it can return any
+  orderable vector of length 1 (#147).
+
+* `fct_relevel()` can now level factors using a function that is passed the
+  current levels (#117).
+
+* `fct_reorder()`, `fct_reorder2()` and `as_factor()` now use the ellipsis
+  package to warn if you pass in named components to ... (#174)
+
+* `as_factor()` now has a numeric method. By default, orders factors in numeric 
+  order, unlike the other methods which default to order of appearance. 
+  (#145, @kbodwin)
+
+* `fct_inseq()` reorders labels in numeric order, if possible. (#145, @kbodwin)
+
+* `fct_collapse()` gains a `group_other` argument to allow you to group all 
+  un-named levels into `"Other"`. (#100, @AmeliaMN)
+
+* `fct_cross()` creates a new factor containing the combined levels from two or more input factors, similar to `base::interaction` (@tslumley, #136)
+
+* `fct_count()` gains a parameter to compute the fraction of marginal table (@zhiiiyang, #146). 
+
+* `fct_lump()` now does not change the label if no lumping occurs (@zhiiiyang, #130). 
+
+* `fct_lump_min()` preserves levels that appear at least `min` times (can also be used with the `w` weighted argument) (@robinsones, #142).
 
 # forcats 0.3.0
 

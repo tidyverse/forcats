@@ -11,7 +11,7 @@ test_that("positive values keeps most commmon", {
 })
 
 test_that("ties are respected", {
-  f <- c("a", "a", "a", "b", "b", "b", "c")
+  f <- c("a", "a", "a", "b", "b", "b", "c", "d")
   expect_equal(levels(fct_lump(f, 1)), c("a", "b", "Other"))
 })
 
@@ -56,12 +56,12 @@ test_that("different behaviour when apply tie function", {
 })
 
 test_that("NAs included in total", {
-  f <- factor(c("a", "a", "b", rep(NA, 7)))
+  f <- factor(c("a", "a", "b", "c", rep(NA, 7)))
 
   o1 <- fct_lump(f, prop = 0.10)
   expect_equal(levels(o1), c("a", "Other"))
 
-  o2 <- fct_lump(f, w = rep(1, 10), prop = 0.10)
+  o2 <- fct_lump(f, w = rep(1, 11), prop = 0.10)
   expect_equal(levels(o2), c("a", "Other"))
 })
 
@@ -105,6 +105,27 @@ test_that("values are correctly weighted", {
     levels(fct_lump(f, prop = -0.25, w = w, ties.method = "max")),
     levels(fct_lump(f2, prop = -0.25, ties.method = "max"))
   )
+})
+
+test_that("do not change the label when no lumping occurs", {
+  f <- c("a", "a", "a", "a", "b", "b", "b", "c", "c", "d")
+  expect_equal(levels(fct_lump(f, n = 3)), c("a", "b", "c", "d"))
+  expect_equal(levels(fct_lump(f, prop = 0.1)), c("a", "b", "c", "d"))
+})
+
+test_that("fct_lump_min works when not weighted", {
+  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
+
+  expect_equal(levels(fct_lump_min(f, min = 3)), c("a", "Other"))
+  expect_equal(levels(fct_lump_min(f, min = 2)), c("a", "b", "Other"))
+})
+
+test_that("fct_lump_min works when weighted", {
+  f <- c("a", "b", "c", "d", "e")
+  w <- c( 0.2, 2,   6,   4,   1)
+
+  expect_equal(levels(fct_lump_min(f, min = 6, w = w)), c("c", "Other"))
+  expect_equal(levels(fct_lump_min(f, min = 1.5, w = w)), c("b", "c", "d", "Other"))
 })
 
 # Default -----------------------------------------------------------------

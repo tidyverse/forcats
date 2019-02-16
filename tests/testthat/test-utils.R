@@ -1,7 +1,7 @@
 context("test-utils.R")
 
 test_that("check_factor() fails when needed", {
-  expect_error(check_factor(1), "factor")
+  expect_error(check_factor(NA), "factor")
 })
 
 test_that("check_factor_list() fails when needed", {

@@ -2,10 +2,13 @@
 % Please edit documentation in R/lump.R
 \name{fct_lump}
 \alias{fct_lump}
+\alias{fct_lump_min}
 \title{Lump together least/most common factor levels into "other"}
 \usage{
 fct_lump(f, n, prop, w = NULL, other_level = "Other",
   ties.method = c("min", "average", "first", "last", "random", "max"))
+
+fct_lump_min(f, min, w = NULL, other_level = "Other")
 }
 \arguments{
 \item{f}{A factor (or character vector).}
@@ -31,6 +34,8 @@ placed at end of levels.}
 
 \item{ties.method}{A character string specifying how ties are
 treated. See \code{\link[=rank]{rank()}} for details.}
+
+\item{min}{Preserves values that appear at least \code{min} number of times.}
 }
 \description{
 Lump together least/most common factor levels into "other"
@@ -62,6 +67,8 @@ fct_lump(x, n = 5, w = w)
 fct_lump(x, n = 6)
 fct_lump(x, n = 6, ties.method = "max")
 
+x <- factor(letters[rpois(100, 5)])
+fct_lump_min(x, min = 10)
 }
 \seealso{
 \code{\link[=fct_other]{fct_other()}} to convert specified levels to other.

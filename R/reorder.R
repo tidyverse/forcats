@@ -10,7 +10,8 @@
 #'    of `.fun(.x)` (for `fct_reorder()`) and `fun(.x, .y)` (for `fct_reorder2()`)
 #'    are in ascending order.
 #' @param .fun n summary function. It should take one vector for
-#'   `fct_reorder`, and two vectors for `fct_reorder2`.
+#'   `fct_reorder`, and two vectors for `fct_reorder2`, and return a single
+#'   value.
 #' @param ... Other arguments passed on to `.fun`. A common argument is
 #'   `na.rm = TRUE`.
 #' @param .desc Order in descending order? Note the default is different
@@ -40,10 +41,13 @@
 fct_reorder <- function(.f, .x, .fun = median, ..., .desc = FALSE) {
   f <- check_factor(.f)
   stopifnot(length(f) == length(.x))
+  ellipsis::check_dots_used()
 
   summary <- tapply(.x, .f, .fun, ...)
-  if (!is.numeric(summary)) {
-    stop("`fun` must return a single number per group", call. = FALSE)
+  # This is a bit of a weak test, but should detect the most common case
+  # where `.fun` returns multiple values.
+  if (is.list(summary)) {
+    stop("`fun` must return a single value per group", call. = FALSE)
   }
 
   lvls_reorder(f, order(summary, decreasing = .desc))
@@ -54,14 +58,16 @@ fct_reorder <- function(.f, .x, .fun = median, ..., .desc = FALSE) {
 fct_reorder2 <- function(.f, .x, .y, .fun = last2, ..., .desc = TRUE) {
   f <- check_factor(.f)
   stopifnot(length(f) == length(.x), length(.x) == length(.y))
+  ellipsis::check_dots_used()
 
   summary <- tapply(seq_along(.x), f, function(i) .fun(.x[i], .y[i], ...))
-  if (!is.numeric(summary)) {
-    stop("`fun` must return a single number per group", call. = FALSE)
+  if (is.list(summary)) {
+    stop("`fun` must return a single value per group", call. = FALSE)
   }
 
   lvls_reorder(.f, order(summary, decreasing = .desc))
 }
+
 
 #' @export
 #' @rdname fct_reorder
@@ -70,7 +76,7 @@ last2 <- function(.x, .y) {
 }
 
 
-#' Reorder factors levels by first appearance or frequency
+#' Reorder factors levels by first appearance, frequency, or numeric order.
 #'
 #' @inheritParams lvls_reorder
 #' @param f A factor
@@ -82,6 +88,9 @@ last2 <- function(.x, .y) {
 #' fct_infreq(f)
 #'
 #' fct_inorder(f, ordered = TRUE)
+#'
+#' f <- factor(sample(1:10))
+#' fct_inseq(f)
 fct_inorder <- function(f, ordered = NA) {
   f <- check_factor(f)
 
@@ -97,3 +106,19 @@ fct_infreq <- function(f, ordered = NA) {
 
   lvls_reorder(f, order(table(f), decreasing = TRUE), ordered = ordered)
 }
+
+#' @export
+#' @rdname fct_inorder
+fct_inseq <- function(f, ordered = NA) {
+  f <- check_factor(f)
+
+  num_levels <- suppressWarnings(as.numeric(levels(f)))
+  new_levels <- sort(num_levels)
+
+  if (length(new_levels) == 0) {
+    stop("At least one existing level must be coercible to numeric.", call. = FALSE)
+  }
+
+  refactor(f, new_levels, ordered = ordered)
+}
+
