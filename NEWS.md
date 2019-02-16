@@ -18,6 +18,8 @@
 
 * `fct_count()` gains a parameter to compute the fraction of marginal table (@zhiiiyang, #146). 
 
+* `fct_lump()` now does not change the label if no lumping occurs (@zhiiiyang, #130). 
+
 * `fct_lump_min()` preserves levels that appear at least `min` times (can also be used with the `w` weighted argument) (@robinsones, #142).
 
 # forcats 0.3.0
