@@ -1,5 +1,8 @@
 # forcats 0.3.0.9000
 
+* `fct_relevel()` can now level factors using a function that is passed the
+  current levels (#117).
+
 * `fct_reorder()`, `fct_reorder2()` and `as_factor()` now use the ellipsis
   package to warn if you pass in named components to ... (#174)
 
