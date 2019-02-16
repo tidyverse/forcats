@@ -65,6 +65,7 @@ fct_reorder2 <- function(.f, .x, .y, .fun = last2, ..., .desc = TRUE) {
   lvls_reorder(.f, order(summary, decreasing = .desc))
 }
 
+
 #' @export
 #' @rdname fct_reorder
 last2 <- function(.x, .y) {
@@ -72,7 +73,7 @@ last2 <- function(.x, .y) {
 }
 
 
-#' Reorder factors levels by first appearance or frequency
+#' Reorder factors levels by first appearance, frequency, or numeric order.
 #'
 #' @inheritParams lvls_reorder
 #' @param f A factor
@@ -84,6 +85,9 @@ last2 <- function(.x, .y) {
 #' fct_infreq(f)
 #'
 #' fct_inorder(f, ordered = TRUE)
+#'
+#' f <- factor(sample(1:10))
+#' fct_inseq(f)
 fct_inorder <- function(f, ordered = NA) {
   f <- check_factor(f)
 
@@ -99,3 +103,19 @@ fct_infreq <- function(f, ordered = NA) {
 
   lvls_reorder(f, order(table(f), decreasing = TRUE), ordered = ordered)
 }
+
+#' @export
+#' @rdname fct_inorder
+fct_inseq <- function(f, ordered = NA) {
+  f <- check_factor(f)
+
+  num_levels <- suppressWarnings(as.numeric(levels(f)))
+  new_levels <- sort(num_levels)
+
+  if (length(new_levels) == 0) {
+    stop("At least one existing level must be coercible to numeric.", call. = FALSE)
+  }
+
+  refactor(f, new_levels, ordered = ordered)
+}
+
