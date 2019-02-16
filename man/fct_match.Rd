@@ -2,54 +2,31 @@
 % Please edit documentation in R/match.R
 \name{fct_match}
 \alias{fct_match}
-\title{Test for presence of certain groups/levels in a vector}
+\title{Test for presence of levels in a factor}
 \usage{
-fct_match(f, lvls, allow_missing = TRUE)
+fct_match(f, lvls)
 }
 \arguments{
 \item{f}{A factor (or character vector).}
 
-\item{lvls}{A vector of characters for which the test "are these levels in
-\code{f}?" should be performed.}
-
-\item{allow_missing}{(logical) if \code{TRUE}, allow matching to empty levels in
-f}
+\item{lvls}{A character vector specifying levels to look for.}
 }
 \value{
 A logical vector
 }
 \description{
-A validated version of \code{\%in\%} intended for use with logical subsetting.
-Performs matching between a factor and a set of levels to pose the question
-"which of the elements of a factor match these levels?"
-}
-\details{
-Unlike \code{\%in\%}, which performs a basic yes/no test, this function
-performs validation on the input vector to ensure that the levels tested
-for are all present before creating a logical vector. If a tested level is
-not present, then an error is thrown rather than producing a silent
-\code{FALSE}.
-
-Since a distinction can be made between \code{levels(f)} and \code{unique(f)} (the
-latter excludes empty levels) the argument \code{allow_missing} can be
-specified.
-
-This is intended to replace the common pattern
-
-\code{filter(d, l \%in\% c("x", "y"))}
-
-with the validated
-
-\code{filter(d, fct_match(l, c("x", "y")))}
-
-where an error will be generated if \code{"x"} or \code{"y"} are not levels in \code{d$l}.
+Do any of \code{lvls} occur in \code{f}? Compared to \link{\%in\%}, this function validates
+\code{lvls} to ensure that they're actually present in \code{f}. In other words,
+\code{x \%in\% "not present"} will return \code{FALSE}, but \code{fct_match(x, "not present")}
+will throw an error.
 }
 \examples{
-gss_cat$marital \%>\% fct_match(c("Married", "Divorced"))
-# importantly, misspelled levels throw an error
-\dontrun{gss_cat$marital \%>\% fct_match(c("Married", "Davorced"))}
-# match to levels()
-gss_cat$race \%>\% fct_match(c("Other", "Not applicable"))
-# match to unique()
-gss_cat$race \%>\% fct_match(c("Other", "Not applicable"), allow_missing = TRUE)
+table(fct_match(gss_cat$marital, c("Married", "Divorced")))
+
+# Compare to \%in\%, misspelled levels throw an error
+table(gss_cat$marital \%in\% c("Maried", "Davorced"))
+\dontrun{
+table(fct_match(gss_cat$marital, c("Maried", "Davorced")))
+}
+
 }

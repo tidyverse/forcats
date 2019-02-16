@@ -1,8 +1,8 @@
 # forcats 0.3.0.9000
 
-* `fct_match()` performs validated matching, replacing 
-  the common pattern of `f %in% c("x", "y")` which silently returns `FALSE` 
-  if `"x"` or `"y"` is mis-specified. (#126, @jonocarroll).
+* `fct_match()` performs validated matching, providing a safer alternative to
+  `f %in% c("x", "y")` which silently returns `FALSE` if `"x"` or `"y"` 
+  are not levels of `f` (e.g. because of a typo) (#126, @jonocarroll).
 
 * `fct_relabel()` now accepts character input.
 
