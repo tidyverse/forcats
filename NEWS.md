@@ -1,5 +1,11 @@
 # forcats 0.3.0.9000
 
+* `fct_match()` performs validated matching, providing a safer alternative to
+  `f %in% c("x", "y")` which silently returns `FALSE` if `"x"` or `"y"` 
+  are not levels of `f` (e.g. because of a typo) (#126, @jonocarroll).
+
+* `fct_relabel()` now accepts character input.
+
 * `fct_reorder()` and `fct_reorder2()` no longer require that the summary 
   function return a numeric vector of length 1; instead it can return any
   orderable vector of length 1 (#147).
@@ -9,8 +15,6 @@
 
 * `fct_reorder()`, `fct_reorder2()` and `as_factor()` now use the ellipsis
   package to warn if you pass in named components to ... (#174)
-
-* `fct_relabel()` now accepts character input.
 
 * `as_factor()` now has a numeric method. By default, orders factors in numeric 
   order, unlike the other methods which default to order of appearance. 
