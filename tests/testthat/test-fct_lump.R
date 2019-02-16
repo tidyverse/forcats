@@ -11,8 +11,8 @@ test_that("positive values keeps most commmon", {
 })
 
 test_that("ties are respected", {
-  f <- c("a", "a", "a", "b", "b", "b", "c")
-  expect_equal(levels(fct_lump(f, 1)), c("a", "b", "c"))
+  f <- c("a", "a", "a", "b", "b", "b", "c", "d")
+  expect_equal(levels(fct_lump(f, 1)), c("a", "b", "Other"))
 })
 
 test_that("negative values drop most common" ,{
@@ -56,13 +56,13 @@ test_that("different behaviour when apply tie function", {
 })
 
 test_that("NAs included in total", {
-  f <- factor(c("a", "a", "b", rep(NA, 7)))
+  f <- factor(c("a", "a", "b", "c", rep(NA, 7)))
 
   o1 <- fct_lump(f, prop = 0.10)
-  expect_equal(levels(o1), c("a", "b"))
+  expect_equal(levels(o1), c("a", "Other"))
 
-  o2 <- fct_lump(f, w = rep(1, 10), prop = 0.10)
-  expect_equal(levels(o2), c("a", "b"))
+  o2 <- fct_lump(f, w = rep(1, 11), prop = 0.10)
+  expect_equal(levels(o2), c("a", "Other"))
 })
 
 test_that("bad weights generate error messages", {
