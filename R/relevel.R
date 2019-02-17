@@ -4,15 +4,20 @@
 #' number of levels to any location.
 #'
 #' @param .f A factor (or character vector).
-#' @param ... Character vector of levels. Any levels not mentioned will be left
-#'   in existing order, after the explicitly mentioned levels. Supports tidy
-#'   dots.
+#' @param ... Either a function (or formula), or character levels.
+#'
+#'   A function will be called with the current levels, and the return
+#'   value (which must be a character vector) will be used to relevel the
+#'   function.
+#'
+#'   Any levels not mentioned will be left in existing order, after the
+#'   explicitly mentioned levels. Supports tidy dots.
 #' @param after Where should the new values be placed?
 #' @export
 #' @examples
-#' f <- factor(c("a", "b", "c", "d"))
+#' f <- factor(c("a", "b", "c", "d"), levels = c("b", "c", "d", "a"))
 #' fct_relevel(f)
-#' fct_relevel(f, "c")
+#' fct_relevel(f, "a")
 #' fct_relevel(f, "b", "a")
 #'
 #' # Move to the third position
@@ -21,6 +26,11 @@
 #' # Relevel to the end
 #' fct_relevel(f, "a", after = Inf)
 #' fct_relevel(f, "a", after = 3)
+#'
+#' # Revel with a function
+#' fct_relevel(f, sort)
+#' fct_relevel(f, sample)
+#' fct_relevel(f, rev)
 #'
 #' # Using 'Inf' allows you to relevel to the end when the number
 #' # of levels is unknown or variable (e.g. vectorised operations)
@@ -35,8 +45,16 @@
 fct_relevel <- function(.f, ..., after = 0L) {
   f <- check_factor(.f)
 
-  first_levels <- rlang::chr(...)
   old_levels <- levels(f)
+  if (rlang::dots_n(...) == 1L && (is.function(..1) || rlang::is_formula(..1))) {
+    fun <- rlang::as_function(..1)
+    first_levels <- fun(old_levels)
+    if (!is.character(first_levels)) {
+      stop("Re-leveling function must return character vector", call. = FALSE)
+    }
+  } else {
+    first_levels <- rlang::chr(...)
+  }
 
   unknown <- setdiff(first_levels, old_levels)
   if (length(unknown) > 0) {

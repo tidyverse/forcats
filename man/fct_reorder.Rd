@@ -20,7 +20,8 @@ of \code{.fun(.x)} (for \code{fct_reorder()}) and \code{fun(.x, .y)} (for \code{
 are in ascending order.}
 
 \item{.fun}{n summary function. It should take one vector for
-\code{fct_reorder}, and two vectors for \code{fct_reorder2}.}
+\code{fct_reorder}, and two vectors for \code{fct_reorder2}, and return a single
+value.}
 
 \item{...}{Other arguments passed on to \code{.fun}. A common argument is
 \code{na.rm = TRUE}.}

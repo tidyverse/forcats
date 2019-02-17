@@ -3,6 +3,9 @@ template:
 
 url: https://forcats.tidyverse.org
 
+development:
+  mode: auto
+
 home:
   strip_header: true
   links:
@@ -34,21 +37,26 @@ reference:
     - fct_recode
     - fct_relabel
 
-  - title: Add new levels
+  - title: Add/remove levels
     desc: >
-      Leave existing data as is, but add more levels.
+      Leave existing data as is, but add or remove levels.
     contents:
     - fct_expand
     - fct_explicit_na
+    - fct_drop
+    - fct_unify
+
+  - title: Combine multiple factors
+    contents:
+    - fct_c
+    - fct_cross
 
   - title: Other helpers
     contents:
     - as_factor
-    - fct_c
     - fct_count
-    - fct_unify
+    - fct_match
     - fct_unique
-    - fct_drop
     - lvls
     - lvls_union
 
