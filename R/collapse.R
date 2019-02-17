@@ -23,7 +23,7 @@ fct_collapse <- function(.f, ..., group_other = FALSE) {
     f <- check_factor(.f)
     levels <- levels(f)
     new[["Other"]] <- levels[!levels %in% levs]
-    levs <- unlist(new, use.names = F)
+    levs <- levels
   }
 
   names(levs) <- names(new)[rep(seq_along(new), vapply(new, length, integer(1)))]
