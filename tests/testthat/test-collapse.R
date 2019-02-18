@@ -29,11 +29,18 @@ test_that("can collapse un-named levels to Other", {
   expect_equal(f2, factor(c("xy", "xy", "Other"), levels = c("xy", "Other")))
 })
 
-test_that("collapses levels correctly when group_other is TRUE", {
+test_that("collapses levels correctly when group_other is TRUE but no Other variables to group", {
   f1 <- factor(letters[1:4])
   f2 <- fct_collapse(f1, x1 = c("a", "b", "d"), x2 = "c", group_other = TRUE)
 
   expect_equal(f2, factor(c("x1", "x1", "x2", "x1"), levels = c("x1", "x2")))
+})
+
+test_that("collapses levels correctly when group_other is TRUE and some Other variables to group", {
+  f1 <- factor(letters[1:4])
+  f2 <- fct_collapse(f1, x1 = c("a", "d"), x2 = "c", group_other = TRUE)
+
+  expect_equal(f2, factor(c("x1", "Other", "x2", "x1"), levels = c("x1", "x2", "Other")))
 })
 
 test_that("collapses levels correctly when group_other is FALSE", {
