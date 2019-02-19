@@ -45,6 +45,10 @@ install.packages("forcats")
 devtools::install_github("tidyverse/forcats")
 ```
 
+## Cheatsheet
+
+<a href="https://rawgit.com/rstudio/cheatsheets/master/forcats.pdf"><img src="https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/thumbnails/forcats-cheatsheet-thumbs.png" width="320" height="252"/></a>  
+
 ## Getting started
 
 forcats is part of the core tidyverse, so you can load it with `library(tidyverse)` or `library(forcats)`.
