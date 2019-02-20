@@ -1,10 +1,10 @@
 # forcats (development version)
 
+* `first2()`, a `fct_reorder2()` helper function, sorts `.y` by the first value of `.x` (@jtr13).
+
 # forcats 0.4.0
 
 ## New features
-
-* `first2()`, a `fct_reorder2()` helper function, sorts `.y` by the first value of `.x` (@jtr13).
 
 * `fct_collapse()` gains a `group_other` argument to allow you to group all 
   un-named levels into `"Other"`. (#100, @AmeliaMN)
