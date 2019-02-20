@@ -4,6 +4,7 @@
 \alias{fct_reorder}
 \alias{fct_reorder2}
 \alias{last2}
+\alias{first2}
 \title{Reorder factor levels by sorting along another variable}
 \usage{
 fct_reorder(.f, .x, .fun = median, ..., .desc = FALSE)
@@ -11,6 +12,8 @@ fct_reorder(.f, .x, .fun = median, ..., .desc = FALSE)
 fct_reorder2(.f, .x, .y, .fun = last2, ..., .desc = TRUE)
 
 last2(.x, .y)
+
+first2(.x, .y)
 }
 \arguments{
 \item{.f}{A factor (or character vector).}
@@ -33,8 +36,8 @@ match the default ordering of factors in the legend.}
 \description{
 \code{fct_reorder()} is useful for 1d displays where the factor is mapped to
 position; \code{fct_reorder2()} for 2d displays where the factor is mapped to
-a non-position aesthetic. \code{last2()} is a helper for \code{fct_reorder2()};
-it finds the last value of \code{y} when sorted by \code{x}.
+a non-position aesthetic. \code{last2()} and \code{first2()} are helpers for \code{fct_reorder2()};
+\code{last2()} finds the last value of \code{y} when sorted by \code{x}; \code{first2()} finds the first value.
 }
 \examples{
 boxplot(Sepal.Width ~ Species, data = iris)

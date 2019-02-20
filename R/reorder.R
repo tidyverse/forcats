@@ -2,8 +2,8 @@
 #'
 #' `fct_reorder()` is useful for 1d displays where the factor is mapped to
 #' position; `fct_reorder2()` for 2d displays where the factor is mapped to
-#' a non-position aesthetic. `last2()` is a helper for `fct_reorder2()`;
-#' it finds the last value of `y` when sorted by `x`.
+#' a non-position aesthetic. `last2()` and `first2()` are helpers for `fct_reorder2()`;
+#' `last2()` finds the last value of `y` when sorted by `x`; `first2()` finds the first value.
 #'
 #' @param .f A factor (or character vector).
 #' @param .x,.y The levels of `f` are reordered so that the values
@@ -74,6 +74,13 @@ fct_reorder2 <- function(.f, .x, .y, .fun = last2, ..., .desc = TRUE) {
 last2 <- function(.x, .y) {
   .y[order(.x, na.last = FALSE)][length(.y)]
 }
+
+#' @export
+#' @rdname fct_reorder
+first2 <- function(.x, .y) {
+  .y[order(.x)][1]
+}
+
 
 
 #' Reorder factors levels by first appearance, frequency, or numeric order.
