@@ -1,5 +1,7 @@
 # forcats (development version)
 
+* `first2()`, a `fct_reorder2()` helper function, sorts `.y` by the first value of `.x` (@jtr13).
+
 # forcats 0.4.0
 
 ## New features
