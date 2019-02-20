@@ -35,8 +35,8 @@
 
 <meta property="og:description" content="fct_reorder() is useful for 1d displays where the factor is mapped to
 position; fct_reorder2() for 2d displays where the factor is mapped to
-a non-position aesthetic. last2() is a helper for fct_reorder2();
-it finds the last value of y when sorted by x." />
+a non-position aesthetic. last2() and first2() are helpers for fct_reorder2();
+last2() finds the last value of y when sorted by x; first2() finds the first value." />
 
 <meta property="og:image" content="https://forcats.tidyverse.org/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -141,8 +141,8 @@ it finds the last value of y when sorted by x." />
     
     <p><code>fct_reorder()</code> is useful for 1d displays where the factor is mapped to
 position; <code>fct_reorder2()</code> for 2d displays where the factor is mapped to
-a non-position aesthetic. <code>last2()</code> is a helper for <code>fct_reorder2()</code>;
-it finds the last value of <code>y</code> when sorted by <code>x</code>.</p>
+a non-position aesthetic. <code>last2()</code> and <code>first2()</code> are helpers for <code>fct_reorder2()</code>;
+<code>last2()</code> finds the last value of <code>y</code> when sorted by <code>x</code>; <code>first2()</code> finds the first value.</p>
     
     </div>
 
@@ -150,7 +150,9 @@ it finds the last value of <code>y</code> when sorted by <code>x</code>.</p>
 
 <span class='fu'>fct_reorder2</span>(<span class='no'>.f</span>, <span class='no'>.x</span>, <span class='no'>.y</span>, <span class='kw'>.fun</span> <span class='kw'>=</span> <span class='no'>last2</span>, <span class='no'>...</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>last2</span>(<span class='no'>.x</span>, <span class='no'>.y</span>)</pre>
+<span class='fu'>last2</span>(<span class='no'>.x</span>, <span class='no'>.y</span>)
+
+<span class='fu'>first2</span>(<span class='no'>.x</span>, <span class='no'>.y</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
