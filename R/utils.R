@@ -17,7 +17,7 @@ check_factor <- function(f) {
   } else if (is.factor(f)) {
     f
   } else {
-    stop("`f` must be a factor (or character vector or numeric vector).", call. = FALSE)
+    stop("`f` must be a factor (or character vector).", call. = FALSE)
   }
 }
 
