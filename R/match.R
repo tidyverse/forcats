@@ -8,7 +8,6 @@
 #' @rdname fct_match
 #' @param f A factor (or character vector).
 #' @param lvls A character vector specifying levels to look for.
-#' @details
 #' @return A logical vector
 #' @export
 #' @examples
