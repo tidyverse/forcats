@@ -37,7 +37,7 @@ fct_relevel(f, "a", after = 2)
 fct_relevel(f, "a", after = Inf)
 fct_relevel(f, "a", after = 3)
 
-# Revel with a function
+# Relevel with a function
 fct_relevel(f, sort)
 fct_relevel(f, sample)
 fct_relevel(f, rev)
