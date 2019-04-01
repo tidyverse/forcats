@@ -33,11 +33,11 @@ f \%>\% fct_lump_inorder(2)
 #> [1] hello       goodbye     Other       Other
 #> [5] Other        hello
 #>Levels: hello goodbye Other
-# Preserve the last three appearing levels, reversing order of levels:
-f \%>\% fct_lump_inorder(-3)
-#> [1] Other       goodbye     ciao       arrivederci
+# Preserve the last two appearing levels, reversing order of levels:
+f \%>\% fct_lump_inorder(-2)
+#> [1] Other       Other     ciao       arrivederci
 #> [5] ciao        Other
-#>Levels: arrivederci ciao goodbye Other
+#>Levels: arrivederci ciao Other
 
 }
 \seealso{

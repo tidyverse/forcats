@@ -28,7 +28,7 @@ R uses __factors__ to handle categorical variables, variables that have a fixed 
 * `fct_infreq()`: Reordering a factor by the frequency of values.
 * `fct_relevel()`: Changing the order of a factor by hand.
 * `fct_lump()`: Collapsing the least/most frequent levels of a factor into "other".
-* `fct_lump_inorder():`: Collapsing the first/last appearing least/most levels of a factor into "other".
+* `fct_lump_inorder():`: Collapsing the first/last appearing levels of a factor into "other".
 
 You can learn more about each of these in `vignette("forcats")`. If you're new to factors, the best place to start is the [chapter on factors](http://r4ds.had.co.nz/factors.html) in R for Data Science.
 

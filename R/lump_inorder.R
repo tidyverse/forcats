@@ -32,13 +32,21 @@
 #' #>Levels: arrivederci ciao Other
 #'
 fct_lump_inorder <- function(f, n=1, other_level="Other") {
-  levs <- levels(f)
+  if (!is.factor(f)) f <- as.factor(f) # levels will be alphabetical
   # if zero n or n is greater than f's levels, no lumping
-  if (n==0|(abs(n)>length(levs))) return(f)
-  if(n>0)
-    fct_other(f,
+  if (n==0|(abs(n)>length(levels(f)))) return(f)
+  f_io <- fct_inorder(f) # levels ordered by appearance
+  if(n>0) {
+    levs <- levels(f_io)
+    fct_other(f_io,
               keep=levs[1:n],
               other_level=other_level)
-  else
-    fct_lump_inorder(fct_rev(f),-n,other_level)
+  }
+  else {
+    f_io <- fct_rev(f_io) # reverses level order
+    levs <- levels(f_io)
+    fct_other(f_io,
+              keep=levs[1:abs(n)], # n is negative
+              other_level=other_level)
+  }
 }
