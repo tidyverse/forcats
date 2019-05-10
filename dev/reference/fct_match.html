@@ -100,6 +100,9 @@ will throw an error." />
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
     </li>
     <li>
@@ -139,7 +142,7 @@ will throw an error." />
 
     <div class="ref-description">
     
-    <p>Do any of <code>lvls</code> occur in <code>f</code>? Compared to <a href='https://www.rdocumentation.org/packages/base/topics/match'>%in%</a>, this function validates
+    <p>Do any of <code>lvls</code> occur in <code>f</code>? Compared to <a href='https://rdrr.io/r/base/match.html'>%in%</a>, this function validates
 <code>lvls</code> to ensure that they're actually present in <code>f</code>. In other words,
 <code>x %in% "not present"</code> will return <code>FALSE</code>, but <code>fct_match(x, "not present")</code>
 will throw an error.</p>
@@ -167,14 +170,14 @@ will throw an error.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/table'>table</a></span>(<span class='fu'>fct_match</span>(<span class='no'>gss_cat</span>$<span class='no'>marital</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Married"</span>, <span class='st'>"Divorced"</span>)))</div><div class='output co'>#&gt; 
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>fct_match</span>(<span class='no'>gss_cat</span>$<span class='no'>marital</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Married"</span>, <span class='st'>"Divorced"</span>)))</div><div class='output co'>#&gt; 
 #&gt; FALSE  TRUE 
 #&gt;  7983 13500 </div><div class='input'>
 <span class='co'># Compare to %in%, misspelled levels throw an error</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/table'>table</a></span>(<span class='no'>gss_cat</span>$<span class='no'>marital</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Maried"</span>, <span class='st'>"Davorced"</span>))</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>gss_cat</span>$<span class='no'>marital</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Maried"</span>, <span class='st'>"Davorced"</span>))</div><div class='output co'>#&gt; 
 #&gt; FALSE 
 #&gt; 21483 </div><span class='co'># NOT RUN {</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/table'>table</a></span>(<span class='fu'>fct_match</span>(<span class='no'>gss_cat</span>$<span class='no'>marital</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Maried"</span>, <span class='st'>"Davorced"</span>)))
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>fct_match</span>(<span class='no'>gss_cat</span>$<span class='no'>marital</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Maried"</span>, <span class='st'>"Davorced"</span>)))
 <span class='co'># }</span><div class='input'>
 </div></pre>
   </div>

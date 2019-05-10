@@ -97,6 +97,9 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
     </li>
     <li>
@@ -162,15 +165,15 @@ output factor. <code>NA</code> preserves the existing status of the factor.</p><
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"b"</span>, <span class='st'>"b"</span>, <span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"c"</span>, <span class='st'>"c"</span>))
+    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"b"</span>, <span class='st'>"b"</span>, <span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"c"</span>, <span class='st'>"c"</span>))
 <span class='no'>f</span></div><div class='output co'>#&gt; [1] b b a c c c
 #&gt; Levels: a b c</div><div class='input'><span class='fu'>fct_inorder</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; [1] b b a c c c
 #&gt; Levels: b a c</div><div class='input'><span class='fu'>fct_infreq</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; [1] b b a c c c
 #&gt; Levels: c b a</div><div class='input'>
 <span class='fu'>fct_inorder</span>(<span class='no'>f</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] b b a c c c
 #&gt; Levels: b &lt; a &lt; c</div><div class='input'>
-<span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>))
-<span class='fu'>fct_inseq</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt;  [1] 1  4  5  8  3  7  2  6  9  10
+<span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>))
+<span class='fu'>fct_inseq</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt;  [1] 5  8  9  3  7  2  10 4  6  1 
 #&gt; Levels: 1 2 3 4 5 6 7 8 9 10</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

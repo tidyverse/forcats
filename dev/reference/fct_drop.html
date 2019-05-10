@@ -97,6 +97,9 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
     </li>
     <li>
@@ -136,7 +139,7 @@
 
     <div class="ref-description">
     
-    <p>Compared to <code><a href='https://www.rdocumentation.org/packages/base/topics/droplevels'>base::droplevels()</a></code>, does not drop <code>NA</code> levels that have values.</p>
+    <p>Compared to <code><a href='https://rdrr.io/r/base/droplevels.html'>base::droplevels()</a></code>, does not drop <code>NA</code> levels that have values.</p>
     
     </div>
 
@@ -163,7 +166,7 @@ will be removed.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>), <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>))
+    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>), <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>))
 <span class='no'>f</span></div><div class='output co'>#&gt; [1] a b
 #&gt; Levels: a b c</div><div class='input'><span class='fu'>fct_drop</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; [1] a b
 #&gt; Levels: a b</div><div class='input'>

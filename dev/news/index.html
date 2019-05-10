@@ -95,6 +95,9 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
     </li>
     <li>
@@ -140,7 +143,7 @@
 <a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
 <li><p><code><a href="../reference/fct_collapse.html">fct_collapse()</a></code> gains a <code>group_other</code> argument to allow you to group all un-named levels into <code>"Other"</code>. (<a href='https://github.com/tidyverse/forcats/issues/100'>#100</a>, <a href='https://github.com/AmeliaMN'>@AmeliaMN</a>)</p></li>
-<li><p><code><a href="../reference/fct_cross.html">fct_cross()</a></code> creates a new factor containing the combined levels from two or more input factors, similar to <code><a href="https://www.rdocumentation.org/packages/base/topics/interaction">base::interaction</a></code> (<a href='https://github.com/tslumley'>@tslumley</a>, <a href='https://github.com/tidyverse/forcats/issues/136'>#136</a>)</p></li>
+<li><p><code><a href="../reference/fct_cross.html">fct_cross()</a></code> creates a new factor containing the combined levels from two or more input factors, similar to <code><a href="https://rdrr.io/r/base/interaction.html">base::interaction</a></code> (<a href='https://github.com/tslumley'>@tslumley</a>, <a href='https://github.com/tidyverse/forcats/issues/136'>#136</a>)</p></li>
 <li><p><code><a href="../reference/fct_inorder.html">fct_inseq()</a></code> reorders labels in numeric order, if possible (<a href='https://github.com/tidyverse/forcats/issues/145'>#145</a>, <a href='https://github.com/kbodwin'>@kbodwin</a>).</p></li>
 <li><p><code><a href="../reference/fct_lump.html">fct_lump_min()</a></code> preserves levels that appear at least <code>min</code> times (can also be used with the <code>w</code> weighted argument) (<a href='https://github.com/robinsones'>@robinsones</a>, <a href='https://github.com/tidyverse/forcats/issues/142'>#142</a>).</p></li>
 <li><p><code><a href="../reference/fct_match.html">fct_match()</a></code> performs validated matching, providing a safer alternative to <code>f %in% c("x", "y")</code> which silently returns <code>FALSE</code> if <code>"x"</code> or <code>"y"</code> are not levels of <code>f</code> (e.g. because of a typo) (<a href='https://github.com/tidyverse/forcats/issues/126'>#126</a>, <a href='https://github.com/jonocarroll'>@jonocarroll</a>).</p></li>
@@ -209,7 +212,7 @@
 <h2 class="hasAnchor">
 <a href="#new-functions" class="anchor"></a>New functions</h2>
 <ul>
-<li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> which works like <code><a href="https://www.rdocumentation.org/packages/base/topics/factor">as.factor()</a></code> but orders levels by appearance to avoid differences between locales (<a href='https://github.com/tidyverse/forcats/issues/39'>#39</a>).</p></li>
+<li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> which works like <code><a href="https://rdrr.io/r/base/factor.html">as.factor()</a></code> but orders levels by appearance to avoid differences between locales (<a href='https://github.com/tidyverse/forcats/issues/39'>#39</a>).</p></li>
 <li><p><code><a href="../reference/fct_other.html">fct_other()</a></code> makes it easier to convert selected levels to “other” (<a href='https://github.com/tidyverse/forcats/issues/40'>#40</a>)</p></li>
 <li><p><code><a href="../reference/fct_relabel.html">fct_relabel()</a></code> allows programmatic relabeling of levels (<a href='https://github.com/tidyverse/forcats/issues/50'>#50</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
 </ul>

@@ -97,6 +97,9 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
     </li>
     <li>
@@ -176,11 +179,11 @@ each vector will be replaced with the name.</p></td>
 #&gt;  9 Not str democrat    3690
 #&gt; 10 Strong democrat     3490</div><div class='input'>
 <span class='no'>partyid2</span> <span class='kw'>&lt;-</span> <span class='fu'>fct_collapse</span>(<span class='no'>gss_cat</span>$<span class='no'>partyid</span>,
-  <span class='kw'>missing</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"No answer"</span>, <span class='st'>"Don't know"</span>),
+  <span class='kw'>missing</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"No answer"</span>, <span class='st'>"Don't know"</span>),
   <span class='kw'>other</span> <span class='kw'>=</span> <span class='st'>"Other party"</span>,
-  <span class='kw'>rep</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Strong republican"</span>, <span class='st'>"Not str republican"</span>),
-  <span class='kw'>ind</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Ind,near rep"</span>, <span class='st'>"Independent"</span>, <span class='st'>"Ind,near dem"</span>),
-  <span class='kw'>dem</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Not str democrat"</span>, <span class='st'>"Strong democrat"</span>)
+  <span class='kw'>rep</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Strong republican"</span>, <span class='st'>"Not str republican"</span>),
+  <span class='kw'>ind</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ind,near rep"</span>, <span class='st'>"Independent"</span>, <span class='st'>"Ind,near dem"</span>),
+  <span class='kw'>dem</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Not str democrat"</span>, <span class='st'>"Strong democrat"</span>)
 )
 <span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>partyid2</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 2
 #&gt;   f           n

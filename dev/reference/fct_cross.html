@@ -97,6 +97,9 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
     </li>
     <li>
@@ -169,9 +172,9 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>fruit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"apple"</span>, <span class='st'>"kiwi"</span>, <span class='st'>"apple"</span>, <span class='st'>"apple"</span>))
-<span class='no'>colour</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"green"</span>, <span class='st'>"green"</span>, <span class='st'>"red"</span>, <span class='st'>"green"</span>))
-<span class='no'>eaten</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"yes"</span>, <span class='st'>"no"</span>, <span class='st'>"yes"</span>, <span class='st'>"no"</span>)
+    <pre class="examples"><div class='input'><span class='no'>fruit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apple"</span>, <span class='st'>"kiwi"</span>, <span class='st'>"apple"</span>, <span class='st'>"apple"</span>))
+<span class='no'>colour</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"green"</span>, <span class='st'>"green"</span>, <span class='st'>"red"</span>, <span class='st'>"green"</span>))
+<span class='no'>eaten</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"yes"</span>, <span class='st'>"no"</span>, <span class='st'>"yes"</span>, <span class='st'>"no"</span>)
 <span class='fu'>fct_cross</span>(<span class='no'>fruit</span>, <span class='no'>colour</span>)</div><div class='output co'>#&gt; [1] apple:green kiwi:green  apple:red   apple:green
 #&gt; Levels: apple:green apple:red kiwi:green</div><div class='input'><span class='fu'>fct_cross</span>(<span class='no'>fruit</span>, <span class='no'>colour</span>, <span class='no'>eaten</span>)</div><div class='output co'>#&gt; [1] apple:green:yes kiwi:green:no   apple:red:yes   apple:green:no 
 #&gt; Levels: apple:green:no apple:green:yes apple:red:yes kiwi:green:no</div><div class='input'><span class='fu'>fct_cross</span>(<span class='no'>fruit</span>, <span class='no'>colour</span>, <span class='kw'>keep_empty</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] apple:green kiwi:green  apple:red   apple:green

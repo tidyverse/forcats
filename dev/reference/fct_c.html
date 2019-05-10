@@ -98,6 +98,9 @@ that really should have the same levels but don't." />
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
     </li>
     <li>
@@ -156,14 +159,14 @@ of factors with <code>!!!</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>fa</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='st'>"a"</span>)
-<span class='no'>fb</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='st'>"b"</span>)
-<span class='no'>fab</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>))
+    <pre class="examples"><div class='input'><span class='no'>fa</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='st'>"a"</span>)
+<span class='no'>fb</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='st'>"b"</span>)
+<span class='no'>fab</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>))
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='no'>fa</span>, <span class='no'>fb</span>, <span class='no'>fab</span>)</div><div class='output co'>#&gt; [1] 1 1 1 2</div><div class='input'><span class='fu'>fct_c</span>(<span class='no'>fa</span>, <span class='no'>fb</span>, <span class='no'>fab</span>)</div><div class='output co'>#&gt; [1] a b a b
+<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>fa</span>, <span class='no'>fb</span>, <span class='no'>fab</span>)</div><div class='output co'>#&gt; [1] 1 1 1 2</div><div class='input'><span class='fu'>fct_c</span>(<span class='no'>fa</span>, <span class='no'>fb</span>, <span class='no'>fab</span>)</div><div class='output co'>#&gt; [1] a b a b
 #&gt; Levels: a b</div><div class='input'>
 <span class='co'># You can also pass a list of factors with !!!</span>
-<span class='no'>fs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>fa</span>, <span class='no'>fb</span>, <span class='no'>fab</span>)
+<span class='no'>fs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>fa</span>, <span class='no'>fb</span>, <span class='no'>fab</span>)
 <span class='fu'>fct_c</span>(!!!<span class='no'>fs</span>)</div><div class='output co'>#&gt; [1] a b a b
 #&gt; Levels: a b</div></pre>
   </div>

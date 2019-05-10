@@ -97,6 +97,9 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
     </li>
     <li>
@@ -160,7 +163,7 @@ be removed by naming them <code>NULL</code>. Uses tidy dots.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"apple"</span>, <span class='st'>"bear"</span>, <span class='st'>"banana"</span>, <span class='st'>"dear"</span>))
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apple"</span>, <span class='st'>"bear"</span>, <span class='st'>"banana"</span>, <span class='st'>"dear"</span>))
 <span class='fu'>fct_recode</span>(<span class='no'>x</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='st'>"apple"</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='st'>"banana"</span>)</div><div class='output co'>#&gt; [1] fruit bear  fruit dear 
 #&gt; Levels: fruit bear dear</div><div class='input'>
 <span class='co'># If you make a mistake you'll get a warning</span>
@@ -170,8 +173,8 @@ be removed by naming them <code>NULL</code>. Uses tidy dots.</p></td>
 <span class='fu'>fct_recode</span>(<span class='no'>x</span>, <span class='kw'>NULL</span> <span class='kw'>=</span> <span class='st'>"apple"</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='st'>"banana"</span>)</div><div class='output co'>#&gt; [1] &lt;NA&gt;  bear  fruit dear 
 #&gt; Levels: fruit bear dear</div><div class='input'>
 <span class='co'># When passing a named vector to rename levels use !!! to splice</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"apple"</span>, <span class='st'>"bear"</span>, <span class='st'>"banana"</span>, <span class='st'>"dear"</span>))
-<span class='no'>levels</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>fruit</span> <span class='kw'>=</span> <span class='st'>"apple"</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='st'>"banana"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apple"</span>, <span class='st'>"bear"</span>, <span class='st'>"banana"</span>, <span class='st'>"dear"</span>))
+<span class='no'>levels</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>fruit</span> <span class='kw'>=</span> <span class='st'>"apple"</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='st'>"banana"</span>)
 <span class='fu'>fct_recode</span>(<span class='no'>x</span>, !!!<span class='no'>levels</span>)</div><div class='output co'>#&gt; [1] fruit bear  fruit dear 
 #&gt; Levels: fruit bear dear</div></pre>
   </div>

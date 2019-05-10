@@ -1,6 +1,6 @@
 pandoc: '2.2'
 pkgdown: 1.3.0.9000
-pkgdown_sha: 0b2c27d41b869ac31b6a46815940f55b12f6171f
+pkgdown_sha: 9c9cb47575b172a54882c8c868ae0b8f30e4ff7c
 articles:
   forcats: forcats.html
 urls:

@@ -98,6 +98,9 @@ number of levels to any location." />
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
     </li>
     <li>
@@ -137,7 +140,7 @@ number of levels to any location." />
 
     <div class="ref-description">
     
-    <p>This is a generalisaton of <code><a href='https://www.rdocumentation.org/packages/stats/topics/relevel'>stats::relevel()</a></code> that allows you to move any
+    <p>This is a generalisaton of <code><a href='https://rdrr.io/r/stats/relevel.html'>stats::relevel()</a></code> that allows you to move any
 number of levels to any location.</p>
     
     </div>
@@ -168,7 +171,7 @@ explicitly mentioned levels. Supports tidy dots.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span>), <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span>, <span class='st'>"a"</span>))
+    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span>), <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span>, <span class='st'>"a"</span>))
 <span class='fu'>fct_relevel</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; [1] a b c d
 #&gt; Levels: b c d a</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; [1] a b c d
 #&gt; Levels: a b c d</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='st'>"b"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; [1] a b c d
@@ -183,12 +186,12 @@ explicitly mentioned levels. Supports tidy dots.</p></td>
 <span class='co'># Relevel with a function</span>
 <span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='no'>sort</span>)</div><div class='output co'>#&gt; [1] a b c d
 #&gt; Levels: a b c d</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='no'>sample</span>)</div><div class='output co'>#&gt; [1] a b c d
-#&gt; Levels: a c d b</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='no'>rev</span>)</div><div class='output co'>#&gt; [1] a b c d
+#&gt; Levels: d a c b</div><div class='input'><span class='fu'>fct_relevel</span>(<span class='no'>f</span>, <span class='no'>rev</span>)</div><div class='output co'>#&gt; [1] a b c d
 #&gt; Levels: a d c b</div><div class='input'>
 <span class='co'># Using 'Inf' allows you to relevel to the end when the number</span>
 <span class='co'># of levels is unknown or variable (e.g. vectorised operations)</span>
-<span class='no'>df</span>  <span class='kw'>&lt;-</span> <span class='kw pkg'>forcats</span><span class='kw ns'>::</span><span class='no'><a href='https://forcats.tidyverse.org/reference/gss_cat.html'>gss_cat</a></span>[, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"rincome"</span>, <span class='st'>"denom"</span>)]
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>(<span class='no'>df</span>, <span class='no'>levels</span>)</div><div class='output co'>#&gt; $rincome
+<span class='no'>df</span>  <span class='kw'>&lt;-</span> <span class='kw pkg'>forcats</span><span class='kw ns'>::</span><span class='no'><a href='https://forcats.tidyverse.org/reference/gss_cat.html'>gss_cat</a></span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rincome"</span>, <span class='st'>"denom"</span>)]
+<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>df</span>, <span class='no'>levels</span>)</div><div class='output co'>#&gt; $rincome
 #&gt;  [1] "No answer"      "Don't know"     "Refused"        "$25000 or more"
 #&gt;  [5] "$20000 - 24999" "$15000 - 19999" "$10000 - 14999" "$8000 to 9999" 
 #&gt;  [9] "$7000 to 7999"  "$6000 to 6999"  "$5000 to 5999"  "$4000 to 4999" 
@@ -206,8 +209,8 @@ explicitly mentioned levels. Supports tidy dots.</p></td>
 #&gt; [25] "Southern baptist"     "Nat bapt conv usa"    "Nat bapt conv of am" 
 #&gt; [28] "Am bapt ch in usa"    "Am baptist asso"      "Not applicable"      
 #&gt; </div><div class='input'>
-<span class='no'>df2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>(<span class='no'>df</span>, <span class='no'>fct_relevel</span>, <span class='st'>"Don't know"</span>, <span class='kw'>after</span> <span class='kw'>=</span> <span class='fl'>Inf</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>(<span class='no'>df2</span>, <span class='no'>levels</span>)</div><div class='output co'>#&gt; $rincome
+<span class='no'>df2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>df</span>, <span class='no'>fct_relevel</span>, <span class='st'>"Don't know"</span>, <span class='kw'>after</span> <span class='kw'>=</span> <span class='fl'>Inf</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>df2</span>, <span class='no'>levels</span>)</div><div class='output co'>#&gt; $rincome
 #&gt;  [1] "No answer"      "Refused"        "$25000 or more" "$20000 - 24999"
 #&gt;  [5] "$15000 - 19999" "$10000 - 14999" "$8000 to 9999"  "$7000 to 7999" 
 #&gt;  [9] "$6000 to 6999"  "$5000 to 5999"  "$4000 to 4999"  "$3000 to 3999" 

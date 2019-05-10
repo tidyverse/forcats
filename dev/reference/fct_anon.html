@@ -98,6 +98,9 @@ the values nor the order of the levels are preserved." />
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
     </li>
     <li>
@@ -180,58 +183,58 @@ the values nor the order of the levels are preserved.</p>
 #&gt; 16 Not applicable              0</div><div class='input'><span class='no'>gss_cat</span>$<span class='no'>relig</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_anon</span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; # A tibble: 16 x 2
 #&gt;    f         n
 #&gt;    &lt;fct&gt; &lt;int&gt;
-#&gt;  1 01      689
-#&gt;  2 02       93
-#&gt;  3 03       23
-#&gt;  4 04     5124
-#&gt;  5 05      104
-#&gt;  6 06       95
-#&gt;  7 07      224
+#&gt;  1 01    10846
+#&gt;  2 02     3523
+#&gt;  3 03     5124
+#&gt;  4 04       95
+#&gt;  5 05       23
+#&gt;  6 06      689
+#&gt;  7 07       15
 #&gt;  8 08      147
-#&gt;  9 09      109
+#&gt;  9 09       32
 #&gt; 10 10      388
-#&gt; 11 11       71
-#&gt; 12 12     3523
-#&gt; 13 13       15
-#&gt; 14 14    10846
-#&gt; 15 15       32
-#&gt; 16 16        0</div><div class='input'><span class='no'>gss_cat</span>$<span class='no'>relig</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_anon</span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; # A tibble: 16 x 2
-#&gt;    f         n
-#&gt;    &lt;fct&gt; &lt;int&gt;
-#&gt;  1 01       15
-#&gt;  2 02       32
-#&gt;  3 03     3523
-#&gt;  4 04      689
-#&gt;  5 05      388
-#&gt;  6 06      109
-#&gt;  7 07       93
-#&gt;  8 08       95
-#&gt;  9 09        0
-#&gt; 10 10       71
-#&gt; 11 11      104
-#&gt; 12 12     5124
-#&gt; 13 13       23
-#&gt; 14 14      147
+#&gt; 11 11        0
+#&gt; 12 12      109
+#&gt; 13 13       93
+#&gt; 14 14      104
 #&gt; 15 15      224
-#&gt; 16 16    10846</div><div class='input'><span class='no'>gss_cat</span>$<span class='no'>relig</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_anon</span>(<span class='st'>"X"</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; # A tibble: 16 x 2
+#&gt; 16 16       71</div><div class='input'><span class='no'>gss_cat</span>$<span class='no'>relig</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_anon</span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; # A tibble: 16 x 2
 #&gt;    f         n
 #&gt;    &lt;fct&gt; &lt;int&gt;
-#&gt;  1 X01     388
-#&gt;  2 X02     104
-#&gt;  3 X03    5124
-#&gt;  4 X04     147
-#&gt;  5 X05      93
-#&gt;  6 X06      23
-#&gt;  7 X07     109
-#&gt;  8 X08    3523
-#&gt;  9 X09     689
-#&gt; 10 X10      15
-#&gt; 11 X11      95
-#&gt; 12 X12   10846
-#&gt; 13 X13      71
-#&gt; 14 X14     224
-#&gt; 15 X15      32
-#&gt; 16 X16       0</div></pre>
+#&gt;  1 01      147
+#&gt;  2 02      689
+#&gt;  3 03       71
+#&gt;  4 04      104
+#&gt;  5 05       15
+#&gt;  6 06       95
+#&gt;  7 07     5124
+#&gt;  8 08     3523
+#&gt;  9 09    10846
+#&gt; 10 10        0
+#&gt; 11 11       93
+#&gt; 12 12       23
+#&gt; 13 13       32
+#&gt; 14 14      388
+#&gt; 15 15      109
+#&gt; 16 16      224</div><div class='input'><span class='no'>gss_cat</span>$<span class='no'>relig</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_anon</span>(<span class='st'>"X"</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; # A tibble: 16 x 2
+#&gt;    f         n
+#&gt;    &lt;fct&gt; &lt;int&gt;
+#&gt;  1 X01      95
+#&gt;  2 X02     689
+#&gt;  3 X03     388
+#&gt;  4 X04     104
+#&gt;  5 X05      23
+#&gt;  6 X06      93
+#&gt;  7 X07     147
+#&gt;  8 X08      32
+#&gt;  9 X09   10846
+#&gt; 10 X10     109
+#&gt; 11 X11     224
+#&gt; 12 X12    3523
+#&gt; 13 X13    5124
+#&gt; 14 X14       0
+#&gt; 15 X15      15
+#&gt; 16 X16      71</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

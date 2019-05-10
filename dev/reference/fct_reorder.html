@@ -100,6 +100,9 @@ last2() finds the last value of y when sorted by x; first2() finds the first val
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
     </li>
     <li>
@@ -188,21 +191,25 @@ match the default ordering of factors in the legend.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/boxplot'>boxplot</a></span>(<span class='no'>Sepal.Width</span> ~ <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='img'><img src='fct_reorder-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/boxplot'>boxplot</a></span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='img'><img src='fct_reorder-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/boxplot'>boxplot</a></span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='input'>
-<span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/subset'>subset</a></span>(<span class='no'>ChickWeight</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/integer'>as.integer</a></span>(<span class='no'>Chick</span>) <span class='kw'>&lt;</span> <span class='fl'>10</span>)
-<span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/transform'>transform</a></span>(<span class='no'>chks</span>, <span class='kw'>Chick</span> <span class='kw'>=</span> <span class='fu'><a href='fct_shuffle.html'>fct_shuffle</a></span>(<span class='no'>Chick</span>))
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span>(<span class='no'>Sepal.Width</span> ~ <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='img'><img src='fct_reorder-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='img'><img src='fct_reorder-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span>(<span class='no'>Sepal.Width</span> ~ <span class='fu'>fct_reorder</span>(<span class='no'>Species</span>, <span class='no'>Sepal.Width</span>, <span class='kw'>.desc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='input'>
+<span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span>(<span class='no'>ChickWeight</span>, <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span>(<span class='no'>Chick</span>) <span class='kw'>&lt;</span> <span class='fl'>10</span>)
+<span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/transform.html'>transform</a></span>(<span class='no'>chks</span>, <span class='kw'>Chick</span> <span class='kw'>=</span> <span class='fu'><a href='fct_shuffle.html'>fct_shuffle</a></span>(<span class='no'>Chick</span>))
 
-<span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>require</a></span>(<span class='st'>"ggplot2"</span>)) {
-<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>chks</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='no'>Time</span>, <span class='no'>weight</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>Chick</span>)) +
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() +
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_path'>geom_line</a></span>()
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='st'>"ggplot2"</span>)) {
+<span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span>(<span class='no'>chks</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='no'>Time</span>, <span class='no'>weight</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>Chick</span>)) +
+  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span>() +
+  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_path.html'>geom_line</a></span>()
 
 <span class='co'># Note that lines match order in legend</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>chks</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='no'>Time</span>, <span class='no'>weight</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='fu'>fct_reorder2</span>(<span class='no'>Chick</span>, <span class='no'>Time</span>, <span class='no'>weight</span>))) +
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() +
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_path'>geom_line</a></span>() +
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"Chick"</span>)
-}</div><div class='output co'>#&gt; <span class='message'>Loading required package: ggplot2</span></div><div class='img'><img src='fct_reorder-3.png' alt='' width='700' height='433' /></div><div class='img'><img src='fct_reorder-4.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span>(<span class='no'>chks</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='no'>Time</span>, <span class='no'>weight</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='fu'>fct_reorder2</span>(<span class='no'>Chick</span>, <span class='no'>Time</span>, <span class='no'>weight</span>))) +
+  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span>() +
+  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_path.html'>geom_line</a></span>() +
+  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"Chick"</span>)
+}</div><div class='output co'>#&gt; <span class='message'>Loading required package: ggplot2</span></div><div class='output co'>#&gt; <span class='message'>Registered S3 methods overwritten by 'ggplot2':</span>
+#&gt; <span class='message'>  method         from </span>
+#&gt; <span class='message'>  [.quosures     rlang</span>
+#&gt; <span class='message'>  c.quosures     rlang</span>
+#&gt; <span class='message'>  print.quosures rlang</span></div><div class='img'><img src='fct_reorder-3.png' alt='' width='700' height='433' /></div><div class='img'><img src='fct_reorder-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

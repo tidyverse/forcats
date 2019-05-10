@@ -97,6 +97,9 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
     </li>
     <li>
@@ -169,9 +172,9 @@ common) levels to "other".</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>9</span>], <span class='kw'>times</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>40</span>, <span class='fl'>10</span>, <span class='fl'>5</span>, <span class='fl'>27</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>)))
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>9</span>], <span class='kw'>times</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>40</span>, <span class='fl'>10</span>, <span class='fl'>5</span>, <span class='fl'>27</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>)))
 
-<span class='fu'>fct_other</span>(<span class='no'>x</span>, <span class='kw'>keep</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"B"</span>))</div><div class='output co'>#&gt;  [1] A     A     A     A     A     A     A     A     A     A     A     A    
+<span class='fu'>fct_other</span>(<span class='no'>x</span>, <span class='kw'>keep</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"B"</span>))</div><div class='output co'>#&gt;  [1] A     A     A     A     A     A     A     A     A     A     A     A    
 #&gt; [13] A     A     A     A     A     A     A     A     A     A     A     A    
 #&gt; [25] A     A     A     A     A     A     A     A     A     A     A     A    
 #&gt; [37] A     A     A     A     B     B     B     B     B     B     B     B    
@@ -179,7 +182,7 @@ common) levels to "other".</p></div>
 #&gt; [61] Other Other Other Other Other Other Other Other Other Other Other Other
 #&gt; [73] Other Other Other Other Other Other Other Other Other Other Other Other
 #&gt; [85] Other Other Other
-#&gt; Levels: A B Other</div><div class='input'><span class='fu'>fct_other</span>(<span class='no'>x</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"B"</span>))</div><div class='output co'>#&gt;  [1] Other Other Other Other Other Other Other Other Other Other Other Other
+#&gt; Levels: A B Other</div><div class='input'><span class='fu'>fct_other</span>(<span class='no'>x</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"B"</span>))</div><div class='output co'>#&gt;  [1] Other Other Other Other Other Other Other Other Other Other Other Other
 #&gt; [13] Other Other Other Other Other Other Other Other Other Other Other Other
 #&gt; [25] Other Other Other Other Other Other Other Other Other Other Other Other
 #&gt; [37] Other Other Other Other Other Other Other Other Other Other Other Other

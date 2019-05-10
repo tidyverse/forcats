@@ -97,6 +97,9 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
     </li>
     <li>
@@ -141,7 +144,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>fct_lump</span>(<span class='no'>f</span>, <span class='no'>n</span>, <span class='no'>prop</span>, <span class='kw'>w</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>other_level</span> <span class='kw'>=</span> <span class='st'>"Other"</span>,
-  <span class='kw'>ties.method</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"min"</span>, <span class='st'>"average"</span>, <span class='st'>"first"</span>, <span class='st'>"last"</span>, <span class='st'>"random"</span>, <span class='st'>"max"</span>))
+  <span class='kw'>ties.method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"min"</span>, <span class='st'>"average"</span>, <span class='st'>"first"</span>, <span class='st'>"last"</span>, <span class='st'>"random"</span>, <span class='st'>"max"</span>))
 
 <span class='fu'>fct_lump_min</span>(<span class='no'>f</span>, <span class='no'>min</span>, <span class='kw'>w</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>other_level</span> <span class='kw'>=</span> <span class='st'>"Other"</span>)</pre>
     
@@ -160,7 +163,7 @@ together the least frequent levels into "other", while ensuring that
 conjunction with <code><a href='fct_inorder.html'>fct_inorder</a>()</code>.</p>
 <p>Positive <code>n</code> preserves the most common <code>n</code> values.
 Negative <code>n</code> preserves the least common <code>-n</code> values.
-It there are ties, you will get at least <code><a href='https://www.rdocumentation.org/packages/base/topics/MathFun'>abs(n)</a></code> values.</p>
+It there are ties, you will get at least <code><a href='https://rdrr.io/r/base/MathFun.html'>abs(n)</a></code> values.</p>
 <p>Positive <code>prop</code> preserves values that appear at least
 <code>prop</code> of the time. Negative <code>prop</code> preserves values that
 appear at most <code>-prop</code> of the time.</p></td>
@@ -178,7 +181,7 @@ placed at end of levels.</p></td>
     <tr>
       <th>ties.method</th>
       <td><p>A character string specifying how ties are
-treated. See <code><a href='https://www.rdocumentation.org/packages/base/topics/rank'>rank()</a></code> for details.</p></td>
+treated. See <code><a href='https://rdrr.io/r/base/rank.html'>rank()</a></code> for details.</p></td>
     </tr>
     <tr>
       <th>min</th>
@@ -192,106 +195,106 @@ treated. See <code><a href='https://www.rdocumentation.org/packages/base/topics/
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>9</span>], <span class='kw'>times</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>40</span>, <span class='fl'>10</span>, <span class='fl'>5</span>, <span class='fl'>27</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>)))
-<span class='no'>x</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/table'>table</a></span>()</div><div class='output co'>#&gt; .
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>9</span>], <span class='kw'>times</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>40</span>, <span class='fl'>10</span>, <span class='fl'>5</span>, <span class='fl'>27</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>)))
+<span class='no'>x</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>()</div><div class='output co'>#&gt; .
 #&gt;  A  B  C  D  E  F  G  H  I 
-#&gt; 40 10  5 27  1  1  1  1  1 </div><div class='input'><span class='no'>x</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_lump</span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/table'>table</a></span>()</div><div class='output co'>#&gt; .
+#&gt; 40 10  5 27  1  1  1  1  1 </div><div class='input'><span class='no'>x</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_lump</span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>()</div><div class='output co'>#&gt; .
 #&gt;     A     D Other 
-#&gt;    40    27    20 </div><div class='input'><span class='no'>x</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_lump</span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_inorder.html'>fct_inorder</a></span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/table'>table</a></span>()</div><div class='output co'>#&gt; .
+#&gt;    40    27    20 </div><div class='input'><span class='no'>x</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_lump</span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_inorder.html'>fct_inorder</a></span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>()</div><div class='output co'>#&gt; .
 #&gt;     A Other     D 
 #&gt;    40    20    27 </div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='no'>letters</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Poisson'>rpois</a></span>(<span class='fl'>100</span>, <span class='fl'>5</span>)])
-<span class='no'>x</span></div><div class='output co'>#&gt;   [1] c c d c f e g b c d g d h e c d c b f g c e f d f f e d d d c h f d g h f
-#&gt;  [38] f d c b b f c h h e h h c f e f d b e c b f e c h d b f e e f d c g f g d
-#&gt;  [75] d e c a b d c g e f d f f g g e c f b g g b g e g i
-#&gt; Levels: a b c d e f g h i</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/table'>table</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; x
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='no'>letters</span>[<span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span>(<span class='fl'>100</span>, <span class='fl'>5</span>)])
+<span class='no'>x</span></div><div class='output co'>#&gt;   [1] d c h f d g h f f d c b b f c h h e h h c f e f d b e c b f e c h d b f e
+#&gt;  [38] e f d c g f g d d e c a b d c g e f d f f g g e c f b g g b g e g i e d g
+#&gt;  [75] g d c d i d c b d c d d f f d e d h d d e f f h f e
+#&gt; Levels: a b c d e f g h i</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; x
 #&gt;  a  b  c  d  e  f  g  h  i 
-#&gt;  1 10 17 17 14 19 13  8  1 </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/table'>table</a></span>(<span class='fu'>fct_lump</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; 
+#&gt;  1  9 13 21 14 19 12  9  2 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>fct_lump</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; 
 #&gt;     b     c     d     e     f     g     h Other 
-#&gt;    10    17    17    14    19    13     8     2 </div><div class='input'>
+#&gt;     9    13    21    14    19    12     9     3 </div><div class='input'>
 <span class='co'># Use positive values to collapse the rarest</span>
-<span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt;   [1] c     c     d     c     f     Other Other Other c     d     Other d    
-#&gt;  [13] Other Other c     d     c     Other f     Other c     Other f     d    
-#&gt;  [25] f     f     Other d     d     d     c     Other f     d     Other Other
-#&gt;  [37] f     f     d     c     Other Other f     c     Other Other Other Other
-#&gt;  [49] Other c     f     Other f     d     Other Other c     Other f     Other
-#&gt;  [61] c     Other d     Other f     Other Other f     d     c     Other f    
-#&gt;  [73] Other d     d     Other c     Other Other d     c     Other Other f    
-#&gt;  [85] d     f     f     Other Other Other c     f     Other Other Other Other
-#&gt;  [97] Other Other Other Other
-#&gt; Levels: c d f Other</div><div class='input'><span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>prop</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)</div><div class='output co'>#&gt;   [1] c     c     d     c     f     e     g     Other c     d     g     d    
-#&gt;  [13] Other e     c     d     c     Other f     g     c     e     f     d    
-#&gt;  [25] f     f     e     d     d     d     c     Other f     d     g     Other
-#&gt;  [37] f     f     d     c     Other Other f     c     Other Other e     Other
-#&gt;  [49] Other c     f     e     f     d     Other e     c     Other f     e    
-#&gt;  [61] c     Other d     Other f     e     e     f     d     c     g     f    
-#&gt;  [73] g     d     d     e     c     Other Other d     c     g     e     f    
-#&gt;  [85] d     f     f     g     g     e     c     f     Other g     g     Other
-#&gt;  [97] g     e     g     Other
+<span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt;   [1] d     Other Other f     d     Other Other f     f     d     Other Other
+#&gt;  [13] Other f     Other Other Other e     Other Other Other f     e     f    
+#&gt;  [25] d     Other e     Other Other f     e     Other Other d     Other f    
+#&gt;  [37] e     e     f     d     Other Other f     Other d     d     e     Other
+#&gt;  [49] Other Other d     Other Other e     f     d     f     f     Other Other
+#&gt;  [61] e     Other f     Other Other Other Other Other e     Other Other e    
+#&gt;  [73] d     Other Other d     Other d     Other d     Other Other d     Other
+#&gt;  [85] d     d     f     f     d     e     d     Other d     d     e     f    
+#&gt;  [97] f     Other f     e    
+#&gt; Levels: d e f Other</div><div class='input'><span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>prop</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)</div><div class='output co'>#&gt;   [1] d     c     Other f     d     g     Other f     f     d     c     Other
+#&gt;  [13] Other f     c     Other Other e     Other Other c     f     e     f    
+#&gt;  [25] d     Other e     c     Other f     e     c     Other d     Other f    
+#&gt;  [37] e     e     f     d     c     g     f     g     d     d     e     c    
+#&gt;  [49] Other Other d     c     g     e     f     d     f     f     g     g    
+#&gt;  [61] e     c     f     Other g     g     Other g     e     g     Other e    
+#&gt;  [73] d     g     g     d     c     d     Other d     c     Other d     c    
+#&gt;  [85] d     d     f     f     d     e     d     Other d     d     e     f    
+#&gt;  [97] f     Other f     e    
 #&gt; Levels: c d e f g Other</div><div class='input'>
 <span class='co'># Use negative values to collapse the most common</span>
-<span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> -<span class='fl'>3</span>)</div><div class='output co'>#&gt;   [1] Other Other Other Other Other Other Other Other Other Other Other Other
-#&gt;  [13] h     Other Other Other Other Other Other Other Other Other Other Other
-#&gt;  [25] Other Other Other Other Other Other Other h     Other Other Other h    
-#&gt;  [37] Other Other Other Other Other Other Other Other h     h     Other h    
-#&gt;  [49] h     Other Other Other Other Other Other Other Other Other Other Other
-#&gt;  [61] Other h     Other Other Other Other Other Other Other Other Other Other
-#&gt;  [73] Other Other Other Other Other a     Other Other Other Other Other Other
-#&gt;  [85] Other Other Other Other Other Other Other Other Other Other Other Other
-#&gt;  [97] Other Other Other i    
-#&gt; Levels: a h i Other</div><div class='input'><span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>prop</span> <span class='kw'>=</span> -<span class='fl'>0.1</span>)</div><div class='output co'>#&gt;   [1] Other Other Other Other Other Other Other b     Other Other Other Other
-#&gt;  [13] h     Other Other Other Other b     Other Other Other Other Other Other
-#&gt;  [25] Other Other Other Other Other Other Other h     Other Other Other h    
-#&gt;  [37] Other Other Other Other b     b     Other Other h     h     Other h    
-#&gt;  [49] h     Other Other Other Other Other b     Other Other b     Other Other
-#&gt;  [61] Other h     Other b     Other Other Other Other Other Other Other Other
-#&gt;  [73] Other Other Other Other Other a     b     Other Other Other Other Other
-#&gt;  [85] Other Other Other Other Other Other Other Other b     Other Other b    
-#&gt;  [97] Other Other Other i    
+<span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> -<span class='fl'>3</span>)</div><div class='output co'>#&gt;   [1] Other Other h     Other Other Other h     Other Other Other Other b    
+#&gt;  [13] b     Other Other h     h     Other h     h     Other Other Other Other
+#&gt;  [25] Other b     Other Other b     Other Other Other h     Other b     Other
+#&gt;  [37] Other Other Other Other Other Other Other Other Other Other Other Other
+#&gt;  [49] a     b     Other Other Other Other Other Other Other Other Other Other
+#&gt;  [61] Other Other Other b     Other Other b     Other Other Other i     Other
+#&gt;  [73] Other Other Other Other Other Other i     Other Other b     Other Other
+#&gt;  [85] Other Other Other Other Other Other Other h     Other Other Other Other
+#&gt;  [97] Other h     Other Other
+#&gt; Levels: a b h i Other</div><div class='input'><span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>prop</span> <span class='kw'>=</span> -<span class='fl'>0.1</span>)</div><div class='output co'>#&gt;   [1] Other Other h     Other Other Other h     Other Other Other Other b    
+#&gt;  [13] b     Other Other h     h     Other h     h     Other Other Other Other
+#&gt;  [25] Other b     Other Other b     Other Other Other h     Other b     Other
+#&gt;  [37] Other Other Other Other Other Other Other Other Other Other Other Other
+#&gt;  [49] a     b     Other Other Other Other Other Other Other Other Other Other
+#&gt;  [61] Other Other Other b     Other Other b     Other Other Other i     Other
+#&gt;  [73] Other Other Other Other Other Other i     Other Other b     Other Other
+#&gt;  [85] Other Other Other Other Other Other Other h     Other Other Other Other
+#&gt;  [97] Other h     Other Other
 #&gt; Levels: a b h i Other</div><div class='input'>
 <span class='co'># Use weighted frequencies</span>
-<span class='no'>w</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>2</span>, <span class='fl'>50</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>50</span>))
-<span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>w</span> <span class='kw'>=</span> <span class='no'>w</span>)</div><div class='output co'>#&gt;   [1] c     c     d     c     f     e     g     Other c     d     g     d    
-#&gt;  [13] Other e     c     d     c     Other f     g     c     e     f     d    
-#&gt;  [25] f     f     e     d     d     d     c     Other f     d     g     Other
-#&gt;  [37] f     f     d     c     Other Other f     c     Other Other e     Other
-#&gt;  [49] Other c     f     e     f     d     Other e     c     Other f     e    
-#&gt;  [61] c     Other d     Other f     e     e     f     d     c     g     f    
-#&gt;  [73] g     d     d     e     c     Other Other d     c     g     e     f    
-#&gt;  [85] d     f     f     g     g     e     c     f     Other g     g     Other
-#&gt;  [97] g     e     g     Other
-#&gt; Levels: c d e f g Other</div><div class='input'>
+<span class='no'>w</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>2</span>, <span class='fl'>50</span>), <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>50</span>))
+<span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>w</span> <span class='kw'>=</span> <span class='no'>w</span>)</div><div class='output co'>#&gt;   [1] d     c     h     f     d     Other h     f     f     d     c     Other
+#&gt;  [13] Other f     c     h     h     e     h     h     c     f     e     f    
+#&gt;  [25] d     Other e     c     Other f     e     c     h     d     Other f    
+#&gt;  [37] e     e     f     d     c     Other f     Other d     d     e     c    
+#&gt;  [49] Other Other d     c     Other e     f     d     f     f     Other Other
+#&gt;  [61] e     c     f     Other Other Other Other Other e     Other Other e    
+#&gt;  [73] d     Other Other d     c     d     Other d     c     Other d     c    
+#&gt;  [85] d     d     f     f     d     e     d     h     d     d     e     f    
+#&gt;  [97] f     h     f     e    
+#&gt; Levels: c d e f h Other</div><div class='input'>
 <span class='co'># Use ties.method to control how tied factors are collapsed</span>
-<span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>6</span>)</div><div class='output co'>#&gt;   [1] c     c     d     c     f     e     g     b     c     d     g     d    
-#&gt;  [13] Other e     c     d     c     b     f     g     c     e     f     d    
-#&gt;  [25] f     f     e     d     d     d     c     Other f     d     g     Other
-#&gt;  [37] f     f     d     c     b     b     f     c     Other Other e     Other
-#&gt;  [49] Other c     f     e     f     d     b     e     c     b     f     e    
-#&gt;  [61] c     Other d     b     f     e     e     f     d     c     g     f    
-#&gt;  [73] g     d     d     e     c     Other b     d     c     g     e     f    
-#&gt;  [85] d     f     f     g     g     e     c     f     b     g     g     b    
-#&gt;  [97] g     e     g     Other
-#&gt; Levels: b c d e f g Other</div><div class='input'><span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>ties.method</span> <span class='kw'>=</span> <span class='st'>"max"</span>)</div><div class='output co'>#&gt;   [1] c     c     d     c     f     e     g     b     c     d     g     d    
-#&gt;  [13] Other e     c     d     c     b     f     g     c     e     f     d    
-#&gt;  [25] f     f     e     d     d     d     c     Other f     d     g     Other
-#&gt;  [37] f     f     d     c     b     b     f     c     Other Other e     Other
-#&gt;  [49] Other c     f     e     f     d     b     e     c     b     f     e    
-#&gt;  [61] c     Other d     b     f     e     e     f     d     c     g     f    
-#&gt;  [73] g     d     d     e     c     Other b     d     c     g     e     f    
-#&gt;  [85] d     f     f     g     g     e     c     f     b     g     g     b    
-#&gt;  [97] g     e     g     Other
-#&gt; Levels: b c d e f g Other</div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='no'>letters</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Poisson'>rpois</a></span>(<span class='fl'>100</span>, <span class='fl'>5</span>)])
-<span class='fu'>fct_lump_min</span>(<span class='no'>x</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt;   [1] e     d     Other Other d     c     d     Other d     c     Other d    
-#&gt;  [13] c     d     d     f     f     d     e     d     Other d     d     e    
-#&gt;  [25] f     f     Other f     e     Other d     f     f     e     c     f    
-#&gt;  [37] e     f     c     d     f     e     Other e     c     Other f     c    
-#&gt;  [49] d     c     c     f     e     c     d     c     Other e     Other Other
-#&gt;  [61] c     c     f     c     d     f     c     Other f     e     Other d    
-#&gt;  [73] Other c     Other e     d     e     d     Other Other Other f     e    
-#&gt;  [85] e     d     Other Other Other Other Other e     Other d     f     d    
-#&gt;  [97] Other f     d     c    
-#&gt; Levels: c d e f Other</div></pre>
+<span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>6</span>)</div><div class='output co'>#&gt;   [1] d     c     h     f     d     g     h     f     f     d     c     b    
+#&gt;  [13] b     f     c     h     h     e     h     h     c     f     e     f    
+#&gt;  [25] d     b     e     c     b     f     e     c     h     d     b     f    
+#&gt;  [37] e     e     f     d     c     g     f     g     d     d     e     c    
+#&gt;  [49] Other b     d     c     g     e     f     d     f     f     g     g    
+#&gt;  [61] e     c     f     b     g     g     b     g     e     g     Other e    
+#&gt;  [73] d     g     g     d     c     d     Other d     c     b     d     c    
+#&gt;  [85] d     d     f     f     d     e     d     h     d     d     e     f    
+#&gt;  [97] f     h     f     e    
+#&gt; Levels: b c d e f g h Other</div><div class='input'><span class='fu'>fct_lump</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>ties.method</span> <span class='kw'>=</span> <span class='st'>"max"</span>)</div><div class='output co'>#&gt;   [1] d     c     Other f     d     g     Other f     f     d     c     Other
+#&gt;  [13] Other f     c     Other Other e     Other Other c     f     e     f    
+#&gt;  [25] d     Other e     c     Other f     e     c     Other d     Other f    
+#&gt;  [37] e     e     f     d     c     g     f     g     d     d     e     c    
+#&gt;  [49] Other Other d     c     g     e     f     d     f     f     g     g    
+#&gt;  [61] e     c     f     Other g     g     Other g     e     g     Other e    
+#&gt;  [73] d     g     g     d     c     d     Other d     c     Other d     c    
+#&gt;  [85] d     d     f     f     d     e     d     Other d     d     e     f    
+#&gt;  [97] f     Other f     e    
+#&gt; Levels: c d e f g Other</div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='no'>letters</span>[<span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span>(<span class='fl'>100</span>, <span class='fl'>5</span>)])
+<span class='fu'>fct_lump_min</span>(<span class='no'>x</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt;   [1] g     d     f     f     e     c     f     e     f     c     d     f    
+#&gt;  [13] e     g     e     c     g     f     c     d     c     c     f     e    
+#&gt;  [25] c     d     c     Other e     Other Other c     c     f     c     d    
+#&gt;  [37] f     c     g     f     e     Other d     Other c     Other e     d    
+#&gt;  [49] e     d     Other g     Other f     e     e     d     Other Other Other
+#&gt;  [61] g     Other e     Other d     f     d     g     f     d     c     Other
+#&gt;  [73] e     f     d     f     d     c     d     g     c     e     f     c    
+#&gt;  [85] f     Other Other g     d     g     g     f     c     c     d     Other
+#&gt;  [97] g     d     Other d    
+#&gt; Levels: c d e f g Other</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
