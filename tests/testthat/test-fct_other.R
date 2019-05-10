@@ -18,6 +18,6 @@ test_that("drops levels in drop", {
 test_that("must supply exactly one of drop and keep", {
   f <- factor(c("a", "b"))
 
-  expect_error(fct_other(f), "supply one of")
-  expect_error(fct_other(f, keep = "a", drop = "a"), "supply one of")
+  expect_error(fct_other(f), "exactly one")
+  expect_error(fct_other(f, keep = "a", drop = "a"), "exactly one")
 })
