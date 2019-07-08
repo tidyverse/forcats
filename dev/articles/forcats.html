@@ -95,6 +95,7 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -117,14 +118,14 @@
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(forcats)</a></code></pre></div>
 <p>Let’s try answering the question, “what are the most common hair colors of star wars characters?” Let’s start off by making a bar plot:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span>(starwars, <span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span>(<span class="dt">x =</span> hair_color)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/geom_bar.html">geom_bar</a></span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/coord_flip.html">coord_flip</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(starwars, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> hair_color)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>()</a></code></pre></div>
 <p><img src="forcats_files/figure-html/initial-plot-1.png" width="700"></p>
 <p>That’s okay, but it would be more helpful the graph was ordered by count. This is a case of an <strong>unordered</strong> categorical variable where we want it ordered by its frequency. To do so, we can use the function <code><a href="../reference/fct_inorder.html">fct_infreq()</a></code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span>(starwars, <span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span>(<span class="dt">x =</span> <span class="kw"><a href="../reference/fct_inorder.html">fct_infreq</a></span>(hair_color))) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/geom_bar.html">geom_bar</a></span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/coord_flip.html">coord_flip</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(starwars, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> <span class="kw"><a href="../reference/fct_inorder.html">fct_infreq</a></span>(hair_color))) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>()</a></code></pre></div>
 <p><img src="forcats_files/figure-html/fct-infreq-hair-1.png" width="700"></p>
 <p>Note that <code><a href="../reference/fct_inorder.html">fct_infreq()</a></code> it automatically puts NA at the top, even though that doesn’t have the smallest number of entries.</p>
 </div>
@@ -206,8 +207,8 @@
 <p>It looks like people (or at least one person) with orange eyes are definitely heavier! If we wanted to make a graph, it would be nice if it was ordered by <code>mean_mass</code>. We can do this with <code><a href="../reference/fct_reorder.html">fct_reorder()</a></code>, which reorders one variable by another.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">avg_mass_eye_color <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">eye_color =</span> <span class="kw"><a href="../reference/fct_reorder.html">fct_reorder</a></span>(eye_color, mean_mass)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span>(<span class="dt">x =</span> eye_color, <span class="dt">y =</span> mean_mass)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/geom_bar.html">geom_col</a></span>()</a></code></pre></div>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> eye_color, <span class="dt">y =</span> mean_mass)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span>()</a></code></pre></div>
 <p><img src="forcats_files/figure-html/fct-reorder-1.png" width="700"></p>
 </div>
 <div id="manually-reordering" class="section level2">
@@ -246,26 +247,26 @@
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/fct_shuffle.html">fct_shuffle</a></span>()</a>
 <a class="sourceLine" id="cb12-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb12-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(reshuffled_income)</a>
-<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt;  [1] "$10000 - 14999" "Not applicable" "$8000 to 9999"  "$4000 to 4999" </span></a>
-<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt;  [5] "$1000 to 2999"  "$7000 to 7999"  "$5000 to 5999"  "Refused"       </span></a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt;  [9] "$25000 or more" "$20000 - 24999" "$15000 - 19999" "$3000 to 3999" </span></a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; [13] "No answer"      "Lt $1000"       "Don't know"     "$6000 to 6999"</span></a></code></pre></div>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt;  [1] "$5000 to 5999"  "$3000 to 3999"  "Don't know"     "$6000 to 6999" </span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt;  [5] "Refused"        "$8000 to 9999"  "Not applicable" "$25000 or more"</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt;  [9] "$4000 to 4999"  "Lt $1000"       "No answer"      "$15000 - 19999"</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; [13] "$10000 - 14999" "$7000 to 7999"  "$20000 - 24999" "$1000 to 2999"</span></a></code></pre></div>
 <p>Now if we plotted it, it would show in this order, which is all over the place! How can we fix this and put it in the right order?</p>
 <p>We can use the function <code><a href="../reference/fct_relevel.html">fct_relevel()</a></code> when we need to manually reorder our factor levels. In addition to the factor, you give it a character vector of level names, and specify where you want to move them. It defaults to moving them to the front, but you can move them after another level with the argument <code>after</code>. If you want to move it to the end, you set <code>after</code> equal to <code>Inf</code>.</p>
 <p>For example, let’s say we wanted to move <code>Lt $1000</code> and <code>$1000 to 2999</code> to the front. We would write:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/fct_relevel.html">fct_relevel</a></span>(reshuffled_income, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Lt $1000"</span>, <span class="st">"$1000 to 2999"</span>)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>()</a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt;  [1] "Lt $1000"       "$1000 to 2999"  "$10000 - 14999" "Not applicable"</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt;  [5] "$8000 to 9999"  "$4000 to 4999"  "$7000 to 7999"  "$5000 to 5999" </span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt;  [9] "Refused"        "$25000 or more" "$20000 - 24999" "$15000 - 19999"</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; [13] "$3000 to 3999"  "No answer"      "Don't know"     "$6000 to 6999"</span></a></code></pre></div>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt;  [1] "Lt $1000"       "$1000 to 2999"  "$5000 to 5999"  "$3000 to 3999" </span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt;  [5] "Don't know"     "$6000 to 6999"  "Refused"        "$8000 to 9999" </span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt;  [9] "Not applicable" "$25000 or more" "$4000 to 4999"  "No answer"     </span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; [13] "$15000 - 19999" "$10000 - 14999" "$7000 to 7999"  "$20000 - 24999"</span></a></code></pre></div>
 <p>What if we want to move them to the second and third place?</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/fct_relevel.html">fct_relevel</a></span>(reshuffled_income, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Lt $1000"</span>, <span class="st">"$1000 to 2999"</span>), <span class="dt">after =</span> <span class="dv">1</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>()</a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#&gt;  [1] "$10000 - 14999" "Lt $1000"       "$1000 to 2999"  "Not applicable"</span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#&gt;  [5] "$8000 to 9999"  "$4000 to 4999"  "$7000 to 7999"  "$5000 to 5999" </span></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt;  [9] "Refused"        "$25000 or more" "$20000 - 24999" "$15000 - 19999"</span></a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; [13] "$3000 to 3999"  "No answer"      "Don't know"     "$6000 to 6999"</span></a></code></pre></div>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#&gt;  [1] "$5000 to 5999"  "Lt $1000"       "$1000 to 2999"  "$3000 to 3999" </span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#&gt;  [5] "Don't know"     "$6000 to 6999"  "Refused"        "$8000 to 9999" </span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt;  [9] "Not applicable" "$25000 or more" "$4000 to 4999"  "No answer"     </span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; [13] "$15000 - 19999" "$10000 - 14999" "$7000 to 7999"  "$20000 - 24999"</span></a></code></pre></div>
 </div>
   </div>
 
@@ -285,6 +286,7 @@
 </div>
 
 
+
       <footer><div class="tidyverse">
   <p>forcats is a part of the <strong>tidyverse</strong>, an ecosystem of packages designed with common APIs and a shared philosophy. Learn more at <a href="https://tidyverse.org">tidyverse.org</a>.</p>
 </div>
@@ -295,10 +297,12 @@
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>

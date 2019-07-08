@@ -33,9 +33,11 @@
 
 <meta property="og:title" content="Convert input to a factor. — as_factor" />
 
-<meta property="og:description" content="Compared to base R, this function creates levels in the order in which
-they appear, which will be the same on every platform. (Base R sorts in
-the current locale which can vary from place to place.)" />
+<meta property="og:description" content="Compared to base R, when x is a character, this function creates
+levels in the order in which they appear, which will be the same on every
+platform. (Base R sorts in the current locale which can vary from place
+to place.) When x is numeric, the ordering is based on the numeric
+value and consistent with base R." />
 
 <meta property="og:image" content="https://forcats.tidyverse.org/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -59,6 +61,7 @@ the current locale which can vary from place to place.)" />
 
  gtag('config', 'UA-115082821-1');
 </script>
+
   </head>
 
   <body>
@@ -129,6 +132,7 @@ the current locale which can vary from place to place.)" />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -141,9 +145,11 @@ the current locale which can vary from place to place.)" />
 
     <div class="ref-description">
     
-    <p>Compared to base R, this function creates levels in the order in which
-they appear, which will be the same on every platform. (Base R sorts in
-the current locale which can vary from place to place.)</p>
+    <p>Compared to base R, when <code>x</code> is a character, this function creates
+levels in the order in which they appear, which will be the same on every
+platform. (Base R sorts in the current locale which can vary from place
+to place.) When <code>x</code> is numeric, the ordering is based on the numeric
+value and consistent with base R.</p>
     
     </div>
 
@@ -177,13 +183,21 @@ the current locale which can vary from place to place.)</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"z"</span>, <span class='st'>"g"</span>)
+    <pre class="examples"><div class='input'><span class='co'># Character object</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"z"</span>, <span class='st'>"g"</span>)
 <span class='fu'>as_factor</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] a z g
 #&gt; Levels: a z g</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] a z g
-#&gt; Levels: a g z</div><div class='input'><span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1.1"</span>, <span class='st'>"11"</span>, <span class='st'>"2.2"</span>, <span class='st'>"22"</span>)
+#&gt; Levels: a g z</div><div class='input'>
+<span class='co'># Character object containing numbers</span>
+<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1.1"</span>, <span class='st'>"11"</span>, <span class='st'>"2.2"</span>, <span class='st'>"22"</span>)
 <span class='fu'>as_factor</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; [1] 1.1 11  2.2 22 
 #&gt; Levels: 1.1 11 2.2 22</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; [1] 1.1 11  2.2 22 
-#&gt; Levels: 1.1 11 2.2 22</div></pre>
+#&gt; Levels: 1.1 11 2.2 22</div><div class='input'>
+<span class='co'># Numeric object</span>
+<span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='no'>y</span>)
+<span class='fu'>as_factor</span>(<span class='no'>z</span>)</div><div class='output co'>#&gt; [1] 1.1 11  2.2 22 
+#&gt; Levels: 1.1 2.2 11 22</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='no'>z</span>)</div><div class='output co'>#&gt; [1] 1.1 11  2.2 22 
+#&gt; Levels: 1.1 2.2 11 22</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -198,6 +212,7 @@ the current locale which can vary from place to place.)</p>
   </div>
 </div>
 
+
       <footer>
       <div class="tidyverse">
   <p>forcats is a part of the <strong>tidyverse</strong>, an ecosystem of packages designed with common APIs and a shared philosophy. Learn more at <a href="https://tidyverse.org">tidyverse.org</a>.</p>
@@ -209,11 +224,14 @@ the current locale which can vary from place to place.)</p>
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
