@@ -16,6 +16,9 @@
 #' y <- c("1.1", "11", "2.2", "22")
 #' as_factor(y)
 #' as.factor(y)
+#' z <- c(1.1, 11, 2.2, 22)
+#' as_factor(z)
+#' as.factor(z)
 as_factor <- function(x, ...) {
   ellipsis::check_dots_used()
   UseMethod("as_factor")
