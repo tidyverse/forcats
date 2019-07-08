@@ -1,5 +1,5 @@
 #' Lump together least/most common factor levels into "other"
-#'
+#' @description `fct_lump` lumps together least/most common factor levels into "other".
 #' @param f A factor (or character vector).
 #' @param n,prop
 #'   If both `n` and `prop` are missing, `fct_lump` lumps
@@ -103,7 +103,7 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
 }
 
 #' @param min Preserves values that appear at least `min` number of times.
-#'
+#' @description `fct_lump_min` lumps together factor which doesn't appear at least `min` number of times.
 #' @export
 #' @rdname fct_lump
 #' @examples
