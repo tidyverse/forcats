@@ -21,9 +21,11 @@ as_factor(x, ...)
 \item{...}{Other arguments passed down to method.}
 }
 \description{
-Compared to base R, this function creates levels in the order in which
-they appear, which will be the same on every platform. (Base R sorts in
-the current locale which can vary from place to place.)
+Compared to base R, when \code{x} is a character, this function creates
+levels in the order in which they appear, which will be the same on every
+platform. (Base R sorts in the current locale which can vary from place
+to place.) When \code{x} is numeric, the ordering is based on the numeric
+value and consistent with base R.
 }
 \details{
 This is a generic function.
