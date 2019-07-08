@@ -38,7 +38,9 @@ treated. See \code{\link[=rank]{rank()}} for details.}
 \item{min}{Preserves values that appear at least \code{min} number of times.}
 }
 \description{
-Lump together least/most common factor levels into "other"
+\code{fct_lump} lumps together least/most common factor levels into "other".
+
+\code{fct_lump_min} lumps together factor which doesn't appear at least \code{min} number of times.
 }
 \examples{
 x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
