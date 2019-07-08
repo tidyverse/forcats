@@ -29,10 +29,19 @@ the current locale which can vary from place to place.)
 This is a generic function.
 }
 \examples{
+
+## Character object
 x <- c("a", "z", "g")
 as_factor(x)
 as.factor(x)
+
+## Character object containing numbers
 y <- c("1.1", "11", "2.2", "22")
 as_factor(y)
 as.factor(y)
+
+## Numeric object
+z <- as.numeric(y)
+as_factor(z)
+as.factor(z)
 }
