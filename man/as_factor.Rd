@@ -31,18 +31,17 @@ value and consistent with base R.
 This is a generic function.
 }
 \examples{
-
-## Character object
+# Character object
 x <- c("a", "z", "g")
 as_factor(x)
 as.factor(x)
 
-## Character object containing numbers
+# Character object containing numbers
 y <- c("1.1", "11", "2.2", "22")
 as_factor(y)
 as.factor(y)
 
-## Numeric object
+# Numeric object
 z <- as.numeric(y)
 as_factor(z)
 as.factor(z)
