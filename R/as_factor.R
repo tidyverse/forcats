@@ -22,7 +22,7 @@
 #' as.factor(y)
 #'
 #' ## Numeric vector
-#' z <- c(1.1, 11, 2.2, 22)
+#' z <- as_numeric(y)
 #' as_factor(z)
 #' as.factor(z)
 as_factor <- function(x, ...) {
