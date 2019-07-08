@@ -2,6 +2,10 @@
 
 * `first2()`, a `fct_reorder2()` helper function, sorts `.y` by the first value of `.x` (@jtr13).
 
+## Minor bug fixes and improvements
+
+* Added numeric-method example to `as_factor()` (@sinarueeger, #198).
+
 # forcats 0.4.0
 
 ## New features
