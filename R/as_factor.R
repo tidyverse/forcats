@@ -10,12 +10,18 @@
 #' @param ... Other arguments passed down to method.
 #' @export
 #' @examples
+#'
+#' ## Character vector
 #' x <- c("a", "z", "g")
 #' as_factor(x)
 #' as.factor(x)
+#'
+#' ## Character vector containing numbers
 #' y <- c("1.1", "11", "2.2", "22")
 #' as_factor(y)
 #' as.factor(y)
+#'
+#' ## Numeric vector
 #' z <- c(1.1, 11, 2.2, 22)
 #' as_factor(z)
 #' as.factor(z)
