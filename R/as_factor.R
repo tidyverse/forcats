@@ -11,18 +11,18 @@
 #' @export
 #' @examples
 #'
-#' ## Character vector
+#' ## Character object
 #' x <- c("a", "z", "g")
 #' as_factor(x)
 #' as.factor(x)
 #'
-#' ## Character vector containing numbers
+#' ## Character object containing numbers
 #' y <- c("1.1", "11", "2.2", "22")
 #' as_factor(y)
 #' as.factor(y)
 #'
-#' ## Numeric vector
-#' z <- as_numeric(y)
+#' ## Numeric object
+#' z <- as.numeric(y)
 #' as_factor(z)
 #' as.factor(z)
 as_factor <- function(x, ...) {
