@@ -26,7 +26,7 @@ fct_collapse <- function(.f, ..., group_other = FALSE) {
     levs <- purrr::flatten(new)
   }
 
-  names(levs) <- names(new)
+  names(levs) <- names(new)[rep(seq_along(new), vapply(new, length, integer(1)))]
 
   fct_recode(.f, !!!levs)
 }
