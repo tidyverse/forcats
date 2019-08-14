@@ -23,10 +23,10 @@ fct_collapse <- function(.f, ..., group_other = FALSE) {
     f <- check_factor(.f)
     levels <- levels(f)
     new[["Other"]] <- levels[!levels %in% levs]
-    levs <- levels
+    levs <- purrr::flatten(new)
   }
 
-  names(levs) <- names(new)[rep(seq_along(new), vapply(new, length, integer(1)))]
+  names(levs) <- names(new)
 
   fct_recode(.f, !!!levs)
 }
