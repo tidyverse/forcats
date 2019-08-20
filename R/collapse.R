@@ -4,6 +4,7 @@
 #' @param ... A series of named character vectors. The levels in
 #'   each vector will be replaced with the name.
 #' @param group_other Replace all levels not named in `...` with "Other"?
+#' @param name_other Name the Other category if group_other = TRUE. 
 #' @export
 #' @examples
 #' fct_count(gss_cat$partyid)
@@ -16,13 +17,13 @@
 #'   dem = c("Not str democrat", "Strong democrat")
 #' )
 #' fct_count(partyid2)
-fct_collapse <- function(.f, ..., group_other = FALSE) {
+fct_collapse <- function(.f, ..., group_other = FALSE, name_other = "Other") {
   new <- rlang::dots_list(...)
   levs <- unlist(new, use.names = FALSE)
   if (group_other){
     f <- check_factor(.f)
     levels <- levels(f)
-    new[["Other"]] <- levels[!levels %in% levs]
+    new[[name_other]] <- levels[!levels %in% levs]
     levs <- unlist(new, use.names = F)
   }
 
