@@ -19,7 +19,7 @@
 fct_collapse <- function(.f, ..., group_other = FALSE) {
   new <- rlang::dots_list(...)
   levs <- as.list(unlist(new, use.names = FALSE))
-  if (group_other){
+  if (group_other) {
     f <- check_factor(.f)
     levels <- levels(f)
     new[["Other"]] <- levels[!levels %in% levs]
@@ -28,5 +28,12 @@ fct_collapse <- function(.f, ..., group_other = FALSE) {
 
   names(levs) <- names(new)[rep(seq_along(new), vapply(new, length, integer(1)))]
 
-  fct_recode(.f, !!!levs)
+  f <- fct_recode(.f, !!!levs)
+
+  # if group_other, moves "Other" to last position
+  if (group_other) {
+    fct_relevel(f, "Other", after = Inf)
+  } else {
+    f
+  }
 }
