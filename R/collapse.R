@@ -18,12 +18,12 @@
 #' fct_count(partyid2)
 fct_collapse <- function(.f, ..., group_other = FALSE) {
   new <- rlang::dots_list(...)
-  levs <- as.list(unlist(new, use.names = FALSE))
+  levs <- unlist(new, use.names = FALSE)
   if (group_other){
     f <- check_factor(.f)
     levels <- levels(f)
     new[["Other"]] <- levels[!levels %in% levs]
-    levs <- levels
+    levs <- unlist(new, use.names = F)
   }
 
   names(levs) <- names(new)[rep(seq_along(new), vapply(new, length, integer(1)))]
