@@ -18,7 +18,7 @@
 #' fct_count(partyid2)
 fct_collapse <- function(.f, ..., group_other = FALSE) {
   new <- rlang::dots_list(...)
-  levs <- unlist(new, use.names = FALSE)
+  levs <- as.list(unlist(new, use.names = FALSE))
   if (group_other){
     f <- check_factor(.f)
     levels <- levels(f)
