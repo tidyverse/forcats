@@ -6,6 +6,8 @@
 
 * `fct_collapse()` gains a `group_other` argument to allow you to group all 
   un-named levels into `"Other"`. (#100, @AmeliaMN)
+  
+* fixed bug in `fct_collapse()` so it now correctly handles factors, and makes `"Other"` the last level
 
 * `fct_cross()` creates a new factor containing the combined levels from two 
   or more input factors, similar to `base::interaction` (@tslumley, #136)

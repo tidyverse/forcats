@@ -30,7 +30,7 @@ fct_collapse <- function(.f, ..., group_other = FALSE) {
 
   out <- fct_recode(.f, !!!levs)
 
-  if (any(levels(out) == "Other")){
+  if(group_other){
     fct_relevel(out, "Other", after = Inf)
-  } else return(out)
+  } else out
 }
