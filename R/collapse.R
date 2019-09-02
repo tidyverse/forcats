@@ -23,14 +23,14 @@ fct_collapse <- function(.f, ..., group_other = FALSE) {
     f <- check_factor(.f)
     levels <- levels(f)
     new[["Other"]] <- levels[!levels %in% levs]
-    levs <- as.list(unlist(new, use.names = FALSE))
+    levs <- c(levs, new[["Other"]])
   }
 
   names(levs) <- names(new)[rep(seq_along(new), vapply(new, length, integer(1)))]
 
   out <- fct_recode(.f, !!!levs)
 
-  if (any(levels(out) == "Other")){
+  if(group_other){
     fct_relevel(out, "Other", after = Inf)
-  } else return(out)
+  } else out
 }
