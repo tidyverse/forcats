@@ -32,15 +32,14 @@
 
 
 <meta property="og:title" content="Low-level functions for manipulating levels — lvls" />
-
 <meta property="og:description" content="lvls_reorder leaves values as they are, but changes the order.
 lvls_revalue changes the values of existing levels; there must
 be one new level for each old level.
 lvls_expand expands the set of levels; the new levels must
 include the old levels." />
-
 <meta property="og:image" content="https://forcats.tidyverse.org/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -144,13 +143,11 @@ include the old levels." />
     </div>
 
     <div class="ref-description">
-    
     <p><code>lvls_reorder</code> leaves values as they are, but changes the order.
 <code>lvls_revalue</code> changes the values of existing levels; there must
 be one new level for each old level.
 <code>lvls_expand</code> expands the set of levels; the new levels must
 include the old levels.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>lvls_reorder</span>(<span class='no'>f</span>, <span class='no'>idx</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
@@ -158,7 +155,7 @@ include the old levels.</p>
 <span class='fu'>lvls_revalue</span>(<span class='no'>f</span>, <span class='no'>new_levels</span>)
 
 <span class='fu'>lvls_expand</span>(<span class='no'>f</span>, <span class='no'>new_levels</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -180,14 +177,13 @@ output factor. <code>NA</code> preserves the existing status of the factor.</p><
       <td><p>A character vector of new levels.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>These functions are less helpful than the higher-level <code>fct_</code> functions,
 but are safer than the very low-level manipulation of levels directly,
 because they are more specific, and hence can more carefully check their
 arguments.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>))
@@ -200,9 +196,7 @@ arguments.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#details">Details</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

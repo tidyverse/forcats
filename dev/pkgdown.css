@@ -21,8 +21,6 @@ body > .container {
   display: flex;
   height: 100%;
   flex-direction: column;
-
-  padding-top: 60px;
 }
 
 body > .container .row {
@@ -247,4 +245,12 @@ mark {
 
 .fab {
     font-family: "Font Awesome 5 Brands" !important;
+}
+
+/* don't display links in code chunks when printing */
+/* source: https://stackoverflow.com/a/10781533 */
+@media print {
+  code a:link:after, code a:visited:after {
+    content: "";
+  }
 }

@@ -32,14 +32,13 @@
 
 
 <meta property="og:title" content="Test for presence of levels in a factor — fct_match" />
-
 <meta property="og:description" content="Do any of lvls occur in f? Compared to %in%, this function validates
 lvls to ensure that they're actually present in f. In other words,
 x %in% &quot;not present&quot; will return FALSE, but fct_match(x, &quot;not present&quot;)
 will throw an error." />
-
 <meta property="og:image" content="https://forcats.tidyverse.org/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -143,16 +142,14 @@ will throw an error." />
     </div>
 
     <div class="ref-description">
-    
     <p>Do any of <code>lvls</code> occur in <code>f</code>? Compared to <a href='https://rdrr.io/r/base/match.html'>%in%</a>, this function validates
 <code>lvls</code> to ensure that they're actually present in <code>f</code>. In other words,
 <code>x %in% "not present"</code> will return <code>FALSE</code>, but <code>fct_match(x, "not present")</code>
 will throw an error.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>fct_match</span>(<span class='no'>f</span>, <span class='no'>lvls</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -165,11 +162,10 @@ will throw an error.</p>
       <td><p>A character vector specifying levels to look for.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A logical vector</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>fct_match</span>(<span class='no'>gss_cat</span>$<span class='no'>marital</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Married"</span>, <span class='st'>"Divorced"</span>)))</div><div class='output co'>#&gt; 
@@ -178,18 +174,15 @@ will throw an error.</p>
 <span class='co'># Compare to %in%, misspelled levels throw an error</span>
 <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>gss_cat</span>$<span class='no'>marital</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Maried"</span>, <span class='st'>"Davorced"</span>))</div><div class='output co'>#&gt; 
 #&gt; FALSE 
-#&gt; 21483 </div><span class='co'># NOT RUN {</span>
+#&gt; 21483 </div><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>fct_match</span>(<span class='no'>gss_cat</span>$<span class='no'>marital</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Maried"</span>, <span class='st'>"Davorced"</span>)))
-<span class='co'># }</span><div class='input'>
-</div></pre>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

@@ -32,9 +32,9 @@
 
 
 <meta property="og:title" content="Changelog" />
-
 <meta property="og:image" content="https://forcats.tidyverse.org/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -154,6 +154,7 @@
 <a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
 <li><p><code><a href="../reference/fct_collapse.html">fct_collapse()</a></code> gains a <code>group_other</code> argument to allow you to group all un-named levels into <code>"Other"</code>. (<a href='https://github.com/tidyverse/forcats/issues/100'>#100</a>, <a href='https://github.com/AmeliaMN'>@AmeliaMN</a>)</p></li>
+<li><p>fixed bug in <code><a href="../reference/fct_collapse.html">fct_collapse()</a></code> so it now correctly collapses factors when <code>group_other = TRUE</code> (<a href='https://github.com/tidyverse/forcats/issues/172'>#172</a>), and makes <code>"Other"</code> the last level (<a href='https://github.com/tidyverse/forcats/issues/202'>#202</a>) (<a href='https://github.com/gtm19'>@gtm19</a>, <a href='https://github.com/tidyverse/forcats/issues/172'>#172</a> &amp; <a href='https://github.com/tidyverse/forcats/issues/202'>#202</a>)</p></li>
 <li><p><code><a href="../reference/fct_cross.html">fct_cross()</a></code> creates a new factor containing the combined levels from two or more input factors, similar to <code><a href="https://rdrr.io/r/base/interaction.html">base::interaction</a></code> (<a href='https://github.com/tslumley'>@tslumley</a>, <a href='https://github.com/tidyverse/forcats/issues/136'>#136</a>)</p></li>
 <li><p><code><a href="../reference/fct_inorder.html">fct_inseq()</a></code> reorders labels in numeric order, if possible (<a href='https://github.com/tidyverse/forcats/issues/145'>#145</a>, <a href='https://github.com/kbodwin'>@kbodwin</a>).</p></li>
 <li><p><code><a href="../reference/fct_lump.html">fct_lump_min()</a></code> preserves levels that appear at least <code>min</code> times (can also be used with the <code>w</code> weighted argument) (<a href='https://github.com/robinsones'>@robinsones</a>, <a href='https://github.com/tidyverse/forcats/issues/142'>#142</a>).</p></li>
