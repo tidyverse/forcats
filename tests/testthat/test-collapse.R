@@ -14,7 +14,6 @@ test_that("empty dots yields unchanged factor", {
   expect_identical(f1, f2)
 })
 
-
 test_that("can collapse missing levels", {
   f1 <- factor(c("x", NA), exclude = NULL)
   f2 <- fct_collapse(f1, y = NA_character_)
@@ -41,13 +40,6 @@ test_that("collapses levels correctly when group_other is TRUE and some Other va
   f2 <- fct_collapse(f1, x1 = c("a", "d"), x2 = "c", group_other = TRUE)
 
   expect_equal(f2, factor(c("x1", "Other", "x2", "x1"), levels = c("x1", "x2", "Other")))
-})
-
-test_that("collapses levels correctly when group_other is FALSE", {
-  f1 <- factor(letters[1:4])
-  f2 <- fct_collapse(f1, x1 = c("a", "b", "d"), x2 = "c", group_other = FALSE)
-
-  expect_equal(f2, factor(c("x1", "x1", "x2", "x1"), levels = c("x1", "x2")))
 })
 
 test_that("does not automatically collapse unnamed levels to Other", {
