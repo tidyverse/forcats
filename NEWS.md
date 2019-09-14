@@ -11,6 +11,8 @@
   
 * fixed bug in `fct_collapse()` so it now correctly collapses factors when `group_other = TRUE` (#172), and makes `"Other"` the last level (#202) (@gtm19, #172 & #202)
 
+* `fct_collapse()` now accepts a `other_level` argument, to allow a user-specified `Other` level (@gtm19, #194)
+
 * `fct_cross()` creates a new factor containing the combined levels from two 
   or more input factors, similar to `base::interaction` (@tslumley, #136)
 
