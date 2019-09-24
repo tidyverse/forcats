@@ -108,10 +108,10 @@ fct_inorder <- function(f, ordered = NA) {
 
 #' @export
 #' @rdname fct_inorder
-fct_infreq <- function(f, ordered = NA) {
+fct_infreq <- function(f, ordered = NA, .desc = TRUE) {
   f <- check_factor(f)
 
-  lvls_reorder(f, order(table(f), decreasing = TRUE), ordered = ordered)
+  lvls_reorder(f, order(table(f), decreasing = .desc), ordered = ordered)
 }
 
 #' @export
