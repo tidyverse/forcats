@@ -16,3 +16,10 @@ test_that("supports NA (#89)", {
   x <- c("a", "z", "g", NA)
   expect_equal(as_factor(x), fct_inorder(x))
 })
+
+
+test_that("logical method", {
+  expect_is(  as_factor(logical(4)),"factor")
+  expect_is(  as_factor(logical()),"factor")
+})
+
