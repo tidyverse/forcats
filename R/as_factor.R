@@ -1,8 +1,10 @@
 #' Convert input to a factor.
 #'
-#' Compared to base R, this function creates levels in the order in which
-#' they appear, which will be the same on every platform. (Base R sorts in
-#' the current locale which can vary from place to place.)
+#' Compared to base R, when `x` is a character, this function creates
+#' levels in the order in which they appear, which will be the same on every
+#' platform. (Base R sorts in the current locale which can vary from place
+#' to place.) When `x` is numeric, the ordering is based on the numeric
+#' value and consistent with base R.
 #'
 #' This is a generic function.
 #'
@@ -10,12 +12,20 @@
 #' @param ... Other arguments passed down to method.
 #' @export
 #' @examples
+#' # Character object
 #' x <- c("a", "z", "g")
 #' as_factor(x)
 #' as.factor(x)
+#'
+#' # Character object containing numbers
 #' y <- c("1.1", "11", "2.2", "22")
 #' as_factor(y)
 #' as.factor(y)
+#'
+#' # Numeric object
+#' z <- as.numeric(y)
+#' as_factor(z)
+#' as.factor(z)
 as_factor <- function(x, ...) {
   ellipsis::check_dots_used()
   UseMethod("as_factor")
