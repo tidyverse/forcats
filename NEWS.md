@@ -2,6 +2,8 @@
 
 * `first2()`, a `fct_reorder2()` helper function, sorts `.y` by the first value of `.x` (@jtr13).
 
+* New function `fct_remove_ordered()` and `fct_make_ordered()` to simplify coercing between ordered factors and non-ordered factors (@martinjhnhadley)
+
 # forcats 0.4.0
 
 ## New features
