@@ -21,6 +21,18 @@ check_factor <- function(f) {
   }
 }
 
+check_ordered_factor <- function(f){
+
+  if (is.ordered(f)) {
+    f
+  } else if (is.factor(f)) {
+    stop("`f` is an unordered factor.", call. = FALSE)
+  } else {
+    stop("`f` must be a factor (or character vector).", call. = FALSE)
+  }
+
+}
+
 check_factor_list <- function(fs, arg_name = "fs") {
   if (!is.list(fs)) {
     stop("`fs` must be a list", call. = FALSE)
