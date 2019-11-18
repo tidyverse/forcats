@@ -57,3 +57,52 @@ test_that("fct_inseq gives error for non-numeric levels", {
   f <- factor(c("c", "a", "a", "b"))
   expect_error(levels(fct_inseq(f)), "level must be coercible to numeric")
 })
+
+test_that("fct_reordern works for all scenarios (fix #16)", {
+  A <- c(3, 3, 2, 1)
+  B <- c("A", "B", "C", "D")
+  f <- c("A", "B", "C", "D")
+  f_factor_ordered <- factor(f, ordered = TRUE)
+  expect_equal(
+    fct_reordern(.f = f, A, B),
+    factor(f, levels = c("D", "C", "A", "B"))
+  )
+  expect_equal(
+    fct_reordern(.f = c("A", "B", "C", "D"), A, B, decreasing = TRUE),
+    factor(f, levels = c("B", "A", "C", "D"))
+  )
+  expect_equal(
+    fct_reordern(.f = f, A, B, decreasing = c(FALSE, TRUE)),
+    factor(f, levels = c("D", "C", "B", "A"))
+  )
+  expect_equal(
+    fct_reordern(.f = f, A, B, decreasing = c(FALSE, TRUE)),
+    factor(f, levels = c("D", "C", "B", "A"))
+  )
+  # Checks of ordering
+  expect_equal(
+    fct_reordern(.f = f, A, B, ordered = NA),
+    factor(f, levels = c("D", "C", "A", "B"))
+  )
+  expect_equal(
+    fct_reordern(.f = f, A, B, ordered = TRUE),
+    factor(f, levels = c("D", "C", "A", "B"), ordered = TRUE)
+  )
+  expect_equal(
+    fct_reordern(.f = f, A, B, ordered = FALSE),
+    factor(f, levels = c("D", "C", "A", "B"))
+  )
+  
+  expect_equal(
+    fct_reordern(.f = f_factor_ordered, A, B, ordered = NA),
+    factor(f, levels = c("D", "C", "A", "B"), ordered = TRUE)
+  )
+  expect_equal(
+    fct_reordern(.f = f_factor_ordered, A, B, ordered = TRUE),
+    factor(f, levels = c("D", "C", "A", "B"), ordered = TRUE)
+  )
+  expect_equal(
+    fct_reordern(.f = f_factor_ordered, A, B, ordered = FALSE),
+    factor(f, levels = c("D", "C", "A", "B"))
+  )
+})
