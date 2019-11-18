@@ -1,46 +1,52 @@
 # forcats (development version)
 
-* `first2()`, a `fct_reorder2()` helper function, sorts `.y` by the first value of `.x` (@jtr13).
+* `first2()`, a `fct_reorder2()` helper function, sorts `.y` by the first value
+  of `.x` (@jtr13).
+
+* `fct_reordern()` is a new function to order based on an arbitrary number of
+  values (@billdenney, #16)
 
 # forcats 0.4.0
 
 ## New features
 
-* `fct_collapse()` gains a `group_other` argument to allow you to group all 
+* `fct_collapse()` gains a `group_other` argument to allow you to group all
   un-named levels into `"Other"`. (#100, @AmeliaMN)
-  
-* fixed bug in `fct_collapse()` so it now correctly collapses factors when `group_other = TRUE` (#172), and makes `"Other"` the last level (#202) (@gtm19, #172 & #202)
 
-* `fct_cross()` creates a new factor containing the combined levels from two 
+* fixed bug in `fct_collapse()` so it now correctly collapses factors when
+  `group_other = TRUE` (#172), and makes `"Other"` the last level (#202)
+  (@gtm19, #172 & #202)
+
+* `fct_cross()` creates a new factor containing the combined levels from two
   or more input factors, similar to `base::interaction` (@tslumley, #136)
 
 * `fct_inseq()` reorders labels in numeric order, if possible (#145, @kbodwin).
 
-* `fct_lump_min()` preserves levels that appear at least `min` times (can also 
+* `fct_lump_min()` preserves levels that appear at least `min` times (can also
   be used with the `w` weighted argument) (@robinsones, #142).
 
 * `fct_match()` performs validated matching, providing a safer alternative to
-  `f %in% c("x", "y")` which silently returns `FALSE` if `"x"` or `"y"` 
+  `f %in% c("x", "y")` which silently returns `FALSE` if `"x"` or `"y"`
   are not levels of `f` (e.g. because of a typo) (#126, @jonocarroll).
 
 * `fct_relevel()` can now level factors using a function that is passed the
   current levels (#117).
 
-* `as_factor()` now has a numeric method. By default, orders factors in numeric 
-  order, unlike the other methods which default to order of appearance. 
+* `as_factor()` now has a numeric method. By default, orders factors in numeric
+  order, unlike the other methods which default to order of appearance.
   (#145, @kbodwin)
 
 ## Minor bug fixes and improvements
 
-* `fct_count()` gains a parameter to also compute the proportion 
-  (@zhiiiyang, #146). 
+* `fct_count()` gains a parameter to also compute the proportion
+  (@zhiiiyang, #146).
 
-* `fct_lump()` now does not change the label if no lumping occurs 
-  (@zhiiiyang, #130). 
+* `fct_lump()` now does not change the label if no lumping occurs
+  (@zhiiiyang, #130).
 
 * `fct_relabel()` now accepts character input.
 
-* `fct_reorder()` and `fct_reorder2()` no longer require that the summary 
+* `fct_reorder()` and `fct_reorder2()` no longer require that the summary
   function return a numeric vector of length 1; instead it can return any
   orderable vector of length 1 (#147).
 
@@ -61,7 +67,7 @@
 ## New features
 
 * All functions that take `...` use "tidy" dots: this means that you use can
-  `!!!` to splice in a list of values, and trailing empty arguments are 
+  `!!!` to splice in a list of values, and trailing empty arguments are
   automatically removed. Additionally, all other arguments gain a `.` prefix
   in order to avoid unhelpful matching of named arguments (#110).
 
@@ -86,7 +92,7 @@
 
 * `fct_expand()` and `lvls_expand()` now also take character vectors (#99).
 
-* `fct_relabel()` now accepts objects coercible to functions 
+* `fct_relabel()` now accepts objects coercible to functions
   by `rlang::as_function` (#91, @alistaire47)
 
 # forcats 0.2.0
