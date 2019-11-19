@@ -64,45 +64,21 @@ test_that("fct_reordern works for all scenarios (fix #16)", {
   f <- c("A", "B", "C", "D")
   f_factor_ordered <- factor(f, ordered = TRUE)
   expect_equal(
-    fct_reordern(.f = f, A, B),
+    fct_reordern(f, A, B),
     factor(f, levels = c("D", "C", "A", "B"))
   )
+  # Ensure interaction with dplyr::desc() is accurate.
   expect_equal(
-    fct_reordern(.f = c("A", "B", "C", "D"), A, B, decreasing = TRUE),
-    factor(f, levels = c("B", "A", "C", "D"))
-  )
-  expect_equal(
-    fct_reordern(.f = f, A, B, decreasing = c(FALSE, TRUE)),
-    factor(f, levels = c("D", "C", "B", "A"))
-  )
-  expect_equal(
-    fct_reordern(.f = f, A, B, decreasing = c(FALSE, TRUE)),
+    fct_reordern(f, A, dplyr::desc(B)),
     factor(f, levels = c("D", "C", "B", "A"))
   )
   # Checks of ordering
   expect_equal(
-    fct_reordern(.f = f, A, B, ordered = NA),
+    fct_reordern(f, A, B, ordered = NA),
     factor(f, levels = c("D", "C", "A", "B"))
   )
   expect_equal(
-    fct_reordern(.f = f, A, B, ordered = TRUE),
+    fct_reordern(f, A, B, ordered = TRUE),
     factor(f, levels = c("D", "C", "A", "B"), ordered = TRUE)
-  )
-  expect_equal(
-    fct_reordern(.f = f, A, B, ordered = FALSE),
-    factor(f, levels = c("D", "C", "A", "B"))
-  )
-  
-  expect_equal(
-    fct_reordern(.f = f_factor_ordered, A, B, ordered = NA),
-    factor(f, levels = c("D", "C", "A", "B"), ordered = TRUE)
-  )
-  expect_equal(
-    fct_reordern(.f = f_factor_ordered, A, B, ordered = TRUE),
-    factor(f, levels = c("D", "C", "A", "B"), ordered = TRUE)
-  )
-  expect_equal(
-    fct_reordern(.f = f_factor_ordered, A, B, ordered = FALSE),
-    factor(f, levels = c("D", "C", "A", "B"))
   )
 })

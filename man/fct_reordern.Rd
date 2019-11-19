@@ -4,7 +4,7 @@
 \alias{fct_reordern}
 \title{Reorder factor levels by sorting along multiple variables}
 \usage{
-fct_reordern(.f, ..., ordered = NA, method = "radix")
+fct_reordern(.f, ..., ordered = NA)
 }
 \arguments{
 \item{.f}{A factor (or character vector).}
@@ -19,11 +19,16 @@ fct_reordern(.f, ..., ordered = NA, method = "radix")
     If \code{TRUE}, missing values in the data are put last; if
     \code{FALSE}, they are put first; if \code{NA}, they are removed
     (see \sQuote{Note}.)}
+  \item{method}{the method to be used: partial matches are allowed.  The
+    default (\code{"auto"}) implies \code{"radix"} for short numeric vectors,
+    integer vectors, logical vectors and factors.
+    Otherwise, it implies \code{"shell"}.
+    For details of methods \code{"shell"}, 
+    \code{"quick"}, and \code{"radix"},
+    see the help for \code{\link{sort}}.}
 }}
 
 \item{ordered}{Passed to \code{\link{fct_inorder}()}}
-
-\item{method}{Passed to \code{base::order()}}
 }
 \description{
 Reorder factor levels by sorting along multiple variables
@@ -31,9 +36,9 @@ Reorder factor levels by sorting along multiple variables
 \examples{
 A <- c(3, 3, 2, 1)
 B <- c("A", "B", "C", "D")
-fct_reordern(.f = c("A", "B", "C", "D"), A, B)
-fct_reordern(.f = c("A", "B", "C", "D"), A, B, decreasing = TRUE)
-fct_reordern(.f = c("A", "B", "C", "D"), A, B, decreasing = c(FALSE, TRUE))
+fct_reordern(c("A", "B", "C", "D"), A, B)
+fct_reordern(c("A", "B", "C", "D"), dplyr::desc(A), dplyr::desc(B))
+fct_reordern(c("A", "B", "C", "D"), A, dplyr::desc(B))
 }
 \seealso{
 Other Reordering: \code{\link{fct_reorder}}

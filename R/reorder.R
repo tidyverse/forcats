@@ -72,26 +72,21 @@ fct_reorder2 <- function(.f, .x, .y, .fun = last2, ..., .desc = TRUE) {
 #' Reorder factor levels by sorting along multiple variables
 #' 
 #' @param .f A factor (or character vector).
-#' @param method Passed to \code{base::order()}
 #' @param ordered Passed to \code{\link{fct_inorder}()}
-#' @inheritDotParams base::order -method
+#' @inheritDotParams base::order
 #' @family Reordering
 #' @examples
 #' A <- c(3, 3, 2, 1)
 #' B <- c("A", "B", "C", "D")
-#' fct_reordern(.f = c("A", "B", "C", "D"), A, B)
-#' fct_reordern(.f = c("A", "B", "C", "D"), A, B, decreasing = TRUE)
-#' fct_reordern(.f = c("A", "B", "C", "D"), A, B, decreasing = c(FALSE, TRUE))
+#' fct_reordern(c("A", "B", "C", "D"), A, B)
+#' fct_reordern(c("A", "B", "C", "D"), dplyr::desc(A), dplyr::desc(B))
+#' fct_reordern(c("A", "B", "C", "D"), A, dplyr::desc(B))
 #' @export
-fct_reordern <- function(.f, ..., ordered = NA, method="radix") {
+fct_reordern <- function(.f, ..., ordered = NA) {
   f <- check_factor(.f)
-  new_order <- base::order(..., method=method)
-  f_sorted <- f[new_order]
-  # Don't keep the value order for new_f as they will be inaccurately sorted.
-  # Just keep the levels and ordered state.
-  new_f <- fct_inorder(f_sorted, ordered = ordered)
-  f <- factor(f, levels = levels(new_f), ordered = is.ordered(new_f))
-  f
+  new_order <- base::order(...)
+  idx <- as.integer(f)[new_order]
+  lvls_reorder(f, idx = idx[!duplicated(idx)], ordered = ordered)
 }
 
 #' @export
