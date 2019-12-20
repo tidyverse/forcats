@@ -16,6 +16,18 @@ test_that("keeps empty levels when requested", {
   expect_setequal(levels(f2), c("apple:green", "kiwi:green", "apple:red", "kiwi:red"))
 })
 
+
+test_that("preserves level orders when requested", {
+  fruit <- as_factor(c("apple", "kiwi", "apple", "apple"))
+  colour <- as_factor(c("green", "green", "red", "green"))
+
+  colour <- factor(colour, levels = c("red", "green"))
+
+  f2 <- fct_cross(fruit, colour, preserve_orders = TRUE)
+
+  expect_setequal(levels(f2), c("apple:red", "apple:green", "kiwi:green"))
+})
+
 test_that("gives NA output on NA input", {
   fruit <- as_factor(c("apple", "kiwi", "apple", "apple"))
   colour <- as_factor(c("green", "green", "red", "green"))
