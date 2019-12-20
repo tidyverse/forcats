@@ -16,7 +16,7 @@
 #' fct_cross(fruit, colour)
 #' fct_cross(fruit, colour, eaten)
 #' fct_cross(fruit, colour, keep_empty = TRUE)
-fct_cross <- function(.f, ..., sep = ":", keep_empty = FALSE) {
+fct_cross <- function(.f, ..., sep = ":", keep_empty = FALSE, preserve_orders = FALSE) {
   .f <- check_factor(.f)
 
   flist <- rlang::list2(...)
@@ -33,6 +33,13 @@ fct_cross <- function(.f, ..., sep = ":", keep_empty = FALSE) {
       rlang::invoke(expand.grid, all_levels),
       sep = sep
     ))
+  } else if (preserve_orders) {
+    all_levels <- lapply(.data, levels)
+    all_new_levels <- rlang::invoke(paste,
+                                    rlang::invoke(expand.grid, all_levels),
+                                    sep = sep)
+    existing_levels <- all_new_levels[all_new_levels %in% newf]
+    factor(newf, levels = existing_levels)
   } else {
     anyNA <- Reduce("|", lapply(.data, is.na), FALSE)
     newf[anyNA] <- NA
