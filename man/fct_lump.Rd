@@ -5,8 +5,14 @@
 \alias{fct_lump_min}
 \title{Lump together factor levels into "other"}
 \usage{
-fct_lump(f, n, prop, w = NULL, other_level = "Other",
-  ties.method = c("min", "average", "first", "last", "random", "max"))
+fct_lump(
+  f,
+  n,
+  prop,
+  w = NULL,
+  other_level = "Other",
+  ties.method = c("min", "average", "first", "last", "random", "max")
+)
 
 fct_lump_min(f, min, w = NULL, other_level = "Other")
 }
