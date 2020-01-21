@@ -180,73 +180,73 @@ float to the top.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='no'>letters</span>)[<span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span>(<span class='fl'>1000</span>, <span class='fl'>10</span>)])
 <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; f
-#&gt;   a   b   c   d   e   f   g   h   j   k   l   n   p   q   r   s   v   w   z 
-#&gt;  51 132 118  25  11  43  94   6  64 122  53  14 108  50   2 101   4   1   1 </div><div class='input'><span class='fu'>fct_count</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; # A tibble: 19 x 2
+#&gt;   a   b   c   e   f   h   i   j   l   n   p   q   r   t   u   w   x   y   z 
+#&gt; 102   6  14  51 107  43  93   2   1 117  25  51  64  53  11 122 132   5   1 </div><div class='input'><span class='fu'>fct_count</span>(<span class='no'>f</span>)</div><div class='output co'>#&gt; # A tibble: 19 x 2
 #&gt;    f         n
 #&gt;    &lt;fct&gt; &lt;int&gt;
-#&gt;  1 a        51
-#&gt;  2 b       132
-#&gt;  3 c       118
-#&gt;  4 d        25
-#&gt;  5 e        11
-#&gt;  6 f        43
-#&gt;  7 g        94
-#&gt;  8 h         6
-#&gt;  9 j        64
-#&gt; 10 k       122
-#&gt; 11 l        53
-#&gt; 12 n        14
-#&gt; 13 p       108
-#&gt; 14 q        50
-#&gt; 15 r         2
-#&gt; 16 s       101
-#&gt; 17 v         4
-#&gt; 18 w         1
+#&gt;  1 a       102
+#&gt;  2 b         6
+#&gt;  3 c        14
+#&gt;  4 e        51
+#&gt;  5 f       107
+#&gt;  6 h        43
+#&gt;  7 i        93
+#&gt;  8 j         2
+#&gt;  9 l         1
+#&gt; 10 n       117
+#&gt; 11 p        25
+#&gt; 12 q        51
+#&gt; 13 r        64
+#&gt; 14 t        53
+#&gt; 15 u        11
+#&gt; 16 w       122
+#&gt; 17 x       132
+#&gt; 18 y         5
 #&gt; 19 z         1</div><div class='input'><span class='fu'>fct_count</span>(<span class='no'>f</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 19 x 2
 #&gt;    f         n
 #&gt;    &lt;fct&gt; &lt;int&gt;
-#&gt;  1 b       132
-#&gt;  2 k       122
-#&gt;  3 c       118
-#&gt;  4 p       108
-#&gt;  5 s       101
-#&gt;  6 g        94
-#&gt;  7 j        64
-#&gt;  8 l        53
-#&gt;  9 a        51
-#&gt; 10 q        50
-#&gt; 11 f        43
-#&gt; 12 d        25
-#&gt; 13 n        14
-#&gt; 14 e        11
-#&gt; 15 h         6
-#&gt; 16 v         4
-#&gt; 17 r         2
-#&gt; 18 w         1
+#&gt;  1 x       132
+#&gt;  2 w       122
+#&gt;  3 n       117
+#&gt;  4 f       107
+#&gt;  5 a       102
+#&gt;  6 i        93
+#&gt;  7 r        64
+#&gt;  8 t        53
+#&gt;  9 e        51
+#&gt; 10 q        51
+#&gt; 11 h        43
+#&gt; 12 p        25
+#&gt; 13 c        14
+#&gt; 14 u        11
+#&gt; 15 b         6
+#&gt; 16 y         5
+#&gt; 17 j         2
+#&gt; 18 l         1
 #&gt; 19 z         1</div><div class='input'><span class='fu'>fct_count</span>(<span class='no'>f</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>prop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 19 x 3
 #&gt;    f         n     p
 #&gt;    &lt;fct&gt; &lt;int&gt; &lt;dbl&gt;
-#&gt;  1 b       132 0.132
-#&gt;  2 k       122 0.122
-#&gt;  3 c       118 0.118
-#&gt;  4 p       108 0.108
-#&gt;  5 s       101 0.101
-#&gt;  6 g        94 0.094
-#&gt;  7 j        64 0.064
-#&gt;  8 l        53 0.053
-#&gt;  9 a        51 0.051
-#&gt; 10 q        50 0.05 
-#&gt; 11 f        43 0.043
-#&gt; 12 d        25 0.025
-#&gt; 13 n        14 0.014
-#&gt; 14 e        11 0.011
-#&gt; 15 h         6 0.006
-#&gt; 16 v         4 0.004
-#&gt; 17 r         2 0.002
-#&gt; 18 w         1 0.001
+#&gt;  1 x       132 0.132
+#&gt;  2 w       122 0.122
+#&gt;  3 n       117 0.117
+#&gt;  4 f       107 0.107
+#&gt;  5 a       102 0.102
+#&gt;  6 i        93 0.093
+#&gt;  7 r        64 0.064
+#&gt;  8 t        53 0.053
+#&gt;  9 e        51 0.051
+#&gt; 10 q        51 0.051
+#&gt; 11 h        43 0.043
+#&gt; 12 p        25 0.025
+#&gt; 13 c        14 0.014
+#&gt; 14 u        11 0.011
+#&gt; 15 b         6 0.006
+#&gt; 16 y         5 0.005
+#&gt; 17 j         2 0.002
+#&gt; 18 l         1 0.001
 #&gt; 19 z         1 0.001</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>

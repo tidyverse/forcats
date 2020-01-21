@@ -175,12 +175,12 @@ exist will be silently ignored.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>3</span>], <span class='fl'>20</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
-<span class='no'>f</span></div><div class='output co'>#&gt;  [1] b b a b c b b a c a b c b c c c b c b a
-#&gt; Levels: a b c</div><div class='input'><span class='fu'>fct_expand</span>(<span class='no'>f</span>, <span class='st'>"d"</span>, <span class='st'>"e"</span>, <span class='st'>"f"</span>)</div><div class='output co'>#&gt;  [1] b b a b c b b a c a b c b c c c b c b a
-#&gt; Levels: a b c d e f</div><div class='input'><span class='fu'>fct_expand</span>(<span class='no'>f</span>, <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>6</span>])</div><div class='output co'>#&gt;  [1] b b a b c b b a c a b c b c c c b c b a
+<span class='no'>f</span></div><div class='output co'>#&gt;  [1] c a a c b b a b c b b a c a b c b c c c
+#&gt; Levels: a b c</div><div class='input'><span class='fu'>fct_expand</span>(<span class='no'>f</span>, <span class='st'>"d"</span>, <span class='st'>"e"</span>, <span class='st'>"f"</span>)</div><div class='output co'>#&gt;  [1] c a a c b b a b c b b a c a b c b c c c
+#&gt; Levels: a b c d e f</div><div class='input'><span class='fu'>fct_expand</span>(<span class='no'>f</span>, <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>6</span>])</div><div class='output co'>#&gt;  [1] c a a c b b a b c b b a c a b c b c c c
 #&gt; Levels: a b c d e f</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>

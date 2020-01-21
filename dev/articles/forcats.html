@@ -254,30 +254,30 @@
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/fct_shuffle.html">fct_shuffle</a></span>()</a>
 <a class="sourceLine" id="cb12-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb12-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(reshuffled_income)</a>
-<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt;  [1] "Lt $1000"       "Not applicable" "$4000 to 4999"  "No answer"     </span></a>
-<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt;  [5] "$3000 to 3999"  "$6000 to 6999"  "Refused"        "$10000 - 14999"</span></a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt;  [9] "$20000 - 24999" "$7000 to 7999"  "$15000 - 19999" "$5000 to 5999" </span></a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; [13] "$8000 to 9999"  "Don't know"     "$25000 or more" "$1000 to 2999"</span></a></code></pre></div>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt;  [1] "Don't know"     "Not applicable" "$10000 - 14999" "$1000 to 2999" </span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt;  [5] "$3000 to 3999"  "$25000 or more" "$20000 - 24999" "No answer"     </span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt;  [9] "$4000 to 4999"  "$6000 to 6999"  "$8000 to 9999"  "$7000 to 7999" </span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; [13] "$15000 - 19999" "Lt $1000"       "Refused"        "$5000 to 5999"</span></a></code></pre></div>
 <p>Now if we plotted it, it would show in this order, which is all over the place! How can we fix this and put it in the right order?</p>
 <p>We can use the function <code><a href="../reference/fct_relevel.html">fct_relevel()</a></code> when we need to manually reorder our factor levels. In addition to the factor, you give it a character vector of level names, and specify where you want to move them. It defaults to moving them to the front, but you can move them after another level with the argument <code>after</code>. If you want to move it to the end, you set <code>after</code> equal to <code>Inf</code>.</p>
 <p>For example, let’s say we wanted to move <code>Lt $1000</code> and <code>$1000 to 2999</code> to the front. We would write:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/fct_relevel.html">fct_relevel</a></span>(reshuffled_income, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Lt $1000"</span>, <span class="st">"$1000 to 2999"</span>)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>()</a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt;  [1] "Lt $1000"       "$1000 to 2999"  "Not applicable" "$4000 to 4999" </span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt;  [5] "No answer"      "$3000 to 3999"  "$6000 to 6999"  "Refused"       </span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt;  [9] "$10000 - 14999" "$20000 - 24999" "$7000 to 7999"  "$15000 - 19999"</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; [13] "$5000 to 5999"  "$8000 to 9999"  "Don't know"     "$25000 or more"</span></a></code></pre></div>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt;  [1] "Lt $1000"       "$1000 to 2999"  "Don't know"     "Not applicable"</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt;  [5] "$10000 - 14999" "$3000 to 3999"  "$25000 or more" "$20000 - 24999"</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt;  [9] "No answer"      "$4000 to 4999"  "$6000 to 6999"  "$8000 to 9999" </span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; [13] "$7000 to 7999"  "$15000 - 19999" "Refused"        "$5000 to 5999"</span></a></code></pre></div>
 <p>What if we want to move them to the second and third place?</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/fct_relevel.html">fct_relevel</a></span>(reshuffled_income, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Lt $1000"</span>, <span class="st">"$1000 to 2999"</span>), <span class="dt">after =</span> <span class="dv">1</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>()</a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#&gt;  [1] "Not applicable" "Lt $1000"       "$1000 to 2999"  "$4000 to 4999" </span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#&gt;  [5] "No answer"      "$3000 to 3999"  "$6000 to 6999"  "Refused"       </span></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt;  [9] "$10000 - 14999" "$20000 - 24999" "$7000 to 7999"  "$15000 - 19999"</span></a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; [13] "$5000 to 5999"  "$8000 to 9999"  "Don't know"     "$25000 or more"</span></a></code></pre></div>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#&gt;  [1] "Don't know"     "Lt $1000"       "$1000 to 2999"  "Not applicable"</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#&gt;  [5] "$10000 - 14999" "$3000 to 3999"  "$25000 or more" "$20000 - 24999"</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt;  [9] "No answer"      "$4000 to 4999"  "$6000 to 6999"  "$8000 to 9999" </span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; [13] "$7000 to 7999"  "$15000 - 19999" "Refused"        "$5000 to 5999"</span></a></code></pre></div>
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
         <div id="tocnav">
       <h2 class="hasAnchor">
