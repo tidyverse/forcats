@@ -2,8 +2,7 @@
 #'
 #' Computes a factor whose levels are all the combinations of the levels of the input factors.
 #'
-#' @param .f A factor or character vector
-#' @param ...  Additional factors or character vectors
+#' @param ...  Any number of factors or character vectors
 #' @param sep A character string to separate the levels
 #' @param keep_empty If TRUE, keep combinations with no observations as levels
 #' @return The new factor
@@ -16,16 +15,14 @@
 #' fct_cross(fruit, colour)
 #' fct_cross(fruit, colour, eaten)
 #' fct_cross(fruit, colour, keep_empty = TRUE)
-fct_cross <- function(.f, ..., sep = ":", keep_empty = FALSE) {
-  .f <- check_factor(.f)
+fct_cross <- function(..., sep = ":", keep_empty = FALSE) {
 
   flist <- rlang::list2(...)
   if (length(flist) == 0) {
-    return(.f)
+    return(NULL)
   }
 
-  .data <- suppressMessages(tibble::tibble(.f, !!!flist, .name_repair = "universal"))
-  .data <- lapply(.data, check_factor)
+  .data <- lapply(flist, check_factor)
   newf <- rlang::invoke(paste, .data, sep = sep)
 
   if (keep_empty) {
