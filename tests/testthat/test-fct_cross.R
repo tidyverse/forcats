@@ -1,11 +1,20 @@
 context("fct_cross")
 
+test_that("empty input returns empty factor", {
+  expect_equal(fct_cross(), factor())
+})
+
 test_that("gives correct levels", {
   fruit <- as_factor(c("apple", "kiwi", "apple", "apple"))
   colour <- as_factor(c("green", "green", "red", "green"))
   f2 <- fct_cross(fruit, colour)
 
   expect_setequal(levels(f2), c("apple:green", "kiwi:green", "apple:red"))
+})
+
+test_that("recycle inputs", {
+  expect_length(fct_cross("a", c("a", "b", "c"), "d"), 3)
+  expect_error(fct_cross(c("a", "b", "c"), c("a", "b")), "recycle", class = "error")
 })
 
 test_that("keeps empty levels when requested", {

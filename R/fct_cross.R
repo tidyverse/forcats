@@ -16,13 +16,14 @@
 #' fct_cross(fruit, colour, eaten)
 #' fct_cross(fruit, colour, keep_empty = TRUE)
 fct_cross <- function(..., sep = ":", keep_empty = FALSE) {
-
   flist <- rlang::list2(...)
   if (length(flist) == 0) {
-    return(NULL)
+    return(factor())
   }
 
-  .data <- lapply(flist, check_factor)
+  # Hack to recycle vectors to correct length
+  .data <- tibble::as_tibble(flist, .name_repair = "minimal")
+  .data <- lapply(.data, check_factor)
   newf <- rlang::invoke(paste, .data, sep = sep)
 
   if (keep_empty) {
