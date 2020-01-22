@@ -9,7 +9,6 @@
 #' @examples
 #' gss_cat$relig %>% fct_count()
 #' gss_cat$relig %>% fct_anon() %>% fct_count()
-#' gss_cat$relig %>% fct_anon() %>% fct_count()
 #' gss_cat$relig %>% fct_anon("X") %>% fct_count()
 fct_anon <- function(f, prefix = "") {
   levels <- paste0(prefix, zero_pad(seq_len(nlevels(f))))
