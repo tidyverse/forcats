@@ -20,6 +20,18 @@
 #' @importFrom stats median
 #' @export
 #' @examples
+#' df <- tibble::tribble(
+#' ~color,     ~a, ~b,
+#' "blue",      1,  2,
+#' "green",     6,  2,
+#' "purple",    3,  3,
+#' "red",       2,  3,
+#' "yellow",    5,  1
+#' )
+#' df$color <- factor(df$color)
+#' fct_reorder(df$color, df$a, min)
+#' fct_reorder2(df$color, df$a, df$b)
+#'
 #' boxplot(Sepal.Width ~ Species, data = iris)
 #' boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width), data = iris)
 #' boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width, .desc = TRUE), data = iris)
