@@ -1,17 +1,17 @@
 #' Make missing values explicit
 #'
-#' This gives missing value an explicit factor level, ensuring that they
+#' This gives missing values an explicit factor level, ensuring that they
 #' appear in summaries and on plots.
 #'
 #' @param f A factor (or character vector).
-#' @param na_level Level to use for missing values.
+#' @param na_level Level to use for missing values: this is what NAs will be changed to.
 #' @export
 #' @examples
 #' f1 <- factor(c("a", "a", NA, NA, "a", "b", NA, "c", "a", "c", "b"))
-#' table(f1)
+#' fct_count(f1)
 #'
 #' f2 <- fct_explicit_na(f1)
-#' table(f2)
+#' fct_count(f2)
 fct_explicit_na <- function(f, na_level = "(Missing)") {
   f <- check_factor(f)
 
