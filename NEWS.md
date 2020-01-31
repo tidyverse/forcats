@@ -1,5 +1,7 @@
 # forcats (development version)
 
+* `fct_lump()` throws error if `n` or `prop` is not numeric (@robinson_es, #169). 
+
 * `as_factor()` converts ordered factor into plain factor (@robinson_es, #216).
 
 * `first2()`, a `fct_reorder2()` helper function, sorts `.y` by the first value of `.x` (@jtr13).
