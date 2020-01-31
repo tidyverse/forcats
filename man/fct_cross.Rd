@@ -12,8 +12,6 @@ fct_cross(..., sep = ":", keep_empty = FALSE)
 \item{sep}{A character string to separate the levels}
 
 \item{keep_empty}{If TRUE, keep combinations with no observations as levels}
-
-\item{.f}{A factor or character vector}
 }
 \value{
 The new factor
