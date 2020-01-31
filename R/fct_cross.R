@@ -16,26 +16,30 @@
 #' fct_cross(fruit, colour)
 #' fct_cross(fruit, colour, eaten)
 #' fct_cross(fruit, colour, keep_empty = TRUE)
-fct_cross <- function(.f, ..., sep = ":", keep_empty = FALSE) {
-  .f <- check_factor(.f)
+fct_cross <- function(..., sep = ":", keep_empty = FALSE) {
 
   flist <- rlang::list2(...)
   if (length(flist) == 0) {
-    return(.f)
+    return(factor())
   }
 
-  .data <- lapply(tibble::tibble(.f, !!!flist), check_factor)
+  .data <- tibble::as_tibble(flist, .name_repair = "minimal")
+  .data <- lapply(.data, check_factor)
   newf <- rlang::invoke(paste, .data, sep = sep)
 
+  all_old_levels <- lapply(.data, levels)
+  all_new_levels <- rlang::invoke(paste,
+                                  rlang::invoke(expand.grid, all_old_levels),
+                                  sep = sep)
+
   if (keep_empty) {
-    all_levels <- lapply(.data, levels)
-    factor(newf, levels = rlang::invoke(paste,
-      rlang::invoke(expand.grid, all_levels),
-      sep = sep
-    ))
+
+    factor(newf, levels = all_new_levels)
+
   } else {
+
     anyNA <- Reduce("|", lapply(.data, is.na), FALSE)
     newf[anyNA] <- NA
-    as.factor(newf)
+    factor(newf, levels = intersect(all_new_levels, newf))
   }
 }
