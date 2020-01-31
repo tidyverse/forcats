@@ -59,6 +59,7 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
 
   ties.method <- match.arg(ties.method)
   calcs <- calc_levels(f, w)
+  f <- calcs$f
   count <- calcs$count
   total <- calcs$total
   levels <- levels(f)
@@ -66,7 +67,7 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
   if (!xor(missing(n), missing(prop))) {
     new_levels <- ifelse(!in_smallest(count), levels, other_level)
   } else if (!missing(n)) {
-    check_rank <- .fct_lump_n(n, levels, other_level, ties.method)
+    check_rank <- .fct_lump_n(n, count, levels, other_level, ties.method)
 
     if (sum(check_rank$rank > n) <= 1) {
       # No lumping needed
@@ -77,7 +78,7 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
 
   } else if (!missing(prop)) {
     check_prop <- .fct_lump_prop(prop, count, total, levels, other_level)
-    if (sum(check_prop$prop_n <= prop) <= 1) {
+    if (prop > 0 && sum(check_prop$prop_n <= prop) <= 1) {
       # No lumping needed
       return(f)
     } else {
@@ -102,6 +103,7 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
 fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
 
   calcs <- calc_levels(f, w)
+  f <- calcs$f
   count <- calcs$count
   total <- calcs$total
   levels <- levels(f)
@@ -126,6 +128,7 @@ fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
 fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
 
   calcs <- calc_levels(f, w)
+  f <- calcs$f
   count <- calcs$count
   total <- calcs$total
   levels <- levels(f)
@@ -158,6 +161,7 @@ fct_lump_count <- function(f, n, w = NULL, other_level = "Other",
 
   ties.method <- match.arg(ties.method)
   calcs <- calc_levels(f, w)
+  f <- calcs$f
   count <- calcs$count
   total <- calcs$total
   levels <- levels(f)
@@ -226,7 +230,7 @@ calc_levels <- function(f, w) {
     count <- as.vector(tapply(w, f, FUN = sum))
     total <- sum(w)
   }
-  list(count = count, total = total)
+  list(f = f, count = count, total = total)
 }
 
 # Lump together smallest groups, ensuring that the collective

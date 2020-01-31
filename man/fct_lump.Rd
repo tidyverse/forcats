@@ -95,9 +95,9 @@ fct_lump(x, n = 6, ties.method = "max")
 x <- factor(letters[rpois(100, 5)])
 fct_lump_min(x, min = 10)
 x <- factor(letters[rpois(100, 5)])
-fct_lump_prop(x, min = 0.1)
+fct_lump_prop(x, prop = 0.1)
 x <- factor(sample(rep(letters[1:5], times = 5:1)))
-fct_lump_count(x, count = 3)
+fct_lump_count(x, n = 3)
 }
 \seealso{
 \code{\link[=fct_other]{fct_other()}} to convert specified levels to other.
