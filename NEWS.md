@@ -1,6 +1,6 @@
 # forcats (development version)
 
-* `as_factor()` converts ordered factor into plain factor (@robinson_es).
+* `as_factor()` converts ordered factor into plain factor (@robinson_es, #216).
 
 * `first2()`, a `fct_reorder2()` helper function, sorts `.y` by the first value of `.x` (@jtr13).
   
