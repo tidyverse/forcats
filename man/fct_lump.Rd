@@ -3,6 +3,8 @@
 \name{fct_lump}
 \alias{fct_lump}
 \alias{fct_lump_min}
+\alias{fct_lump_prop}
+\alias{fct_lump_count}
 \title{Lump together factor levels into "other"}
 \usage{
 fct_lump(
@@ -15,6 +17,16 @@ fct_lump(
 )
 
 fct_lump_min(f, min, w = NULL, other_level = "Other")
+
+fct_lump_prop(f, prop, w = NULL, other_level = "Other")
+
+fct_lump_count(
+  f,
+  n,
+  w = NULL,
+  other_level = "Other",
+  ties.method = c("min", "average", "first", "last", "random", "max")
+)
 }
 \arguments{
 \item{f}{A factor (or character vector).}
@@ -32,6 +44,8 @@ Positive \code{prop} preserves values that appear at least
 \code{prop} of the time. Negative \code{prop} preserves values that
 appear at most \code{-prop} of the time.}
 
+\item{prop}{Preserves values that appear with at least \code{prop} proportion}
+
 \item{w}{An optional numeric vector giving weights for frequency of
 each value (not level) in f.}
 
@@ -42,6 +56,8 @@ placed at end of levels.}
 treated. See \code{\link[=rank]{rank()}} for details.}
 
 \item{min}{Preserves values that appear at least \code{min} number of times.}
+
+\item{n}{Preserves values that appear exactly \code{n} times}
 }
 \description{
 \code{fct_lump()} lumps together least/most common levels (as defined by \code{n} and
@@ -78,6 +94,10 @@ fct_lump(x, n = 6, ties.method = "max")
 
 x <- factor(letters[rpois(100, 5)])
 fct_lump_min(x, min = 10)
+x <- factor(letters[rpois(100, 5)])
+fct_lump_prop(x, min = 0.1)
+x <- factor(sample(rep(letters[1:5], times = 5:1)))
+fct_lump_count(x, count = 3)
 }
 \seealso{
 \code{\link[=fct_other]{fct_other()}} to convert specified levels to other.
