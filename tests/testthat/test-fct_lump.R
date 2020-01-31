@@ -128,6 +128,13 @@ test_that("fct_lump_min works when weighted", {
   expect_equal(levels(fct_lump_min(f, min = 1.5, w = w)), c("b", "c", "d", "Other"))
 })
 
+test_that("throws error if n or prop is not numeric", {
+  f <- c("a", "a", "a", "a", "b", "b", "b", "c", "c", "d")
+
+  expect_error(fct_lump(f, n = "2"), "`n`")
+  expect_error(fct_lump(f, prop = "2"), "`prop`")
+})
+
 test_that("fct_lump_prop works when not weighted", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
 

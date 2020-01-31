@@ -70,7 +70,7 @@ placed at end of levels.}
 \item{ties.method}{A character string specifying how ties are
 treated. See \code{\link[=rank]{rank()}} for details.}
 
-\item{n}{Preserves values that appear exactly \code{n} times}
+\item{n}{Preserves values that appear in the \code{n} most or least frequent levels}
 }
 \description{
 \itemize{

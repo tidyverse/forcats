@@ -1,10 +1,12 @@
 # forcats (development version)
 
+* New functions `fct_lump_prop()` (preserve f which appear > prop), `fct_lump_count()` (preserve count of f == n), `fct_lump_n()` (preserve most or least frequent n levels), and `fct_lump_lowfreq()` (preserve all but the least frequent level) (@jonocarroll, #167, #142).
+
+* `fct_lump()` throws error if `n` or `prop` is not numeric (@robinson_es, #169). 
+
 * `first2()`, a `fct_reorder2()` helper function, sorts `.y` by the first value of `.x` (@jtr13).
   
 * fixed bug in `fct_collapse()` so it now correctly collapses factors when `group_other = TRUE` (#172), and makes `"Other"` the last level (#202) (@gtm19, #172 & #202)
-
-* New functions `fct_lump_prop()` (preserve f which appear > prop), `fct_lump_count()` (preserve count of f == n), `fct_lump_n()` (preserve most or least frequent n levels), and `fct_lump_lowfreq()` (preserve all but the least frequent level) (@jonocarroll, #167, #142).
 
 # forcats 0.4.0
 

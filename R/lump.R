@@ -93,6 +93,10 @@ fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
   calcs <- check_calc_levels(f, w)
   f <- calcs$f
 
+  if (!is.numeric(min) || length(min) != 1 || min < 0) {
+    rlang::abort("`min` must be a positive number")
+  }
+
   new_levels <- ifelse(calcs$count >= min, levels(f), other_level)
 
   if (other_level %in% new_levels) {
@@ -114,6 +118,10 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
 
   calcs <- check_calc_levels(f, w)
   f <- calcs$f
+
+  if (!is.numeric(prop) || length(prop) != 1) {
+    rlang::abort("`prop` must be a number")
+  }
 
   prop_n <- calcs$count / calcs$total
   if (prop < 0) {
@@ -149,8 +157,8 @@ fct_lump_count <- function(f, n, other_level = "Other",
   calcs <- check_calc_levels(f, NULL)
   f <- calcs$f
 
-  if (n < 0) {
-    stop("`n` must be a positive value", call. = FALSE)
+  if (!is.numeric(n) || length(n) != 1 || n < 0) {
+    rlang::abort("`n` must be a number")
   }
 
   new_levels <- ifelse(calcs$count == n, levels(f), other_level)
@@ -168,7 +176,7 @@ fct_lump_count <- function(f, n, other_level = "Other",
 
 }
 
-#' @param n Preserves values that appear exactly `n` times
+#' @param n Preserves values that appear in the `n` most or least frequent levels
 #' @export
 #' @rdname fct_lump
 #' @examples
@@ -180,6 +188,10 @@ fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
   ties.method <- match.arg(ties.method)
   calcs <- check_calc_levels(f, w)
   f <- calcs$f
+
+  if (!is.numeric(n) || length(n) != 1) {
+    rlang::abort("`n` must be a number")
+  }
 
   if (n < 0) {
     rank <- rank(calcs$count, ties = ties.method)
