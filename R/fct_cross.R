@@ -2,7 +2,8 @@
 #'
 #' Computes a factor whose levels are all the combinations of the levels of the input factors.
 #'
-#' @param ...  <[`dynamic-dots`][rlang::dyn-dots]> Additional factors or character vectors
+#' @param ...  <[`dynamic-dots`][rlang::dyn-dots]> Additional factors
+#'   or character vectors.
 #' @param sep A character string to separate the levels
 #' @param keep_empty If TRUE, keep combinations with no observations as levels
 #' @return The new factor
@@ -17,28 +18,22 @@
 #' fct_cross(fruit, colour, keep_empty = TRUE)
 fct_cross <- function(..., sep = ":", keep_empty = FALSE) {
 
-  flist <- rlang::list2(...)
+  flist <- list2(...)
   if (length(flist) == 0) {
     return(factor())
   }
 
   .data <- tibble::as_tibble(flist, .name_repair = "minimal")
   .data <- lapply(.data, check_factor)
-  newf <- rlang::invoke(paste, .data, sep = sep)
 
-  all_old_levels <- lapply(.data, levels)
-  all_new_levels <- rlang::invoke(paste,
-                                  rlang::invoke(expand.grid, all_old_levels),
-                                  sep = sep)
+  newf <- exec(paste, !!!.data, sep = sep)
 
-  if (keep_empty) {
+  old_levels <- lapply(.data, levels)
+  grid <- exec(expand.grid, old_levels)
+  new_levels <- exec(paste, !!!grid, sep = sep)
 
-    factor(newf, levels = all_new_levels)
-
-  } else {
-
-    anyNA <- Reduce("|", lapply(.data, is.na), FALSE)
-    newf[anyNA] <- NA
-    factor(newf, levels = intersect(all_new_levels, newf))
+  if (!keep_empty) {
+    new_levels <- intersect(new_levels, newf)
   }
+  factor(newf, levels = new_levels)
 }

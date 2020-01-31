@@ -9,16 +9,16 @@ fct_explicit_na(f, na_level = "(Missing)")
 \arguments{
 \item{f}{A factor (or character vector).}
 
-\item{na_level}{Level to use for missing values.}
+\item{na_level}{Level to use for missing values: this is what NAs will be changed to.}
 }
 \description{
-This gives missing value an explicit factor level, ensuring that they
+This gives missing values an explicit factor level, ensuring that they
 appear in summaries and on plots.
 }
 \examples{
 f1 <- factor(c("a", "a", NA, NA, "a", "b", NA, "c", "a", "c", "b"))
-table(f1)
+fct_count(f1)
 
 f2 <- fct_explicit_na(f1)
-table(f2)
+fct_count(f2)
 }

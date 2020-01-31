@@ -10,7 +10,7 @@
 #'   value (which must be a character vector) will be used to relevel the
 #'   function.
 #'
-#'   Any levels not mentioned will be left in existing order, after the
+#'   Any levels not mentioned will be left in their existing order, after the
 #'   explicitly mentioned levels. Supports tidy dots.
 #' @param after Where should the new values be placed?
 #' @export
@@ -46,14 +46,14 @@ fct_relevel <- function(.f, ..., after = 0L) {
   f <- check_factor(.f)
 
   old_levels <- levels(f)
-  if (rlang::dots_n(...) == 1L && (is.function(..1) || rlang::is_formula(..1))) {
-    fun <- rlang::as_function(..1)
+  if (dots_n(...) == 1L && (is.function(..1) || is_formula(..1))) {
+    fun <- as_function(..1)
     first_levels <- fun(old_levels)
     if (!is.character(first_levels)) {
       stop("Re-leveling function must return character vector", call. = FALSE)
     }
   } else {
-    first_levels <- rlang::chr(...)
+    first_levels <- chr(...)
   }
 
   unknown <- setdiff(first_levels, old_levels)

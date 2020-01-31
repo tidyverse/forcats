@@ -3,8 +3,9 @@
 #' This is a useful way of patching together factors from multiple sources
 #' that really should have the same levels but don't.
 #'
-#' @param ... <[`dynamic-dots`][rlang::dyn-dots]> Individual factors. Uses tidy dots, so you can splice in a list
-#'   of factors with `!!!`.
+#' @param ... <[`dynamic-dots`][rlang::dyn-dots]> Individual
+#'   factors. Uses tidy dots, so you can splice in a list of factors
+#'   with `!!!`.
 #' @export
 #' @examples
 #' fa <- factor("a")
