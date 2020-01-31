@@ -7,7 +7,7 @@
 fct_cross(..., sep = ":", keep_empty = FALSE)
 }
 \arguments{
-\item{...}{Additional factors or character vectors}
+\item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> Additional factors or character vectors}
 
 \item{sep}{A character string to separate the levels}
 
