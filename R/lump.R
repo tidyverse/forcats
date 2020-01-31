@@ -4,6 +4,8 @@
 #' `prop`) into "other".
 #' `fct_lump_min()` lumps together all levels which don't appear at least
 #' `min` number of times.
+#' `fct_lump_prop` lumps together all levels which don't appear at least appear in a proportion of `prop`.
+#' `fct_lump_count` lumps together all levels which don't appear exactly `n` number of times.
 #'
 #' @param f A factor (or character vector).
 #' @param n,prop
