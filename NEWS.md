@@ -1,8 +1,13 @@
 # forcats (development version)
 
-* New functions `fct_lump_prop()` (preserve f which appear > prop), `fct_lump_count()` (preserve count of f == n), `fct_lump_n()` (preserve most or least frequent n levels), and `fct_lump_lowfreq()` (preserve all but the least frequent level) (@jonocarroll, #167, #142).
+* New functions `fct_lump_prop()` (preserve f which appear > prop), `fct_lump_count()` 
+  (preserve count of f == n), `fct_lump_n()` (preserve most or least frequent n levels), 
+  and `fct_lump_lowfreq()` (preserve all but the least frequent level) (@jonocarroll, #167, #142).
+  Added support to throw error if any of `n`, `prop`, `min`, or `count` are not numeric.
 
 * `fct_lump()` throws error if `n` or `prop` is not numeric (@robinson_es, #169). 
+
+* `as_factor()` converts ordered factor into plain factor (@robinson_es, #216).
 
 * `first2()`, a `fct_reorder2()` helper function, sorts `.y` by the first value of `.x` (@jtr13).
   

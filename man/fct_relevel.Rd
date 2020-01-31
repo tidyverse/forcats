@@ -15,7 +15,7 @@ A function will be called with the current levels, and the return
 value (which must be a character vector) will be used to relevel the
 function.
 
-Any levels not mentioned will be left in existing order, after the
+Any levels not mentioned will be left in their existing order, after the
 explicitly mentioned levels. Supports tidy dots.}
 
 \item{after}{Where should the new values be placed?}
