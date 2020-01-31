@@ -158,22 +158,22 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
 #' @examples
 #' x <- factor(sample(rep(letters[1:5], times = 5:1)))
 #' fct_lump_count(x, n = 3)
-fct_lump_count <- function(f, n, w = NULL, other_level = "Other",
+fct_lump_count <- function(f, n, other_level = "Other",
                            ties.method = c("min", "average", "first", "last", "random", "max")) {
 
   ties.method <- match.arg(ties.method)
-  calcs <- calc_levels(f, w)
+  calcs <- calc_levels(f, NULL)
   f <- calcs$f
   count <- calcs$count
   total <- calcs$total
   levels <- levels(f)
 
-  check_rank <- .fct_lump_count(n, count, levels, other_level, ties.method)
-  if (sum(check_rank$rank == n) == 0L) {
+  check_count <- .fct_lump_count(n, count, levels, other_level, ties.method)
+  if (sum(check_count$count == n) == 0L) {
     # No lumping needed
     return(f)
   } else {
-    new_levels <- check_rank$new_levels
+    new_levels <- check_count$new_levels
   }
 
   if (other_level %in% new_levels) {
@@ -203,11 +203,9 @@ fct_lump_count <- function(f, n, w = NULL, other_level = "Other",
 .fct_lump_count <- function(n, count, levels, other_level, ties.method) {
   if (n < 0) {
     stop("`n` must be a positive value", call. = FALSE)
-  } else {
-    rank <- rank(count, ties = ties.method)
   }
 
-  list(rank = rank, new_levels = ifelse(rank == n, levels, other_level))
+  list(count = count, new_levels = ifelse(count == n, levels, other_level))
 }
 
 .fct_lump_prop <- function(prop, count, total, levels, other_level) {
@@ -221,7 +219,7 @@ fct_lump_count <- function(f, n, w = NULL, other_level = "Other",
   list(prop_n = prop_n, new_levels = new_levels)
 }
 
-calc_levels <- function(f, w) {
+calc_levels <- function(f, w = NULL) {
   f <- check_factor(f)
   w <- check_weights(w, length(f))
 

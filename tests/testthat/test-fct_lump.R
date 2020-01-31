@@ -128,6 +128,28 @@ test_that("fct_lump_min works when weighted", {
   expect_equal(levels(fct_lump_min(f, min = 1.5, w = w)), c("b", "c", "d", "Other"))
 })
 
+test_that("fct_lump_prop works when not weighted", {
+  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
+
+  expect_equal(levels(fct_lump_prop(f, prop = 0.3)), c("a", "Other"))
+  expect_equal(levels(fct_lump_prop(f, prop = 0.2)), c("a", "b", "Other"))
+})
+
+test_that("fct_lump_prop works when weighted", {
+  f <- c("a", "b", "c", "d", "e")
+  w <- c( 0.2, 2,   6,   4,   1)
+
+  expect_equal(levels(fct_lump_prop(f, prop = 0.3, w = w)), c("c", "d", "Other"))
+  expect_equal(levels(fct_lump_prop(f, prop = 0.2, w = w)), c("c", "d", "Other"))
+})
+
+test_that("fct_lump_count works when not weighted", {
+  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
+
+  expect_equal(levels(fct_lump_count(f, n = 2)), c("b", "Other"))
+  expect_equal(levels(fct_lump_count(f, n = 1)), c("c", "d", "e", "f", "g", "Other"))
+})
+
 # Default -----------------------------------------------------------------
 
 test_that("lumps smallest", {
