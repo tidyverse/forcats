@@ -2,7 +2,6 @@
 #'
 #' Computes a factor whose levels are all the combinations of the levels of the input factors.
 #'
-#' @param .f A factor or character vector
 #' @param ...  Additional factors or character vectors
 #' @param sep A character string to separate the levels
 #' @param keep_empty If TRUE, keep combinations with no observations as levels
