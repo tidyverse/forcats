@@ -122,7 +122,7 @@ fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
 #' @rdname fct_lump
 #' @examples
 #' x <- factor(letters[rpois(100, 5)])
-#' fct_lump_prop(x, min = 0.1)
+#' fct_lump_prop(x, prop = 0.1)
 fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
 
   calcs <- calc_levels(f, w)
@@ -210,7 +210,7 @@ fct_lump_count <- function(f, n, w = NULL, other_level = "Other",
   if (prop < 0) {
     new_levels <- ifelse(prop_n <= -prop, levels, other_level)
   } else {
-    new_levels <- ifelse(prop_n > prop, levels, other_level)
+    new_levels <- ifelse(prop_n >= prop, levels, other_level)
   }
   list(prop_n = prop_n, new_levels = new_levels)
 }
