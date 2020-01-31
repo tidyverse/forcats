@@ -72,6 +72,9 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
   if (!xor(missing(n), missing(prop))) {
     new_levels <- ifelse(!in_smallest(count), levels, other_level)
   } else if (!missing(n)) {
+    if (!is.numeric(n)) {
+      stop("`n` must be numeric")
+    }
     if (n < 0) {
       rank <- rank(count, ties = ties.method)
       n <- -n
@@ -86,6 +89,9 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
 
     new_levels <- ifelse(rank <= n, levels, other_level)
   } else if (!missing(prop)) {
+    if (!is.numeric(prop)) {
+      stop("`prop` must be numeric")
+    }
     prop_n <- count / total
     if (prop < 0) {
       new_levels <- ifelse(prop_n <= -prop, levels, other_level)
