@@ -5,3 +5,6 @@ docs
 .Rproj.user
 .Rhistory
 .RData
+forcats.Rcheck/
+forcats*.tar.gz
+forcats*.tgz

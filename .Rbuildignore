@@ -16,3 +16,6 @@
 ^revdep$
 ^\.github$
 ^LICENSE\.md$
+^forcats\.Rcheck$
+^forcats.*\.tar\.gz$
+^forcats.*\.tgz$

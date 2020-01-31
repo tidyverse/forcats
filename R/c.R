@@ -18,7 +18,7 @@
 #' fs <- list(fa, fb, fab)
 #' fct_c(!!!fs)
 fct_c <- function(...) {
-  fs <- rlang::dots_list(...)
+  fs <- dots_list(...)
   fs <- check_factor_list(fs, "...")
 
   if (length(fs) == 0) {

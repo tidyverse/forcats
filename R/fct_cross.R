@@ -18,18 +18,18 @@
 #' fct_cross(fruit, colour, keep_empty = TRUE)
 fct_cross <- function(..., sep = ":", keep_empty = FALSE) {
 
-  flist <- rlang::list2(...)
+  flist <- list2(...)
   if (length(flist) == 0) {
     return(factor())
   }
 
   .data <- tibble::as_tibble(flist, .name_repair = "minimal")
   .data <- lapply(.data, check_factor)
-  newf <- rlang::invoke(paste, .data, sep = sep)
+  newf <- invoke(paste, .data, sep = sep)
 
   all_old_levels <- lapply(.data, levels)
-  all_new_levels <- rlang::invoke(paste,
-                                  rlang::invoke(expand.grid, all_old_levels),
+  all_new_levels <- invoke(paste,
+                                  invoke(expand.grid, all_old_levels),
                                   sep = sep)
 
   if (keep_empty) {
