@@ -1,5 +1,7 @@
 # forcats (development version)
 
+* `as_factor()` converts ordered factor into plain factor (@robinson_es, #216).
+
 * `first2()`, a `fct_reorder2()` helper function, sorts `.y` by the first value of `.x` (@jtr13).
   
 * fixed bug in `fct_collapse()` so it now correctly collapses factors when `group_other = TRUE` (#172), and makes `"Other"` the last level (#202) (@gtm19, #172 & #202)
