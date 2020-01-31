@@ -131,8 +131,8 @@ test_that("fct_lump_min works when weighted", {
 test_that("throws error if n or prop is not numeric", {
   f <- c("a", "a", "a", "a", "b", "b", "b", "c", "c", "d")
 
-  expect_error(fct_lump(f, n = "2"), regexp = "`n`")
-  expect_error(fct_lump(f, prop = "2"), regexp = "`prop`")
+  expect_error(fct_lump(f, n = "2"), "`n`")
+  expect_error(fct_lump(f, prop = "2"), "`prop`")
 })
 
 
