@@ -10,7 +10,7 @@
 #'   value (which must be a character vector) will be used to relevel the
 #'   function.
 #'
-#'   Any levels not mentioned will be left in existing order, after the
+#'   Any levels not mentioned will be left in their existing order, after the
 #'   explicitly mentioned levels. Supports tidy dots.
 #' @param after Where should the new values be placed?
 #' @export
