@@ -20,6 +20,5 @@ test_that("supports NA (#89)", {
 test_that("converts ordered factor into plain factor (#216)", {
   x <- factor(c("a", "z", "g"), ordered = TRUE)
   x <- as_factor(x)
-  expect_false(is.ordered(x))
-  expect_equal(attributes(x)$class, "factor")
+  expect_s3_class(as_factor(x), "factor", exact = "TRUE")
 })

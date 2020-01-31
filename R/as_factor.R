@@ -36,8 +36,8 @@ as_factor <- function(x, ...) {
 as_factor.factor <- function(x, ...) {
   structure(
     x,
-    label = attr(x, "label", exact = TRUE),
     class = "factor",
+    label = attr(x, "label", exact = TRUE),
     levels = attr(x, "levels", exact = TRUE)
   )
 }
