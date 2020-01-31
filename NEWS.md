@@ -6,8 +6,6 @@
   
 * fixed bug in `fct_collapse()` so it now correctly collapses factors when `group_other = TRUE` (#172), and makes `"Other"` the last level (#202) (@gtm19, #172 & #202)
 
-* Updated calls to **rlang** package (#233). Package called globally with `@import rlang` instead of `rlang::` calls. Removed all `rlang::` calls (@gralgomez, @gabrielodom, #233)
-
 # forcats 0.4.0
 
 ## New features
