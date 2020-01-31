@@ -26,7 +26,7 @@ fct_lump_prop(f, prop, w = NULL, other_level = "Other")
 
 fct_lump_count(
   f,
-  n,
+  count,
   other_level = "Other",
   ties.method = c("min", "average", "first", "last", "random", "max")
 )
@@ -53,13 +53,13 @@ Positive \code{n} preserves the most common \code{n} values.
 Negative \code{n} preserves the least common \code{-n} values.
 It there are ties, you will get at least \code{abs(n)} values.
 
-Positive \code{prop} preserves values that appear at least
-\code{prop} of the time. Negative \code{prop} preserves values that
-appear at most \code{-prop} of the time.}
+Positive \code{prop} lumps values which do not appear at least
+\code{prop} of the time. Negative \code{prop} lumps values that
+do not appear at most \code{-prop} of the time.}
 
-\item{prop}{Preserves values that appear with at least \code{prop} proportion}
+\item{count}{Values which do not appear \code{count} times will be lumped.}
 
-\item{min}{Preserves values that appear at least \code{min} number of times.}
+\item{min}{Preserve values that appear at least \code{min} number of times.}
 
 \item{w}{An optional numeric vector giving weights for frequency of
 each value (not level) in f.}
@@ -69,8 +69,6 @@ placed at end of levels.}
 
 \item{ties.method}{A character string specifying how ties are
 treated. See \code{\link[=rank]{rank()}} for details.}
-
-\item{n}{Preserves values that appear in the \code{n} most or least frequent levels}
 }
 \description{
 \itemize{
@@ -111,16 +109,9 @@ fct_lump(x, n = 5, w = w)
 fct_lump(x, n = 6)
 fct_lump(x, n = 6, ties.method = "max")
 
-x <- factor(letters[rpois(100, 5)])
+# Use min to control a minimum number of appearances at or
+# below which levels will be lumped
 fct_lump_min(x, min = 10)
-x <- factor(letters[rpois(100, 5)])
-fct_lump_prop(x, prop = 0.1)
-x <- factor(sample(rep(letters[1:5], times = 5:1)))
-fct_lump_count(x, n = 3)
-x <- factor(sample(rep(letters[1:5], times = 5:1)))
-fct_lump_n(x, n = 2)
-x <- factor(sample(rep(letters[1:5], times = 5:1)))
-fct_lump_n(x, n = 2)
 }
 \seealso{
 \code{\link[=fct_other]{fct_other()}} to convert specified levels to other.

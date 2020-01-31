@@ -20,9 +20,11 @@
 #'   Negative `n` preserves the least common `-n` values.
 #'   It there are ties, you will get at least `abs(n)` values.
 #'
-#'   Positive `prop` preserves values that appear at least
-#'   `prop` of the time. Negative `prop` preserves values that
-#'   appear at most `-prop` of the time.
+#'   Positive `prop` lumps values which do not appear at least
+#'   `prop` of the time. Negative `prop` lumps values that
+#'   do not appear at most `-prop` of the time.
+#' @param count Values which do not appear `count` times will be lumped.
+#' @param min Preserve values that appear at least `min` number of times.
 #' @param w An optional numeric vector giving weights for frequency of
 #'   each value (not level) in f.
 #' @param other_level Value of level used for "other" values. Always
@@ -58,6 +60,9 @@
 #' fct_lump(x, n = 6)
 #' fct_lump(x, n = 6, ties.method = "max")
 #'
+#' # Use min to control a minimum number of appearances at or
+#' # below which levels will be lumped
+#' fct_lump_min(x, min = 10)
 fct_lump <- function(f, n, count, prop, min, w = NULL, other_level = "Other",
                      ties.method = c("min", "average", "first", "last", "random", "max")) {
 
@@ -76,18 +81,14 @@ fct_lump <- function(f, n, count, prop, min, w = NULL, other_level = "Other",
   } else if (!missing(prop)) {
     fct_lump_prop(f, prop, w, other_level)
   } else if (!missing(count)) {
-    fct_lump_count(f, min, w, other_level)
+    fct_lump_count(f, count, w, other_level)
   } else if (!missing(min)) {
     fct_lump_min(f, min, w, other_level)
   }
 }
 
-#' @param min Preserves values that appear at least `min` number of times.
 #' @export
 #' @rdname fct_lump
-#' @examples
-#' x <- factor(letters[rpois(100, 5)])
-#' fct_lump_min(x, min = 10)
 fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
 
   calcs <- check_calc_levels(f, w)
@@ -108,12 +109,8 @@ fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
 
 }
 
-#' @param prop Preserves values that appear with at least `prop` proportion
 #' @export
 #' @rdname fct_lump
-#' @examples
-#' x <- factor(letters[rpois(100, 5)])
-#' fct_lump_prop(x, prop = 0.1)
 fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
 
   calcs <- check_calc_levels(f, w)
@@ -144,25 +141,21 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
 
 }
 
-#' @param n Preserves values that appear exactly `n` times
 #' @export
 #' @rdname fct_lump
-#' @examples
-#' x <- factor(sample(rep(letters[1:5], times = 5:1)))
-#' fct_lump_count(x, n = 3)
-fct_lump_count <- function(f, n, other_level = "Other",
+fct_lump_count <- function(f, count, other_level = "Other",
                            ties.method = c("min", "average", "first", "last", "random", "max")) {
 
   ties.method <- match.arg(ties.method)
   calcs <- check_calc_levels(f, NULL)
   f <- calcs$f
 
-  if (!is.numeric(n) || length(n) != 1 || n < 0) {
-    rlang::abort("`n` must be a number")
+  if (!is.numeric(count) || length(count) != 1 || count < 0) {
+    rlang::abort("`count` must be a number")
   }
 
-  new_levels <- ifelse(calcs$count == n, levels(f), other_level)
-  if (sum(calcs$count == n) == 0L) {
+  new_levels <- ifelse(calcs$count == count, levels(f), other_level)
+  if (sum(calcs$count == count) == 0L) {
     # No lumping needed
     return(f)
   }
@@ -176,12 +169,8 @@ fct_lump_count <- function(f, n, other_level = "Other",
 
 }
 
-#' @param n Preserves values that appear in the `n` most or least frequent levels
 #' @export
 #' @rdname fct_lump
-#' @examples
-#' x <- factor(sample(rep(letters[1:5], times = 5:1)))
-#' fct_lump_n(x, n = 2)
 fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
                        ties.method = c("min", "average", "first", "last", "random", "max")) {
 
@@ -218,9 +207,6 @@ fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
 
 #' @export
 #' @rdname fct_lump
-#' @examples
-#' x <- factor(sample(rep(letters[1:5], times = 5:1)))
-#' fct_lump_n(x, n = 2)
 fct_lump_lowfreq <- function(f, other_level = "Other") {
 
   calcs <- check_calc_levels(f, NULL)

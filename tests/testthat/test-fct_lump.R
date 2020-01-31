@@ -153,8 +153,8 @@ test_that("fct_lump_prop works when weighted", {
 test_that("fct_lump_count works when not weighted", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
 
-  expect_equal(levels(fct_lump_count(f, n = 2)), c("b", "Other"))
-  expect_equal(levels(fct_lump_count(f, n = 1)), c("c", "d", "e", "f", "g", "Other"))
+  expect_equal(levels(fct_lump_count(f, count = 2)), c("b", "Other"))
+  expect_equal(levels(fct_lump_count(f, count = 1)), c("c", "d", "e", "f", "g", "Other"))
 })
 
 # Default -----------------------------------------------------------------
