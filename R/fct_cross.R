@@ -27,19 +27,12 @@ fct_cross <- function(..., sep = ":", keep_empty = FALSE) {
   .data <- lapply(.data, check_factor)
   newf <- rlang::invoke(paste, .data, sep = sep)
 
-  all_old_levels <- lapply(.data, levels)
-  all_new_levels <- rlang::invoke(paste,
-                                  rlang::invoke(expand.grid, all_old_levels),
-                                  sep = sep)
+  old_levels <- lapply(.data, levels)
+  grid <- rlang::invoke(expand.grid, old_levels)
+  new_levels <- rlang::invoke(paste, grid, sep = sep)
 
-  if (keep_empty) {
-
-    factor(newf, levels = all_new_levels)
-
-  } else {
-
-    anyNA <- Reduce("|", lapply(.data, is.na), FALSE)
-    newf[anyNA] <- NA
-    factor(newf, levels = intersect(all_new_levels, newf))
+  if (!keep_empty) {
+    new_levels <- intersect(new_levels, newf)
   }
+  factor(newf, levels = new_levels)
 }
