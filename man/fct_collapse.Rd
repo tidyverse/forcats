@@ -9,7 +9,7 @@ fct_collapse(.f, ..., group_other = FALSE)
 \arguments{
 \item{.f}{A factor (or character vector).}
 
-\item{...}{A series of named character vectors. The levels in
+\item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> A series of named character vectors. The levels in
 each vector will be replaced with the name.}
 
 \item{group_other}{Replace all levels not named in \code{...} with "Other"?}

@@ -1,7 +1,7 @@
 #' Collapse factor levels into manually defined groups
 #'
 #' @param .f A factor (or character vector).
-#' @param ... A series of named character vectors. The levels in
+#' @param ... <[`dynamic-dots`][rlang::dyn-dots]> A series of named character vectors. The levels in
 #'   each vector will be replaced with the name.
 #' @param group_other Replace all levels not named in `...` with "Other"?
 #' @export
@@ -17,7 +17,7 @@
 #' )
 #' fct_count(partyid2)
 fct_collapse <- function(.f, ..., group_other = FALSE) {
-  new <- dots_list(...)
+  new <- rlang::list2(...)
   levs <- as.list(unlist(new, use.names = FALSE))
 
   if (group_other) {

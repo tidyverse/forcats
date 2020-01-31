@@ -1,5 +1,9 @@
 # forcats (development version)
 
+* `fct_c()`, `fct_collapse()` and `recode()` are now explicitly
+  documented as using dynamic dots
+  https://rlang.r-lib.org/reference/dyn-dots.html (@labouz, #234).
+
 * `fct_lump()` throws error if `n` or `prop` is not numeric (@robinson_es, #169). 
 
 * `as_factor()` converts ordered factor into plain factor (@robinson_es, #216).
