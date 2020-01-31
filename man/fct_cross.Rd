@@ -4,16 +4,16 @@
 \alias{fct_cross}
 \title{Combine levels from two or more factors to create a new factor}
 \usage{
-fct_cross(.f, ..., sep = ":", keep_empty = FALSE)
+fct_cross(..., sep = ":", keep_empty = FALSE)
 }
 \arguments{
-\item{.f}{A factor or character vector}
-
 \item{...}{Additional factors or character vectors}
 
 \item{sep}{A character string to separate the levels}
 
 \item{keep_empty}{If TRUE, keep combinations with no observations as levels}
+
+\item{.f}{A factor or character vector}
 }
 \value{
 The new factor
