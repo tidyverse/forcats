@@ -4,6 +4,8 @@
   
 * fixed bug in `fct_collapse()` so it now correctly collapses factors when `group_other = TRUE` (#172), and makes `"Other"` the last level (#202) (@gtm19, #172 & #202)
 
+* New functions `fct_lump_prop` (preserve f which appear > prop) and `fct_lump_n` (preserve count of f == n) (@jonocarroll, #167).
+
 # forcats 0.4.0
 
 ## New features

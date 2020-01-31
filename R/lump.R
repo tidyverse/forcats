@@ -4,7 +4,7 @@
 #' `prop`) into "other".
 #' `fct_lump_min()` lumps together all levels which don't appear at least
 #' `min` number of times.
-#' `fct_lump_prop` lumps together all levels which don't appear at least appear in a proportion of `prop`.
+#' `fct_lump_prop` lumps together all levels which appear at or below a proportion of `prop`.
 #' `fct_lump_count` lumps together all levels which don't appear exactly `n` number of times.
 #'
 #' @param f A factor (or character vector).
@@ -214,7 +214,7 @@ fct_lump_count <- function(f, n, other_level = "Other",
   if (prop < 0) {
     new_levels <- ifelse(prop_n <= -prop, levels, other_level)
   } else {
-    new_levels <- ifelse(prop_n >= prop, levels, other_level)
+    new_levels <- ifelse(prop_n > prop, levels, other_level)
   }
   list(prop_n = prop_n, new_levels = new_levels)
 }

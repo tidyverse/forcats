@@ -63,7 +63,7 @@ treated. See \code{\link[=rank]{rank()}} for details.}
 \code{prop}) into "other".
 \code{fct_lump_min()} lumps together all levels which don't appear at least
 \code{min} number of times.
-\code{fct_lump_prop} lumps together all levels which don't appear at least appear in a proportion of \code{prop}.
+\code{fct_lump_prop} lumps together all levels which appear at or below a proportion of \code{prop}.
 \code{fct_lump_count} lumps together all levels which don't appear exactly \code{n} number of times.
 }
 \examples{

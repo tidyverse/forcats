@@ -131,8 +131,8 @@ test_that("fct_lump_min works when weighted", {
 test_that("fct_lump_prop works when not weighted", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
 
-  expect_equal(levels(fct_lump_prop(f, prop = 0.3)), c("a", "Other"))
-  expect_equal(levels(fct_lump_prop(f, prop = 0.2)), c("a", "b", "Other"))
+  expect_equal(levels(fct_lump_prop(f, prop = 0.2)), c("a", "Other"))
+  expect_equal(levels(fct_lump_prop(f, prop = 0.1)), c("a", "b", "Other"))
 })
 
 test_that("fct_lump_prop works when weighted", {
