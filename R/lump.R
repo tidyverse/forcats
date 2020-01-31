@@ -1,11 +1,11 @@
 #' Lump together factor levels into "other"
 #'
-#' `fct_lump()` lumps together least/most common levels (as defined by `n` and
+#' * `fct_lump()` lumps together least/most common levels (as defined by `n` and
 #' `prop`) into "other".
-#' `fct_lump_min()` lumps together all levels which don't appear at least
+#' * `fct_lump_min()` lumps together all levels which don't appear at least
 #' `min` number of times.
-#' `fct_lump_prop` lumps together all levels which appear at or below a proportion of `prop`.
-#' `fct_lump_count` lumps together all levels which don't appear exactly `n` number of times.
+#' * `fct_lump_prop()` lumps together all levels which appear at or below a proportion of `prop`.
+#' * `fct_lump_count()` lumps together all levels which don't appear exactly `n` number of times.
 #'
 #' @param f A factor (or character vector).
 #' @param n,prop
