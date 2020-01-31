@@ -5,12 +5,16 @@
 \alias{fct_lump_min}
 \alias{fct_lump_prop}
 \alias{fct_lump_count}
+\alias{fct_lump_n}
+\alias{fct_lump_lowfreq}
 \title{Lump together factor levels into "other"}
 \usage{
 fct_lump(
   f,
   n,
+  count,
   prop,
+  min,
   w = NULL,
   other_level = "Other",
   ties.method = c("min", "average", "first", "last", "random", "max")
@@ -26,6 +30,16 @@ fct_lump_count(
   other_level = "Other",
   ties.method = c("min", "average", "first", "last", "random", "max")
 )
+
+fct_lump_n(
+  f,
+  n,
+  w = NULL,
+  other_level = "Other",
+  ties.method = c("min", "average", "first", "last", "random", "max")
+)
+
+fct_lump_lowfreq(f, other_level = "Other")
 }
 \arguments{
 \item{f}{A factor (or character vector).}
@@ -45,6 +59,8 @@ appear at most \code{-prop} of the time.}
 
 \item{prop}{Preserves values that appear with at least \code{prop} proportion}
 
+\item{min}{Preserves values that appear at least \code{min} number of times.}
+
 \item{w}{An optional numeric vector giving weights for frequency of
 each value (not level) in f.}
 
@@ -53,8 +69,6 @@ placed at end of levels.}
 
 \item{ties.method}{A character string specifying how ties are
 treated. See \code{\link[=rank]{rank()}} for details.}
-
-\item{min}{Preserves values that appear at least \code{min} number of times.}
 
 \item{n}{Preserves values that appear exactly \code{n} times}
 }
@@ -66,6 +80,8 @@ treated. See \code{\link[=rank]{rank()}} for details.}
 \code{min} number of times.
 \item \code{fct_lump_prop()} lumps together all levels which appear at or below a proportion of \code{prop}.
 \item \code{fct_lump_count()} lumps together all levels which don't appear exactly \code{n} number of times.
+\item \code{fct_lump_n()} lumps together all levels but the most frequent \code{n} levels (least frequent if \code{n < 0})
+\item \code{fct_lump_lowfreq()} lumps together the lowest frequency level (the default behaviour of \code{fct_lump()})
 }
 }
 \examples{
@@ -101,6 +117,10 @@ x <- factor(letters[rpois(100, 5)])
 fct_lump_prop(x, prop = 0.1)
 x <- factor(sample(rep(letters[1:5], times = 5:1)))
 fct_lump_count(x, n = 3)
+x <- factor(sample(rep(letters[1:5], times = 5:1)))
+fct_lump_n(x, n = 2)
+x <- factor(sample(rep(letters[1:5], times = 5:1)))
+fct_lump_n(x, n = 2)
 }
 \seealso{
 \code{\link[=fct_other]{fct_other()}} to convert specified levels to other.

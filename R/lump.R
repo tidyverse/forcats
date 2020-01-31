@@ -6,6 +6,8 @@
 #' `min` number of times.
 #' * `fct_lump_prop()` lumps together all levels which appear at or below a proportion of `prop`.
 #' * `fct_lump_count()` lumps together all levels which don't appear exactly `n` number of times.
+#' * `fct_lump_n()` lumps together all levels but the most frequent `n` levels (least frequent if `n < 0`)
+#' * `fct_lump_lowfreq()` lumps together the lowest frequency level (the default behaviour of `fct_lump()`)
 #'
 #' @param f A factor (or character vector).
 #' @param n,prop
@@ -56,43 +58,27 @@
 #' fct_lump(x, n = 6)
 #' fct_lump(x, n = 6, ties.method = "max")
 #'
-fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
+fct_lump <- function(f, n, count, prop, min, w = NULL, other_level = "Other",
                      ties.method = c("min", "average", "first", "last", "random", "max")) {
 
   ties.method <- match.arg(ties.method)
-  calcs <- calc_levels(f, w)
-  f <- calcs$f
-  count <- calcs$count
-  total <- calcs$total
-  levels <- levels(f)
+  check_calc_levels(f, w)
 
-  if (!xor(missing(n), missing(prop))) {
-    new_levels <- ifelse(!in_smallest(count), levels, other_level)
-  } else if (!missing(n)) {
-    check_rank <- .fct_lump_n(n, count, levels, other_level, ties.method)
-
-    if (sum(check_rank$rank > n) <= 1) {
-      # No lumping needed
-      return(f)
-    } else {
-      new_levels <- check_rank$new_levels
-    }
-
-  } else if (!missing(prop)) {
-    check_prop <- .fct_lump_prop(prop, count, total, levels, other_level)
-    if (prop > 0 && sum(check_prop$prop_n <= prop) <= 1) {
-      # No lumping needed
-      return(f)
-    } else {
-      new_levels <- check_prop$new_levels
-    }
+  ## only one method at a time
+  if (sum(!missing(n), !missing(prop), !missing(count), !missing(min)) > 1L) {
+    stop("Only one of 'n', 'prop', 'count', and 'min' can be provided at a time", call. = FALSE)
   }
 
-  if (other_level %in% new_levels) {
-    f <- lvls_revalue(f, new_levels)
-    fct_relevel(f, other_level, after = Inf)
-  } else {
-    f
+  if (all(missing(n), missing(prop), missing(count), missing(min))) {
+    fct_lump_lowfreq(f, other_level = other_level)
+  } else if (!missing(n)) {
+    fct_lump_n(f, n, w, other_level, ties.method)
+  } else if (!missing(prop)) {
+    fct_lump_prop(f, prop, w, other_level)
+  } else if (!missing(count)) {
+    fct_lump_count(f, min, w, other_level)
+  } else if (!missing(min)) {
+    fct_lump_min(f, min, w, other_level)
   }
 }
 
@@ -104,13 +90,10 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
 #' fct_lump_min(x, min = 10)
 fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
 
-  calcs <- calc_levels(f, w)
+  calcs <- check_calc_levels(f, w)
   f <- calcs$f
-  count <- calcs$count
-  total <- calcs$total
-  levels <- levels(f)
 
-  new_levels <- .fct_lump_min(min, count, levels, other_level)
+  new_levels <- ifelse(calcs$count >= min, levels(f), other_level)
 
   if (other_level %in% new_levels) {
     f <- lvls_revalue(f, new_levels)
@@ -129,18 +112,19 @@ fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
 #' fct_lump_prop(x, prop = 0.1)
 fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
 
-  calcs <- calc_levels(f, w)
+  calcs <- check_calc_levels(f, w)
   f <- calcs$f
-  count <- calcs$count
-  total <- calcs$total
-  levels <- levels(f)
 
-  check_prop <- .fct_lump_prop(prop, count, total, levels, other_level)
-  if (sum(check_prop$prop_n <= prop) <= 1) {
+  prop_n <- calcs$count / calcs$total
+  if (prop < 0) {
+    new_levels <- ifelse(prop_n <= -prop, levels(f), other_level)
+  } else {
+    new_levels <- ifelse(prop_n > prop, levels(f), other_level)
+  }
+
+  if (prop > 0 && sum(prop_n <= prop) <= 1) {
     # No lumping needed
     return(f)
-  } else {
-    new_levels <- check_prop$new_levels
   }
 
   if (other_level %in% new_levels) {
@@ -162,18 +146,17 @@ fct_lump_count <- function(f, n, other_level = "Other",
                            ties.method = c("min", "average", "first", "last", "random", "max")) {
 
   ties.method <- match.arg(ties.method)
-  calcs <- calc_levels(f, NULL)
+  calcs <- check_calc_levels(f, NULL)
   f <- calcs$f
-  count <- calcs$count
-  total <- calcs$total
-  levels <- levels(f)
 
-  check_count <- .fct_lump_count(n, count, levels, other_level, ties.method)
-  if (sum(check_count$count == n) == 0L) {
+  if (n < 0) {
+    stop("`n` must be a positive value", call. = FALSE)
+  }
+
+  new_levels <- ifelse(calcs$count == n, levels(f), other_level)
+  if (sum(calcs$count == n) == 0L) {
     # No lumping needed
     return(f)
-  } else {
-    new_levels <- check_count$new_levels
   }
 
   if (other_level %in% new_levels) {
@@ -185,41 +168,64 @@ fct_lump_count <- function(f, n, other_level = "Other",
 
 }
 
-.fct_lump_min <- function(min, count, levels, other_level) {
-  ifelse(count >= min, levels, other_level)
-}
+#' @param n Preserves values that appear exactly `n` times
+#' @export
+#' @rdname fct_lump
+#' @examples
+#' x <- factor(sample(rep(letters[1:5], times = 5:1)))
+#' fct_lump_n(x, n = 2)
+fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
+                       ties.method = c("min", "average", "first", "last", "random", "max")) {
 
-.fct_lump_n <- function(n, count, levels, other_level, ties.method) {
+  ties.method <- match.arg(ties.method)
+  calcs <- check_calc_levels(f, w)
+  f <- calcs$f
+
   if (n < 0) {
-    rank <- rank(count, ties = ties.method)
+    rank <- rank(calcs$count, ties = ties.method)
     n <- -n
   } else {
-    rank <- rank(-count, ties = ties.method)
+    rank <- rank(-calcs$count, ties = ties.method)
   }
 
-  list(rank = rank, new_levels = ifelse(rank <= n, levels, other_level))
-}
+  new_levels <- ifelse(rank <= n, levels(f), other_level)
 
-.fct_lump_count <- function(n, count, levels, other_level, ties.method) {
-  if (n < 0) {
-    stop("`n` must be a positive value", call. = FALSE)
+  if (sum(rank > n) <= 1) {
+    # No lumping needed
+    return(f)
   }
 
-  list(count = count, new_levels = ifelse(count == n, levels, other_level))
-}
-
-.fct_lump_prop <- function(prop, count, total, levels, other_level) {
-
-  prop_n <- count / total
-  if (prop < 0) {
-    new_levels <- ifelse(prop_n <= -prop, levels, other_level)
+  if (other_level %in% new_levels) {
+    f <- lvls_revalue(f, new_levels)
+    fct_relevel(f, other_level, after = Inf)
   } else {
-    new_levels <- ifelse(prop_n > prop, levels, other_level)
+    f
   }
-  list(prop_n = prop_n, new_levels = new_levels)
+
 }
 
-calc_levels <- function(f, w = NULL) {
+#' @export
+#' @rdname fct_lump
+#' @examples
+#' x <- factor(sample(rep(letters[1:5], times = 5:1)))
+#' fct_lump_n(x, n = 2)
+fct_lump_lowfreq <- function(f, other_level = "Other") {
+
+  calcs <- check_calc_levels(f, NULL)
+  f <- calcs$f
+
+  new_levels <- ifelse(!in_smallest(calcs$count), levels(f), other_level)
+
+  if (other_level %in% new_levels) {
+    f <- lvls_revalue(f, new_levels)
+    fct_relevel(f, other_level, after = Inf)
+  } else {
+    f
+  }
+
+}
+
+check_calc_levels <- function(f, w = NULL) {
   f <- check_factor(f)
   w <- check_weights(w, length(f))
 
