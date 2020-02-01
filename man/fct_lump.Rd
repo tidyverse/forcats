@@ -24,12 +24,7 @@ fct_lump_min(f, min, w = NULL, other_level = "Other")
 
 fct_lump_prop(f, prop, w = NULL, other_level = "Other")
 
-fct_lump_count(
-  f,
-  count,
-  other_level = "Other",
-  ties.method = c("min", "average", "first", "last", "random", "max")
-)
+fct_lump_count(f, count, other_level = "Other")
 
 fct_lump_n(
   f,

@@ -1,5 +1,12 @@
 context("fct_lump")
 
+test_that("too many arguments fails", {
+  f <- c("a", "b", "c")
+  expect_error(fct_lump(f, n = 1, count = 1))
+  expect_error(fct_lump(f, n = 1, prop = 0.1))
+  expect_error(fct_lump(f, min = 2, count = 1))
+})
+
 test_that("positive values keeps most commmon", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
 
@@ -21,6 +28,12 @@ test_that("negative values drop most common" ,{
   expect_equal(levels(fct_lump(f, prop = -0.2)), c("c", "d", "Other"))
 })
 
+test_that("negative values throw errors for min, count" ,{
+  f <- c("a", "a", "a", "a", "b", "b", "b", "b", "c", "d")
+  expect_error(fct_lump(f, min = -1), 'positive number')
+  expect_error(fct_lump(f, count = -1), 'positive number')
+})
+
 test_that("return original factor when all element satisfy n / p condition", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
 
@@ -30,6 +43,10 @@ test_that("return original factor when all element satisfy n / p condition", {
 
   expect_equal(levels(fct_lump(f, prop = 0.01)), c("a", "b", "c", "d", "e", "f", "g"))
   expect_equal(levels(fct_lump(f, prop = -1)), c("a", "b", "c", "d", "e", "f", "g"))
+
+  expect_equal(levels(fct_lump(f, min = 0.0)), c("a", "b", "c", "d", "e", "f", "g"))
+  expect_equal(levels(fct_lump(f, count = 0)), c("a", "b", "c", "d", "e", "f", "g"))
+
 })
 
 test_that("different behaviour when apply tie function", {
@@ -111,6 +128,11 @@ test_that("do not change the label when no lumping occurs", {
   f <- c("a", "a", "a", "a", "b", "b", "b", "c", "c", "d")
   expect_equal(levels(fct_lump(f, n = 3)), c("a", "b", "c", "d"))
   expect_equal(levels(fct_lump(f, prop = 0.1)), c("a", "b", "c", "d"))
+})
+
+test_that("only have one small other level", {
+  f <- c("a", "a", "a", "a", "b", "b", "b", "c", "c", "d")
+  expect_equal(levels(fct_lump(f)), c("a", "b", "c", "Other"))
 })
 
 test_that("fct_lump_min works when not weighted", {

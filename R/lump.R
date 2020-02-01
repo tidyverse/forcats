@@ -81,7 +81,7 @@ fct_lump <- function(f, n, count, prop, min, w = NULL, other_level = "Other",
   } else if (!missing(prop)) {
     fct_lump_prop(f, prop, w, other_level)
   } else if (!missing(count)) {
-    fct_lump_count(f, count, w, other_level)
+    fct_lump_count(f, count, other_level)
   } else if (!missing(min)) {
     fct_lump_min(f, min, w, other_level)
   }
@@ -143,15 +143,13 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
 
 #' @export
 #' @rdname fct_lump
-fct_lump_count <- function(f, count, other_level = "Other",
-                           ties.method = c("min", "average", "first", "last", "random", "max")) {
+fct_lump_count <- function(f, count, other_level = "Other") {
 
-  ties.method <- match.arg(ties.method)
   calcs <- check_calc_levels(f, NULL)
   f <- calcs$f
 
   if (!is.numeric(count) || length(count) != 1 || count < 0) {
-    rlang::abort("`count` must be a number")
+    rlang::abort("`count` must be a positive number")
   }
 
   new_levels <- ifelse(calcs$count == count, levels(f), other_level)
