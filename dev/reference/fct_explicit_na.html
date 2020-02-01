@@ -42,7 +42,7 @@
 
 
 <meta property="og:title" content="Make missing values explicit — fct_explicit_na" />
-<meta property="og:description" content="This gives missing value an explicit factor level, ensuring that they
+<meta property="og:description" content="This gives missing values an explicit factor level, ensuring that they
 appear in summaries and on plots." />
 <meta property="og:image" content="https://forcats.tidyverse.org/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -151,7 +151,7 @@ appear in summaries and on plots." />
     </div>
 
     <div class="ref-description">
-    <p>This gives missing value an explicit factor level, ensuring that they
+    <p>This gives missing values an explicit factor level, ensuring that they
 appear in summaries and on plots.</p>
     </div>
 
@@ -166,20 +166,28 @@ appear in summaries and on plots.</p>
     </tr>
     <tr>
       <th>na_level</th>
-      <td><p>Level to use for missing values.</p></td>
+      <td><p>Level to use for missing values: this is what NAs will be changed to.</p></td>
     </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>f1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"a"</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='fl'>NA</span>, <span class='st'>"c"</span>, <span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"b"</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>f1</span>)</div><div class='output co'>#&gt; f1
-#&gt; a b c 
-#&gt; 4 2 2 </div><div class='input'>
+<span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>f1</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 2
+#&gt;   f         n
+#&gt;   &lt;fct&gt; &lt;int&gt;
+#&gt; 1 a         4
+#&gt; 2 b         2
+#&gt; 3 c         2
+#&gt; 4 &lt;NA&gt;      3</div><div class='input'>
 <span class='no'>f2</span> <span class='kw'>&lt;-</span> <span class='fu'>fct_explicit_na</span>(<span class='no'>f1</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>f2</span>)</div><div class='output co'>#&gt; f2
-#&gt;         a         b         c (Missing) 
-#&gt;         4         2         2         3 </div></pre>
+<span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>f2</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 2
+#&gt;   f             n
+#&gt;   &lt;fct&gt;     &lt;int&gt;
+#&gt; 1 a             4
+#&gt; 2 b             2
+#&gt; 3 c             2
+#&gt; 4 (Missing)     3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
