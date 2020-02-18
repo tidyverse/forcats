@@ -41,12 +41,12 @@ a non-position aesthetic. \code{last2()} and \code{first2()} are helpers for \co
 }
 \examples{
 df <- tibble::tribble(
-~color,     ~a, ~b,
-"blue",      1,  2,
-"green",     6,  2,
-"purple",    3,  3,
-"red",       2,  3,
-"yellow",    5,  1
+  ~color,     ~a, ~b,
+  "blue",      1,  2,
+  "green",     6,  2,
+  "purple",    3,  3,
+  "red",       2,  3,
+  "yellow",    5,  1
 )
 df$color <- factor(df$color)
 fct_reorder(df$color, df$a, min)
