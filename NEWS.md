@@ -1,9 +1,9 @@
 # forcats (development version)
 
-* New functions `fct_lump_prop()` (preserve f which appear > prop), `fct_lump_count()` 
-  (preserve count of f == n), `fct_lump_n()` (preserve most or least frequent n levels), 
-  and `fct_lump_lowfreq()` (preserve all but the least frequent level) (@jonocarroll, #167, #142).
-  Added support to throw error if any of `n`, `prop`, `min`, or `count` are not numeric.
+* New family of funtions splits up `fct_lump()` into individual use cases:
+  `fct_lump_prop()`, `fct_lump_count()`, `fct_lump_n()`, `fct_lump_lowfreq()`
+  (@jonocarroll, #167, #142). All error if any of `n`, `prop`, `min`, or `count` 
+  are not numeric.
 
 * `fct_c()`, `fct_collapse()` and `recode()` are now explicitly
   documented as using dynamic dots

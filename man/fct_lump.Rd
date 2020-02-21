@@ -39,20 +39,15 @@ fct_lump_lowfreq(f, other_level = "Other")
 \arguments{
 \item{f}{A factor (or character vector).}
 
-\item{n, prop}{If both \code{n} and \code{prop} are missing, \code{fct_lump()} lumps
-together the least frequent levels into "other", while ensuring that
-"other" is still the smallest level. It's particularly useful in
-conjunction with \code{\link{fct_inorder}()}.
-
-Positive \code{n} preserves the most common \code{n} values.
+\item{n}{Positive \code{n} preserves the most common \code{n} values.
 Negative \code{n} preserves the least common \code{-n} values.
-It there are ties, you will get at least \code{abs(n)} values.
-
-Positive \code{prop} lumps values which do not appear at least
-\code{prop} of the time. Negative \code{prop} lumps values that
-do not appear at most \code{-prop} of the time.}
+It there are ties, you will get at least \code{abs(n)} values.}
 
 \item{count}{Values which do not appear \code{count} times will be lumped.}
+
+\item{prop}{Positive \code{prop} lumps values which do not appear at least
+\code{prop} of the time. Negative \code{prop} lumps values that
+do not appear at most \code{-prop} of the time.}
 
 \item{min}{Preserve values that appear at least \code{min} number of times.}
 
@@ -66,47 +61,51 @@ placed at end of levels.}
 treated. See \code{\link[=rank]{rank()}} for details.}
 }
 \description{
+A family for lumping together levels that meet some criteria.
 \itemize{
-\item \code{fct_lump()} lumps together least/most common levels (as defined by \code{n} and
-\code{prop}) into "other".
-\item \code{fct_lump_min()} lumps together all levels which don't appear at least
-\code{min} number of times.
-\item \code{fct_lump_prop()} lumps together all levels which appear at or below a proportion of \code{prop}.
-\item \code{fct_lump_count()} lumps together all levels which don't appear exactly \code{n} number of times.
-\item \code{fct_lump_n()} lumps together all levels but the most frequent \code{n} levels (least frequent if \code{n < 0})
-\item \code{fct_lump_lowfreq()} lumps together the lowest frequency level (the default behaviour of \code{fct_lump()})
+\item \code{fct_lump_min()}: lumps levels that appear fewer than \code{min} times.
+\item \code{fct_lump_prop()}: lumps level that appear in fewer \code{prop * n} times.
+\item \code{fct_lump_count()}: lumps levels that don't appear exactly \code{n} number of times.
+\item \code{fct_lump_n()} lumps all levels except for the \code{n} most frequent
+(or least frequent if \code{n < 0})
+\item \code{fct_lump_lowfreq()} lumps together the least frequent levels, ensuring
+that "other" is still the smallest level.
 }
+
+\code{fct_lump()} exists primarily for historical reasons, as it automatically
+picks between these different methods depending on its arguments.
+We no longer recommend that you use it.
 }
 \examples{
 x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
 x \%>\% table()
-x \%>\% fct_lump() \%>\% table()
-x \%>\% fct_lump() \%>\% fct_inorder() \%>\% table()
+x \%>\% fct_lump_lowfreq() \%>\% table()
+x \%>\% fct_lump_lowfreq() \%>\% fct_inorder() \%>\% table()
 
 x <- factor(letters[rpois(100, 5)])
 x
 table(x)
-table(fct_lump(x))
+table(fct_lump_lowfreq(x))
 
 # Use positive values to collapse the rarest
-fct_lump(x, n = 3)
-fct_lump(x, prop = 0.1)
+fct_lump_n(x, n = 3)
+fct_lump_prop(x, prop = 0.1)
 
 # Use negative values to collapse the most common
-fct_lump(x, n = -3)
-fct_lump(x, prop = -0.1)
+fct_lump_n(x, n = -3)
+fct_lump_prop(x, prop = -0.1)
 
 # Use weighted frequencies
 w <- c(rep(2, 50), rep(1, 50))
-fct_lump(x, n = 5, w = w)
+fct_lump_n(x, n = 5, w = w)
 
 # Use ties.method to control how tied factors are collapsed
-fct_lump(x, n = 6)
-fct_lump(x, n = 6, ties.method = "max")
+fct_lump_n(x, n = 6)
+fct_lump_n(x, n = 6, ties.method = "max")
 
-# Use min to control a minimum number of appearances at or
-# below which levels will be lumped
-fct_lump_min(x, min = 10)
+# Use fct_lump_min() to lump together all levels with fewer than `n` values
+table(fct_lump_min(x, min = 10))
+table(fct_lump_min(x, min = 15))
 }
 \seealso{
 \code{\link[=fct_other]{fct_other()}} to convert specified levels to other.

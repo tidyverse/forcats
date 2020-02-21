@@ -1,26 +1,24 @@
 #' Lump together factor levels into "other"
 #'
-#' * `fct_lump()` lumps together least/most common levels (as defined by `n` and
-#' `prop`) into "other".
-#' * `fct_lump_min()` lumps together all levels which don't appear at least
-#' `min` number of times.
-#' * `fct_lump_prop()` lumps together all levels which appear at or below a proportion of `prop`.
-#' * `fct_lump_count()` lumps together all levels which don't appear exactly `n` number of times.
-#' * `fct_lump_n()` lumps together all levels but the most frequent `n` levels (least frequent if `n < 0`)
-#' * `fct_lump_lowfreq()` lumps together the lowest frequency level (the default behaviour of `fct_lump()`)
+#' @description
+#' A family for lumping together levels that meet some criteria.
+#' * `fct_lump_min()`: lumps levels that appear fewer than `min` times.
+#' * `fct_lump_prop()`: lumps level that appear in fewer `prop * n` times.
+#' * `fct_lump_count()`: lumps levels that don't appear exactly `n` number of times.
+#' * `fct_lump_n()` lumps all levels except for the `n` most frequent
+#'    (or least frequent if `n < 0`)
+#' * `fct_lump_lowfreq()` lumps together the least frequent levels, ensuring
+#'    that "other" is still the smallest level.
+#'
+#' `fct_lump()` exists primarily for historical reasons, as it automatically
+#' picks between these different methods depending on its arguments.
+#' We no longer recommend that you use it.
 #'
 #' @param f A factor (or character vector).
-#' @param n,prop
-#'   If both `n` and `prop` are missing, `fct_lump()` lumps
-#'   together the least frequent levels into "other", while ensuring that
-#'   "other" is still the smallest level. It's particularly useful in
-#'   conjunction with \code{\link{fct_inorder}()}.
-#'
-#'   Positive `n` preserves the most common `n` values.
+#' @param n Positive `n` preserves the most common `n` values.
 #'   Negative `n` preserves the least common `-n` values.
 #'   It there are ties, you will get at least `abs(n)` values.
-#'
-#'   Positive `prop` lumps values which do not appear at least
+#' @param prop  Positive `prop` lumps values which do not appear at least
 #'   `prop` of the time. Negative `prop` lumps values that
 #'   do not appear at most `-prop` of the time.
 #' @param count Values which do not appear `count` times will be lumped.
@@ -36,33 +34,33 @@
 #' @examples
 #' x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
 #' x %>% table()
-#' x %>% fct_lump() %>% table()
-#' x %>% fct_lump() %>% fct_inorder() %>% table()
+#' x %>% fct_lump_lowfreq() %>% table()
+#' x %>% fct_lump_lowfreq() %>% fct_inorder() %>% table()
 #'
 #' x <- factor(letters[rpois(100, 5)])
 #' x
 #' table(x)
-#' table(fct_lump(x))
+#' table(fct_lump_lowfreq(x))
 #'
 #' # Use positive values to collapse the rarest
-#' fct_lump(x, n = 3)
-#' fct_lump(x, prop = 0.1)
+#' fct_lump_n(x, n = 3)
+#' fct_lump_prop(x, prop = 0.1)
 #'
 #' # Use negative values to collapse the most common
-#' fct_lump(x, n = -3)
-#' fct_lump(x, prop = -0.1)
+#' fct_lump_n(x, n = -3)
+#' fct_lump_prop(x, prop = -0.1)
 #'
 #' # Use weighted frequencies
 #' w <- c(rep(2, 50), rep(1, 50))
-#' fct_lump(x, n = 5, w = w)
+#' fct_lump_n(x, n = 5, w = w)
 #'
 #' # Use ties.method to control how tied factors are collapsed
-#' fct_lump(x, n = 6)
-#' fct_lump(x, n = 6, ties.method = "max")
+#' fct_lump_n(x, n = 6)
+#' fct_lump_n(x, n = 6, ties.method = "max")
 #'
-#' # Use min to control a minimum number of appearances at or
-#' # below which levels will be lumped
-#' fct_lump_min(x, min = 10)
+#' # Use fct_lump_min() to lump together all levels with fewer than `n` values
+#' table(fct_lump_min(x, min = 10))
+#' table(fct_lump_min(x, min = 15))
 fct_lump <- function(f, n, count, prop, min, w = NULL, other_level = "Other",
                      ties.method = c("min", "average", "first", "last", "random", "max")) {
 
