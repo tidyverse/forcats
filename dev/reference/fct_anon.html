@@ -172,63 +172,63 @@ the values nor the order of the levels are preserved.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>gss_cat</span>$<span class='no'>relig</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; # A tibble: 16 x 2
+    <pre class="examples"><div class='input'><span class='no'>gss_cat</span>$<span class='no'>relig</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 16 x 2</span><span>
 #&gt;    f                           n
-#&gt;    &lt;fct&gt;                   &lt;int&gt;
-#&gt;  1 No answer                  93
-#&gt;  2 Don't know                 15
-#&gt;  3 Inter-nondenominational   109
-#&gt;  4 Native american            23
-#&gt;  5 Christian                 689
-#&gt;  6 Orthodox-christian         95
-#&gt;  7 Moslem/islam              104
-#&gt;  8 Other eastern              32
-#&gt;  9 Hinduism                   71
-#&gt; 10 Buddhism                  147
-#&gt; 11 Other                     224
-#&gt; 12 None                     3523
-#&gt; 13 Jewish                    388
-#&gt; 14 Catholic                 5124
-#&gt; 15 Protestant              10846
-#&gt; 16 Not applicable              0</div><div class='input'><span class='no'>gss_cat</span>$<span class='no'>relig</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_anon</span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; # A tibble: 16 x 2
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>                   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> No answer                  93
+#&gt; </span><span style='color: #555555;'> 2</span><span> Don't know                 15
+#&gt; </span><span style='color: #555555;'> 3</span><span> Inter-nondenominational   109
+#&gt; </span><span style='color: #555555;'> 4</span><span> Native american            23
+#&gt; </span><span style='color: #555555;'> 5</span><span> Christian                 689
+#&gt; </span><span style='color: #555555;'> 6</span><span> Orthodox-christian         95
+#&gt; </span><span style='color: #555555;'> 7</span><span> Moslem/islam              104
+#&gt; </span><span style='color: #555555;'> 8</span><span> Other eastern              32
+#&gt; </span><span style='color: #555555;'> 9</span><span> Hinduism                   71
+#&gt; </span><span style='color: #555555;'>10</span><span> Buddhism                  147
+#&gt; </span><span style='color: #555555;'>11</span><span> Other                     224
+#&gt; </span><span style='color: #555555;'>12</span><span> None                     </span><span style='text-decoration: underline;'>3</span><span>523
+#&gt; </span><span style='color: #555555;'>13</span><span> Jewish                    388
+#&gt; </span><span style='color: #555555;'>14</span><span> Catholic                 </span><span style='text-decoration: underline;'>5</span><span>124
+#&gt; </span><span style='color: #555555;'>15</span><span> Protestant              </span><span style='text-decoration: underline;'>10</span><span>846
+#&gt; </span><span style='color: #555555;'>16</span><span> Not applicable              0</div><div class='input'><span class='no'>gss_cat</span>$<span class='no'>relig</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_anon</span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 16 x 2</span><span>
 #&gt;    f         n
-#&gt;    &lt;fct&gt; &lt;int&gt;
-#&gt;  1 01    10846
-#&gt;  2 02     3523
-#&gt;  3 03     5124
-#&gt;  4 04       95
-#&gt;  5 05       23
-#&gt;  6 06      689
-#&gt;  7 07       15
-#&gt;  8 08      147
-#&gt;  9 09       32
-#&gt; 10 10      388
-#&gt; 11 11        0
-#&gt; 12 12      109
-#&gt; 13 13       93
-#&gt; 14 14      104
-#&gt; 15 15      224
-#&gt; 16 16       71</div><div class='input'><span class='no'>gss_cat</span>$<span class='no'>relig</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_anon</span>(<span class='st'>"X"</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; # A tibble: 16 x 2
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> 01    </span><span style='text-decoration: underline;'>10</span><span>846
+#&gt; </span><span style='color: #555555;'> 2</span><span> 02     </span><span style='text-decoration: underline;'>3</span><span>523
+#&gt; </span><span style='color: #555555;'> 3</span><span> 03     </span><span style='text-decoration: underline;'>5</span><span>124
+#&gt; </span><span style='color: #555555;'> 4</span><span> 04       95
+#&gt; </span><span style='color: #555555;'> 5</span><span> 05       23
+#&gt; </span><span style='color: #555555;'> 6</span><span> 06      689
+#&gt; </span><span style='color: #555555;'> 7</span><span> 07       15
+#&gt; </span><span style='color: #555555;'> 8</span><span> 08      147
+#&gt; </span><span style='color: #555555;'> 9</span><span> 09       32
+#&gt; </span><span style='color: #555555;'>10</span><span> 10      388
+#&gt; </span><span style='color: #555555;'>11</span><span> 11        0
+#&gt; </span><span style='color: #555555;'>12</span><span> 12      109
+#&gt; </span><span style='color: #555555;'>13</span><span> 13       93
+#&gt; </span><span style='color: #555555;'>14</span><span> 14      104
+#&gt; </span><span style='color: #555555;'>15</span><span> 15      224
+#&gt; </span><span style='color: #555555;'>16</span><span> 16       71</div><div class='input'><span class='no'>gss_cat</span>$<span class='no'>relig</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_anon</span>(<span class='st'>"X"</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 16 x 2</span><span>
 #&gt;    f         n
-#&gt;    &lt;fct&gt; &lt;int&gt;
-#&gt;  1 X01     147
-#&gt;  2 X02     689
-#&gt;  3 X03      71
-#&gt;  4 X04     104
-#&gt;  5 X05      15
-#&gt;  6 X06      95
-#&gt;  7 X07    5124
-#&gt;  8 X08    3523
-#&gt;  9 X09   10846
-#&gt; 10 X10       0
-#&gt; 11 X11      93
-#&gt; 12 X12      23
-#&gt; 13 X13      32
-#&gt; 14 X14     388
-#&gt; 15 X15     109
-#&gt; 16 X16     224</div></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> X01     147
+#&gt; </span><span style='color: #555555;'> 2</span><span> X02     689
+#&gt; </span><span style='color: #555555;'> 3</span><span> X03      71
+#&gt; </span><span style='color: #555555;'> 4</span><span> X04     104
+#&gt; </span><span style='color: #555555;'> 5</span><span> X05      15
+#&gt; </span><span style='color: #555555;'> 6</span><span> X06      95
+#&gt; </span><span style='color: #555555;'> 7</span><span> X07    </span><span style='text-decoration: underline;'>5</span><span>124
+#&gt; </span><span style='color: #555555;'> 8</span><span> X08    </span><span style='text-decoration: underline;'>3</span><span>523
+#&gt; </span><span style='color: #555555;'> 9</span><span> X09   </span><span style='text-decoration: underline;'>10</span><span>846
+#&gt; </span><span style='color: #555555;'>10</span><span> X10       0
+#&gt; </span><span style='color: #555555;'>11</span><span> X11      93
+#&gt; </span><span style='color: #555555;'>12</span><span> X12      23
+#&gt; </span><span style='color: #555555;'>13</span><span> X13      32
+#&gt; </span><span style='color: #555555;'>14</span><span> X14     388
+#&gt; </span><span style='color: #555555;'>15</span><span> X15     109
+#&gt; </span><span style='color: #555555;'>16</span><span> X16     224</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>

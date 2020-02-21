@@ -175,45 +175,45 @@
     <p>Downloaded from <a href='https://gssdataexplorer.norc.org/'>https://gssdataexplorer.norc.org/</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>gss_cat</span></div><div class='output co'>#&gt; # A tibble: 21,483 x 9
+    <pre class="examples"><div class='input'><span class='no'>gss_cat</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 21,483 x 9</span><span>
 #&gt;     year marital     age race  rincome    partyid     relig     denom    tvhours
-#&gt;    &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;fct&gt; &lt;fct&gt;      &lt;fct&gt;       &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt;
-#&gt;  1  2000 Never ma…    26 White $8000 to … Ind,near r… Protesta… Souther…      12
-#&gt;  2  2000 Divorced     48 White $8000 to … Not str re… Protesta… Baptist…      NA
-#&gt;  3  2000 Widowed      67 White Not appli… Independent Protesta… No deno…       2
-#&gt;  4  2000 Never ma…    39 White Not appli… Ind,near r… Orthodox… Not app…       4
-#&gt;  5  2000 Divorced     25 White Not appli… Not str de… None      Not app…       1
-#&gt;  6  2000 Married      25 White $20000 - … Strong dem… Protesta… Souther…      NA
-#&gt;  7  2000 Never ma…    36 White $25000 or… Not str re… Christian Not app…       3
-#&gt;  8  2000 Divorced     44 White $7000 to … Ind,near d… Protesta… Luthera…      NA
-#&gt;  9  2000 Married      44 White $25000 or… Not str de… Protesta… Other          0
-#&gt; 10  2000 Married      47 White $25000 or… Strong rep… Protesta… Souther…       3
-#&gt; # … with 21,473 more rows</div><div class='input'>
-<span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>gss_cat</span>$<span class='no'>relig</span>)</div><div class='output co'>#&gt; # A tibble: 16 x 2
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>  </span><span style='text-decoration: underline;'>2</span><span>000 Never ma…    26 White $8000 to … Ind,near r… Protesta… Souther…      12
+#&gt; </span><span style='color: #555555;'> 2</span><span>  </span><span style='text-decoration: underline;'>2</span><span>000 Divorced     48 White $8000 to … Not str re… Protesta… Baptist…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #555555;'> 3</span><span>  </span><span style='text-decoration: underline;'>2</span><span>000 Widowed      67 White Not appli… Independent Protesta… No deno…       2
+#&gt; </span><span style='color: #555555;'> 4</span><span>  </span><span style='text-decoration: underline;'>2</span><span>000 Never ma…    39 White Not appli… Ind,near r… Orthodox… Not app…       4
+#&gt; </span><span style='color: #555555;'> 5</span><span>  </span><span style='text-decoration: underline;'>2</span><span>000 Divorced     25 White Not appli… Not str de… None      Not app…       1
+#&gt; </span><span style='color: #555555;'> 6</span><span>  </span><span style='text-decoration: underline;'>2</span><span>000 Married      25 White $20000 - … Strong dem… Protesta… Souther…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #555555;'> 7</span><span>  </span><span style='text-decoration: underline;'>2</span><span>000 Never ma…    36 White $25000 or… Not str re… Christian Not app…       3
+#&gt; </span><span style='color: #555555;'> 8</span><span>  </span><span style='text-decoration: underline;'>2</span><span>000 Divorced     44 White $7000 to … Ind,near d… Protesta… Luthera…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #555555;'> 9</span><span>  </span><span style='text-decoration: underline;'>2</span><span>000 Married      44 White $25000 or… Not str de… Protesta… Other          0
+#&gt; </span><span style='color: #555555;'>10</span><span>  </span><span style='text-decoration: underline;'>2</span><span>000 Married      47 White $25000 or… Strong rep… Protesta… Souther…       3
+#&gt; </span><span style='color: #555555;'># … with 21,473 more rows</span><span></div><div class='input'>
+<span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>gss_cat</span>$<span class='no'>relig</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 16 x 2</span><span>
 #&gt;    f                           n
-#&gt;    &lt;fct&gt;                   &lt;int&gt;
-#&gt;  1 No answer                  93
-#&gt;  2 Don't know                 15
-#&gt;  3 Inter-nondenominational   109
-#&gt;  4 Native american            23
-#&gt;  5 Christian                 689
-#&gt;  6 Orthodox-christian         95
-#&gt;  7 Moslem/islam              104
-#&gt;  8 Other eastern              32
-#&gt;  9 Hinduism                   71
-#&gt; 10 Buddhism                  147
-#&gt; 11 Other                     224
-#&gt; 12 None                     3523
-#&gt; 13 Jewish                    388
-#&gt; 14 Catholic                 5124
-#&gt; 15 Protestant              10846
-#&gt; 16 Not applicable              0</div><div class='input'><span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='fu'><a href='fct_lump.html'>fct_lump</a></span>(<span class='no'>gss_cat</span>$<span class='no'>relig</span>))</div><div class='output co'>#&gt; # A tibble: 2 x 2
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>                   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> No answer                  93
+#&gt; </span><span style='color: #555555;'> 2</span><span> Don't know                 15
+#&gt; </span><span style='color: #555555;'> 3</span><span> Inter-nondenominational   109
+#&gt; </span><span style='color: #555555;'> 4</span><span> Native american            23
+#&gt; </span><span style='color: #555555;'> 5</span><span> Christian                 689
+#&gt; </span><span style='color: #555555;'> 6</span><span> Orthodox-christian         95
+#&gt; </span><span style='color: #555555;'> 7</span><span> Moslem/islam              104
+#&gt; </span><span style='color: #555555;'> 8</span><span> Other eastern              32
+#&gt; </span><span style='color: #555555;'> 9</span><span> Hinduism                   71
+#&gt; </span><span style='color: #555555;'>10</span><span> Buddhism                  147
+#&gt; </span><span style='color: #555555;'>11</span><span> Other                     224
+#&gt; </span><span style='color: #555555;'>12</span><span> None                     </span><span style='text-decoration: underline;'>3</span><span>523
+#&gt; </span><span style='color: #555555;'>13</span><span> Jewish                    388
+#&gt; </span><span style='color: #555555;'>14</span><span> Catholic                 </span><span style='text-decoration: underline;'>5</span><span>124
+#&gt; </span><span style='color: #555555;'>15</span><span> Protestant              </span><span style='text-decoration: underline;'>10</span><span>846
+#&gt; </span><span style='color: #555555;'>16</span><span> Not applicable              0</div><div class='input'><span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='fu'><a href='fct_lump.html'>fct_lump</a></span>(<span class='no'>gss_cat</span>$<span class='no'>relig</span>))</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2 x 2</span><span>
 #&gt;   f              n
-#&gt;   &lt;fct&gt;      &lt;int&gt;
-#&gt; 1 Protestant 10846
-#&gt; 2 Other      10637</div></pre>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> Protestant </span><span style='text-decoration: underline;'>10</span><span>846
+#&gt; </span><span style='color: #555555;'>2</span><span> Other      </span><span style='text-decoration: underline;'>10</span><span>637</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#format">Format</a></li>

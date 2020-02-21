@@ -175,19 +175,19 @@ each vector will be replaced with the name.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>gss_cat</span>$<span class='no'>partyid</span>)</div><div class='output co'>#&gt; # A tibble: 10 x 2
+    <pre class="examples"><div class='input'><span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>gss_cat</span>$<span class='no'>partyid</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 10 x 2</span><span>
 #&gt;    f                      n
-#&gt;    &lt;fct&gt;              &lt;int&gt;
-#&gt;  1 No answer            154
-#&gt;  2 Don't know             1
-#&gt;  3 Other party          393
-#&gt;  4 Strong republican   2314
-#&gt;  5 Not str republican  3032
-#&gt;  6 Ind,near rep        1791
-#&gt;  7 Independent         4119
-#&gt;  8 Ind,near dem        2499
-#&gt;  9 Not str democrat    3690
-#&gt; 10 Strong democrat     3490</div><div class='input'>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> No answer            154
+#&gt; </span><span style='color: #555555;'> 2</span><span> Don't know             1
+#&gt; </span><span style='color: #555555;'> 3</span><span> Other party          393
+#&gt; </span><span style='color: #555555;'> 4</span><span> Strong republican   </span><span style='text-decoration: underline;'>2</span><span>314
+#&gt; </span><span style='color: #555555;'> 5</span><span> Not str republican  </span><span style='text-decoration: underline;'>3</span><span>032
+#&gt; </span><span style='color: #555555;'> 6</span><span> Ind,near rep        </span><span style='text-decoration: underline;'>1</span><span>791
+#&gt; </span><span style='color: #555555;'> 7</span><span> Independent         </span><span style='text-decoration: underline;'>4</span><span>119
+#&gt; </span><span style='color: #555555;'> 8</span><span> Ind,near dem        </span><span style='text-decoration: underline;'>2</span><span>499
+#&gt; </span><span style='color: #555555;'> 9</span><span> Not str democrat    </span><span style='text-decoration: underline;'>3</span><span>690
+#&gt; </span><span style='color: #555555;'>10</span><span> Strong democrat     </span><span style='text-decoration: underline;'>3</span><span>490</div><div class='input'>
 <span class='no'>partyid2</span> <span class='kw'>&lt;-</span> <span class='fu'>fct_collapse</span>(<span class='no'>gss_cat</span>$<span class='no'>partyid</span>,
   <span class='kw'>missing</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"No answer"</span>, <span class='st'>"Don't know"</span>),
   <span class='kw'>other</span> <span class='kw'>=</span> <span class='st'>"Other party"</span>,
@@ -195,16 +195,16 @@ each vector will be replaced with the name.</p></td>
   <span class='kw'>ind</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ind,near rep"</span>, <span class='st'>"Independent"</span>, <span class='st'>"Ind,near dem"</span>),
   <span class='kw'>dem</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Not str democrat"</span>, <span class='st'>"Strong democrat"</span>)
 )
-<span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>partyid2</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 2
+<span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>partyid2</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 2</span><span>
 #&gt;   f           n
-#&gt;   &lt;fct&gt;   &lt;int&gt;
-#&gt; 1 missing   155
-#&gt; 2 other     393
-#&gt; 3 rep      5346
-#&gt; 4 ind      8409
-#&gt; 5 dem      7180</div></pre>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> missing   155
+#&gt; </span><span style='color: #555555;'>2</span><span> other     393
+#&gt; </span><span style='color: #555555;'>3</span><span> rep      </span><span style='text-decoration: underline;'>5</span><span>346
+#&gt; </span><span style='color: #555555;'>4</span><span> ind      </span><span style='text-decoration: underline;'>8</span><span>409
+#&gt; </span><span style='color: #555555;'>5</span><span> dem      </span><span style='text-decoration: underline;'>7</span><span>180</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
