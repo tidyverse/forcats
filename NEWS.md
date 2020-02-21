@@ -82,7 +82,7 @@
 
 * `fct_explicit_na()` also replaces NAs encoded in levels.
 
-* `fct_lump()` correctly acccounts for `NA` values in input (#41)
+* `fct_lump()` correctly accounts for `NA` values in input (#41)
 
 * `lvls_revalue()` preserves NA levels.
 

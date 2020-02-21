@@ -1,6 +1,6 @@
 #' Reorder factor levels by hand
 #'
-#' This is a generalisaton of [stats::relevel()] that allows you to move any
+#' This is a generalisation of [stats::relevel()] that allows you to move any
 #' number of levels to any location.
 #'
 #' @param .f A factor (or character vector).
