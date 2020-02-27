@@ -4,7 +4,6 @@
 #' A family for lumping together levels that meet some criteria.
 #' * `fct_lump_min()`: lumps levels that appear fewer than `min` times.
 #' * `fct_lump_prop()`: lumps level that appear in fewer `prop * n` times.
-#' * `fct_lump_count()`: lumps levels that don't appear exactly `n` number of times.
 #' * `fct_lump_n()` lumps all levels except for the `n` most frequent
 #'    (or least frequent if `n < 0`)
 #' * `fct_lump_lowfreq()` lumps together the least frequent levels, ensuring
@@ -21,8 +20,7 @@
 #' @param prop  Positive `prop` lumps values which do not appear at least
 #'   `prop` of the time. Negative `prop` lumps values that
 #'   do not appear at most `-prop` of the time.
-#' @param count Values which do not appear `count` times will be lumped.
-#' @param min Preserve values that appear at least `min` number of times.
+#' @param min Preserve levels that appear at least `min` number of times.
 #' @param w An optional numeric vector giving weights for frequency of
 #'   each value (not level) in f.
 #' @param other_level Value of level used for "other" values. Always
@@ -61,27 +59,21 @@
 #' # Use fct_lump_min() to lump together all levels with fewer than `n` values
 #' table(fct_lump_min(x, min = 10))
 #' table(fct_lump_min(x, min = 15))
-fct_lump <- function(f, n, count, prop, min, w = NULL, other_level = "Other",
+fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
                      ties.method = c("min", "average", "first", "last", "random", "max")) {
 
   ties.method <- match.arg(ties.method)
   check_calc_levels(f, w)
 
-  ## only one method at a time
-  if (sum(!missing(n), !missing(prop), !missing(count), !missing(min)) > 1L) {
-    stop("Only one of 'n', 'prop', 'count', and 'min' can be provided at a time", call. = FALSE)
-  }
 
-  if (all(missing(n), missing(prop), missing(count), missing(min))) {
+  if (missing(n) && missing(prop)) {
     fct_lump_lowfreq(f, other_level = other_level)
-  } else if (!missing(n)) {
+  } else if (missing(prop)) {
     fct_lump_n(f, n, w, other_level, ties.method)
-  } else if (!missing(prop)) {
+  } else if (missing(n)) {
     fct_lump_prop(f, prop, w, other_level)
-  } else if (!missing(count)) {
-    fct_lump_count(f, count, other_level)
-  } else if (!missing(min)) {
-    fct_lump_min(f, min, w, other_level)
+  } else {
+    abort("Must supply only one of `n` and `prop`")
   }
 }
 
@@ -136,34 +128,8 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
   } else {
     f
   }
-
 }
 
-#' @export
-#' @rdname fct_lump
-fct_lump_count <- function(f, count, other_level = "Other") {
-
-  calcs <- check_calc_levels(f, NULL)
-  f <- calcs$f
-
-  if (!is.numeric(count) || length(count) != 1 || count < 0) {
-    rlang::abort("`count` must be a positive number")
-  }
-
-  new_levels <- ifelse(calcs$count == count, levels(f), other_level)
-  if (sum(calcs$count == count) == 0L) {
-    # No lumping needed
-    return(f)
-  }
-
-  if (other_level %in% new_levels) {
-    f <- lvls_revalue(f, new_levels)
-    fct_relevel(f, other_level, after = Inf)
-  } else {
-    f
-  }
-
-}
 
 #' @export
 #' @rdname fct_lump

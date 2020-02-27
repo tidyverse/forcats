@@ -28,12 +28,6 @@ test_that("negative values drop most common" ,{
   expect_equal(levels(fct_lump(f, prop = -0.2)), c("c", "d", "Other"))
 })
 
-test_that("negative values throw errors for min, count" ,{
-  f <- c("a", "a", "a", "a", "b", "b", "b", "b", "c", "d")
-  expect_error(fct_lump(f, min = -1), 'positive number')
-  expect_error(fct_lump(f, count = -1), 'positive number')
-})
-
 test_that("return original factor when all element satisfy n / p condition", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
 
@@ -43,10 +37,6 @@ test_that("return original factor when all element satisfy n / p condition", {
 
   expect_equal(levels(fct_lump(f, prop = 0.01)), c("a", "b", "c", "d", "e", "f", "g"))
   expect_equal(levels(fct_lump(f, prop = -1)), c("a", "b", "c", "d", "e", "f", "g"))
-
-  expect_equal(levels(fct_lump(f, min = 0.0)), c("a", "b", "c", "d", "e", "f", "g"))
-  expect_equal(levels(fct_lump(f, count = 0)), c("a", "b", "c", "d", "e", "f", "g"))
-
 })
 
 test_that("different behaviour when apply tie function", {
@@ -170,13 +160,6 @@ test_that("fct_lump_prop works when weighted", {
 
   expect_equal(levels(fct_lump_prop(f, prop = 0.3, w = w)), c("c", "d", "Other"))
   expect_equal(levels(fct_lump_prop(f, prop = 0.2, w = w)), c("c", "d", "Other"))
-})
-
-test_that("fct_lump_count works when not weighted", {
-  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
-
-  expect_equal(levels(fct_lump_count(f, count = 2)), c("b", "Other"))
-  expect_equal(levels(fct_lump_count(f, count = 1)), c("c", "d", "e", "f", "g", "Other"))
 })
 
 # Default -----------------------------------------------------------------

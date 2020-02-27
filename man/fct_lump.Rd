@@ -4,7 +4,6 @@
 \alias{fct_lump}
 \alias{fct_lump_min}
 \alias{fct_lump_prop}
-\alias{fct_lump_count}
 \alias{fct_lump_n}
 \alias{fct_lump_lowfreq}
 \title{Lump together factor levels into "other"}
@@ -12,9 +11,7 @@
 fct_lump(
   f,
   n,
-  count,
   prop,
-  min,
   w = NULL,
   other_level = "Other",
   ties.method = c("min", "average", "first", "last", "random", "max")
@@ -23,8 +20,6 @@ fct_lump(
 fct_lump_min(f, min, w = NULL, other_level = "Other")
 
 fct_lump_prop(f, prop, w = NULL, other_level = "Other")
-
-fct_lump_count(f, count, other_level = "Other")
 
 fct_lump_n(
   f,
@@ -43,13 +38,9 @@ fct_lump_lowfreq(f, other_level = "Other")
 Negative \code{n} preserves the least common \code{-n} values.
 It there are ties, you will get at least \code{abs(n)} values.}
 
-\item{count}{Values which do not appear \code{count} times will be lumped.}
-
 \item{prop}{Positive \code{prop} lumps values which do not appear at least
 \code{prop} of the time. Negative \code{prop} lumps values that
 do not appear at most \code{-prop} of the time.}
-
-\item{min}{Preserve values that appear at least \code{min} number of times.}
 
 \item{w}{An optional numeric vector giving weights for frequency of
 each value (not level) in f.}
@@ -59,13 +50,14 @@ placed at end of levels.}
 
 \item{ties.method}{A character string specifying how ties are
 treated. See \code{\link[=rank]{rank()}} for details.}
+
+\item{min}{Preserve levels that appear at least \code{min} number of times.}
 }
 \description{
 A family for lumping together levels that meet some criteria.
 \itemize{
 \item \code{fct_lump_min()}: lumps levels that appear fewer than \code{min} times.
 \item \code{fct_lump_prop()}: lumps level that appear in fewer \code{prop * n} times.
-\item \code{fct_lump_count()}: lumps levels that don't appear exactly \code{n} number of times.
 \item \code{fct_lump_n()} lumps all levels except for the \code{n} most frequent
 (or least frequent if \code{n < 0})
 \item \code{fct_lump_lowfreq()} lumps together the least frequent levels, ensuring
