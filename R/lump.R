@@ -3,7 +3,7 @@
 #' @description
 #' A family for lumping together levels that meet some criteria.
 #' * `fct_lump_min()`: lumps levels that appear fewer than `min` times.
-#' * `fct_lump_prop()`: lumps level that appear in fewer `prop * n` times.
+#' * `fct_lump_prop()`: lumps levels that appear in fewer `prop * n` times.
 #' * `fct_lump_n()` lumps all levels except for the `n` most frequent
 #'    (or least frequent if `n < 0`)
 #' * `fct_lump_lowfreq()` lumps together the least frequent levels, ensuring
@@ -32,8 +32,10 @@
 #' @examples
 #' x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
 #' x %>% table()
+#' x %>% fct_lump_n(3) %>% table()
+#' x %>% fct_lump_prop(0.10) %>% table()
+#' x %>% fct_lump_min(5) %>% table()
 #' x %>% fct_lump_lowfreq() %>% table()
-#' x %>% fct_lump_lowfreq() %>% fct_inorder() %>% table()
 #'
 #' x <- factor(letters[rpois(100, 5)])
 #' x

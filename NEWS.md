@@ -1,7 +1,7 @@
 # forcats (development version)
 
-* New family of funtions splits up `fct_lump()` into individual use cases:
-  `fct_lump_prop()`, `fct_lump_n()`, `fct_lump_lowfreq()` 
+* Three new functions split up `fct_lump()` into individual use cases:
+  `fct_lump_prop()`, `fct_lump_n()`, `fct_lump_lowfreq()`. 
   (@jonocarroll, #167, #142). All error if any of `n`, `prop`, `min`, or `count` 
   are not numeric.
 

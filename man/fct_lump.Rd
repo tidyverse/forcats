@@ -57,7 +57,7 @@ treated. See \code{\link[=rank]{rank()}} for details.}
 A family for lumping together levels that meet some criteria.
 \itemize{
 \item \code{fct_lump_min()}: lumps levels that appear fewer than \code{min} times.
-\item \code{fct_lump_prop()}: lumps level that appear in fewer \code{prop * n} times.
+\item \code{fct_lump_prop()}: lumps levels that appear in fewer \code{prop * n} times.
 \item \code{fct_lump_n()} lumps all levels except for the \code{n} most frequent
 (or least frequent if \code{n < 0})
 \item \code{fct_lump_lowfreq()} lumps together the least frequent levels, ensuring
@@ -71,8 +71,10 @@ We no longer recommend that you use it.
 \examples{
 x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
 x \%>\% table()
+x \%>\% fct_lump_n(3) \%>\% table()
+x \%>\% fct_lump_prop(0.10) \%>\% table()
+x \%>\% fct_lump_min(5) \%>\% table()
 x \%>\% fct_lump_lowfreq() \%>\% table()
-x \%>\% fct_lump_lowfreq() \%>\% fct_inorder() \%>\% table()
 
 x <- factor(letters[rpois(100, 5)])
 x
