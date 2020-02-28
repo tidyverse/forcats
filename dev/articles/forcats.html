@@ -254,26 +254,26 @@
 <span id="cb12-2"><a href="#cb12-2"></a><span class="st">  </span><span class="kw"><a href="../reference/fct_shuffle.html">fct_shuffle</a></span>()</span>
 <span id="cb12-3"><a href="#cb12-3"></a></span>
 <span id="cb12-4"><a href="#cb12-4"></a><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(reshuffled_income)</span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="co">#&gt;  [1] "$25000 or more" "$1000 to 2999"  "$8000 to 9999"  "$6000 to 6999" </span></span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="co">#&gt;  [5] "Not applicable" "$3000 to 3999"  "$4000 to 4999"  "$5000 to 5999" </span></span>
-<span id="cb12-7"><a href="#cb12-7"></a><span class="co">#&gt;  [9] "$10000 - 14999" "Don't know"     "No answer"      "Lt $1000"      </span></span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="co">#&gt; [13] "$7000 to 7999"  "$20000 - 24999" "$15000 - 19999" "Refused"</span></span></code></pre></div>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="co">#&gt;  [1] "$15000 - 19999" "$5000 to 5999"  "$3000 to 3999"  "$7000 to 7999" </span></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="co">#&gt;  [5] "No answer"      "$1000 to 2999"  "Not applicable" "Don't know"    </span></span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="co">#&gt;  [9] "Lt $1000"       "$25000 or more" "$8000 to 9999"  "Refused"       </span></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="co">#&gt; [13] "$4000 to 4999"  "$10000 - 14999" "$20000 - 24999" "$6000 to 6999"</span></span></code></pre></div>
 <p>Now if we plotted it, it would show in this order, which is all over the place! How can we fix this and put it in the right order?</p>
 <p>We can use the function <code><a href="../reference/fct_relevel.html">fct_relevel()</a></code> when we need to manually reorder our factor levels. In addition to the factor, you give it a character vector of level names, and specify where you want to move them. It defaults to moving them to the front, but you can move them after another level with the argument <code>after</code>. If you want to move it to the end, you set <code>after</code> equal to <code>Inf</code>.</p>
 <p>For example, let’s say we wanted to move <code>Lt $1000</code> and <code>$1000 to 2999</code> to the front. We would write:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw"><a href="../reference/fct_relevel.html">fct_relevel</a></span>(reshuffled_income, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Lt $1000"</span>, <span class="st">"$1000 to 2999"</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>()</span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="co">#&gt;  [1] "Lt $1000"       "$1000 to 2999"  "$25000 or more" "$8000 to 9999" </span></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="co">#&gt;  [5] "$6000 to 6999"  "Not applicable" "$3000 to 3999"  "$4000 to 4999" </span></span>
-<span id="cb13-5"><a href="#cb13-5"></a><span class="co">#&gt;  [9] "$5000 to 5999"  "$10000 - 14999" "Don't know"     "No answer"     </span></span>
-<span id="cb13-6"><a href="#cb13-6"></a><span class="co">#&gt; [13] "$7000 to 7999"  "$20000 - 24999" "$15000 - 19999" "Refused"</span></span></code></pre></div>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co">#&gt;  [1] "Lt $1000"       "$1000 to 2999"  "$15000 - 19999" "$5000 to 5999" </span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="co">#&gt;  [5] "$3000 to 3999"  "$7000 to 7999"  "No answer"      "Not applicable"</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="co">#&gt;  [9] "Don't know"     "$25000 or more" "$8000 to 9999"  "Refused"       </span></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="co">#&gt; [13] "$4000 to 4999"  "$10000 - 14999" "$20000 - 24999" "$6000 to 6999"</span></span></code></pre></div>
 <p>What if we want to move them to the second and third place?</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw"><a href="../reference/fct_relevel.html">fct_relevel</a></span>(reshuffled_income, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Lt $1000"</span>, <span class="st">"$1000 to 2999"</span>), <span class="dt">after =</span> <span class="dv">1</span>) <span class="op">%&gt;%</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>()</span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="co">#&gt;  [1] "$25000 or more" "Lt $1000"       "$1000 to 2999"  "$8000 to 9999" </span></span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="co">#&gt;  [5] "$6000 to 6999"  "Not applicable" "$3000 to 3999"  "$4000 to 4999" </span></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="co">#&gt;  [9] "$5000 to 5999"  "$10000 - 14999" "Don't know"     "No answer"     </span></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="co">#&gt; [13] "$7000 to 7999"  "$20000 - 24999" "$15000 - 19999" "Refused"</span></span></code></pre></div>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="co">#&gt;  [1] "$15000 - 19999" "Lt $1000"       "$1000 to 2999"  "$5000 to 5999" </span></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co">#&gt;  [5] "$3000 to 3999"  "$7000 to 7999"  "No answer"      "Not applicable"</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="co">#&gt;  [9] "Don't know"     "$25000 or more" "$8000 to 9999"  "Refused"       </span></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="co">#&gt; [13] "$4000 to 4999"  "$10000 - 14999" "$20000 - 24999" "$6000 to 6999"</span></span></code></pre></div>
 </div>
   </div>
 
