@@ -152,6 +152,7 @@
 <a href="#forcats-development-version" class="anchor"></a>forcats (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>Three new functions split up <code><a href="../reference/fct_lump.html">fct_lump()</a></code> into individual use cases: <code><a href="../reference/fct_lump.html">fct_lump_prop()</a></code>, <code><a href="../reference/fct_lump.html">fct_lump_n()</a></code>, <code><a href="../reference/fct_lump.html">fct_lump_lowfreq()</a></code>. (<a href='https://github.com/jonocarroll'>@jonocarroll</a>, <a href='https://github.com/tidyverse/forcats/issues/167'>#167</a>, <a href='https://github.com/tidyverse/forcats/issues/142'>#142</a>). All error if any of <code>n</code>, <code>prop</code>, <code>min</code>, or <code>count</code> are not numeric.</p></li>
 <li><p><code><a href="../reference/fct_count.html">fct_count()</a></code> no longer converts implicit NAs into explicit NAs (<a href='https://github.com/tidyverse/forcats/issues/151'>#151</a>).</p></li>
 <li><p><code><a href="../reference/fct_inorder.html">fct_inseq()</a></code> behaves more robustly when factor levels aren’t all numbers (<a href='https://github.com/tidyverse/forcats/issues/221'>#221</a>).</p></li>
 <li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> gains a logical method that always returns a factor with levels “FALSE” and “TRUE” (<a href='https://github.com/tidyverse/forcats/issues/185'>#185</a>).</p></li>
