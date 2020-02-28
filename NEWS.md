@@ -1,5 +1,10 @@
 # forcats (development version)
 
+* Three new functions split up `fct_lump()` into individual use cases:
+  `fct_lump_prop()`, `fct_lump_n()`, `fct_lump_lowfreq()`. 
+  (@jonocarroll, #167, #142). All error if any of `n`, `prop`, `min`, or `count` 
+  are not numeric.
+
 * `fct_count()` no longer converts implicit NAs into explicit NAs (#151).
 
 * `fct_inseq()` behaves more robustly when factor levels aren't all numbers
