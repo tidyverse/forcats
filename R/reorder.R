@@ -95,7 +95,12 @@ first2 <- function(.x, .y) {
 
 
 
-#' Reorder factors levels by first appearance, frequency, or numeric order.
+#' Reorder factor levels by first appearance, frequency, or numeric order.
+#'
+#' This family of functions changes only the order of the levels.
+#' * `fct_inorder()`: by the order in which they first appear.
+#' * `fct_infreq()`: by number of observations with each level (largest first)
+#' * `fct_inseq()`: by numeric value of level.
 #'
 #' @inheritParams lvls_reorder
 #' @param f A factor
@@ -106,9 +111,8 @@ first2 <- function(.x, .y) {
 #' fct_inorder(f)
 #' fct_infreq(f)
 #'
-#' fct_inorder(f, ordered = TRUE)
-#'
-#' f <- factor(sample(1:10))
+#' f <- factor(1:3, levels = c("3", "2", "1"))
+#' f
 #' fct_inseq(f)
 fct_inorder <- function(f, ordered = NA) {
   f <- check_factor(f)
