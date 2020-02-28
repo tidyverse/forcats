@@ -9,7 +9,7 @@ fct_collapse(.f, ..., other_level = NULL, group_other)
 \arguments{
 \item{.f}{A factor (or character vector).}
 
-\item{...}{A series of named character vectors. The levels in
+\item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> A series of named character vectors. The levels in
 each vector will be replaced with the name.}
 
 \item{other_level}{Value of level used for "other" values. Always

@@ -3,17 +3,23 @@
 \name{fct_lump}
 \alias{fct_lump}
 \alias{fct_lump_min}
-\title{Lump together least/most common factor levels into "other"}
+\title{Lump together factor levels into "other"}
 \usage{
-fct_lump(f, n, prop, w = NULL, other_level = "Other",
-  ties.method = c("min", "average", "first", "last", "random", "max"))
+fct_lump(
+  f,
+  n,
+  prop,
+  w = NULL,
+  other_level = "Other",
+  ties.method = c("min", "average", "first", "last", "random", "max")
+)
 
 fct_lump_min(f, min, w = NULL, other_level = "Other")
 }
 \arguments{
 \item{f}{A factor (or character vector).}
 
-\item{n, prop}{If both \code{n} and \code{prop} are missing, \code{fct_lump} lumps
+\item{n, prop}{If both \code{n} and \code{prop} are missing, \code{fct_lump()} lumps
 together the least frequent levels into "other", while ensuring that
 "other" is still the smallest level. It's particularly useful in
 conjunction with \code{\link{fct_inorder}()}.
@@ -38,7 +44,10 @@ treated. See \code{\link[=rank]{rank()}} for details.}
 \item{min}{Preserves values that appear at least \code{min} number of times.}
 }
 \description{
-Lump together least/most common factor levels into "other"
+\code{fct_lump()} lumps together least/most common levels (as defined by \code{n} and
+\code{prop}) into "other".
+\code{fct_lump_min()} lumps together all levels which don't appear at least
+\code{min} number of times.
 }
 \examples{
 x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))

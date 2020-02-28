@@ -1,7 +1,7 @@
 #' Change factor levels by hand
 #'
 #' @param .f A factor (or character vector).
-#' @param ... A sequence of named character vectors where the
+#' @param ... <[`dynamic-dots`][rlang::dyn-dots]> A sequence of named character vectors where the
 #'   name gives the new level, and the value gives the old level.
 #'   Levels not otherwise mentioned will be left as is. Levels can
 #'   be removed by naming them `NULL`. Uses tidy dots.
@@ -51,7 +51,7 @@ fct_recode <- function(.f, ...) {
 }
 
 check_recode_levels <- function(...) {
-  levels <- rlang::dots_list(...)
+  levels <- rlang::list2(...)
 
   is_ok <- function(x) is.character(x) && length(x) == 1
   ok <- vapply(levels, is_ok, logical(1))

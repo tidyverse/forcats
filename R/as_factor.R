@@ -34,7 +34,12 @@ as_factor <- function(x, ...) {
 #' @rdname as_factor
 #' @export
 as_factor.factor <- function(x, ...) {
-  x
+  structure(
+    x,
+    class = "factor",
+    label = attr(x, "label", exact = TRUE),
+    levels = attr(x, "levels", exact = TRUE)
+  )
 }
 
 #' @rdname as_factor
@@ -51,4 +56,10 @@ as_factor.character <- function(x, ...) {
 #' @export
 as_factor.numeric <- function(x, ...) {
   factor(x)
+}
+
+#' @rdname as_factor
+#' @export
+as_factor.logical <- function(x, ...) {
+  factor(x, levels = c("FALSE", "TRUE"))
 }

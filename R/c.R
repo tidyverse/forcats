@@ -3,8 +3,9 @@
 #' This is a useful way of patching together factors from multiple sources
 #' that really should have the same levels but don't.
 #'
-#' @param ... Individual factors. Uses tidy dots, so you can splice in a list
-#'   of factors with `!!!`.
+#' @param ... <[`dynamic-dots`][rlang::dyn-dots]> Individual
+#'   factors. Uses tidy dots, so you can splice in a list of factors
+#'   with `!!!`.
 #' @export
 #' @examples
 #' fa <- factor("a")
@@ -18,7 +19,7 @@
 #' fs <- list(fa, fb, fab)
 #' fct_c(!!!fs)
 fct_c <- function(...) {
-  fs <- rlang::dots_list(...)
+  fs <- rlang::list2(...)
   fs <- check_factor_list(fs, "...")
 
   if (length(fs) == 0) {

@@ -12,12 +12,11 @@ fct_anon(f, prefix = "")
 \item{prefix}{A character prefix to insert in front of the random labels.}
 }
 \description{
-Replaces factor levels with arbitary numeric identifiers. Neither
+Replaces factor levels with arbitrary numeric identifiers. Neither
 the values nor the order of the levels are preserved.
 }
 \examples{
 gss_cat$relig \%>\% fct_count()
-gss_cat$relig \%>\% fct_anon() \%>\% fct_count()
 gss_cat$relig \%>\% fct_anon() \%>\% fct_count()
 gss_cat$relig \%>\% fct_anon("X") \%>\% fct_count()
 }

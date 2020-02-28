@@ -4,12 +4,11 @@
 \alias{fct_cross}
 \title{Combine levels from two or more factors to create a new factor}
 \usage{
-fct_cross(.f, ..., sep = ":", keep_empty = FALSE)
+fct_cross(..., sep = ":", keep_empty = FALSE)
 }
 \arguments{
-\item{.f}{A factor or character vector}
-
-\item{...}{Additional factors or character vectors}
+\item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> Additional factors
+or character vectors.}
 
 \item{sep}{A character string to separate the levels}
 

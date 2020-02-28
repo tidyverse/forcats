@@ -1,8 +1,13 @@
-#' Lump together least/most common factor levels into "other"
+#' Lump together factor levels into "other"
+#'
+#' `fct_lump()` lumps together least/most common levels (as defined by `n` and
+#' `prop`) into "other".
+#' `fct_lump_min()` lumps together all levels which don't appear at least
+#' `min` number of times.
 #'
 #' @param f A factor (or character vector).
 #' @param n,prop
-#'   If both `n` and `prop` are missing, `fct_lump` lumps
+#'   If both `n` and `prop` are missing, `fct_lump()` lumps
 #'   together the least frequent levels into "other", while ensuring that
 #'   "other" is still the smallest level. It's particularly useful in
 #'   conjunction with \code{\link{fct_inorder}()}.
@@ -67,6 +72,9 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
   if (!xor(missing(n), missing(prop))) {
     new_levels <- ifelse(!in_smallest(count), levels, other_level)
   } else if (!missing(n)) {
+    if (!is.numeric(n) || length(n) != 1) {
+      abort("`n` must be a number")
+    }
     if (n < 0) {
       rank <- rank(count, ties = ties.method)
       n <- -n
@@ -81,6 +89,9 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
 
     new_levels <- ifelse(rank <= n, levels, other_level)
   } else if (!missing(prop)) {
+    if (!is.numeric(prop) || length(prop) != 1) {
+      abort("`prop` must be a number")
+    }
     prop_n <- count / total
     if (prop < 0) {
       new_levels <- ifelse(prop_n <= -prop, levels, other_level)
@@ -103,7 +114,6 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
 }
 
 #' @param min Preserves values that appear at least `min` number of times.
-#'
 #' @export
 #' @rdname fct_lump
 #' @examples
