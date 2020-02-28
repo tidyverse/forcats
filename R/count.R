@@ -18,7 +18,7 @@ fct_count <- function(f, sort = FALSE, prop = FALSE) {
 
   df <- tibble::tibble(
     f = fct_inorder(c(levels(f2), if (n_na > 0) NA)),
-    n = c(tabulate(f2), if (n_na > 0) n_na)
+    n = c(tabulate(f2, nlevels(f)), if (n_na > 0) n_na)
   )
 
   if (sort) {
