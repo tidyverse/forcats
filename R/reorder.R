@@ -132,12 +132,11 @@ fct_inseq <- function(f, ordered = NA) {
   f <- check_factor(f)
 
   num_levels <- suppressWarnings(as.numeric(levels(f)))
-  new_levels <- sort(num_levels)
 
-  if (length(new_levels) == 0) {
+  if (all(is.na(num_levels))) {
     stop("At least one existing level must be coercible to numeric.", call. = FALSE)
   }
 
-  refactor(f, new_levels, ordered = ordered)
+  lvls_reorder(f, order(num_levels), ordered = ordered)
 }
 

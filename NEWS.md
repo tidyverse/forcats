@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* `fct_inseq()` behaves more robustly when factor levels aren't all numbers
+  (#221).
+
 * `as_factor()` gains a logical method that always returns a factor with
   levels "FALSE" and "TRUE" (#185).
 
