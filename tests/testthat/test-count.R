@@ -2,9 +2,10 @@ context("test-count.R")
 
 test_that("0 count for empty levels", {
   f <- factor(levels = c("a", "b"))
-  out <- fct_count(f)
+  expect_equal(fct_count(f)$n, c(0, 0))
 
-  expect_equal(out$n, c(0, 0))
+  f <- factor("a", levels = c("a", "b", "c"))
+  expect_equal(fct_count(f)$n, c(1, 0, 0))
 })
 
 test_that("counts NA even when not in levels", {
