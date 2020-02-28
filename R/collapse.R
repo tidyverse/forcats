@@ -17,12 +17,11 @@
 #'   dem = c("Not str democrat", "Strong democrat")
 #' )
 #' fct_count(partyid2)
-fct_collapse <- function(.f, ..., other_level = NULL, group_other) {
+fct_collapse <- function(.f, ..., other_level = NULL, group_other = "DEPRECATED") {
 
-  if(!missing(group_other)) {
+  if (!missing(group_other)) {
     warning("`group_other` is deprecated. Please use `other_level` instead")
-    if(group_other == TRUE & is.null(other_level)) {
-      message("Setting `other_level` = 'Other', since `group_other` is TRUE")
+    if (isTRUE(group_other) && is.null(other_level)) {
       other_level <- "Other"
     }
   }

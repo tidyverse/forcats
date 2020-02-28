@@ -18,7 +18,10 @@
 
 * `first2()`, a `fct_reorder2()` helper function, sorts `.y` by the first value of `.x` (@jtr13).
   
-* fixed bug in `fct_collapse()` so it now correctly collapses factors when `group_other = TRUE` (#172), and makes `"Other"` the last level (#202) (@gtm19, #172 & #202)
+* `fct_collapse()` now accepts a `other_level` argument, to allow a 
+   user-specified `Other` level (@gtm19, #194). It now correctly collapses 
+   factors when `other_level` is not `NULL` (#172), and makes `"Other"` the 
+   last level (#202) (@gtm19, #172 & #202)
 
 # forcats 0.4.0
 
@@ -27,7 +30,6 @@
 * `fct_collapse()` gains a `group_other` argument to allow you to group all 
   un-named levels into `"Other"`. (#100, @AmeliaMN)
 
-* `fct_collapse()` now accepts a `other_level` argument, to allow a user-specified `Other` level (@gtm19, #194)
 
 * `fct_cross()` creates a new factor containing the combined levels from two 
   or more input factors, similar to `base::interaction` (@tslumley, #136)
