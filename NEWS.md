@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* `as_factor()` gains a logical method that always returns a factor with
+  levels "FALSE" and "TRUE" (#185).
+
 * `fct_c()`, `fct_collapse()` and `recode()` are now explicitly
   documented as using dynamic dots
   https://rlang.r-lib.org/reference/dyn-dots.html (@labouz, #234).

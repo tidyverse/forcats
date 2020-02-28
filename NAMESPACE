@@ -2,6 +2,7 @@
 
 S3method(as_factor,character)
 S3method(as_factor,factor)
+S3method(as_factor,logical)
 S3method(as_factor,numeric)
 export("%>%")
 export(as_factor)
