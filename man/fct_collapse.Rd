@@ -4,7 +4,7 @@
 \alias{fct_collapse}
 \title{Collapse factor levels into manually defined groups}
 \usage{
-fct_collapse(.f, ..., other_level = NULL, group_other)
+fct_collapse(.f, ..., other_level = NULL, group_other = "DEPRECATED")
 }
 \arguments{
 \item{.f}{A factor (or character vector).}
