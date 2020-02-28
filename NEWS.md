@@ -1,5 +1,7 @@
 # forcats (development version)
 
+* `fct_count()` no longer converts implicit NAs into explicit NAs (#151).
+
 * `fct_inseq()` behaves more robustly when factor levels aren't all numbers
   (#221).
 
