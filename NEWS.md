@@ -1,33 +1,31 @@
 # forcats (development version)
 
-* Three new functions split up `fct_lump()` into individual use cases:
-  `fct_lump_prop()`, `fct_lump_n()`, `fct_lump_lowfreq()`. 
-  (@jonocarroll, #167, #142). All error if any of `n`, `prop`, `min`, or `count` 
-  are not numeric.
+* `as_factor()` gains a logical method that always returns a factor with
+  levels "FALSE" and "TRUE" (#185), and converts ordered factors into plain 
+  factor (@robinson_es, #216).
+
+* `fct_c()`, `fct_collapse()` and `fct_recode()` are now explicitly
+  documented as using [dynamic dots](https://rlang.r-lib.org/reference/dyn-dots.html) 
+  (@labouz, #234).
+
+* `fct_collapse()` now accepts a `other_level` argument, to allow a 
+   user-specified `Other` level (@gtm19, #194). It now correctly collapses 
+   factors when `other_level` is not `NULL` (#172), and makes `"Other"` the 
+   last level (#202) (@gtm19, #172 & #202)
 
 * `fct_count()` no longer converts implicit NAs into explicit NAs (#151).
 
 * `fct_inseq()` behaves more robustly when factor levels aren't all numbers
   (#221).
 
-* `as_factor()` gains a logical method that always returns a factor with
-  levels "FALSE" and "TRUE" (#185).
+* `fct_lump()` has been split up into three new functions: `fct_lump_prop()`, 
+  `fct_lump_n()`, and `fct_lump_lowfreq()`. (@jonocarroll, #167, #142). 
+  All `fct_lump_()` functions check their inputs more carefully 
+  (@robinson_es, #169)
 
-* `fct_c()`, `fct_collapse()` and `recode()` are now explicitly
-  documented as using dynamic dots
-  https://rlang.r-lib.org/reference/dyn-dots.html (@labouz, #234).
-
-* `fct_lump()` throws error if `n` or `prop` is not numeric (@robinson_es, #169). 
-
-* `as_factor()` converts ordered factor into plain factor (@robinson_es, #216).
-
-* `first2()`, a `fct_reorder2()` helper function, sorts `.y` by the first value of `.x` (@jtr13).
+* `fct_reorder2()` gains a helper function `first2()`, that sorts `.y` by the 
+  first value of `.x` (@jtr13).
   
-* `fct_collapse()` now accepts a `other_level` argument, to allow a 
-   user-specified `Other` level (@gtm19, #194). It now correctly collapses 
-   factors when `other_level` is not `NULL` (#172), and makes `"Other"` the 
-   last level (#202) (@gtm19, #172 & #202)
-
 # forcats 0.4.0
 
 ## New features
