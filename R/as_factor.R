@@ -1,4 +1,4 @@
-#' Convert input to a factor.
+#' Convert input to a factor
 #'
 #' Compared to base R, when `x` is a character, this function creates
 #' levels in the order in which they appear, which will be the same on every

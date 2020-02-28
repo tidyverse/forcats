@@ -6,7 +6,7 @@
 \alias{as_factor.character}
 \alias{as_factor.numeric}
 \alias{as_factor.logical}
-\title{Convert input to a factor.}
+\title{Convert input to a factor}
 \usage{
 as_factor(x, ...)
 

@@ -4,7 +4,7 @@
 \alias{fct_inorder}
 \alias{fct_infreq}
 \alias{fct_inseq}
-\title{Reorder factor levels by first appearance, frequency, or numeric order.}
+\title{Reorder factor levels by first appearance, frequency, or numeric order}
 \usage{
 fct_inorder(f, ordered = NA)
 

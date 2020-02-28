@@ -95,7 +95,7 @@ first2 <- function(.x, .y) {
 
 
 
-#' Reorder factor levels by first appearance, frequency, or numeric order.
+#' Reorder factor levels by first appearance, frequency, or numeric order
 #'
 #' This family of functions changes only the order of the levels.
 #' * `fct_inorder()`: by the order in which they first appear.
