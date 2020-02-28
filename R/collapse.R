@@ -3,7 +3,8 @@
 #' @param .f A factor (or character vector).
 #' @param ... <[`dynamic-dots`][rlang::dyn-dots]> A series of named character vectors. The levels in
 #'   each vector will be replaced with the name.
-#' @param group_other Replace all levels not named in `...` with "Other"?
+#' @inheritParams fct_other
+#' @param group_other Deprecated. Replace all levels not named in `...` with "Other"?
 #' @export
 #' @examples
 #' fct_count(gss_cat$partyid)
@@ -16,23 +17,30 @@
 #'   dem = c("Not str democrat", "Strong democrat")
 #' )
 #' fct_count(partyid2)
-fct_collapse <- function(.f, ..., group_other = FALSE) {
+fct_collapse <- function(.f, ..., other_level = NULL, group_other = "DEPRECATED") {
+
+  if (!missing(group_other)) {
+    warning("`group_other` is deprecated. Please use `other_level` instead")
+    if (isTRUE(group_other) && is.null(other_level)) {
+      other_level <- "Other"
+    }
+  }
+
   new <- rlang::list2(...)
   levs <- as.list(unlist(new, use.names = FALSE))
 
-  if (group_other) {
+  if (!is.null(other_level)){
     f <- check_factor(.f)
     levels <- levels(f)
-    new[["Other"]] <- levels[!levels %in% levs]
-    levs <- c(levs, new[["Other"]])
+    new[[other_level]] <- levels[!levels %in% levs]
+    levs <- c(levs, new[[other_level]])
   }
 
   names(levs) <- names(new)[rep(seq_along(new), vapply(new, length, integer(1)))]
   out <- fct_recode(.f, !!!levs)
 
-  if (group_other) {
-    fct_relevel(out, "Other", after = Inf)
-  } else {
-    out
-  }
+  if (any(levels(out) == other_level)){
+    fct_relevel(out, other_level, after = Inf)
+  } else return(out)
+
 }

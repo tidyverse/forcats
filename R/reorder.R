@@ -20,6 +20,18 @@
 #' @importFrom stats median
 #' @export
 #' @examples
+#' df <- tibble::tribble(
+#'   ~color,     ~a, ~b,
+#'   "blue",      1,  2,
+#'   "green",     6,  2,
+#'   "purple",    3,  3,
+#'   "red",       2,  3,
+#'   "yellow",    5,  1
+#' )
+#' df$color <- factor(df$color)
+#' fct_reorder(df$color, df$a, min)
+#' fct_reorder2(df$color, df$a, df$b)
+#'
 #' boxplot(Sepal.Width ~ Species, data = iris)
 #' boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width), data = iris)
 #' boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width, .desc = TRUE), data = iris)
@@ -83,7 +95,12 @@ first2 <- function(.x, .y) {
 
 
 
-#' Reorder factors levels by first appearance, frequency, or numeric order.
+#' Reorder factor levels by first appearance, frequency, or numeric order.
+#'
+#' This family of functions changes only the order of the levels.
+#' * `fct_inorder()`: by the order in which they first appear.
+#' * `fct_infreq()`: by number of observations with each level (largest first)
+#' * `fct_inseq()`: by numeric value of level.
 #'
 #' @inheritParams lvls_reorder
 #' @param f A factor
@@ -94,9 +111,8 @@ first2 <- function(.x, .y) {
 #' fct_inorder(f)
 #' fct_infreq(f)
 #'
-#' fct_inorder(f, ordered = TRUE)
-#'
-#' f <- factor(sample(1:10))
+#' f <- factor(1:3, levels = c("3", "2", "1"))
+#' f
 #' fct_inseq(f)
 fct_inorder <- function(f, ordered = NA) {
   f <- check_factor(f)
@@ -120,12 +136,11 @@ fct_inseq <- function(f, ordered = NA) {
   f <- check_factor(f)
 
   num_levels <- suppressWarnings(as.numeric(levels(f)))
-  new_levels <- sort(num_levels)
 
-  if (length(new_levels) == 0) {
+  if (all(is.na(num_levels))) {
     stop("At least one existing level must be coercible to numeric.", call. = FALSE)
   }
 
-  refactor(f, new_levels, ordered = ordered)
+  lvls_reorder(f, order(num_levels), ordered = ordered)
 }
 

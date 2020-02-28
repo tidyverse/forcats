@@ -57,3 +57,9 @@ as_factor.character <- function(x, ...) {
 as_factor.numeric <- function(x, ...) {
   factor(x)
 }
+
+#' @rdname as_factor
+#' @export
+as_factor.logical <- function(x, ...) {
+  factor(x, levels = c("FALSE", "TRUE"))
+}
