@@ -153,7 +153,7 @@
     <p>Collapse factor levels into manually defined groups</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fct_collapse</span>(<span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>group_other</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>fct_collapse</span>(<span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>other_level</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>group_other</span> <span class='kw'>=</span> <span class='st'>"DEPRECATED"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,8 +168,13 @@
 each vector will be replaced with the name.</p></td>
     </tr>
     <tr>
+      <th>other_level</th>
+      <td><p>Value of level used for "other" values. Always
+placed at end of levels.</p></td>
+    </tr>
+    <tr>
       <th>group_other</th>
-      <td><p>Replace all levels not named in <code>...</code> with "Other"?</p></td>
+      <td><p>Deprecated. Replace all levels not named in <code>...</code> with "Other"?</p></td>
     </tr>
     </table>
 
