@@ -67,7 +67,7 @@ starwars %>%
 #>    species      n
 #>    <chr>    <int>
 #>  1 Human       35
-#>  2 Droid        5
+#>  2 Droid        6
 #>  3 Gungan       3
 #>  4 Kaminoan     2
 #>  5 Mirialan     2
@@ -87,7 +87,7 @@ starwars %>%
 #> # A tibble: 4 x 2
 #>   species     n
 #>   <fct>   <int>
-#> 1 Droid       5
+#> 1 Droid       6
 #> 2 Gungan      3
 #> 3 Human      35
 #> 4 Other      39
@@ -133,5 +133,5 @@ and other discussion, please use
 ## Code of Conduct
 
 Please note that the ‘forcats’ project is released with a [Contributor
-Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this
-project, you agree to abide by its terms.
+Code of Conduct](https://forcats.tidyverse.org/CODE_OF_CONDUCT.html). By
+contributing to this project, you agree to abide by its terms.
