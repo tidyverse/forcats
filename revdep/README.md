@@ -10,7 +10,7 @@
 |collate  |en_US.UTF-8                  |
 |ctype    |en_US.UTF-8                  |
 |tz       |America/Chicago              |
-|date     |2020-02-28                   |
+|date     |2020-02-29                   |
 
 # Dependencies
 
@@ -33,10 +33,4 @@
 |vctrs      |0.2.3  |0.2.3      |   |
 
 # Revdeps
-
-## New problems (1)
-
-|package                    |version |error  |warning |note |
-|:--------------------------|:-------|:------|:-------|:----|
-|[haven](problems.md#haven) |2.2.0   |__+1__ |        |2    |
 

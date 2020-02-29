@@ -34,12 +34,7 @@ as_factor <- function(x, ...) {
 #' @rdname as_factor
 #' @export
 as_factor.factor <- function(x, ...) {
-  structure(
-    x,
-    class = "factor",
-    label = attr(x, "label", exact = TRUE),
-    levels = attr(x, "levels", exact = TRUE)
-  )
+  x
 }
 
 #' @rdname as_factor
