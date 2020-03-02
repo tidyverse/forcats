@@ -8,21 +8,31 @@
 
 <title>Changelog • forcats</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 <!-- Bootstrap -->
 <link href="../tidyverse.css" rel="stylesheet">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -32,29 +42,31 @@
 
 
 <meta property="og:title" content="Changelog" />
-
 <meta property="og:image" content="https://forcats.tidyverse.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
 
+
 <!-- mathjax -->
-<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<!-- google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script>
 <script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
- gtag('config', 'UA-115082821-1');
+  gtag('config', 'UA-115082821-1');
 </script>
+
   </head>
 
   <body>
@@ -74,7 +86,7 @@
         <a class="navbar-brand" href="../index.html">forcats</a>
         <div class="info">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
         </div>
       </div>
     </div>
@@ -95,6 +107,9 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
+      <a href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
+    </li>
+    <li>
       <a href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
     </li>
     <li>
@@ -111,7 +126,7 @@
 </li>
         <li>
   <a href="https://github.com/tidyverse/forcats">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -122,6 +137,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -131,16 +147,30 @@
       <small>Source: <a href='https://github.com/tidyverse/forcats/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="forcats-0-3-0-9000" class="section level1">
+    <div id="forcats-050" class="section level1">
 <h1 class="page-header">
-<a href="#forcats-0-3-0-9000" class="anchor"></a>forcats 0.3.0.9000<small> Unreleased </small>
+<a href="#forcats-050" class="anchor"></a>forcats 0.5.0<small> 2020-03-01 </small>
+</h1>
+<ul>
+<li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> gains a logical method that always returns a factor with levels “FALSE” and “TRUE” (<a href='https://github.com/tidyverse/forcats/issues/185'>#185</a>).</p></li>
+<li><p><code><a href="../reference/fct_c.html">fct_c()</a></code>, <code><a href="../reference/fct_collapse.html">fct_collapse()</a></code> and <code><a href="../reference/fct_recode.html">fct_recode()</a></code> are now explicitly documented as using <a href="https://rlang.r-lib.org/reference/dyn-dots.html">dynamic dots</a> (<a href='https://github.com/labouz'>@labouz</a>, <a href='https://github.com/tidyverse/forcats/issues/234'>#234</a>).</p></li>
+<li><p><code><a href="../reference/fct_collapse.html">fct_collapse()</a></code> now accepts a <code>other_level</code> argument, to allow a user-specified <code>Other</code> level (<a href='https://github.com/gtm19'>@gtm19</a>, <a href='https://github.com/tidyverse/forcats/issues/194'>#194</a>). It now correctly collapses factors when <code>other_level</code> is not <code>NULL</code> (<a href='https://github.com/tidyverse/forcats/issues/172'>#172</a>), and makes <code>"Other"</code> the last level (<a href='https://github.com/tidyverse/forcats/issues/202'>#202</a>) (<a href='https://github.com/gtm19'>@gtm19</a>, <a href='https://github.com/tidyverse/forcats/issues/172'>#172</a> &amp; <a href='https://github.com/tidyverse/forcats/issues/202'>#202</a>)</p></li>
+<li><p><code><a href="../reference/fct_count.html">fct_count()</a></code> no longer converts implicit NAs into explicit NAs (<a href='https://github.com/tidyverse/forcats/issues/151'>#151</a>).</p></li>
+<li><p><code><a href="../reference/fct_inorder.html">fct_inseq()</a></code> behaves more robustly when factor levels aren’t all numbers (<a href='https://github.com/tidyverse/forcats/issues/221'>#221</a>).</p></li>
+<li><p><code><a href="../reference/fct_lump.html">fct_lump()</a></code> has been split up into three new functions: <code><a href="../reference/fct_lump.html">fct_lump_prop()</a></code>, <code><a href="../reference/fct_lump.html">fct_lump_n()</a></code>, and <code><a href="../reference/fct_lump.html">fct_lump_lowfreq()</a></code>. (<a href='https://github.com/jonocarroll'>@jonocarroll</a>, <a href='https://github.com/tidyverse/forcats/issues/167'>#167</a>, <a href='https://github.com/tidyverse/forcats/issues/142'>#142</a>). All <code>fct_lump_()</code> functions check their inputs more carefully (<a href='https://github.com/robinson_es'>@robinson_es</a>, <a href='https://github.com/tidyverse/forcats/issues/169'>#169</a>)</p></li>
+<li><p><code><a href="../reference/fct_reorder.html">fct_reorder2()</a></code> gains a helper function <code><a href="../reference/fct_reorder.html">first2()</a></code>, that sorts <code>.y</code> by the first value of <code>.x</code> (<a href='https://github.com/jtr13'>@jtr13</a>).</p></li>
+</ul>
+</div>
+    <div id="forcats-040" class="section level1">
+<h1 class="page-header">
+<a href="#forcats-040" class="anchor"></a>forcats 0.4.0<small> 2019-02-17 </small>
 </h1>
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
 <li><p><code><a href="../reference/fct_collapse.html">fct_collapse()</a></code> gains a <code>group_other</code> argument to allow you to group all un-named levels into <code>"Other"</code>. (<a href='https://github.com/tidyverse/forcats/issues/100'>#100</a>, <a href='https://github.com/AmeliaMN'>@AmeliaMN</a>)</p></li>
-<li><p><code><a href="../reference/fct_cross.html">fct_cross()</a></code> creates a new factor containing the combined levels from two or more input factors, similar to <code><a href="https://www.rdocumentation.org/packages/base/topics/interaction">base::interaction</a></code> (<a href='https://github.com/tslumley'>@tslumley</a>, <a href='https://github.com/tidyverse/forcats/issues/136'>#136</a>)</p></li>
+<li><p><code><a href="../reference/fct_cross.html">fct_cross()</a></code> creates a new factor containing the combined levels from two or more input factors, similar to <code><a href="https://rdrr.io/r/base/interaction.html">base::interaction</a></code> (<a href='https://github.com/tslumley'>@tslumley</a>, <a href='https://github.com/tidyverse/forcats/issues/136'>#136</a>)</p></li>
 <li><p><code><a href="../reference/fct_inorder.html">fct_inseq()</a></code> reorders labels in numeric order, if possible (<a href='https://github.com/tidyverse/forcats/issues/145'>#145</a>, <a href='https://github.com/kbodwin'>@kbodwin</a>).</p></li>
 <li><p><code><a href="../reference/fct_lump.html">fct_lump_min()</a></code> preserves levels that appear at least <code>min</code> times (can also be used with the <code>w</code> weighted argument) (<a href='https://github.com/robinsones'>@robinsones</a>, <a href='https://github.com/tidyverse/forcats/issues/142'>#142</a>).</p></li>
 <li><p><code><a href="../reference/fct_match.html">fct_match()</a></code> performs validated matching, providing a safer alternative to <code>f %in% c("x", "y")</code> which silently returns <code>FALSE</code> if <code>"x"</code> or <code>"y"</code> are not levels of <code>f</code> (e.g. because of a typo) (<a href='https://github.com/tidyverse/forcats/issues/126'>#126</a>, <a href='https://github.com/jonocarroll'>@jonocarroll</a>).</p></li>
@@ -160,9 +190,9 @@
 </ul>
 </div>
 </div>
-    <div id="forcats-0-3-0" class="section level1">
+    <div id="forcats-030" class="section level1">
 <h1 class="page-header">
-<a href="#forcats-0-3-0" class="anchor"></a>forcats 0.3.0<small> 2018-02-19 </small>
+<a href="#forcats-030" class="anchor"></a>forcats 0.3.0<small> 2018-02-19 </small>
 </h1>
 <div id="api-changes" class="section level2">
 <h2 class="hasAnchor">
@@ -186,7 +216,7 @@
 <ul>
 <li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> and <code><a href="../reference/fct_inorder.html">fct_inorder()</a></code> accept NA levels (<a href='https://github.com/tidyverse/forcats/issues/98'>#98</a>).</p></li>
 <li><p><code><a href="../reference/fct_explicit_na.html">fct_explicit_na()</a></code> also replaces NAs encoded in levels.</p></li>
-<li><p><code><a href="../reference/fct_lump.html">fct_lump()</a></code> correctly acccounts for <code>NA</code> values in input (<a href='https://github.com/tidyverse/forcats/issues/41'>#41</a>)</p></li>
+<li><p><code><a href="../reference/fct_lump.html">fct_lump()</a></code> correctly accounts for <code>NA</code> values in input (<a href='https://github.com/tidyverse/forcats/issues/41'>#41</a>)</p></li>
 <li><p><code><a href="../reference/lvls.html">lvls_revalue()</a></code> preserves NA levels.</p></li>
 </ul>
 </div>
@@ -201,15 +231,15 @@
 </ul>
 </div>
 </div>
-    <div id="forcats-0-2-0" class="section level1">
+    <div id="forcats-020" class="section level1">
 <h1 class="page-header">
-<a href="#forcats-0-2-0" class="anchor"></a>forcats 0.2.0<small> 2017-01-23 </small>
+<a href="#forcats-020" class="anchor"></a>forcats 0.2.0<small> 2017-01-23 </small>
 </h1>
 <div id="new-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-functions" class="anchor"></a>New functions</h2>
 <ul>
-<li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> which works like <code><a href="https://www.rdocumentation.org/packages/base/topics/factor">as.factor()</a></code> but orders levels by appearance to avoid differences between locales (<a href='https://github.com/tidyverse/forcats/issues/39'>#39</a>).</p></li>
+<li><p><code><a href="../reference/as_factor.html">as_factor()</a></code> which works like <code><a href="https://rdrr.io/r/base/factor.html">as.factor()</a></code> but orders levels by appearance to avoid differences between locales (<a href='https://github.com/tidyverse/forcats/issues/39'>#39</a>).</p></li>
 <li><p><code><a href="../reference/fct_other.html">fct_other()</a></code> makes it easier to convert selected levels to “other” (<a href='https://github.com/tidyverse/forcats/issues/40'>#40</a>)</p></li>
 <li><p><code><a href="../reference/fct_relabel.html">fct_relabel()</a></code> allows programmatic relabeling of levels (<a href='https://github.com/tidyverse/forcats/issues/50'>#50</a>, <a href='https://github.com/krlmlr'>@krlmlr</a>).</p></li>
 </ul>
@@ -226,9 +256,9 @@
 </ul>
 </div>
 </div>
-    <div id="forcats-0-1-1" class="section level1">
+    <div id="forcats-011" class="section level1">
 <h1 class="page-header">
-<a href="#forcats-0-1-1" class="anchor"></a>forcats 0.1.1<small> 2016-09-16 </small>
+<a href="#forcats-011" class="anchor"></a>forcats 0.1.1<small> 2016-09-16 </small>
 </h1>
 <ul>
 <li><p>Minor fixes for R CMD check</p></li>
@@ -241,15 +271,17 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#forcats-0-3-0-9000">0.3.0.9000</a></li>
-        <li><a href="#forcats-0-3-0">0.3.0</a></li>
-        <li><a href="#forcats-0-2-0">0.2.0</a></li>
-        <li><a href="#forcats-0-1-1">0.1.1</a></li>
+        <li><a href="#forcats-050">0.5.0</a></li>
+        <li><a href="#forcats-040">0.4.0</a></li>
+        <li><a href="#forcats-030">0.3.0</a></li>
+        <li><a href="#forcats-020">0.2.0</a></li>
+        <li><a href="#forcats-011">0.1.1</a></li>
       </ul>
     </div>
   </div>
 
 </div>
+
 
       <footer>
       <div class="tidyverse">
@@ -262,11 +294,14 @@
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
