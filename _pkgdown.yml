@@ -71,6 +71,8 @@ navbar:
       text: News
       menu:
       - text: "Release notes"
+      - text: "Version 0.5.0"
+        href: https://www.tidyverse.org/blog/2020/03/forcats-0-5-0/
       - text: "Version 0.4.0"
         href: https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/
       - text: "Version 0.3.0"
