@@ -42,7 +42,7 @@
 #'
 #' # You'll get a warning if the levels don't exist
 #' fct_relevel(f, "e")
-fct_relevel <- function(.f, ..., after = 0L) {
+fct_relevel <- function(.f, ..., after = 0L, auto_expand = TRUE) {
   f <- check_factor(.f)
 
   old_levels <- levels(f)
@@ -52,14 +52,21 @@ fct_relevel <- function(.f, ..., after = 0L) {
     if (!is.character(first_levels)) {
       stop("Re-leveling function must return character vector", call. = FALSE)
     }
+  } else if (dots_n(...) != length(old_levels) && auto_expand == TRUE) {
+    message("NOTE: Number of new levels differ. Expanding...")
+    first_levels <- chr(...)
+    unknown <- setdiff(first_levels, old_levels)
+    f <- fct_expand(f, unknown)
+    old_levels <- levels(f)
+    first_levels <- chr(...)
+
   } else {
     first_levels <- chr(...)
-  }
-
-  unknown <- setdiff(first_levels, old_levels)
-  if (length(unknown) > 0) {
-    warning("Unknown levels in `f`: ", paste(unknown, collapse = ", "), call. = FALSE)
-    first_levels <- intersect(first_levels, old_levels)
+    unknown <- setdiff(first_levels, old_levels)
+    if (length(unknown) > 0) {
+      warning("Unknown levels in `f`: ", paste(unknown, collapse = ", "), call. = FALSE)
+      first_levels <- intersect(first_levels, old_levels)
+    }
   }
 
   new_levels <- append(setdiff(old_levels, first_levels), first_levels, after = after)
