@@ -4,7 +4,9 @@
 #' @param ... <[`dynamic-dots`][rlang::dyn-dots]> A sequence of named character vectors where the
 #'   name gives the new level, and the value gives the old level.
 #'   Levels not otherwise mentioned will be left as is. Levels can
-#'   be removed by naming them `NULL`. Uses tidy dots.
+#'   be removed by naming them `NULL`. Uses tidy dots. Can use quotes
+#'   or backticks around the new level name (e.g. `new level` = "old level"
+#'   or "new level" = "old level").
 #' @export
 #' @examples
 #' x <- factor(c("apple", "bear", "banana", "dear"))
@@ -15,6 +17,13 @@
 #'
 #' # If you name the level NULL it will be removed
 #' fct_recode(x, NULL = "apple", fruit = "banana")
+#'
+#' # You can also put the new level in quotes, if it e.g.
+#' # has spaces or other non-letter characters
+#' fct_recode(x, "fruit" = "apple", fruit = "banana")
+#'
+#' # Or use backticks (`)
+#' fct_recode(x, `fruit` = "apple", fruit = "banana")
 #'
 #' # When passing a named vector to rename levels use !!! to splice
 #' x <- factor(c("apple", "bear", "banana", "dear"))
