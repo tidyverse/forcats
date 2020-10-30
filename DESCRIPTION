@@ -13,7 +13,7 @@ Description: Helpers for reordering factor levels (including
     reversing, and randomly shuffling), and tools for modifying factor
     levels (including collapsing rare levels into other, 'anonymising',
     and manually 'recoding').
-License: GPL-3
+License: MIT + file LICENSE
 URL: http://forcats.tidyverse.org,
     https://github.com/tidyverse/forcats
 BugReports: https://github.com/tidyverse/forcats/issues

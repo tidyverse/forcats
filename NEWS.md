@@ -1,5 +1,7 @@
 # forcats (development version)
 
+* Change license to MIT (#277).
+
 # forcats 0.5.0
 
 * `as_factor()` gains a logical method that always returns a factor with
