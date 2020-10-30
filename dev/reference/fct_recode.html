@@ -43,6 +43,10 @@
 <script src="../pkgdown.js"></script>
 <link href="../tidyverse-2.css" rel="stylesheet">
 
+<!--optional theme-->
+<link href="../.css" rel="stylesheet">
+
+
 
 
 <meta property="og:title" content="Change factor levels by hand — fct_recode" />
@@ -160,7 +164,7 @@
     <p>Change factor levels by hand</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fct_recode</span>(<span class='no'>.f</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>.f</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -180,19 +184,23 @@ be removed by naming them <code>NULL</code>. Uses tidy dots.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apple"</span>, <span class='st'>"bear"</span>, <span class='st'>"banana"</span>, <span class='st'>"dear"</span>))
-<span class='fu'>fct_recode</span>(<span class='no'>x</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='st'>"apple"</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='st'>"banana"</span>)</div><div class='output co'>#&gt; [1] fruit bear  fruit dear 
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"apple"</span>, <span class='st'>"bear"</span>, <span class='st'>"banana"</span>, <span class='st'>"dear"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>x</span>, fruit <span class='op'>=</span> <span class='st'>"apple"</span>, fruit <span class='op'>=</span> <span class='st'>"banana"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] fruit bear  fruit dear 
 #&gt; Levels: fruit bear dear</div><div class='input'>
 <span class='co'># If you make a mistake you'll get a warning</span>
-<span class='fu'>fct_recode</span>(<span class='no'>x</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='st'>"apple"</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='st'>"bananana"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown levels in `f`: bananana</span></div><div class='output co'>#&gt; [1] fruit  bear   banana dear  
+<span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>x</span>, fruit <span class='op'>=</span> <span class='st'>"apple"</span>, fruit <span class='op'>=</span> <span class='st'>"bananana"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown levels in `f`: bananana</span></div><div class='output co'>#&gt; [1] fruit  bear   banana dear  
 #&gt; Levels: fruit banana bear dear</div><div class='input'>
 <span class='co'># If you name the level NULL it will be removed</span>
-<span class='fu'>fct_recode</span>(<span class='no'>x</span>, <span class='kw'>NULL</span> <span class='kw'>=</span> <span class='st'>"apple"</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='st'>"banana"</span>)</div><div class='output co'>#&gt; [1] &lt;NA&gt;  bear  fruit dear 
+<span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>x</span>, <span class='cn'>NULL</span> <span class='op'>=</span> <span class='st'>"apple"</span>, fruit <span class='op'>=</span> <span class='st'>"banana"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] &lt;NA&gt;  bear  fruit dear 
 #&gt; Levels: fruit bear dear</div><div class='input'>
 <span class='co'># When passing a named vector to rename levels use !!! to splice</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apple"</span>, <span class='st'>"bear"</span>, <span class='st'>"banana"</span>, <span class='st'>"dear"</span>))
-<span class='no'>levels</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>fruit</span> <span class='kw'>=</span> <span class='st'>"apple"</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='st'>"banana"</span>)
-<span class='fu'>fct_recode</span>(<span class='no'>x</span>, !!!<span class='no'>levels</span>)</div><div class='output co'>#&gt; [1] fruit bear  fruit dear 
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"apple"</span>, <span class='st'>"bear"</span>, <span class='st'>"banana"</span>, <span class='st'>"dear"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>levels</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>fruit <span class='op'>=</span> <span class='st'>"apple"</span>, fruit <span class='op'>=</span> <span class='st'>"banana"</span><span class='op'>)</span>
+<span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>x</span>, <span class='op'>!</span><span class='op'>!</span><span class='op'>!</span><span class='va'>levels</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] fruit bear  fruit dear 
 #&gt; Levels: fruit bear dear</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

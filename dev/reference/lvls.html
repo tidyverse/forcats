@@ -43,6 +43,10 @@
 <script src="../pkgdown.js"></script>
 <link href="../tidyverse-2.css" rel="stylesheet">
 
+<!--optional theme-->
+<link href="../.css" rel="stylesheet">
+
+
 
 
 <meta property="og:title" content="Low-level functions for manipulating levels — lvls" />
@@ -168,11 +172,11 @@ be one new level for each old level.
 include the old levels.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>lvls_reorder</span>(<span class='no'>f</span>, <span class='no'>idx</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
+    <pre class="usage"><span class='fu'>lvls_reorder</span><span class='op'>(</span><span class='va'>f</span>, <span class='va'>idx</span>, ordered <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
 
-<span class='fu'>lvls_revalue</span>(<span class='no'>f</span>, <span class='no'>new_levels</span>)
+<span class='fu'>lvls_revalue</span><span class='op'>(</span><span class='va'>f</span>, <span class='va'>new_levels</span><span class='op'>)</span>
 
-<span class='fu'>lvls_expand</span>(<span class='no'>f</span>, <span class='no'>new_levels</span>)</pre>
+<span class='fu'>lvls_expand</span><span class='op'>(</span><span class='va'>f</span>, <span class='va'>new_levels</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -204,10 +208,13 @@ because they are more specific, and hence can more carefully check their
 arguments.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>))
-<span class='fu'>lvls_reorder</span>(<span class='no'>f</span>, <span class='fl'>3</span>:<span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] a b c
-#&gt; Levels: c b a</div><div class='input'><span class='fu'>lvls_revalue</span>(<span class='no'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apple"</span>, <span class='st'>"banana"</span>, <span class='st'>"carrot"</span>))</div><div class='output co'>#&gt; [1] apple  banana carrot
-#&gt; Levels: apple banana carrot</div><div class='input'><span class='fu'>lvls_expand</span>(<span class='no'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span>))</div><div class='output co'>#&gt; [1] a b c
+    <pre class="examples"><div class='input'><span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>lvls_reorder</span><span class='op'>(</span><span class='va'>f</span>, <span class='fl'>3</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] a b c
+#&gt; Levels: c b a</div><div class='input'><span class='fu'>lvls_revalue</span><span class='op'>(</span><span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"apple"</span>, <span class='st'>"banana"</span>, <span class='st'>"carrot"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] apple  banana carrot
+#&gt; Levels: apple banana carrot</div><div class='input'><span class='fu'>lvls_expand</span><span class='op'>(</span><span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] a b c
 #&gt; Levels: a b c d</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

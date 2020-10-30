@@ -43,6 +43,10 @@
 <script src="../pkgdown.js"></script>
 <link href="../tidyverse-2.css" rel="stylesheet">
 
+<!--optional theme-->
+<link href="../.css" rel="stylesheet">
+
+
 
 
 <meta property="og:title" content="Automatically relabel factor levels, collapse as necessary — fct_relabel" />
@@ -160,7 +164,7 @@
     <p>Automatically relabel factor levels, collapse as necessary</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fct_relabel</span>(<span class='no'>.f</span>, <span class='no'>.fun</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>fct_relabel</span><span class='op'>(</span><span class='va'>.f</span>, <span class='va'>.fun</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,7 +178,7 @@
       <td><p>A function to be applied to each level. Must accept one
 character argument and return a character vector of the same length as
 its input.</p>
-<p>You can also use <code>~</code> to create as shorthand (in the style of purrr).
+<p>You can also use <code><a href='https://rdrr.io/r/base/tilde.html'>~</a></code> to create as shorthand (in the style of purrr).
 <code>~ paste(., "x")</code> is equivalent to <code>function(.) paste(., "x")</code></p></td>
     </tr>
     <tr>
@@ -185,7 +189,8 @@ its input.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>gss_cat</span>$<span class='no'>partyid</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 10 x 2</span><span>
+    <pre class="examples"><div class='input'><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>partyid</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 10 x 2</span><span>
 #&gt;    f                      n
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span> No answer            154
@@ -197,7 +202,8 @@ its input.</p>
 #&gt; </span><span style='color: #555555;'> 7</span><span> Independent         </span><span style='text-decoration: underline;'>4</span><span>119
 #&gt; </span><span style='color: #555555;'> 8</span><span> Ind,near dem        </span><span style='text-decoration: underline;'>2</span><span>499
 #&gt; </span><span style='color: #555555;'> 9</span><span> Not str democrat    </span><span style='text-decoration: underline;'>3</span><span>690
-#&gt; </span><span style='color: #555555;'>10</span><span> Strong democrat     </span><span style='text-decoration: underline;'>3</span><span>490</div><div class='input'><span class='no'>gss_cat</span>$<span class='no'>partyid</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_relabel</span>(~ <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span>(<span class='st'>","</span>, <span class='st'>", "</span>, <span class='no'>.x</span>)) <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 10 x 2</span><span>
+#&gt; </span><span style='color: #555555;'>10</span><span> Strong democrat     </span><span style='text-decoration: underline;'>3</span><span>490</div><div class='input'><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>partyid</span> <span class='op'>%&gt;%</span> <span class='fu'>fct_relabel</span><span class='op'>(</span><span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span><span class='op'>(</span><span class='st'>","</span>, <span class='st'>", "</span>, <span class='va'>.x</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 10 x 2</span><span>
 #&gt;    f                      n
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span> No answer            154
@@ -210,15 +216,16 @@ its input.</p>
 #&gt; </span><span style='color: #555555;'> 8</span><span> Ind, near dem       </span><span style='text-decoration: underline;'>2</span><span>499
 #&gt; </span><span style='color: #555555;'> 9</span><span> Not str democrat    </span><span style='text-decoration: underline;'>3</span><span>690
 #&gt; </span><span style='color: #555555;'>10</span><span> Strong democrat     </span><span style='text-decoration: underline;'>3</span><span>490</div><div class='input'>
-<span class='no'>convert_income</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>) {
-  <span class='no'>regex</span> <span class='kw'>&lt;-</span> <span class='st'>"^(?:Lt |)[$]([0-9]+).*$"</span>
-  <span class='no'>is_range</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span>(<span class='no'>regex</span>, <span class='no'>x</span>)
-  <span class='no'>num_income</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span>(<span class='no'>regex</span>, <span class='st'>"\\1"</span>, <span class='no'>x</span>[<span class='no'>is_range</span>]))
-  <span class='no'>num_income</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>trunc</a></span>(<span class='no'>num_income</span> / <span class='fl'>5000</span>) * <span class='fl'>5000</span>
-  <span class='no'>x</span>[<span class='no'>is_range</span>] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"Gt $"</span>, <span class='no'>num_income</span>)
-  <span class='no'>x</span>
-}
-<span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>gss_cat</span>$<span class='no'>rincome</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 16 x 2</span><span>
+<span class='va'>convert_income</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>regex</span> <span class='op'>&lt;-</span> <span class='st'>"^(?:Lt |)[$]([0-9]+).*$"</span>
+  <span class='va'>is_range</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='va'>regex</span>, <span class='va'>x</span><span class='op'>)</span>
+  <span class='va'>num_income</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span><span class='op'>(</span><span class='va'>regex</span>, <span class='st'>"\\1"</span>, <span class='va'>x</span><span class='op'>[</span><span class='va'>is_range</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='va'>num_income</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>trunc</a></span><span class='op'>(</span><span class='va'>num_income</span> <span class='op'>/</span> <span class='fl'>5000</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>5000</span>
+  <span class='va'>x</span><span class='op'>[</span><span class='va'>is_range</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"Gt $"</span>, <span class='va'>num_income</span><span class='op'>)</span>
+  <span class='va'>x</span>
+<span class='op'>}</span>
+<span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>rincome</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 16 x 2</span><span>
 #&gt;    f                  n
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span> No answer        183
@@ -236,11 +243,13 @@ its input.</p>
 #&gt; </span><span style='color: #555555;'>13</span><span> $3000 to 3999    276
 #&gt; </span><span style='color: #555555;'>14</span><span> $1000 to 2999    395
 #&gt; </span><span style='color: #555555;'>15</span><span> Lt $1000         286
-#&gt; </span><span style='color: #555555;'>16</span><span> Not applicable  </span><span style='text-decoration: underline;'>7</span><span>043</div><div class='input'><span class='fu'>convert_income</span>(<span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span>(<span class='no'>gss_cat</span>$<span class='no'>rincome</span>))</div><div class='output co'>#&gt;  [1] "No answer"      "Don't know"     "Refused"        "Gt $25000"     
+#&gt; </span><span style='color: #555555;'>16</span><span> Not applicable  </span><span style='text-decoration: underline;'>7</span><span>043</div><div class='input'><span class='fu'>convert_income</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span><span class='op'>(</span><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>rincome</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "No answer"      "Don't know"     "Refused"        "Gt $25000"     
 #&gt;  [5] "Gt $20000"      "Gt $15000"      "Gt $10000"      "Gt $5000"      
 #&gt;  [9] "Gt $5000"       "Gt $5000"       "Gt $5000"       "Gt $0"         
-#&gt; [13] "Gt $0"          "Gt $0"          "Gt $0"          "Not applicable"</div><div class='input'><span class='no'>rincome2</span> <span class='kw'>&lt;-</span> <span class='fu'>fct_relabel</span>(<span class='no'>gss_cat</span>$<span class='no'>rincome</span>, <span class='no'>convert_income</span>)
-<span class='fu'><a href='fct_count.html'>fct_count</a></span>(<span class='no'>rincome2</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 10 x 2</span><span>
+#&gt; [13] "Gt $0"          "Gt $0"          "Gt $0"          "Not applicable"</div><div class='input'><span class='va'>rincome2</span> <span class='op'>&lt;-</span> <span class='fu'>fct_relabel</span><span class='op'>(</span><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>rincome</span>, <span class='va'>convert_income</span><span class='op'>)</span>
+<span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='va'>rincome2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 10 x 2</span><span>
 #&gt;    f                  n
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span> No answer        183

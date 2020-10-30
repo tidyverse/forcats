@@ -43,6 +43,10 @@
 <script src="../pkgdown.js"></script>
 <link href="../tidyverse-2.css" rel="stylesheet">
 
+<!--optional theme-->
+<link href="../.css" rel="stylesheet">
+
+
 
 
 <meta property="og:title" content="Anonymise factor levels — fct_anon" />
@@ -162,7 +166,7 @@ the values nor the order of the levels are preserved." />
 the values nor the order of the levels are preserved.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fct_anon</span>(<span class='no'>f</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
+    <pre class="usage"><span class='fu'>fct_anon</span><span class='op'>(</span><span class='va'>f</span>, prefix <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,7 +183,8 @@ the values nor the order of the levels are preserved.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>gss_cat</span>$<span class='no'>relig</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 16 x 2</span><span>
+    <pre class="examples"><div class='input'><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>relig</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 16 x 2</span><span>
 #&gt;    f                           n
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>                   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span> No answer                  93
@@ -197,7 +202,8 @@ the values nor the order of the levels are preserved.</p>
 #&gt; </span><span style='color: #555555;'>13</span><span> Jewish                    388
 #&gt; </span><span style='color: #555555;'>14</span><span> Catholic                 </span><span style='text-decoration: underline;'>5</span><span>124
 #&gt; </span><span style='color: #555555;'>15</span><span> Protestant              </span><span style='text-decoration: underline;'>10</span><span>846
-#&gt; </span><span style='color: #555555;'>16</span><span> Not applicable              0</div><div class='input'><span class='no'>gss_cat</span>$<span class='no'>relig</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_anon</span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 16 x 2</span><span>
+#&gt; </span><span style='color: #555555;'>16</span><span> Not applicable              0</div><div class='input'><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>relig</span> <span class='op'>%&gt;%</span> <span class='fu'>fct_anon</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 16 x 2</span><span>
 #&gt;    f         n
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span> 01    </span><span style='text-decoration: underline;'>10</span><span>846
@@ -215,7 +221,8 @@ the values nor the order of the levels are preserved.</p>
 #&gt; </span><span style='color: #555555;'>13</span><span> 13       93
 #&gt; </span><span style='color: #555555;'>14</span><span> 14      104
 #&gt; </span><span style='color: #555555;'>15</span><span> 15      224
-#&gt; </span><span style='color: #555555;'>16</span><span> 16       71</div><div class='input'><span class='no'>gss_cat</span>$<span class='no'>relig</span> <span class='kw'>%&gt;%</span> <span class='fu'>fct_anon</span>(<span class='st'>"X"</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span>()</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 16 x 2</span><span>
+#&gt; </span><span style='color: #555555;'>16</span><span> 16       71</div><div class='input'><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>relig</span> <span class='op'>%&gt;%</span> <span class='fu'>fct_anon</span><span class='op'>(</span><span class='st'>"X"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 16 x 2</span><span>
 #&gt;    f         n
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span> X01     147
