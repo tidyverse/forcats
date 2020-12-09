@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
-[![R build status](https://github.com/tidyverse/forcats/workflows/R-CMD-check/badge.svg)](https://github.com/tidyverse/forcats)
+[![R-CMD-check](https://github.com/tidyverse/forcats/workflows/R-CMD-check/badge.svg)](https://github.com/tidyverse/forcats/actions)
 [![Codecov test coverage](https://codecov.io/gh/tidyverse/forcats/branch/master/graph/badge.svg)](https://codecov.io/gh/tidyverse/forcats?branch=master)
 <!-- badges: end -->
 

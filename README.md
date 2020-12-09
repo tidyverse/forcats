@@ -7,8 +7,7 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
-[![R build
-status](https://github.com/tidyverse/forcats/workflows/R-CMD-check/badge.svg)](https://github.com/tidyverse/forcats)
+[![R-CMD-check](https://github.com/tidyverse/forcats/workflows/R-CMD-check/badge.svg)](https://github.com/tidyverse/forcats/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/tidyverse/forcats/branch/master/graph/badge.svg)](https://codecov.io/gh/tidyverse/forcats?branch=master)
 <!-- badges: end -->
@@ -22,10 +21,10 @@ reordering character vectors to improve display. The goal of the
 problems with factors, including changing the order of levels or the
 values. Some examples include:
 
-  - `fct_reorder()`: Reordering a factor by another variable.
-  - `fct_infreq()`: Reordering a factor by the frequency of values.
-  - `fct_relevel()`: Changing the order of a factor by hand.
-  - `fct_lump()`: Collapsing the least/most frequent values of a factor
+-   `fct_reorder()`: Reordering a factor by another variable.
+-   `fct_infreq()`: Reordering a factor by the frequency of values.
+-   `fct_relevel()`: Changing the order of a factor by hand.
+-   `fct_lump()`: Collapsing the least/most frequent values of a factor
     into “other”.
 
 You can learn more about each of these in `vignette("forcats")`. If
@@ -36,10 +35,10 @@ factors](http://r4ds.had.co.nz/factors.html) in R for Data Science.
 
     # The easiest way to get forcats is to install the whole tidyverse:
     install.packages("tidyverse")
-    
+
     # Alternatively, install just forcats:
     install.packages("forcats")
-    
+
     # Or the the development version from GitHub:
     # install.packages("devtools")
     devtools::install_github("tidyverse/forcats")
@@ -117,7 +116,7 @@ For a history of factors, I recommend [*stringsAsFactors: An
 unauthorized
 biography*](http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/)
 by Roger Peng and [*stringsAsFactors =
-\<sigh\>*](http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh)
+&lt;sigh&gt;*](http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh)
 by Thomas Lumley. If you want to learn more about other approaches to
 working with factors and categorical data, I recommend [*Wrangling
 categorical data in R*](https://peerj.com/preprints/3163/), by Amelia
