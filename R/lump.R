@@ -147,10 +147,10 @@ fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
   }
 
   if (n < 0) {
-    rank <- rank(calcs$count, ties = ties.method)
+    rank <- rank(calcs$count, ties.method = ties.method)
     n <- -n
   } else {
-    rank <- rank(-calcs$count, ties = ties.method)
+    rank <- rank(-calcs$count, ties.method = ties.method)
   }
 
   new_levels <- ifelse(rank <= n, levels(f), other_level)
