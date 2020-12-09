@@ -108,8 +108,7 @@
 
       
 
-      </header><script src="forcats_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="forcats_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="forcats_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="forcats_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to forcats</h1>
@@ -127,21 +126,21 @@
 <div id="ordering-by-frequency" class="section level2">
 <h2 class="hasAnchor">
 <a href="#ordering-by-frequency" class="anchor"></a>Ordering by frequency</h2>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://forcats.tidyverse.org">forcats</a></span><span class="op">)</span></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://forcats.tidyverse.org">forcats</a></span><span class="op">)</span></code></pre></div>
 <p>Let’s try answering the question, “what are the most common hair colors of star wars characters?” Let’s start off by making a bar plot:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">starwars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hair_color</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">starwars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hair_color</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="forcats_files/figure-html/initial-plot-1.png" width="700"></p>
 <p>That’s okay, but it would be more helpful the graph was ordered by count. This is a case of an <strong>unordered</strong> categorical variable where we want it ordered by its frequency. To do so, we can use the function <code><a href="../reference/fct_inorder.html">fct_infreq()</a></code>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">starwars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="../reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="va">hair_color</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">starwars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="../reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="va">hair_color</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="forcats_files/figure-html/fct-infreq-hair-1.png" width="700"></p>
 <p>Note that <code><a href="../reference/fct_inorder.html">fct_infreq()</a></code> it automatically puts NA at the top, even though that doesn’t have the smallest number of entries.</p>
 </div>
@@ -149,8 +148,8 @@
 <h2 class="hasAnchor">
 <a href="#combining-levels" class="anchor"></a>Combining levels</h2>
 <p>Let’s take a look at skin color now:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="va">starwars</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">skin_color</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 31 x 2</span>
 <span class="co">#&gt;    skin_color     n</span>
@@ -165,10 +164,10 @@
 <span class="co">#&gt;  8 blue           2</span>
 <span class="co">#&gt;  9 blue, grey     2</span>
 <span class="co">#&gt; 10 orange         2</span>
-<span class="co">#&gt; # … with 21 more rows</span></pre></div>
+<span class="co">#&gt; # … with 21 more rows</span></code></pre></div>
 <p>We see that there’s 31 different skin colors - if we want to make a plot this would be way too many to display! Let’s reduce it to only be the top 5. We can use <code><a href="../reference/fct_lump.html">fct_lump()</a></code> to “lump” all the infrequent colors into one factor, “other.” The argument <code>n</code> is the number of levels we want to keep.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="va">starwars</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>skin_color <span class="op">=</span> <span class="fu"><a href="../reference/fct_lump.html">fct_lump</a></span><span class="op">(</span><span class="va">skin_color</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">skin_color</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 2</span>
@@ -179,10 +178,10 @@
 <span class="co">#&gt; 3 light         11</span>
 <span class="co">#&gt; 4 dark           6</span>
 <span class="co">#&gt; 5 green          6</span>
-<span class="co">#&gt; 6 grey           6</span></pre></div>
+<span class="co">#&gt; 6 grey           6</span></code></pre></div>
 <p>We could also have used <code>prop</code> instead, which keeps all the levels that appear at least <code>prop</code> of the time. For example, let’s keep skin colors that at least 10% of the characters have:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="va">starwars</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>skin_color <span class="op">=</span> <span class="fu"><a href="../reference/fct_lump.html">fct_lump</a></span><span class="op">(</span><span class="va">skin_color</span>, prop <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">skin_color</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 3 x 2</span>
@@ -190,11 +189,11 @@
 <span class="co">#&gt;   &lt;fct&gt;      &lt;int&gt;</span>
 <span class="co">#&gt; 1 Other         59</span>
 <span class="co">#&gt; 2 fair          17</span>
-<span class="co">#&gt; 3 light         11</span></pre></div>
+<span class="co">#&gt; 3 light         11</span></code></pre></div>
 <p>Only light and fair remain; everything else is other.</p>
 <p>If you wanted to call it something than “other”, you can change it with the argument <code>other_level</code>:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="va">starwars</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>skin_color <span class="op">=</span> <span class="fu"><a href="../reference/fct_lump.html">fct_lump</a></span><span class="op">(</span><span class="va">skin_color</span>, prop <span class="op">=</span> <span class="fl">.1</span>, other_level <span class="op">=</span> <span class="st">"extra"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">skin_color</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 3 x 2</span>
@@ -202,10 +201,10 @@
 <span class="co">#&gt;   &lt;fct&gt;      &lt;int&gt;</span>
 <span class="co">#&gt; 1 extra         59</span>
 <span class="co">#&gt; 2 fair          17</span>
-<span class="co">#&gt; 3 light         11</span></pre></div>
+<span class="co">#&gt; 3 light         11</span></code></pre></div>
 <p>What if we wanted to see if the average mass differed by eye color? We’ll only look at the 6 most popular eye colors and remove <code>NA</code>s.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="va">avg_mass_eye_color</span> <span class="op">&lt;-</span> <span class="va">starwars</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">avg_mass_eye_color</span> <span class="op">&lt;-</span> <span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>eye_color <span class="op">=</span> <span class="fu"><a href="../reference/fct_lump.html">fct_lump</a></span><span class="op">(</span><span class="va">eye_color</span>, n <span class="op">=</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">eye_color</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_mass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mass</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
@@ -221,25 +220,25 @@
 <span class="co">#&gt; 4 orange        282. </span>
 <span class="co">#&gt; 5 red            81.4</span>
 <span class="co">#&gt; 6 yellow         81.1</span>
-<span class="co">#&gt; 7 Other          68.4</span></pre></div>
+<span class="co">#&gt; 7 Other          68.4</span></code></pre></div>
 </div>
 <div id="ordering-by-another-variable" class="section level2">
 <h2 class="hasAnchor">
 <a href="#ordering-by-another-variable" class="anchor"></a>Ordering by another variable</h2>
 <p>It looks like people (or at least one person) with orange eyes are definitely heavier! If we wanted to make a graph, it would be nice if it was ordered by <code>mean_mass</code>. We can do this with <code><a href="../reference/fct_reorder.html">fct_reorder()</a></code>, which reorders one variable by another.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="va">avg_mass_eye_color</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">avg_mass_eye_color</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>eye_color <span class="op">=</span> <span class="fu"><a href="../reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">eye_color</span>, <span class="va">mean_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">eye_color</span>, y <span class="op">=</span> <span class="va">mean_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="forcats_files/figure-html/fct-reorder-1.png" width="700"></p>
 </div>
 <div id="manually-reordering" class="section level2">
 <h2 class="hasAnchor">
 <a href="#manually-reordering" class="anchor"></a>Manually reordering</h2>
 <p>Let’s switch to using another dataset, <code>gss_cat</code>, the general social survey. What is the income distribution among the respondents?</p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="va">gss_cat</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gss_cat</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">rincome</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 16 x 2</span>
 <span class="co">#&gt;    rincome            n</span>
@@ -259,42 +258,42 @@
 <span class="co">#&gt; 13 $3000 to 3999    276</span>
 <span class="co">#&gt; 14 $1000 to 2999    395</span>
 <span class="co">#&gt; 15 Lt $1000         286</span>
-<span class="co">#&gt; 16 Not applicable  7043</span></pre></div>
+<span class="co">#&gt; 16 Not applicable  7043</span></code></pre></div>
 <p>Notice that the income levels are in the correct order - they start with the non-answers and then go from highest to lowest. This is the same order you’d see if you plotted it as a bar chart. This is not a coincidence. When you’re working with ordinal data, where there is an order, you can have an ordered factor. You can examine them with the base function <code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code>, which prints them in order:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">gss_cat</span><span class="op">$</span><span class="va">rincome</span><span class="op">)</span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">gss_cat</span><span class="op">$</span><span class="va">rincome</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "No answer"      "Don't know"     "Refused"        "$25000 or more"</span>
 <span class="co">#&gt;  [5] "$20000 - 24999" "$15000 - 19999" "$10000 - 14999" "$8000 to 9999" </span>
 <span class="co">#&gt;  [9] "$7000 to 7999"  "$6000 to 6999"  "$5000 to 5999"  "$4000 to 4999" </span>
-<span class="co">#&gt; [13] "$3000 to 3999"  "$1000 to 2999"  "Lt $1000"       "Not applicable"</span></pre></div>
+<span class="co">#&gt; [13] "$3000 to 3999"  "$1000 to 2999"  "Lt $1000"       "Not applicable"</span></code></pre></div>
 <p>But what if your factor came in the wrong order? Let’s simulate that by reordering the levels of <code>rincome</code> randomly with <code><a href="../reference/fct_shuffle.html">fct_shuffle()</a></code>:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="va">reshuffled_income</span> <span class="op">&lt;-</span> <span class="va">gss_cat</span><span class="op">$</span><span class="va">rincome</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">reshuffled_income</span> <span class="op">&lt;-</span> <span class="va">gss_cat</span><span class="op">$</span><span class="va">rincome</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/fct_shuffle.html">fct_shuffle</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">reshuffled_income</span><span class="op">)</span>
-<span class="co">#&gt;  [1] "$7000 to 7999"  "$6000 to 6999"  "$1000 to 2999"  "$25000 or more"</span>
-<span class="co">#&gt;  [5] "$8000 to 9999"  "Lt $1000"       "Don't know"     "$20000 - 24999"</span>
-<span class="co">#&gt;  [9] "$5000 to 5999"  "$3000 to 3999"  "Refused"        "Not applicable"</span>
-<span class="co">#&gt; [13] "$10000 - 14999" "$15000 - 19999" "No answer"      "$4000 to 4999"</span></pre></div>
+<span class="co">#&gt;  [1] "$10000 - 14999" "Refused"        "Not applicable" "$5000 to 5999" </span>
+<span class="co">#&gt;  [5] "$4000 to 4999"  "$15000 - 19999" "Lt $1000"       "$1000 to 2999" </span>
+<span class="co">#&gt;  [9] "$20000 - 24999" "$25000 or more" "$3000 to 3999"  "$6000 to 6999" </span>
+<span class="co">#&gt; [13] "$8000 to 9999"  "Don't know"     "No answer"      "$7000 to 7999"</span></code></pre></div>
 <p>Now if we plotted it, it would show in this order, which is all over the place! How can we fix this and put it in the right order?</p>
 <p>We can use the function <code><a href="../reference/fct_relevel.html">fct_relevel()</a></code> when we need to manually reorder our factor levels. In addition to the factor, you give it a character vector of level names, and specify where you want to move them. It defaults to moving them to the front, but you can move them after another level with the argument <code>after</code>. If you want to move it to the end, you set <code>after</code> equal to <code>Inf</code>.</p>
 <p>For example, let’s say we wanted to move <code>Lt $1000</code> and <code>$1000 to 2999</code> to the front. We would write:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="fu"><a href="../reference/fct_relevel.html">fct_relevel</a></span><span class="op">(</span><span class="va">reshuffled_income</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Lt $1000"</span>, <span class="st">"$1000 to 2999"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/fct_relevel.html">fct_relevel</a></span><span class="op">(</span><span class="va">reshuffled_income</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Lt $1000"</span>, <span class="st">"$1000 to 2999"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;  [1] "Lt $1000"       "$1000 to 2999"  "$7000 to 7999"  "$6000 to 6999" </span>
-<span class="co">#&gt;  [5] "$25000 or more" "$8000 to 9999"  "Don't know"     "$20000 - 24999"</span>
-<span class="co">#&gt;  [9] "$5000 to 5999"  "$3000 to 3999"  "Refused"        "Not applicable"</span>
-<span class="co">#&gt; [13] "$10000 - 14999" "$15000 - 19999" "No answer"      "$4000 to 4999"</span></pre></div>
+<span class="co">#&gt;  [1] "Lt $1000"       "$1000 to 2999"  "$10000 - 14999" "Refused"       </span>
+<span class="co">#&gt;  [5] "Not applicable" "$5000 to 5999"  "$4000 to 4999"  "$15000 - 19999"</span>
+<span class="co">#&gt;  [9] "$20000 - 24999" "$25000 or more" "$3000 to 3999"  "$6000 to 6999" </span>
+<span class="co">#&gt; [13] "$8000 to 9999"  "Don't know"     "No answer"      "$7000 to 7999"</span></code></pre></div>
 <p>What if we want to move them to the second and third place?</p>
-<div class="sourceCode" id="cb14"><pre class="downlit">
-<span class="fu"><a href="../reference/fct_relevel.html">fct_relevel</a></span><span class="op">(</span><span class="va">reshuffled_income</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Lt $1000"</span>, <span class="st">"$1000 to 2999"</span><span class="op">)</span>, after <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/fct_relevel.html">fct_relevel</a></span><span class="op">(</span><span class="va">reshuffled_income</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Lt $1000"</span>, <span class="st">"$1000 to 2999"</span><span class="op">)</span>, after <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;  [1] "$7000 to 7999"  "Lt $1000"       "$1000 to 2999"  "$6000 to 6999" </span>
-<span class="co">#&gt;  [5] "$25000 or more" "$8000 to 9999"  "Don't know"     "$20000 - 24999"</span>
-<span class="co">#&gt;  [9] "$5000 to 5999"  "$3000 to 3999"  "Refused"        "Not applicable"</span>
-<span class="co">#&gt; [13] "$10000 - 14999" "$15000 - 19999" "No answer"      "$4000 to 4999"</span></pre></div>
+<span class="co">#&gt;  [1] "$10000 - 14999" "Lt $1000"       "$1000 to 2999"  "Refused"       </span>
+<span class="co">#&gt;  [5] "Not applicable" "$5000 to 5999"  "$4000 to 4999"  "$15000 - 19999"</span>
+<span class="co">#&gt;  [9] "$20000 - 24999" "$25000 or more" "$3000 to 3999"  "$6000 to 6999" </span>
+<span class="co">#&gt; [13] "$8000 to 9999"  "Don't know"     "No answer"      "$7000 to 7999"</span></code></pre></div>
 </div>
   </div>
 
