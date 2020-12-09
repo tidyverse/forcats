@@ -9,10 +9,10 @@ fct_recode(.f, ...)
 \arguments{
 \item{.f}{A factor (or character vector).}
 
-\item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> A sequence of named character vectors where the
-name gives the new level, and the value gives the old level.
-Levels not otherwise mentioned will be left as is. Levels can
-be removed by naming them \code{NULL}. Uses tidy dots.}
+\item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> A sequence of named character
+vectors where the name gives the new level, and the value gives the old
+level. Levels not otherwise mentioned will be left as is. Levels can
+be removed by naming them \code{NULL}.}
 }
 \description{
 Change factor levels by hand
@@ -26,6 +26,9 @@ fct_recode(x, fruit = "apple", fruit = "bananana")
 
 # If you name the level NULL it will be removed
 fct_recode(x, NULL = "apple", fruit = "banana")
+
+# Wrap the left hand side in quotes if it contains special variables
+fct_recode(x, "an apple" = "apple", "a bear" = "bear")
 
 # When passing a named vector to rename levels use !!! to splice
 x <- factor(c("apple", "bear", "banana", "dear"))
