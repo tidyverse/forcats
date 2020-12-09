@@ -11,12 +11,12 @@ fct_relevel(.f, ..., after = 0L)
 
 \item{...}{Either a function (or formula), or character levels.
 
-A function will be called with the current levels, and the return
-value (which must be a character vector) will be used to relevel the
-function.
+A function will be called with the current levels as input, and the
+return value (which must be a character vector) will be used to relevel
+the factor.
 
-Any levels not mentioned will be left in their existing order, after the
-explicitly mentioned levels. Supports tidy dots.}
+Any levels not mentioned will be left in their existing order, by default
+after the explicitly mentioned levels. Supports tidy dots.}
 
 \item{after}{Where should the new values be placed?}
 }
