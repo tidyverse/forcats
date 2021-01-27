@@ -1,4 +1,4 @@
-# forcats (development version)
+# forcats 0.5.1
 
 * Re-license as MIT (#277).
 
