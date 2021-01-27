@@ -1,9 +1,9 @@
 ## Test environments
 
-* local: darwin15.6.0-3.5.1
-* travis: 3.1, 3.2, 3.3, oldrel, release, devel
-* r-hub: windows-x86_64-devel, ubuntu-gcc-release, fedora-clang-devel
-* win-builder: windows-x86_64-devel
+* GitHub Actions (ubuntu-16.04): devel, release, oldrel, 3.5, 3.4, 3.3
+* GitHub Actions (windows): release, oldrel
+* GitHub Actions (macOS): release
+* win-builder: devel
 
 ## R CMD check results
 
@@ -11,7 +11,4 @@
 
 ## revdepcheck results
 
-We checked 91 reverse dependencies (85 from CRAN + 6 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
-
- * We saw 0 new problems
- * We failed to check 0 packages
+I did not re-run revdeps due to the minor nature of the changes.
