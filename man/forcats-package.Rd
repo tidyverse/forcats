@@ -17,7 +17,7 @@ Helpers for reordering factor levels (including
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://forcats.tidyverse.org}
+  \item \url{https://forcats.tidyverse.org}
   \item \url{https://github.com/tidyverse/forcats}
   \item Report bugs at \url{https://github.com/tidyverse/forcats/issues}
 }

@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The goal of the __forcats__ package is to provide a suite of useful tools that solve common problems with factors. Factors are useful when you have categorical data, variables that have a fixed and known set of values, and when you want to display character vectors in non-alphabetical order. If you want to learn more, the best place to start is the [chapter on factors](http://r4ds.had.co.nz/factors.html) in R for Data Science.  
+The goal of the __forcats__ package is to provide a suite of useful tools that solve common problems with factors. Factors are useful when you have categorical data, variables that have a fixed and known set of values, and when you want to display character vectors in non-alphabetical order. If you want to learn more, the best place to start is the [chapter on factors](https://r4ds.had.co.nz/factors.html) in R for Data Science.  
 
 ## Ordering by frequency
 
