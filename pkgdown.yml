@@ -1,8 +1,9 @@
 pandoc: 2.7.3
-pkgdown: 1.4.1.9000
-pkgdown_sha: 732fb5b9ccc0ef87a73dfd0772ae661a4039b2a8
+pkgdown: 1.6.1
+pkgdown_sha: ~
 articles:
   forcats: forcats.html
+last_built: 2021-01-27T20:09Z
 urls:
   reference: https://forcats.tidyverse.org/reference
   article: https://forcats.tidyverse.org/articles
