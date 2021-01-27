@@ -1,6 +1,6 @@
 # forcats (development version)
 
-* Change license to MIT (#277).
+* Re-license as MIT (#277).
 
 * `fct_lump_n()` no longer uses a partial argument name (@malcolmbarrett, #276).
 
