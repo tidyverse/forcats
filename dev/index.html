@@ -55,7 +55,7 @@
         <a class="navbar-brand" href="index.html">forcats</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.0.9000</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.1.9000</span>
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@
 </li>
         <li>
   <a href="https://github.com/tidyverse/forcats/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -132,7 +132,7 @@
 <li>
 <code><a href="reference/fct_lump.html">fct_lump()</a></code>: Collapsing the least/most frequent values of a factor into “other”.</li>
 </ul>
-<p>You can learn more about each of these in <code><a href="articles/forcats.html">vignette("forcats")</a></code>. If you’re new to factors, the best place to start is the <a href="http://r4ds.had.co.nz/factors.html">chapter on factors</a> in R for Data Science.</p>
+<p>You can learn more about each of these in <code><a href="articles/forcats.html">vignette("forcats")</a></code>. If you’re new to factors, the best place to start is the <a href="https://r4ds.had.co.nz/factors.html">chapter on factors</a> in R for Data Science.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -155,11 +155,11 @@
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting started</h2>
-<p>forcats is part of the core tidyverse, so you can load it with <code><a href="https://rdrr.io/r/base/library.html">library(tidyverse)</a></code> or <code><a href="http://forcats.tidyverse.org">library(forcats)</a></code>.</p>
+<p>forcats is part of the core tidyverse, so you can load it with <code><a href="https://rdrr.io/r/base/library.html">library(tidyverse)</a></code> or <code><a href="https://forcats.tidyverse.org">library(forcats)</a></code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://forcats.tidyverse.org">forcats</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://forcats.tidyverse.org">forcats</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -185,7 +185,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 4 x 2</span>
 <span class="co">#&gt;   species     n</span>
-<span class="co">#&gt;   &lt;fct&gt;   &lt;int&gt;</span>
+<span class="co">#&gt; * &lt;fct&gt;   &lt;int&gt;</span>
 <span class="co">#&gt; 1 Droid       6</span>
 <span class="co">#&gt; 2 Gungan      3</span>
 <span class="co">#&gt; 3 Human      35</span>
@@ -206,7 +206,7 @@
 <div id="more-resources" class="section level2">
 <h2 class="hasAnchor">
 <a href="#more-resources" class="anchor"></a>More resources</h2>
-<p>For a history of factors, I recommend <a href="http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/"><em>stringsAsFactors: An unauthorized biography</em></a> by Roger Peng and <a href="http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh"><em>stringsAsFactors = &lt;sigh&gt;</em></a> by Thomas Lumley. If you want to learn more about other approaches to working with factors and categorical data, I recommend <a href="https://peerj.com/preprints/3163/"><em>Wrangling categorical data in R</em></a>, by Amelia McNamara and Nicholas Horton.</p>
+<p>For a history of factors, I recommend <a href="https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/"><em>stringsAsFactors: An unauthorized biography</em></a> by Roger Peng and <a href="https://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh"><em>stringsAsFactors = &lt;sigh&gt;</em></a> by Thomas Lumley. If you want to learn more about other approaches to working with factors and categorical data, I recommend <a href="https://peerj.com/preprints/3163/"><em>Wrangling categorical data in R</em></a>, by Amelia McNamara and Nicholas Horton.</p>
 </div>
 <div id="getting-help" class="section level2">
 <h2 class="hasAnchor">
