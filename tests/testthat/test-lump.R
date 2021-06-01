@@ -1,5 +1,12 @@
 context("fct_lump")
 
+test_that("too many arguments fails", {
+  f <- c("a", "b", "c")
+  expect_error(fct_lump(f, n = 1, count = 1))
+  expect_error(fct_lump(f, n = 1, prop = 0.1))
+  expect_error(fct_lump(f, min = 2, count = 1))
+})
+
 test_that("positive values keeps most commmon", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
 
@@ -113,6 +120,11 @@ test_that("do not change the label when no lumping occurs", {
   expect_equal(levels(fct_lump(f, prop = 0.1)), c("a", "b", "c", "d"))
 })
 
+test_that("only have one small other level", {
+  f <- c("a", "a", "a", "a", "b", "b", "b", "c", "c", "d")
+  expect_equal(levels(fct_lump(f)), c("a", "b", "c", "Other"))
+})
+
 test_that("fct_lump_min works when not weighted", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
 
@@ -126,6 +138,28 @@ test_that("fct_lump_min works when weighted", {
 
   expect_equal(levels(fct_lump_min(f, min = 6, w = w)), c("c", "Other"))
   expect_equal(levels(fct_lump_min(f, min = 1.5, w = w)), c("b", "c", "d", "Other"))
+})
+
+test_that("throws error if n or prop is not numeric", {
+  f <- c("a", "a", "a", "a", "b", "b", "b", "c", "c", "d")
+
+  expect_error(fct_lump(f, n = "2"), "`n`")
+  expect_error(fct_lump(f, prop = "2"), "`prop`")
+})
+
+test_that("fct_lump_prop works when not weighted", {
+  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
+
+  expect_equal(levels(fct_lump_prop(f, prop = 0.2)), c("a", "Other"))
+  expect_equal(levels(fct_lump_prop(f, prop = 0.1)), c("a", "b", "Other"))
+})
+
+test_that("fct_lump_prop works when weighted", {
+  f <- c("a", "b", "c", "d", "e")
+  w <- c( 0.2, 2,   6,   4,   1)
+
+  expect_equal(levels(fct_lump_prop(f, prop = 0.3, w = w)), c("c", "d", "Other"))
+  expect_equal(levels(fct_lump_prop(f, prop = 0.2, w = w)), c("c", "d", "Other"))
 })
 
 # Default -----------------------------------------------------------------

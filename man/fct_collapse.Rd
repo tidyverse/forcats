@@ -4,15 +4,18 @@
 \alias{fct_collapse}
 \title{Collapse factor levels into manually defined groups}
 \usage{
-fct_collapse(.f, ..., group_other = FALSE)
+fct_collapse(.f, ..., other_level = NULL, group_other = "DEPRECATED")
 }
 \arguments{
 \item{.f}{A factor (or character vector).}
 
-\item{...}{A series of named character vectors. The levels in
+\item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> A series of named character vectors. The levels in
 each vector will be replaced with the name.}
 
-\item{group_other}{Replace all levels not named in \code{...} with "Other"?}
+\item{other_level}{Value of level used for "other" values. Always
+placed at end of levels.}
+
+\item{group_other}{Deprecated. Replace all levels not named in \code{...} with "Other"?}
 }
 \description{
 Collapse factor levels into manually defined groups

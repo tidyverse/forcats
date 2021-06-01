@@ -27,7 +27,7 @@
 #' fct_count(rincome2)
 fct_relabel <- function(.f, .fun, ...) {
   f <- check_factor(.f)
-  .fun <- rlang::as_function(.fun)
+  .fun <- as_function(.fun)
 
   old_levels <- levels(f)
   new_levels <- .fun(old_levels, ...)

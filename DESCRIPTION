@@ -1,6 +1,6 @@
 Package: forcats
 Title: Tools for Working with Categorical Variables (Factors)
-Version: 0.4.0.9000
+Version: 0.5.1.9000
 Authors@R: 
     c(person(given = "Hadley",
              family = "Wickham",
@@ -13,8 +13,8 @@ Description: Helpers for reordering factor levels (including
     reversing, and randomly shuffling), and tools for modifying factor
     levels (including collapsing rare levels into other, 'anonymising',
     and manually 'recoding').
-License: GPL-3
-URL: http://forcats.tidyverse.org,
+License: MIT + file LICENSE
+URL: https://forcats.tidyverse.org,
     https://github.com/tidyverse/forcats
 BugReports: https://github.com/tidyverse/forcats/issues
 Depends: 
@@ -26,14 +26,15 @@ Imports:
     tibble
 Suggests: 
     covr,
+    dplyr,
     ggplot2,
-    testthat,
-    readr,
     knitr,
+    readr,
     rmarkdown,
-    dplyr
+    testthat
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
-VignetteBuilder: knitr
+RoxygenNote: 7.1.1

@@ -7,8 +7,7 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
-[![Travis build
-status](https://travis-ci.org/tidyverse/forcats.svg?branch=master)](https://travis-ci.org/tidyverse/forcats)
+[![R-CMD-check](https://github.com/tidyverse/forcats/workflows/R-CMD-check/badge.svg)](https://github.com/tidyverse/forcats/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/tidyverse/forcats/branch/master/graph/badge.svg)](https://codecov.io/gh/tidyverse/forcats?branch=master)
 <!-- badges: end -->
@@ -22,24 +21,24 @@ reordering character vectors to improve display. The goal of the
 problems with factors, including changing the order of levels or the
 values. Some examples include:
 
-  - `fct_reorder()`: Reordering a factor by another variable.
-  - `fct_infreq()`: Reordering a factor by the frequency of values.
-  - `fct_relevel()`: Changing the order of a factor by hand.
-  - `fct_lump()`: Collapsing the least/most frequent values of a factor
+-   `fct_reorder()`: Reordering a factor by another variable.
+-   `fct_infreq()`: Reordering a factor by the frequency of values.
+-   `fct_relevel()`: Changing the order of a factor by hand.
+-   `fct_lump()`: Collapsing the least/most frequent values of a factor
     into “other”.
 
 You can learn more about each of these in `vignette("forcats")`. If
 you’re new to factors, the best place to start is the [chapter on
-factors](http://r4ds.had.co.nz/factors.html) in R for Data Science.
+factors](https://r4ds.had.co.nz/factors.html) in R for Data Science.
 
 ## Installation
 
     # The easiest way to get forcats is to install the whole tidyverse:
     install.packages("tidyverse")
-    
+
     # Alternatively, install just forcats:
     install.packages("forcats")
-    
+
     # Or the the development version from GitHub:
     # install.packages("devtools")
     devtools::install_github("tidyverse/forcats")
@@ -67,7 +66,7 @@ starwars %>%
 #>    species      n
 #>    <chr>    <int>
 #>  1 Human       35
-#>  2 Droid        5
+#>  2 Droid        6
 #>  3 Gungan       3
 #>  4 Kaminoan     2
 #>  5 Mirialan     2
@@ -86,8 +85,8 @@ starwars %>%
   count(species)
 #> # A tibble: 4 x 2
 #>   species     n
-#>   <fct>   <int>
-#> 1 Droid       5
+#> * <fct>   <int>
+#> 1 Droid       6
 #> 2 Gungan      3
 #> 3 Human      35
 #> 4 Other      39
@@ -115,9 +114,9 @@ starwars %>%
 
 For a history of factors, I recommend [*stringsAsFactors: An
 unauthorized
-biography*](http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/)
+biography*](https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/)
 by Roger Peng and [*stringsAsFactors =
-\<sigh\>*](http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh)
+&lt;sigh&gt;*](https://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh)
 by Thomas Lumley. If you want to learn more about other approaches to
 working with factors and categorical data, I recommend [*Wrangling
 categorical data in R*](https://peerj.com/preprints/3163/), by Amelia
@@ -133,5 +132,5 @@ and other discussion, please use
 ## Code of Conduct
 
 Please note that the ‘forcats’ project is released with a [Contributor
-Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this
-project, you agree to abide by its terms.
+Code of Conduct](https://forcats.tidyverse.org/CODE_OF_CONDUCT.html). By
+contributing to this project, you agree to abide by its terms.

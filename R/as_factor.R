@@ -1,4 +1,4 @@
-#' Convert input to a factor.
+#' Convert input to a factor
 #'
 #' Compared to base R, when `x` is a character, this function creates
 #' levels in the order in which they appear, which will be the same on every
@@ -51,4 +51,10 @@ as_factor.character <- function(x, ...) {
 #' @export
 as_factor.numeric <- function(x, ...) {
   factor(x)
+}
+
+#' @rdname as_factor
+#' @export
+as_factor.logical <- function(x, ...) {
+  factor(x, levels = c("FALSE", "TRUE"))
 }

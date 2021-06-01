@@ -6,7 +6,7 @@
 \alias{forcats-package}
 \title{forcats: Tools for Working with Categorical Variables (Factors)}
 \description{
-\if{html}{\figure{logo.png}{options: align='right'}}
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
 Helpers for reordering factor levels (including
     moving specified levels to front, ordering by first appearance,
@@ -17,7 +17,7 @@ Helpers for reordering factor levels (including
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://forcats.tidyverse.org}
+  \item \url{https://forcats.tidyverse.org}
   \item \url{https://github.com/tidyverse/forcats}
   \item Report bugs at \url{https://github.com/tidyverse/forcats/issues}
 }

@@ -5,7 +5,8 @@
 \alias{as_factor.factor}
 \alias{as_factor.character}
 \alias{as_factor.numeric}
-\title{Convert input to a factor.}
+\alias{as_factor.logical}
+\title{Convert input to a factor}
 \usage{
 as_factor(x, ...)
 
@@ -14,6 +15,8 @@ as_factor(x, ...)
 \method{as_factor}{character}(x, ...)
 
 \method{as_factor}{numeric}(x, ...)
+
+\method{as_factor}{logical}(x, ...)
 }
 \arguments{
 \item{x}{Object to coerce to a factor.}

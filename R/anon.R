@@ -1,6 +1,6 @@
 #' Anonymise factor levels
 #'
-#' Replaces factor levels with arbitary numeric identifiers. Neither
+#' Replaces factor levels with arbitrary numeric identifiers. Neither
 #' the values nor the order of the levels are preserved.
 #'
 #' @param f A factor.
@@ -8,7 +8,6 @@
 #' @export
 #' @examples
 #' gss_cat$relig %>% fct_count()
-#' gss_cat$relig %>% fct_anon() %>% fct_count()
 #' gss_cat$relig %>% fct_anon() %>% fct_count()
 #' gss_cat$relig %>% fct_anon("X") %>% fct_count()
 fct_anon <- function(f, prefix = "") {

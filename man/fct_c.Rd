@@ -7,8 +7,9 @@
 fct_c(...)
 }
 \arguments{
-\item{...}{Individual factors. Uses tidy dots, so you can splice in a list
-of factors with \code{!!!}.}
+\item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> Individual
+factors. Uses tidy dots, so you can splice in a list of factors
+with \verb{!!!}.}
 }
 \description{
 This is a useful way of patching together factors from multiple sources

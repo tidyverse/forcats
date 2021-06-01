@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
-[![Travis build status](https://travis-ci.org/tidyverse/forcats.svg?branch=master)](https://travis-ci.org/tidyverse/forcats)
+[![R-CMD-check](https://github.com/tidyverse/forcats/workflows/R-CMD-check/badge.svg)](https://github.com/tidyverse/forcats/actions)
 [![Codecov test coverage](https://codecov.io/gh/tidyverse/forcats/branch/master/graph/badge.svg)](https://codecov.io/gh/tidyverse/forcats?branch=master)
 <!-- badges: end -->
 
@@ -29,7 +29,7 @@ R uses __factors__ to handle categorical variables, variables that have a fixed 
 * `fct_relevel()`: Changing the order of a factor by hand.
 * `fct_lump()`: Collapsing the least/most frequent values of a factor into "other".
 
-You can learn more about each of these in `vignette("forcats")`. If you're new to factors, the best place to start is the [chapter on factors](http://r4ds.had.co.nz/factors.html) in R for Data Science.
+You can learn more about each of these in `vignette("forcats")`. If you're new to factors, the best place to start is the [chapter on factors](https://r4ds.had.co.nz/factors.html) in R for Data Science.
 
 ## Installation
 
@@ -88,7 +88,7 @@ starwars %>%
 
 ## More resources 
 
-For a history of factors, I recommend [_stringsAsFactors: An unauthorized biography_](http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/) by Roger Peng and [_stringsAsFactors = \<sigh\>_](http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh) by Thomas Lumley. If you want to learn more about other approaches to working with factors and categorical data, I recommend [_Wrangling categorical data in R_](https://peerj.com/preprints/3163/), by Amelia McNamara and Nicholas Horton. 
+For a history of factors, I recommend [_stringsAsFactors: An unauthorized biography_](https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/) by Roger Peng and [_stringsAsFactors = \<sigh\>_](https://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh) by Thomas Lumley. If you want to learn more about other approaches to working with factors and categorical data, I recommend [_Wrangling categorical data in R_](https://peerj.com/preprints/3163/), by Amelia McNamara and Nicholas Horton. 
 
 ## Getting help
 
@@ -96,4 +96,4 @@ If you encounter a clear bug, please file a minimal reproducible example on [git
 
 ## Code of Conduct
 
-Please note that the 'forcats' project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+Please note that the 'forcats' project is released with a [Contributor Code of Conduct](https://forcats.tidyverse.org/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

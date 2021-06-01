@@ -4,7 +4,7 @@
 \alias{fct_inorder}
 \alias{fct_infreq}
 \alias{fct_inseq}
-\title{Reorder factors levels by first appearance, frequency, or numeric order.}
+\title{Reorder factor levels by first appearance, frequency, or numeric order}
 \usage{
 fct_inorder(f, ordered = NA)
 
@@ -19,7 +19,12 @@ fct_inseq(f, ordered = NA)
 output factor. \code{NA} preserves the existing status of the factor.}
 }
 \description{
-Reorder factors levels by first appearance, frequency, or numeric order.
+This family of functions changes only the order of the levels.
+\itemize{
+\item \code{fct_inorder()}: by the order in which they first appear.
+\item \code{fct_infreq()}: by number of observations with each level (largest first)
+\item \code{fct_inseq()}: by numeric value of level.
+}
 }
 \examples{
 f <- factor(c("b", "b", "a", "c", "c", "c"))
@@ -27,8 +32,7 @@ f
 fct_inorder(f)
 fct_infreq(f)
 
-fct_inorder(f, ordered = TRUE)
-
-f <- factor(sample(1:10))
+f <- factor(1:3, levels = c("3", "2", "1"))
+f
 fct_inseq(f)
 }

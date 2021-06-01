@@ -49,8 +49,18 @@ test_that("fct_infreq respects missing values", {
 })
 
 test_that("fct_inseq sorts in numeric order", {
-  f <- factor(c("3", "1", "1", "2"))
-  expect_equal(levels(fct_inseq(f)), c("1", "2", "3"))
+  x <- c("1", "2", "3")
+  expect_equal(
+    fct_inseq(factor(x, levels = c("3", "1", "2"))),
+    factor(x, levels = c("1", "2", "3"))
+  )
+
+  # non-numeric go to end
+  x <- c("1", "2", "3", "a")
+  expect_equal(
+    fct_inseq(factor(x, levels = c("a", "3", "1", "2"))),
+    factor(x, levels = c("1", "2", "3", "a"))
+  )
 })
 
 test_that("fct_inseq gives error for non-numeric levels", {
