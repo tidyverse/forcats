@@ -9,24 +9,25 @@ fct_reordern(.f, ..., ordered = NA)
 \arguments{
 \item{.f}{A factor (or character vector).}
 
-\item{...}{Arguments passed on to \code{base::order}
-\describe{
-  \item{decreasing}{logical.  Should the sort order be increasing or
+\item{...}{
+  Arguments passed on to \code{\link[base:order]{base::order}}
+  \describe{
+    \item{\code{decreasing}}{logical.  Should the sort order be increasing or
     decreasing? For the \code{"radix"} method, this can be a vector of
     length equal to the number of arguments in \code{\dots}. For the
     other methods, it must be length one.}
-  \item{na.last}{for controlling the treatment of \code{NA}s.
+    \item{\code{na.last}}{for controlling the treatment of \code{NA}s.
     If \code{TRUE}, missing values in the data are put last; if
     \code{FALSE}, they are put first; if \code{NA}, they are removed
     (see \sQuote{Note}.)}
-  \item{method}{the method to be used: partial matches are allowed.  The
+    \item{\code{method}}{the method to be used: partial matches are allowed.  The
     default (\code{"auto"}) implies \code{"radix"} for short numeric vectors,
     integer vectors, logical vectors and factors.
     Otherwise, it implies \code{"shell"}.
     For details of methods \code{"shell"}, 
     \code{"quick"}, and \code{"radix"},
-    see the help for \code{\link{sort}}.}
-}}
+    see the help for \code{\link[base]{sort}}.}
+  }}
 
 \item{ordered}{Passed to \code{\link{fct_inorder}()}}
 }
@@ -41,6 +42,7 @@ fct_reordern(c("A", "B", "C", "D"), dplyr::desc(A), dplyr::desc(B))
 fct_reordern(c("A", "B", "C", "D"), A, dplyr::desc(B))
 }
 \seealso{
-Other Reordering: \code{\link{fct_reorder}}
+Other Reordering: 
+\code{\link{fct_reorder}()}
 }
 \concept{Reordering}

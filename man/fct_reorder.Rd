@@ -72,6 +72,7 @@ ggplot(chks, aes(Time, weight, colour = fct_reorder2(Chick, Time, weight))) +
 }
 }
 \seealso{
-Other Reordering: \code{\link{fct_reordern}}
+Other Reordering: 
+\code{\link{fct_reordern}()}
 }
 \concept{Reordering}

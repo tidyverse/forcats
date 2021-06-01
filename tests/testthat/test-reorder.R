@@ -78,8 +78,9 @@ test_that("fct_reordern works for all scenarios (fix #16)", {
     factor(f, levels = c("D", "C", "A", "B"))
   )
   # Ensure interaction with dplyr::desc() is accurate.
+  desc <- function(x) -xtfrm(x)
   expect_equal(
-    fct_reordern(f, A, dplyr::desc(B)),
+    fct_reordern(f, A, desc(B)),
     factor(f, levels = c("D", "C", "B", "A"))
   )
   # Checks of ordering
