@@ -190,32 +190,32 @@ its input.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>partyid</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 10 x 2</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 × 2</span>
 #&gt;    f                      n
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> No answer            154
-#&gt; </span><span style='color: #555555;'> 2</span><span> Don't know             1
-#&gt; </span><span style='color: #555555;'> 3</span><span> Other party          393
-#&gt; </span><span style='color: #555555;'> 4</span><span> Strong republican   </span><span style='text-decoration: underline;'>2</span><span>314
-#&gt; </span><span style='color: #555555;'> 5</span><span> Not str republican  </span><span style='text-decoration: underline;'>3</span><span>032
-#&gt; </span><span style='color: #555555;'> 6</span><span> Ind,near rep        </span><span style='text-decoration: underline;'>1</span><span>791
-#&gt; </span><span style='color: #555555;'> 7</span><span> Independent         </span><span style='text-decoration: underline;'>4</span><span>119
-#&gt; </span><span style='color: #555555;'> 8</span><span> Ind,near dem        </span><span style='text-decoration: underline;'>2</span><span>499
-#&gt; </span><span style='color: #555555;'> 9</span><span> Not str democrat    </span><span style='text-decoration: underline;'>3</span><span>690
-#&gt; </span><span style='color: #555555;'>10</span><span> Strong democrat     </span><span style='text-decoration: underline;'>3</span><span>490</div><div class='input'><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>partyid</span> <span class='op'>%&gt;%</span> <span class='fu'>fct_relabel</span><span class='op'>(</span><span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span><span class='op'>(</span><span class='st'>","</span>, <span class='st'>", "</span>, <span class='va'>.x</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 10 x 2</span><span>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> No answer            154
+#&gt; <span style='color: #BCBCBC;'> 2</span> Don't know             1
+#&gt; <span style='color: #BCBCBC;'> 3</span> Other party          393
+#&gt; <span style='color: #BCBCBC;'> 4</span> Strong republican   <span style='text-decoration: underline;'>2</span>314
+#&gt; <span style='color: #BCBCBC;'> 5</span> Not str republican  <span style='text-decoration: underline;'>3</span>032
+#&gt; <span style='color: #BCBCBC;'> 6</span> Ind,near rep        <span style='text-decoration: underline;'>1</span>791
+#&gt; <span style='color: #BCBCBC;'> 7</span> Independent         <span style='text-decoration: underline;'>4</span>119
+#&gt; <span style='color: #BCBCBC;'> 8</span> Ind,near dem        <span style='text-decoration: underline;'>2</span>499
+#&gt; <span style='color: #BCBCBC;'> 9</span> Not str democrat    <span style='text-decoration: underline;'>3</span>690
+#&gt; <span style='color: #BCBCBC;'>10</span> Strong democrat     <span style='text-decoration: underline;'>3</span>490</div><div class='input'><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>partyid</span> <span class='op'>%&gt;%</span> <span class='fu'>fct_relabel</span><span class='op'>(</span><span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span><span class='op'>(</span><span class='st'>","</span>, <span class='st'>", "</span>, <span class='va'>.x</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 × 2</span>
 #&gt;    f                      n
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> No answer            154
-#&gt; </span><span style='color: #555555;'> 2</span><span> Don't know             1
-#&gt; </span><span style='color: #555555;'> 3</span><span> Other party          393
-#&gt; </span><span style='color: #555555;'> 4</span><span> Strong republican   </span><span style='text-decoration: underline;'>2</span><span>314
-#&gt; </span><span style='color: #555555;'> 5</span><span> Not str republican  </span><span style='text-decoration: underline;'>3</span><span>032
-#&gt; </span><span style='color: #555555;'> 6</span><span> Ind, near rep       </span><span style='text-decoration: underline;'>1</span><span>791
-#&gt; </span><span style='color: #555555;'> 7</span><span> Independent         </span><span style='text-decoration: underline;'>4</span><span>119
-#&gt; </span><span style='color: #555555;'> 8</span><span> Ind, near dem       </span><span style='text-decoration: underline;'>2</span><span>499
-#&gt; </span><span style='color: #555555;'> 9</span><span> Not str democrat    </span><span style='text-decoration: underline;'>3</span><span>690
-#&gt; </span><span style='color: #555555;'>10</span><span> Strong democrat     </span><span style='text-decoration: underline;'>3</span><span>490</div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> No answer            154
+#&gt; <span style='color: #BCBCBC;'> 2</span> Don't know             1
+#&gt; <span style='color: #BCBCBC;'> 3</span> Other party          393
+#&gt; <span style='color: #BCBCBC;'> 4</span> Strong republican   <span style='text-decoration: underline;'>2</span>314
+#&gt; <span style='color: #BCBCBC;'> 5</span> Not str republican  <span style='text-decoration: underline;'>3</span>032
+#&gt; <span style='color: #BCBCBC;'> 6</span> Ind, near rep       <span style='text-decoration: underline;'>1</span>791
+#&gt; <span style='color: #BCBCBC;'> 7</span> Independent         <span style='text-decoration: underline;'>4</span>119
+#&gt; <span style='color: #BCBCBC;'> 8</span> Ind, near dem       <span style='text-decoration: underline;'>2</span>499
+#&gt; <span style='color: #BCBCBC;'> 9</span> Not str democrat    <span style='text-decoration: underline;'>3</span>690
+#&gt; <span style='color: #BCBCBC;'>10</span> Strong democrat     <span style='text-decoration: underline;'>3</span>490</div><div class='input'>
 <span class='va'>convert_income</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='va'>regex</span> <span class='op'>&lt;-</span> <span class='st'>"^(?:Lt |)[$]([0-9]+).*$"</span>
   <span class='va'>is_range</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='va'>regex</span>, <span class='va'>x</span><span class='op'>)</span>
@@ -225,43 +225,43 @@ its input.</p>
   <span class='va'>x</span>
 <span class='op'>}</span>
 <span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>rincome</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 16 x 2</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16 × 2</span>
 #&gt;    f                  n
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> No answer        183
-#&gt; </span><span style='color: #555555;'> 2</span><span> Don't know       267
-#&gt; </span><span style='color: #555555;'> 3</span><span> Refused          975
-#&gt; </span><span style='color: #555555;'> 4</span><span> $25000 or more  </span><span style='text-decoration: underline;'>7</span><span>363
-#&gt; </span><span style='color: #555555;'> 5</span><span> $20000 - 24999  </span><span style='text-decoration: underline;'>1</span><span>283
-#&gt; </span><span style='color: #555555;'> 6</span><span> $15000 - 19999  </span><span style='text-decoration: underline;'>1</span><span>048
-#&gt; </span><span style='color: #555555;'> 7</span><span> $10000 - 14999  </span><span style='text-decoration: underline;'>1</span><span>168
-#&gt; </span><span style='color: #555555;'> 8</span><span> $8000 to 9999    340
-#&gt; </span><span style='color: #555555;'> 9</span><span> $7000 to 7999    188
-#&gt; </span><span style='color: #555555;'>10</span><span> $6000 to 6999    215
-#&gt; </span><span style='color: #555555;'>11</span><span> $5000 to 5999    227
-#&gt; </span><span style='color: #555555;'>12</span><span> $4000 to 4999    226
-#&gt; </span><span style='color: #555555;'>13</span><span> $3000 to 3999    276
-#&gt; </span><span style='color: #555555;'>14</span><span> $1000 to 2999    395
-#&gt; </span><span style='color: #555555;'>15</span><span> Lt $1000         286
-#&gt; </span><span style='color: #555555;'>16</span><span> Not applicable  </span><span style='text-decoration: underline;'>7</span><span>043</div><div class='input'><span class='fu'>convert_income</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span><span class='op'>(</span><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>rincome</span><span class='op'>)</span><span class='op'>)</span>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> No answer        183
+#&gt; <span style='color: #BCBCBC;'> 2</span> Don't know       267
+#&gt; <span style='color: #BCBCBC;'> 3</span> Refused          975
+#&gt; <span style='color: #BCBCBC;'> 4</span> $25000 or more  <span style='text-decoration: underline;'>7</span>363
+#&gt; <span style='color: #BCBCBC;'> 5</span> $20000 - 24999  <span style='text-decoration: underline;'>1</span>283
+#&gt; <span style='color: #BCBCBC;'> 6</span> $15000 - 19999  <span style='text-decoration: underline;'>1</span>048
+#&gt; <span style='color: #BCBCBC;'> 7</span> $10000 - 14999  <span style='text-decoration: underline;'>1</span>168
+#&gt; <span style='color: #BCBCBC;'> 8</span> $8000 to 9999    340
+#&gt; <span style='color: #BCBCBC;'> 9</span> $7000 to 7999    188
+#&gt; <span style='color: #BCBCBC;'>10</span> $6000 to 6999    215
+#&gt; <span style='color: #BCBCBC;'>11</span> $5000 to 5999    227
+#&gt; <span style='color: #BCBCBC;'>12</span> $4000 to 4999    226
+#&gt; <span style='color: #BCBCBC;'>13</span> $3000 to 3999    276
+#&gt; <span style='color: #BCBCBC;'>14</span> $1000 to 2999    395
+#&gt; <span style='color: #BCBCBC;'>15</span> Lt $1000         286
+#&gt; <span style='color: #BCBCBC;'>16</span> Not applicable  <span style='text-decoration: underline;'>7</span>043</div><div class='input'><span class='fu'>convert_income</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span><span class='op'>(</span><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>rincome</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "No answer"      "Don't know"     "Refused"        "Gt $25000"     
 #&gt;  [5] "Gt $20000"      "Gt $15000"      "Gt $10000"      "Gt $5000"      
 #&gt;  [9] "Gt $5000"       "Gt $5000"       "Gt $5000"       "Gt $0"         
 #&gt; [13] "Gt $0"          "Gt $0"          "Gt $0"          "Not applicable"</div><div class='input'><span class='va'>rincome2</span> <span class='op'>&lt;-</span> <span class='fu'>fct_relabel</span><span class='op'>(</span><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>rincome</span>, <span class='va'>convert_income</span><span class='op'>)</span>
 <span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='va'>rincome2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 10 x 2</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 × 2</span>
 #&gt;    f                  n
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> No answer        183
-#&gt; </span><span style='color: #555555;'> 2</span><span> Don't know       267
-#&gt; </span><span style='color: #555555;'> 3</span><span> Refused          975
-#&gt; </span><span style='color: #555555;'> 4</span><span> Gt $25000       </span><span style='text-decoration: underline;'>7</span><span>363
-#&gt; </span><span style='color: #555555;'> 5</span><span> Gt $20000       </span><span style='text-decoration: underline;'>1</span><span>283
-#&gt; </span><span style='color: #555555;'> 6</span><span> Gt $15000       </span><span style='text-decoration: underline;'>1</span><span>048
-#&gt; </span><span style='color: #555555;'> 7</span><span> Gt $10000       </span><span style='text-decoration: underline;'>1</span><span>168
-#&gt; </span><span style='color: #555555;'> 8</span><span> Gt $5000         970
-#&gt; </span><span style='color: #555555;'> 9</span><span> Gt $0           </span><span style='text-decoration: underline;'>1</span><span>183
-#&gt; </span><span style='color: #555555;'>10</span><span> Not applicable  </span><span style='text-decoration: underline;'>7</span><span>043</div></span></pre>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> No answer        183
+#&gt; <span style='color: #BCBCBC;'> 2</span> Don't know       267
+#&gt; <span style='color: #BCBCBC;'> 3</span> Refused          975
+#&gt; <span style='color: #BCBCBC;'> 4</span> Gt $25000       <span style='text-decoration: underline;'>7</span>363
+#&gt; <span style='color: #BCBCBC;'> 5</span> Gt $20000       <span style='text-decoration: underline;'>1</span>283
+#&gt; <span style='color: #BCBCBC;'> 6</span> Gt $15000       <span style='text-decoration: underline;'>1</span>048
+#&gt; <span style='color: #BCBCBC;'> 7</span> Gt $10000       <span style='text-decoration: underline;'>1</span>168
+#&gt; <span style='color: #BCBCBC;'> 8</span> Gt $5000         970
+#&gt; <span style='color: #BCBCBC;'> 9</span> Gt $0           <span style='text-decoration: underline;'>1</span>183
+#&gt; <span style='color: #BCBCBC;'>10</span> Not applicable  <span style='text-decoration: underline;'>7</span>043</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
