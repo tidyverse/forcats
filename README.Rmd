@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
 [![R-CMD-check](https://github.com/tidyverse/forcats/workflows/R-CMD-check/badge.svg)](https://github.com/tidyverse/forcats/actions)
-[![Codecov test coverage](https://codecov.io/gh/tidyverse/forcats/branch/master/graph/badge.svg)](https://codecov.io/gh/tidyverse/forcats?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/tidyverse/forcats/branch/main/graph/badge.svg)](https://codecov.io/gh/tidyverse/forcats?branch=main)
 <!-- badges: end -->
 
 ## Overview
@@ -47,7 +47,7 @@ devtools::install_github("tidyverse/forcats")
 
 ## Cheatsheet
 
-<a href="https://github.com/rstudio/cheatsheets/raw/master/factors.pdf"><img src="https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/thumbnails/forcats-cheatsheet-thumbs.png" width="320" height="252"/></a>  
+<a href="https://github.com/rstudio/cheatsheets/raw/HEAD/factors.pdf"><img src="https://github.com/rstudio/cheatsheets/raw/HEAD/pngs/thumbnails/forcats-cheatsheet-thumbs.png" width="320" height="252"/></a>
 
 ## Getting started
 
