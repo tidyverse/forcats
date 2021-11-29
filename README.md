@@ -45,7 +45,7 @@ factors](https://r4ds.had.co.nz/factors.html) in R for Data Science.
 
 ## Cheatsheet
 
-<a href="https://github.com/rstudio/cheatsheets/raw/HEAD/factors.pdf"><img src="https://github.com/rstudio/cheatsheets/raw/HEAD/pngs/thumbnails/forcats-cheatsheet-thumbs.png" width="320" height="252"/></a>
+<a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/factors.pdf"><img src="https://github.com/rstudio/cheatsheets/raw/main/pngs/thumbnails/forcats-cheatsheet-thumbs.png" width="320" height="252"/></a>
 
 ## Getting started
 
