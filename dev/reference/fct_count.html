@@ -189,77 +189,81 @@ float to the top.</p></td>
     <p>A tibble with columns <code>f</code>, <code>n</code> and <code>p</code>, if prop is <code>TRUE</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span><span class='op'>(</span><span class='fl'>1000</span>, <span class='fl'>10</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>f</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; f
-#&gt;   a   b   c   e   f   h   i   j   l   n   p   q   r   t   u   w   x   y   z 
-#&gt; 102   6  14  51 107  43  93   2   1 117  25  51  64  53  11 122 132   5   1 </div><div class='input'><span class='fu'>fct_count</span><span class='op'>(</span><span class='va'>f</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 19 × 2</span>
-#&gt;    f         n
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> a       102
-#&gt; <span style='color: #BCBCBC;'> 2</span> b         6
-#&gt; <span style='color: #BCBCBC;'> 3</span> c        14
-#&gt; <span style='color: #BCBCBC;'> 4</span> e        51
-#&gt; <span style='color: #BCBCBC;'> 5</span> f       107
-#&gt; <span style='color: #BCBCBC;'> 6</span> h        43
-#&gt; <span style='color: #BCBCBC;'> 7</span> i        93
-#&gt; <span style='color: #BCBCBC;'> 8</span> j         2
-#&gt; <span style='color: #BCBCBC;'> 9</span> l         1
-#&gt; <span style='color: #BCBCBC;'>10</span> n       117
-#&gt; <span style='color: #BCBCBC;'>11</span> p        25
-#&gt; <span style='color: #BCBCBC;'>12</span> q        51
-#&gt; <span style='color: #BCBCBC;'>13</span> r        64
-#&gt; <span style='color: #BCBCBC;'>14</span> t        53
-#&gt; <span style='color: #BCBCBC;'>15</span> u        11
-#&gt; <span style='color: #BCBCBC;'>16</span> w       122
-#&gt; <span style='color: #BCBCBC;'>17</span> x       132
-#&gt; <span style='color: #BCBCBC;'>18</span> y         5
-#&gt; <span style='color: #BCBCBC;'>19</span> z         1</div><div class='input'><span class='fu'>fct_count</span><span class='op'>(</span><span class='va'>f</span>, sort <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 19 × 2</span>
-#&gt;    f         n
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> x       132
-#&gt; <span style='color: #BCBCBC;'> 2</span> w       122
-#&gt; <span style='color: #BCBCBC;'> 3</span> n       117
-#&gt; <span style='color: #BCBCBC;'> 4</span> f       107
-#&gt; <span style='color: #BCBCBC;'> 5</span> a       102
-#&gt; <span style='color: #BCBCBC;'> 6</span> i        93
-#&gt; <span style='color: #BCBCBC;'> 7</span> r        64
-#&gt; <span style='color: #BCBCBC;'> 8</span> t        53
-#&gt; <span style='color: #BCBCBC;'> 9</span> e        51
-#&gt; <span style='color: #BCBCBC;'>10</span> q        51
-#&gt; <span style='color: #BCBCBC;'>11</span> h        43
-#&gt; <span style='color: #BCBCBC;'>12</span> p        25
-#&gt; <span style='color: #BCBCBC;'>13</span> c        14
-#&gt; <span style='color: #BCBCBC;'>14</span> u        11
-#&gt; <span style='color: #BCBCBC;'>15</span> b         6
-#&gt; <span style='color: #BCBCBC;'>16</span> y         5
-#&gt; <span style='color: #BCBCBC;'>17</span> j         2
-#&gt; <span style='color: #BCBCBC;'>18</span> l         1
-#&gt; <span style='color: #BCBCBC;'>19</span> z         1</div><div class='input'><span class='fu'>fct_count</span><span class='op'>(</span><span class='va'>f</span>, sort <span class='op'>=</span> <span class='cn'>TRUE</span>, prop <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 19 × 3</span>
-#&gt;    f         n     p
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> x       132 0.132
-#&gt; <span style='color: #BCBCBC;'> 2</span> w       122 0.122
-#&gt; <span style='color: #BCBCBC;'> 3</span> n       117 0.117
-#&gt; <span style='color: #BCBCBC;'> 4</span> f       107 0.107
-#&gt; <span style='color: #BCBCBC;'> 5</span> a       102 0.102
-#&gt; <span style='color: #BCBCBC;'> 6</span> i        93 0.093
-#&gt; <span style='color: #BCBCBC;'> 7</span> r        64 0.064
-#&gt; <span style='color: #BCBCBC;'> 8</span> t        53 0.053
-#&gt; <span style='color: #BCBCBC;'> 9</span> e        51 0.051
-#&gt; <span style='color: #BCBCBC;'>10</span> q        51 0.051
-#&gt; <span style='color: #BCBCBC;'>11</span> h        43 0.043
-#&gt; <span style='color: #BCBCBC;'>12</span> p        25 0.025
-#&gt; <span style='color: #BCBCBC;'>13</span> c        14 0.014
-#&gt; <span style='color: #BCBCBC;'>14</span> u        11 0.011
-#&gt; <span style='color: #BCBCBC;'>15</span> b         6 0.006
-#&gt; <span style='color: #BCBCBC;'>16</span> y         5 0.005
-#&gt; <span style='color: #BCBCBC;'>17</span> j         2 0.002
-#&gt; <span style='color: #BCBCBC;'>18</span> l         1 0.001
-#&gt; <span style='color: #BCBCBC;'>19</span> z         1 0.001</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span><span class='op'>(</span><span class='fl'>1000</span>, <span class='fl'>10</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>f</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> f</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   a   b   c   e   f   h   i   j   l   n   p   q   r   t   u   w   x   y   z </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 102   6  14  51 107  43  93   2   1 117  25  51  64  53  11 122 132   5   1 </span>
+<span class='r-in'><span class='fu'>fct_count</span><span class='op'>(</span><span class='va'>f</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 19 × 2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    f         n</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> a       102</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> b         6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> c        14</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> e        51</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> f       107</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> h        43</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> i        93</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> j         2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> l         1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> n       117</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>11</span> p        25</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>12</span> q        51</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>13</span> r        64</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>14</span> t        53</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>15</span> u        11</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>16</span> w       122</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>17</span> x       132</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>18</span> y         5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>19</span> z         1</span>
+<span class='r-in'><span class='fu'>fct_count</span><span class='op'>(</span><span class='va'>f</span>, sort <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 19 × 2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    f         n</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> x       132</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> w       122</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> n       117</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> f       107</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> a       102</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> i        93</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> r        64</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> t        53</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> e        51</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> q        51</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>11</span> h        43</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>12</span> p        25</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>13</span> c        14</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>14</span> u        11</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>15</span> b         6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>16</span> y         5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>17</span> j         2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>18</span> l         1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>19</span> z         1</span>
+<span class='r-in'><span class='fu'>fct_count</span><span class='op'>(</span><span class='va'>f</span>, sort <span class='op'>=</span> <span class='cn'>TRUE</span>, prop <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 19 × 3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    f         n     p</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> x       132 0.132</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> w       122 0.122</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> n       117 0.117</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> f       107 0.107</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> a       102 0.102</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> i        93 0.093</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> r        64 0.064</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> t        53 0.053</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> e        51 0.051</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> q        51 0.051</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>11</span> h        43 0.043</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>12</span> p        25 0.025</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>13</span> c        14 0.014</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>14</span> u        11 0.011</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>15</span> b         6 0.006</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>16</span> y         5 0.005</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>17</span> j         2 0.002</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>18</span> l         1 0.001</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>19</span> z         1 0.001</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

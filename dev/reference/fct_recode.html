@@ -184,28 +184,34 @@ be removed by naming them <code>NULL</code>.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"apple"</span>, <span class='st'>"bear"</span>, <span class='st'>"banana"</span>, <span class='st'>"dear"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>x</span>, fruit <span class='op'>=</span> <span class='st'>"apple"</span>, fruit <span class='op'>=</span> <span class='st'>"banana"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] fruit bear  fruit dear 
-#&gt; Levels: fruit bear dear</div><div class='input'>
-<span class='co'># If you make a mistake you'll get a warning</span>
-<span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>x</span>, fruit <span class='op'>=</span> <span class='st'>"apple"</span>, fruit <span class='op'>=</span> <span class='st'>"bananana"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown levels in `f`: bananana</span></div><div class='output co'>#&gt; [1] fruit  bear   banana dear  
-#&gt; Levels: fruit banana bear dear</div><div class='input'>
-<span class='co'># If you name the level NULL it will be removed</span>
-<span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>x</span>, <span class='cn'>NULL</span> <span class='op'>=</span> <span class='st'>"apple"</span>, fruit <span class='op'>=</span> <span class='st'>"banana"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] &lt;NA&gt;  bear  fruit dear 
-#&gt; Levels: fruit bear dear</div><div class='input'>
-<span class='co'># Wrap the left hand side in quotes if it contains special variables</span>
-<span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"an apple"</span> <span class='op'>=</span> <span class='st'>"apple"</span>, <span class='st'>"a bear"</span> <span class='op'>=</span> <span class='st'>"bear"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] an apple a bear   banana   dear    
-#&gt; Levels: an apple banana a bear dear</div><div class='input'>
-<span class='co'># When passing a named vector to rename levels use !!! to splice</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"apple"</span>, <span class='st'>"bear"</span>, <span class='st'>"banana"</span>, <span class='st'>"dear"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>levels</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>fruit <span class='op'>=</span> <span class='st'>"apple"</span>, fruit <span class='op'>=</span> <span class='st'>"banana"</span><span class='op'>)</span>
-<span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>x</span>, <span class='op'>!</span><span class='op'>!</span><span class='op'>!</span><span class='va'>levels</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] fruit bear  fruit dear 
-#&gt; Levels: fruit bear dear</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"apple"</span>, <span class='st'>"bear"</span>, <span class='st'>"banana"</span>, <span class='st'>"dear"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>x</span>, fruit <span class='op'>=</span> <span class='st'>"apple"</span>, fruit <span class='op'>=</span> <span class='st'>"banana"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] fruit bear  fruit dear </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: fruit bear dear</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># If you make a mistake you'll get a warning</span></span>
+<span class='r-in'><span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>x</span>, fruit <span class='op'>=</span> <span class='st'>"apple"</span>, fruit <span class='op'>=</span> <span class='st'>"bananana"</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Unknown levels in `f`: bananana</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] fruit  bear   banana dear  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: fruit banana bear dear</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># If you name the level NULL it will be removed</span></span>
+<span class='r-in'><span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>x</span>, <span class='cn'>NULL</span> <span class='op'>=</span> <span class='st'>"apple"</span>, fruit <span class='op'>=</span> <span class='st'>"banana"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] &lt;NA&gt;  bear  fruit dear </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: fruit bear dear</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Wrap the left hand side in quotes if it contains special variables</span></span>
+<span class='r-in'><span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"an apple"</span> <span class='op'>=</span> <span class='st'>"apple"</span>, <span class='st'>"a bear"</span> <span class='op'>=</span> <span class='st'>"bear"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] an apple a bear   banana   dear    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: an apple banana a bear dear</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># When passing a named vector to rename levels use !!! to splice</span></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"apple"</span>, <span class='st'>"bear"</span>, <span class='st'>"banana"</span>, <span class='st'>"dear"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>levels</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>fruit <span class='op'>=</span> <span class='st'>"apple"</span>, fruit <span class='op'>=</span> <span class='st'>"banana"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>fct_recode</span><span class='op'>(</span><span class='va'>x</span>, <span class='op'>!</span><span class='op'>!</span><span class='op'>!</span><span class='va'>levels</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] fruit bear  fruit dear </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: fruit bear dear</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

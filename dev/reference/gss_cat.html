@@ -188,46 +188,49 @@
     <p>Downloaded from <a href='https://gssdataexplorer.norc.org/'>https://gssdataexplorer.norc.org/</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>gss_cat</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 21,483 × 9</span>
-#&gt;     year marital         age race  rincome        partyid  relig  denom  tvhours
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>  <span style='text-decoration: underline;'>2</span>000 Never married    26 White $8000 to 9999  Ind,nea… Prote… South…      12
-#&gt; <span style='color: #BCBCBC;'> 2</span>  <span style='text-decoration: underline;'>2</span>000 Divorced         48 White $8000 to 9999  Not str… Prote… Bapti…      <span style='color: #BB0000;'>NA</span>
-#&gt; <span style='color: #BCBCBC;'> 3</span>  <span style='text-decoration: underline;'>2</span>000 Widowed          67 White Not applicable Indepen… Prote… No de…       2
-#&gt; <span style='color: #BCBCBC;'> 4</span>  <span style='text-decoration: underline;'>2</span>000 Never married    39 White Not applicable Ind,nea… Ortho… Not a…       4
-#&gt; <span style='color: #BCBCBC;'> 5</span>  <span style='text-decoration: underline;'>2</span>000 Divorced         25 White Not applicable Not str… None   Not a…       1
-#&gt; <span style='color: #BCBCBC;'> 6</span>  <span style='text-decoration: underline;'>2</span>000 Married          25 White $20000 - 24999 Strong … Prote… South…      <span style='color: #BB0000;'>NA</span>
-#&gt; <span style='color: #BCBCBC;'> 7</span>  <span style='text-decoration: underline;'>2</span>000 Never married    36 White $25000 or more Not str… Chris… Not a…       3
-#&gt; <span style='color: #BCBCBC;'> 8</span>  <span style='text-decoration: underline;'>2</span>000 Divorced         44 White $7000 to 7999  Ind,nea… Prote… Luthe…      <span style='color: #BB0000;'>NA</span>
-#&gt; <span style='color: #BCBCBC;'> 9</span>  <span style='text-decoration: underline;'>2</span>000 Married          44 White $25000 or more Not str… Prote… Other        0
-#&gt; <span style='color: #BCBCBC;'>10</span>  <span style='text-decoration: underline;'>2</span>000 Married          47 White $25000 or more Strong … Prote… South…       3
-#&gt; <span style='color: #949494;'># … with 21,473 more rows</span></div><div class='input'>
-<span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>relig</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16 × 2</span>
-#&gt;    f                           n
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> No answer                  93
-#&gt; <span style='color: #BCBCBC;'> 2</span> Don't know                 15
-#&gt; <span style='color: #BCBCBC;'> 3</span> Inter-nondenominational   109
-#&gt; <span style='color: #BCBCBC;'> 4</span> Native american            23
-#&gt; <span style='color: #BCBCBC;'> 5</span> Christian                 689
-#&gt; <span style='color: #BCBCBC;'> 6</span> Orthodox-christian         95
-#&gt; <span style='color: #BCBCBC;'> 7</span> Moslem/islam              104
-#&gt; <span style='color: #BCBCBC;'> 8</span> Other eastern              32
-#&gt; <span style='color: #BCBCBC;'> 9</span> Hinduism                   71
-#&gt; <span style='color: #BCBCBC;'>10</span> Buddhism                  147
-#&gt; <span style='color: #BCBCBC;'>11</span> Other                     224
-#&gt; <span style='color: #BCBCBC;'>12</span> None                     <span style='text-decoration: underline;'>3</span>523
-#&gt; <span style='color: #BCBCBC;'>13</span> Jewish                    388
-#&gt; <span style='color: #BCBCBC;'>14</span> Catholic                 <span style='text-decoration: underline;'>5</span>124
-#&gt; <span style='color: #BCBCBC;'>15</span> Protestant              <span style='text-decoration: underline;'>10</span>846
-#&gt; <span style='color: #BCBCBC;'>16</span> Not applicable              0</div><div class='input'><span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='fu'><a href='fct_lump.html'>fct_lump</a></span><span class='op'>(</span><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>relig</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 × 2</span>
-#&gt;   f              n
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> Protestant <span style='text-decoration: underline;'>10</span>846
-#&gt; <span style='color: #BCBCBC;'>2</span> Other      <span style='text-decoration: underline;'>10</span>637</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>gss_cat</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 21,483 × 9</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     year marital         age race  rincome        partyid  relig  denom  tvhours</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span>  <span style='text-decoration: underline;'>2</span>000 Never married    26 White $8000 to 9999  Ind,nea… Prote… South…      12</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span>  <span style='text-decoration: underline;'>2</span>000 Divorced         48 White $8000 to 9999  Not str… Prote… Bapti…      <span style='color: #BB0000;'>NA</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span>  <span style='text-decoration: underline;'>2</span>000 Widowed          67 White Not applicable Indepen… Prote… No de…       2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span>  <span style='text-decoration: underline;'>2</span>000 Never married    39 White Not applicable Ind,nea… Ortho… Not a…       4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span>  <span style='text-decoration: underline;'>2</span>000 Divorced         25 White Not applicable Not str… None   Not a…       1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span>  <span style='text-decoration: underline;'>2</span>000 Married          25 White $20000 - 24999 Strong … Prote… South…      <span style='color: #BB0000;'>NA</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span>  <span style='text-decoration: underline;'>2</span>000 Never married    36 White $25000 or more Not str… Chris… Not a…       3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span>  <span style='text-decoration: underline;'>2</span>000 Divorced         44 White $7000 to 7999  Ind,nea… Prote… Luthe…      <span style='color: #BB0000;'>NA</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span>  <span style='text-decoration: underline;'>2</span>000 Married          44 White $25000 or more Not str… Prote… Other        0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span>  <span style='text-decoration: underline;'>2</span>000 Married          47 White $25000 or more Strong … Prote… South…       3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 21,473 more rows</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>relig</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 16 × 2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    f                           n</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> No answer                  93</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> Don't know                 15</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> Inter-nondenominational   109</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> Native american            23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> Christian                 689</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> Orthodox-christian         95</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> Moslem/islam              104</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> Other eastern              32</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> Hinduism                   71</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> Buddhism                  147</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>11</span> Other                     224</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>12</span> None                     <span style='text-decoration: underline;'>3</span>523</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>13</span> Jewish                    388</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>14</span> Catholic                 <span style='text-decoration: underline;'>5</span>124</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>15</span> Protestant              <span style='text-decoration: underline;'>10</span>846</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>16</span> Not applicable              0</span>
+<span class='r-in'><span class='fu'><a href='fct_count.html'>fct_count</a></span><span class='op'>(</span><span class='fu'><a href='fct_lump.html'>fct_lump</a></span><span class='op'>(</span><span class='va'>gss_cat</span><span class='op'>$</span><span class='va'>relig</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 2 × 2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   f              n</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span> Protestant <span style='text-decoration: underline;'>10</span>846</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span> Other      <span style='text-decoration: underline;'>10</span>637</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

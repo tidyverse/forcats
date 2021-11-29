@@ -185,14 +185,17 @@ exist will be silently ignored.</p></td>
     <div class='dont-index'><p><code><a href='fct_drop.html'>fct_drop()</a></code> to drop unused factor levels.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>, <span class='fl'>20</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>f</span>
-</div><div class='output co'>#&gt;  [1] c a a c b b a b c b b a c a b c b c c c
-#&gt; Levels: a b c</div><div class='input'><span class='fu'>fct_expand</span><span class='op'>(</span><span class='va'>f</span>, <span class='st'>"d"</span>, <span class='st'>"e"</span>, <span class='st'>"f"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] c a a c b b a b c b b a c a b c b c c c
-#&gt; Levels: a b c d e f</div><div class='input'><span class='fu'>fct_expand</span><span class='op'>(</span><span class='va'>f</span>, <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>6</span><span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] c a a c b b a b c b b a c a b c b c c c
-#&gt; Levels: a b c d e f</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>, <span class='fl'>20</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>f</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] c a a c b b a b c b b a c a b c b c c c</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: a b c</span>
+<span class='r-in'><span class='fu'>fct_expand</span><span class='op'>(</span><span class='va'>f</span>, <span class='st'>"d"</span>, <span class='st'>"e"</span>, <span class='st'>"f"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] c a a c b b a b c b b a c a b c b c c c</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: a b c d e f</span>
+<span class='r-in'><span class='fu'>fct_expand</span><span class='op'>(</span><span class='va'>f</span>, <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>6</span><span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] c a a c b b a b c b b a c a b c b c c c</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: a b c d e f</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
