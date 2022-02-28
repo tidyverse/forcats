@@ -11,7 +11,8 @@ Description: Helpers for reordering factor levels (including moving
     (including collapsing rare levels into other, 'anonymising', and
     manually 'recoding').
 License: MIT + file LICENSE
-URL: https://forcats.tidyverse.org, https://github.com/tidyverse/forcats
+URL: https://forcats.tidyverse.org/,
+    https://github.com/tidyverse/forcats
 BugReports: https://github.com/tidyverse/forcats/issues
 Depends: 
     R (>= 3.2)
