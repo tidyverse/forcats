@@ -1,12 +1,12 @@
+url: https://forcats.tidyverse.org
+
 template:
-  package: tidytemplate
   bootstrap: 5
+  package: tidytemplate
 
   includes:
     in_header: |
       <script defer data-domain="forcats.tidyverse.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
-
-url: https://forcats.tidyverse.org
 
 development:
   mode: auto
