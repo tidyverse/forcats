@@ -20,7 +20,11 @@
 fct_collapse <- function(.f, ..., other_level = NULL, group_other = "DEPRECATED") {
 
   if (!missing(group_other)) {
-    warning("`group_other` is deprecated. Please use `other_level` instead")
+    lifecycle::deprecate_warn(
+      when = "0.5.0",
+      what = "fct_collapse(group_other)",
+      with = "fct_collapse(other_level)"
+    )
     if (isTRUE(group_other) && is.null(other_level)) {
       other_level <- "Other"
     }
