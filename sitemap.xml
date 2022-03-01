@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://forcats.tidyverse.org/404.html</loc>
+  </url>
+  <url>
+    <loc>https://forcats.tidyverse.org/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://forcats.tidyverse.org/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://forcats.tidyverse.org/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://forcats.tidyverse.org/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://forcats.tidyverse.org/SUPPORT.html</loc>
+  </url>
+  <url>
+    <loc>https://forcats.tidyverse.org/articles/forcats.html</loc>
+  </url>
+  <url>
+    <loc>https://forcats.tidyverse.org/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://forcats.tidyverse.org/authors.html</loc>
+  </url>
+  <url>
     <loc>https://forcats.tidyverse.org/index.html</loc>
+  </url>
+  <url>
+    <loc>https://forcats.tidyverse.org/news/index.html</loc>
   </url>
   <url>
     <loc>https://forcats.tidyverse.org/reference/as_factor.html</loc>
@@ -76,6 +106,9 @@
     <loc>https://forcats.tidyverse.org/reference/gss_cat.html</loc>
   </url>
   <url>
+    <loc>https://forcats.tidyverse.org/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://forcats.tidyverse.org/reference/lvls.html</loc>
   </url>
   <url>
@@ -83,8 +116,5 @@
   </url>
   <url>
     <loc>https://forcats.tidyverse.org/reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>https://forcats.tidyverse.org/articles/forcats.html</loc>
   </url>
 </urlset>
