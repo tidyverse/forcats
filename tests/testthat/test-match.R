@@ -1,5 +1,3 @@
-context("test-fct_match.R")
-
 test_that("equivalent to %in% when levels present", {
   f <- factor(c("a", "b", "c", NA))
   expect_equal(fct_match(f, "a"), f %in% "a")

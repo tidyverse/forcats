@@ -1,5 +1,3 @@
-context("test-reorder.R")
-
 test_that("can reorder by 2d summary", {
   df <- tibble::tribble(
     ~g,  ~x,

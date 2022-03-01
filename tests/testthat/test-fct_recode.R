@@ -1,5 +1,3 @@
-context("fct_recode")
-
 test_that("warns about unknown levels", {
   f1 <- factor(c("a", "b"))
 

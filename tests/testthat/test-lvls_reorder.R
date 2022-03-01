@@ -1,5 +1,3 @@
-context("lvls_reorder")
-
 test_that("changes levels, not values", {
   f1 <- factor(c("a", "b"))
   f2 <- factor(c("a", "b"), levels = c("b", "a"))

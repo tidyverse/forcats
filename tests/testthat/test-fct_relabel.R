@@ -1,5 +1,3 @@
-context("fct_relabel")
-
 test_that("identity", {
   f1 <- factor(c("a", "b"))
 

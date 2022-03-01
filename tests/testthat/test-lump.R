@@ -1,5 +1,3 @@
-context("fct_lump")
-
 test_that("too many arguments fails", {
   f <- c("a", "b", "c")
   expect_error(fct_lump(f, n = 1, count = 1))

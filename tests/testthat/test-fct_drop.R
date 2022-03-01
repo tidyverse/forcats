@@ -1,5 +1,3 @@
-context("fct_drop")
-
 test_that("doesn't add NA level", {
   f1 <- factor(c("a", NA), levels = c("a", "b"))
   f2 <- fct_drop(f1)

@@ -1,5 +1,3 @@
-context("fct_cross")
-
 test_that("empty input returns empty factor", {
   expect_equal(fct_cross(), factor())
 })

@@ -1,5 +1,3 @@
-context("fct_other")
-
 test_that("keeps levels in keep", {
   x1 <- factor(c("a", "b"))
   x2 <- fct_other(x1, keep = "a")

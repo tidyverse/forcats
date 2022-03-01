@@ -1,5 +1,3 @@
-context("test-utils.R")
-
 test_that("check_factor() fails when needed", {
   expect_error(check_factor(NA), "factor")
 })

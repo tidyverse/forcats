@@ -1,5 +1,3 @@
-context("lvls")
-
 # lvls_expand -------------------------------------------------------------
 
 test_that("changes levels, not values", {
