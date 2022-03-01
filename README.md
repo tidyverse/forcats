@@ -7,7 +7,7 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
-[![R-CMD-check](https://github.com/tidyverse/forcats/workflows/R-CMD-check/badge.svg)](https://github.com/tidyverse/forcats/actions)
+[![R-CMD-check](https://github.com/tidyverse/forcats/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidyverse/forcats/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/tidyverse/forcats/branch/main/graph/badge.svg)](https://codecov.io/gh/tidyverse/forcats?branch=main)
 <!-- badges: end -->
@@ -128,9 +128,3 @@ If you encounter a clear bug, please file a minimal reproducible example
 on [github](https://github.com/tidyverse/forcats/issues). For questions
 and other discussion, please use
 [community.rstudio.com](https://community.rstudio.com/).
-
-## Code of Conduct
-
-Please note that the ‘forcats’ project is released with a [Contributor
-Code of Conduct](https://forcats.tidyverse.org/CODE_OF_CONDUCT.html). By
-contributing to this project, you agree to abide by its terms.
