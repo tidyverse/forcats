@@ -17,7 +17,6 @@
 #' @param .desc Order in descending order? Note the default is different
 #'   between `fct_reorder` and `fct_reorder2`, in order to
 #'   match the default ordering of factors in the legend.
-#' @importFrom stats median
 #' @export
 #' @examples
 #' df <- tibble::tribble(
