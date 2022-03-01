@@ -163,18 +163,21 @@ test_that("fct_lump_prop works when weighted", {
 # Default -----------------------------------------------------------------
 
 test_that("lumps smallest", {
+  lump_test <- function(x) {
+    paste(ifelse(in_smallest(x), "X", letters[seq_along(x)]), collapse = "")
+  }
+
+  # smallest
   expect_equal(lump_test(c(1, 2, 3, 6)), "Xbcd")
   expect_equal(lump_test(c(1, 2, 3, 7)), "XXXd")
 
   expect_equal(lump_test(c(1, 2, 3, 7, 13)), "XXXde")
   expect_equal(lump_test(c(1, 2, 3, 7, 14)), "XXXXe")
-})
 
-test_that("doesn't lump if none small enough", {
+  # doesn't lump if none small enough
   expect_equal(lump_test(c(2, 2, 4)), "abc")
-})
 
-test_that("order doesn't matter", {
+  # order doesn't matter
   expect_equal(lump_test(c(2, 2, 5)), "XXc")
   expect_equal(lump_test(c(2, 5, 2)), "XbX")
   expect_equal(lump_test(c(5, 2, 2)), "aXX")
