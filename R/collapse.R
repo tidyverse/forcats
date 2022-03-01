@@ -18,6 +18,7 @@
 #' )
 #' fct_count(partyid2)
 fct_collapse <- function(.f, ..., other_level = NULL, group_other = "DEPRECATED") {
+  f <- check_factor(.f)
 
   if (!missing(group_other)) {
     lifecycle::deprecate_warn(
@@ -34,7 +35,6 @@ fct_collapse <- function(.f, ..., other_level = NULL, group_other = "DEPRECATED"
   levs <- as.list(unlist(new, use.names = FALSE))
 
   if (!is.null(other_level)){
-    f <- check_factor(.f)
     levels <- levels(f)
     new[[other_level]] <- levels[!levels %in% levs]
     levs <- c(levs, new[[other_level]])

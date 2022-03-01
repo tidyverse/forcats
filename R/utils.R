@@ -11,25 +11,25 @@
 NULL
 
 
-check_factor <- function(f) {
-  if (is.character(f)) {
-    factor(f)
-  } else if (is.factor(f)) {
-    f
+check_factor <- function(x, arg = caller_arg(x), call = caller_env()) {
+  if (is.character(x)) {
+    factor(x)
+  } else if (is.factor(x)) {
+    x
   } else {
-    stop("`f` must be a factor (or character vector).", call. = FALSE)
+    cli::cli_abort("{.arg {arg}} must be a factor (or character vector).", call = call)
   }
 }
 
-check_factor_list <- function(fs, arg_name = "fs") {
-  if (!is.list(fs)) {
-    stop("`fs` must be a list", call. = FALSE)
+check_factor_list <- function(x, arg = caller_arg(x), call = caller_env()) {
+  if (!is.list(x)) {
+    cli::cli_abort("{.arg {arg}} must be a list", call = call)
   }
 
-  is_factor <- vapply(fs, is.factor, logical(1))
+  is_factor <- vapply(x, is.factor, logical(1))
   if (any(!is_factor)) {
-    stop("All elements of `", arg_name, "` must be factors", call. = FALSE)
+    cli::cli_abort("All elements of {.arg {arg}} must be factors", call = call)
   }
 
-  fs
+  x
 }
