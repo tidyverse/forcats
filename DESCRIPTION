@@ -11,16 +11,19 @@ Description: Helpers for reordering factor levels (including moving
     (including collapsing rare levels into other, 'anonymising', and
     manually 'recoding').
 License: MIT + file LICENSE
-URL: https://forcats.tidyverse.org/,
-    https://github.com/tidyverse/forcats
+URL: https://forcats.tidyverse.org/, https://github.com/tidyverse/forcats
 BugReports: https://github.com/tidyverse/forcats/issues
 Depends: 
-    R (>= 3.2)
+    R (>= 3.4)
 Imports: 
+    cli,
     ellipsis,
+    glue,
+    lifecycle,
     magrittr,
     rlang,
-    tibble
+    tibble,
+    withr
 Suggests: 
     covr,
     dplyr,
@@ -32,8 +35,8 @@ Suggests:
 VignetteBuilder: 
     knitr
 Config/Needs/website: tidyverse/tidytemplate
+Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
-Config/testthat/edition: 3
