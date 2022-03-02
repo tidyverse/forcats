@@ -1,7 +1,7 @@
 test_that("warns about unknown levels", {
   f1 <- factor(c("a", "b"))
 
-  expect_warning(f2 <- fct_relevel(f1, "d"), "Unknown levels")
+  expect_snapshot(f2 <- fct_relevel(f1, "d"))
   expect_equal(levels(f2), levels(f1))
 })
 

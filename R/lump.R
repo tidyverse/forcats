@@ -82,7 +82,7 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
   } else if (missing(n)) {
     fct_lump_prop(f, prop, w, other_level)
   } else {
-    cli::cli_abort("Must supply only one of `n` and `prop`")
+    cli::cli_abort("Must supply only one of {.arg n} and {.arg prop}")
   }
 }
 
@@ -93,7 +93,7 @@ fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
   f <- calcs$f
 
   if (!is.numeric(min) || length(min) != 1 || min < 0) {
-    cli::cli_abort("`min` must be a positive number")
+    cli::cli_abort("{.arg min} must be a positive number")
   }
 
   new_levels <- ifelse(calcs$count >= min, levels(f), other_level)
@@ -113,7 +113,7 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
   f <- calcs$f
 
   if (!is.numeric(prop) || length(prop) != 1) {
-    cli::cli_abort("`prop` must be a number")
+    cli::cli_abort("{.arg prop} must be a number")
   }
 
   prop_n <- calcs$count / calcs$total
@@ -146,7 +146,7 @@ fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
   f <- calcs$f
 
   if (!is.numeric(n) || length(n) != 1) {
-    cli::cli_abort("`n` must be a number")
+    cli::cli_abort("{.arg n} must be a number")
   }
 
   if (n < 0) {

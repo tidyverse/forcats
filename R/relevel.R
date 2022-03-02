@@ -58,7 +58,7 @@ fct_relevel <- function(.f, ..., after = 0L) {
 
   unknown <- setdiff(first_levels, old_levels)
   if (length(unknown) > 0) {
-    cli::cli_warn("Unknown levels in `f`: ", paste(unknown, collapse = ", "))
+    cli::cli_warn("{length(unknown)} unknown level{?s} in `f`: {unknown}")
     first_levels <- intersect(first_levels, old_levels)
   }
 
