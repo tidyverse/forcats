@@ -117,7 +117,7 @@ after the explicitly mentioned levels. Supports tidy dots.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b c d</span>
 <span class="r-in"><span class="fu">fct_relevel</span><span class="op">(</span><span class="va">f</span>, <span class="va">sample</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] a b c d</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: d a c b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: c a d b</span>
 <span class="r-in"><span class="fu">fct_relevel</span><span class="op">(</span><span class="va">f</span>, <span class="va">rev</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] a b c d</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a d c b</span>
@@ -168,7 +168,7 @@ after the explicitly mentioned levels. Supports tidy dots.</p></dd>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># You'll get a warning if the levels don't exist</span></span>
 <span class="r-in"><span class="fu">fct_relevel</span><span class="op">(</span><span class="va">f</span>, <span class="st">"e"</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Unknown levels in `f`: e</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Unknown levels in `f`:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] a b c d</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: b c d a</span>
 </code></pre></div>
