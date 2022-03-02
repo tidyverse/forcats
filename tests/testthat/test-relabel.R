@@ -31,14 +31,14 @@ test_that("formulas are coerced to functions", {
   f1 <- factor(letters)
 
   expect_identical(
-    fct_relabel(f1, ~paste0(.x, ".")),
+    fct_relabel(f1, ~ paste0(.x, ".")),
     factor(paste0(letters, "."))
   )
 })
 
 test_that("string input is coerced to a factor", {
   expect_identical(
-    fct_relabel(LETTERS[1:2], .fun=function(x) x),
+    fct_relabel(LETTERS[1:2], function(x) x),
     factor(LETTERS[1:2])
   )
 })

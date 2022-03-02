@@ -32,5 +32,5 @@ test_that("can relevel with function ", {
 
 test_that("function must return character vector", {
   f <- factor(c("a", "b"))
-  expect_error(fct_relevel(f, ~ 1), "character vector")
+  expect_error(fct_relevel(f, ~1), "character vector")
 })

@@ -20,7 +20,7 @@ test_that("ties are respected", {
   expect_equal(levels(fct_lump(f, 1)), c("a", "b", "Other"))
 })
 
-test_that("negative values drop most common" ,{
+test_that("negative values drop most common", {
   f <- c("a", "a", "a", "a", "b", "b", "b", "b", "c", "d")
   expect_equal(levels(fct_lump(f, n = -1)), c("c", "d", "Other"))
   expect_equal(levels(fct_lump(f, prop = -0.2)), c("c", "d", "Other"))
@@ -40,23 +40,35 @@ test_that("return original factor when all element satisfy n / p condition", {
 test_that("different behaviour when apply tie function", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
 
-  expect_equal(levels(fct_lump(f, n = 4, ties.method = "min")),
-               c("a", "b", "c", "d", "e", "f", "g"))
-  expect_equal(levels(fct_lump(f, n = 4, ties.method = "max")),
-               c("a", "b", "Other" ))
+  expect_equal(
+    levels(fct_lump(f, n = 4, ties.method = "min")),
+    c("a", "b", "c", "d", "e", "f", "g")
+  )
+  expect_equal(
+    levels(fct_lump(f, n = 4, ties.method = "max")),
+    c("a", "b", "Other")
+  )
 
   # Rank of c, d, e, f, g is (3+4+5+6+7)/5 = 5
-  expect_equal(levels(fct_lump(f, n = 4, ties.method = "average")),
-               c("a", "b", "Other" ))
-  expect_equal(levels(fct_lump(f, n = 5, ties.method = "average")),
-               c("a", "b", "c", "d", "e", "f", "g"))
+  expect_equal(
+    levels(fct_lump(f, n = 4, ties.method = "average")),
+    c("a", "b", "Other")
+  )
+  expect_equal(
+    levels(fct_lump(f, n = 5, ties.method = "average")),
+    c("a", "b", "c", "d", "e", "f", "g")
+  )
 
-  expect_equal(levels(fct_lump(f, n = 4, ties.method = "first")),
-               c("a", "b", "c", "d", "Other"))
+  expect_equal(
+    levels(fct_lump(f, n = 4, ties.method = "first")),
+    c("a", "b", "c", "d", "Other")
+  )
 
   if (getRversion() >= "3.3.0") {
-    expect_equal(levels(fct_lump(f, n = 4, ties.method = "last")),
-                 c("a", "b", "f", "g", "Other"))
+    expect_equal(
+      levels(fct_lump(f, n = 4, ties.method = "last")),
+      c("a", "b", "f", "g", "Other")
+    )
   }
 })
 

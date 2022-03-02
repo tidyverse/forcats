@@ -80,5 +80,3 @@ test_that("can change ordered status of output", {
   expect_equal(is.ordered(lvls_reorder(f2, 1:3, ordered = FALSE)), FALSE)
   expect_equal(is.ordered(lvls_reorder(f2, 1:3, ordered = TRUE)), TRUE)
 })
-
-

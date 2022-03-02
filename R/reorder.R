@@ -39,15 +39,15 @@
 #' chks <- transform(chks, Chick = fct_shuffle(Chick))
 #'
 #' if (require("ggplot2")) {
-#' ggplot(chks, aes(Time, weight, colour = Chick)) +
-#'   geom_point() +
-#'   geom_line()
+#'   ggplot(chks, aes(Time, weight, colour = Chick)) +
+#'     geom_point() +
+#'     geom_line()
 #'
-#' # Note that lines match order in legend
-#' ggplot(chks, aes(Time, weight, colour = fct_reorder2(Chick, Time, weight))) +
-#'   geom_point() +
-#'   geom_line() +
-#'   labs(colour = "Chick")
+#'   # Note that lines match order in legend
+#'   ggplot(chks, aes(Time, weight, colour = fct_reorder2(Chick, Time, weight))) +
+#'     geom_point() +
+#'     geom_line() +
+#'     labs(colour = "Chick")
 #' }
 fct_reorder <- function(.f, .x, .fun = median, ..., .desc = FALSE) {
   f <- check_factor(.f)
@@ -143,4 +143,3 @@ fct_inseq <- function(f, ordered = NA) {
 
   lvls_reorder(f, order(num_levels), ordered = ordered)
 }
-

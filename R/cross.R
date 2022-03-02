@@ -17,7 +17,6 @@
 #' fct_cross(fruit, colour, eaten)
 #' fct_cross(fruit, colour, keep_empty = TRUE)
 fct_cross <- function(..., sep = ":", keep_empty = FALSE) {
-
   flist <- list2(...)
   if (length(flist) == 0) {
     return(factor())
