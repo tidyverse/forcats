@@ -129,7 +129,7 @@
 <div class="section level2">
 <h2 id="cheatsheet">Cheatsheet<a class="anchor" aria-label="anchor" href="#cheatsheet"></a>
 </h2>
-<p><a href="https://github.com/rstudio/cheatsheets/raw/master/factors.pdf" class="external-link"><img src="https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/thumbnails/forcats-cheatsheet-thumbs.png" width="320" height="252"></a></p>
+<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/factors.pdf" class="external-link"><img src="https://github.com/rstudio/cheatsheets/raw/main/pngs/thumbnails/forcats-cheatsheet-thumbs.png" width="320" height="252"></a></p>
 </div>
 <div class="section level2">
 <h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
@@ -143,7 +143,7 @@
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">species</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 37 x 2</span>
+<span class="co">#&gt; # A tibble: 37 × 2</span>
 <span class="co">#&gt;    species      n</span>
 <span class="co">#&gt;    &lt;chr&gt;    &lt;int&gt;</span>
 <span class="co">#&gt;  1 Human       35</span>
@@ -162,9 +162,9 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>species <span class="op">=</span> <span class="fu"><a href="reference/fct_lump.html">fct_lump</a></span><span class="op">(</span><span class="va">species</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 4 x 2</span>
+<span class="co">#&gt; # A tibble: 4 × 2</span>
 <span class="co">#&gt;   species     n</span>
-<span class="co">#&gt; * &lt;fct&gt;   &lt;int&gt;</span>
+<span class="co">#&gt;   &lt;fct&gt;   &lt;int&gt;</span>
 <span class="co">#&gt; 1 Droid       6</span>
 <span class="co">#&gt; 2 Gungan      3</span>
 <span class="co">#&gt; 3 Human      35</span>
@@ -191,11 +191,6 @@
 <h2 id="getting-help">Getting help<a class="anchor" aria-label="anchor" href="#getting-help"></a>
 </h2>
 <p>If you encounter a clear bug, please file a minimal reproducible example on <a href="https://github.com/tidyverse/forcats/issues" class="external-link">github</a>. For questions and other discussion, please use <a href="https://community.rstudio.com/" class="external-link">community.rstudio.com</a>.</p>
-</div>
-<div class="section level2">
-<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
-</h2>
-<p>Please note that the ‘forcats’ project is released with a <a href="https://forcats.tidyverse.org/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -245,8 +240,8 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=forcats" class="external-link"><img src="https://www.r-pkg.org/badges/version/forcats" alt="CRAN status"></a></li>
-<li><a href="https://github.com/tidyverse/forcats/actions" class="external-link"><img src="https://github.com/tidyverse/forcats/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://codecov.io/gh/tidyverse/forcats?branch=master" class="external-link"><img src="https://codecov.io/gh/tidyverse/forcats/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/tidyverse/forcats/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/tidyverse/forcats/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://codecov.io/gh/tidyverse/forcats?branch=main" class="external-link"><img src="https://codecov.io/gh/tidyverse/forcats/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 

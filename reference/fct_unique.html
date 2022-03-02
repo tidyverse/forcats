@@ -78,11 +78,11 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html" class="external-link">rpois</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span>     <span class="co"># in order of appearance</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] l h m k j i e g s f a d n p o c q</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a c d e f g h i j k l m n o p q s</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] j i f e k q g l o n h m d r t c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: c d e f g h i j k l m n o q r t</span>
 <span class="r-in"><span class="fu">fct_unique</span><span class="op">(</span><span class="va">f</span><span class="op">)</span> <span class="co"># in order of levels</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] a c d e f g h i j k l m n o p q s</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a c d e f g h i j k l m n o p q s</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] c d e f g h i j k l m n o q r t</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: c d e f g h i j k l m n o q r t</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
