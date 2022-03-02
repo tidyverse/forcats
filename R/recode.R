@@ -54,7 +54,7 @@ fct_recode <- function(.f, ...) {
 }
 
 check_recode_levels <- function(...) {
-  levels <- rlang::list2(...)
+  levels <- list2(...)
 
   is_ok <- function(x) is.character(x) && length(x) == 1
   ok <- vapply(levels, is_ok, logical(1))
