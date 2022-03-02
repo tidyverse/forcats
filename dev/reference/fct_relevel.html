@@ -117,14 +117,14 @@ after the explicitly mentioned levels. Supports tidy dots.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b c d</span>
 <span class="r-in"><span class="fu">fct_relevel</span><span class="op">(</span><span class="va">f</span>, <span class="va">sample</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] a b c d</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: c a d b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: d a c b</span>
 <span class="r-in"><span class="fu">fct_relevel</span><span class="op">(</span><span class="va">f</span>, <span class="va">rev</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] a b c d</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a d c b</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Using 'Inf' allows you to relevel to the end when the number</span></span>
 <span class="r-in"><span class="co"># of levels is unknown or variable (e.g. vectorised operations)</span></span>
-<span class="r-in"><span class="va">df</span>  <span class="op">&lt;-</span> <span class="fu">forcats</span><span class="fu">::</span><span class="va"><a href="gss_cat.html">gss_cat</a></span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rincome"</span>, <span class="st">"denom"</span><span class="op">)</span><span class="op">]</span></span>
+<span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">forcats</span><span class="fu">::</span><span class="va"><a href="gss_cat.html">gss_cat</a></span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rincome"</span>, <span class="st">"denom"</span><span class="op">)</span><span class="op">]</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">levels</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $rincome</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "No answer"      "Don't know"     "Refused"        "$25000 or more"</span>
@@ -168,7 +168,7 @@ after the explicitly mentioned levels. Supports tidy dots.</p></dd>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># You'll get a warning if the levels don't exist</span></span>
 <span class="r-in"><span class="fu">fct_relevel</span><span class="op">(</span><span class="va">f</span>, <span class="st">"e"</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Unknown levels in `f`:</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>1 unknown level in `f`: e</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] a b c d</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: b c d a</span>
 </code></pre></div>
