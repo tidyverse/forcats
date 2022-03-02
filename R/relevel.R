@@ -6,7 +6,7 @@
 #' @param .f A factor (or character vector).
 #' @param ... Either a function (or formula), or character levels.
 #'
-#'   A function will be called with the current levels as input, and the 
+#'   A function will be called with the current levels as input, and the
 #'   return value (which must be a character vector) will be used to relevel
 #'   the factor.
 #'
@@ -50,7 +50,7 @@ fct_relevel <- function(.f, ..., after = 0L) {
     fun <- as_function(..1)
     first_levels <- fun(old_levels)
     if (!is.character(first_levels)) {
-      stop("Re-leveling function must return character vector", call. = FALSE)
+      cli::cli_abort("Re-leveling function must return character vector")
     }
   } else {
     first_levels <- chr(...)
@@ -58,7 +58,7 @@ fct_relevel <- function(.f, ..., after = 0L) {
 
   unknown <- setdiff(first_levels, old_levels)
   if (length(unknown) > 0) {
-    warning("Unknown levels in `f`: ", paste(unknown, collapse = ", "), call. = FALSE)
+    cli::cli_warn("Unknown levels in `f`: ", paste(unknown, collapse = ", "))
     first_levels <- intersect(first_levels, old_levels)
   }
 

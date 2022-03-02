@@ -55,11 +55,7 @@ fct_reorder <- function(.f, .x, .fun = median, ..., .desc = FALSE) {
   ellipsis::check_dots_used()
 
   summary <- tapply(.x, .f, .fun, ...)
-  # This is a bit of a weak test, but should detect the most common case
-  # where `.fun` returns multiple values.
-  if (is.list(summary)) {
-    stop("`fun` must return a single value per group", call. = FALSE)
-  }
+  check_single_value_per_group(summary, ".fun")
 
   lvls_reorder(f, order(summary, decreasing = .desc))
 }
@@ -72,13 +68,18 @@ fct_reorder2 <- function(.f, .x, .y, .fun = last2, ..., .desc = TRUE) {
   ellipsis::check_dots_used()
 
   summary <- tapply(seq_along(.x), f, function(i) .fun(.x[i], .y[i], ...))
-  if (is.list(summary)) {
-    stop("`fun` must return a single value per group", call. = FALSE)
-  }
+  check_single_value_per_group(summary, ".fun")
 
   lvls_reorder(.f, order(summary, decreasing = .desc))
 }
 
+check_single_value_per_group <- function(x, fun_arg, call = caller_env()) {
+  # This is a bit of a weak test, but should detect the most common case
+  # where `.fun` returns multiple values.
+  if (is.list(x)) {
+    cli::cli_abort("{.arg {fun_arg}} must return a single value per group", call = call)
+  }
+}
 
 #' @export
 #' @rdname fct_reorder
@@ -137,7 +138,7 @@ fct_inseq <- function(f, ordered = NA) {
   num_levels <- suppressWarnings(as.numeric(levels(f)))
 
   if (all(is.na(num_levels))) {
-    stop("At least one existing level must be coercible to numeric.", call. = FALSE)
+    cli::cli_abort("At least one existing level must be coercible to numeric.")
   }
 
   lvls_reorder(f, order(num_levels), ordered = ordered)

@@ -4,22 +4,14 @@ test_that("identity", {
   expect_identical(fct_relabel(f1, identity), f1)
 })
 
-test_that("error if not function", {
+test_that("gives useful errors", {
   f1 <- factor("a")
 
-  expect_error(fct_relabel(f1, 1), "function")
-})
-
-test_that("error if level not character", {
-  f1 <- factor("a")
-
-  expect_error(fct_relabel(f1, function(x) 1), "character")
-})
-
-test_that("error if level has different length", {
-  f1 <- factor(letters)
-
-  expect_error(fct_relabel(f1, function(x) x[-1]), "expected 26.*got 25")
+  expect_snapshot(error = TRUE, {
+    fct_relabel(f1, 1)
+    fct_relabel(f1, function(x) 1)
+    fct_relabel(f1, function(x) x[-1])
+  })
 })
 
 test_that("total collapse", {

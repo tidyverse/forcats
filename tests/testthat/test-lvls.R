@@ -10,7 +10,9 @@ test_that("changes levels, not values", {
 test_that("must include all existing levels", {
   f1 <- factor(c("a", "b"))
 
-  expect_error(lvls_expand(f1, c("a", "c")), "include all existing levels")
+  expect_snapshot(error = TRUE, {
+    lvls_expand(f1, c("a", "c"))
+  })
 })
 
 # lvls_revalue ------------------------------------------------------------
@@ -35,16 +37,13 @@ test_that("preserves missing values", {
   expect_equal(levels(f2), levels(f1))
 })
 
-test_that("`new_levels` must be a character", {
-  f1 <- factor(c("a", "b"))
-  expect_error(lvls_revalue(f1, 1:5), "character vector")
-})
-
-test_that("`new_levels` must be same length as existing levels", {
+test_that("`new_levels` must checks its inputs", {
   f1 <- factor(c("a", "b"))
 
-  expect_error(lvls_revalue(f1, c("a")), "same length")
-  expect_error(lvls_revalue(f1, c("a", "b", "c")), "same length")
+  expect_snapshot(error = TRUE, {
+    lvls_revalue(f1, 1:5)
+    lvls_revalue(f1, c("a", "b", "c"))
+  })
 })
 
 # lvls_reorder ------------------------------------------------------------

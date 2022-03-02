@@ -187,9 +187,9 @@ fct_lump_lowfreq <- function(f, other_level = "Other") {
 
 }
 
-check_calc_levels <- function(f, w = NULL) {
+check_calc_levels <- function(f, w = NULL, call = caller_env()) {
   f <- check_factor(f)
-  w <- check_weights(w, length(f))
+  w <- check_weights(w, length(f), call = call)
 
   if (is.null(w)) {
     count <- as.vector(table(f))
@@ -229,29 +229,29 @@ in_smallest <- function(x) {
   to_lump[order(ord_x)]
 }
 
-check_weights <- function(w, n = length(w)) {
+check_weights <- function(w, n = length(w), call = caller_env()) {
   if (is.null(w)) {
     return(w)
   }
 
   if (!is.numeric(w)) {
-    stop("`w` must be a numeric vector", call. = FALSE)
+    cli::cli_abort("{.arg w} must be a numeric vector", call = call)
   }
 
   if (length(w) != n) {
-    stop(
-      "`w` must be the same length as `f` (", n, "), not length ", length(w),
-      call. = FALSE
+    cli::cli_abort(
+      "{.arg w} must be the same length as {.arg f} ({n}), not length {length(w)}",
+      call = call
     )
   }
 
   bad <- w < 0 | is.na(w)
   if (any(bad)) {
-    stop(
-      "All `w` must be non-negative and non-missing. Problems at positions: ",
-      paste0(which(bad), collapse = ", "),
-      call. = FALSE
-    )
+    probs <- which(bad)
+    cli::cli_abort(c(
+      "All {.arg w} must be non-negative and non-missing.",
+      "{length(probs)} problem{?s} at positions {probs}"
+    ), call = call)
   }
 
   w

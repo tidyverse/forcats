@@ -35,10 +35,12 @@ test_that("complains if summary doesn't return single value", {
   fun1 <- function(x, y) c(1, 2)
   fun2 <- function(x, y) integer()
 
-  expect_error(fct_reorder("a", 1, fun1), "single value per group")
-  expect_error(fct_reorder("a", 1, fun2), "single value per group")
-  expect_error(fct_reorder2("a", 1, 2, fun1), "single value per group")
-  expect_error(fct_reorder2("a", 1, 2, fun2), "single value per group")
+  expect_snapshot(error = TRUE, {
+    fct_reorder("a", 1, fun1)
+    fct_reorder("a", 1, fun2)
+    fct_reorder2("a", 1, 2, fun1)
+    fct_reorder2("a", 1, 2, fun2)
+  })
 })
 
 test_that("fct_infreq respects missing values", {

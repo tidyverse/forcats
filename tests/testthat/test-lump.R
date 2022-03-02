@@ -70,10 +70,12 @@ test_that("NAs included in total", {
   expect_equal(levels(o2), c("a", "Other"))
 })
 
-test_that("bad weights generate error messages", {
-  expect_error(fct_lump(letters, w = letters), "must be a numeric vector")
-  expect_error(fct_lump(letters, w = 1:10), "must be the same length")
-  expect_error(fct_lump(letters, w = rep(-1, 26)), "must be non-negative")
+test_that("bad weights generates friendly error messages", {
+  expect_snapshot(error = TRUE, {
+    fct_lump(letters, w = letters)
+    fct_lump(letters, w = 1:10)
+    fct_lump(letters, w = c(-1, rep(1, 24), -1))
+  })
 })
 
 test_that("values are correctly weighted", {
