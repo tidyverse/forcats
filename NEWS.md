@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* New `fct()` which works like `factor()` but errors if values of `x`
+  are not included in the levels specification (#299)
+
 # forcats 0.5.1
 
 * Re-license as MIT (#277).
