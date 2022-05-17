@@ -1,5 +1,7 @@
 # forcats (development version)
 
+* `first2()` and `last2()` now ignore missing values in both `x` and `y` (#303).
+
 # forcats 0.5.1
 
 * Re-license as MIT (#277).

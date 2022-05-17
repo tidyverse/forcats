@@ -31,6 +31,32 @@ test_that("can reorder by 2d summary", {
   expect_equal(levels(f2), c("a", "b"))
 })
 
+test_that("missing groups appear at end", {
+  df <- tibble::tribble(
+    ~g, ~x, ~y,
+    "a", NA, NA,
+    "b", 1, 10,
+  )
+
+  f1 <- fct_reorder2(df$g, df$x, df$y)
+  expect_equal(levels(f1), c("b", "a"))
+})
+
+test_that("first2/last2 return expected values", {
+  expect_equal(first2(4:1, 1:4), 4)
+  expect_equal(last2(4:1, 1:4), 1)
+})
+
+test_that("last2 ignores points where either value is missing", {
+  expect_equal(last2(1:4, c(1:3, NA)), 3)
+  expect_equal(last2(c(1:3, NA), 1:4), 3)
+})
+
+test_that("last2 returns NA if no non-missing pairs", {
+  expect_equal(last2(c(NA, 1), c(1, NA)), NA_real_)
+  expect_equal(last2(c(NA, 1), c("x", NA)), NA_character_)
+})
+
 test_that("complains if summary doesn't return single value", {
   fun1 <- function(x, y) c(1, 2)
   fun2 <- function(x, y) integer()
