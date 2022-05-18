@@ -6,7 +6,7 @@
 \title{A sample of categorical variables from the General Social survey}
 \format{
 \describe{
-\item{year}{year of survey, 2000--2014}
+\item{year}{year of survey, 2000--2014 (every other year)}
 \item{age}{age. Maximum age truncated to 89.}
 \item{marital}{marital status}
 \item{race}{race}
