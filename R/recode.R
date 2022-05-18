@@ -53,18 +53,21 @@ fct_recode <- function(.f, ...) {
   lvls_revalue(f, old_levels)
 }
 
-check_recode_levels <- function(...) {
-  levels <- rlang::list2(...)
+check_recode_levels <- function(..., call = caller_env()) {
+  levels <- list2(...)
 
   is_ok <- function(x) is.character(x) && length(x) == 1
-  ok <- vapply(levels, is_ok, logical(1))
+  ok <- vapply(levels, is_ok, logical(1)) & names2(levels) != ""
 
   if (!all(ok)) {
-    stop(
-      "Each input to fct_recode must be a single named string. ",
-      "Problems at positions: ", paste0(which(!ok), collapse = ", "),
-      call. = FALSE
-    )
+    indx <- names2(levels)
+    indx[indx == ""] <- seq_along(levels)[indx == ""]
+    problems <- indx[!ok]
+
+    cli::cli_abort(c(
+      "Each element of {.arg ...} must be a named string.",
+      i = "Problems with {length(problems)} argument{?s}: {problems}"
+    ), call = call)
   }
 
   unlist(levels)

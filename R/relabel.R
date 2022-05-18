@@ -11,7 +11,9 @@
 #' @export
 #' @examples
 #' gss_cat$partyid %>% fct_count()
-#' gss_cat$partyid %>% fct_relabel(~ gsub(",", ", ", .x)) %>% fct_count()
+#' gss_cat$partyid %>%
+#'   fct_relabel(~ gsub(",", ", ", .x)) %>%
+#'   fct_count()
 #'
 #' convert_income <- function(x) {
 #'   regex <- "^(?:Lt |)[$]([0-9]+).*$"

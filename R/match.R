@@ -25,11 +25,11 @@ fct_match <- function(f, lvls) {
   bad_lvls <- setdiff(lvls, levels(f))
   bad_lvls <- bad_lvls[!is.na(bad_lvls)]
   if (length(bad_lvls) > 0) {
-    stop(
-      "Levels not present in factor: ",
-      paste0(encodeString(bad_lvls, quote = '"'), collapse = ", "),
-      call. = FALSE
-    )
+    missing <- encodeString(bad_lvls, quote = '"')
+    cli::cli_abort(c(
+      "All {.arg lvls} must be present in {.arg f}.",
+      i = "Missing levels: {missing}"
+    ))
   }
 
   f %in% lvls

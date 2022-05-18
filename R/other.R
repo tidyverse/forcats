@@ -18,7 +18,7 @@ fct_other <- function(f, keep, drop, other_level = "Other") {
   f <- check_factor(f)
 
   if (!xor(missing(keep), missing(drop))) {
-    stop("Must supply exactly one of `keep` and `drop`", call. = FALSE)
+    cli::cli_abort("Must supply exactly one of {.arg keep} and {.arg drop}")
   }
 
   levels <- levels(f)

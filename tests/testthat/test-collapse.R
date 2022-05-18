@@ -1,5 +1,3 @@
-context("test-collapse.R")
-
 test_that("can collapse multiple values", {
   f1 <- factor(letters[1:3])
   f2 <- fct_collapse(f1, x = c("a", "b"), y = "c")
@@ -51,9 +49,8 @@ test_that("does not automatically collapse unnamed levels to Other", {
 
 test_that("group_other is deprecated", {
   f1 <- factor(letters[1:4])
-  f2 <- expect_warning(
-    fct_collapse(f1, x1 = c("a", "d"), x2 = "c", group_other = TRUE),
-    "deprecated"
+  expect_snapshot(
+    f2 <- fct_collapse(f1, x1 = c("a", "d"), x2 = "c", group_other = TRUE)
   )
 
   expect_equal(levels(f2), c("x1", "x2", "Other"))

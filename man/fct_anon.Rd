@@ -17,6 +17,10 @@ the values nor the order of the levels are preserved.
 }
 \examples{
 gss_cat$relig \%>\% fct_count()
-gss_cat$relig \%>\% fct_anon() \%>\% fct_count()
-gss_cat$relig \%>\% fct_anon("X") \%>\% fct_count()
+gss_cat$relig \%>\%
+  fct_anon() \%>\%
+  fct_count()
+gss_cat$relig \%>\%
+  fct_anon("X") \%>\%
+  fct_count()
 }

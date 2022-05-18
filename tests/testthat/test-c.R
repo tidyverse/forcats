@@ -1,5 +1,3 @@
-context("fct_c")
-
 test_that("uses tidy_dots", {
   fs <- list(factor("a"), factor("b"))
   fab <- factor(c("a", "b"))

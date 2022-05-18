@@ -19,7 +19,7 @@
 #' fs <- list(fa, fb, fab)
 #' fct_c(!!!fs)
 fct_c <- function(...) {
-  fs <- rlang::list2(...)
+  fs <- list2(...)
   fs <- check_factor_list(fs, "...")
 
   if (length(fs) == 0) {

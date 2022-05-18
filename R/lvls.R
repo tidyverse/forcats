@@ -29,10 +29,10 @@ NULL
 lvls_reorder <- function(f, idx, ordered = NA) {
   f <- check_factor(f)
   if (!is.numeric(idx)) {
-    stop("`idx` must be numeric", call. = FALSE)
+    cli::cli_abort("{.arg idx} must be numeric")
   }
   if (!setequal(idx, lvls_seq(f)) || length(idx) != nlevels(f)) {
-    stop("`idx` must contain one integer for each level of `f`", call. = FALSE)
+    cli::cli_abort("{.arg idx} must contain one integer for each level of {.arg f}")
   }
 
   refactor(f, levels(f)[idx], ordered = ordered)
@@ -44,14 +44,14 @@ lvls_revalue <- function(f, new_levels) {
   f <- check_factor(f)
 
   if (!is.character(new_levels)) {
-    stop("`new_levels` must be a character vector", call. = FALSE)
+    cli::cli_abort("{.arg new_levels} must be a character vector")
   }
 
   if (length(new_levels) != nlevels(f)) {
-    stop(
-      "`new_levels` must be the same length as `levels(f)`: expected ",
-      nlevels(f), " new levels, got ", length(new_levels), ".",
-      call. = FALSE
+    n_new <- length(new_levels)
+    n_old <- nlevels(f)
+    cli::cli_abort(
+      "{.arg new_levels} must be the same length ({n_new}) as {.code levels(f)} ({n_old})."
     )
   }
 
@@ -77,9 +77,10 @@ lvls_expand <- function(f, new_levels) {
 
   missing <- setdiff(levels(f), new_levels)
   if (length(missing) > 0) {
-    stop(
-      "Must include all existing levels. Missing: ", paste0(missing, collapse = ", "),
-      call. = FALSE)
+    cli::cli_abort(c(
+      "{.arg new_levels} must include all levels in {.arg f}.",
+      i = "Missing {length(missing)} level{?s}: {missing}"
+    ))
   }
 
   refactor(f, new_levels)

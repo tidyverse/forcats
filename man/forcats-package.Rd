@@ -6,18 +6,14 @@
 \alias{forcats-package}
 \title{forcats: Tools for Working with Categorical Variables (Factors)}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Helpers for reordering factor levels (including
-    moving specified levels to front, ordering by first appearance,
-    reversing, and randomly shuffling), and tools for modifying factor
-    levels (including collapsing rare levels into other, 'anonymising',
-    and manually 'recoding').
+Helpers for reordering factor levels (including moving specified levels to front, ordering by first appearance, reversing, and randomly shuffling), and tools for modifying factor levels (including collapsing rare levels into other, 'anonymising', and manually 'recoding').
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://forcats.tidyverse.org}
+  \item \url{https://forcats.tidyverse.org/}
   \item \url{https://github.com/tidyverse/forcats}
   \item Report bugs at \url{https://github.com/tidyverse/forcats/issues}
 }

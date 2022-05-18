@@ -1,5 +1,3 @@
-context("test-anon.R")
-
 test_that("new levels are padded numerics", {
   f1 <- factor(letters[1:10])
   f2 <- fct_anon(f1)
