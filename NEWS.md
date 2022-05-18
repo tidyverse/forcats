@@ -1,5 +1,7 @@
 # forcats (development version)
 
+* `first2()` and `last2()` now ignore missing values in both `x` and `y` (#303).
+
 * Error messages are more informative.
 
 # forcats 0.5.1
