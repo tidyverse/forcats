@@ -57,6 +57,7 @@ reference:
 
   - title: Other helpers
     contents:
+    - fct
     - as_factor
     - fct_count
     - fct_match

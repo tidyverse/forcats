@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* New `fct()` which works like `factor()` but errors if values of `x`
+  are not included in the levels specification (#299)
+
 * `first2()` and `last2()` now ignore missing values in both `x` and `y` (#303).
 
 * Error messages are more informative.
