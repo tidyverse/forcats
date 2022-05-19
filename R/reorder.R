@@ -84,16 +84,26 @@ check_single_value_per_group <- function(x, fun_arg, call = caller_env()) {
 #' @export
 #' @rdname fct_reorder
 last2 <- function(.x, .y) {
-  .y[order(.x, na.last = FALSE)][length(.y)]
+  terminal(.x, .y, desc = TRUE)
 }
 
 #' @export
 #' @rdname fct_reorder
 first2 <- function(.x, .y) {
-  .y[order(.x)][1]
+  terminal(.x, .y, desc = FALSE)
 }
 
+terminal <- function(x, y, desc) {
+  miss <- is.na(x) | is.na(y)
+  x <- x[!miss]
+  y <- y[!miss]
 
+  if (length(x) == 0) {
+    y[NA_integer_]
+  } else {
+    y[[order(x, decreasing = desc)[[1]]]]
+  }
+}
 
 #' Reorder factor levels by first appearance, frequency, or numeric order
 #'
