@@ -1,10 +1,9 @@
 #' Create a factor
 #'
-#' `fct()` is a stricter version of [factor()] that errors if your `levels`
-#' specification is incorrect. All values of `x` must occur in either
-#' `levels` or `na`.
+#' `fct()` is a stricter version of [factor()] that errors if your
+#' specification of `levels` is inconsistent with the values in `x`.
 #'
-#' @param x A character vector
+#' @param x A character vector. Values must occur in either `levels` or `na`.
 #' @param levels A character vector of known levels. If not supplied, will
 #'   be computed from the unique values of `x`, in the order in which they
 #'   occur.
@@ -12,7 +11,7 @@
 #' @return A factor.
 #' @export
 #' @examples
-#' # Use factors to when you know the set of possible values
+#' # Use factors when you know the set of possible values a variable might take
 #' x <- c("A", "O", "O", "AB", "A")
 #' fct(x, levels = c("O", "A", "B", "AB"))
 #'
@@ -32,7 +31,7 @@
 #'
 #' # factor() sorts default levels:
 #' factor(c("y", "x"))
-#' # fct() uses in order of apperance:
+#' # fct() uses in order of appearance:
 #' fct(c("y", "x"))
 fct <- function(x = character(), levels = NULL, na = character()) {
   if (!is.character(x)) {

@@ -7,7 +7,7 @@
 fct(x = character(), levels = NULL, na = character())
 }
 \arguments{
-\item{x}{A character vector}
+\item{x}{A character vector. Values must occur in either \code{levels} or \code{na}.}
 
 \item{levels}{A character vector of known levels. If not supplied, will
 be computed from the unique values of \code{x}, in the order in which they
@@ -19,12 +19,11 @@ occur.}
 A factor.
 }
 \description{
-\code{fct()} is a stricter version of \code{\link[=factor]{factor()}} that errors if your \code{levels}
-specification is incorrect. All values of \code{x} must occur in either
-\code{levels} or \code{na}.
+\code{fct()} is a stricter version of \code{\link[=factor]{factor()}} that errors if your
+specification of \code{levels} is inconsistent with the values in \code{x}.
 }
 \examples{
-# Use factors to when you know the set of possible values
+# Use factors when you know the set of possible values a variable might take
 x <- c("A", "O", "O", "AB", "A")
 fct(x, levels = c("O", "A", "B", "AB"))
 
@@ -44,6 +43,6 @@ fct(x, levels = c("a", "b"), na = "c")
 
 # factor() sorts default levels:
 factor(c("y", "x"))
-# fct() uses in order of apperance:
+# fct() uses in order of appearance:
 fct(c("y", "x"))
 }
