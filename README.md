@@ -114,9 +114,9 @@ starwars %>%
 
 For a history of factors, I recommend [*stringsAsFactors: An
 unauthorized
-biography*](https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/)
+biography*](https://simplystatistics.org/posts/2015-07-24-stringsasfactors-an-unauthorized-biography/)
 by Roger Peng and [*stringsAsFactors =
-\<sigh>*](https://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh)
+\<sigh\>*](https://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh)
 by Thomas Lumley. If you want to learn more about other approaches to
 working with factors and categorical data, I recommend [*Wrangling
 categorical data in R*](https://peerj.com/preprints/3163/), by Amelia
@@ -125,6 +125,6 @@ McNamara and Nicholas Horton.
 ## Getting help
 
 If you encounter a clear bug, please file a minimal reproducible example
-on [github](https://github.com/tidyverse/forcats/issues). For questions
+on [Github](https://github.com/tidyverse/forcats/issues). For questions
 and other discussion, please use
 [community.rstudio.com](https://community.rstudio.com/).
