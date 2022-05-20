@@ -75,7 +75,8 @@ appear in summaries and on plots.</p>
     <dl><dt>f</dt>
 <dd><p>A factor (or character vector).</p></dd>
 <dt>na_level</dt>
-<dd><p>Level to use for missing values: this is what NAs will be changed to.</p></dd>
+<dd><p>Level to use for missing values: this is what <code>NA</code>s will be
+changed to.</p></dd>
 </dl></div>
 
     <div class="section level2">
@@ -89,6 +90,10 @@ appear in summaries and on plots.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> b         2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> c         2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> <span style="color: #BB0000;">NA</span>        3</span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">f1</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> FALSE  TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     8     3 </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">f2</span> <span class="op">&lt;-</span> <span class="fu">fct_explicit_na</span><span class="op">(</span><span class="va">f1</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="fct_count.html">fct_count</a></span><span class="op">(</span><span class="va">f2</span><span class="op">)</span></span>
@@ -99,6 +104,10 @@ appear in summaries and on plots.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> b             2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> c             2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> (Missing)     3</span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">f2</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> FALSE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    11 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
