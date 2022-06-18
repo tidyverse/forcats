@@ -121,9 +121,10 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
     new_levels <- ifelse(prop_n <= -prop, levels(f), other_level)
   } else {
     new_levels <- ifelse(prop_n > prop, levels(f), other_level)
+    new_levels <- ifelse(is.na(new_levels), other_level, new_levels)
   }
 
-  if (prop > 0 && sum(prop_n <= prop) <= 1) {
+  if (prop > 0 && sum(prop_n <= prop, na.rm = TRUE) <= 1) {
     # No lumping needed
     return(f)
   }
