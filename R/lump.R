@@ -97,6 +97,7 @@ fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
   }
 
   new_levels <- ifelse(calcs$count >= min, levels(f), other_level)
+  new_levels <- ifelse(is.na(new_levels), other_level, new_levels)
 
   if (other_level %in% new_levels) {
     f <- lvls_revalue(f, new_levels)
