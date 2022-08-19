@@ -1,9 +1,7 @@
-context("fct_relevel")
-
 test_that("warns about unknown levels", {
   f1 <- factor(c("a", "b"))
 
-  expect_warning(f2 <- fct_relevel(f1, "d"), "Unknown levels")
+  expect_snapshot(f2 <- fct_relevel(f1, "d"))
   expect_equal(levels(f2), levels(f1))
 })
 
@@ -34,5 +32,5 @@ test_that("can relevel with function ", {
 
 test_that("function must return character vector", {
   f <- factor(c("a", "b"))
-  expect_error(fct_relevel(f, ~ 1), "character vector")
+  expect_error(fct_relevel(f, ~1), "character vector")
 })

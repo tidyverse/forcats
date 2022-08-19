@@ -1,5 +1,3 @@
-context("lvls")
-
 # lvls_expand -------------------------------------------------------------
 
 test_that("changes levels, not values", {
@@ -12,7 +10,9 @@ test_that("changes levels, not values", {
 test_that("must include all existing levels", {
   f1 <- factor(c("a", "b"))
 
-  expect_error(lvls_expand(f1, c("a", "c")), "include all existing levels")
+  expect_snapshot(error = TRUE, {
+    lvls_expand(f1, c("a", "c"))
+  })
 })
 
 # lvls_revalue ------------------------------------------------------------
@@ -37,14 +37,46 @@ test_that("preserves missing values", {
   expect_equal(levels(f2), levels(f1))
 })
 
-test_that("`new_levels` must be a character", {
+test_that("`new_levels` must checks its inputs", {
   f1 <- factor(c("a", "b"))
-  expect_error(lvls_revalue(f1, 1:5), "character vector")
+
+  expect_snapshot(error = TRUE, {
+    lvls_revalue(f1, 1:5)
+    lvls_revalue(f1, c("a", "b", "c"))
+  })
 })
 
-test_that("`new_levels` must be same length as existing levels", {
-  f1 <- factor(c("a", "b"))
+# lvls_reorder ------------------------------------------------------------
 
-  expect_error(lvls_revalue(f1, c("a")), "same length")
-  expect_error(lvls_revalue(f1, c("a", "b", "c")), "same length")
+test_that("changes levels, not values", {
+  f1 <- factor(c("a", "b"))
+  f2 <- factor(c("a", "b"), levels = c("b", "a"))
+
+  expect_equal(lvls_reorder(f1, 2:1), f2)
+})
+
+test_that("idx must be numeric", {
+  f <- factor(c("a", "b"))
+  expect_error(lvls_reorder(f, "a"), "must be numeric")
+})
+
+test_that("must have one integer per level", {
+  f <- factor(c("a", "b", "c"))
+
+  expect_error(lvls_reorder(f, c(1, 2)), "one integer for each level")
+  expect_error(lvls_reorder(f, c(1, 2, 2)), "one integer for each level")
+  expect_error(lvls_reorder(f, c(1, 2.5)), "one integer for each level")
+})
+
+test_that("can change ordered status of output", {
+  f1 <- factor(letters[1:3])
+  f2 <- ordered(f1)
+
+  expect_equal(is.ordered(lvls_reorder(f1, 1:3)), FALSE)
+  expect_equal(is.ordered(lvls_reorder(f1, 1:3, ordered = FALSE)), FALSE)
+  expect_equal(is.ordered(lvls_reorder(f1, 1:3, ordered = TRUE)), TRUE)
+
+  expect_equal(is.ordered(lvls_reorder(f2, 1:3)), TRUE)
+  expect_equal(is.ordered(lvls_reorder(f2, 1:3, ordered = FALSE)), FALSE)
+  expect_equal(is.ordered(lvls_reorder(f2, 1:3, ordered = TRUE)), TRUE)
 })

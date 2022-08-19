@@ -32,10 +32,18 @@
 #' @examples
 #' x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
 #' x %>% table()
-#' x %>% fct_lump_n(3) %>% table()
-#' x %>% fct_lump_prop(0.10) %>% table()
-#' x %>% fct_lump_min(5) %>% table()
-#' x %>% fct_lump_lowfreq() %>% table()
+#' x %>%
+#'   fct_lump_n(3) %>%
+#'   table()
+#' x %>%
+#'   fct_lump_prop(0.10) %>%
+#'   table()
+#' x %>%
+#'   fct_lump_min(5) %>%
+#'   table()
+#' x %>%
+#'   fct_lump_lowfreq() %>%
+#'   table()
 #'
 #' x <- factor(letters[rpois(100, 5)])
 #' x
@@ -63,7 +71,6 @@
 #' table(fct_lump_min(x, min = 15))
 fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
                      ties.method = c("min", "average", "first", "last", "random", "max")) {
-
   ties.method <- match.arg(ties.method)
   check_calc_levels(f, w)
 
@@ -75,19 +82,18 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
   } else if (missing(n)) {
     fct_lump_prop(f, prop, w, other_level)
   } else {
-    abort("Must supply only one of `n` and `prop`")
+    cli::cli_abort("Must supply only one of {.arg n} and {.arg prop}")
   }
 }
 
 #' @export
 #' @rdname fct_lump
 fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
-
   calcs <- check_calc_levels(f, w)
   f <- calcs$f
 
   if (!is.numeric(min) || length(min) != 1 || min < 0) {
-    rlang::abort("`min` must be a positive number")
+    cli::cli_abort("{.arg min} must be a positive number")
   }
 
   new_levels <- ifelse(calcs$count >= min, levels(f), other_level)
@@ -98,18 +104,16 @@ fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
   } else {
     f
   }
-
 }
 
 #' @export
 #' @rdname fct_lump
 fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
-
   calcs <- check_calc_levels(f, w)
   f <- calcs$f
 
   if (!is.numeric(prop) || length(prop) != 1) {
-    rlang::abort("`prop` must be a number")
+    cli::cli_abort("{.arg prop} must be a number")
   }
 
   prop_n <- calcs$count / calcs$total
@@ -137,13 +141,12 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
 #' @rdname fct_lump
 fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
                        ties.method = c("min", "average", "first", "last", "random", "max")) {
-
   ties.method <- match.arg(ties.method)
   calcs <- check_calc_levels(f, w)
   f <- calcs$f
 
   if (!is.numeric(n) || length(n) != 1) {
-    rlang::abort("`n` must be a number")
+    cli::cli_abort("{.arg n} must be a number")
   }
 
   if (n < 0) {
@@ -166,13 +169,11 @@ fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
   } else {
     f
   }
-
 }
 
 #' @export
 #' @rdname fct_lump
 fct_lump_lowfreq <- function(f, other_level = "Other") {
-
   calcs <- check_calc_levels(f, NULL)
   f <- calcs$f
 
@@ -184,12 +185,11 @@ fct_lump_lowfreq <- function(f, other_level = "Other") {
   } else {
     f
   }
-
 }
 
-check_calc_levels <- function(f, w = NULL) {
+check_calc_levels <- function(f, w = NULL, call = caller_env()) {
   f <- check_factor(f)
-  w <- check_weights(w, length(f))
+  w <- check_weights(w, length(f), call = call)
 
   if (is.null(w)) {
     count <- as.vector(table(f))
@@ -211,8 +211,9 @@ lump_cutoff <- function(x) {
     # After group, there are this many left
     left <- left - x[i]
 
-    if (x[i] > left)
+    if (x[i] > left) {
       return(i + 1)
+    }
   }
 
   length(x) + 1
@@ -229,29 +230,29 @@ in_smallest <- function(x) {
   to_lump[order(ord_x)]
 }
 
-check_weights <- function(w, n = length(w)) {
+check_weights <- function(w, n = length(w), call = caller_env()) {
   if (is.null(w)) {
     return(w)
   }
 
   if (!is.numeric(w)) {
-    stop("`w` must be a numeric vector", call. = FALSE)
+    cli::cli_abort("{.arg w} must be a numeric vector", call = call)
   }
 
   if (length(w) != n) {
-    stop(
-      "`w` must be the same length as `f` (", n, "), not length ", length(w),
-      call. = FALSE
+    cli::cli_abort(
+      "{.arg w} must be the same length as {.arg f} ({n}), not length {length(w)}",
+      call = call
     )
   }
 
   bad <- w < 0 | is.na(w)
   if (any(bad)) {
-    stop(
-      "All `w` must be non-negative and non-missing. Problems at positions: ",
-      paste0(which(bad), collapse = ", "),
-      call. = FALSE
-    )
+    probs <- which(bad)
+    cli::cli_abort(c(
+      "All {.arg w} must be non-negative and non-missing.",
+      "{length(probs)} problem{?s} at positions {probs}"
+    ), call = call)
   }
 
   w

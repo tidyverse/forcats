@@ -16,8 +16,8 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
-[![R-CMD-check](https://github.com/tidyverse/forcats/workflows/R-CMD-check/badge.svg)](https://github.com/tidyverse/forcats/actions)
-[![Codecov test coverage](https://codecov.io/gh/tidyverse/forcats/branch/master/graph/badge.svg)](https://codecov.io/gh/tidyverse/forcats?branch=master)
+[![R-CMD-check](https://github.com/tidyverse/forcats/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidyverse/forcats/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/tidyverse/forcats/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidyverse/forcats?branch=main)
 <!-- badges: end -->
 
 ## Overview
@@ -47,7 +47,7 @@ devtools::install_github("tidyverse/forcats")
 
 ## Cheatsheet
 
-<a href="https://github.com/rstudio/cheatsheets/raw/master/factors.pdf"><img src="https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/thumbnails/forcats-cheatsheet-thumbs.png" width="320" height="252"/></a>  
+<a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/factors.pdf"><img src="https://github.com/rstudio/cheatsheets/raw/main/pngs/thumbnails/forcats-cheatsheet-thumbs.png" width="320" height="252"/></a>
 
 ## Getting started
 
@@ -88,12 +88,8 @@ starwars %>%
 
 ## More resources 
 
-For a history of factors, I recommend [_stringsAsFactors: An unauthorized biography_](https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/) by Roger Peng and [_stringsAsFactors = \<sigh\>_](https://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh) by Thomas Lumley. If you want to learn more about other approaches to working with factors and categorical data, I recommend [_Wrangling categorical data in R_](https://peerj.com/preprints/3163/), by Amelia McNamara and Nicholas Horton. 
+For a history of factors, I recommend [_stringsAsFactors: An unauthorized biography_](https://simplystatistics.org/posts/2015-07-24-stringsasfactors-an-unauthorized-biography/) by Roger Peng and [_stringsAsFactors = \<sigh\>_](https://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh) by Thomas Lumley. If you want to learn more about other approaches to working with factors and categorical data, I recommend [_Wrangling categorical data in R_](https://peerj.com/preprints/3163/), by Amelia McNamara and Nicholas Horton. 
 
 ## Getting help
 
-If you encounter a clear bug, please file a minimal reproducible example on [github](https://github.com/tidyverse/forcats/issues). For questions and other discussion, please use [community.rstudio.com](https://community.rstudio.com/).
-
-## Code of Conduct
-
-Please note that the 'forcats' project is released with a [Contributor Code of Conduct](https://forcats.tidyverse.org/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+If you encounter a clear bug, please file a minimal reproducible example on [Github](https://github.com/tidyverse/forcats/issues). For questions and other discussion, please use [community.rstudio.com](https://community.rstudio.com/).

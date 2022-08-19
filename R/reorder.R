@@ -41,15 +41,15 @@
 #' chks <- transform(chks, Chick = fct_shuffle(Chick))
 #'
 #' if (require("ggplot2")) {
-#' ggplot(chks, aes(Time, weight, colour = Chick)) +
-#'   geom_point() +
-#'   geom_line()
+#'   ggplot(chks, aes(Time, weight, colour = Chick)) +
+#'     geom_point() +
+#'     geom_line()
 #'
-#' # Note that lines match order in legend
-#' ggplot(chks, aes(Time, weight, colour = fct_reorder2(Chick, Time, weight))) +
-#'   geom_point() +
-#'   geom_line() +
-#'   labs(colour = "Chick")
+#'   # Note that lines match order in legend
+#'   ggplot(chks, aes(Time, weight, colour = fct_reorder2(Chick, Time, weight))) +
+#'     geom_point() +
+#'     geom_line() +
+#'     labs(colour = "Chick")
 #' }
 fct_reorder <- function(.f, .x, .fun = median, ..., .desc = FALSE) {
   f <- check_factor(.f)
@@ -57,11 +57,7 @@ fct_reorder <- function(.f, .x, .fun = median, ..., .desc = FALSE) {
   ellipsis::check_dots_used()
 
   summary <- tapply(.x, .f, .fun, ...)
-  # This is a bit of a weak test, but should detect the most common case
-  # where `.fun` returns multiple values.
-  if (is.list(summary)) {
-    stop("`fun` must return a single value per group", call. = FALSE)
-  }
+  check_single_value_per_group(summary, ".fun")
 
   lvls_reorder(f, order(summary, decreasing = .desc))
 }
@@ -74,9 +70,7 @@ fct_reorder2 <- function(.f, .x, .y, .fun = last2, ..., .desc = TRUE) {
   ellipsis::check_dots_used()
 
   summary <- tapply(seq_along(.x), f, function(i) .fun(.x[i], .y[i], ...))
-  if (is.list(summary)) {
-    stop("`fun` must return a single value per group", call. = FALSE)
-  }
+  check_single_value_per_group(summary, ".fun")
 
   lvls_reorder(.f, order(summary, decreasing = .desc))
 }
@@ -101,19 +95,37 @@ fct_reordern <- function(.f, ..., ordered = NA) {
   lvls_reorder(f, idx = idx[!duplicated(idx)], ordered = ordered)
 }
 
+check_single_value_per_group <- function(x, fun_arg, call = caller_env()) {
+  # This is a bit of a weak test, but should detect the most common case
+  # where `.fun` returns multiple values.
+  if (is.list(x)) {
+    cli::cli_abort("{.arg {fun_arg}} must return a single value per group", call = call)
+  }
+}
+
 #' @export
 #' @rdname fct_reorder
 last2 <- function(.x, .y) {
-  .y[order(.x, na.last = FALSE)][length(.y)]
+  terminal(.x, .y, desc = TRUE)
 }
 
 #' @export
 #' @rdname fct_reorder
 first2 <- function(.x, .y) {
-  .y[order(.x)][1]
+  terminal(.x, .y, desc = FALSE)
 }
 
+terminal <- function(x, y, desc) {
+  miss <- is.na(x) | is.na(y)
+  x <- x[!miss]
+  y <- y[!miss]
 
+  if (length(x) == 0) {
+    y[NA_integer_]
+  } else {
+    y[[order(x, decreasing = desc)[[1]]]]
+  }
+}
 
 #' Reorder factor levels by first appearance, frequency, or numeric order
 #'
@@ -158,9 +170,8 @@ fct_inseq <- function(f, ordered = NA) {
   num_levels <- suppressWarnings(as.numeric(levels(f)))
 
   if (all(is.na(num_levels))) {
-    stop("At least one existing level must be coercible to numeric.", call. = FALSE)
+    cli::cli_abort("At least one existing level must be coercible to numeric.")
   }
 
   lvls_reorder(f, order(num_levels), ordered = ordered)
 }
-

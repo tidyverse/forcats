@@ -1,5 +1,3 @@
-context("fct_recode")
-
 test_that("warns about unknown levels", {
   f1 <- factor(c("a", "b"))
 
@@ -32,9 +30,9 @@ test_that("can just remove levels", {
 # check_recode_levels -----------------------------------------------------
 
 test_that("new levels must be character", {
-  expect_error(check_recode_levels(a = 1), "Problems at positions: 1")
-})
-
-test_that("new levels must be length 1", {
-  expect_error(check_recode_levels(a = c("a", "b")), "Problems at positions: 1")
+  f <- factor(c("a", "b"))
+  expect_snapshot(error = TRUE, {
+    fct_recode(f, "a")
+    fct_recode(f, x = 1, y = c("a", "b"))
+  })
 })

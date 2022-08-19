@@ -120,7 +120,7 @@ levels <- list(
   )
 )
 
-for(name in names(levels)) {
+for (name in names(levels)) {
   gss_cat[[name]] <- factor(gss_cat[[name]], level = levels[[name]])
 }
 

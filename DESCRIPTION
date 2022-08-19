@@ -1,29 +1,29 @@
 Package: forcats
 Title: Tools for Working with Categorical Variables (Factors)
 Version: 0.5.1.9000
-Authors@R: 
-    c(person(given = "Hadley",
-             family = "Wickham",
-             role = c("aut", "cre"),
-             email = "hadley@rstudio.com"),
-      person(given = "RStudio",
-             role = c("cph", "fnd")))
-Description: Helpers for reordering factor levels (including
-    moving specified levels to front, ordering by first appearance,
-    reversing, and randomly shuffling), and tools for modifying factor
-    levels (including collapsing rare levels into other, 'anonymising',
-    and manually 'recoding').
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
+    person("RStudio", role = c("cph", "fnd"))
+  )
+Description: Helpers for reordering factor levels (including moving
+    specified levels to front, ordering by first appearance, reversing,
+    and randomly shuffling), and tools for modifying factor levels
+    (including collapsing rare levels into other, 'anonymising', and
+    manually 'recoding').
 License: MIT + file LICENSE
-URL: https://forcats.tidyverse.org,
-    https://github.com/tidyverse/forcats
+URL: https://forcats.tidyverse.org/, https://github.com/tidyverse/forcats
 BugReports: https://github.com/tidyverse/forcats/issues
 Depends: 
-    R (>= 3.2)
+    R (>= 3.4)
 Imports: 
+    cli,
     ellipsis,
+    glue,
+    lifecycle,
     magrittr,
-    rlang,
-    tibble
+    rlang (>= 1.0.0),
+    tibble,
+    withr
 Suggests: 
     covr,
     dplyr,
@@ -31,10 +31,12 @@ Suggests:
     knitr,
     readr,
     rmarkdown,
-    testthat
+    testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
+Config/Needs/website: tidyverse/tidytemplate
+Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1

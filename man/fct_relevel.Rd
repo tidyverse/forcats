@@ -44,7 +44,7 @@ fct_relevel(f, rev)
 
 # Using 'Inf' allows you to relevel to the end when the number
 # of levels is unknown or variable (e.g. vectorised operations)
-df  <- forcats::gss_cat[, c("rincome", "denom")]
+df <- forcats::gss_cat[, c("rincome", "denom")]
 lapply(df, levels)
 
 df2 <- lapply(df, fct_relevel, "Don't know", after = Inf)

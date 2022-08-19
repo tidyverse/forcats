@@ -1,5 +1,3 @@
-context("test-explicit_na.R")
-
 test_that("factor unchanged if no missing levels", {
   f1 <- factor(letters[1:3])
   f2 <- fct_explicit_na(f1)

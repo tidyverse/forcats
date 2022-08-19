@@ -1,5 +1,3 @@
-context("fct_lump")
-
 test_that("too many arguments fails", {
   f <- c("a", "b", "c")
   expect_error(fct_lump(f, n = 1, count = 1))
@@ -22,7 +20,7 @@ test_that("ties are respected", {
   expect_equal(levels(fct_lump(f, 1)), c("a", "b", "Other"))
 })
 
-test_that("negative values drop most common" ,{
+test_that("negative values drop most common", {
   f <- c("a", "a", "a", "a", "b", "b", "b", "b", "c", "d")
   expect_equal(levels(fct_lump(f, n = -1)), c("c", "d", "Other"))
   expect_equal(levels(fct_lump(f, prop = -0.2)), c("c", "d", "Other"))
@@ -42,23 +40,35 @@ test_that("return original factor when all element satisfy n / p condition", {
 test_that("different behaviour when apply tie function", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
 
-  expect_equal(levels(fct_lump(f, n = 4, ties.method = "min")),
-               c("a", "b", "c", "d", "e", "f", "g"))
-  expect_equal(levels(fct_lump(f, n = 4, ties.method = "max")),
-               c("a", "b", "Other" ))
+  expect_equal(
+    levels(fct_lump(f, n = 4, ties.method = "min")),
+    c("a", "b", "c", "d", "e", "f", "g")
+  )
+  expect_equal(
+    levels(fct_lump(f, n = 4, ties.method = "max")),
+    c("a", "b", "Other")
+  )
 
   # Rank of c, d, e, f, g is (3+4+5+6+7)/5 = 5
-  expect_equal(levels(fct_lump(f, n = 4, ties.method = "average")),
-               c("a", "b", "Other" ))
-  expect_equal(levels(fct_lump(f, n = 5, ties.method = "average")),
-               c("a", "b", "c", "d", "e", "f", "g"))
+  expect_equal(
+    levels(fct_lump(f, n = 4, ties.method = "average")),
+    c("a", "b", "Other")
+  )
+  expect_equal(
+    levels(fct_lump(f, n = 5, ties.method = "average")),
+    c("a", "b", "c", "d", "e", "f", "g")
+  )
 
-  expect_equal(levels(fct_lump(f, n = 4, ties.method = "first")),
-               c("a", "b", "c", "d", "Other"))
+  expect_equal(
+    levels(fct_lump(f, n = 4, ties.method = "first")),
+    c("a", "b", "c", "d", "Other")
+  )
 
   if (getRversion() >= "3.3.0") {
-    expect_equal(levels(fct_lump(f, n = 4, ties.method = "last")),
-                 c("a", "b", "f", "g", "Other"))
+    expect_equal(
+      levels(fct_lump(f, n = 4, ties.method = "last")),
+      c("a", "b", "f", "g", "Other")
+    )
   }
 })
 
@@ -72,10 +82,12 @@ test_that("NAs included in total", {
   expect_equal(levels(o2), c("a", "Other"))
 })
 
-test_that("bad weights generate error messages", {
-  expect_error(fct_lump(letters, w = letters), "must be a numeric vector")
-  expect_error(fct_lump(letters, w = 1:10), "must be the same length")
-  expect_error(fct_lump(letters, w = rep(-1, 26)), "must be non-negative")
+test_that("bad weights generates friendly error messages", {
+  expect_snapshot(error = TRUE, {
+    fct_lump(letters, w = letters)
+    fct_lump(letters, w = 1:10)
+    fct_lump(letters, w = c(-1, rep(1, 24), -1))
+  })
 })
 
 test_that("values are correctly weighted", {
@@ -165,18 +177,21 @@ test_that("fct_lump_prop works when weighted", {
 # Default -----------------------------------------------------------------
 
 test_that("lumps smallest", {
+  lump_test <- function(x) {
+    paste(ifelse(in_smallest(x), "X", letters[seq_along(x)]), collapse = "")
+  }
+
+  # smallest
   expect_equal(lump_test(c(1, 2, 3, 6)), "Xbcd")
   expect_equal(lump_test(c(1, 2, 3, 7)), "XXXd")
 
   expect_equal(lump_test(c(1, 2, 3, 7, 13)), "XXXde")
   expect_equal(lump_test(c(1, 2, 3, 7, 14)), "XXXXe")
-})
 
-test_that("doesn't lump if none small enough", {
+  # doesn't lump if none small enough
   expect_equal(lump_test(c(2, 2, 4)), "abc")
-})
 
-test_that("order doesn't matter", {
+  # order doesn't matter
   expect_equal(lump_test(c(2, 2, 5)), "XXc")
   expect_equal(lump_test(c(2, 5, 2)), "XbX")
   expect_equal(lump_test(c(5, 2, 2)), "aXX")

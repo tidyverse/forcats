@@ -1,5 +1,3 @@
-context("fct_other")
-
 test_that("keeps levels in keep", {
   x1 <- factor(c("a", "b"))
   x2 <- fct_other(x1, keep = "a")
@@ -18,6 +16,8 @@ test_that("drops levels in drop", {
 test_that("must supply exactly one of drop and keep", {
   f <- factor(c("a", "b"))
 
-  expect_error(fct_other(f), "exactly one")
-  expect_error(fct_other(f, keep = "a", drop = "a"), "exactly one")
+  expect_snapshot(error = TRUE, {
+    fct_other(f)
+    fct_other(f, keep = "a", drop = "a")
+  })
 })

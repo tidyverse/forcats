@@ -1,5 +1,3 @@
-context("test-shuffle.R")
-
 test_that("reproducibility shuffles", {
   set.seed(1014)
 

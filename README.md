@@ -7,9 +7,9 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
-[![R-CMD-check](https://github.com/tidyverse/forcats/workflows/R-CMD-check/badge.svg)](https://github.com/tidyverse/forcats/actions)
+[![R-CMD-check](https://github.com/tidyverse/forcats/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidyverse/forcats/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/tidyverse/forcats/branch/master/graph/badge.svg)](https://codecov.io/gh/tidyverse/forcats?branch=master)
+coverage](https://codecov.io/gh/tidyverse/forcats/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidyverse/forcats?branch=main)
 <!-- badges: end -->
 
 ## Overview
@@ -45,7 +45,7 @@ factors](https://r4ds.had.co.nz/factors.html) in R for Data Science.
 
 ## Cheatsheet
 
-<a href="https://github.com/rstudio/cheatsheets/raw/master/factors.pdf"><img src="https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/thumbnails/forcats-cheatsheet-thumbs.png" width="320" height="252"/></a>
+<a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/factors.pdf"><img src="https://github.com/rstudio/cheatsheets/raw/main/pngs/thumbnails/forcats-cheatsheet-thumbs.png" width="320" height="252"/></a>
 
 ## Getting started
 
@@ -62,7 +62,7 @@ library(ggplot2)
 starwars %>% 
   filter(!is.na(species)) %>%
   count(species, sort = TRUE)
-#> # A tibble: 37 x 2
+#> # A tibble: 37 × 2
 #>    species      n
 #>    <chr>    <int>
 #>  1 Human       35
@@ -83,9 +83,9 @@ starwars %>%
   filter(!is.na(species)) %>%
   mutate(species = fct_lump(species, n = 3)) %>%
   count(species)
-#> # A tibble: 4 x 2
+#> # A tibble: 4 × 2
 #>   species     n
-#> * <fct>   <int>
+#>   <fct>   <int>
 #> 1 Droid       6
 #> 2 Gungan      3
 #> 3 Human      35
@@ -114,9 +114,9 @@ starwars %>%
 
 For a history of factors, I recommend [*stringsAsFactors: An
 unauthorized
-biography*](https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/)
+biography*](https://simplystatistics.org/posts/2015-07-24-stringsasfactors-an-unauthorized-biography/)
 by Roger Peng and [*stringsAsFactors =
-&lt;sigh&gt;*](https://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh)
+\<sigh\>*](https://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh)
 by Thomas Lumley. If you want to learn more about other approaches to
 working with factors and categorical data, I recommend [*Wrangling
 categorical data in R*](https://peerj.com/preprints/3163/), by Amelia
@@ -125,12 +125,6 @@ McNamara and Nicholas Horton.
 ## Getting help
 
 If you encounter a clear bug, please file a minimal reproducible example
-on [github](https://github.com/tidyverse/forcats/issues). For questions
+on [Github](https://github.com/tidyverse/forcats/issues). For questions
 and other discussion, please use
 [community.rstudio.com](https://community.rstudio.com/).
-
-## Code of Conduct
-
-Please note that the ‘forcats’ project is released with a [Contributor
-Code of Conduct](https://forcats.tidyverse.org/CODE_OF_CONDUCT.html). By
-contributing to this project, you agree to abide by its terms.

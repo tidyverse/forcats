@@ -1,5 +1,3 @@
-context("test-shift.R")
-
 test_that("can shift in either direction", {
   f1 <- factor(c("a", "b", "c"))
 

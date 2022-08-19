@@ -16,10 +16,7 @@
 #' fct_other(x, drop = c("A", "B"))
 fct_other <- function(f, keep, drop, other_level = "Other") {
   f <- check_factor(f)
-
-  if (!xor(missing(keep), missing(drop))) {
-    stop("Must supply exactly one of `keep` and `drop`", call. = FALSE)
-  }
+  check_exclusive(keep, drop)
 
   levels <- levels(f)
   if (!missing(keep)) {
