@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">forcats</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.5.1.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.5.2.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,11 +79,11 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html" class="external-link">rpois</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span>     <span class="co"># in order of appearance</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] m n i k f h q g o j l p d b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: b d f g h i j k l m n o p q</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] l k f g i j m h o p d q e n s</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: d e f g h i j k l m n o p q s</span>
 <span class="r-in"><span><span class="fu">fct_unique</span><span class="op">(</span><span class="va">f</span><span class="op">)</span> <span class="co"># in order of levels</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] b d f g h i j k l m n o p q</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: b d f g h i j k l m n o p q</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] d e f g h i j k l m n o p q s</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: d e f g h i j k l m n o p q s</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
