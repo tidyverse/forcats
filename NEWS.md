@@ -2,6 +2,8 @@
 * `fct_reordern()` is a new function to order based on an arbitrary number of
   values (@billdenney, #16)
 
+# forcats 0.5.2
+
 * New `fct()` which works like `factor()` but errors if values of `x`
   are not included in the levels specification (#299)
 
