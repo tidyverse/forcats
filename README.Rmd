@@ -29,7 +29,7 @@ R uses __factors__ to handle categorical variables, variables that have a fixed 
 * `fct_relevel()`: Changing the order of a factor by hand.
 * `fct_lump()`: Collapsing the least/most frequent values of a factor into "other".
 
-You can learn more about each of these in `vignette("forcats")`. If you're new to factors, the best place to start is the [chapter on factors](https://r4ds.had.co.nz/factors.html) in R for Data Science.
+You can learn more about each of these in `vignette("forcats")`. If you're new to factors, the best place to start is the [chapter on factors](https://r4ds.hadley.nz/factors.html) in R for Data Science.
 
 ## Installation
 
