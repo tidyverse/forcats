@@ -53,6 +53,7 @@ fct_reorder <- function(.f, .x, .fun = median, ..., .desc = FALSE) {
   f <- check_factor(.f)
   stopifnot(length(f) == length(.x))
   ellipsis::check_dots_used()
+  .fun <- rlang::as_function(.fun)
 
   summary <- tapply(.x, .f, .fun, ...)
   check_single_value_per_group(summary, ".fun")
@@ -66,6 +67,7 @@ fct_reorder2 <- function(.f, .x, .y, .fun = last2, ..., .desc = TRUE) {
   f <- check_factor(.f)
   stopifnot(length(f) == length(.x), length(.x) == length(.y))
   ellipsis::check_dots_used()
+  .fun <- rlang::as_function(.fun)
 
   summary <- tapply(seq_along(.x), f, function(i) .fun(.x[i], .y[i], ...))
   check_single_value_per_group(summary, ".fun")
