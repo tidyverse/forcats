@@ -6,6 +6,7 @@
 #'   level. Levels not otherwise mentioned will be left as is. Levels can
 #'   be removed by naming them `NULL`.
 #' @export
+#' @seealso [fct_explicit_na()] to recode `NA` values to a level.
 #' @examples
 #' x <- factor(c("apple", "bear", "banana", "dear"))
 #' fct_recode(x, fruit = "apple", fruit = "banana")
@@ -13,7 +14,7 @@
 #' # If you make a mistake you'll get a warning
 #' fct_recode(x, fruit = "apple", fruit = "bananana")
 #'
-#' # If you name the level NULL it will be removed
+#' # If you name the level NULL it will be removed and its values become NA
 #' fct_recode(x, NULL = "apple", fruit = "banana")
 #'
 #' # Wrap the left hand side in quotes if it contains special variables

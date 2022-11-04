@@ -24,7 +24,7 @@ fct_recode(x, fruit = "apple", fruit = "banana")
 # If you make a mistake you'll get a warning
 fct_recode(x, fruit = "apple", fruit = "bananana")
 
-# If you name the level NULL it will be removed
+# If you name the level NULL it will be removed and its values become NA
 fct_recode(x, NULL = "apple", fruit = "banana")
 
 # Wrap the left hand side in quotes if it contains special variables
@@ -34,4 +34,7 @@ fct_recode(x, "an apple" = "apple", "a bear" = "bear")
 x <- factor(c("apple", "bear", "banana", "dear"))
 levels <- c(fruit = "apple", fruit = "banana")
 fct_recode(x, !!!levels)
+}
+\seealso{
+\code{\link[=fct_explicit_na]{fct_explicit_na()}} to recode \code{NA} values to a level.
 }
