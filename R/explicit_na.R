@@ -7,6 +7,7 @@
 #' @param na_level Level to use for missing values: this is what `NA`s will be
 #'   changed to.
 #' @export
+#' @seealso [fct_recode()] to remove levels and recode their values to `NA`.
 #' @examples
 #' f1 <- factor(c("a", "a", NA, NA, "a", "b", NA, "c", "a", "c", "b"))
 #' fct_count(f1)
@@ -15,6 +16,10 @@
 #' f2 <- fct_explicit_na(f1)
 #' fct_count(f2)
 #' table(is.na(f2))
+#'
+#' # use fct_recode() for the reverse operation
+#' f3 <- fct_recode(f2, NULL = "(Missing)")
+#' fct_count(f3)
 fct_explicit_na <- function(f, na_level = "(Missing)") {
   f <- check_factor(f)
 

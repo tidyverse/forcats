@@ -24,4 +24,11 @@ table(is.na(f1))
 f2 <- fct_explicit_na(f1)
 fct_count(f2)
 table(is.na(f2))
+
+# use fct_recode() for the reverse operation
+f3 <- fct_recode(f2, NULL = "(Missing)")
+fct_count(f3)
+}
+\seealso{
+\code{\link[=fct_recode]{fct_recode()}} to remove levels and recode their values to \code{NA}.
 }
