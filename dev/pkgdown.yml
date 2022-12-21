@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   forcats: forcats.html
-last_built: 2022-12-21T14:49Z
+last_built: 2022-12-21T17:16Z
 urls:
   reference: https://forcats.tidyverse.org/reference
   article: https://forcats.tidyverse.org/articles
