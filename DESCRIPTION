@@ -16,7 +16,7 @@ BugReports: https://github.com/tidyverse/forcats/issues
 Depends: 
     R (>= 3.4)
 Imports: 
-    cli,
+    cli (>= 3.4.0),
     ellipsis,
     glue,
     lifecycle,

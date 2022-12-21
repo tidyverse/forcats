@@ -5,5 +5,5 @@
     Condition
       Warning:
       The `group_other` argument of `fct_collapse()` is deprecated as of forcats 0.5.0.
-      Please use the `other_level` argument instead.
+      i Please use the `other_level` argument instead.
 
