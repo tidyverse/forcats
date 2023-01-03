@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* `fct_unique()` now captures includes implicit missing values if present 
+  (#293).
+
 # forcats 0.5.2
 
 * New `fct()` which works like `factor()` but errors if values of `x`
