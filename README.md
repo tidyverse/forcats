@@ -114,7 +114,7 @@ starwars %>%
 
 For a history of factors, I recommend [*stringsAsFactors: An
 unauthorized
-biography*](https://simplystatistics.org/posts/2015-07-24-stringsasfactors-an-unauthorized-biography/)
+biography*](https://simplystats.github.io/2015/07/24/stringsasfactors-an-unauthorized-biography/)
 by Roger Peng and [*stringsAsFactors =
 \<sigh\>*](https://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh)
 by Thomas Lumley. If you want to learn more about other approaches to
