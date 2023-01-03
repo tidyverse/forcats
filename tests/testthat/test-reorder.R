@@ -74,6 +74,23 @@ test_that("fct_infreq respects missing values", {
   expect_equal(levels(fct_infreq(f)), c(NA, "b", "a"))
 })
 
+test_that("fct_infreq() respects weights", {
+  x <- c("a", "b", "b", "c")
+  f <- factor(x, exclude = FALSE)
+  w <- c(1, 1, 3, 3)
+  expect_equal(fct_infreq(f, w), fct(x, c("b", "c", "a")))
+})
+
+test_that("fct_infreq() validates weight", {
+  f <- fct(c("a", "b", "c"))
+
+  expect_snapshot(error = TRUE, {
+    fct_infreq(f, 1:4)
+    fct_infreq(f, "x")
+  })
+
+})
+
 test_that("fct_inseq sorts in numeric order", {
   x <- c("1", "2", "3")
   expect_equal(

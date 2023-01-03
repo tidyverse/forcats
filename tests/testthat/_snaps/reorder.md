@@ -21,3 +21,16 @@
       Error in `fct_reorder2()`:
       ! `.fun` must return a single value per group
 
+# fct_infreq() validates weight
+
+    Code
+      fct_infreq(f, 1:4)
+    Condition
+      Error in `fct_infreq()`:
+      ! `f` and `weight` must be the same length.
+    Code
+      fct_infreq(f, "x")
+    Condition
+      Error in `fct_infreq()`:
+      ! `weight` must be a numeric vector, not a string.
+

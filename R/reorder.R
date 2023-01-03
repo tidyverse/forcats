@@ -134,10 +134,23 @@ fct_inorder <- function(f, ordered = NA) {
 
 #' @export
 #' @rdname fct_inorder
-fct_infreq <- function(f, ordered = NA) {
+#' @param weight Optional vector of numeric values to weight by.
+fct_infreq <- function(f, weight = NULL, ordered = NA) {
   f <- check_factor(f)
 
-  lvls_reorder(f, order(table(f), decreasing = TRUE), ordered = ordered)
+  if (is.null(weight)) {
+    weight <- rep(1, length(f))
+  } else {
+    if (!is.numeric(weight)) {
+      cli::cli_abort("{.arg weight} must be a numeric vector, not {.obj_type_friendly weight}.")
+    }
+    if (length(weight) != length(f)) {
+      cli::cli_abort("{.arg f} and {.arg weight} must be the same length.")
+    }
+  }
+
+  freq <- tapply(weight, f, sum)
+  lvls_reorder(f, order(freq, decreasing = TRUE), ordered = ordered)
 }
 
 #' @export

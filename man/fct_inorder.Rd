@@ -8,7 +8,7 @@
 \usage{
 fct_inorder(f, ordered = NA)
 
-fct_infreq(f, ordered = NA)
+fct_infreq(f, weight = NULL, ordered = NA)
 
 fct_inseq(f, ordered = NA)
 }
@@ -17,6 +17,8 @@ fct_inseq(f, ordered = NA)
 
 \item{ordered}{A logical which determines the "ordered" status of the
 output factor. \code{NA} preserves the existing status of the factor.}
+
+\item{weight}{Optional vector of numeric values to weight by.}
 }
 \description{
 This family of functions changes only the order of the levels.

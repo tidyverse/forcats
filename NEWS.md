@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* `fct_infreq()` gains the ability to `weight` frequency using a supplemental
+  variable.
+
 # forcats 0.5.2
 
 * New `fct()` which works like `factor()` but errors if values of `x`
