@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* `fct_expand()` gains an `after` argument so that you can choose where
+  the new levels are placed (#138).
+
 # forcats 0.5.2
 
 * New `fct()` which works like `factor()` but errors if values of `x`
