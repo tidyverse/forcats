@@ -23,12 +23,16 @@ fct_unique <- function(f) {
   f <- check_factor(f)
 
   levels <- levels(f)
-  out <- levels
+  out <- seq_along(levels)
 
-  # If f contains implicit missing's add to out
+  # Ensure out includes any implicit missings
   if (anyNA(f)) {
-    out <- c(out, NA_character_)
+    out <- c(out, NA_integer_)
   }
 
-  factor(out, levels = levels, exclude = NULL, ordered = is.ordered(f))
+  structure(
+    out,
+    levels = levels,
+    class = c(if (is.ordered(f)) "ordered", "factor")
+  )
 }
