@@ -194,121 +194,121 @@ treated. See <code><a href="https://rdrr.io/r/base/rank.html" class="external-li
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html" class="external-link">rpois</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">x</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] c a c d c j c h d c e g g i g e c b e c e g c i f f f e f d b e b g</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [35] h i f e b d c c g f e e h f f e e e e d e e f f d d d g b e g i h e</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] c a d d a e e h f c h e a d f e d g c d d e j e b f c g f b c h</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b c d e f g h i j</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] l c f c e b b h e f d e f c d l d e a f d h g h e c e b f c i e c d</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [35] a h h d d d a g b k d g e b i e f c g e b l d e e d f d e e h b c f</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] b d h e d c e a e a g e c e e d c j f i h f d c c b b e c d f g</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b c d e f g h i j k l</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> x</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  a  b  c  d  e  f  g  h  i  j </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4  7 15 14 23 14 10  7  4  2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  a  b  c  d  e  f  g  h  i  j  k  l </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5 10 14 17 21 11  6  8  3  1  1  3 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu">fct_lump_lowfreq</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     a     b     c     d     e     f     g     h     i Other </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     4     7    15    14    23    14    10     7     4     2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     a     b     c     d     e     f     g     h     i     l Other </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     5    10    14    17    21    11     6     8     3     3     2 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use positive values to collapse the rarest</span></span></span>
 <span class="r-in"><span><span class="fu">fct_lump_n</span><span class="op">(</span><span class="va">x</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] c     Other c     d     c     Other c     Other d     c     e    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] Other Other Other Other e     c     Other e     c     e     Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] c     Other f     f     f     e     f     d     Other e     Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] Other Other Other f     e     Other d     c     c     Other f    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] e     e     Other f     f     e     e     e     e     d     e    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] e     f     f     d     d     d     Other Other e     Other Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] Other e     c     Other d     d     Other e     e     Other f    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] c     Other e     Other d     f     e     d     Other c     d    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] d     e     Other e     Other f     c     Other f     Other c    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] Other c     Other c     e     Other Other Other e     Other d    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] e     Other c     d     Other d     e     Other Other d     Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] Other Other e     c     e     Other Other c     Other e     c    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] d     Other Other Other d     d     d     Other Other Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] d     Other e     Other Other e     Other c     Other e     Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] Other d     e     e     d     Other d     e     e     Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] c     Other Other d     Other e     d     c     e     Other e    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] Other Other e     c     e     e     d     c     Other Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] Other Other d     c     c     Other Other e     c     d     Other</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [100] Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: c d e f Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: c d e Other</span>
 <span class="r-in"><span><span class="fu">fct_lump_prop</span><span class="op">(</span><span class="va">x</span>, prop <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] c     Other c     d     c     Other c     Other d     c     e    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] Other Other Other Other e     c     Other e     c     e     Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] c     Other f     f     f     e     f     d     Other e     Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] Other Other Other f     e     Other d     c     c     Other f    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] e     e     Other f     f     e     e     e     e     d     e    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] e     f     f     d     d     d     Other Other e     Other Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] Other e     c     Other d     d     Other e     e     Other f    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] c     Other e     Other d     f     e     d     Other c     d    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] d     e     Other e     Other f     c     Other f     Other c    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] Other c     f     c     e     Other Other Other e     f     d    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] e     f     c     d     Other d     e     Other f     d     Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] Other Other e     c     e     Other f     c     Other e     c    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] d     Other Other Other d     d     d     Other Other Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] d     Other e     Other Other e     f     c     Other e     Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] Other d     e     e     d     f     d     e     e     Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] c     f     Other d     Other e     d     c     e     Other e    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] Other Other e     c     e     e     d     c     Other f     Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] Other f     d     c     c     Other Other e     c     d     f    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [100] Other</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: c d e f Other</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use negative values to collapse the most common</span></span></span>
 <span class="r-in"><span><span class="fu">fct_lump_n</span><span class="op">(</span><span class="va">x</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">3</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] Other a     Other Other Other j     Other Other Other Other Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] Other Other i     Other Other Other Other Other Other Other Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] Other i     Other Other Other Other Other Other Other Other Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] Other Other i     Other Other Other Other Other Other Other Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] Other Other Other Other Other Other Other Other Other Other Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] Other Other Other Other Other Other Other Other Other Other i    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] Other Other Other a     Other Other a     Other Other Other Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] Other Other Other a     Other Other Other Other Other Other Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] Other Other j     Other Other Other Other Other Other Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] l     Other Other Other Other Other Other Other Other Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] Other Other Other Other l     Other Other Other Other Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] Other Other Other Other Other Other Other Other i     Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] Other Other Other Other Other Other Other Other Other Other k    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] Other Other Other Other i     Other Other Other Other Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] l     Other Other Other Other Other Other Other Other Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] Other Other Other Other Other Other Other Other Other Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] Other Other Other Other Other Other Other Other j     Other i    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] Other Other Other Other Other Other Other Other Other Other Other</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [100] Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a i j Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: i j k l Other</span>
 <span class="r-in"><span><span class="fu">fct_lump_prop</span><span class="op">(</span><span class="va">x</span>, prop <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] Other a     Other Other Other j     Other h     Other Other Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] g     g     i     g     Other Other b     Other Other Other g    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] Other i     Other Other Other Other Other Other b     Other b    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] g     h     i     Other Other b     Other Other Other g     Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] Other Other h     Other Other Other Other Other Other Other Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] Other Other Other Other Other Other g     b     Other g     i    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] h     Other Other a     Other Other a     Other Other h     Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] Other h     Other a     Other Other Other Other g     Other Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] Other Other j     Other b     Other Other g     Other b     Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [100] h    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b g h i j Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] l     Other Other Other Other b     b     h     Other Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] Other Other Other Other l     Other Other a     Other Other h    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] g     h     Other Other Other b     Other Other i     Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] Other a     h     h     Other Other Other a     g     b     k    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] Other g     Other b     i     Other Other Other g     Other b    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] l     Other Other Other Other Other Other Other Other h     b    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] Other Other b     Other h     Other Other Other Other a     Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] a     g     Other Other Other Other Other Other j     Other i    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] h     Other Other Other Other b     b     Other Other Other Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [100] g    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b g h i j k l Other</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use weighted frequencies</span></span></span>
 <span class="r-in"><span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">50</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">50</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">fct_lump_n</span><span class="op">(</span><span class="va">x</span>, n <span class="op">=</span> <span class="fl">5</span>, w <span class="op">=</span> <span class="va">w</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] c     Other c     d     c     Other c     Other d     c     e    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] g     g     Other g     e     c     Other e     c     e     g    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] c     Other f     f     f     e     f     d     Other e     Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] g     Other Other f     e     Other d     c     c     g     f    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] e     e     Other f     f     e     e     e     e     d     e    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] e     f     f     d     d     d     g     Other e     g     Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] Other e     c     Other d     d     Other e     e     Other f    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] c     Other e     Other d     f     e     d     g     c     d    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] d     e     Other e     Other f     c     g     f     Other c    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] Other c     f     c     e     b     b     Other e     f     d    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] e     f     c     d     Other d     e     Other f     d     Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] Other Other e     c     e     b     f     c     Other e     c    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] d     Other Other Other d     d     d     Other Other b     Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] d     Other e     b     Other e     f     c     Other e     b    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] Other d     e     e     d     f     d     e     e     Other b    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] c     f     b     d     Other e     d     c     e     Other e    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] Other Other e     c     e     e     d     c     Other f     Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] Other f     d     c     c     b     b     e     c     d     f    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [100] Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: c d e f g Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: b c d e f Other</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use ties.method to control how tied factors are collapsed</span></span></span>
 <span class="r-in"><span><span class="fu">fct_lump_n</span><span class="op">(</span><span class="va">x</span>, n <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] c     Other c     d     c     Other c     h     d     c     e    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] g     g     Other g     e     c     b     e     c     e     g    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] c     Other f     f     f     e     f     d     b     e     b    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] g     h     Other f     e     b     d     c     c     g     f    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] e     e     h     f     f     e     e     e     e     d     e    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] e     f     f     d     d     d     g     b     e     g     Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] h     e     c     Other d     d     Other e     e     h     f    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] c     h     e     Other d     f     e     d     g     c     d    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] d     e     Other e     b     f     c     g     f     b     c    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [100] h    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: b c d e f g h Other</span>
-<span class="r-in"><span><span class="fu">fct_lump_n</span><span class="op">(</span><span class="va">x</span>, n <span class="op">=</span> <span class="fl">6</span>, ties.method <span class="op">=</span> <span class="st">"max"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] c     Other c     d     c     Other c     Other d     c     e    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] g     g     Other g     e     c     Other e     c     e     g    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] c     Other f     f     f     e     f     d     Other e     Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] g     Other Other f     e     Other d     c     c     g     f    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] e     e     Other f     f     e     e     e     e     d     e    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] e     f     f     d     d     d     g     Other e     g     Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] Other e     c     Other d     d     Other e     e     Other f    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] c     Other e     Other d     f     e     d     g     c     d    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] d     e     Other e     Other f     c     g     f     Other c    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] Other c     f     c     e     b     b     h     e     f     d    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] e     f     c     d     Other d     e     Other f     d     h    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] Other h     e     c     e     b     f     c     Other e     c    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] d     Other h     h     d     d     d     Other Other b     Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] d     Other e     b     Other e     f     c     Other e     b    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] Other d     e     e     d     f     d     e     e     h     b    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] c     f     b     d     h     e     d     c     e     Other e    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] Other Other e     c     e     e     d     c     Other f     Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] h     f     d     c     c     b     b     e     c     d     f    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [100] Other</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: c d e f g Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: b c d e f h Other</span>
+<span class="r-in"><span><span class="fu">fct_lump_n</span><span class="op">(</span><span class="va">x</span>, n <span class="op">=</span> <span class="fl">6</span>, ties.method <span class="op">=</span> <span class="st">"max"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] Other c     f     c     e     b     b     h     e     f     d    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] e     f     c     d     Other d     e     Other f     d     h    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] Other h     e     c     e     b     f     c     Other e     c    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] d     Other h     h     d     d     d     Other Other b     Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] d     Other e     b     Other e     f     c     Other e     b    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] Other d     e     e     d     f     d     e     e     h     b    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] c     f     b     d     h     e     d     c     e     Other e    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] Other Other e     c     e     e     d     c     Other f     Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] h     f     d     c     c     b     b     e     c     d     f    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [100] Other</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: b c d e f h Other</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use fct_lump_min() to lump together all levels with fewer than `n` values</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu">fct_lump_min</span><span class="op">(</span><span class="va">x</span>, min <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     c     d     e     f     g Other </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    15    14    23    14    10    24 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     b     c     d     e     f Other </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    10    14    17    21    11    27 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu">fct_lump_min</span><span class="op">(</span><span class="va">x</span>, min <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     c     e Other </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    15    23    62 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     d     e Other </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    17    21    62 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
