@@ -63,3 +63,8 @@ test_that("can combine more than two factors", {
 
   expect_setequal(levels(f2), c("apple:green:no", "apple:green:yes", "apple:red:yes", "kiwi:green:no"))
 })
+
+test_that("dots must be unnamed", {
+  f <- fct(c("a", "b", "c"))
+  expect_snapshot(fct_cross(x = f), error = TRUE)
+})

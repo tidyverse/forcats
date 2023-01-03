@@ -1,5 +1,9 @@
 # forcats (development version)
 
+* `fct_relevel()`, `fct_cross()`, and `fct_expand()` now error if you name the
+  arguments in `...` since those names are ignored and your code probably 
+  doesn't do what you think it does (#319).
+
 # forcats 0.5.2
 
 * New `fct()` which works like `factor()` but errors if values of `x`

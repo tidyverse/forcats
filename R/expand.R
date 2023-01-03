@@ -12,6 +12,7 @@
 #' fct_expand(f, letters[1:6])
 fct_expand <- function(f, ...) {
   f <- check_factor(f)
+  check_dots_unnamed()
 
   new_levels <- chr(...)
   lvls_expand(f, union(levels(f), new_levels))
