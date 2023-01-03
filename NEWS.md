@@ -1,5 +1,7 @@
 # forcats (development version)
 
+* `fct_inorder()` now works when not all levels appear in the data (#262).
+
 # forcats 0.5.2
 
 * New `fct()` which works like `factor()` but errors if values of `x`
