@@ -3,7 +3,8 @@
 #' @description
 #' A family for lumping together levels that meet some criteria.
 #' * `fct_lump_min()`: lumps levels that appear fewer than `min` times.
-#' * `fct_lump_prop()`: lumps levels that appear in fewer `prop * n` times.
+#' * `fct_lump_prop()`: lumps levels that appear in fewer than (or equal to)
+#'    `prop * n` times.
 #' * `fct_lump_n()` lumps all levels except for the `n` most frequent
 #'    (or least frequent if `n < 0`)
 #' * `fct_lump_lowfreq()` lumps together the least frequent levels, ensuring
