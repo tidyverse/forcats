@@ -14,6 +14,7 @@
 #' fct_expand(f, "Z", after = 0)
 fct_expand <- function(f, ..., after = Inf) {
   f <- check_factor(f)
+  check_dots_unnamed()
 
   old_levels <- levels(f)
   new_levels <- chr(...)

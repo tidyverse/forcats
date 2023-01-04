@@ -57,7 +57,8 @@ treated. See \code{\link[=rank]{rank()}} for details.}
 A family for lumping together levels that meet some criteria.
 \itemize{
 \item \code{fct_lump_min()}: lumps levels that appear fewer than \code{min} times.
-\item \code{fct_lump_prop()}: lumps levels that appear in fewer \code{prop * n} times.
+\item \code{fct_lump_prop()}: lumps levels that appear in fewer than (or equal to)
+\code{prop * n} times.
 \item \code{fct_lump_n()} lumps all levels except for the \code{n} most frequent
 (or least frequent if \code{n < 0})
 \item \code{fct_lump_lowfreq()} lumps together the least frequent levels, ensuring

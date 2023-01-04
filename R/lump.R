@@ -3,7 +3,8 @@
 #' @description
 #' A family for lumping together levels that meet some criteria.
 #' * `fct_lump_min()`: lumps levels that appear fewer than `min` times.
-#' * `fct_lump_prop()`: lumps levels that appear in fewer `prop * n` times.
+#' * `fct_lump_prop()`: lumps levels that appear in fewer than (or equal to)
+#'    `prop * n` times.
 #' * `fct_lump_n()` lumps all levels except for the `n` most frequent
 #'    (or least frequent if `n < 0`)
 #' * `fct_lump_lowfreq()` lumps together the least frequent levels, ensuring
@@ -127,11 +128,6 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
     new_levels <- ifelse(prop_n > prop, levels(f), other_level)
   }
 
-  if (prop > 0 && sum(prop_n <= prop) <= 1) {
-    # No lumping needed
-    return(f)
-  }
-
   if (other_level %in% new_levels) {
     f <- lvls_revalue(f, new_levels)
     fct_relevel(f, other_level, after = Inf)
@@ -161,11 +157,6 @@ fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
   }
 
   new_levels <- ifelse(rank <= n, levels(f), other_level)
-
-  if (sum(rank > n) <= 1) {
-    # No lumping needed
-    return(f)
-  }
 
   if (other_level %in% new_levels) {
     f <- lvls_revalue(f, new_levels)

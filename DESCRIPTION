@@ -17,7 +17,6 @@ Depends:
     R (>= 3.4)
 Imports: 
     cli (>= 3.4.0),
-    ellipsis,
     glue,
     lifecycle,
     magrittr,
