@@ -1,3 +1,5 @@
+# fct_reorder -------------------------------------------------------------
+
 test_that("can reorder by 2d summary", {
   df <- tibble::tribble(
     ~g,  ~x,
@@ -69,10 +71,60 @@ test_that("complains if summary doesn't return single value", {
   })
 })
 
-test_that("fct_infreq respects missing values", {
-  f <- factor(c("a", "b", "b", NA, NA, NA), exclude = FALSE)
-  expect_equal(levels(fct_infreq(f)), c(NA, "b", "a"))
+
+# fct_infreq --------------------------------------------------------------
+
+test_that("fct_infreq() preserves explicit NA", {
+  x <- c("a", "b", "b", NA, NA, NA)
+  f <- factor(x, exclude = FALSE)
+  expect_equal(fct_infreq(f), fct(x, c(NA, "b", "a")))
 })
+
+test_that("fct_infreq() ignores implict NA", {
+  x <- c("a", "b", "b", NA, NA, NA)
+  f <- factor(x)
+  expect_equal(fct_infreq(f), fct(x, c("b", "a")))
+})
+
+test_that("fct_infreq() preserves empty levels", {
+  # at end
+  x <- c("b", "b", "a")
+  f <- fct(x, letters[1:3])
+  expect_equal(fct_infreq(f), fct(x, c("b", "a", "c")))
+
+  # at beginning
+  x <- c("b", "b", "c")
+  f <- fct(x, letters[1:3])
+  expect_equal(fct_infreq(f), fct(x, c("b", "c", "a")))
+})
+
+# fct_inorder -------------------------------------------------------------
+
+test_that("fct_inorder() preserves explicit NA", {
+  x <- c(NA, "a", "b", "b", NA, NA)
+  f <- factor(x, exclude = FALSE)
+  expect_equal(fct_inorder(f), fct(x, c(NA, "a", "b")))
+})
+
+test_that("fct_inorder() ignores implict NA", {
+  x <- c(NA, "a", "b", "b", NA, NA)
+  f <- factor(x)
+  expect_equal(fct_inorder(f), fct(x, c("a", "b")))
+})
+
+test_that("fct_inorder() preserves empty levels", {
+  # at beginning
+  x <- c("b", "b", "a")
+  f <- fct(x, letters[1:3])
+  expect_equal(fct_inorder(f), fct(x, c("b", "a", "c")))
+
+  # at end
+  x <- c("b", "b", "c")
+  f <- fct(x, letters[1:3])
+  expect_equal(fct_inorder(f), fct(x, c("b", "c", "a")))
+})
+
+# fct_inseq ---------------------------------------------------------------
 
 test_that("fct_inseq sorts in numeric order", {
   x <- c("1", "2", "3")

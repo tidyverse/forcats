@@ -124,7 +124,7 @@ fct_inorder <- function(f, ordered = NA) {
   f <- check_factor(f)
 
   idx <- as.integer(f)[!duplicated(f)]
-  idx <- idx[!is.na(idx)]
+  idx <- union(idx[!is.na(idx)], lvls_seq(f))
   lvls_reorder(f, idx, ordered = ordered)
 }
 
