@@ -1,7 +1,6 @@
 # forcats (development version)
 
-* `fct_unique()` now captures includes implicit missing values if present 
-  (#293).
+* `fct_unique()` now captures implicit missing values if present (#293).
 
 # forcats 0.5.2
 
