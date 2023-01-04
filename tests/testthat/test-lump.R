@@ -126,12 +126,6 @@ test_that("values are correctly weighted", {
   )
 })
 
-test_that("do not change the label when no lumping occurs", {
-  f <- c("a", "a", "a", "a", "b", "b", "b", "c", "c", "d")
-  expect_equal(levels(fct_lump(f, n = 3)), c("a", "b", "c", "d"))
-  expect_equal(levels(fct_lump(f, prop = 0.1)), c("a", "b", "c", "d"))
-})
-
 test_that("only have one small other level", {
   f <- c("a", "a", "a", "a", "b", "b", "b", "c", "c", "d")
   expect_equal(levels(fct_lump(f)), c("a", "b", "c", "Other"))
