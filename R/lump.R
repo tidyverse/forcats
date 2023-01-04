@@ -75,7 +75,7 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
   ties.method <- match.arg(ties.method)
 
   if (missing(n) && missing(prop)) {
-    fct_lump_lowfreq(f, w = w,other_level = other_level)
+    fct_lump_lowfreq(f, w = w, other_level = other_level)
   } else if (missing(prop)) {
     fct_lump_n(f, n, w = w, other_level = other_level, ties.method = ties.method)
   } else if (missing(n)) {
