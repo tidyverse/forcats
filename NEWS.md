@@ -1,7 +1,7 @@
 # forcats (development version)
 
-* `fct_infreq()` gains the ability to `weight` frequency using a supplemental
-  variable (#261).
+* `fct_infreq()` gains the ability to weight by another variable using the `w`
+  argument (#261).
 
 # forcats 0.5.2
 

@@ -27,10 +27,10 @@
       fct_infreq(f, 1:4)
     Condition
       Error in `fct_infreq()`:
-      ! `f` and `weight` must be the same length.
+      ! `w` must be the same length as `f` (3), not length 4.
     Code
       fct_infreq(f, "x")
     Condition
       Error in `fct_infreq()`:
-      ! `weight` must be a numeric vector, not a string.
+      ! `w` must be a numeric vector, not a string.
 

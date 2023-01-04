@@ -76,7 +76,7 @@ test_that("fct_infreq respects missing values", {
 
 test_that("fct_infreq() respects weights", {
   x <- c("a", "b", "b", "c")
-  f <- factor(x, exclude = FALSE)
+  f <- factor(x)
   w <- c(1, 1, 3, 3)
   expect_equal(fct_infreq(f, w), fct(x, c("b", "c", "a")))
 })
