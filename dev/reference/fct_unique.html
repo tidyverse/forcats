@@ -96,15 +96,15 @@ implicit missing values so that they can be included in the result.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="fct.html">fct</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html" class="external-link">rpois</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span>     <span class="co"># in order of appearance</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] g o f l i j h m k e n t p c</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: g o f l i j h m k e n t p c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] h k j g i l e m o n f q p</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: h k j g i l e m o n f q p</span>
 <span class="r-in"><span><span class="fu">fct_unique</span><span class="op">(</span><span class="va">f</span><span class="op">)</span> <span class="co"># in order of levels</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] g o f l i j h m k e n t p c</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: g o f l i j h m k e n t p c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] h k j g i l e m o n f q p</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: h k j g i l e m o n f q p</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="fct.html">fct</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html" class="external-link">rpois</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span>, <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span>     <span class="co"># levels that appear in data</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] b d a c f e</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] e b a c d g</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b c d e f g h i j k l m n o p q r s t</span>
 <span class="r-in"><span><span class="fu">fct_unique</span><span class="op">(</span><span class="va">f</span><span class="op">)</span> <span class="co"># all possible levels</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] a b c d e f g h i j k l m n o p q r s t</span>
