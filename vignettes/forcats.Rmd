@@ -44,7 +44,7 @@ To do so, we can use the function `fct_infreq()`:
 
 ```{r fct-infreq-hair}
 #| fig.alt: >
-#|   The A bar chart of hair color, now ordered so that generally the least
+#|   The bar chart of hair color, now ordered so that generally the least
 #|   frequent colours come first and the most frequent colors come last.
 #|   This makes it easy to see that the most common hair color is none 
 #|   (~35), followed by brown (~18), then black (~12). Surprisingly,
@@ -58,9 +58,9 @@ ggplot(starwars, aes(y = fct_infreq(hair_color))) +
 It's a little surprising that the `NA` bar isn't ordered by frequency.
 To understand why, we need to make a brief digression to discuss implicit vs explicit `NA`s in factors.
 
-## Implicit vs explicit missing values
+## Implicit vs explicit missing levels
 
-There are two ways to representing a missing value in a factor which we call implicit and :
+There are two ways to represent a missing value in a factor which we call implicit and explicit:
 
 -   An **implicit** missing value does not appear in the levels and `is.na()` reports it as missing. This is the usual way to encode a missing value in a factor:
 
@@ -86,7 +86,7 @@ Then they appear where you'd expect:
 
 ```{r}
 #| fig.alt: >
-#|   The A bar chart of hair color, now ordered so that NAs, now labelled
+#|   The bar chart of hair color, now ordered so that NAs, now labelled
 #|   "(missing)" are ordered where you'd expect: in between white (4) and
 #|   black (12).
 ggplot(starwars, aes(y = fct_infreq(fct_explicit_na(hair_color)))) + 
