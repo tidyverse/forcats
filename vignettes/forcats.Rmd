@@ -62,7 +62,8 @@ To understand why, we need to make a brief digression to discuss implicit vs exp
 
 There are two ways to represent a missing value in a factor which we call implicit and explicit:
 
--   An **implicit** missing value does not appear in the levels and `is.na()` reports it as missing. This is the usual way to encode a missing value in a factor:
+-   An **implicit** missing value does not appear in the levels and `is.na()` reports it as missing.
+    This is the usual way to encode a missing value in a factor:
 
     ```{r}
     f <- factor(c("x", "y", NA))
@@ -70,7 +71,8 @@ There are two ways to represent a missing value in a factor which we call implic
     is.na(f)
     ```
 
--   An **explicit** missing appears in the levels and `is.na()` does not report it as missing. This requires a little more work to create:
+-   An **explicit** missing appears in the levels and `is.na()` does not report it as missing.
+    This requires a little more work to create:
 
     ```{r}
     f <- factor(c("x", "y", NA), exclude = NULL)
