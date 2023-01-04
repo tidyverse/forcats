@@ -19,36 +19,32 @@
 #'   match the default ordering of factors in the legend.
 #' @export
 #' @examples
-#' df <- tibble::tribble(
-#'   ~color,     ~a, ~b,
-#'   "blue",      1,  2,
-#'   "green",     6,  2,
-#'   "purple",    3,  3,
-#'   "red",       2,  3,
-#'   "yellow",    5,  1
-#' )
-#' df$color <- factor(df$color)
-#' fct_reorder(df$color, df$a, min)
-#' fct_reorder2(df$color, df$a, df$b)
-#'
+#' # fct_reorder() -------------------------------------------------------------
+#' # Useful when a categorical variable is mapped to position
 #' boxplot(Sepal.Width ~ Species, data = iris)
 #' boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width), data = iris)
-#' boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width, .desc = TRUE), data = iris)
+#'
+#' # or with
+#' library(ggplot2)
+#' ggplot(iris, aes(fct_reorder(Species, Sepal.Width), Sepal.Width)) +
+#'   geom_boxplot()
+#'
+#' # fct_reorder2() -------------------------------------------------------------
+#' # Useful when a categorical variable is mapped to color, size, shape etc
 #'
 #' chks <- subset(ChickWeight, as.integer(Chick) < 10)
 #' chks <- transform(chks, Chick = fct_shuffle(Chick))
 #'
-#' if (require("ggplot2")) {
-#'   ggplot(chks, aes(Time, weight, colour = Chick)) +
-#'     geom_point() +
-#'     geom_line()
+#' # Without reordering it's hard to match line to legend
+#' ggplot(chks, aes(Time, weight, colour = Chick)) +
+#'   geom_point() +
+#'   geom_line()
 #'
-#'   # Note that lines match order in legend
-#'   ggplot(chks, aes(Time, weight, colour = fct_reorder2(Chick, Time, weight))) +
-#'     geom_point() +
-#'     geom_line() +
-#'     labs(colour = "Chick")
-#' }
+#' # With reordering it's much easier
+#' ggplot(chks, aes(Time, weight, colour = fct_reorder2(Chick, Time, weight))) +
+#'   geom_point() +
+#'   geom_line() +
+#'   labs(colour = "Chick")
 fct_reorder <- function(.f, .x, .fun = median, ..., .desc = FALSE) {
   f <- check_factor(.f)
   stopifnot(length(f) == length(.x))
@@ -128,7 +124,7 @@ fct_inorder <- function(f, ordered = NA) {
   f <- check_factor(f)
 
   idx <- as.integer(f)[!duplicated(f)]
-  idx <- idx[!is.na(idx)]
+  idx <- union(idx[!is.na(idx)], lvls_seq(f))
   lvls_reorder(f, idx, ordered = ordered)
 }
 
