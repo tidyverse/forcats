@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* `fct_infreq()` gains the ability to weight by another variable using the `w`
+  argument (#261).
+
 * `fct_inorder()` now works when not all levels appear in the data (#262).
 
 * `fct_unique()` now captures implicit missing values if present (#293).

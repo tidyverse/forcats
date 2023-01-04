@@ -86,6 +86,22 @@ test_that("fct_infreq() ignores implict NA", {
   expect_equal(fct_infreq(f), fct(x, c("b", "a")))
 })
 
+test_that("fct_infreq() respects weights", {
+  x <- c("a", "b", "b", "c")
+  f <- factor(x)
+  w <- c(1, 1, 3, 3)
+  expect_equal(fct_infreq(f, w), fct(x, c("b", "c", "a")))
+})
+
+test_that("fct_infreq() validates weight", {
+  f <- fct(c("a", "b", "c"))
+
+  expect_snapshot(error = TRUE, {
+    fct_infreq(f, 1:4)
+    fct_infreq(f, "x")
+  })
+})
+
 test_that("fct_infreq() preserves empty levels", {
   # at end
   x <- c("b", "b", "a")

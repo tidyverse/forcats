@@ -236,12 +236,15 @@ check_weights <- function(w, n = length(w), call = caller_env()) {
   }
 
   if (!is.numeric(w)) {
-    cli::cli_abort("{.arg w} must be a numeric vector", call = call)
+    cli::cli_abort(
+      "{.arg w} must be a numeric vector, not {.obj_type_friendly weight}.",
+      call = call
+    )
   }
 
   if (length(w) != n) {
     cli::cli_abort(
-      "{.arg w} must be the same length as {.arg f} ({n}), not length {length(w)}",
+      "{.arg w} must be the same length as {.arg f} ({n}), not length {length(w)}.",
       call = call
     )
   }
@@ -249,10 +252,13 @@ check_weights <- function(w, n = length(w), call = caller_env()) {
   bad <- w < 0 | is.na(w)
   if (any(bad)) {
     probs <- which(bad)
-    cli::cli_abort(c(
-      "All {.arg w} must be non-negative and non-missing.",
-      "{length(probs)} problem{?s} at positions {probs}"
-    ), call = call)
+    cli::cli_abort(
+      c(
+        "All {.arg w} must be non-negative and non-missing.",
+        "{length(probs)} problem{?s} at positions {probs}."
+      ),
+      call = call
+    )
   }
 
   w
