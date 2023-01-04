@@ -237,7 +237,7 @@ check_weights <- function(w, n = length(w), call = caller_env()) {
 
   if (!is.numeric(w)) {
     cli::cli_abort(
-      "{.arg w} must be a numeric vector, not {.obj_type_friendly weight}.",
+      "{.arg w} must be a numeric vector, not {.obj_type_friendly w}.",
       call = call
     )
   }
