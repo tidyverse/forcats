@@ -282,10 +282,10 @@ by reordering the levels of <code>rincome</code> randomly with
 <span>  <span class="fu"><a href="../reference/fct_shuffle.html">fct_shuffle</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">reshuffled_income</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "$25000 or more" "$7000 to 7999"  "$3000 to 3999"  "$1000 to 2999" </span></span>
-<span><span class="co">#&gt;  [5] "$20000 - 24999" "$4000 to 4999"  "$6000 to 6999"  "$10000 - 14999"</span></span>
-<span><span class="co">#&gt;  [9] "Don't know"     "$5000 to 5999"  "$8000 to 9999"  "Not applicable"</span></span>
-<span><span class="co">#&gt; [13] "Lt $1000"       "No answer"      "$15000 - 19999" "Refused"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] "No answer"      "$10000 - 14999" "$6000 to 6999"  "$8000 to 9999" </span></span>
+<span><span class="co">#&gt;  [5] "$5000 to 5999"  "$15000 - 19999" "$4000 to 4999"  "$1000 to 2999" </span></span>
+<span><span class="co">#&gt;  [9] "$25000 or more" "Refused"        "Lt $1000"       "$20000 - 24999"</span></span>
+<span><span class="co">#&gt; [13] "$7000 to 7999"  "Don't know"     "$3000 to 3999"  "Not applicable"</span></span></code></pre></div>
 <p>Now if we plotted it, it would show in this order, which is all over
 the place! How can we fix this and put it in the right order?</p>
 <p>We can use the function <code><a href="../reference/fct_relevel.html">fct_relevel()</a></code> when we need to
@@ -300,18 +300,18 @@ move it to the end, you set <code>after</code> equal to
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/fct_relevel.html">fct_relevel</a></span><span class="op">(</span><span class="va">reshuffled_income</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Lt $1000"</span>, <span class="st">"$1000 to 2999"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "Lt $1000"       "$1000 to 2999"  "$25000 or more" "$7000 to 7999" </span></span>
-<span><span class="co">#&gt;  [5] "$3000 to 3999"  "$20000 - 24999" "$4000 to 4999"  "$6000 to 6999" </span></span>
-<span><span class="co">#&gt;  [9] "$10000 - 14999" "Don't know"     "$5000 to 5999"  "$8000 to 9999" </span></span>
-<span><span class="co">#&gt; [13] "Not applicable" "No answer"      "$15000 - 19999" "Refused"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] "Lt $1000"       "$1000 to 2999"  "No answer"      "$10000 - 14999"</span></span>
+<span><span class="co">#&gt;  [5] "$6000 to 6999"  "$8000 to 9999"  "$5000 to 5999"  "$15000 - 19999"</span></span>
+<span><span class="co">#&gt;  [9] "$4000 to 4999"  "$25000 or more" "Refused"        "$20000 - 24999"</span></span>
+<span><span class="co">#&gt; [13] "$7000 to 7999"  "Don't know"     "$3000 to 3999"  "Not applicable"</span></span></code></pre></div>
 <p>What if we want to move them to the second and third place?</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/fct_relevel.html">fct_relevel</a></span><span class="op">(</span><span class="va">reshuffled_income</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Lt $1000"</span>, <span class="st">"$1000 to 2999"</span><span class="op">)</span>, after <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "$25000 or more" "Lt $1000"       "$1000 to 2999"  "$7000 to 7999" </span></span>
-<span><span class="co">#&gt;  [5] "$3000 to 3999"  "$20000 - 24999" "$4000 to 4999"  "$6000 to 6999" </span></span>
-<span><span class="co">#&gt;  [9] "$10000 - 14999" "Don't know"     "$5000 to 5999"  "$8000 to 9999" </span></span>
-<span><span class="co">#&gt; [13] "Not applicable" "No answer"      "$15000 - 19999" "Refused"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] "No answer"      "Lt $1000"       "$1000 to 2999"  "$10000 - 14999"</span></span>
+<span><span class="co">#&gt;  [5] "$6000 to 6999"  "$8000 to 9999"  "$5000 to 5999"  "$15000 - 19999"</span></span>
+<span><span class="co">#&gt;  [9] "$4000 to 4999"  "$25000 or more" "Refused"        "$20000 - 24999"</span></span>
+<span><span class="co">#&gt; [13] "$7000 to 7999"  "Don't know"     "$3000 to 3999"  "Not applicable"</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

@@ -78,7 +78,7 @@ fct_inseq(): by numeric value of level.
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">fct_inorder</span><span class="op">(</span><span class="va">f</span>, ordered <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">fct_infreq</span><span class="op">(</span><span class="va">f</span>, ordered <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span><span class="fu">fct_infreq</span><span class="op">(</span><span class="va">f</span>, w <span class="op">=</span> <span class="cn">NULL</span>, ordered <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">fct_inseq</span><span class="op">(</span><span class="va">f</span>, ordered <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -92,6 +92,11 @@ fct_inseq(): by numeric value of level.
 <dt>ordered</dt>
 <dd><p>A logical which determines the "ordered" status of the
 output factor. <code>NA</code> preserves the existing status of the factor.</p></dd>
+
+
+<dt>w</dt>
+<dd><p>An optional numeric vector giving weights for frequency of
+each value (not level) in f.</p></dd>
 
 </dl></div>
 
