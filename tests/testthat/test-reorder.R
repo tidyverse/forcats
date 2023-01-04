@@ -87,9 +87,15 @@ test_that("fct_infreq() ignores implict NA", {
 })
 
 test_that("fct_infreq() preserves empty levels", {
+  # at end
   x <- c("b", "b", "a")
   f <- fct(x, letters[1:3])
   expect_equal(fct_infreq(f), fct(x, c("b", "a", "c")))
+
+  # at beginning
+  x <- c("b", "b", "c")
+  f <- fct(x, letters[1:3])
+  expect_equal(fct_infreq(f), fct(x, c("b", "c", "a")))
 })
 
 # fct_inorder -------------------------------------------------------------
@@ -107,9 +113,15 @@ test_that("fct_inorder() ignores implict NA", {
 })
 
 test_that("fct_inorder() preserves empty levels", {
+  # at beginning
   x <- c("b", "b", "a")
   f <- fct(x, letters[1:3])
   expect_equal(fct_inorder(f), fct(x, c("b", "a", "c")))
+
+  # at end
+  x <- c("b", "b", "c")
+  f <- fct(x, letters[1:3])
+  expect_equal(fct_inorder(f), fct(x, c("b", "c", "a")))
 })
 
 # fct_inseq ---------------------------------------------------------------
