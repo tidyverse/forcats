@@ -44,6 +44,7 @@
 #' fct_relevel(f, "e")
 fct_relevel <- function(.f, ..., after = 0L) {
   f <- check_factor(.f)
+  check_dots_unnamed()
 
   old_levels <- levels(f)
   if (dots_n(...) == 1L && (is.function(..1) || is_formula(..1))) {
