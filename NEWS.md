@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* `fct_expand()` gains an `after` argument so that you can choose where
+  the new levels are placed (#138).
+
 * `fct_infreq()` gains the ability to weight by another variable using the `w`
   argument (#261).
 
