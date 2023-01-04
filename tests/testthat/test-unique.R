@@ -8,7 +8,9 @@ test_that("preserve position of explicit NA levels", {
   expect_equal(fct_unique(x), x)
 })
 
-test_that("preserve mix of implicit and explicit NA", {
+test_that("preserve mix of implicit and explicit NA (#328)", {
+  # Possible to create with factor(exclude = NULL) + is.na(), but directly
+  # specifying makes it a little easier to see what's happening.
   f <- structure(
     c(2L, 1L, NA, 1L, 2L, NA),
     levels = c("x", NA),
