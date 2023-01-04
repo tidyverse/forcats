@@ -2,6 +2,11 @@
 
 * `fct_inorder()` now works when not all levels appear in the data (#262).
 
+* `fct_unique()` now captures implicit missing values if present (#293).
+
+* `fct_other()` no longer generates a warning if no levels are replaced with
+  other (#265).
+
 # forcats 0.5.2
 
 * New `fct()` which works like `factor()` but errors if values of `x`

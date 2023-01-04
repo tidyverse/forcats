@@ -25,6 +25,10 @@ fct_other <- function(f, keep, drop, other_level = "Other") {
     levels[levels %in% drop] <- other_level
   }
 
+  if (!other_level %in% levels) {
+    return(f)
+  }
+
   f <- lvls_revalue(f, levels)
   fct_relevel(f, other_level, after = Inf)
 }
