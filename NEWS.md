@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* `fct_lump_prop()` and friends now work correctly if you supply weights
+  and have empty levels (#292).
+
 * `fct_expand()` gains an `after` argument so that you can choose where
   the new levels are placed (#138).
 

@@ -29,7 +29,7 @@ fct_lump_n(
   ties.method = c("min", "average", "first", "last", "random", "max")
 )
 
-fct_lump_lowfreq(f, other_level = "Other")
+fct_lump_lowfreq(f, w = NULL, other_level = "Other")
 }
 \arguments{
 \item{f}{A factor (or character vector).}

@@ -133,12 +133,8 @@ fct_inorder <- function(f, ordered = NA) {
 #' @inheritParams fct_lump
 fct_infreq <- function(f, w = NULL, ordered = NA) {
   f <- check_factor(f)
-
-  check_weights(w, length(f))
-  w <- w %||% rep(1L, length(f))
-
-  freq <- tapply(w, f, sum)
-  lvls_reorder(f, order(freq, decreasing = TRUE), ordered = ordered)
+  w <- compute_weights(f, w)
+  lvls_reorder(f, order(w, decreasing = TRUE), ordered = ordered)
 }
 
 #' @export

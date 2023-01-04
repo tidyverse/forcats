@@ -126,6 +126,15 @@ test_that("values are correctly weighted", {
   )
 })
 
+test_that("can use weights with empty levels", {
+  f <- factor(c("a", "a", "b", "c"), levels = c("a", "b", "c", "d"))
+
+  expect_equal(
+    fct_lump_prop(f, prop = 0.25, w = rep(1, 4)),
+    fct(c("a", "a", "Other", "Other"))
+  )
+})
+
 test_that("do not change the label when no lumping occurs", {
   f <- c("a", "a", "a", "a", "b", "b", "b", "c", "c", "d")
   expect_equal(levels(fct_lump(f, n = 3)), c("a", "b", "c", "d"))
