@@ -87,13 +87,13 @@ exist will be silently ignored.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">f</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] a b a a a a b c c a b b c b a b c a b b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] a a a c b b a b a c c a a c c c c c c a</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b c</span>
 <span class="r-in"><span><span class="fu">fct_expand</span><span class="op">(</span><span class="va">f</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"f"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] a b a a a a b c c a b b c b a b c a b b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] a a a c b b a b a c c a a c c c c c c a</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b c d e f</span>
 <span class="r-in"><span><span class="fu">fct_expand</span><span class="op">(</span><span class="va">f</span>, <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] a b a a a a b c c a b b c b a b c a b b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] a a a c b b a b a c c a a c c c c c c a</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b c d e f</span>
 </code></pre></div>
     </div>
