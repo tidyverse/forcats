@@ -139,7 +139,7 @@ fct_infreq <- function(f, weight = NULL, ordered = NA) {
   f <- check_factor(f)
 
   if (is.null(weight)) {
-    weight <- rep(1, length(f))
+    weight <- rep(1L, length(f))
   } else {
     if (!is.numeric(weight)) {
       cli::cli_abort("{.arg weight} must be a numeric vector, not {.obj_type_friendly weight}.")
