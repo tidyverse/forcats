@@ -130,7 +130,7 @@ fct_inorder <- function(f, ordered = NA) {
 
 #' @export
 #' @rdname fct_inorder
-#' @param weight Optional vector of numeric values to weight by.
+#' @inheritParams fct_lump
 fct_infreq <- function(f, w = NULL, ordered = NA) {
   f <- check_factor(f)
 
