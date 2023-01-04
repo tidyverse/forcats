@@ -16,6 +16,7 @@ test_that("drops levels in drop", {
 test_that("works without warning if no levels replaced", {
   x <- factor("a")
   expect_no_warning(fct_other(x, keep = "a"))
+  expect_no_warning(fct_other(x, drop = "b"))
 })
 
 test_that("must supply exactly one of drop and keep", {
