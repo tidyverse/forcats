@@ -31,19 +31,21 @@ fct_collapse <- function(.f, ..., other_level = NULL, group_other = "DEPRECATED"
     }
   }
 
-  new <- rlang::list2(...)
-  levs <- as.list(unlist(new, use.names = FALSE))
+  dots <- rlang::list2(...)
+
+  old <- unlist(dots, use.names = FALSE) %||% character()
+  new <- rep(names(dots), lengths(dots))
 
   if (!is.null(other_level)) {
-    levels <- levels(f)
-    new[[other_level]] <- levels[!levels %in% levs]
-    levs <- c(levs, new[[other_level]])
+    not_specified <- setdiff(levels(f), old)
+
+    old <- c(old, not_specified)
+    new <- c(new, rep(other_level, length(not_specified)))
   }
 
-  names(levs) <- names(new)[rep(seq_along(new), vapply(new, length, integer(1)))]
-  out <- fct_recode(.f, !!!levs)
+  out <- lvls_revalue(f, lvls_rename(f, set_names(old, new)))
 
-  if (any(levels(out) == other_level)) {
+  if (!is.null(other_level) && other_level %in% levels(out)) {
     fct_relevel(out, other_level, after = Inf)
   } else {
     out

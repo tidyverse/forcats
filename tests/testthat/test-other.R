@@ -19,6 +19,14 @@ test_that("works without warning if no levels replaced", {
   expect_no_warning(fct_other(x, drop = "b"))
 })
 
+test_that("can use NA as other level", {
+  f <- fct(c("a", "b"))
+  expect_equal(
+    fct_other(f, keep = "a", other_level = NA),
+    fct(c("a", NA), levels = c("a", NA))
+  )
+})
+
 test_that("must supply exactly one of drop and keep", {
   f <- factor(c("a", "b"))
 
