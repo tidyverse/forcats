@@ -7,6 +7,8 @@
 
 * `fct_collapse()` can now use `other_level = NA` (#291).
 
+* `fct_count()` works with factors that contain `NA`s in levels.
+
 * `fct_lump_prop()` and friends now work correctly if you supply weights
   and have empty levels (#292).
 
