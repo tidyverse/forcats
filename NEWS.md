@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* `fct_lump_prop()` and friends now work correctly if you supply weights
+  and have empty levels (#292).
+
 * `fct_lump_n()` and `fct_lump_prop()` will now create an "Other" level even
   if it only consists of a single level. This makes them consistent with the
   other `fct_lump_*` functions (#274).
