@@ -1,5 +1,7 @@
 # forcats (development version)
 
+* `fct_explicit_na()` is deprecated in favour of `fct_na_level_to_value()`.
+
 * New `fct_na_value_to_level()` and `fct_na_level_to_value()` to convert 
   NA values to NA levels and vice versa.
 
