@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* New `fct_na_value_to_level()` and `fct_na_level_to_value()` to convert 
+  NA values to NA levels and vice versa.
+
 * `fct_collapse()` can now use `other_level = NA` (#291).
 
 * `fct_lump_n()` and `fct_lump_prop()` will now create an "Other" level even

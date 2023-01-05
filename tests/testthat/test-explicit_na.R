@@ -18,3 +18,7 @@ test_that("converts explicit NA", {
 
   expect_equal(f2, fct_inorder(c("a", "(Missing)")))
 })
+
+test_that("can make explicit missings implicit", {
+  f1 <- fct()
+})
