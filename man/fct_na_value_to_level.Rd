@@ -5,12 +5,18 @@
 \alias{fct_na_level_to_value}
 \title{Convert between \code{NA} values and \code{NA} levels}
 \usage{
-fct_na_value_to_level(f)
+fct_na_value_to_level(f, level = NA)
 
-fct_na_level_to_value(f)
+fct_na_level_to_value(f, extra_levels = NULL)
 }
 \arguments{
 \item{f}{A factor (or character vector).}
+
+\item{level}{Optionally, instead of converting the \code{NA} values to an
+\code{NA} level, convert it to a level with this value.}
+
+\item{extra_levels}{Optionally, a character vector giving additional levels
+that should also be converted to \code{NA} values.}
 }
 \description{
 There are two ways to represent missing values in factors: in the values

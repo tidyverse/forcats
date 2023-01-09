@@ -14,6 +14,8 @@
 #' recommend it.)
 #'
 #' @param f A factor (or character vector).
+#' @param level Optionally, instead of converting the `NA` values to an
+#'   `NA` level, convert it to a level with this value.
 #' @export
 #' @examples
 #' # Most factors store NAs in the values:
@@ -33,22 +35,37 @@
 #' levels(f3)
 #' as.integer(f3)
 #' is.na(f3)
-fct_na_value_to_level <- function(f) {
+fct_na_value_to_level <- function(f, level = NA) {
+  if (!identical(level, NA) && !is_string(level)) {
+    cli::cli_abort(
+      "{.arg level} must be a string or {.code NA}, not {.obj_type_friendly level}."
+    )
+  }
   f <- check_factor(f)
 
-  # re-matches values to levels
-  fct_expand(f, NA)
+  f <- fct_expand(f, NA)
+  new_levels <- levels(f)
+  new_levels[is.na(new_levels)] <- level
+
+  lvls_revalue(f, new_levels)
 }
 
 #' @export
 #' @rdname fct_na_value_to_level
-fct_na_level_to_value <- function(f) {
+#' @param extra_levels Optionally, a character vector giving additional levels
+#'   that should also be converted to `NA` values.
+fct_na_level_to_value <- function(f, extra_levels = NULL) {
   f <- check_factor(f)
+  if (!is.null(extra_levels) && !is.character(extra_levels)) {
+    cli::cli_abort(
+      "{.arg extra_levels} must be a string or {.code NULL}, not {.obj_type_friendly extra_levels}."
+    )
+  }
 
-  new_levels <- setdiff(levels(f), NA)
-  idx <- match(new_levels, levels(f))
+  new_levels <- setdiff(levels(f), union(NA, extra_levels))
+  idx <- match(levels(f), new_levels)
 
-  out <- idx[f]
+  out <- idx[as.integer(f)]
   attributes(out) <- attributes(f)
   attr(out, "levels") <- new_levels
   out
