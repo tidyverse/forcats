@@ -1,85 +1,11 @@
-test_that("too many arguments fails", {
-  f <- c("a", "b", "c")
-  expect_error(fct_lump(f, n = 1, count = 1))
-  expect_error(fct_lump(f, n = 1, prop = 0.1))
-  expect_error(fct_lump(f, min = 2, count = 1))
-})
+# common behaviour ---------------------------------------------------------
 
-test_that("positive values keeps most commmon", {
-  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
-
-  expect_equal(levels(fct_lump(f, n = 1)), c("a", "Other"))
-  expect_equal(levels(fct_lump(f, n = 2)), c("a", "b", "Other"))
-
-  expect_equal(levels(fct_lump(f, prop = 0.25)), c("a", "Other"))
-  expect_equal(levels(fct_lump(f, prop = 0.15)), c("a", "b", "Other"))
-})
-
-test_that("ties are respected", {
-  f <- c("a", "a", "a", "b", "b", "b", "c", "d")
-  expect_equal(levels(fct_lump(f, 1)), c("a", "b", "Other"))
-})
-
-test_that("negative values drop most common", {
-  f <- c("a", "a", "a", "a", "b", "b", "b", "b", "c", "d")
-  expect_equal(levels(fct_lump(f, n = -1)), c("c", "d", "Other"))
-  expect_equal(levels(fct_lump(f, prop = -0.2)), c("c", "d", "Other"))
-})
-
-test_that("return original factor when all element satisfy n / p condition", {
-  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
-
-  expect_equal(levels(fct_lump(f, n = 4)), c("a", "b", "c", "d", "e", "f", "g"))
-  expect_equal(levels(fct_lump(f, n = 10)), c("a", "b", "c", "d", "e", "f", "g"))
-  expect_equal(levels(fct_lump(f, n = -10)), c("a", "b", "c", "d", "e", "f", "g"))
-
-  expect_equal(levels(fct_lump(f, prop = 0.01)), c("a", "b", "c", "d", "e", "f", "g"))
-  expect_equal(levels(fct_lump(f, prop = -1)), c("a", "b", "c", "d", "e", "f", "g"))
-})
-
-test_that("different behaviour when apply tie function", {
-  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
-
-  expect_equal(
-    levels(fct_lump(f, n = 4, ties.method = "min")),
-    c("a", "b", "c", "d", "e", "f", "g")
-  )
-  expect_equal(
-    levels(fct_lump(f, n = 4, ties.method = "max")),
-    c("a", "b", "Other")
-  )
-
-  # Rank of c, d, e, f, g is (3+4+5+6+7)/5 = 5
-  expect_equal(
-    levels(fct_lump(f, n = 4, ties.method = "average")),
-    c("a", "b", "Other")
-  )
-  expect_equal(
-    levels(fct_lump(f, n = 5, ties.method = "average")),
-    c("a", "b", "c", "d", "e", "f", "g")
-  )
-
-  expect_equal(
-    levels(fct_lump(f, n = 4, ties.method = "first")),
-    c("a", "b", "c", "d", "Other")
-  )
-
-  if (getRversion() >= "3.3.0") {
-    expect_equal(
-      levels(fct_lump(f, n = 4, ties.method = "last")),
-      c("a", "b", "f", "g", "Other")
-    )
-  }
-})
-
-test_that("NAs included in total", {
-  f <- factor(c("a", "a", "b", "c", rep(NA, 7)))
-
-  o1 <- fct_lump(f, prop = 0.10)
-  expect_equal(levels(o1), c("a", "Other"))
-
-  o2 <- fct_lump(f, w = rep(1, 11), prop = 0.10)
-  expect_equal(levels(o2), c("a", "Other"))
+test_that("can use other_level = NA", {
+  f <- fct(c("a", "a", "a", "a", "b"))
+  expect_equal(levels(fct_lump_lowfreq(f, other_level = NA)), c("a", NA))
+  expect_equal(levels(fct_lump_n(f, n = 1, other_level = NA)), c("a", NA))
+  expect_equal(levels(fct_lump_prop(f, prop = .2, other_level = NA)), c("a", NA))
+  expect_equal(levels(fct_lump_min(f, 2, other_level = NA)), c("a", NA))
 })
 
 test_that("bad weights generates friendly error messages", {
@@ -90,55 +16,14 @@ test_that("bad weights generates friendly error messages", {
   })
 })
 
-test_that("values are correctly weighted", {
-  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
-  w <- c( 0.2, 0.2, 0.6, 2,   2,   6,   4,   2,   2,   1)
-  f2 <- c(
-    "a",
-    rep("b", 4),
-    rep("c", 6),
-    rep("d", 4),
-    rep("e", 2),
-    rep("f", 2),
-    "g"
-  )
+# fct_lump() ----------------------------------------------------------------
 
-  expect_equal(levels(fct_lump(f, w = w)), levels(fct_lump(f2)))
-  expect_equal(
-    levels(fct_lump(f, n = 1, w = w)),
-    levels(fct_lump(f2, n = 1))
-  )
-  expect_equal(
-    levels(fct_lump(f, n = -2, w = w, ties.method = "first")),
-    levels(fct_lump(f2, n = -2, ties.method = "first"))
-  )
-  expect_equal(
-    levels(fct_lump(f, n = 99, w = w)),
-    levels(fct_lump(f2, n = 99))
-  )
-  expect_equal(
-    levels(fct_lump(f, prop = 0.01, w = w)),
-    levels(fct_lump(f2, prop = 0.01))
-  )
-  expect_equal(
-    levels(fct_lump(f, prop = -0.25, w = w, ties.method = "max")),
-    levels(fct_lump(f2, prop = -0.25, ties.method = "max"))
-  )
+test_that("can only supply one of n and prop", {
+  f <- c("a", "b", "c")
+  expect_snapshot(fct_lump(f, n = 1, prop = 0.1), error = TRUE)
 })
 
-test_that("can use weights with empty levels", {
-  f <- factor(c("a", "a", "b", "c"), levels = c("a", "b", "c", "d"))
-
-  expect_equal(
-    fct_lump_prop(f, prop = 0.25, w = rep(1, 4)),
-    fct(c("a", "a", "Other", "Other"))
-  )
-})
-
-test_that("only have one small other level", {
-  f <- c("a", "a", "a", "a", "b", "b", "b", "c", "c", "d")
-  expect_equal(levels(fct_lump(f)), c("a", "b", "c", "Other"))
-})
+# fct_lump_min ------------------------------------------------------------
 
 test_that("fct_lump_min works when not weighted", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
@@ -155,21 +40,72 @@ test_that("fct_lump_min works when weighted", {
   expect_equal(levels(fct_lump_min(f, min = 1.5, w = w)), c("b", "c", "d", "Other"))
 })
 
-test_that("throws error if n or prop is not numeric", {
-  f <- c("a", "a", "a", "a", "b", "b", "b", "c", "c", "d")
-
-  expect_error(fct_lump(f, n = "2"), "`n`")
-  expect_error(fct_lump(f, prop = "2"), "`prop`")
+test_that("checks inputs", {
+  expect_snapshot(error = TRUE, {
+    fct_lump_min(1:3)
+    fct_lump_min(factor(), min = "x")
+  })
 })
 
-test_that("fct_lump_prop works when not weighted", {
+# fct_lump_n() ------------------------------------------------------------
+
+test_that("can keep/drop with positive/negative values", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
+  expect_equal(levels(fct_lump_n(f, n = 1)), c("a", "Other"))
+  expect_equal(levels(fct_lump_n(f, n = 2)), c("a", "b", "Other"))
 
-  expect_equal(levels(fct_lump_prop(f, prop = 0.2)), c("a", "Other"))
-  expect_equal(levels(fct_lump_prop(f, prop = 0.1)), c("a", "b", "Other"))
+  f <- c("a", "a", "a", "a", "b", "b", "b", "b", "c", "d")
+  expect_equal(levels(fct_lump_n(f, n = -1)), c("c", "d", "Other"))
 })
 
-test_that("fct_lump_prop works when weighted", {
+test_that("ties are respected and can be controled", {
+  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
+  expect_equal(levels(fct_lump_n(f, 2)), c("a", "b", "Other"))
+
+  expect_equal(
+    levels(fct_lump_n(f, n = 4, ties.method = "min")),
+    c("a", "b", "c", "d", "e", "f", "g")
+  )
+  expect_equal(
+    levels(fct_lump_n(f, n = 4, ties.method = "max")),
+    c("a", "b", "Other")
+  )
+})
+
+test_that("idempotent if all element satisfies condition", {
+  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
+  expect_equal(levels(fct_lump_n(f, n = 10)), c("a", "b", "c", "d", "e", "f", "g"))
+  expect_equal(levels(fct_lump_n(f, n = -10)), c("a", "b", "c", "d", "e", "f", "g"))
+})
+
+test_that("can supply weights", {
+  f <- c("a", "b", "c", "d", "e")
+  w <- c( 0.2, 2,   6,   4,   1)
+
+  expect_equal(levels(fct_lump_n(f, n = 2, w = w)), c("c", "d", "Other"))
+  expect_equal(levels(fct_lump_n(f, n = 3, w = w)), c("b", "c", "d", "Other"))
+})
+
+test_that("checks inputs", {
+  expect_snapshot(error = TRUE, {
+    fct_lump_n(1:3)
+    fct_lump_n(factor(), n = "x")
+  })
+})
+
+# fct_lump_prop -----------------------------------------------------------
+
+test_that("positive/negative prop keeps/drops most commmon", {
+  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
+  expect_equal(levels(fct_lump_prop(f, prop = 0.25)), c("a", "Other"))
+  expect_equal(levels(fct_lump_prop(f, prop = 0.15)), c("a", "b", "Other"))
+
+  f <- c("a", "a", "a", "a", "b", "b", "b", "b", "c", "d")
+  expect_equal(levels(fct_lump(f, n = -1)), c("c", "d", "Other"))
+  expect_equal(levels(fct_lump(f, prop = -0.2)), c("c", "d", "Other"))
+})
+
+test_that("can use weights", {
   f <- c("a", "b", "c", "d", "e")
   w <- c( 0.2, 2,   6,   4,   1)
 
@@ -177,15 +113,45 @@ test_that("fct_lump_prop works when weighted", {
   expect_equal(levels(fct_lump_prop(f, prop = 0.2, w = w)), c("c", "d", "Other"))
 })
 
-test_that("can use other_level = NA", {
-  f <- fct(c("a", "a", "a", "a", "b"))
-  expect_equal(levels(fct_lump_lowfreq(f, other_level = NA)), c("a", NA))
-  expect_equal(levels(fct_lump_n(f, n = 1, other_level = NA)), c("a", NA))
-  expect_equal(levels(fct_lump_prop(f, prop = .2, other_level = NA)), c("a", NA))
-  expect_equal(levels(fct_lump_min(f, 2, other_level = NA)), c("a", NA))
+test_that("can use weights with empty levels", {
+  f <- factor(c("a", "a", "b", "c"), levels = c("a", "b", "c", "d"))
+
+  expect_equal(
+    fct_lump_prop(f, prop = 0.25, w = rep(1, 4)),
+    fct(c("a", "a", "Other", "Other"))
+  )
 })
 
-# Default -----------------------------------------------------------------
+test_that("NAs included in total", {
+  f <- factor(c("a", "a", "b", "c", rep(NA, 7)))
+
+  o1 <- fct_lump_prop(f, prop = 0.10)
+  expect_equal(levels(o1), c("a", "Other"))
+
+  o2 <- fct_lump_prop(f, w = rep(1, 11), prop = 0.10)
+  expect_equal(levels(o2), c("a", "Other"))
+})
+
+test_that("idempotent if element satisfy n condition", {
+  f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
+
+  expect_equal(levels(fct_lump_prop(f, prop = 0.01)), c("a", "b", "c", "d", "e", "f", "g"))
+  expect_equal(levels(fct_lump_prop(f, prop = -1)), c("a", "b", "c", "d", "e", "f", "g"))
+})
+
+test_that("checks inputs", {
+  expect_snapshot(error = TRUE, {
+    fct_lump_prop(1:3)
+    fct_lump_prop(factor(), prop = "x")
+  })
+})
+
+# fct_lump_lowfreq() -----------------------------------------------------------
+
+test_that("only have one small other level", {
+  f <- c("a", "a", "a", "a", "b", "b", "b", "c", "c", "d")
+  expect_equal(levels(fct_lump(f)), c("a", "b", "c", "Other"))
+})
 
 test_that("lumps smallest", {
   lump_test <- function(x) {

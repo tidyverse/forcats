@@ -72,8 +72,6 @@
 #' table(fct_lump_min(x, min = 15))
 fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
                      ties.method = c("min", "average", "first", "last", "random", "max")) {
-  ties.method <- match.arg(ties.method)
-
   if (missing(n) && missing(prop)) {
     fct_lump_lowfreq(f, w = w, other_level = other_level)
   } else if (missing(prop)) {
@@ -81,7 +79,7 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
   } else if (missing(n)) {
     fct_lump_prop(f, prop, w = w, other_level = other_level)
   } else {
-    cli::cli_abort("Must supply only one of {.arg n} and {.arg prop}")
+    cli::cli_abort("Must supply only one of {.arg n} and {.arg prop}.")
   }
 }
 
@@ -92,7 +90,7 @@ fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
   level_w <- compute_weights(f, w)
 
   if (!is.numeric(min) || length(min) != 1 || min < 0) {
-    cli::cli_abort("{.arg min} must be a positive number")
+    cli::cli_abort("{.arg min} must be a positive number.")
   }
 
   lvls_other(f, level_w >= min, other_level)
@@ -105,7 +103,7 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
   level_w <- compute_weights(f, w)
 
   if (!is.numeric(prop) || length(prop) != 1) {
-    cli::cli_abort("{.arg prop} must be a number")
+    cli::cli_abort("{.arg prop} must be a number.")
   }
 
   # Compute proportion of total, including NAs
@@ -127,11 +125,11 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
 fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
                        ties.method = c("min", "average", "first", "last", "random", "max")) {
   f <- check_factor(f)
-  ties.method <- match.arg(ties.method)
+  ties.method <- arg_match(ties.method)
   level_w <- compute_weights(f, w)
 
   if (!is.numeric(n) || length(n) != 1) {
-    cli::cli_abort("{.arg n} must be a number")
+    cli::cli_abort("{.arg n} must be a number.")
   }
 
   if (n < 0) {
