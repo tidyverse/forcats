@@ -1,4 +1,4 @@
-#' Replace levels with "other"
+#' Manually replace levels with "other"
 #'
 #' @inheritParams fct_lump
 #' @param keep,drop Pick one of `keep` and `drop`:

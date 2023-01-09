@@ -2,7 +2,7 @@
 % Please edit documentation in R/relabel.R
 \name{fct_relabel}
 \alias{fct_relabel}
-\title{Automatically relabel factor levels, collapse as necessary}
+\title{Relabel factor levels with a function, collapsing as necessary}
 \usage{
 fct_relabel(.f, .fun, ...)
 }
@@ -19,7 +19,7 @@ You can also use \code{~} to create as shorthand (in the style of purrr).
 \item{...}{Additional arguments to \code{fun}.}
 }
 \description{
-Automatically relabel factor levels, collapse as necessary
+Relabel factor levels with a function, collapsing as necessary
 }
 \examples{
 gss_cat$partyid \%>\% fct_count()

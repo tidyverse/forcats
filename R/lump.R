@@ -1,4 +1,4 @@
-#' Lump together factor levels into "other"
+#' Lump uncommon factor together levels into "other"
 #'
 #' @description
 #' A family for lumping together levels that meet some criteria.

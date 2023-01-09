@@ -1,4 +1,4 @@
-#' Automatically relabel factor levels, collapse as necessary
+#' Relabel factor levels with a function, collapsing as necessary
 #'
 #' @param .f A factor (or character vector).
 #' @param .fun A function to be applied to each level. Must accept one

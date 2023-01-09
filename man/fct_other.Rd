@@ -2,7 +2,7 @@
 % Please edit documentation in R/other.R
 \name{fct_other}
 \alias{fct_other}
-\title{Replace levels with "other"}
+\title{Manually replace levels with "other"}
 \usage{
 fct_other(f, keep, drop, other_level = "Other")
 }
@@ -21,7 +21,7 @@ as is.
 placed at end of levels.}
 }
 \description{
-Replace levels with "other"
+Manually replace levels with "other"
 }
 \examples{
 x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
