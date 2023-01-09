@@ -25,6 +25,11 @@ test_that("can use NA as other level", {
     fct_other(f, keep = "a", other_level = NA),
     fct(c("a", NA), levels = c("a", NA))
   )
+
+  expect_equal(
+    levels(lvls_other(f, c(TRUE, FALSE), other_level = NA)),
+    c("a", NA)
+  )
 })
 
 test_that("must supply exactly one of drop and keep", {

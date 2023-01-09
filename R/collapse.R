@@ -35,19 +35,11 @@ fct_collapse <- function(.f, ..., other_level = NULL, group_other = "DEPRECATED"
 
   old <- unlist(dots, use.names = FALSE) %||% character()
   new <- rep(names(dots), lengths(dots))
-
-  if (!is.null(other_level)) {
-    not_specified <- setdiff(levels(f), old)
-
-    old <- c(old, not_specified)
-    new <- c(new, rep(other_level, length(not_specified)))
-  }
-
   out <- lvls_revalue(f, lvls_rename(f, set_names(old, new)))
 
-  if (!is.null(other_level) && other_level %in% levels(out)) {
-    fct_relevel(out, other_level, after = Inf)
-  } else {
-    out
+  if (!is.null(other_level)) {
+    out <- lvls_other(out, levels(out) %in% new, other_level)
   }
+
+  out
 }
