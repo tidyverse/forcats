@@ -71,6 +71,21 @@ test_that("complains if summary doesn't return single value", {
   })
 })
 
+test_that("automatically removes missing values with a warning", {
+  f1 <- fct(c("a", "b", "c", "c"))
+  x <- c(3, 2, 1, NA)
+
+  expect_snapshot(f2 <- fct_reorder(f1, x))
+  expect_equal(levels(f2), c("c", "b", "a"))
+})
+
+test_that("can control the placement of NA levels", {
+  f1 <- fct(c("a", "b", "c"), letters[1:4])
+  x <- c(1, 2, 3)
+
+  f2 <- fct_reorder(f1, x, .na_last = FALSE)
+  expect_equal(levels(f2), c("d", "a", "b", "c"))
+})
 
 # fct_infreq --------------------------------------------------------------
 
