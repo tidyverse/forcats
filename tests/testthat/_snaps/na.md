@@ -4,7 +4,7 @@
       fct_na_value_to_level(1)
     Condition
       Error in `fct_na_value_to_level()`:
-      ! `f` must be a factor or character vector, not a numeric vector
+      ! `f` must be a factor or character vector, not a number.
     Code
       fct_na_value_to_level(f, level = 1)
     Condition
@@ -14,7 +14,7 @@
       fct_na_level_to_value(1)
     Condition
       Error in `fct_na_level_to_value()`:
-      ! `f` must be a factor or character vector, not a numeric vector
+      ! `f` must be a factor or character vector, not a number.
     Code
       fct_na_level_to_value(f, extra_levels = 1)
     Condition
