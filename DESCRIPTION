@@ -21,8 +21,7 @@ Imports:
     lifecycle,
     magrittr,
     rlang (>= 1.0.0),
-    tibble,
-    withr
+    tibble
 Suggests: 
     covr,
     dplyr,
@@ -30,7 +29,8 @@ Suggests:
     knitr,
     readr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    withr
 VignetteBuilder: 
     knitr
 Config/Needs/website: tidyverse/tidytemplate

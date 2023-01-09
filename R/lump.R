@@ -95,14 +95,7 @@ fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
     cli::cli_abort("{.arg min} must be a positive number")
   }
 
-  new_levels <- ifelse(level_w >= min, levels(f), other_level)
-
-  if (other_level %in% new_levels) {
-    f <- lvls_revalue(f, new_levels)
-    fct_relevel(f, other_level, after = Inf)
-  } else {
-    f
-  }
+  lvls_other(f, level_w >= min, other_level)
 }
 
 #' @export
@@ -123,19 +116,11 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
   }
 
   if (prop < 0) {
-    new_levels <- ifelse(prop_n <= -prop, levels(f), other_level)
+    lvls_other(f, prop_n <= -prop, other_level)
   } else {
-    new_levels <- ifelse(prop_n > prop, levels(f), other_level)
-  }
-
-  if (other_level %in% new_levels) {
-    f <- lvls_revalue(f, new_levels)
-    fct_relevel(f, other_level, after = Inf)
-  } else {
-    f
+    lvls_other(f, prop_n > prop, other_level)
   }
 }
-
 
 #' @export
 #' @rdname fct_lump
@@ -156,14 +141,7 @@ fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
     rank <- rank(-level_w, ties.method = ties.method)
   }
 
-  new_levels <- ifelse(rank <= n, levels(f), other_level)
-
-  if (other_level %in% new_levels) {
-    f <- lvls_revalue(f, new_levels)
-    fct_relevel(f, other_level, after = Inf)
-  } else {
-    f
-  }
+  lvls_other(f, rank <= n, other_level)
 }
 
 #' @export
@@ -172,15 +150,11 @@ fct_lump_lowfreq <- function(f, w = NULL, other_level = "Other") {
   f <- check_factor(f)
   level_w <- compute_weights(f, w)
 
-  new_levels <- ifelse(!in_smallest(level_w), levels(f), other_level)
-
-  if (other_level %in% new_levels) {
-    f <- lvls_revalue(f, new_levels)
-    fct_relevel(f, other_level, after = Inf)
-  } else {
-    f
-  }
+  lvls_other(f, !in_smallest(level_w), other_level)
 }
+
+
+# helpers -----------------------------------------------------------------
 
 compute_weights <- function(f, w = NULL, call = caller_env()) {
   w <- check_weights(w, length(f), call = call)

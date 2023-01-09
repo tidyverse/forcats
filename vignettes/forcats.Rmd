@@ -33,9 +33,8 @@ Let's try answering the question, "what are the most common hair colors of star 
 #| fig.alt: >
 #|   A bar chart of hair color of starwars characters. The bars are
 #|   alphabetically ordered, making it hard to see general patterns.
-ggplot(starwars, aes(x = hair_color)) + 
-  geom_bar() + 
-  coord_flip()
+ggplot(starwars, aes(y = hair_color)) + 
+  geom_bar()
 ```
 
 That's okay, but it would be more helpful the graph was ordered by count.
@@ -44,16 +43,60 @@ To do so, we can use the function `fct_infreq()`:
 
 ```{r fct-infreq-hair}
 #| fig.alt: >
-#|   The A bar chart of hair color, now ordered so that the least
+#|   The bar chart of hair color, now ordered so that the least
 #|   frequent colours come first and the most frequent colors come last.
 #|   This makes it easy to see that the most common hair color is none 
-#|   (~35), followed by brown (~18), then black (~12).
-ggplot(starwars, aes(x = fct_infreq(hair_color))) + 
-  geom_bar() + 
-  coord_flip()
+#|   (~35), followed by brown (~18), then black (~12). Surprisingly,
+#|   NAs are at the top of the graph, even though there are ~5 NAs and 
+#|   other colors have smaller values.
+ggplot(starwars, aes(y = fct_infreq(hair_color))) + 
+  geom_bar()
 ```
 
 Note that `fct_infreq()` it automatically puts NA at the top, even though that doesn't have the smallest number of entries.
+
+It's a little surprising that the `NA` bar isn't ordered by frequency.
+To understand why we need to make a brief digression to discuss `NA`s in values vs. `NA`s in levels
+
+## `NAs`s in levels and values
+
+There are two ways to represent a missing value in a factor:
+
+-   You can include it in the values of the factor; it does not appear in the levels and `is.na()` reports it as missing.
+    This is how missing values are encoded in a factor by default:
+
+    ```{r}
+    f <- factor(c("x", "y", NA))
+    levels(f)
+    is.na(f)
+    ```
+
+-   You can include it in the levels of the factor and `is.na()` does not report it as missing.
+    This requires a little more work to create, because, by default, `factor()` uses `exclude = NA`, meaning that missing values are not included in the levels.
+    You can force `NA` to be included by setting `exclude = NULL`:
+
+    ```{r}
+    f <- factor(c("x", "y", NA), exclude = NULL)
+    levels(f)
+    is.na(f)
+    ```
+
+`NA`s in the values tend to be best for data analysis, since `is.na()` works as you'd expect.
+`NA`s in the levels can be useful for display if you need to control where they appear in a table or a plot.
+
+To fix the issue above, we can use `fct_na_value_to_level()` to convert the `NA` in the value to an NA in the levels.
+Then they appear where you'd expect:
+
+```{r}
+#| fig.alt: >
+#|   The bar chart of hair color, now ordered so that NAs are 
+#|   ordered where you'd expect: in between white (4) and black (12).
+ggplot(starwars, aes(y = fct_infreq(fct_na_value_to_level(hair_color)))) + 
+  geom_bar() + 
+  labs(y = "Hair color")
+```
+
+(If you need the opposite operation, you can use `fct_na_level_to_value()`.)
 
 ## Combining levels
 

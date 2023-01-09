@@ -177,6 +177,14 @@ test_that("fct_lump_prop works when weighted", {
   expect_equal(levels(fct_lump_prop(f, prop = 0.2, w = w)), c("c", "d", "Other"))
 })
 
+test_that("can use other_level = NA", {
+  f <- fct(c("a", "a", "a", "a", "b"))
+  expect_equal(levels(fct_lump_lowfreq(f, other_level = NA)), c("a", NA))
+  expect_equal(levels(fct_lump_n(f, n = 1, other_level = NA)), c("a", NA))
+  expect_equal(levels(fct_lump_prop(f, prop = .2, other_level = NA)), c("a", NA))
+  expect_equal(levels(fct_lump_min(f, 2, other_level = NA)), c("a", NA))
+})
+
 # Default -----------------------------------------------------------------
 
 test_that("lumps smallest", {

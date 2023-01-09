@@ -18,17 +18,22 @@ fct_other <- function(f, keep, drop, other_level = "Other") {
   f <- check_factor(f)
   check_exclusive(keep, drop)
 
-  levels <- levels(f)
   if (!missing(keep)) {
-    levels[!levels %in% keep] <- other_level
+    lvls_other(f, levels(f) %in% keep, other_level)
   } else {
-    levels[levels %in% drop] <- other_level
+    lvls_other(f, !levels(f) %in% drop, other_level)
   }
-
-  if (!other_level %in% levels) {
-    return(f)
-  }
-
-  f <- lvls_revalue(f, levels)
-  fct_relevel(f, other_level, after = Inf)
 }
+
+# Replace specified levels (if any), with other.
+# @param keep A logical vector the same length as `levels(f)`
+lvls_other <- function(f, keep, other_level = "Other") {
+  if (all(keep)) {
+    f
+  } else {
+    new_levels <- ifelse(keep, levels(f), other_level)
+    f <- lvls_revalue(f, new_levels)
+    fct_relevel(f, other_level, after = Inf)
+  }
+}
+

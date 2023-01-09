@@ -1,5 +1,14 @@
 # forcats (development version)
 
+* `fct_explicit_na()` is deprecated in favour of `fct_na_value_to_level()`.
+
+* New `fct_na_value_to_level()` and `fct_na_level_to_value()` to convert 
+  NA values to NA levels and vice versa (#337).
+
+* `fct_collapse()` can now use `other_level = NA` (#291).
+
+* `fct_count()` works with factors that contain `NA`s in levels.
+
 * `fct_lump_prop()` and friends now work correctly if you supply weights
   and have empty levels (#292).
 

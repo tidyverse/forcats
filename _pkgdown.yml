@@ -46,8 +46,8 @@ reference:
       Leave existing data as is, but add or remove levels.
     contents:
     - fct_expand
-    - fct_explicit_na
     - fct_drop
+    - fct_na_value_to_level
     - fct_unify
 
   - title: Combine multiple factors
