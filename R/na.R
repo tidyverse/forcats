@@ -4,12 +4,12 @@
 #' There are two ways to represent missing values in factors: in the values
 #' and in the levels. `NA`s in the values are most useful for data analysis
 #' (since [is.na()] returns what you expect), but because the `NA` is not
-#' explicitly recorded in the levels, there's no way to control it's position
-#' (it's almost always displayed last). Putting the `NA`s in the levels allows
+#' explicitly recorded in the levels, there's no way to control its position
+#' (it's almost always displayed last or not at all). Putting the `NA`s in the levels allows
 #' you to control its display, at the cost of losing accurate `is.na()`
 #' reporting.
 #'
-#' (It is possible to have a factor with missing  values in both the values
+#' (It is possible to have a factor with missing values in both the values
 #' and the levels but it requires some explicit gymnastics and we don't
 #' recommend it.)
 #'

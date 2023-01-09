@@ -55,8 +55,8 @@ ggplot(starwars, aes(y = fct_infreq(hair_color))) +
 
 Note that `fct_infreq()` it automatically puts NA at the top, even though that doesn't have the smallest number of entries.
 
-Its's a little surprising that the `NA` bar isn't ordered by frequency.
-To understand why, we need to make a brief digression to discuss `NA`s in values vs `NA`s in levels
+It's a little surprising that the `NA` bar isn't ordered by frequency.
+To understand why we need to make a brief digression to discuss `NA`s in values vs. `NA`s in levels
 
 ## `NAs`s in levels and values
 
@@ -70,7 +70,7 @@ levels(f)
 is.na(f)
 ```
 
--   You can include in the levels of the factor and `is.na()` does not report it as missing. This requires a little more work to create:
+-   You can include it in the levels of the factor and `is.na()` does not report it as missing. This requires a little more work to create:
 
 ```{r}
 f <- factor(c("x", "y", NA), exclude = NULL)
@@ -79,9 +79,9 @@ is.na(f)
 ```
 
 `NA`s in the values tend to be best for data analysis, since `is.na()` works as you'd expect.
-`NA`s in the levels are often better for display since you can control where they appear.
+`NA`s in the levels can be useful for display if you need to control where they appear in a table or a plot.
 
-to fix the issue above, we can use `fct_na_value_to_level()` to convert the `NA` in the value to an NA in the levels.
+To fix the issue above, we can use `fct_na_value_to_level()` to convert the `NA` in the value to an NA in the levels.
 Then they appear where you'd expect:
 
 ```{r}
