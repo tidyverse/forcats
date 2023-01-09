@@ -62,21 +62,24 @@ To understand why we need to make a brief digression to discuss `NA`s in values 
 
 There are two ways to represent a missing value in a factor:
 
--   You can include it in the values of the factor; it does not appear in the levels and `is.na()` reports it as missing. This is the usual way to encode a missing value in a factor:
+-   You can include it in the values of the factor; it does not appear in the levels and `is.na()` reports it as missing.
+    This is how missing values are encoded in a factor by default:
 
-```{r}
-f <- factor(c("x", "y", NA))
-levels(f)
-is.na(f)
-```
+    ```{r}
+    f <- factor(c("x", "y", NA))
+    levels(f)
+    is.na(f)
+    ```
 
--   You can include it in the levels of the factor and `is.na()` does not report it as missing. This requires a little more work to create:
+-   You can include it in the levels of the factor and `is.na()` does not report it as missing.
+    This requires a little more work to create, because, by default, `factor()` uses `exclude = NA`, meaning that missing values are not included in the levels.
+    You can force `NA` to be included by setting `exclude = NULL`:
 
-```{r}
-f <- factor(c("x", "y", NA), exclude = NULL)
-levels(f)
-is.na(f)
-```
+    ```{r}
+    f <- factor(c("x", "y", NA), exclude = NULL)
+    levels(f)
+    is.na(f)
+    ```
 
 `NA`s in the values tend to be best for data analysis, since `is.na()` works as you'd expect.
 `NA`s in the levels can be useful for display if you need to control where they appear in a table or a plot.
@@ -86,12 +89,11 @@ Then they appear where you'd expect:
 
 ```{r}
 #| fig.alt: >
-#|   The bar chart of hair color, now ordered so that NAs, now labelled
-#|   "(missing)" are ordered where you'd expect: in between white (4) and
-#|   black (12).
+#|   The bar chart of hair color, now ordered so that NAs are 
+#|   ordered where you'd expect: in between white (4) and black (12).
 ggplot(starwars, aes(y = fct_infreq(fct_na_value_to_level(hair_color)))) + 
- geom_bar() + 
- labs(y = "Hair color")
+  geom_bar() + 
+  labs(y = "Hair color")
 ```
 
 (If you need the opposite operation, you can use `fct_na_level_to_value()`.)
