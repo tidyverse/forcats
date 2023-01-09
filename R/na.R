@@ -36,10 +36,8 @@
 fct_na_value_to_level <- function(f) {
   f <- check_factor(f)
 
-  f <- fct_expand(f, NA)
-  f[is.na(f)] <- NA
-
-  f
+  # re-matches values to levels
+  fct_expand(f, NA)
 }
 
 #' @export
