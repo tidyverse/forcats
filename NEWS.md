@@ -1,32 +1,17 @@
 # forcats (development version)
 
-* `fct_reorder()` now removes `NA` values in `.x` with a warning (like
-   `ggplot2::geom_point()` and friends). You can suppress the warning by
-   setting `.na_rm = TRUE` (#315).
-   
-* `fct_reorder()` gains a new `.default` argument that controls the placement of 
-  empty levels (including levels that might become empty after removing
-  missing values in `.x`) (#266).
-
-* `fct_explicit_na()` is deprecated in favour of `fct_na_value_to_level()`.
+## New features
 
 * New `fct_na_value_to_level()` and `fct_na_level_to_value()` to convert 
   NA values to NA levels and vice versa (#337).
+
+## Minor improvement and bug fixes
 
 * `fct_collapse()` can now use `other_level = NA` (#291).
 
 * `fct_count()` works with factors that contain `NA`s in levels.
 
-* `fct_lump_prop()` and friends now work correctly if you supply weights
-  and have empty levels (#292).
-
-* `fct_lump_n()` and `fct_lump_prop()` will now create an "Other" level even
-  if it only consists of a single level. This makes them consistent with the
-  other `fct_lump_*` functions (#274).
-
-* `fct_relevel()`, `fct_cross()`, and `fct_expand()` now error if you name the
-  arguments in `...` since those names are ignored and your code probably 
-  doesn't do what you think it does (#319).
+* `fct_explicit_na()` is deprecated in favour of `fct_na_value_to_level()`.
 
 * `fct_expand()` gains an `after` argument so that you can choose where
   the new levels are placed (#138).
@@ -36,10 +21,30 @@
 
 * `fct_inorder()` now works when not all levels appear in the data (#262).
 
-* `fct_unique()` now captures implicit missing values if present (#293).
+* `fct_lump_prop()` and friends now work correctly if you supply weights
+  and have empty levels (#292).
+
+* `fct_lump_n()` and `fct_lump_prop()` will now create an "Other" level even
+  if it only consists of a single level. This makes them consistent with the
+  other `fct_lump_*` functions (#274).
 
 * `fct_other()` no longer generates a warning if no levels are replaced with
   other (#265).
+
+* `fct_relevel()`, `fct_cross()`, and `fct_expand()` now error if you name the
+  arguments in `...` since those names are ignored and your code probably 
+  doesn't do what you think it does (#319).
+
+* `fct_reorder()` now removes `NA` values in `.x` with a warning (like
+   `ggplot2::geom_point()` and friends). You can suppress the warning by
+   setting `.na_rm = TRUE` (#315).
+   
+* `fct_reorder()` gains a new `.default` argument that controls the placement of 
+  empty levels (including levels that might become empty after removing
+  missing values in `.x`) (#266).
+
+* `fct_unique()` now captures implicit missing values if present (#293).
+
 
 # forcats 0.5.2
 
