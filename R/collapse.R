@@ -24,7 +24,8 @@ fct_collapse <- function(.f, ..., other_level = NULL, group_other = "DEPRECATED"
     lifecycle::deprecate_warn(
       when = "0.5.0",
       what = "fct_collapse(group_other)",
-      with = "fct_collapse(other_level)"
+      with = "fct_collapse(other_level)",
+      always = TRUE
     )
     if (isTRUE(group_other) && is.null(other_level)) {
       other_level <- "Other"
