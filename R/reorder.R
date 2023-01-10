@@ -14,7 +14,8 @@
 #'   value.
 #' @param .na_rm Should `fct_reorder()` silently remove missing values?
 #'   If `NULL`, the default, will remove missing values with a warning.
-#'   Set to `FALSE` to preserve `NA`s and `TRUE` to remove silently.
+#'   Set to `FALSE` to preserve `NA`s (if you `.fun` already handles them) and
+#'   `TRUE` to remove silently.
 #' @param .default What default value should we use for `.fun` for
 #'   empty levels? Use this to control where empty levels appear in the
 #'   output.
@@ -61,7 +62,8 @@ fct_reorder <- function(.f, .x, .fun = median, ..., .na_rm = NULL, .default = In
     if (is.null(.na_rm)) {
       cli::cli_warn(c(
         "{.fn fct_reorder} removing {sum(miss)} missing value{?s}.",
-        i = "Use `.na_rm = TRUE` to silence this message"
+        i = "Use {.code .na_rm = TRUE} to silence this message.",
+        i = "Use {.code .na_rm = FALSE} to preserve NAs."
       ))
       .na_rm <- TRUE
     }

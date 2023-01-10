@@ -28,7 +28,8 @@
     Condition
       Warning:
       `fct_reorder()` removing 1 missing value.
-      i Use `.na_rm = TRUE` to silence this message
+      i Use `.na_rm = TRUE` to silence this message.
+      i Use `.na_rm = FALSE` to preserve NAs.
 
 # fct_infreq() validates weight
 
