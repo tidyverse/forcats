@@ -17,10 +17,13 @@
 fct_other <- function(f, keep, drop, other_level = "Other") {
   f <- check_factor(f)
   check_exclusive(keep, drop)
+  check_string(other_level, allow_na = TRUE)
 
   if (!missing(keep)) {
+    check_character(keep)
     lvls_other(f, levels(f) %in% keep, other_level)
   } else {
+    check_character(drop)
     lvls_other(f, !levels(f) %in% drop, other_level)
   }
 }

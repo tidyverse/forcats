@@ -100,6 +100,16 @@ test_that("can control the placement of levels with all missing data", {
   expect_equal(levels(f2), c("c", "a", "b"))
 })
 
+test_that("fct_reorder() validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    fct_reorder(1)
+    fct_reorder("x", 1, 1)
+    fct_reorder("x", 1, .na_rm = 1)
+    fct_reorder("x", 1, .desc = 1)
+  })
+
+})
+
 # fct_infreq --------------------------------------------------------------
 
 test_that("fct_infreq() preserves explicit NA", {
@@ -121,12 +131,14 @@ test_that("fct_infreq() respects weights", {
   expect_equal(fct_infreq(f, w), fct(x, c("b", "c", "a")))
 })
 
-test_that("fct_infreq() validates weight", {
+test_that("fct_infreq() validates its inputs", {
   f <- fct(c("a", "b", "c"))
 
   expect_snapshot(error = TRUE, {
+    fct_infreq(1)
     fct_infreq(f, 1:4)
     fct_infreq(f, "x")
+    fct_infreq(f, ordered = 1)
   })
 })
 
@@ -168,6 +180,17 @@ test_that("fct_inorder() preserves empty levels", {
   expect_equal(fct_inorder(f), fct(x, c("b", "c", "a")))
 })
 
+test_that("fct_inorder() validates its inputs", {
+  f <- fct(c("a", "b", "c"))
+
+  expect_snapshot(error = TRUE, {
+    fct_inorder(1)
+    fct_inorder(f, 1:4)
+    fct_inorder(f, "x")
+    fct_inorder(f, ordered = 1)
+  })
+})
+
 # fct_inseq ---------------------------------------------------------------
 
 test_that("fct_inseq sorts in numeric order", {
@@ -186,6 +209,15 @@ test_that("fct_inseq sorts in numeric order", {
 })
 
 test_that("fct_inseq gives error for non-numeric levels", {
-  f <- factor(c("c", "a", "a", "b"))
-  expect_error(levels(fct_inseq(f)), "level must be coercible to numeric")
+  expect_snapshot(error = TRUE, {
+    fct_inseq("x")
+  })
 })
+
+test_that("fct_inorder() validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    fct_inseq(1)
+    fct_inseq("1", ordered = 1)
+  })
+})
+

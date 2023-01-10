@@ -28,5 +28,4 @@ table(gss_cat$marital \%in\% c("Maried", "Davorced"))
 \dontrun{
 table(fct_match(gss_cat$marital, c("Maried", "Davorced")))
 }
-
 }

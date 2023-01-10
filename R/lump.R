@@ -87,12 +87,10 @@ fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
 #' @rdname fct_lump
 fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
   f <- check_factor(f)
+  check_number_decimal(min, min = 0)
+  check_string(other_level, allow_na = TRUE)
+
   level_w <- compute_weights(f, w)
-
-  if (!is.numeric(min) || length(min) != 1 || min < 0) {
-    cli::cli_abort("{.arg min} must be a positive number.")
-  }
-
   lvls_other(f, level_w >= min, other_level)
 }
 
@@ -100,12 +98,10 @@ fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
 #' @rdname fct_lump
 fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
   f <- check_factor(f)
+  check_number_decimal(prop)
+  check_string(other_level, allow_na = TRUE)
+
   level_w <- compute_weights(f, w)
-
-  if (!is.numeric(prop) || length(prop) != 1) {
-    cli::cli_abort("{.arg prop} must be a number.")
-  }
-
   # Compute proportion of total, including NAs
   if (is.null(w)) {
     prop_n <- level_w / length(f)
@@ -125,13 +121,11 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
 fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
                        ties.method = c("min", "average", "first", "last", "random", "max")) {
   f <- check_factor(f)
+  check_number_whole(n)
+  check_string(other_level, allow_na = TRUE)
   ties.method <- arg_match(ties.method)
+
   level_w <- compute_weights(f, w)
-
-  if (!is.numeric(n) || length(n) != 1) {
-    cli::cli_abort("{.arg n} must be a number.")
-  }
-
   if (n < 0) {
     rank <- rank(level_w, ties.method = ties.method)
     n <- -n
@@ -146,6 +140,7 @@ fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
 #' @rdname fct_lump
 fct_lump_lowfreq <- function(f, w = NULL, other_level = "Other") {
   f <- check_factor(f)
+  check_string(other_level, allow_na = TRUE)
   level_w <- compute_weights(f, w)
 
   lvls_other(f, !in_smallest(level_w), other_level)

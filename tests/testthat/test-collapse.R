@@ -62,3 +62,11 @@ test_that("group_other is deprecated", {
 
   expect_equal(levels(f2), c("x1", "x2", "Other"))
 })
+
+
+test_that("valdiates inputs", {
+  expect_snapshot(error = TRUE, {
+    fct_collapse(1)
+    fct_collapse("x", other_level = 1)
+  })
+})

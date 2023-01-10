@@ -15,6 +15,8 @@
 #'   fct_anon("X") %>%
 #'   fct_count()
 fct_anon <- function(f, prefix = "") {
+  f <- check_factor(f)
+  check_string(prefix)
   levels <- paste0(prefix, zero_pad(seq_len(nlevels(f))))
 
   f <- lvls_revalue(f, sample(levels))

@@ -18,6 +18,7 @@
 #' fct_shift(x, 2)
 #' fct_shift(x, -1)
 fct_shift <- function(f, n = 1L) {
+  check_number_whole(n)
   lvls_reorder(f, shift(nlevels(f), n))
 }
 

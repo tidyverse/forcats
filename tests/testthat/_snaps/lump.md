@@ -36,7 +36,7 @@
       fct_lump_min(factor(), min = "x")
     Condition
       Error in `fct_lump_min()`:
-      ! `min` must be a positive number.
+      ! `min` must be a number, not the string "x".
 
 ---
 
@@ -49,7 +49,7 @@
       fct_lump_n(factor(), n = "x")
     Condition
       Error in `fct_lump_n()`:
-      ! `n` must be a number.
+      ! `n` must be a whole number, not the string "x".
 
 ---
 
@@ -62,5 +62,5 @@
       fct_lump_prop(factor(), prop = "x")
     Condition
       Error in `fct_lump_prop()`:
-      ! `prop` must be a number.
+      ! `prop` must be a number, not the string "x".
 

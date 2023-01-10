@@ -16,14 +16,15 @@
 #' # Set only to restrict which levels to drop
 #' fct_drop(f, only = "a")
 #' fct_drop(f, only = "c")
-fct_drop <- function(f, only) {
+fct_drop <- function(f, only = NULL) {
   f <- check_factor(f)
+  check_character(only, allow_null = TRUE)
 
   levels <- levels(f)
   count <- table(f)
 
   to_drop <- levels[count == 0]
-  if (!missing(only)) {
+  if (!is.null(only)) {
     to_drop <- intersect(to_drop, only)
   }
 

@@ -9,7 +9,9 @@ test_that("doesn't repeat existing levels", {
   expect_equal(fct_expand(x, "a", "b"), fct(x))
 })
 
-test_that("dots must be unnamed", {
-  f <- fct(c("a", "b", "c"))
-  expect_snapshot(fct_expand(f, d = "d"), error = TRUE)
+test_that("validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    fct_expand("x", d = "d")
+    fct_expand("x", after = "x")
+  })
 })

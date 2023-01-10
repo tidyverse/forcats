@@ -18,9 +18,12 @@
 #' \dontrun{
 #' table(fct_match(gss_cat$marital, c("Maried", "Davorced")))
 #' }
-#'
 fct_match <- function(f, lvls) {
   f <- check_factor(f)
+  if (identical(lvls, NA)) {
+    lvls <- NA_character_
+  }
+  check_character(lvls)
 
   bad_lvls <- setdiff(lvls, levels(f))
   bad_lvls <- bad_lvls[!is.na(bad_lvls)]

@@ -11,3 +11,10 @@ test_that("prefix added to start of level", {
 
   expect_equal(levels(f2), "X1")
 })
+
+test_that("validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    fct_anon(1)
+    fct_anon("x", 1)
+  })
+})
