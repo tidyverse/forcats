@@ -13,10 +13,11 @@
 #'   `fct_reorder`, and two vectors for `fct_reorder2`, and return a single
 #'   value.
 #' @param .na_rm Should `fct_reorder()` silently remove missing values?
-#'   If `FALSE`, the default, will remove missing values with a warning.
-#' @param .na_last Should `NA` values be ordered last (`TRUE`) or first
-#'   (`FALSE`). Particularly important for empty levels, since their
-#'   summary result will always be `NA`.
+#'   If `NULL`, the default, will remove missing values with a warning.
+#'   Set to `FALSE` to preserve `NA`s and `TRUE` to remove silently.
+#' @param .default What default value should we use for `.fun` for
+#'   empty levels? Use this to control where empty levels appear in the
+#'   output.
 #' @param ... Other arguments passed on to `.fun`.
 #' @param .desc Order in descending order? Note the default is different
 #'   between `fct_reorder` and `fct_reorder2`, in order to
@@ -49,24 +50,31 @@
 #'   geom_point() +
 #'   geom_line() +
 #'   labs(colour = "Chick")
-fct_reorder <- function(.f, .x, .fun = median, ..., .na_rm = FALSE, .na_last = TRUE, .desc = FALSE) {
+fct_reorder <- function(.f, .x, .fun = median, ..., .na_rm = NULL, .default = Inf, .desc = FALSE) {
   f <- check_factor(.f)
   stopifnot(length(f) == length(.x))
+  .fun <- as_function(.fun)
   check_dots_used()
 
   miss <- is.na(.x)
-  if (any(miss) && !isTRUE(.na_rm)) {
-    cli::cli_warn(c(
-      "{.fn fct_reorder} removing {sum(miss)} missing value{?s}.",
-      i = "Use `.na_rm = TRUE` to silence this message"
-    ))
-  }
-  .x <- .x[!miss]
-  .f <- .f[!miss]
+  if (any(miss)) {
+    if (is.null(.na_rm)) {
+      cli::cli_warn(c(
+        "{.fn fct_reorder} removing {sum(miss)} missing value{?s}.",
+        i = "Use `.na_rm = TRUE` to silence this message"
+      ))
+      .na_rm <- TRUE
+    }
 
-  summary <- tapply(.x, .f, .fun, ...)
+    if (isTRUE(.na_rm)) {
+      .x <- .x[!miss]
+      .f <- .f[!miss]
+    }
+  }
+
+  summary <- tapply(.x, .f, function(x) .fun(x, ...), default = .default)
   check_single_value_per_group(summary, ".fun")
-  lvls_reorder(f, order(summary, decreasing = .desc, na.last = .na_last))
+  lvls_reorder(f, order(summary, decreasing = .desc))
 }
 
 #' @export

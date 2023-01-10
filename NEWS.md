@@ -4,8 +4,9 @@
    `ggplot2::geom_point()` and friends). You can suppress the warning by
    setting `.na_rm = TRUE` (#315).
    
-* `fct_reorder()` gains a new `.na_last` argument that allows you to control
-  where levels that are empty or only contain missing values are placed (#266).
+* `fct_reorder()` gains a new `.default` argument controls the placement of 
+  empty levels (including levels that might become empty after removing
+  missing values in `.x`) (#266).
 
 * `fct_explicit_na()` is deprecated in favour of `fct_na_value_to_level()`.
 
