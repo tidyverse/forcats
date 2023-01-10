@@ -73,7 +73,15 @@ a non-position aesthetic. <code>last2()</code> and <code>first2()</code> are hel
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">fct_reorder</span><span class="op">(</span><span class="va">.f</span>, <span class="va">.x</span>, .fun <span class="op">=</span> <span class="va">median</span>, <span class="va">...</span>, .desc <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">fct_reorder</span><span class="op">(</span></span>
+<span>  <span class="va">.f</span>,</span>
+<span>  <span class="va">.x</span>,</span>
+<span>  .fun <span class="op">=</span> <span class="va">median</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  .na_rm <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .default <span class="op">=</span> <span class="cn">Inf</span>,</span>
+<span>  .desc <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">fct_reorder2</span><span class="op">(</span><span class="va">.f</span>, <span class="va">.x</span>, <span class="va">.y</span>, .fun <span class="op">=</span> <span class="va">last2</span>, <span class="va">...</span>, .desc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -101,8 +109,20 @@ value.</p></dd>
 
 
 <dt>...</dt>
-<dd><p>Other arguments passed on to <code>.fun</code>. A common argument is
-<code>na.rm = TRUE</code>.</p></dd>
+<dd><p>Other arguments passed on to <code>.fun</code>.</p></dd>
+
+
+<dt>.na_rm</dt>
+<dd><p>Should <code>fct_reorder()</code> remove missing values?
+If <code>NULL</code>, the default, will remove missing values with a warning.
+Set to <code>FALSE</code> to preserve <code>NA</code>s (if you <code>.fun</code> already handles them) and
+<code>TRUE</code> to remove silently.</p></dd>
+
+
+<dt>.default</dt>
+<dd><p>What default value should we use for <code>.fun</code> for
+empty levels? Use this to control where empty levels appear in the
+output.</p></dd>
 
 
 <dt>.desc</dt>
