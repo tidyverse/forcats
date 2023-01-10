@@ -92,6 +92,14 @@ test_that("can control the placement of empty levels", {
   expect_equal(levels(f2), c("d", "a", "b", "c"))
 })
 
+test_that("can control the placement of levels with all missing data", {
+  f1 <- fct(c("a", "b", "c"))
+  x <- c(1, 2, NA)
+
+  f2 <- fct_reorder(f1, x, .na_rm = TRUE, .default = -Inf)
+  expect_equal(levels(f2), c("c", "a", "b"))
+})
+
 # fct_infreq --------------------------------------------------------------
 
 test_that("fct_infreq() preserves explicit NA", {
