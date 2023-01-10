@@ -21,6 +21,16 @@
       Error in `fct_reorder2()`:
       ! `.fun` must return a single value per group
 
+# automatically removes missing values with a warning
+
+    Code
+      f2 <- fct_reorder(f1, x)
+    Condition
+      Warning:
+      `fct_reorder()` removing 1 missing value.
+      i Use `.na_rm = TRUE` to silence this message.
+      i Use `.na_rm = FALSE` to preserve NAs.
+
 # fct_infreq() validates weight
 
     Code

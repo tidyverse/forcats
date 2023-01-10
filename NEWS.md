@@ -1,5 +1,13 @@
 # forcats (development version)
 
+* `fct_reorder()` now removes `NA` values in `.x` with a warning (like
+   `ggplot2::geom_point()` and friends). You can suppress the warning by
+   setting `.na_rm = TRUE` (#315).
+   
+* `fct_reorder()` gains a new `.default` argument that controls the placement of 
+  empty levels (including levels that might become empty after removing
+  missing values in `.x`) (#266).
+
 * `fct_explicit_na()` is deprecated in favour of `fct_na_value_to_level()`.
 
 * New `fct_na_value_to_level()` and `fct_na_level_to_value()` to convert 

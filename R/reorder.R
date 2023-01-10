@@ -12,8 +12,14 @@
 #' @param .fun n summary function. It should take one vector for
 #'   `fct_reorder`, and two vectors for `fct_reorder2`, and return a single
 #'   value.
-#' @param ... Other arguments passed on to `.fun`. A common argument is
-#'   `na.rm = TRUE`.
+#' @param .na_rm Should `fct_reorder()` remove missing values?
+#'   If `NULL`, the default, will remove missing values with a warning.
+#'   Set to `FALSE` to preserve `NA`s (if you `.fun` already handles them) and
+#'   `TRUE` to remove silently.
+#' @param .default What default value should we use for `.fun` for
+#'   empty levels? Use this to control where empty levels appear in the
+#'   output.
+#' @param ... Other arguments passed on to `.fun`.
 #' @param .desc Order in descending order? Note the default is different
 #'   between `fct_reorder` and `fct_reorder2`, in order to
 #'   match the default ordering of factors in the legend.
@@ -45,14 +51,31 @@
 #'   geom_point() +
 #'   geom_line() +
 #'   labs(colour = "Chick")
-fct_reorder <- function(.f, .x, .fun = median, ..., .desc = FALSE) {
+fct_reorder <- function(.f, .x, .fun = median, ..., .na_rm = NULL, .default = Inf, .desc = FALSE) {
   f <- check_factor(.f)
   stopifnot(length(f) == length(.x))
+  .fun <- as_function(.fun)
   check_dots_used()
 
-  summary <- tapply(.x, .f, .fun, ...)
-  check_single_value_per_group(summary, ".fun")
+  miss <- is.na(.x)
+  if (any(miss)) {
+    if (is.null(.na_rm)) {
+      cli::cli_warn(c(
+        "{.fn fct_reorder} removing {sum(miss)} missing value{?s}.",
+        i = "Use {.code .na_rm = TRUE} to silence this message.",
+        i = "Use {.code .na_rm = FALSE} to preserve NAs."
+      ))
+      .na_rm <- TRUE
+    }
 
+    if (isTRUE(.na_rm)) {
+      .x <- .x[!miss]
+      .f <- .f[!miss]
+    }
+  }
+
+  summary <- tapply(.x, .f, function(x) .fun(x, ...), default = .default)
+  check_single_value_per_group(summary, ".fun")
   lvls_reorder(f, order(summary, decreasing = .desc))
 }
 

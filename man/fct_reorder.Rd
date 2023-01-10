@@ -7,7 +7,15 @@
 \alias{first2}
 \title{Reorder factor levels by sorting along another variable}
 \usage{
-fct_reorder(.f, .x, .fun = median, ..., .desc = FALSE)
+fct_reorder(
+  .f,
+  .x,
+  .fun = median,
+  ...,
+  .na_rm = NULL,
+  .default = Inf,
+  .desc = FALSE
+)
 
 fct_reorder2(.f, .x, .y, .fun = last2, ..., .desc = TRUE)
 
@@ -26,8 +34,16 @@ are in ascending order.}
 \code{fct_reorder}, and two vectors for \code{fct_reorder2}, and return a single
 value.}
 
-\item{...}{Other arguments passed on to \code{.fun}. A common argument is
-\code{na.rm = TRUE}.}
+\item{...}{Other arguments passed on to \code{.fun}.}
+
+\item{.na_rm}{Should \code{fct_reorder()} remove missing values?
+If \code{NULL}, the default, will remove missing values with a warning.
+Set to \code{FALSE} to preserve \code{NA}s (if you \code{.fun} already handles them) and
+\code{TRUE} to remove silently.}
+
+\item{.default}{What default value should we use for \code{.fun} for
+empty levels? Use this to control where empty levels appear in the
+output.}
 
 \item{.desc}{Order in descending order? Note the default is different
 between \code{fct_reorder} and \code{fct_reorder2}, in order to
