@@ -12,7 +12,7 @@
 #' @param .fun n summary function. It should take one vector for
 #'   `fct_reorder`, and two vectors for `fct_reorder2`, and return a single
 #'   value.
-#' @param .na_rm Should `fct_reorder()` silently remove missing values?
+#' @param .na_rm Should `fct_reorder()` remove missing values?
 #'   If `NULL`, the default, will remove missing values with a warning.
 #'   Set to `FALSE` to preserve `NA`s (if you `.fun` already handles them) and
 #'   `TRUE` to remove silently.

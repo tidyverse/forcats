@@ -4,7 +4,7 @@
    `ggplot2::geom_point()` and friends). You can suppress the warning by
    setting `.na_rm = TRUE` (#315).
    
-* `fct_reorder()` gains a new `.default` argument controls the placement of 
+* `fct_reorder()` gains a new `.default` argument that controls the placement of 
   empty levels (including levels that might become empty after removing
   missing values in `.x`) (#266).
 
