@@ -189,3 +189,29 @@ test_that("fct_inseq gives error for non-numeric levels", {
   f <- factor(c("c", "a", "a", "b"))
   expect_error(levels(fct_inseq(f)), "level must be coercible to numeric")
 })
+
+test_that("fct_reordern works for all scenarios (fix #16)", {
+  A <- c(3, 3, 2, 1)
+  B <- c("A", "B", "C", "D")
+  f <- c("A", "B", "C", "D")
+  f_factor_ordered <- factor(f, ordered = TRUE)
+  expect_equal(
+    fct_reordern(f, A, B),
+    factor(f, levels = c("D", "C", "A", "B"))
+  )
+  # Ensure interaction with dplyr::desc() is accurate.
+  desc <- function(x) -xtfrm(x)
+  expect_equal(
+    fct_reordern(f, A, desc(B)),
+    factor(f, levels = c("D", "C", "B", "A"))
+  )
+  # Checks of ordering
+  expect_equal(
+    fct_reordern(f, A, B, ordered = NA),
+    factor(f, levels = c("D", "C", "A", "B"))
+  )
+  expect_equal(
+    fct_reordern(f, A, B, ordered = TRUE),
+    factor(f, levels = c("D", "C", "A", "B"), ordered = TRUE)
+  )
+})

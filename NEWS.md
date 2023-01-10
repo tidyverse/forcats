@@ -1,4 +1,6 @@
 # forcats (development version)
+* `fct_reordern()` is a new function to order based on an arbitrary number of
+  values (@billdenney, #16)
 
 * `fct_reorder()` now removes `NA` values in `.x` with a warning (like
    `ggplot2::geom_point()` and friends). You can suppress the warning by
