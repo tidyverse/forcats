@@ -65,7 +65,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvement-and-bug-fixes-development-version">Minor improvement and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvement-and-bug-fixes-development-version"></a></h3>
-<ul><li><p><code><a href="../reference/fct_collapse.html">fct_collapse()</a></code> can now use <code>other_level = NA</code> (<a href="https://github.com/tidyverse/forcats/issues/291" class="external-link">#291</a>).</p></li>
+<ul><li><p>All functions now validate their inputs, giving more useful errors if you accidentally misspecify an input.</p></li>
+<li><p><code><a href="../reference/fct_collapse.html">fct_collapse()</a></code> can now use <code>other_level = NA</code> (<a href="https://github.com/tidyverse/forcats/issues/291" class="external-link">#291</a>).</p></li>
 <li><p><code><a href="../reference/fct_count.html">fct_count()</a></code> works with factors that contain <code>NA</code>s in levels.</p></li>
 <li><p><code><a href="../reference/fct_explicit_na.html">fct_explicit_na()</a></code> is deprecated in favour of <code><a href="../reference/fct_na_value_to_level.html">fct_na_value_to_level()</a></code>.</p></li>
 <li><p><code><a href="../reference/fct_expand.html">fct_expand()</a></code> gains an <code>after</code> argument so that you can choose where the new levels are placed (<a href="https://github.com/tidyverse/forcats/issues/138" class="external-link">#138</a>).</p></li>
