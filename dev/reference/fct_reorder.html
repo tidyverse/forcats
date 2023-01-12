@@ -83,7 +83,16 @@ a non-position aesthetic. <code>last2()</code> and <code>first2()</code> are hel
 <span>  .desc <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">fct_reorder2</span><span class="op">(</span><span class="va">.f</span>, <span class="va">.x</span>, <span class="va">.y</span>, .fun <span class="op">=</span> <span class="va">last2</span>, <span class="va">...</span>, .desc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">fct_reorder2</span><span class="op">(</span></span>
+<span>  <span class="va">.f</span>,</span>
+<span>  <span class="va">.x</span>,</span>
+<span>  <span class="va">.y</span>,</span>
+<span>  .fun <span class="op">=</span> <span class="va">last2</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  .na_rm <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .default <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span>,</span>
+<span>  .desc <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">last2</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.y</span><span class="op">)</span></span>
 <span></span>
