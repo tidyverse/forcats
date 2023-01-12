@@ -7,6 +7,9 @@
 
 ## Minor improvement and bug fixes
 
+* All functions now validate their inputs, giving more useful errors if you
+  accidentally misspecify an input.
+
 * `fct_collapse()` can now use `other_level = NA` (#291).
 
 * `fct_count()` works with factors that contain `NA`s in levels.

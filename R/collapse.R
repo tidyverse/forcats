@@ -19,6 +19,7 @@
 #' fct_count(partyid2)
 fct_collapse <- function(.f, ..., other_level = NULL, group_other = "DEPRECATED") {
   f <- check_factor(.f)
+  check_string(other_level, allow_null = TRUE, allow_na = TRUE)
 
   if (!missing(group_other)) {
     lifecycle::deprecate_warn(

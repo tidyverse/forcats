@@ -14,6 +14,9 @@
 #' fct_count(f, sort = TRUE, prop = TRUE)
 fct_count <- function(f, sort = FALSE, prop = FALSE) {
   f <- check_factor(f)
+  check_bool(sort)
+  check_bool(prop)
+
   n_na <- sum(is.na(f))
 
   n <- c(tabulate(f, nlevels(f)), if (n_na > 0) n_na)

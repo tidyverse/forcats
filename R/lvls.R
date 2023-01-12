@@ -28,6 +28,7 @@ NULL
 #' @rdname lvls
 lvls_reorder <- function(f, idx, ordered = NA) {
   f <- check_factor(f)
+
   if (!is.numeric(idx)) {
     cli::cli_abort("{.arg idx} must be numeric")
   }
@@ -42,10 +43,7 @@ lvls_reorder <- function(f, idx, ordered = NA) {
 #' @rdname lvls
 lvls_revalue <- function(f, new_levels) {
   f <- check_factor(f)
-
-  if (!is.character(new_levels)) {
-    cli::cli_abort("{.arg new_levels} must be a character vector")
-  }
+  check_character(new_levels)
 
   if (length(new_levels) != nlevels(f)) {
     n_new <- length(new_levels)

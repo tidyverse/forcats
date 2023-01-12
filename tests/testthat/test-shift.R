@@ -14,3 +14,10 @@ test_that("0 shift leaves unchanged", {
 
   expect_identical(f1, f2)
 })
+
+test_that("validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    fct_shift(1)
+    fct_shift("x", NA)
+  })
+})

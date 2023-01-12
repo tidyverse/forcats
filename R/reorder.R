@@ -51,11 +51,19 @@
 #'   geom_point() +
 #'   geom_line() +
 #'   labs(colour = "Chick")
-fct_reorder <- function(.f, .x, .fun = median, ..., .na_rm = NULL, .default = Inf, .desc = FALSE) {
+fct_reorder <- function(.f,
+                        .x,
+                        .fun = median,
+                        ...,
+                        .na_rm = NULL,
+                        .default = Inf,
+                        .desc = FALSE) {
   f <- check_factor(.f)
   stopifnot(length(f) == length(.x))
   .fun <- as_function(.fun)
   check_dots_used()
+  check_bool(.na_rm, allow_null = TRUE)
+  check_bool(.desc)
 
   miss <- is.na(.x)
   if (any(miss)) {
@@ -85,6 +93,7 @@ fct_reorder2 <- function(.f, .x, .y, .fun = last2, ..., .desc = TRUE) {
   f <- check_factor(.f)
   stopifnot(length(f) == length(.x), length(.x) == length(.y))
   check_dots_used()
+  check_bool(.desc)
 
   summary <- tapply(seq_along(.x), f, function(i) .fun(.x[i], .y[i], ...))
   check_single_value_per_group(summary, ".fun")
@@ -145,6 +154,7 @@ terminal <- function(x, y, desc) {
 #' fct_inseq(f)
 fct_inorder <- function(f, ordered = NA) {
   f <- check_factor(f)
+  check_bool(ordered, allow_na = TRUE)
 
   idx <- as.integer(f)[!duplicated(f)]
   idx <- union(idx[!is.na(idx)], lvls_seq(f))
@@ -157,6 +167,8 @@ fct_inorder <- function(f, ordered = NA) {
 fct_infreq <- function(f, w = NULL, ordered = NA) {
   f <- check_factor(f)
   w <- compute_weights(f, w)
+  check_bool(ordered, allow_na = TRUE)
+
   lvls_reorder(f, order(w, decreasing = TRUE), ordered = ordered)
 }
 
@@ -164,9 +176,9 @@ fct_infreq <- function(f, w = NULL, ordered = NA) {
 #' @rdname fct_inorder
 fct_inseq <- function(f, ordered = NA) {
   f <- check_factor(f)
+  check_bool(ordered, allow_na = TRUE)
 
   num_levels <- suppressWarnings(as.numeric(levels(f)))
-
   if (all(is.na(num_levels))) {
     cli::cli_abort("At least one existing level must be coercible to numeric.")
   }

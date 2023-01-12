@@ -34,20 +34,15 @@
 #' # fct() uses in order of appearance:
 #' fct(c("y", "x"))
 fct <- function(x = character(), levels = NULL, na = character()) {
-  if (!is.character(x)) {
-    cli::cli_abort("{.arg x} must be a character vector")
-  }
-  if (!is.character(na)) {
-    cli::cli_abort("{.arg na} must be a character vector")
-  }
+  check_character(x)
+  check_character(levels, allow_null = TRUE)
+  check_character(na)
 
   x[x %in% na] <- NA
 
   if (is.null(levels)) {
     levels <- unique(x)
     levels <- levels[!is.na(levels)]
-  } else if (!is.character(levels)) {
-    cli::cli_abort("{.arg levels} must be a character vector")
   }
 
   invalid <- setdiff(x, c(levels, NA))

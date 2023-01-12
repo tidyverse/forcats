@@ -36,12 +36,8 @@
 #' as.integer(f3)
 #' is.na(f3)
 fct_na_value_to_level <- function(f, level = NA) {
-  if (!identical(level, NA) && !is_string(level)) {
-    cli::cli_abort(
-      "{.arg level} must be a string or {.code NA}, not {.obj_type_friendly {level}}."
-    )
-  }
   f <- check_factor(f)
+  check_string(level, allow_na = TRUE)
 
   f <- fct_expand(f, NA)
   new_levels <- levels(f)
@@ -56,11 +52,7 @@ fct_na_value_to_level <- function(f, level = NA) {
 #'   that should also be converted to `NA` values.
 fct_na_level_to_value <- function(f, extra_levels = NULL) {
   f <- check_factor(f)
-  if (!is.null(extra_levels) && !is.character(extra_levels)) {
-    cli::cli_abort(
-      "{.arg extra_levels} must be a string or {.code NULL}, not {.obj_type_friendly {extra_levels}}."
-    )
-  }
+  check_character(extra_levels, allow_null = TRUE)
 
   new_levels <- setdiff(levels(f), union(NA, extra_levels))
   idx <- match(levels(f), new_levels)

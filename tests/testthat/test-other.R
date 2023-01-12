@@ -32,11 +32,14 @@ test_that("can use NA as other level", {
   )
 })
 
-test_that("must supply exactly one of drop and keep", {
+test_that("validates its inputs", {
   f <- factor(c("a", "b"))
 
   expect_snapshot(error = TRUE, {
+    fct_other(1)
     fct_other(f)
     fct_other(f, keep = "a", drop = "a")
+    fct_other(f, keep = 1)
+    fct_other(f, keep = "a", other_level = 1)
   })
 })

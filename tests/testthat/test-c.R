@@ -13,3 +13,12 @@ test_that("all inputs must be factors", {
 test_that("empty input yields empty factor", {
   expect_equal(fct_c(), factor())
 })
+
+test_that("validates inputs", {
+  expect_snapshot(error = TRUE, {
+    fct_c(1)
+
+    fct_unify(list(1))
+    fct_unify(list(factor()), levels = 1)
+  })
+})

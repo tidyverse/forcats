@@ -15,6 +15,7 @@
 fct_expand <- function(f, ..., after = Inf) {
   f <- check_factor(f)
   check_dots_unnamed()
+  check_number_decimal(after, min = 0)
 
   old_levels <- levels(f)
   new_levels <- chr(...)

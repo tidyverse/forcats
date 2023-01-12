@@ -20,3 +20,10 @@ test_that("preserves ordered class and attributes", {
   expect_s3_class(f2, "ordered")
   expect_equal(attr(f2, "x"), attr(f1, "x"))
 })
+
+test_that("validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    fct_drop(1)
+    fct_drop("x", only = 1)
+  })
+})

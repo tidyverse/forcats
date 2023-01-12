@@ -40,3 +40,11 @@ test_that("sort = TRUE brings most frequent values to top", {
 
   expect_equal(out$f, factor(c("b", "a"), levels = c("a", "b")))
 })
+
+test_that("validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    fct_count(1)
+    fct_count("x", sort = 1)
+    fct_count("x", prop = 1)
+  })
+})
