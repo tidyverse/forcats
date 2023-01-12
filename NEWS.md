@@ -38,13 +38,13 @@
   arguments in `...` since those names are ignored and your code probably 
   doesn't do what you think it does (#319).
 
-* `fct_reorder()` now removes `NA` values in `.x` with a warning (like
-   `ggplot2::geom_point()` and friends). You can suppress the warning by
-   setting `.na_rm = TRUE` (#315).
+* `fct_reorder()` and `fct_reorder2()` now remove `NA` values in `.x` with a 
+  warning (like  `ggplot2::geom_point()` and friends). You can suppress the 
+  warning by setting `.na_rm = TRUE` (#315).
    
-* `fct_reorder()` gains a new `.default` argument that controls the placement of 
-  empty levels (including levels that might become empty after removing
-  missing values in `.x`) (#266).
+* `fct_reorder()` and `fct_reorder2()` gain a new `.default` argument that 
+  controls the placement of  empty levels (including levels that might become 
+  empty after removing missing values in `.x`) (#266).
 
 * `fct_unique()` now captures implicit missing values if present (#293).
 

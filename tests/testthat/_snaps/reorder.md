@@ -1,26 +1,3 @@
-# complains if summary doesn't return single value
-
-    Code
-      fct_reorder("a", 1, fun1)
-    Condition
-      Error in `fct_reorder()`:
-      ! `.fun` must return a single value per group
-    Code
-      fct_reorder("a", 1, fun2)
-    Condition
-      Error in `fct_reorder()`:
-      ! `.fun` must return a single value per group
-    Code
-      fct_reorder2("a", 1, 2, fun1)
-    Condition
-      Error in `fct_reorder2()`:
-      ! `.fun` must return a single value per group
-    Code
-      fct_reorder2("a", 1, 2, fun2)
-    Condition
-      Error in `fct_reorder2()`:
-      ! `.fun` must return a single value per group
-
 # automatically removes missing values with a warning
 
     Code
@@ -30,6 +7,14 @@
       `fct_reorder()` removing 1 missing value.
       i Use `.na_rm = TRUE` to silence this message.
       i Use `.na_rm = FALSE` to preserve NAs.
+
+# fct_reorder() complains if summary doesn't return single value
+
+    Code
+      fct_reorder("a", 1, function(x) c(1, 2))
+    Condition
+      Error in `fct_reorder()`:
+      ! `.fun` must return a single value per group
 
 # fct_reorder() validates its inputs
 
@@ -53,6 +38,24 @@
     Condition
       Error in `fct_reorder()`:
       ! `.desc` must be `TRUE` or `FALSE`, not the number 1.
+
+# fct_reorder2() automatically removes missing values with a warning
+
+    Code
+      f2 <- fct_reorder2(f1, x, y)
+    Condition
+      Warning:
+      `fct_reorder2()` removing 1 missing value.
+      i Use `.na_rm = TRUE` to silence this message.
+      i Use `.na_rm = FALSE` to preserve NAs.
+
+# fct_reorder2() complains if summary doesn't return single value
+
+    Code
+      fct_reorder2("a", 1, 1, function(x, y) c(1, 2))
+    Condition
+      Error in `fct_reorder2()`:
+      ! `.fun` must return a single value per group
 
 # fct_infreq() validates its inputs
 

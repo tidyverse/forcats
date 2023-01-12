@@ -17,7 +17,16 @@ fct_reorder(
   .desc = FALSE
 )
 
-fct_reorder2(.f, .x, .y, .fun = last2, ..., .desc = TRUE)
+fct_reorder2(
+  .f,
+  .x,
+  .y,
+  .fun = last2,
+  ...,
+  .na_rm = NULL,
+  .default = -Inf,
+  .desc = TRUE
+)
 
 last2(.x, .y)
 

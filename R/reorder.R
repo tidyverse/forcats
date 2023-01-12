@@ -89,13 +89,44 @@ fct_reorder <- function(.f,
 
 #' @export
 #' @rdname fct_reorder
-fct_reorder2 <- function(.f, .x, .y, .fun = last2, ..., .desc = TRUE) {
-  f <- check_factor(.f)
-  stopifnot(length(f) == length(.x), length(.x) == length(.y))
+fct_reorder2 <- function(.f,
+                         .x,
+                         .y,
+                         .fun = last2,
+                         ...,
+                         .na_rm = NULL,
+                         .default = -Inf,
+                         .desc = TRUE) {
+  .f <- check_factor(.f)
+  stopifnot(length(.f) == length(.x), length(.x) == length(.y))
   check_dots_used()
+  check_bool(.na_rm, allow_null = TRUE)
   check_bool(.desc)
 
-  summary <- tapply(seq_along(.x), f, function(i) .fun(.x[i], .y[i], ...))
+  miss <- is.na(.x) | is.na(.y)
+  if (any(miss)) {
+    if (is.null(.na_rm)) {
+      cli::cli_warn(c(
+        "{.fn fct_reorder2} removing {sum(miss)} missing value{?s}.",
+        i = "Use {.code .na_rm = TRUE} to silence this message.",
+        i = "Use {.code .na_rm = FALSE} to preserve NAs."
+      ))
+      .na_rm <- TRUE
+    }
+
+    if (isTRUE(.na_rm)) {
+      .x <- .x[!miss]
+      .y <- .y[!miss]
+      .f <- .f[!miss]
+    }
+  }
+
+  summary <- tapply(
+    seq_along(.x),
+    .f,
+    function(i) .fun(.x[i], .y[i], ...),
+    default = .default
+  )
   check_single_value_per_group(summary, ".fun")
 
   lvls_reorder(.f, order(summary, decreasing = .desc))

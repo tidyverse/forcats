@@ -1,74 +1,14 @@
 # fct_reorder -------------------------------------------------------------
 
-test_that("can reorder by 2d summary", {
-  df <- tibble::tribble(
-    ~g,  ~x,
-    "a", 3,
-    "a", 3,
-    "b", 2,
-    "b", 2,
-    "b", 1
-  )
+test_that("can reorder can control ordering", {
+  f <- c("a", "a", "b", "b", "b")
+  x <- c(3, 3, 2, 2, 1)
 
-  f1 <- fct_reorder(df$g, df$x)
+  f1 <- fct_reorder(f, x)
   expect_equal(levels(f1), c("b", "a"))
 
-  f2 <- fct_reorder(df$g, df$x, .desc = TRUE)
+  f2 <- fct_reorder(f, x, .desc = TRUE)
   expect_equal(levels(f2), c("a", "b"))
-})
-
-test_that("can reorder by 2d summary", {
-  df <- tibble::tribble(
-    ~g, ~x, ~y,
-    "a", 1, 10,
-    "a", 2, 5,
-    "b", 1, 5,
-    "b", 2, 10
-  )
-
-  f1 <- fct_reorder2(df$g, df$x, df$y)
-  expect_equal(levels(f1), c("b", "a"))
-
-  f2 <- fct_reorder(df$g, df$x, .desc = TRUE)
-  expect_equal(levels(f2), c("a", "b"))
-})
-
-test_that("missing groups appear at end", {
-  df <- tibble::tribble(
-    ~g, ~x, ~y,
-    "a", NA, NA,
-    "b", 1, 10,
-  )
-
-  f1 <- fct_reorder2(df$g, df$x, df$y)
-  expect_equal(levels(f1), c("b", "a"))
-})
-
-test_that("first2/last2 return expected values", {
-  expect_equal(first2(4:1, 1:4), 4)
-  expect_equal(last2(4:1, 1:4), 1)
-})
-
-test_that("last2 ignores points where either value is missing", {
-  expect_equal(last2(1:4, c(1:3, NA)), 3)
-  expect_equal(last2(c(1:3, NA), 1:4), 3)
-})
-
-test_that("last2 returns NA if no non-missing pairs", {
-  expect_equal(last2(c(NA, 1), c(1, NA)), NA_real_)
-  expect_equal(last2(c(NA, 1), c("x", NA)), NA_character_)
-})
-
-test_that("complains if summary doesn't return single value", {
-  fun1 <- function(x, y) c(1, 2)
-  fun2 <- function(x, y) integer()
-
-  expect_snapshot(error = TRUE, {
-    fct_reorder("a", 1, fun1)
-    fct_reorder("a", 1, fun2)
-    fct_reorder2("a", 1, 2, fun1)
-    fct_reorder2("a", 1, 2, fun2)
-  })
 })
 
 test_that("automatically removes missing values with a warning", {
@@ -100,6 +40,12 @@ test_that("can control the placement of levels with all missing data", {
   expect_equal(levels(f2), c("c", "a", "b"))
 })
 
+test_that("fct_reorder() complains if summary doesn't return single value", {
+  expect_snapshot(error = TRUE, {
+    fct_reorder("a", 1, function(x) c(1, 2))
+  })
+})
+
 test_that("fct_reorder() validates its inputs", {
   expect_snapshot(error = TRUE, {
     fct_reorder(1)
@@ -108,6 +54,82 @@ test_that("fct_reorder() validates its inputs", {
     fct_reorder("x", 1, .desc = 1)
   })
 
+})
+
+# fct_reorder2 ------------------------------------------------------------
+
+test_that("can reorder by 2d summary", {
+  df <- tibble::tribble(
+    ~g, ~x, ~y,
+    "a", 1, 10,
+    "a", 2, 5,
+    "b", 1, 5,
+    "b", 2, 10
+  )
+
+  f1 <- fct_reorder2(df$g, df$x, df$y)
+  expect_equal(levels(f1), c("b", "a"))
+
+  f2 <- fct_reorder(df$g, df$x, .desc = TRUE)
+  expect_equal(levels(f2), c("a", "b"))
+})
+
+test_that("fct_reorder2() automatically removes missing values with a warning", {
+  f1 <- fct(c("a", "b", "c", "c"))
+  x <- c(1, 1, 1, 2)
+  y <- c(1, 2, 3, NA)
+
+  expect_snapshot(f2 <- fct_reorder2(f1, x, y))
+  expect_equal(levels(f2), c("c", "b", "a"))
+
+  expect_no_warning(fct_reorder2(f1, x, y, .na_rm = TRUE))
+
+  # unlike fct_reorder() the default summary function can handle missing values
+  expect_no_warning(f3 <- fct_reorder2(f1, x, y, .na_rm = FALSE))
+  expect_equal(levels(f2), c("c", "b", "a"))
+})
+
+test_that("can control the placement of empty levels", {
+  f1 <- fct(c("a", "b", "c"), letters[1:4])
+  x <- c(1, 2, 3)
+
+  f2 <- fct_reorder(f1, x, .default = -Inf)
+  expect_equal(levels(f2), c("d", "a", "b", "c"))
+})
+
+test_that("missing groups appear at end by default", {
+  df <- tibble::tribble(
+    ~g, ~x, ~y,
+    "a", NA, NA,
+    "b", 1, 10,
+  )
+
+  f1 <- fct_reorder2(df$g, df$x, df$y, .na_rm = TRUE)
+  expect_equal(levels(f1), c("b", "a"))
+
+  f2 <- fct_reorder2(df$g, df$x, df$y, .default = Inf, .na_rm = TRUE)
+  expect_equal(levels(f2), c("a", "b"))
+})
+
+test_that("fct_reorder2() complains if summary doesn't return single value", {
+  expect_snapshot(error = TRUE, {
+    fct_reorder2("a", 1, 1, function(x, y) c(1, 2))
+  })
+})
+
+test_that("first2/last2 return expected values", {
+  expect_equal(first2(4:1, 1:4), 4)
+  expect_equal(last2(4:1, 1:4), 1)
+})
+
+test_that("last2 ignores points where either value is missing", {
+  expect_equal(last2(1:4, c(1:3, NA)), 3)
+  expect_equal(last2(c(1:3, NA), 1:4), 3)
+})
+
+test_that("last2 returns NA if no non-missing pairs", {
+  expect_equal(last2(c(NA, 1), c(1, NA)), NA_real_)
+  expect_equal(last2(c(NA, 1), c("x", NA)), NA_character_)
 })
 
 # fct_infreq --------------------------------------------------------------
