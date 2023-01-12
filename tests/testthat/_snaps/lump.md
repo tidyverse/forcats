@@ -49,7 +49,7 @@
       fct_lump_n(factor(), n = "x")
     Condition
       Error in `fct_lump_n()`:
-      ! `n` must be a whole number, not the string "x".
+      ! `n` must be a number, not the string "x".
 
 ---
 

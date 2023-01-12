@@ -121,7 +121,7 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
 fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
                        ties.method = c("min", "average", "first", "last", "random", "max")) {
   f <- check_factor(f)
-  check_number_whole(n)
+  check_number_decimal(n)
   check_string(other_level, allow_na = TRUE)
   ties.method <- arg_match(ties.method)
 
