@@ -2,10 +2,10 @@
 
 <details>
 
-* Version: 1.0.8
+* Version: 1.1.0
 * GitHub: https://github.com/GangLiLab/genekitr
 * Source code: https://github.com/cran/genekitr
-* Date/Publication: 2022-11-23 11:30:02 UTC
+* Date/Publication: 2023-01-20 03:30:02 UTC
 * Number of recursive dependencies: 200
 
 Run `revdepcheck::cloud_details(, "genekitr")` for more info
@@ -24,7 +24,7 @@ Run `revdepcheck::cloud_details(, "genekitr")` for more info
 * using option ‘--no-manual’
 * checking for file ‘genekitr/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘genekitr’ version ‘1.0.8’
+* this is package ‘genekitr’ version ‘1.1.0’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 * checking package dependencies ... ERROR
@@ -50,7 +50,7 @@ Status: 1 ERROR
 * using option ‘--no-manual’
 * checking for file ‘genekitr/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘genekitr’ version ‘1.0.8’
+* this is package ‘genekitr’ version ‘1.1.0’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 * checking package dependencies ... ERROR
@@ -140,10 +140,10 @@ Run `revdepcheck::cloud_details(, "NA")` for more info
 
 <details>
 
-* Version: 3.2.2
+* Version: 3.3.0
 * GitHub: NA
 * Source code: https://github.com/cran/OlinkAnalyze
-* Date/Publication: 2022-11-16 00:30:05 UTC
+* Date/Publication: 2023-01-24 21:50:02 UTC
 * Number of recursive dependencies: 202
 
 Run `revdepcheck::cloud_details(, "OlinkAnalyze")` for more info
@@ -162,7 +162,7 @@ Run `revdepcheck::cloud_details(, "OlinkAnalyze")` for more info
 * using option ‘--no-manual’
 * checking for file ‘OlinkAnalyze/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘OlinkAnalyze’ version ‘3.2.2’
+* this is package ‘OlinkAnalyze’ version ‘3.3.0’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 ...
@@ -192,7 +192,7 @@ Status: 1 NOTE
 * using option ‘--no-manual’
 * checking for file ‘OlinkAnalyze/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘OlinkAnalyze’ version ‘3.2.2’
+* this is package ‘OlinkAnalyze’ version ‘3.3.0’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 ...
@@ -216,11 +216,11 @@ Status: 1 NOTE
 
 <details>
 
-* Version: 1.1.1
+* Version: 1.1.2
 * GitHub: https://github.com/enblacar/SCpubr
 * Source code: https://github.com/cran/SCpubr
-* Date/Publication: 2023-01-12 11:30:02 UTC
-* Number of recursive dependencies: 289
+* Date/Publication: 2023-01-18 12:20:02 UTC
+* Number of recursive dependencies: 290
 
 Run `revdepcheck::cloud_details(, "SCpubr")` for more info
 
@@ -238,20 +238,20 @@ Run `revdepcheck::cloud_details(, "SCpubr")` for more info
 * using option ‘--no-manual’
 * checking for file ‘SCpubr/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘SCpubr’ version ‘1.1.1’
+* this is package ‘SCpubr’ version ‘1.1.2’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 ...
-  [ FAIL 1 | WARN 0 | SKIP 347 | PASS 320 ]
-  Error: Test failures
-  Execution halted
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
 * checking for unstated dependencies in vignettes ... OK
 * checking package vignettes in ‘inst/doc’ ... OK
 * checking running R code from vignettes ... NONE
   ‘reference_manual.Rmd’ using ‘UTF-8’... OK
 * checking re-building of vignette outputs ... OK
 * DONE
-Status: 1 ERROR, 1 WARNING, 2 NOTEs
+Status: 1 WARNING, 2 NOTEs
 
 
 
@@ -268,20 +268,20 @@ Status: 1 ERROR, 1 WARNING, 2 NOTEs
 * using option ‘--no-manual’
 * checking for file ‘SCpubr/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘SCpubr’ version ‘1.1.1’
+* this is package ‘SCpubr’ version ‘1.1.2’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 ...
-  [ FAIL 1 | WARN 0 | SKIP 347 | PASS 320 ]
-  Error: Test failures
-  Execution halted
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
 * checking for unstated dependencies in vignettes ... OK
 * checking package vignettes in ‘inst/doc’ ... OK
 * checking running R code from vignettes ... NONE
   ‘reference_manual.Rmd’ using ‘UTF-8’... OK
 * checking re-building of vignette outputs ... OK
 * DONE
-Status: 1 ERROR, 1 WARNING, 2 NOTEs
+Status: 1 WARNING, 2 NOTEs
 
 
 

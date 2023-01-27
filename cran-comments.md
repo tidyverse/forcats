@@ -4,8 +4,17 @@
 
 ## revdepcheck results
 
-We checked 212 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 231 reverse dependencies (228 from CRAN + 3 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 0 new problems
- * We failed to check 0 packages
+We saw 2 new problems:
 
+* epikit
+* stevemisc
+
+Both maintainers were notified on Jan 12 (~2 week ago) and supplied with patches.
+
+We failed to check 3 packages
+
+* genekitr     (NA)
+* OlinkAnalyze (NA)
+* SCpubr       (NA)

@@ -11,12 +11,10 @@
 |SCpubr       |?       |      |        |     |
 |NA           |?       |      |        |     |
 
-## New problems (4)
+## New problems (2)
 
-|package      |version |error  |warning |note |
-|:------------|:-------|:------|:-------|:----|
-|[autostats](problems.md#autostats)|0.4.0   |__+1__ |__+1__  |     |
+|package   |version |error  |warning |note |
+|:---------|:-------|:------|:-------|:----|
 |[epikit](problems.md#epikit)|0.1.2   |__+1__ |        |1    |
-|[framecleaner](problems.md#framecleaner)|0.2.0   |__+1__ |        |     |
 |[stevemisc](problems.md#stevemisc)|1.4.1   |__+1__ |        |     |
 
