@@ -28,6 +28,7 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-news">News</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-news">
     <h6 class="dropdown-header" data-toc-skip>Releases</h6>
+    <a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2023/01/forcats-1-0-0/">Version 1.0.0</a>
     <a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2020/03/forcats-0-5-0/">Version 0.5.0</a>
     <a class="external-link dropdown-item" href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
     <a class="external-link dropdown-item" href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
@@ -79,10 +80,10 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">fct_shuffle</span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] a b c</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a c b</span>
 <span class="r-in"><span><span class="fu">fct_shuffle</span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] a b c</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: c a b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: c b a</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

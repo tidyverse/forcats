@@ -28,6 +28,7 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-news">News</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-news">
     <h6 class="dropdown-header" data-toc-skip>Releases</h6>
+    <a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2023/01/forcats-1-0-0/">Version 1.0.0</a>
     <a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2020/03/forcats-0-5-0/">Version 0.5.0</a>
     <a class="external-link dropdown-item" href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
     <a class="external-link dropdown-item" href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
@@ -91,16 +92,16 @@ exist will be silently ignored.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">f</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] c a a c b a a c a c b b c a c a b b c a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] a c a b b c c a a b c b c b a b a c a c</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b c</span>
 <span class="r-in"><span><span class="fu">fct_expand</span><span class="op">(</span><span class="va">f</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"f"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] c a a c b a a c a c b b c a c a b b c a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] a c a b b c c a a b c b c b a b a c a c</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b c d e f</span>
 <span class="r-in"><span><span class="fu">fct_expand</span><span class="op">(</span><span class="va">f</span>, <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] c a a c b a a c a c b b c a c a b b c a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] a c a b b c c a a b c b c b a b a c a c</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b c d e f</span>
 <span class="r-in"><span><span class="fu">fct_expand</span><span class="op">(</span><span class="va">f</span>, <span class="st">"Z"</span>, after <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] c a a c b a a c a c b b c a c a b b c a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] a c a b b c c a a b c b c b a b a c a c</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: Z a b c</span>
 </code></pre></div>
     </div>
