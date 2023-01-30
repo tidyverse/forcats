@@ -71,6 +71,8 @@ reference:
 
 news:
   releases:
+  - text: "Version 1.0.0"
+    href: https://www.tidyverse.org/blog/2023/01/forcats-1-0-0/
   - text: "Version 0.5.0"
     href: https://www.tidyverse.org/blog/2020/03/forcats-0-5-0/
   - text: "Version 0.4.0"
