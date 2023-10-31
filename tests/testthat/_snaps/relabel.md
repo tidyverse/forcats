@@ -4,7 +4,7 @@
       fct_relabel(f1, 1)
     Condition
       Error in `fct_relabel()`:
-      ! Can't convert `.fun`, a number, to a function.
+      ! Can't convert `.fun`, a double vector, to a function.
     Code
       fct_relabel(f1, function(x) 1)
     Condition
