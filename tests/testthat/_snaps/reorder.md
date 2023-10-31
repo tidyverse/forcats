@@ -27,7 +27,7 @@
       fct_reorder("x", 1, 1)
     Condition
       Error in `fct_reorder()`:
-      ! Can't convert `.fun`, a number, to a function.
+      ! Can't convert `.fun`, a double vector, to a function.
     Code
       fct_reorder("x", 1, .na_rm = 1)
     Condition

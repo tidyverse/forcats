@@ -41,8 +41,8 @@ install.packages("tidyverse")
 install.packages("forcats")
 
 # Or the the development version from GitHub:
-# install.packages("devtools")
-devtools::install_github("tidyverse/forcats")
+# install.packages("pak")
+pak::pak("tidyverse/forcats")
 ```
 
 ## Cheatsheet
