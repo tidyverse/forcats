@@ -58,7 +58,7 @@ Note that `fct_infreq()` it automatically puts NA at the top, even though that d
 It's a little surprising that the `NA` bar isn't ordered by frequency.
 To understand why we need to make a brief digression to discuss `NA`s in values vs. `NA`s in levels
 
-## `NAs`s in levels and values
+## `NA`s in levels and values
 
 There are two ways to represent a missing value in a factor:
 
