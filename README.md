@@ -40,8 +40,8 @@ factors](https://r4ds.hadley.nz/factors.html) in R for Data Science.
     install.packages("forcats")
 
     # Or the the development version from GitHub:
-    # install.packages("devtools")
-    devtools::install_github("tidyverse/forcats")
+    # install.packages("pak")
+    pak::pak("tidyverse/forcats")
 
 ## Cheatsheet
 
@@ -75,7 +75,7 @@ starwars %>%
 #>  8 Zabrak       2
 #>  9 Aleena       1
 #> 10 Besalisk     1
-#> # … with 27 more rows
+#> # ℹ 27 more rows
 ```
 
 ``` r
