@@ -6,8 +6,12 @@
 
 * New `fct_na_value_to_level()` and `fct_na_level_to_value()` to convert 
   NA values to NA levels and vice versa (#337).
+  
+* New `ord()` is a shortcut for `fct(..., ordered = TRUE)`
 
 ## Minor improvement and bug fixes
+
+* `fct()` now accepts an `ordered` argument (#363)
 
 * All functions now validate their inputs, giving more useful errors if you
   accidentally misspecify an input.

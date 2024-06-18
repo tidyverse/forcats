@@ -1,13 +1,16 @@
 #' Create a factor
 #'
-#' `fct()` is a stricter version of [factor()] that errors if your
-#' specification of `levels` is inconsistent with the values in `x`.
+#' `fct()` and `ord()` are stricter versions of [factor()] and [ordered()] that
+#' error if your specification of `levels` is inconsistent with the values in
+#' `x`.
 #'
 #' @param x A character vector. Values must occur in either `levels` or `na`.
 #' @param levels A character vector of known levels. If not supplied, will
 #'   be computed from the unique values of `x`, in the order in which they
 #'   occur.
 #' @param na A character vector of values that should become missing values.
+#' @param ordered logical flag to determine if the levels should be regarded as
+#'   ordered.
 #' @return A factor.
 #' @export
 #' @examples
@@ -18,6 +21,10 @@
 #' # If you don't specify the levels, fct will create from the data
 #' # in the order that they're seen
 #' fct(x)
+#'
+#' # To create ordered factors, use ord()
+#' x <- c("B", "A", "C", "D", "A", "F")
+#' ord(x, levels = c("F", "D", "C", "B", "A"))
 #'
 #'
 #' # Differences with base R -----------------------------------------------
@@ -33,7 +40,8 @@
 #' factor(c("y", "x"))
 #' # fct() uses in order of appearance:
 #' fct(c("y", "x"))
-fct <- function(x = character(), levels = NULL, na = character()) {
+fct <- function(x = character(), levels = NULL, na = character(),
+                ordered = FALSE) {
   check_character(x)
   check_character(levels, allow_null = TRUE)
   check_character(na)
@@ -53,5 +61,12 @@ fct <- function(x = character(), levels = NULL, na = character()) {
     ))
   }
 
-  factor(x, levels = levels, exclude = NULL)
+  factor(x, levels = levels, exclude = NULL, ordered = ordered)
+}
+
+
+#' @export
+#' @rdname fct
+ord <- function(x = character(), levels = NULL, na = character()) {
+  fct(x, levels, na, ordered = TRUE)
 }
