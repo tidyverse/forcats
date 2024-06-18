@@ -2,9 +2,12 @@
 % Please edit documentation in R/fct.R
 \name{fct}
 \alias{fct}
+\alias{ord}
 \title{Create a factor}
 \usage{
-fct(x = character(), levels = NULL, na = character())
+fct(x = character(), levels = NULL, na = character(), ordered = FALSE)
+
+ord(x = character(), levels = NULL, na = character())
 }
 \arguments{
 \item{x}{A character vector. Values must occur in either \code{levels} or \code{na}.}
@@ -14,13 +17,17 @@ be computed from the unique values of \code{x}, in the order in which they
 occur.}
 
 \item{na}{A character vector of values that should become missing values.}
+
+\item{ordered}{logical flag to determine if the levels should be regarded as
+ordered.}
 }
 \value{
 A factor.
 }
 \description{
-\code{fct()} is a stricter version of \code{\link[=factor]{factor()}} that errors if your
-specification of \code{levels} is inconsistent with the values in \code{x}.
+\code{fct()} and \code{ord()} are stricter versions of \code{\link[=factor]{factor()}} and \code{\link[=ordered]{ordered()}} that
+error if your specification of \code{levels} is inconsistent with the values in
+\code{x}.
 }
 \examples{
 # Use factors when you know the set of possible values a variable might take
@@ -30,6 +37,10 @@ fct(x, levels = c("O", "A", "B", "AB"))
 # If you don't specify the levels, fct will create from the data
 # in the order that they're seen
 fct(x)
+
+# To create ordered factors, use ord()
+x <- c("B", "A", "C", "D", "A", "F")
+ord(x, levels = c("F", "D", "C", "B", "A"))
 
 
 # Differences with base R -----------------------------------------------

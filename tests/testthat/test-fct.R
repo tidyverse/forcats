@@ -22,7 +22,7 @@ test_that("checks input types", {
 
 test_that("clear error if levels are incomplete", {
   expect_snapshot(error = TRUE,
-    fct(c("x", "y", "z"), c("x", "y"))
+                  fct(c("x", "y", "z"), c("x", "y"))
   )
 })
 
@@ -38,5 +38,15 @@ test_that("can covert values to implicit or explcit NA", {
   expect_equal(
     fct(c("x", "y", "z"), c("x", "y", NA), na = "z"),
     factor(c("x", "y", NA), levels = c("x", "y", NA), exclude = NULL)
+  )
+})
+
+test_that("can return ordered factors", {
+  expect_s3_class(fct(c("x", "y"), ordered = TRUE), "ordered")
+  expect_s3_class(ord(c("x", "y")), "ordered")
+
+  expect_equal(
+    ord(c("y", "x", "z"), levels = c("x", "y", "z")),
+    ordered(c("y", "x", "z"), levels = c("x", "y", "z"))
   )
 })
