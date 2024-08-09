@@ -95,6 +95,17 @@ refactor <- function(f, new_levels, ordered = NA) {
 
   new_f <- factor(f, levels = new_levels, exclude = NULL, ordered = ordered)
   attributes(new_f) <- utils::modifyList(attributes(f), attributes(new_f))
+
+  if (is.ordered(f) && !is.ordered(new_f)) {
+    idx <- match("ordered", class(f))
+    class(new_f) <- class(f)[-idx]
+  } else if (!is.ordered(f) && is.ordered(new_f)) {
+    idx <- match("factor", class(f))
+    class(new_f) <- append(class(f), "ordered", after = idx - 1)
+  } else {
+    class(new_f) <- class(f)
+  }
+
   new_f
 }
 
