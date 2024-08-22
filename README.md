@@ -16,10 +16,10 @@ coverage](https://codecov.io/gh/tidyverse/forcats/branch/main/graph/badge.svg)](
 
 R uses **factors** to handle categorical variables, variables that have
 a fixed and known set of possible values. Factors are also helpful for
-reordering character vectors to improve display. The goal of the
-**forcats** package is to provide a suite of tools that solve common
-problems with factors, including changing the order of levels or the
-values. Some examples include:
+reordering character vectors to improve display. The goal of the forcats
+package is to provide a suite of tools that solve common problems with
+factors, including changing the order of levels or the values. Some
+examples include:
 
 - `fct_reorder()`: Reordering a factor by another variable.
 - `fct_infreq()`: Reordering a factor by the frequency of values.
