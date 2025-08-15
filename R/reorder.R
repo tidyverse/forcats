@@ -14,7 +14,7 @@
 #'   value.
 #' @param .na_rm Should `fct_reorder()` remove missing values?
 #'   If `NULL`, the default, will remove missing values with a warning.
-#'   Set to `FALSE` to preserve `NA`s (if you `.fun` already handles them) and
+#'   Set to `FALSE` to preserve `NA`s (if your `.fun` already handles them) and
 #'   `TRUE` to remove silently.
 #' @param .default What default value should we use for `.fun` for
 #'   empty levels? Use this to control where empty levels appear in the
