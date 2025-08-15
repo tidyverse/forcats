@@ -9,7 +9,7 @@
 status](https://www.r-pkg.org/badges/version/forcats)](https://cran.r-project.org/package=forcats)
 [![R-CMD-check](https://github.com/tidyverse/forcats/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidyverse/forcats/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/tidyverse/forcats/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidyverse/forcats?branch=main)
+coverage](https://codecov.io/gh/tidyverse/forcats/graph/badge.svg)](https://app.codecov.io/gh/tidyverse/forcats)
 <!-- badges: end -->
 
 ## Overview
