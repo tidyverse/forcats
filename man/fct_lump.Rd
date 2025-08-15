@@ -6,7 +6,7 @@
 \alias{fct_lump_prop}
 \alias{fct_lump_n}
 \alias{fct_lump_lowfreq}
-\title{Lump uncommon factor together levels into "other"}
+\title{Lump uncommon factor levels together into "other"}
 \usage{
 fct_lump(
   f,
