@@ -15,7 +15,7 @@ License: MIT + file LICENSE
 URL: https://forcats.tidyverse.org/, https://github.com/tidyverse/forcats
 BugReports: https://github.com/tidyverse/forcats/issues
 Depends: 
-    R (>= 3.6)
+    R (>= 4.1)
 Imports: 
     cli (>= 3.4.0),
     glue,
