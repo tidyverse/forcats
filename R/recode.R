@@ -46,7 +46,11 @@ lvls_rename <- function(f, new_levels) {
   # Handle levels that don't exist
   if (any(is.na(idx))) {
     bad <- new_levels[is.na(idx)]
-    warning("Unknown levels in `f`: ", paste(bad, collapse = ", "), call. = FALSE)
+    warning(
+      "Unknown levels in `f`: ",
+      paste(bad, collapse = ", "),
+      call. = FALSE
+    )
 
     new_levels <- new_levels[!is.na(idx)]
     idx <- idx[!is.na(idx)]
@@ -67,10 +71,13 @@ check_recode_levels <- function(..., call = caller_env()) {
     indx[indx == ""] <- seq_along(levels)[indx == ""]
     problems <- indx[!ok]
 
-    cli::cli_abort(c(
-      "Each element of {.arg ...} must be a named string.",
-      i = "Problems with {length(problems)} argument{?s}: {problems}"
-    ), call = call)
+    cli::cli_abort(
+      c(
+        "Each element of {.arg ...} must be a named string.",
+        i = "Problems with {length(problems)} argument{?s}: {problems}"
+      ),
+      call = call
+    )
   }
 
   unlist(levels)

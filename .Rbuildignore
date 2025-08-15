@@ -20,3 +20,5 @@
 ^\.github/workflows/pr-commands\.yaml$
 ^\.github/workflows/pkgdown\.yaml$
 ^CRAN-SUBMISSION$
+^[\.]?air\.toml$
+^\.vscode$

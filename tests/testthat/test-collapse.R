@@ -44,7 +44,10 @@ test_that("collapses levels correctly when group_other is TRUE and some Other va
   f1 <- factor(letters[1:4])
   f2 <- fct_collapse(f1, x1 = c("a", "d"), x2 = "c", other_level = "Other")
 
-  expect_equal(f2, factor(c("x1", "Other", "x2", "x1"), levels = c("x1", "x2", "Other")))
+  expect_equal(
+    f2,
+    factor(c("x1", "Other", "x2", "x1"), levels = c("x1", "x2", "Other"))
+  )
 })
 
 test_that("does not automatically collapse unnamed levels to Other", {
