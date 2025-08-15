@@ -4,7 +4,10 @@ test_that("can use other_level = NA", {
   f <- fct(c("a", "a", "a", "a", "b"))
   expect_equal(levels(fct_lump_lowfreq(f, other_level = NA)), c("a", NA))
   expect_equal(levels(fct_lump_n(f, n = 1, other_level = NA)), c("a", NA))
-  expect_equal(levels(fct_lump_prop(f, prop = .2, other_level = NA)), c("a", NA))
+  expect_equal(
+    levels(fct_lump_prop(f, prop = .2, other_level = NA)),
+    c("a", NA)
+  )
   expect_equal(levels(fct_lump_min(f, 2, other_level = NA)), c("a", NA))
 })
 
@@ -34,10 +37,13 @@ test_that("fct_lump_min works when not weighted", {
 
 test_that("fct_lump_min works when weighted", {
   f <- c("a", "b", "c", "d", "e")
-  w <- c( 0.2, 2,   6,   4,   1)
+  w <- c(0.2, 2, 6, 4, 1)
 
   expect_equal(levels(fct_lump_min(f, min = 6, w = w)), c("c", "Other"))
-  expect_equal(levels(fct_lump_min(f, min = 1.5, w = w)), c("b", "c", "d", "Other"))
+  expect_equal(
+    levels(fct_lump_min(f, min = 1.5, w = w)),
+    c("b", "c", "d", "Other")
+  )
 })
 
 test_that("checks inputs", {
@@ -74,13 +80,19 @@ test_that("ties are respected and can be controled", {
 
 test_that("idempotent if all element satisfies condition", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
-  expect_equal(levels(fct_lump_n(f, n = 10)), c("a", "b", "c", "d", "e", "f", "g"))
-  expect_equal(levels(fct_lump_n(f, n = -10)), c("a", "b", "c", "d", "e", "f", "g"))
+  expect_equal(
+    levels(fct_lump_n(f, n = 10)),
+    c("a", "b", "c", "d", "e", "f", "g")
+  )
+  expect_equal(
+    levels(fct_lump_n(f, n = -10)),
+    c("a", "b", "c", "d", "e", "f", "g")
+  )
 })
 
 test_that("can supply weights", {
   f <- c("a", "b", "c", "d", "e")
-  w <- c( 0.2, 2,   6,   4,   1)
+  w <- c(0.2, 2, 6, 4, 1)
 
   expect_equal(levels(fct_lump_n(f, n = 2, w = w)), c("c", "d", "Other"))
   expect_equal(levels(fct_lump_n(f, n = 3, w = w)), c("b", "c", "d", "Other"))
@@ -107,10 +119,16 @@ test_that("positive/negative prop keeps/drops most commmon", {
 
 test_that("can use weights", {
   f <- c("a", "b", "c", "d", "e")
-  w <- c( 0.2, 2,   6,   4,   1)
+  w <- c(0.2, 2, 6, 4, 1)
 
-  expect_equal(levels(fct_lump_prop(f, prop = 0.3, w = w)), c("c", "d", "Other"))
-  expect_equal(levels(fct_lump_prop(f, prop = 0.2, w = w)), c("c", "d", "Other"))
+  expect_equal(
+    levels(fct_lump_prop(f, prop = 0.3, w = w)),
+    c("c", "d", "Other")
+  )
+  expect_equal(
+    levels(fct_lump_prop(f, prop = 0.2, w = w)),
+    c("c", "d", "Other")
+  )
 })
 
 test_that("can use weights with empty levels", {
@@ -135,8 +153,14 @@ test_that("NAs included in total", {
 test_that("idempotent if element satisfy n condition", {
   f <- c("a", "a", "a", "b", "b", "c", "d", "e", "f", "g")
 
-  expect_equal(levels(fct_lump_prop(f, prop = 0.01)), c("a", "b", "c", "d", "e", "f", "g"))
-  expect_equal(levels(fct_lump_prop(f, prop = -1)), c("a", "b", "c", "d", "e", "f", "g"))
+  expect_equal(
+    levels(fct_lump_prop(f, prop = 0.01)),
+    c("a", "b", "c", "d", "e", "f", "g")
+  )
+  expect_equal(
+    levels(fct_lump_prop(f, prop = -1)),
+    c("a", "b", "c", "d", "e", "f", "g")
+  )
 })
 
 test_that("checks inputs", {

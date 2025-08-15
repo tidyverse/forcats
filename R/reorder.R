@@ -51,13 +51,15 @@
 #'   geom_point() +
 #'   geom_line() +
 #'   labs(colour = "Chick")
-fct_reorder <- function(.f,
-                        .x,
-                        .fun = median,
-                        ...,
-                        .na_rm = NULL,
-                        .default = Inf,
-                        .desc = FALSE) {
+fct_reorder <- function(
+  .f,
+  .x,
+  .fun = median,
+  ...,
+  .na_rm = NULL,
+  .default = Inf,
+  .desc = FALSE
+) {
   f <- check_factor(.f)
   stopifnot(length(f) == length(.x))
   .fun <- as_function(.fun)
@@ -89,14 +91,16 @@ fct_reorder <- function(.f,
 
 #' @export
 #' @rdname fct_reorder
-fct_reorder2 <- function(.f,
-                         .x,
-                         .y,
-                         .fun = last2,
-                         ...,
-                         .na_rm = NULL,
-                         .default = -Inf,
-                         .desc = TRUE) {
+fct_reorder2 <- function(
+  .f,
+  .x,
+  .y,
+  .fun = last2,
+  ...,
+  .na_rm = NULL,
+  .default = -Inf,
+  .desc = TRUE
+) {
   .f <- check_factor(.f)
   stopifnot(length(.f) == length(.x), length(.x) == length(.y))
   check_dots_used()
@@ -136,7 +140,10 @@ check_single_value_per_group <- function(x, fun_arg, call = caller_env()) {
   # This is a bit of a weak test, but should detect the most common case
   # where `.fun` returns multiple values.
   if (is.list(x)) {
-    cli::cli_abort("{.arg {fun_arg}} must return a single value per group", call = call)
+    cli::cli_abort(
+      "{.arg {fun_arg}} must return a single value per group",
+      call = call
+    )
   }
 }
 
