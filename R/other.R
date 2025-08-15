@@ -39,4 +39,3 @@ lvls_other <- function(f, keep, other_level = "Other") {
     fct_relevel(f, other_level, after = Inf)
   }
 }
-
