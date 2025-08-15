@@ -5,82 +5,65 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="forcats">
 <title>Introduction to forcats • forcats</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.7/font.css" rel="stylesheet">
-<link href="../deps/Source_Code_Pro-0.4.7/font.css" rel="stylesheet">
-<!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to forcats">
-<meta property="og:description" content="forcats">
-<meta property="og:image" content="https://forcats.tidyverse.org/logo.png">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.10/font.css" rel="stylesheet">
+<link href="../deps/Source_Code_Pro-0.4.10/font.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to forcats">
 <meta name="robots" content="noindex">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><script defer data-domain="forcats.tidyverse.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
+<script defer data-domain="forcats.tidyverse.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
     <a href="#container" class="visually-hidden-focusable">Skip to content</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-none"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-none" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">forcats</a>
 
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.0.0.9000</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="active nav-item">
-  <a class="nav-link" href="../articles/forcats.html">Get started</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
+<li class="active nav-item"><a class="nav-link" href="../articles/forcats.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-news">News</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-news">
-    <h6 class="dropdown-header" data-toc-skip>Releases</h6>
-    <a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2023/01/forcats-1-0-0/">Version 1.0.0</a>
-    <a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2020/03/forcats-0-5-0/">Version 0.5.0</a>
-    <a class="external-link dropdown-item" href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a>
-    <a class="external-link dropdown-item" href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a>
-    <a class="external-link dropdown-item" href="https://blog.rstudio.com/2017/04/12/tidyverse-updates/">Version 0.2.0</a>
-    <a class="external-link dropdown-item" href="https://blog.rstudio.com/2016/08/31/forcats-0-1-0/">Version 0.1.0</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="../news/index.html">Changelog</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-news" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">News</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-news">
+<li><h6 class="dropdown-header" data-toc-skip>Releases</h6></li>
+    <li><a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2023/01/forcats-1-0-0/">Version 1.0.0</a></li>
+    <li><a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2020/03/forcats-0-5-0/">Version 0.5.0</a></li>
+    <li><a class="external-link dropdown-item" href="https://www.tidyverse.org/articles/2019/05/forcats-0-4-0/">Version 0.4.0</a></li>
+    <li><a class="external-link dropdown-item" href="https://www.tidyverse.org/articles/2018/02/forcats-0-3-0/">Version 0.3.0</a></li>
+    <li><a class="external-link dropdown-item" href="https://blog.rstudio.com/2017/04/12/tidyverse-updates/">Version 0.2.0</a></li>
+    <li><a class="external-link dropdown-item" href="https://blog.rstudio.com/2016/08/31/forcats-0-1-0/">Version 0.1.0</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../news/index.html">Changelog</a></li>
+  </ul>
 </li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav">
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/tidyverse/forcats/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/tidyverse/forcats/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-article" id="container">
 
@@ -94,17 +77,17 @@
 Robinson</h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/tidyverse/forcats/blob/HEAD/vignettes/forcats.Rmd" class="external-link"><code>vignettes/forcats.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/tidyverse/forcats/blob/main/vignettes/forcats.Rmd" class="external-link"><code>vignettes/forcats.Rmd</code></a></small>
       <div class="d-none name"><code>forcats.Rmd</code></div>
     </div>
 
     
     
-<p>The goal of the <strong>forcats</strong> package is to provide a
-suite of useful tools that solve common problems with factors. Factors
-are useful when you have categorical data, variables that have a fixed
-and known set of values, and when you want to display character vectors
-in non-alphabetical order. If you want to learn more, the best place to
+<p>The goal of the forcats package is to provide a suite of useful tools
+that solve common problems with factors. Factors are useful when you
+have categorical data, variables that have a fixed and known set of
+values, and when you want to display character vectors in
+non-alphabetical order. If you want to learn more, the best place to
 start is the <a href="https://r4ds.had.co.nz/factors.html" class="external-link">chapter on
 factors</a> in R for Data Science.</p>
 <div class="section level2">
@@ -128,7 +111,7 @@ the function <code><a href="../reference/fct_inorder.html">fct_infreq()</a></cod
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">starwars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="../reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="va">hair_color</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="forcats_files/figure-html/fct-infreq-hair-1.png" alt="The bar chart of hair color, now ordered so that the least frequent colours come first and the most frequent colors come last. This makes it easy to see that the most common hair color is none (~35), followed by brown (~18), then black (~12). Surprisingly, NAs are at the top of the graph, even though there are ~5 NAs and other colors have smaller values." width="700"></p>
+<p><img src="forcats_files/figure-html/fct-infreq-hair-1.png" alt="The bar chart of hair color, now ordered so that the least frequent colours come first and the most frequent colors come last. This makes it easy to see that the most common hair color is none  (~35), followed by brown (~18), then black (~12). Surprisingly, NAs are at the top of the graph, even though there are ~5 NAs and  other colors have smaller values." width="700"></p>
 <p>Note that <code><a href="../reference/fct_inorder.html">fct_infreq()</a></code> it automatically puts NA at the
 top, even though that doesn’t have the smallest number of entries.</p>
 <p>It’s a little surprising that the <code>NA</code> bar isn’t ordered
@@ -136,8 +119,8 @@ by frequency. To understand why we need to make a brief digression to
 discuss <code>NA</code>s in values vs. <code>NA</code>s in levels</p>
 </div>
 <div class="section level2">
-<h2 id="nass-in-levels-and-values">
-<code>NAs</code>s in levels and values<a class="anchor" aria-label="anchor" href="#nass-in-levels-and-values"></a>
+<h2 id="nas-in-levels-and-values">
+<code>NA</code>s in levels and values<a class="anchor" aria-label="anchor" href="#nas-in-levels-and-values"></a>
 </h2>
 <p>There are two ways to represent a missing value in a factor:</p>
 <ul>
@@ -179,7 +162,7 @@ expect:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">starwars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="../reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="fu"><a href="../reference/fct_na_value_to_level.html">fct_na_value_to_level</a></span><span class="op">(</span><span class="va">hair_color</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Hair color"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="forcats_files/figure-html/unnamed-chunk-4-1.png" alt="The bar chart of hair color, now ordered so that NAs are ordered where you'd expect: in between white (4) and black (12)." width="700"></p>
+<p><img src="forcats_files/figure-html/unnamed-chunk-4-1.png" alt="The bar chart of hair color, now ordered so that NAs are  ordered where you'd expect: in between white (4) and black (12)." width="700"></p>
 <p>(If you need the opposite operation, you can use
 <code><a href="../reference/fct_na_value_to_level.html">fct_na_level_to_value()</a></code>.)</p>
 </div>
@@ -202,7 +185,7 @@ expect:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> brown          4</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> blue           2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> blue, grey     2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> orange         2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> none           2</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 21 more rows</span></span></span></code></pre></div>
 <p>We see that there’s 31 different skin colors - if we want to make a
 plot this would be way too many to display! Let’s reduce it to only be
@@ -282,7 +265,7 @@ was ordered by <code>mean_mass</code>. We can do this with
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>eye_color <span class="op">=</span> <span class="fu"><a href="../reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">eye_color</span>, <span class="va">mean_mass</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">eye_color</span>, y <span class="op">=</span> <span class="va">mean_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="forcats_files/figure-html/fct-reorder-1.png" alt="A column chart with eye color on the x-axis and mean mass on the y-axis. The bars are ordered by mean_mass, so that the tallest bar (orange eye color with mean mass of ~275) is at the far right." width="700"></p>
+<p><img src="forcats_files/figure-html/fct-reorder-1.png" alt="A column chart with eye color on the x-axis and mean mass on the  y-axis. The bars are ordered by mean_mass, so that the tallest bar (orange eye color with mean mass of ~275) is at the far right." width="700"></p>
 </div>
 <div class="section level2">
 <h2 id="manually-reordering">Manually reordering<a class="anchor" aria-label="anchor" href="#manually-reordering"></a>
@@ -320,10 +303,12 @@ order, you can have an ordered factor. You can examine them with the
 base function <code><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels()</a></code>, which prints them in order:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">gss_cat</span><span class="op">$</span><span class="va">rincome</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "No answer"      "Don't know"     "Refused"        "$25000 or more"</span></span>
-<span><span class="co">#&gt;  [5] "$20000 - 24999" "$15000 - 19999" "$10000 - 14999" "$8000 to 9999" </span></span>
-<span><span class="co">#&gt;  [9] "$7000 to 7999"  "$6000 to 6999"  "$5000 to 5999"  "$4000 to 4999" </span></span>
-<span><span class="co">#&gt; [13] "$3000 to 3999"  "$1000 to 2999"  "Lt $1000"       "Not applicable"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] "No answer"      "Don't know"     "Refused"       </span></span>
+<span><span class="co">#&gt;  [4] "$25000 or more" "$20000 - 24999" "$15000 - 19999"</span></span>
+<span><span class="co">#&gt;  [7] "$10000 - 14999" "$8000 to 9999"  "$7000 to 7999" </span></span>
+<span><span class="co">#&gt; [10] "$6000 to 6999"  "$5000 to 5999"  "$4000 to 4999" </span></span>
+<span><span class="co">#&gt; [13] "$3000 to 3999"  "$1000 to 2999"  "Lt $1000"      </span></span>
+<span><span class="co">#&gt; [16] "Not applicable"</span></span></code></pre></div>
 <p>But what if your factor came in the wrong order? Let’s simulate that
 by reordering the levels of <code>rincome</code> randomly with
 <code><a href="../reference/fct_shuffle.html">fct_shuffle()</a></code>:</p>
@@ -332,10 +317,12 @@ by reordering the levels of <code>rincome</code> randomly with
 <span>  <span class="fu"><a href="../reference/fct_shuffle.html">fct_shuffle</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">reshuffled_income</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "$20000 - 24999" "$8000 to 9999"  "$6000 to 6999"  "$7000 to 7999" </span></span>
-<span><span class="co">#&gt;  [5] "$3000 to 3999"  "Lt $1000"       "$5000 to 5999"  "$25000 or more"</span></span>
-<span><span class="co">#&gt;  [9] "Refused"        "$4000 to 4999"  "Don't know"     "$10000 - 14999"</span></span>
-<span><span class="co">#&gt; [13] "$1000 to 2999"  "$15000 - 19999" "No answer"      "Not applicable"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] "$3000 to 3999"  "$10000 - 14999" "$4000 to 4999" </span></span>
+<span><span class="co">#&gt;  [4] "$20000 - 24999" "$15000 - 19999" "$25000 or more"</span></span>
+<span><span class="co">#&gt;  [7] "$1000 to 2999"  "$7000 to 7999"  "Not applicable"</span></span>
+<span><span class="co">#&gt; [10] "$8000 to 9999"  "Lt $1000"       "Don't know"    </span></span>
+<span><span class="co">#&gt; [13] "$6000 to 6999"  "Refused"        "No answer"     </span></span>
+<span><span class="co">#&gt; [16] "$5000 to 5999"</span></span></code></pre></div>
 <p>Now if we plotted it, it would show in this order, which is all over
 the place! How can we fix this and put it in the right order?</p>
 <p>We can use the function <code><a href="../reference/fct_relevel.html">fct_relevel()</a></code> when we need to
@@ -350,20 +337,24 @@ move it to the end, you set <code>after</code> equal to
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/fct_relevel.html">fct_relevel</a></span><span class="op">(</span><span class="va">reshuffled_income</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Lt $1000"</span>, <span class="st">"$1000 to 2999"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "Lt $1000"       "$1000 to 2999"  "$20000 - 24999" "$8000 to 9999" </span></span>
-<span><span class="co">#&gt;  [5] "$6000 to 6999"  "$7000 to 7999"  "$3000 to 3999"  "$5000 to 5999" </span></span>
-<span><span class="co">#&gt;  [9] "$25000 or more" "Refused"        "$4000 to 4999"  "Don't know"    </span></span>
-<span><span class="co">#&gt; [13] "$10000 - 14999" "$15000 - 19999" "No answer"      "Not applicable"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] "Lt $1000"       "$1000 to 2999"  "$3000 to 3999" </span></span>
+<span><span class="co">#&gt;  [4] "$10000 - 14999" "$4000 to 4999"  "$20000 - 24999"</span></span>
+<span><span class="co">#&gt;  [7] "$15000 - 19999" "$25000 or more" "$7000 to 7999" </span></span>
+<span><span class="co">#&gt; [10] "Not applicable" "$8000 to 9999"  "Don't know"    </span></span>
+<span><span class="co">#&gt; [13] "$6000 to 6999"  "Refused"        "No answer"     </span></span>
+<span><span class="co">#&gt; [16] "$5000 to 5999"</span></span></code></pre></div>
 <p>What if we want to move them to the second and third place?</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/fct_relevel.html">fct_relevel</a></span><span class="op">(</span><span class="va">reshuffled_income</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Lt $1000"</span>, <span class="st">"$1000 to 2999"</span><span class="op">)</span>, after <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "$20000 - 24999" "Lt $1000"       "$1000 to 2999"  "$8000 to 9999" </span></span>
-<span><span class="co">#&gt;  [5] "$6000 to 6999"  "$7000 to 7999"  "$3000 to 3999"  "$5000 to 5999" </span></span>
-<span><span class="co">#&gt;  [9] "$25000 or more" "Refused"        "$4000 to 4999"  "Don't know"    </span></span>
-<span><span class="co">#&gt; [13] "$10000 - 14999" "$15000 - 19999" "No answer"      "Not applicable"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] "$3000 to 3999"  "Lt $1000"       "$1000 to 2999" </span></span>
+<span><span class="co">#&gt;  [4] "$10000 - 14999" "$4000 to 4999"  "$20000 - 24999"</span></span>
+<span><span class="co">#&gt;  [7] "$15000 - 19999" "$25000 or more" "$7000 to 7999" </span></span>
+<span><span class="co">#&gt; [10] "Not applicable" "$8000 to 9999"  "Don't know"    </span></span>
+<span><span class="co">#&gt; [13] "$6000 to 6999"  "Refused"        "No answer"     </span></span>
+<span><span class="co">#&gt; [16] "$5000 to 5999"</span></span></code></pre></div>
 </div>
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
 
@@ -372,13 +363,11 @@ move it to the end, you set <code>after</code> equal to
    </div>
   <footer><div class="container">
   <div class="pkgdown-footer-left">
-  <p></p>
-<p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://www.posit.co" class="external-link"><img src="https://www.tidyverse.org/posit-logo.svg" alt="Posit" height="16" style="margin-bottom: 3px;"></a>.</p>
+  <p>Developed by <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://www.posit.co" class="external-link"><img src="https://www.tidyverse.org/posit-logo.svg" alt="Posit" height="16" width="62" style="margin-bottom: 3px;"></a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
   </div></footer>
