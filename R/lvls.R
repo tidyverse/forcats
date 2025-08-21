@@ -93,13 +93,17 @@ refactor <- function(f, new_levels, ordered = NA) {
     ordered <- is.ordered(f)
   }
 
-  new_f <- factor(f, levels = new_levels, exclude = NULL, ordered = ordered)
+  new_f <- factor(f, levels = new_levels, exclude = NULL)
+
+  # First copy the attributes
   attributes(new_f) <- utils::modifyList(attributes(f), attributes(new_f))
 
-  if (is.ordered(f) && !is.ordered(new_f)) {
+  # Now figure out the class: this complexity is needed to support classes 
+  # like Hmisc::labelled which extends both factors and ordered factors
+  if (is.ordered(f) && !ordered) {
     idx <- match("ordered", class(f))
     class(new_f) <- class(f)[-idx]
-  } else if (!is.ordered(f) && is.ordered(new_f)) {
+  } else if (!is.ordered(f) && ordered) {
     idx <- match("factor", class(f))
     class(new_f) <- append(class(f), "ordered", after = idx - 1)
   } else {
