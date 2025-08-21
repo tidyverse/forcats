@@ -100,7 +100,7 @@ refactor <- function(f, new_levels, ordered = NA) {
   # First copy the attributes
   attributes(new_f) <- utils::modifyList(attributes(f), attributes(new_f))
 
-  # Now figure out the class: this complexity is needed to support classes 
+  # Now figure out the class: this complexity is needed to support classes
   # like Hmisc::labelled which extends both factors and ordered factors
   if (is.ordered(f) && !ordered) {
     idx <- match("ordered", class(f))

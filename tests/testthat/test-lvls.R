@@ -100,7 +100,6 @@ test_that("preserves s3 subclasses", {
 
 test_that("preserves s3 subclasses when toggling ordered", {
   f1 <- structure(1:3, levels = c("a", "b", "c"), class = c("foo", "factor"))
-  
   f2 <- refactor(f1, letters[1:4], ordered = TRUE)
   expect_equal(class(f2), c("foo", "ordered", "factor"))
 
