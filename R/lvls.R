@@ -33,7 +33,9 @@ lvls_reorder <- function(f, idx, ordered = NA) {
     cli::cli_abort("{.arg idx} must be numeric")
   }
   if (!setequal(idx, lvls_seq(f)) || length(idx) != nlevels(f)) {
-    cli::cli_abort("{.arg idx} must contain one integer for each level of {.arg f}")
+    cli::cli_abort(
+      "{.arg idx} must contain one integer for each level of {.arg f}"
+    )
   }
 
   refactor(f, levels(f)[idx], ordered = ordered)

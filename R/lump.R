@@ -1,4 +1,4 @@
-#' Lump uncommon factor together levels into "other"
+#' Lump uncommon factor levels together into "other"
 #'
 #' @description
 #' A family for lumping together levels that meet some criteria.
@@ -70,12 +70,24 @@
 #' # Use fct_lump_min() to lump together all levels with fewer than `n` values
 #' table(fct_lump_min(x, min = 10))
 #' table(fct_lump_min(x, min = 15))
-fct_lump <- function(f, n, prop, w = NULL, other_level = "Other",
-                     ties.method = c("min", "average", "first", "last", "random", "max")) {
+fct_lump <- function(
+  f,
+  n,
+  prop,
+  w = NULL,
+  other_level = "Other",
+  ties.method = c("min", "average", "first", "last", "random", "max")
+) {
   if (missing(n) && missing(prop)) {
     fct_lump_lowfreq(f, w = w, other_level = other_level)
   } else if (missing(prop)) {
-    fct_lump_n(f, n, w = w, other_level = other_level, ties.method = ties.method)
+    fct_lump_n(
+      f,
+      n,
+      w = w,
+      other_level = other_level,
+      ties.method = ties.method
+    )
   } else if (missing(n)) {
     fct_lump_prop(f, prop, w = w, other_level = other_level)
   } else {
@@ -118,8 +130,13 @@ fct_lump_prop <- function(f, prop, w = NULL, other_level = "Other") {
 
 #' @export
 #' @rdname fct_lump
-fct_lump_n <- function(f, n, w = NULL, other_level = "Other",
-                       ties.method = c("min", "average", "first", "last", "random", "max")) {
+fct_lump_n <- function(
+  f,
+  n,
+  w = NULL,
+  other_level = "Other",
+  ties.method = c("min", "average", "first", "last", "random", "max")
+) {
   f <- check_factor(f)
   check_number_decimal(n)
   check_string(other_level, allow_na = TRUE)

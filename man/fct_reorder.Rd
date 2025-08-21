@@ -47,7 +47,7 @@ value.}
 
 \item{.na_rm}{Should \code{fct_reorder()} remove missing values?
 If \code{NULL}, the default, will remove missing values with a warning.
-Set to \code{FALSE} to preserve \code{NA}s (if you \code{.fun} already handles them) and
+Set to \code{FALSE} to preserve \code{NA}s (if your \code{.fun} already handles them) and
 \code{TRUE} to remove silently.}
 
 \item{.default}{What default value should we use for \code{.fun} for

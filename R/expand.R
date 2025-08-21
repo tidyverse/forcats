@@ -20,6 +20,10 @@ fct_expand <- function(f, ..., after = Inf) {
   old_levels <- levels(f)
   new_levels <- chr(...)
 
-  new_levels <- append(old_levels, setdiff(new_levels, old_levels), after = after)
+  new_levels <- append(
+    old_levels,
+    setdiff(new_levels, old_levels),
+    after = after
+  )
   lvls_expand(f, new_levels)
 }

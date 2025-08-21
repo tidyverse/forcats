@@ -1,5 +1,7 @@
 # forcats (development version)
 
+* forcats now requires R 4.1.
+
 # forcats 1.0.0
 
 ## New features
