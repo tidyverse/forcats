@@ -32,7 +32,7 @@ fct_cross <- function(..., sep = ":", keep_empty = FALSE) {
   newf <- exec(paste, !!!.data, sep = sep)
 
   old_levels <- lapply(.data, levels)
-  # expand.grid first factors fastest instead of last
+  # expand.grid varies inputs fastest instead of last
   grid_rev <- exec(expand.grid, rev(old_levels))
   new_levels <- exec(paste, !!!rev(grid_rev), sep = sep)
 
