@@ -82,22 +82,10 @@ test_that("validates its inputs", {
   })
 })
 
-test_that("Cross factoring 2 levels in order", {
-  f1 <- fct_inorder(c("a4", "a3", "a2", "a1"))
-  f2 <- factor(c("b4", "b3", "b2", "b1"))
+test_that("varies last values fastest", {
+  f1 <- fct(c("a4", "a3", "a2", "a1"))
+  f2 <- fct(c("b4", "b3", "b2", "b1"), levels = c("b4", "b3", "b2", "b1"))
 
   fcross <- fct_cross(f1, f2)
-
   expect_equal(levels(fcross), c("a4:b4", "a3:b3", "a2:b2", "a1:b1"))
-})
-
-
-test_that("Cross factoring 3 levels in order by first level", {
-  f1 <- fct_inorder(c("a4", "a3", "a2", "a1"))
-  f2 <- factor(c("b4", "b3", "b2", "b1"))
-  f3 <- factor(c("c4", "c3", "c2", "c1"))
-
-  fcross <- fct_cross(f1, f2, f3)
-
-  expect_equal(levels(fcross), c("a4:b4:c4", "a3:b3:c3", "a2:b2:c2", "a1:b1:c1"))
 })

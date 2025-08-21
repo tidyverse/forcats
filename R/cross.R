@@ -32,9 +32,9 @@ fct_cross <- function(..., sep = ":", keep_empty = FALSE) {
   newf <- exec(paste, !!!.data, sep = sep)
 
   old_levels <- lapply(.data, levels)
-  grid_unsorted <- exec(expand.grid, old_levels)
-  grid <- grid_unsorted[do.call(order, grid_unsorted), ]
-  new_levels <- exec(paste, !!!grid, sep = sep)
+  # expand.grid first factors fastest instead of last
+  grid_rev <- exec(expand.grid, rev(old_levels))
+  new_levels <- exec(paste, !!!rev(grid_rev), sep = sep)
 
   if (!keep_empty) {
     new_levels <- intersect(new_levels, newf)
