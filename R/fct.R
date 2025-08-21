@@ -46,7 +46,7 @@ fct <- function(x = character(), levels = NULL, na = character()) {
   }
 
   invalid <- setdiff(x, c(levels, NA))
-  if (length(invalid) > 0 ) {
+  if (length(invalid) > 0) {
     cli::cli_abort(c(
       "All values of {.arg x} must appear in {.arg levels} or {.arg na}",
       i = "Missing level{?s}: {.str {invalid}}"

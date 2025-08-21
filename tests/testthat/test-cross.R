@@ -12,7 +12,11 @@ test_that("gives correct levels", {
 
 test_that("recycle inputs", {
   expect_length(fct_cross("a", c("a", "b", "c"), "d"), 3)
-  expect_error(fct_cross(c("a", "b", "c"), c("a", "b")), "recycle", class = "error")
+  expect_error(
+    fct_cross(c("a", "b", "c"), c("a", "b")),
+    "recycle",
+    class = "error"
+  )
 })
 
 test_that("keeps empty levels when requested", {
@@ -20,7 +24,10 @@ test_that("keeps empty levels when requested", {
   colour <- as_factor(c("green", "green", "red", "green"))
   f2 <- fct_cross(fruit, colour, keep_empty = TRUE)
 
-  expect_setequal(levels(f2), c("apple:green", "kiwi:green", "apple:red", "kiwi:red"))
+  expect_setequal(
+    levels(f2),
+    c("apple:green", "kiwi:green", "apple:red", "kiwi:red")
+  )
 })
 
 test_that("order of levels is preserved", {
@@ -61,7 +68,10 @@ test_that("can combine more than two factors", {
 
   f2 <- fct_cross(fruit, colour, eaten)
 
-  expect_setequal(levels(f2), c("apple:green:no", "apple:green:yes", "apple:red:yes", "kiwi:green:no"))
+  expect_setequal(
+    levels(f2),
+    c("apple:green:no", "apple:green:yes", "apple:red:yes", "kiwi:green:no")
+  )
 })
 
 test_that("validates its inputs", {

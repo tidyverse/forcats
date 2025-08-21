@@ -3,7 +3,8 @@ Title: Tools for Working with Categorical Variables (Factors)
 Version: 1.0.0.9000
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut", "cre")),
-    person("Posit Software, PBC", role = c("cph", "fnd"))
+    person("Posit Software, PBC", role = c("cph", "fnd"),
+           comment = c(ROR = "03wc8by49"))
   )
 Description: Helpers for reordering factor levels (including moving
     specified levels to front, ordering by first appearance, reversing,
@@ -14,7 +15,7 @@ License: MIT + file LICENSE
 URL: https://forcats.tidyverse.org/, https://github.com/tidyverse/forcats
 BugReports: https://github.com/tidyverse/forcats/issues
 Depends: 
-    R (>= 3.6)
+    R (>= 4.1)
 Imports: 
     cli (>= 3.4.0),
     glue,
