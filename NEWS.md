@@ -1,5 +1,6 @@
 # forcats (development version)
 
+* `fct_cross()` now varies the levels in the last factor fastest (@Adam-AKong, #373).
 * forcats now requires R 4.1.
 
 # forcats 1.0.0
