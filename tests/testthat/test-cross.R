@@ -81,3 +81,11 @@ test_that("validates its inputs", {
     fct_cross("x", keep_empty = 1)
   })
 })
+
+test_that("varies last values fastest", {
+  f1 <- fct(c("a4", "a3", "a2", "a1"))
+  f2 <- fct(c("b4", "b3", "b2", "b1"), levels = c("b4", "b3", "b2", "b1"))
+
+  fcross <- fct_cross(f1, f2)
+  expect_equal(levels(fcross), c("a4:b4", "a3:b3", "a2:b2", "a1:b1"))
+})

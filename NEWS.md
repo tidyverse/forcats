@@ -1,5 +1,6 @@
 # forcats (development version)
 
+* `fct_cross()` now varies the levels in the last factor fastest (@Adam-AKong, #373).
 * Functions that create a new factor (e.g. `lvls_expand()`, `lvls_reorder()`, `fct_lump_n()`, `fct_drop()`) now preserves the class of the original object in addition to the attributes (#83).
 * forcats now requires R 4.1.
 
