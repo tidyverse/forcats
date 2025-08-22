@@ -257,3 +257,29 @@ test_that("fct_inorder() validates its inputs", {
     fct_inseq("1", ordered = 1)
   })
 })
+
+test_that("fct_reordern works for all scenarios (fix #16)", {
+  A <- c(3, 3, 2, 1)
+  B <- c("A", "B", "C", "D")
+  f <- c("A", "B", "C", "D")
+  f_factor_ordered <- factor(f, ordered = TRUE)
+  expect_equal(
+    fct_reordern(f, A, B),
+    factor(f, levels = c("D", "C", "A", "B"))
+  )
+  # Ensure interaction with dplyr::desc() is accurate.
+  desc <- function(x) -xtfrm(x)
+  expect_equal(
+    fct_reordern(f, A, desc(B)),
+    factor(f, levels = c("D", "C", "B", "A"))
+  )
+  # Checks of ordering
+  expect_equal(
+    fct_reordern(f, A, B, ordered = NA),
+    factor(f, levels = c("D", "C", "A", "B"))
+  )
+  expect_equal(
+    fct_reordern(f, A, B, ordered = TRUE),
+    factor(f, levels = c("D", "C", "A", "B"), ordered = TRUE)
+  )
+})

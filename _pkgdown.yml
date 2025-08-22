@@ -25,6 +25,7 @@ reference:
     - fct_relevel
     - fct_inorder
     - fct_reorder
+    - fct_reordern
     - fct_infreq
     - fct_shuffle
     - fct_rev
