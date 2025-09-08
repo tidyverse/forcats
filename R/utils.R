@@ -2,11 +2,11 @@
 #'
 #' See \code{\link[magrittr]{\%>\%}} for more details.
 #'
-#' @name %>%
+#' @name |>
 #' @rdname pipe
 #' @keywords internal
 #' @export
-#' @importFrom magrittr %>%
+#' @importFrom magrittr |>
 #' @usage lhs \%>\% rhs
 NULL
 

@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-R uses __factors__ to handle categorical variables, variables that have a fixed and known set of possible values. Factors are also helpful for reordering character vectors to improve display. The goal of the forcats package is to provide a suite of tools that solve common problems with factors, including changing the order of levels or the values. Some examples include: 
+R uses __factors__ to handle categorical variables, variables that have a fixed and known set of possible values. Factors are also helpful for reordering character vectors to improve display. The goal of the forcats package is to provide a suite of tools that solve common problems with factors, including changing the order of levels or the values. Some examples include:
 
 * `fct_reorder()`: Reordering a factor by another variable.
 * `fct_infreq()`: Reordering a factor by the frequency of values.
@@ -60,35 +60,35 @@ library(ggplot2)
 ```
 
 ```{r}
-starwars %>% 
-  filter(!is.na(species)) %>%
+starwars |>
+  filter(!is.na(species)) |>
   count(species, sort = TRUE)
 ```
 
 ```{r}
-starwars %>%
-  filter(!is.na(species)) %>%
-  mutate(species = fct_lump(species, n = 3)) %>%
+starwars |>
+  filter(!is.na(species)) |>
+  mutate(species = fct_lump(species, n = 3)) |>
   count(species)
 ```
 
 ```{r unordered-plot}
-ggplot(starwars, aes(x = eye_color)) + 
-  geom_bar() + 
+ggplot(starwars, aes(x = eye_color)) +
+  geom_bar() +
   coord_flip()
 ```
 
 ```{r ordered-plot}
-starwars %>%
-  mutate(eye_color = fct_infreq(eye_color)) %>%
-  ggplot(aes(x = eye_color)) + 
-  geom_bar() + 
+starwars |>
+  mutate(eye_color = fct_infreq(eye_color)) |>
+  ggplot(aes(x = eye_color)) +
+  geom_bar() +
   coord_flip()
 ```
 
-## More resources 
+## More resources
 
-For a history of factors, I recommend [_stringsAsFactors: An unauthorized biography_](https://simplystats.github.io/2015/07/24/stringsasfactors-an-unauthorized-biography/) by Roger Peng and [_stringsAsFactors = \<sigh\>_](https://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh) by Thomas Lumley. If you want to learn more about other approaches to working with factors and categorical data, I recommend [_Wrangling categorical data in R_](https://peerj.com/preprints/3163/), by Amelia McNamara and Nicholas Horton. 
+For a history of factors, I recommend [_stringsAsFactors: An unauthorized biography_](https://simplystats.github.io/2015/07/24/stringsasfactors-an-unauthorized-biography/) by Roger Peng and [_stringsAsFactors = \<sigh\>_](https://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh) by Thomas Lumley. If you want to learn more about other approaches to working with factors and categorical data, I recommend [_Wrangling categorical data in R_](https://peerj.com/preprints/3163/), by Amelia McNamara and Nicholas Horton.
 
 ## Getting help
 
