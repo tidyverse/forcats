@@ -22,9 +22,9 @@ You can also use \code{~} to create as shorthand (in the style of purrr).
 Relabel factor levels with a function, collapsing as necessary
 }
 \examples{
-gss_cat$partyid \%>\% fct_count()
-gss_cat$partyid \%>\%
-  fct_relabel(~ gsub(",", ", ", .x)) \%>\%
+gss_cat$partyid |> fct_count()
+gss_cat$partyid |>
+  fct_relabel(~ gsub(",", ", ", .x)) |>
   fct_count()
 
 convert_income <- function(x) {

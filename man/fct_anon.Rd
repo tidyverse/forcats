@@ -16,11 +16,11 @@ Replaces factor levels with arbitrary numeric identifiers. Neither
 the values nor the order of the levels are preserved.
 }
 \examples{
-gss_cat$relig \%>\% fct_count()
-gss_cat$relig \%>\%
-  fct_anon() \%>\%
+gss_cat$relig |> fct_count()
+gss_cat$relig |>
+  fct_anon() |>
   fct_count()
-gss_cat$relig \%>\%
-  fct_anon("X") \%>\%
+gss_cat$relig |>
+  fct_anon("X") |>
   fct_count()
 }
