@@ -32,18 +32,18 @@
 #' @seealso [fct_other()] to convert specified levels to other.
 #' @examples
 #' x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
-#' x %>% table()
-#' x %>%
-#'   fct_lump_n(3) %>%
+#' x |> table()
+#' x |>
+#'   fct_lump_n(3) |>
 #'   table()
-#' x %>%
-#'   fct_lump_prop(0.10) %>%
+#' x |>
+#'   fct_lump_prop(0.10) |>
 #'   table()
-#' x %>%
-#'   fct_lump_min(5) %>%
+#' x |>
+#'   fct_lump_min(5) |>
 #'   table()
-#' x %>%
-#'   fct_lump_lowfreq() %>%
+#' x |>
+#'   fct_lump_lowfreq() |>
 #'   table()
 #'
 #' x <- factor(letters[rpois(100, 5)])

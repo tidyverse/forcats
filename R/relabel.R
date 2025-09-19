@@ -5,14 +5,14 @@
 #'   character argument and return a character vector of the same length as
 #'   its input.
 #'
-#'   You can also use `~` to create as shorthand (in the style of purrr).
-#'   `~ paste(., "x")` is equivalent to `function(.) paste(., "x")`
+#'   You can also use lambda notation, `\(x)`.
+#'   `\(x) paste(x, "y")` is equivalent to `function(x) paste(x, "y")` or `function(.) paste(., "y")`.
 #' @param ... Additional arguments to `fun`.
 #' @export
 #' @examples
-#' gss_cat$partyid %>% fct_count()
-#' gss_cat$partyid %>%
-#'   fct_relabel(~ gsub(",", ", ", .x)) %>%
+#' gss_cat$partyid |> fct_count()
+#' gss_cat$partyid |>
+#'   fct_relabel(\(x) gsub(",", ", ", x)) |>
 #'   fct_count()
 #'
 #' convert_income <- function(x) {

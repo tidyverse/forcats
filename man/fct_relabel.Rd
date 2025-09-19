@@ -13,8 +13,8 @@ fct_relabel(.f, .fun, ...)
 character argument and return a character vector of the same length as
 its input.
 
-You can also use \code{~} to create as shorthand (in the style of purrr).
-\code{~ paste(., "x")} is equivalent to \code{function(.) paste(., "x")}}
+You can also use lambda notation, \verb{\\(x)}.
+\verb{\\(x) paste(x, "y")} is equivalent to \code{function(x) paste(x, "y")} or \code{function(.) paste(., "y")}.}
 
 \item{...}{Additional arguments to \code{fun}.}
 }
@@ -22,9 +22,9 @@ You can also use \code{~} to create as shorthand (in the style of purrr).
 Relabel factor levels with a function, collapsing as necessary
 }
 \examples{
-gss_cat$partyid \%>\% fct_count()
-gss_cat$partyid \%>\%
-  fct_relabel(~ gsub(",", ", ", .x)) \%>\%
+gss_cat$partyid |> fct_count()
+gss_cat$partyid |>
+  fct_relabel(\(x) gsub(",", ", ", x)) |>
   fct_count()
 
 convert_income <- function(x) {
