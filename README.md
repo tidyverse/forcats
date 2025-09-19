@@ -59,8 +59,8 @@ library(ggplot2)
 ```
 
 ``` r
-starwars %>% 
-  filter(!is.na(species)) %>%
+starwars |> 
+  filter(!is.na(species)) |>
   count(species, sort = TRUE)
 #> # A tibble: 37 × 2
 #>    species      n
@@ -79,9 +79,9 @@ starwars %>%
 ```
 
 ``` r
-starwars %>%
-  filter(!is.na(species)) %>%
-  mutate(species = fct_lump(species, n = 3)) %>%
+starwars |>
+  filter(!is.na(species)) |>
+  mutate(species = fct_lump(species, n = 3)) |>
   count(species)
 #> # A tibble: 4 × 2
 #>   species     n
@@ -101,8 +101,8 @@ ggplot(starwars, aes(x = eye_color)) +
 ![](man/figures/README-unordered-plot-1.png)<!-- -->
 
 ``` r
-starwars %>%
-  mutate(eye_color = fct_infreq(eye_color)) %>%
+starwars |>
+  mutate(eye_color = fct_infreq(eye_color)) |>
   ggplot(aes(x = eye_color)) + 
   geom_bar() + 
   coord_flip()

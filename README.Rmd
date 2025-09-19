@@ -60,15 +60,15 @@ library(ggplot2)
 ```
 
 ```{r}
-starwars %>% 
-  filter(!is.na(species)) %>%
+starwars |> 
+  filter(!is.na(species)) |>
   count(species, sort = TRUE)
 ```
 
 ```{r}
-starwars %>%
-  filter(!is.na(species)) %>%
-  mutate(species = fct_lump(species, n = 3)) %>%
+starwars |>
+  filter(!is.na(species)) |>
+  mutate(species = fct_lump(species, n = 3)) |>
   count(species)
 ```
 
@@ -79,8 +79,8 @@ ggplot(starwars, aes(x = eye_color)) +
 ```
 
 ```{r ordered-plot}
-starwars %>%
-  mutate(eye_color = fct_infreq(eye_color)) %>%
+starwars |>
+  mutate(eye_color = fct_infreq(eye_color)) |>
   ggplot(aes(x = eye_color)) + 
   geom_bar() + 
   coord_flip()

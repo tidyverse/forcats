@@ -13,9 +13,9 @@ names(gss) <- vars$Name
 
 na <- c("Not applicable", "No answer", "Don't know")
 
-gss_cat <- gss %>%
-  filter(!is.na(id_)) %>%
-  select(-id_) %>%
+gss_cat <- gss |>
+  filter(!is.na(id_)) |>
+  select(-id_) |>
   mutate(
     year = as.integer(year),
     age = as.integer(readr::parse_number(age, na = na)), # ignore 148 "or older"
