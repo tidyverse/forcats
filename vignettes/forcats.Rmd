@@ -103,7 +103,7 @@ ggplot(starwars, aes(y = fct_infreq(fct_na_value_to_level(hair_color)))) +
 Let's take a look at skin color now:
 
 ```{r}
-starwars %>%
+starwars |>
   count(skin_color, sort = TRUE)
 ```
 
@@ -112,8 +112,8 @@ Let's reduce it to only be the top 5.
 We can use `fct_lump()` to "lump" all the infrequent colors into one factor, "other." The argument `n` is the number of levels we want to keep.
 
 ```{r}
-starwars %>%
-  mutate(skin_color = fct_lump(skin_color, n = 5)) %>%
+starwars |>
+  mutate(skin_color = fct_lump(skin_color, n = 5)) |>
   count(skin_color, sort = TRUE)
 ```
 
@@ -121,8 +121,8 @@ We could also have used `prop` instead, which keeps all the levels that appear a
 For example, let's keep skin colors that at least 10% of the characters have:
 
 ```{r}
-starwars %>%
-  mutate(skin_color = fct_lump(skin_color, prop = .1)) %>%
+starwars |>
+  mutate(skin_color = fct_lump(skin_color, prop = .1)) |>
   count(skin_color, sort = TRUE)
 ```
 
@@ -131,8 +131,8 @@ Only light and fair remain; everything else is other.
 If you wanted to call it something than "other", you can change it with the argument `other_level`:
 
 ```{r}
-starwars %>%
-  mutate(skin_color = fct_lump(skin_color, prop = .1, other_level = "extra")) %>%
+starwars |>
+  mutate(skin_color = fct_lump(skin_color, prop = .1, other_level = "extra")) |>
   count(skin_color, sort = TRUE)
 ```
 
@@ -140,9 +140,9 @@ What if we wanted to see if the average mass differed by eye color?
 We'll only look at the 6 most popular eye colors and remove `NA`s.
 
 ```{r fct-lump-mean}
-avg_mass_eye_color <- starwars %>%
-  mutate(eye_color = fct_lump(eye_color, n = 6)) %>%
-  group_by(eye_color) %>%
+avg_mass_eye_color <- starwars |>
+  mutate(eye_color = fct_lump(eye_color, n = 6)) |>
+  group_by(eye_color) |>
   summarise(mean_mass = mean(mass, na.rm = TRUE))
 
 avg_mass_eye_color
@@ -160,8 +160,8 @@ We can do this with `fct_reorder()`, which reorders one variable by another.
 #|   y-axis. The bars are ordered by mean_mass, so that the tallest bar
 #|   (orange eye color with mean mass of ~275) is at the far right.
 
-avg_mass_eye_color %>%
-  mutate(eye_color = fct_reorder(eye_color, mean_mass)) %>%
+avg_mass_eye_color |>
+  mutate(eye_color = fct_reorder(eye_color, mean_mass)) |>
   ggplot(aes(x = eye_color, y = mean_mass)) + 
   geom_col()
 ```
@@ -172,7 +172,7 @@ Let's switch to using another dataset, `gss_cat`, the general social survey.
 What is the income distribution among the respondents?
 
 ```{r}
-gss_cat %>%
+gss_cat |>
   count(rincome)
 ```
 
@@ -190,7 +190,7 @@ But what if your factor came in the wrong order?
 Let's simulate that by reordering the levels of `rincome` randomly with `fct_shuffle()`:
 
 ```{r}
-reshuffled_income <- gss_cat$rincome %>%
+reshuffled_income <- gss_cat$rincome |>
   fct_shuffle()
 
 levels(reshuffled_income)
@@ -208,13 +208,13 @@ For example, let's say we wanted to move `Lt $1000` and `$1000 to 2999` to the f
 We would write:
 
 ```{r}
-fct_relevel(reshuffled_income, c("Lt $1000", "$1000 to 2999")) %>%
+fct_relevel(reshuffled_income, c("Lt $1000", "$1000 to 2999")) |>
   levels()
 ```
 
 What if we want to move them to the second and third place?
 
 ```{r}
-fct_relevel(reshuffled_income, c("Lt $1000", "$1000 to 2999"), after = 1) %>%
+fct_relevel(reshuffled_income, c("Lt $1000", "$1000 to 2999"), after = 1) |>
   levels()
 ```
