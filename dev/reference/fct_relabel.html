@@ -65,8 +65,8 @@
 <dd><p>A function to be applied to each level. Must accept one
 character argument and return a character vector of the same length as
 its input.</p>
-<p>You can also use <code>~</code> to create as shorthand (in the style of purrr).
-<code>~ paste(., "x")</code> is equivalent to <code>function(.) paste(., "x")</code></p></dd>
+<p>You can also use lambda notation, <code>\(x)</code>.
+<code>\(x) paste(x, "y")</code> is equivalent to <code>function(x) paste(x, "y")</code> or <code>function(.) paste(., "y")</code>.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -76,7 +76,7 @@ its input.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">gss_cat</span><span class="op">$</span><span class="va">partyid</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu"><a href="fct_count.html">fct_count</a></span><span class="op">(</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">gss_cat</span><span class="op">$</span><span class="va">partyid</span> <span class="op">|&gt;</span> <span class="fu"><a href="fct_count.html">fct_count</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    f                      n</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
@@ -90,8 +90,8 @@ its input.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Ind,near dem        <span style="text-decoration: underline;">2</span>499</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Not str democrat    <span style="text-decoration: underline;">3</span>690</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Strong democrat     <span style="text-decoration: underline;">3</span>490</span>
-<span class="r-in"><span><span class="va">gss_cat</span><span class="op">$</span><span class="va">partyid</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
-<span class="r-in"><span>  <span class="fu">fct_relabel</span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">","</span>, <span class="st">", "</span>, <span class="va">.x</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="va">gss_cat</span><span class="op">$</span><span class="va">partyid</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">fct_relabel</span><span class="op">(</span>\<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">","</span>, <span class="st">", "</span>, <span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="fct_count.html">fct_count</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    f                      n</span>
