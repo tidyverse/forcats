@@ -6,6 +6,7 @@ template:
 
   includes:
     in_header: |
+      <script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-max-height="43" data-light-bg="#666f76" data-light-fg="#f9f9f9"></script>
       <script defer data-domain="forcats.tidyverse.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
 
 development:
@@ -17,57 +18,57 @@ home:
     href: http://r4ds.had.co.nz/factors.html
 
 reference:
-  - title: Change order of levels
-    desc: >
-      Keep the values of the levels the same, but change their order.
-      These are particularly useful for models, tables, and visualisations.
-    contents:
-    - fct_relevel
-    - fct_inorder
-    - fct_reorder
-    - fct_infreq
-    - fct_shuffle
-    - fct_rev
-    - fct_shift
+- title: Change order of levels
+  desc: >
+    Keep the values of the levels the same, but change their order.
+    These are particularly useful for models, tables, and visualisations.
+  contents:
+  - fct_relevel
+  - fct_inorder
+  - fct_reorder
+  - fct_infreq
+  - fct_shuffle
+  - fct_rev
+  - fct_shift
 
-  - title: Change value of levels
-    desc: >
-      Change factor levels, while preserving order (as much as possible).
-    contents:
-    - fct_anon
-    - fct_collapse
-    - fct_lump
-    - fct_other
-    - fct_recode
-    - fct_relabel
+- title: Change value of levels
+  desc: >
+    Change factor levels, while preserving order (as much as possible).
+  contents:
+  - fct_anon
+  - fct_collapse
+  - fct_lump
+  - fct_other
+  - fct_recode
+  - fct_relabel
 
-  - title: Add/remove levels
-    desc: >
-      Leave existing data as is, but add or remove levels.
-    contents:
-    - fct_expand
-    - fct_drop
-    - fct_na_value_to_level
-    - fct_unify
+- title: Add/remove levels
+  desc: >
+    Leave existing data as is, but add or remove levels.
+  contents:
+  - fct_expand
+  - fct_drop
+  - fct_na_value_to_level
+  - fct_unify
 
-  - title: Combine multiple factors
-    contents:
-    - fct_c
-    - fct_cross
+- title: Combine multiple factors
+  contents:
+  - fct_c
+  - fct_cross
 
-  - title: Other helpers
-    contents:
-    - fct
-    - as_factor
-    - fct_count
-    - fct_match
-    - fct_unique
-    - lvls
-    - lvls_union
+- title: Other helpers
+  contents:
+  - fct
+  - as_factor
+  - fct_count
+  - fct_match
+  - fct_unique
+  - lvls
+  - lvls_union
 
-  - title: Data
-    contents:
-    - gss_cat
+- title: Data
+  contents:
+  - gss_cat
 
 news:
   releases:
