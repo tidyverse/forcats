@@ -1,4 +1,6 @@
 # forcats (development version)
+* `fct_reordern()` is a new function to order based on an arbitrary number of
+  values (@billdenney, #16)
 
 # forcats 1.0.1
 

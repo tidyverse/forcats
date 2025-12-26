@@ -23,6 +23,8 @@
 #' @param .desc Order in descending order? Note the default is different
 #'   between `fct_reorder` and `fct_reorder2`, in order to
 #'   match the default ordering of factors in the legend.
+#' @importFrom stats median
+#' @family Reordering
 #' @export
 #' @examples
 #' # fct_reorder() -------------------------------------------------------------
@@ -134,6 +136,26 @@ fct_reorder2 <- function(
   check_single_value_per_group(summary, ".fun")
 
   lvls_reorder(.f, order(summary, decreasing = .desc))
+}
+
+#' Reorder factor levels by sorting along multiple variables
+#' 
+#' @param .f A factor (or character vector).
+#' @param ordered Passed to \code{\link{fct_inorder}()}
+#' @inheritDotParams base::order
+#' @family Reordering
+#' @examples
+#' A <- c(3, 3, 2, 1)
+#' B <- c("A", "B", "C", "D")
+#' fct_reordern(c("A", "B", "C", "D"), A, B)
+#' fct_reordern(c("A", "B", "C", "D"), dplyr::desc(A), dplyr::desc(B))
+#' fct_reordern(c("A", "B", "C", "D"), A, dplyr::desc(B))
+#' @export
+fct_reordern <- function(.f, ..., ordered = NA) {
+  f <- check_factor(.f)
+  new_order <- base::order(...)
+  idx <- as.integer(f)[new_order]
+  lvls_reorder(f, idx = idx[!duplicated(idx)], ordered = ordered)
 }
 
 check_single_value_per_group <- function(x, fun_arg, call = caller_env()) {
