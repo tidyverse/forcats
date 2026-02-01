@@ -1,25 +1,23 @@
 #' Superseded helper for lumping factor levels
 #'
 #' @description
+#' `r lifecycle::badge("superseded")`
+#'
 #' `fct_lump()` automatically chooses between [fct_lump_min()],
 #' [fct_lump_prop()], [fct_lump_n()], and [fct_lump_lowfreq()] based on
 #' its arguments. It is kept for backward compatibility, but is
 #' superseded and no longer recommended for new code.
 #'
-#' For new code, prefer the more explicit helpers
+#' For new code, prefer the more explicit helpers:
 #' [fct_lump_min()], [fct_lump_prop()], [fct_lump_n()], and
 #' [fct_lump_lowfreq()].
 #'
 #' @inheritParams fct_lump_min
-#' @rdname fct_lump
-#' @seealso [fct_lump_min()], [fct_lump_prop()],
-#'   [fct_lump_n()], [fct_lump_lowfreq()]
 #' @examples
 #' x <- factor(letters[rpois(100, 5)])
 #' table(x)
 #' table(fct_lump(x, n = 3))
 #' @export
-
 fct_lump <- function(
   f,
   n,
@@ -72,7 +70,7 @@ fct_lump <- function(
 #' @param ties.method A character string specifying how ties are
 #'   treated. See [rank()] for details.
 #'
-#' @rdname fct_lump_helpers
+#' @name fct_lump_helpers
 #' @seealso [fct_other()] to convert specified levels to other.
 #' @examples
 #' x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
@@ -91,7 +89,8 @@ fct_lump <- function(
 #'   table()
 NULL
 
-
+#' @export
+#' @rdname fct_lump_helpers
 fct_lump_min <- function(f, min, w = NULL, other_level = "Other") {
   f <- check_factor(f)
   check_number_decimal(min, min = 0)

@@ -15,11 +15,10 @@ fct_match(f, lvls)
 A logical vector
 }
 \description{
-Do any of \code{lvls} occur in \code{f}? Compared to
-, this function validates \code{lvls}
-to ensure that they're actually present in \code{f}. In other words,
-\code{x \%in\% "not present"} will return \code{FALSE}, but
-\code{fct_match(x, "not present")} will throw an error.
+Do any of \code{lvls} occur in \code{f}? Compared to \link{\%in\%}, this function validates
+\code{lvls} to ensure that they're actually present in \code{f}. In other words,
+\code{x \%in\% "not present"} will return \code{FALSE}, but \code{fct_match(x, "not present")}
+will throw an error.
 }
 \examples{
 table(fct_match(gss_cat$marital, c("Married", "Divorced")))

@@ -18,8 +18,8 @@ fct_inseq(f, ordered = NA)
 \item{ordered}{A logical which determines the "ordered" status of the
 output factor. \code{NA} preserves the existing status of the factor.}
 
-\item{w}{An optional numeric vector giving weights for the frequency
-of each value (not level) in \code{f}.}
+\item{w}{An optional numeric vector giving weights for frequency of
+each value (not level) in \code{f}.}
 }
 \description{
 This family of functions changes only the order of the levels.

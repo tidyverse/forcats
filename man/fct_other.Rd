@@ -17,8 +17,8 @@ fct_other(f, keep, drop, other_level = "Other")
 as is.
 }}
 
-\item{other_level}{Value of the level used for "other" values. Always
-placed at the end of the levels.}
+\item{other_level}{Value of level used for "other" values. Always
+placed at end of levels.}
 }
 \description{
 Manually replace levels with "other"

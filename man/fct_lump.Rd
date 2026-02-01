@@ -2,7 +2,7 @@
 % Please edit documentation in R/lump.R
 \name{fct_lump}
 \alias{fct_lump}
-\title{Lump uncommon factor levels together into "other"}
+\title{Superseded helper for lumping factor levels}
 \usage{
 fct_lump(
   f,
@@ -16,101 +16,37 @@ fct_lump(
 \arguments{
 \item{f}{A factor (or character vector).}
 
-\item{n}{Positive \code{n} preserves the most common \code{n} values; negative
-\code{n} preserves the least common \code{-n} values. If there are ties, you
-will get at least \code{abs(n)} values.}
+\item{n}{Positive \code{n} preserves the most common \code{n} values.
+Negative \code{n} preserves the least common \code{-n} values.
+If there are ties, you will get at least \code{abs(n)} values.}
 
 \item{prop}{Positive \code{prop} lumps values which do not appear at least
-\code{prop} of the time; negative \code{prop} lumps values that do not appear
-at most \code{-prop} of the time.}
+\code{prop} of the time. Negative \code{prop} lumps values that
+do not appear at most \code{-prop} of the time.}
 
-\item{w}{An optional numeric vector giving weights for the frequency
-of each value (not level) in \code{f}.}
+\item{w}{An optional numeric vector giving weights for frequency of
+each value (not level) in \code{f}.}
 
-\item{other_level}{Value of the level used for "other" values. Always
-placed at the end of the levels.}
+\item{other_level}{Value of level used for "other" values. Always
+placed at end of levels.}
 
-\item{ties.method}{A character string specifying how ties are treated.
-See \code{\link[=rank]{rank()}} for details.}
-
-\item{min}{Preserve levels that appear at least \code{min} number of times.
-This is passed on to \code{\link[=fct_lump_min]{fct_lump_min()}} when used.}
+\item{ties.method}{A character string specifying how ties are
+treated. See \code{\link[=rank]{rank()}} for details.}
 }
 \description{
-A family for lumping together levels that meet some criteria.
-\itemize{
-\item \code{fct_lump_min()}: lumps levels that appear fewer than \code{min} times.
-\item \code{fct_lump_prop()}: lumps levels that appear in fewer than (or equal to)
-\code{prop * n} times.
-\item \code{fct_lump_n()}: lumps all levels except for the \code{n} most frequent
-(or least frequent if \code{n < 0}).
-\item \code{fct_lump_lowfreq()}: lumps together the least frequent levels, ensuring
-that "other" is still the smallest level.
-}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 
 \code{fct_lump()} automatically chooses between \code{\link[=fct_lump_min]{fct_lump_min()}},
 \code{\link[=fct_lump_prop]{fct_lump_prop()}}, \code{\link[=fct_lump_n]{fct_lump_n()}}, and \code{\link[=fct_lump_lowfreq]{fct_lump_lowfreq()}} based on
 its arguments. It is kept for backward compatibility, but is
 superseded and no longer recommended for new code.
-}
-\details{
+
 For new code, prefer the more explicit helpers:
 \code{\link[=fct_lump_min]{fct_lump_min()}}, \code{\link[=fct_lump_prop]{fct_lump_prop()}}, \code{\link[=fct_lump_n]{fct_lump_n()}}, and
 \code{\link[=fct_lump_lowfreq]{fct_lump_lowfreq()}}.
 }
 \examples{
-x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
-x |> table()
-x |>
-  fct_lump_n(3) |>
-  table()
-x |>
-  fct_lump_prop(0.10) |>
-  table()
-x |>
-  fct_lump_min(5) |>
-  table()
-x |>
-  fct_lump_lowfreq() |>
-  table()
-
-x <- factor(letters[rpois(100, 5)])
-x
-table(x)
-table(fct_lump_lowfreq(x))
-
-# Use positive values to collapse the rarest
-fct_lump_n(x, n = 3)
-fct_lump_prop(x, prop = 0.1)
-
-# Use negative values to collapse the most common
-fct_lump_n(x, n = -3)
-fct_lump_prop(x, prop = -0.1)
-
-# Use weighted frequencies
-w <- c(rep(2, 50), rep(1, 50))
-fct_lump_n(x, n = 5, w = w)
-
-# Use ties.method to control how tied factors are collapsed
-fct_lump_n(x, n = 6)
-fct_lump_n(x, n = 6, ties.method = "max")
-
-# Use fct_lump_min() to lump together all levels with fewer than `n` values
-table(fct_lump_min(x, min = 10))
-table(fct_lump_min(x, min = 15))
 x <- factor(letters[rpois(100, 5)])
 table(x)
-
-# fct_lump() still works, but is superseded:
 table(fct_lump(x, n = 3))
-
-# For new code, prefer the explicit helpers:
-table(fct_lump_n(x, n = 3))
-
-}
-\seealso{
-\code{\link[=fct_other]{fct_other()}} to convert specified levels to other.
-
-\code{\link[=fct_lump_min]{fct_lump_min()}}, \code{\link[=fct_lump_prop]{fct_lump_prop()}}, \code{\link[=fct_lump_n]{fct_lump_n()}},
-\code{\link[=fct_lump_lowfreq]{fct_lump_lowfreq()}}
 }

@@ -12,8 +12,8 @@ fct_collapse(.f, ..., other_level = NULL, group_other = "DEPRECATED")
 \item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> A series of named character vectors. The levels in
 each vector will be replaced with the name.}
 
-\item{other_level}{Value of the level used for "other" values. Always
-placed at the end of the levels.}
+\item{other_level}{Value of level used for "other" values. Always
+placed at end of levels.}
 
 \item{group_other}{Deprecated. Replace all levels not named in \code{...} with "Other"?}
 }
