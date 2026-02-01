@@ -13,6 +13,7 @@
 #' [fct_lump_lowfreq()].
 #'
 #' @inheritParams fct_lump_min
+#' @keywords internal
 #' @examples
 #' x <- factor(letters[rpois(100, 5)])
 #' table(x)

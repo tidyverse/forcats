@@ -50,3 +50,4 @@ x <- factor(letters[rpois(100, 5)])
 table(x)
 table(fct_lump(x, n = 3))
 }
+\keyword{internal}
