@@ -59,21 +59,11 @@ test_that("fct_reorder() validates its inputs", {
 
 test_that("can reorder by 2d summary", {
   df <- tibble::tribble(
-    ~g,
-    ~x,
-    ~y,
-    "a",
-    1,
-    10,
-    "a",
-    2,
-    5,
-    "b",
-    1,
-    5,
-    "b",
-    2,
-    10
+    ~g  , ~x , ~y ,
+    "a" ,  1 , 10 ,
+    "a" ,  2 ,  5 ,
+    "b" ,  1 ,  5 ,
+    "b" ,  2 , 10
   )
 
   f1 <- fct_reorder2(df$g, df$x, df$y)
@@ -108,15 +98,15 @@ test_that("can control the placement of empty levels", {
 
 test_that("missing groups appear at end by default", {
   df <- tibble::tribble(
-    ~g,
-    ~x,
-    ~y,
-    "a",
-    NA,
-    NA,
-    "b",
-    1,
-    10,
+    ~g  ,
+    ~x  ,
+    ~y  ,
+    "a" ,
+    NA  ,
+    NA  ,
+    "b" ,
+      1 ,
+     10 ,
   )
 
   f1 <- fct_reorder2(df$g, df$x, df$y, .na_rm = TRUE)
