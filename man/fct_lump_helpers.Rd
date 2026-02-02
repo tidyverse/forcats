@@ -45,7 +45,7 @@ If there are ties, you will get at least \code{abs(n)} values.}
 treated. See \code{\link[=rank]{rank()}} for details.}
 }
 \description{
-A family for lumping together levels that meet some criteria.
+A family of functions to lump together levels based on different criteria:
 \itemize{
 \item \code{fct_lump_min()}: lumps levels that appear fewer than \code{min} times.
 \item \code{fct_lump_prop()}: lumps levels that appear in fewer than (or equal to)

@@ -47,7 +47,8 @@ fct_lump <- function(
 #' Lump uncommon factor levels together into "other"
 #'
 #' @description
-#' A family for lumping together levels that meet some criteria.
+#' A family of functions to lump together levels based on different criteria:
+#'
 #' * `fct_lump_min()`: lumps levels that appear fewer than `min` times.
 #' * `fct_lump_prop()`: lumps levels that appear in fewer than (or equal to)
 #'   `prop * n` times.
