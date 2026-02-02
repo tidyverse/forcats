@@ -1,9 +1,9 @@
 #' Test for presence of levels in a factor
 #'
-#' Do any of `lvls` occur in `f`? Compared to [%in%], this function validates
-#' `lvls` to ensure that they're actually present in `f`. In other words,
-#' `x %in% "not present"` will return `FALSE`, but `fct_match(x, "not present")`
-#' will throw an error.
+#' Do any of `lvls` occur in `f`? Compared to [`%in%`][base::%in%], this
+#' function validates `lvls` to ensure that they're actually present in `f`.
+#' In other words, `x %in% "not present"` will return `FALSE`, but
+#' `fct_match(x, "not present")` will throw an error.
 #'
 #' @rdname fct_match
 #' @param f A factor (or character vector).
