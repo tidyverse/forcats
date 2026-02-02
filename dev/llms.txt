@@ -1,0 +1,228 @@
+# forcats
+
+## Overview
+
+R uses **factors** to handle categorical variables, variables that have
+a fixed and known set of possible values. Factors are also helpful for
+reordering character vectors to improve display. The goal of the forcats
+package is to provide a suite of tools that solve common problems with
+factors, including changing the order of levels or the values. Some
+examples include:
+
+- [`fct_reorder()`](https://forcats.tidyverse.org/dev/reference/fct_reorder.md):
+  Reordering a factor by another variable.
+- [`fct_infreq()`](https://forcats.tidyverse.org/dev/reference/fct_inorder.md):
+  Reordering a factor by the frequency of values.
+- [`fct_relevel()`](https://forcats.tidyverse.org/dev/reference/fct_relevel.md):
+  Changing the order of a factor by hand.
+- [`fct_lump()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md):
+  Collapsing the least/most frequent values of a factor into “other”.
+
+You can learn more about each of these in
+[`vignette("forcats")`](https://forcats.tidyverse.org/dev/articles/forcats.md).
+If you’re new to factors, the best place to start is the [chapter on
+factors](https://r4ds.hadley.nz/factors.html) in R for Data Science.
+
+## Installation
+
+``` R
+# The easiest way to get forcats is to install the whole tidyverse:
+install.packages("tidyverse")
+
+# Alternatively, install just forcats:
+install.packages("forcats")
+
+# Or the the development version from GitHub:
+# install.packages("pak")
+pak::pak("tidyverse/forcats")
+```
+
+## Cheatsheet
+
+[![](https://github.com/rstudio/cheatsheets/raw/main/pngs/thumbnails/forcats-cheatsheet-thumbs.png)](https://raw.githubusercontent.com/rstudio/cheatsheets/main/factors.pdf)
+
+## Getting started
+
+forcats is part of the core tidyverse, so you can load it with
+[`library(tidyverse)`](https://tidyverse.tidyverse.org) or
+[`library(forcats)`](https://forcats.tidyverse.org/).
+
+``` r
+library(forcats)
+library(dplyr)
+library(ggplot2)
+```
+
+``` r
+starwars |> 
+  filter(!is.na(species)) |>
+  count(species, sort = TRUE)
+#> # A tibble: 37 × 2
+#>    species      n
+#>    <chr>    <int>
+#>  1 Human       35
+#>  2 Droid        6
+#>  3 Gungan       3
+#>  4 Kaminoan     2
+#>  5 Mirialan     2
+#>  6 Twi'lek      2
+#>  7 Wookiee      2
+#>  8 Zabrak       2
+#>  9 Aleena       1
+#> 10 Besalisk     1
+#> # ℹ 27 more rows
+```
+
+``` r
+starwars |>
+  filter(!is.na(species)) |>
+  mutate(species = fct_lump(species, n = 3)) |>
+  count(species)
+#> # A tibble: 4 × 2
+#>   species     n
+#>   <fct>   <int>
+#> 1 Droid       6
+#> 2 Gungan      3
+#> 3 Human      35
+#> 4 Other      39
+```
+
+``` r
+ggplot(starwars, aes(x = eye_color)) + 
+  geom_bar() + 
+  coord_flip()
+```
+
+![](reference/figures/README-unordered-plot-1.png)
+
+``` r
+starwars |>
+  mutate(eye_color = fct_infreq(eye_color)) |>
+  ggplot(aes(x = eye_color)) + 
+  geom_bar() + 
+  coord_flip()
+```
+
+![](reference/figures/README-ordered-plot-1.png)
+
+## More resources
+
+For a history of factors, I recommend [*stringsAsFactors: An
+unauthorized
+biography*](https://simplystats.github.io/2015/07/24/stringsasfactors-an-unauthorized-biography/)
+by Roger Peng and [*stringsAsFactors =
+\<sigh\>*](https://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh)
+by Thomas Lumley. If you want to learn more about other approaches to
+working with factors and categorical data, I recommend [*Wrangling
+categorical data in R*](https://peerj.com/preprints/3163/), by Amelia
+McNamara and Nicholas Horton.
+
+## Getting help
+
+If you encounter a clear bug, please file a minimal reproducible example
+on [Github](https://github.com/tidyverse/forcats/issues). For questions
+and other discussion, please use <https://forum.posit.co/>.
+
+# Package index
+
+## Change order of levels
+
+Keep the values of the levels the same, but change their order. These
+are particularly useful for models, tables, and visualisations.
+
+- [`fct_relevel()`](https://forcats.tidyverse.org/dev/reference/fct_relevel.md)
+  : Reorder factor levels by hand
+- [`fct_inorder()`](https://forcats.tidyverse.org/dev/reference/fct_inorder.md)
+  [`fct_infreq()`](https://forcats.tidyverse.org/dev/reference/fct_inorder.md)
+  [`fct_inseq()`](https://forcats.tidyverse.org/dev/reference/fct_inorder.md)
+  : Reorder factor levels by first appearance, frequency, or numeric
+  order
+- [`fct_reorder()`](https://forcats.tidyverse.org/dev/reference/fct_reorder.md)
+  [`fct_reorder2()`](https://forcats.tidyverse.org/dev/reference/fct_reorder.md)
+  [`last2()`](https://forcats.tidyverse.org/dev/reference/fct_reorder.md)
+  [`first2()`](https://forcats.tidyverse.org/dev/reference/fct_reorder.md)
+  : Reorder factor levels by sorting along another variable
+- [`fct_shuffle()`](https://forcats.tidyverse.org/dev/reference/fct_shuffle.md)
+  : Randomly permute factor levels
+- [`fct_rev()`](https://forcats.tidyverse.org/dev/reference/fct_rev.md)
+  : Reverse order of factor levels
+- [`fct_shift()`](https://forcats.tidyverse.org/dev/reference/fct_shift.md)
+  : Shift factor levels to left or right, wrapping around at end
+
+## Change value of levels
+
+Change factor levels, while preserving order (as much as possible).
+
+- [`fct_anon()`](https://forcats.tidyverse.org/dev/reference/fct_anon.md)
+  : Anonymise factor levels
+- [`fct_collapse()`](https://forcats.tidyverse.org/dev/reference/fct_collapse.md)
+  : Collapse factor levels into manually defined groups
+- [`fct_lump()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
+  [`fct_lump_min()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
+  [`fct_lump_prop()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
+  [`fct_lump_n()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
+  [`fct_lump_lowfreq()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
+  : Lump uncommon factor levels together into "other"
+- [`fct_other()`](https://forcats.tidyverse.org/dev/reference/fct_other.md)
+  : Manually replace levels with "other"
+- [`fct_recode()`](https://forcats.tidyverse.org/dev/reference/fct_recode.md)
+  : Change factor levels by hand
+- [`fct_relabel()`](https://forcats.tidyverse.org/dev/reference/fct_relabel.md)
+  : Relabel factor levels with a function, collapsing as necessary
+
+## Add/remove levels
+
+Leave existing data as is, but add or remove levels.
+
+- [`fct_expand()`](https://forcats.tidyverse.org/dev/reference/fct_expand.md)
+  : Add additional levels to a factor
+
+- [`fct_drop()`](https://forcats.tidyverse.org/dev/reference/fct_drop.md)
+  : Drop unused levels
+
+- [`fct_na_value_to_level()`](https://forcats.tidyverse.org/dev/reference/fct_na_value_to_level.md)
+  [`fct_na_level_to_value()`](https://forcats.tidyverse.org/dev/reference/fct_na_value_to_level.md)
+  :
+
+  Convert between `NA` values and `NA` levels
+
+- [`fct_unify()`](https://forcats.tidyverse.org/dev/reference/fct_unify.md)
+  : Unify the levels in a list of factors
+
+## Combine multiple factors
+
+- [`fct_c()`](https://forcats.tidyverse.org/dev/reference/fct_c.md) :
+  Concatenate factors, combining levels
+- [`fct_cross()`](https://forcats.tidyverse.org/dev/reference/fct_cross.md)
+  : Combine levels from two or more factors to create a new factor
+
+## Other helpers
+
+- [`fct()`](https://forcats.tidyverse.org/dev/reference/fct.md) : Create
+  a factor
+- [`as_factor()`](https://forcats.tidyverse.org/dev/reference/as_factor.md)
+  : Convert input to a factor
+- [`fct_count()`](https://forcats.tidyverse.org/dev/reference/fct_count.md)
+  : Count entries in a factor
+- [`fct_match()`](https://forcats.tidyverse.org/dev/reference/fct_match.md)
+  : Test for presence of levels in a factor
+- [`fct_unique()`](https://forcats.tidyverse.org/dev/reference/fct_unique.md)
+  : Unique values of a factor, as a factor
+- [`lvls_reorder()`](https://forcats.tidyverse.org/dev/reference/lvls.md)
+  [`lvls_revalue()`](https://forcats.tidyverse.org/dev/reference/lvls.md)
+  [`lvls_expand()`](https://forcats.tidyverse.org/dev/reference/lvls.md)
+  : Low-level functions for manipulating levels
+- [`lvls_union()`](https://forcats.tidyverse.org/dev/reference/lvls_union.md)
+  : Find all levels in a list of factors
+
+## Data
+
+- [`gss_cat`](https://forcats.tidyverse.org/dev/reference/gss_cat.md) :
+  A sample of categorical variables from the General Social survey
+
+# Articles
+
+### All vignettes
+
+- [Introduction to
+  forcats](https://forcats.tidyverse.org/dev/articles/forcats.md):

@@ -19,7 +19,7 @@
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to forcats">
 <meta name="robots" content="noindex">
-<script defer data-domain="forcats.tidyverse.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-max-height="43" data-light-bg="#666f76" data-light-fg="#f9f9f9"></script><script defer data-domain="forcats.tidyverse.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
     <a href="#container" class="visually-hidden-focusable">Skip to content</a>
@@ -103,7 +103,7 @@ plot:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">starwars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">hair_color</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="forcats_files/figure-html/initial-plot-1.png" alt="A bar chart of hair color of starwars characters. The bars are alphabetically ordered, making it hard to see general patterns." width="700"></p>
+<p><img src="forcats_files/figure-html/initial-plot-1.png" class="r-plt" alt="A bar chart of hair color of starwars characters. The bars are alphabetically ordered, making it hard to see general patterns." width="700"></p>
 <p>That’s okay, but it would be more helpful the graph was ordered by
 count. This is a case of an <strong>unordered</strong> categorical
 variable where we want it ordered by its frequency. To do so, we can use
@@ -111,7 +111,7 @@ the function <code><a href="../reference/fct_inorder.html">fct_infreq()</a></cod
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">starwars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="../reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="va">hair_color</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="forcats_files/figure-html/fct-infreq-hair-1.png" alt="The bar chart of hair color, now ordered so that the least frequent colours come first and the most frequent colors come last. This makes it easy to see that the most common hair color is none  (~35), followed by brown (~18), then black (~12). Surprisingly, NAs are at the top of the graph, even though there are ~5 NAs and  other colors have smaller values." width="700"></p>
+<p><img src="forcats_files/figure-html/fct-infreq-hair-1.png" class="r-plt" alt="The bar chart of hair color, now ordered so that the least frequent colours come first and the most frequent colors come last. This makes it easy to see that the most common hair color is none  (~35), followed by brown (~18), then black (~12). Surprisingly, NAs are at the top of the graph, even though there are ~5 NAs and  other colors have smaller values." width="700"></p>
 <p>Note that <code><a href="../reference/fct_inorder.html">fct_infreq()</a></code> it automatically puts NA at the
 top, even though that doesn’t have the smallest number of entries.</p>
 <p>It’s a little surprising that the <code>NA</code> bar isn’t ordered
@@ -162,7 +162,7 @@ expect:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">starwars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="../reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="fu"><a href="../reference/fct_na_value_to_level.html">fct_na_value_to_level</a></span><span class="op">(</span><span class="va">hair_color</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Hair color"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="forcats_files/figure-html/unnamed-chunk-4-1.png" alt="The bar chart of hair color, now ordered so that NAs are  ordered where you'd expect: in between white (4) and black (12)." width="700"></p>
+<p><img src="forcats_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" alt="The bar chart of hair color, now ordered so that NAs are  ordered where you'd expect: in between white (4) and black (12)." width="700"></p>
 <p>(If you need the opposite operation, you can use
 <code><a href="../reference/fct_na_value_to_level.html">fct_na_level_to_value()</a></code>.)</p>
 </div>
@@ -265,7 +265,7 @@ was ordered by <code>mean_mass</code>. We can do this with
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>eye_color <span class="op">=</span> <span class="fu"><a href="../reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">eye_color</span>, <span class="va">mean_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">eye_color</span>, y <span class="op">=</span> <span class="va">mean_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="forcats_files/figure-html/fct-reorder-1.png" alt="A column chart with eye color on the x-axis and mean mass on the  y-axis. The bars are ordered by mean_mass, so that the tallest bar (orange eye color with mean mass of ~275) is at the far right." width="700"></p>
+<p><img src="forcats_files/figure-html/fct-reorder-1.png" class="r-plt" alt="A column chart with eye color on the x-axis and mean mass on the  y-axis. The bars are ordered by mean_mass, so that the tallest bar (orange eye color with mean mass of ~275) is at the far right." width="700"></p>
 </div>
 <div class="section level2">
 <h2 id="manually-reordering">Manually reordering<a class="anchor" aria-label="anchor" href="#manually-reordering"></a>
@@ -367,7 +367,7 @@ move it to the end, you set <code>after</code> equal to
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
   </div></footer>
