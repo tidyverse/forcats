@@ -19,7 +19,7 @@ fct_inseq(f, ordered = NA)
 output factor. \code{NA} preserves the existing status of the factor.}
 
 \item{w}{An optional numeric vector giving weights for frequency of
-each value (not level) in f.}
+each value (not level) in \code{f}.}
 }
 \description{
 This family of functions changes only the order of the levels.

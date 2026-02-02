@@ -37,7 +37,7 @@ reference:
   contents:
   - fct_anon
   - fct_collapse
-  - fct_lump
+  - fct_lump_min
   - fct_other
   - fct_recode
   - fct_relabel
