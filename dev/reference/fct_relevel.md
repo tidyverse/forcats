@@ -64,7 +64,7 @@ fct_relevel(f, sort)
 #> Levels: a b c d
 fct_relevel(f, sample)
 #> [1] a b c d
-#> Levels: d b a c
+#> Levels: b a d c
 fct_relevel(f, rev)
 #> [1] a b c d
 #> Levels: a d c b

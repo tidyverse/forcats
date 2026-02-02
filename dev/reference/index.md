@@ -32,11 +32,10 @@ Change factor levels, while preserving order (as much as possible).
   : Anonymise factor levels
 - [`fct_collapse()`](https://forcats.tidyverse.org/dev/reference/fct_collapse.md)
   : Collapse factor levels into manually defined groups
-- [`fct_lump()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
-  [`fct_lump_min()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
-  [`fct_lump_prop()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
-  [`fct_lump_n()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
-  [`fct_lump_lowfreq()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
+- [`fct_lump_min()`](https://forcats.tidyverse.org/dev/reference/fct_lump_helpers.md)
+  [`fct_lump_prop()`](https://forcats.tidyverse.org/dev/reference/fct_lump_helpers.md)
+  [`fct_lump_n()`](https://forcats.tidyverse.org/dev/reference/fct_lump_helpers.md)
+  [`fct_lump_lowfreq()`](https://forcats.tidyverse.org/dev/reference/fct_lump_helpers.md)
   : Lump uncommon factor levels together into "other"
 - [`fct_other()`](https://forcats.tidyverse.org/dev/reference/fct_other.md)
   : Manually replace levels with "other"

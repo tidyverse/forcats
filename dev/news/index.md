@@ -13,7 +13,7 @@ CRAN release: 2025-09-25
 - Functions that create a new factor
   (e.g. [`lvls_expand()`](https://forcats.tidyverse.org/dev/reference/lvls.md),
   [`lvls_reorder()`](https://forcats.tidyverse.org/dev/reference/lvls.md),
-  [`fct_lump_n()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md),
+  [`fct_lump_n()`](https://forcats.tidyverse.org/dev/reference/fct_lump_helpers.md),
   [`fct_drop()`](https://forcats.tidyverse.org/dev/reference/fct_drop.md))
   now preserves the class of the original object in addition to the
   attributes ([\#83](https://github.com/tidyverse/forcats/issues/83)).
@@ -60,13 +60,13 @@ CRAN release: 2023-01-29
   now works when not all levels appear in the data
   ([\#262](https://github.com/tidyverse/forcats/issues/262)).
 
-- [`fct_lump_prop()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
+- [`fct_lump_prop()`](https://forcats.tidyverse.org/dev/reference/fct_lump_helpers.md)
   and friends now work correctly if you supply weights and have empty
   levels ([\#292](https://github.com/tidyverse/forcats/issues/292)).
 
-- [`fct_lump_n()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
+- [`fct_lump_n()`](https://forcats.tidyverse.org/dev/reference/fct_lump_helpers.md)
   and
-  [`fct_lump_prop()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
+  [`fct_lump_prop()`](https://forcats.tidyverse.org/dev/reference/fct_lump_helpers.md)
   will now create an “Other” level even if it only consists of a single
   level. This makes them consistent with the other `fct_lump_*`
   functions ([\#274](https://github.com/tidyverse/forcats/issues/274)).
@@ -127,7 +127,7 @@ CRAN release: 2021-01-27
 - Re-license as MIT
   ([\#277](https://github.com/tidyverse/forcats/issues/277)).
 
-- [`fct_lump_n()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
+- [`fct_lump_n()`](https://forcats.tidyverse.org/dev/reference/fct_lump_helpers.md)
   no longer uses a partial argument name
   ([@malcolmbarrett](https://github.com/malcolmbarrett),
   [\#276](https://github.com/tidyverse/forcats/issues/276)).
@@ -172,10 +172,10 @@ CRAN release: 2020-03-01
 
 - [`fct_lump()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
   has been split up into three new functions:
-  [`fct_lump_prop()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md),
-  [`fct_lump_n()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md),
+  [`fct_lump_prop()`](https://forcats.tidyverse.org/dev/reference/fct_lump_helpers.md),
+  [`fct_lump_n()`](https://forcats.tidyverse.org/dev/reference/fct_lump_helpers.md),
   and
-  [`fct_lump_lowfreq()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md).
+  [`fct_lump_lowfreq()`](https://forcats.tidyverse.org/dev/reference/fct_lump_helpers.md).
   ([@jonocarroll](https://github.com/jonocarroll),
   [\#167](https://github.com/tidyverse/forcats/issues/167),
   [\#142](https://github.com/tidyverse/forcats/issues/142)). All
@@ -213,7 +213,7 @@ CRAN release: 2019-02-17
   ([\#145](https://github.com/tidyverse/forcats/issues/145),
   [@kbodwin](https://github.com/kbodwin)).
 
-- [`fct_lump_min()`](https://forcats.tidyverse.org/dev/reference/fct_lump.md)
+- [`fct_lump_min()`](https://forcats.tidyverse.org/dev/reference/fct_lump_helpers.md)
   preserves levels that appear at least `min` times (can also be used
   with the `w` weighted argument)
   ([@robinsones](https://github.com/robinsones),

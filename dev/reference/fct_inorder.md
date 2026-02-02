@@ -33,7 +33,7 @@ fct_inseq(f, ordered = NA)
 - w:
 
   An optional numeric vector giving weights for frequency of each value
-  (not level) in f.
+  (not level) in `f`.
 
 ## Examples
 
