@@ -79,6 +79,11 @@
     Condition
       Error in `fct_infreq()`:
       ! `ordered` must be `TRUE`, `FALSE`, or `NA`, not the number 1.
+    Code
+      fct_infreq(f, desc = 1)
+    Condition
+      Error in `fct_infreq()`:
+      ! `desc` must be `TRUE` or `FALSE`, not the number 1.
 
 # fct_inorder() validates its inputs
 

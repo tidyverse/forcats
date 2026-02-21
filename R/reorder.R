@@ -175,17 +175,21 @@ terminal <- function(x, y, desc) {
 #'
 #' This family of functions changes only the order of the levels.
 #' * `fct_inorder()`: by the order in which they first appear.
-#' * `fct_infreq()`: by number of observations with each level (largest first)
+#' * `fct_infreq()`: by number of observations with each level (largest first
+#'   by default; set `desc = FALSE` for smallest first)
 #' * `fct_inseq()`: by numeric value of level.
 #'
 #' @inheritParams lvls_reorder
 #' @param f A factor
+#' @param desc Order in descending frequency? Defaults to `TRUE`;
+#'   set `FALSE` for ascending.
 #' @export
 #' @examples
 #' f <- factor(c("b", "b", "a", "c", "c", "c"))
 #' f
 #' fct_inorder(f)
 #' fct_infreq(f)
+#' fct_infreq(f, desc = FALSE)
 #'
 #' f <- factor(1:3, levels = c("3", "2", "1"))
 #' f
@@ -202,12 +206,13 @@ fct_inorder <- function(f, ordered = NA) {
 #' @export
 #' @rdname fct_inorder
 #' @inheritParams fct_lump
-fct_infreq <- function(f, w = NULL, ordered = NA) {
+fct_infreq <- function(f, w = NULL, ordered = NA, desc = TRUE) {
   f <- check_factor(f)
   w <- compute_weights(f, w)
   check_bool(ordered, allow_na = TRUE)
+  check_bool(desc)
 
-  lvls_reorder(f, order(w, decreasing = TRUE), ordered = ordered)
+  lvls_reorder(f, order(w, decreasing = desc), ordered = ordered)
 }
 
 #' @export
