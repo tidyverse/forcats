@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* `fct_infreq()` gains a `desc` argument to allow ordering in ascending
+  frequency (#365).
+
 # forcats 1.0.1
 
 * `fct_cross()` now varies the levels in the last factor fastest (@Adam-AKong, #373).

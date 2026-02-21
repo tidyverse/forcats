@@ -8,7 +8,7 @@
 \usage{
 fct_inorder(f, ordered = NA)
 
-fct_infreq(f, w = NULL, ordered = NA)
+fct_infreq(f, w = NULL, ordered = NA, desc = TRUE)
 
 fct_inseq(f, ordered = NA)
 }
@@ -20,12 +20,16 @@ output factor. \code{NA} preserves the existing status of the factor.}
 
 \item{w}{An optional numeric vector giving weights for frequency of
 each value (not level) in \code{f}.}
+
+\item{desc}{Order in descending frequency? Defaults to \code{TRUE};
+set \code{FALSE} for ascending.}
 }
 \description{
 This family of functions changes only the order of the levels.
 \itemize{
 \item \code{fct_inorder()}: by the order in which they first appear.
-\item \code{fct_infreq()}: by number of observations with each level (largest first)
+\item \code{fct_infreq()}: by number of observations with each level (largest first
+by default; set \code{desc = FALSE} for smallest first)
 \item \code{fct_inseq()}: by numeric value of level.
 }
 }
@@ -34,6 +38,7 @@ f <- factor(c("b", "b", "a", "c", "c", "c"))
 f
 fct_inorder(f)
 fct_infreq(f)
+fct_infreq(f, desc = FALSE)
 
 f <- factor(1:3, levels = c("3", "2", "1"))
 f

@@ -166,7 +166,14 @@ test_that("fct_infreq() validates its inputs", {
     fct_infreq(f, 1:4)
     fct_infreq(f, "x")
     fct_infreq(f, ordered = 1)
+    fct_infreq(f, desc = 1)
   })
+})
+
+test_that("fct_infreq() can order in ascending frequency", {
+  f <- factor(c("b", "b", "a", "c", "c", "c"))
+  expect_equal(levels(fct_infreq(f)), c("c", "b", "a"))
+  expect_equal(levels(fct_infreq(f, desc = FALSE)), c("a", "b", "c"))
 })
 
 test_that("fct_infreq() preserves empty levels", {
