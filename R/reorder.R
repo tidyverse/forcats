@@ -6,10 +6,10 @@
 #' `last2()` finds the last value of `y` when sorted by `x`; `first2()` finds the first value.
 #'
 #' @param .f A factor (or character vector).
-#' @param .x,.y The levels of `f` are reordered so that the values
-#'    of `.fun(.x)` (for `fct_reorder()`) and `fun(.x, .y)` (for `fct_reorder2()`)
-#'    are in ascending order.
-#' @param .fun n summary function. It should take one vector for
+#' @param .x,.y The levels of `f` are reordered according to the values
+#'    of `.fun(.x)` (for `fct_reorder()`) and `.fun(.x, .y)` (for
+#'    `fct_reorder2()`). The sort direction is controlled by `.desc`.
+#' @param .fun A summary function. It should take one vector for
 #'   `fct_reorder`, and two vectors for `fct_reorder2`, and return a single
 #'   value.
 #' @param .na_rm Should `fct_reorder()` remove missing values?
