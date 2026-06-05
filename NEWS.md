@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* The `fct_reorder2()` documentation now notes that `.desc` controls the sort
+  direction (#352).
+
 # forcats 1.0.1
 
 * `fct_cross()` now varies the levels in the last factor fastest (@Adam-AKong, #373).

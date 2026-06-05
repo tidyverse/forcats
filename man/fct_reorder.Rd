@@ -35,11 +35,11 @@ first2(.x, .y)
 \arguments{
 \item{.f}{A factor (or character vector).}
 
-\item{.x, .y}{The levels of \code{f} are reordered so that the values
-of \code{.fun(.x)} (for \code{fct_reorder()}) and \code{fun(.x, .y)} (for \code{fct_reorder2()})
-are in ascending order.}
+\item{.x, .y}{The levels of \code{f} are reordered according to the values
+of \code{.fun(.x)} (for \code{fct_reorder()}) and \code{.fun(.x, .y)} (for
+\code{fct_reorder2()}). The sort direction is controlled by \code{.desc}.}
 
-\item{.fun}{n summary function. It should take one vector for
+\item{.fun}{A summary function. It should take one vector for
 \code{fct_reorder}, and two vectors for \code{fct_reorder2}, and return a single
 value.}
 
