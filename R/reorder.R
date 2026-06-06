@@ -62,6 +62,16 @@ fct_reorder <- function(
 ) {
   f <- check_factor(.f)
   stopifnot(length(f) == length(.x))
+
+  if (missing(.fun) && !is.numeric(.x)) {
+    cli::cli_abort(
+      c(
+        "{.arg .x} must be a numeric vector when using the default {.arg .fun}.",
+        i = "Either supply a numeric {.arg .x} or provide a custom {.arg .fun}."
+      )
+    )
+  }
+
   .fun <- as_function(.fun)
   check_dots_used()
   check_bool(.na_rm, allow_null = TRUE)

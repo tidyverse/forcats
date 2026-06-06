@@ -55,6 +55,33 @@ test_that("fct_reorder() validates its inputs", {
   })
 })
 
+test_that("fct_reorder() errors with character .x and default .fun (#387)", {
+  f <- c("a", "b", "b")
+  x <- c("z", "x", "y")
+
+  expect_snapshot(error = TRUE, {
+    fct_reorder(f, x)
+  })
+})
+
+test_that("fct_reorder() errors with factor .x and default .fun (#387)", {
+  f <- c("a", "b", "b")
+  x <- factor(c("z", "x", "y"))
+
+  expect_snapshot(error = TRUE, {
+    fct_reorder(f, x)
+  })
+})
+
+test_that("fct_reorder() works with character .x and custom .fun (#387)", {
+  f <- c("a", "b", "b")
+  x <- c("z", "x", "y")
+
+  # Should work with a custom function that handles character vectors
+  result <- fct_reorder(f, x, .fun = function(x) x[1])
+  expect_equal(levels(result), c("b", "a"))
+})
+
 # fct_reorder2 ------------------------------------------------------------
 
 test_that("can reorder by 2d summary", {

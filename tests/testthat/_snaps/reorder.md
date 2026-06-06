@@ -39,6 +39,24 @@
       Error in `fct_reorder()`:
       ! `.desc` must be `TRUE` or `FALSE`, not the number 1.
 
+# fct_reorder() errors with character .x and default .fun (#387)
+
+    Code
+      fct_reorder(f, x)
+    Condition
+      Error in `fct_reorder()`:
+      ! `.x` must be a numeric vector when using the default `.fun`.
+      i Either supply a numeric `.x` or provide a custom `.fun`.
+
+# fct_reorder() errors with factor .x and default .fun (#387)
+
+    Code
+      fct_reorder(f, x)
+    Condition
+      Error in `fct_reorder()`:
+      ! `.x` must be a numeric vector when using the default `.fun`.
+      i Either supply a numeric `.x` or provide a custom `.fun`.
+
 # fct_reorder2() automatically removes missing values with a warning
 
     Code
