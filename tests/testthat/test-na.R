@@ -30,6 +30,16 @@ test_that("can turn custom levels into an NA value", {
   )
 })
 
+test_that("does not add level when no NAs present (#347)", {
+  f <- fct(c("a", "b", "c"))
+
+  # With custom level
+  expect_identical(fct_na_value_to_level(f, "x"), f)
+
+  # With default level
+  expect_identical(fct_na_value_to_level(f), f)
+})
+
 test_that("checks input types", {
   f <- fct("a")
   expect_snapshot(error = TRUE, {

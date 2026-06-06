@@ -39,6 +39,10 @@ fct_na_value_to_level <- function(f, level = NA) {
   f <- check_factor(f)
   check_string(level, allow_na = TRUE)
 
+  if (!any(is.na(f))) {
+    return(f)
+  }
+
   f <- fct_expand(f, NA)
   new_levels <- levels(f)
   new_levels[is.na(new_levels)] <- level
