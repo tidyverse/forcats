@@ -24,6 +24,21 @@ test_that("automatically removes missing values with a warning", {
   expect_equal(levels(f3), c("b", "a", "c"))
 })
 
+test_that("fct_reorder() handles NA in .x with character .f (#359)", {
+  f <- c("a", "b", "c")
+  x <- c(1, 2, NA)
+
+  expect_warning(f1 <- fct_reorder(f, x), "removing")
+  expect_equal(levels(f1), c("a", "b"))
+
+  f2 <- fct_reorder(f, x, .na_rm = TRUE)
+  expect_equal(levels(f2), c("a", "b"))
+
+  # Factor input preserves all levels (even unused ones after NA removal)
+  f3 <- fct_reorder(as_factor(f), x, .na_rm = TRUE)
+  expect_equal(levels(f3), c("a", "b", "c"))
+})
+
 test_that("can control the placement of empty levels", {
   f1 <- fct(c("a", "b", "c"), letters[1:4])
   x <- c(1, 2, 3)

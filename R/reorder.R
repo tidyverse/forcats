@@ -81,6 +81,7 @@ fct_reorder <- function(
     if (isTRUE(.na_rm)) {
       .x <- .x[!miss]
       .f <- .f[!miss]
+      f <- check_factor(.f)
     }
   }
 
