@@ -4,7 +4,7 @@
       f2 <- fct_collapse(f1, x1 = c("a", "d"), x2 = "c", group_other = TRUE)
     Condition
       Warning:
-      The `group_other` argument of `fct_collapse()` is deprecated as of forcats 0.5.0.
+      The `group_other` argument of `fct_collapse()` was deprecated in forcats 0.5.0.
       i Please use the `other_level` argument instead.
 
 # valdiates inputs

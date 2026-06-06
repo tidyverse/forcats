@@ -177,6 +177,23 @@ test_that("only have one small other level", {
   expect_equal(levels(fct_lump(f)), c("a", "b", "c", "Other"))
 })
 
+test_that("fct_lump_lowfreq works with unused levels", {
+  f <- factor(c("a", "a", "a", "b"), levels = c("a", "b", "c", "d"))
+  out <- fct_lump_lowfreq(f)
+
+  expect_equal(levels(out), c("a", "Other"))
+  expect_equal(as.character(out), c("a", "a", "a", "Other"))
+})
+
+test_that("fct_lump_lowfreq preserves NA values", {
+  f <- factor(c("a", "a", "a", "b", NA, NA))
+  out <- fct_lump_lowfreq(f)
+
+  expect_true(is.na(out[5]))
+  expect_true(is.na(out[6]))
+  expect_equal(levels(out), c("a", "Other"))
+})
+
 test_that("lumps smallest", {
   lump_test <- function(x) {
     paste(ifelse(in_smallest(x), "X", letters[seq_along(x)]), collapse = "")

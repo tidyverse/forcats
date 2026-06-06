@@ -67,6 +67,33 @@ test_that("group_other is deprecated", {
 })
 
 
+test_that("NA values are preserved when collapsing", {
+  f <- factor(c("a", NA, "b", NA))
+  out <- fct_collapse(f, x = c("a", "b"))
+
+  expect_equal(as.character(out), c("x", NA, "x", NA))
+  expect_equal(levels(out), "x")
+  expect_true(is.na(out[2]))
+  expect_true(is.na(out[4]))
+})
+
+test_that("unused levels are collapsed correctly", {
+  f <- factor(c("a", "b"), levels = c("a", "b", "c", "d"))
+  out <- fct_collapse(f, x = c("a", "c"), y = c("b", "d"))
+
+  expect_equal(levels(out), c("x", "y"))
+  expect_equal(out, factor(c("x", "y"), levels = c("x", "y")))
+})
+
+test_that("can collapse with !!! splice", {
+  mapping <- list(x = c("a", "b"), y = "c")
+  f <- factor(c("a", "b", "c"))
+  out <- fct_collapse(f, !!!mapping)
+
+  expect_equal(levels(out), c("x", "y"))
+  expect_equal(out, factor(c("x", "x", "y"), levels = c("x", "y")))
+})
+
 test_that("valdiates inputs", {
   expect_snapshot(error = TRUE, {
     fct_collapse(1)
