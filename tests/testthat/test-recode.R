@@ -29,6 +29,15 @@ test_that("can just remove levels", {
   expect_equal(fct_recode(f1, NULL = "missing"), f2)
 })
 
+test_that("fct_recode preserves label attribute on character input", {
+  x <- c("a", "b", "c")
+  attr(x, "label") <- "my variable"
+
+  result <- fct_recode(x, d = "c")
+  expect_equal(attr(result, "label"), "my variable")
+  expect_equal(levels(result), c("a", "b", "d"))
+})
+
 
 # check_recode_levels -----------------------------------------------------
 
