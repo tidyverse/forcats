@@ -131,6 +131,25 @@ test_that("missing groups appear at end by default", {
   expect_equal(levels(f2), c("a", "b"))
 })
 
+test_that("fct_reorder2() preserves length when removing NAs (#348)", {
+  f1 <- fct(c("a", "b", "c", "c"))
+  x <- c(1, 1, 1, 2)
+  y <- c(1, 2, 3, NA)
+
+  expect_warning(f2 <- fct_reorder2(f1, x, y), "removing")
+  expect_length(f2, 4)
+
+  f3 <- fct_reorder2(f1, x, y, .na_rm = TRUE)
+  expect_length(f3, 4)
+
+  # Also works when NAs are in .x
+  x2 <- c(1, NA, 1, 2)
+  y2 <- c(1, 2, 3, 4)
+
+  f4 <- fct_reorder2(f1, x2, y2, .na_rm = TRUE)
+  expect_length(f4, 4)
+})
+
 test_that("fct_reorder2() complains if summary doesn't return single value", {
   expect_snapshot(error = TRUE, {
     fct_reorder2("a", 1, 1, function(x, y) c(1, 2))

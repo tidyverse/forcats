@@ -103,6 +103,7 @@ fct_reorder2 <- function(
   .desc = TRUE
 ) {
   .f <- check_factor(.f)
+  f <- .f
   stopifnot(length(.f) == length(.x), length(.x) == length(.y))
   check_dots_used()
   check_bool(.na_rm, allow_null = TRUE)
@@ -134,7 +135,7 @@ fct_reorder2 <- function(
   )
   check_single_value_per_group(summary, ".fun")
 
-  lvls_reorder(.f, order(summary, decreasing = .desc))
+  lvls_reorder(f, order(summary, decreasing = .desc))
 }
 
 check_single_value_per_group <- function(x, fun_arg, call = caller_env()) {
