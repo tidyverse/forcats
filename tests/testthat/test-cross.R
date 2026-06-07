@@ -89,3 +89,50 @@ test_that("varies last values fastest", {
   fcross <- fct_cross(f1, f2)
   expect_equal(levels(fcross), c("a4:b4", "a3:b3", "a2:b2", "a1:b1"))
 })
+
+test_that("explicit NA levels are treated as regular levels", {
+  f1 <- factor(c("a", "b", NA), exclude = NULL)
+  f2 <- factor(c("x", NA, "y"), exclude = NULL)
+  out <- fct_cross(f1, f2)
+
+  expect_setequal(levels(out), c("a:x", "b:NA", "NA:y"))
+  expect_false(any(is.na(out)))
+})
+
+test_that("keep_empty with explicit NA levels generates all combinations", {
+  f1 <- factor(c("a", NA), exclude = NULL)
+  f2 <- factor(c("x", NA), exclude = NULL)
+  out <- fct_cross(f1, f2, keep_empty = TRUE)
+
+  expect_setequal(levels(out), c("a:x", "a:NA", "NA:x", "NA:NA"))
+})
+
+test_that("custom separator works", {
+  f1 <- factor(c("a", "b"))
+  f2 <- factor(c("x", "y"))
+
+  out_dash <- fct_cross(f1, f2, sep = "-", keep_empty = TRUE)
+  expect_setequal(levels(out_dash), c("a-x", "a-y", "b-x", "b-y"))
+
+  out_empty <- fct_cross(f1, f2, sep = "", keep_empty = TRUE)
+  expect_setequal(levels(out_empty), c("ax", "ay", "bx", "by"))
+})
+
+test_that("single-level factors work", {
+  f1 <- factor(c("a", "a"))
+  f2 <- factor(c("x", "x"))
+  out <- fct_cross(f1, f2)
+
+  expect_equal(levels(out), "a:x")
+  expect_equal(as.character(out), c("a:x", "a:x"))
+})
+
+test_that("returns regular factor even with ordered input", {
+  f1 <- ordered(c("low", "high"), levels = c("low", "high"))
+  f2 <- factor(c("x", "y"))
+  out <- fct_cross(f1, f2)
+
+  expect_s3_class(out, "factor")
+  expect_false(is.ordered(out))
+  expect_setequal(levels(out), c("low:x", "high:y"))
+})
