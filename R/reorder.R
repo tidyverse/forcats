@@ -7,9 +7,9 @@
 #'
 #' @param .f A factor (or character vector).
 #' @param .x,.y The levels of `f` are reordered so that the values
-#'    of `.fun(.x)` (for `fct_reorder()`) and `fun(.x, .y)` (for `fct_reorder2()`)
+#'    of `.fun(.x)` (for `fct_reorder()`) and `.fun(.x, .y)` (for `fct_reorder2()`)
 #'    are in ascending order.
-#' @param .fun n summary function. It should take one vector for
+#' @param .fun A summary function. It should take one vector for
 #'   `fct_reorder`, and two vectors for `fct_reorder2`, and return a single
 #'   value.
 #' @param .na_rm Should `fct_reorder()` remove missing values?
