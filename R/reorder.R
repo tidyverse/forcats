@@ -12,8 +12,14 @@
 #' @param .fun n summary function. It should take one vector for
 #'   `fct_reorder`, and two vectors for `fct_reorder2`, and return a single
 #'   value.
-#' @param ... Other arguments passed on to `.fun`. A common argument is
-#'   `na.rm = TRUE`.
+#' @param .na_rm Should `fct_reorder()` remove missing values?
+#'   If `NULL`, the default, will remove missing values with a warning.
+#'   Set to `FALSE` to preserve `NA`s (if your `.fun` already handles them) and
+#'   `TRUE` to remove silently.
+#' @param .default What default value should we use for `.fun` for
+#'   empty levels? Use this to control where empty levels appear in the
+#'   output.
+#' @param ... Other arguments passed on to `.fun`.
 #' @param .desc Order in descending order? Note the default is different
 #'   between `fct_reorder` and `fct_reorder2`, in order to
 #'   match the default ordering of factors in the legend.
@@ -21,55 +27,112 @@
 #' @family Reordering
 #' @export
 #' @examples
-#' df <- tibble::tribble(
-#'   ~color,     ~a, ~b,
-#'   "blue",      1,  2,
-#'   "green",     6,  2,
-#'   "purple",    3,  3,
-#'   "red",       2,  3,
-#'   "yellow",    5,  1
-#' )
-#' df$color <- factor(df$color)
-#' fct_reorder(df$color, df$a, min)
-#' fct_reorder2(df$color, df$a, df$b)
-#'
+#' # fct_reorder() -------------------------------------------------------------
+#' # Useful when a categorical variable is mapped to position
 #' boxplot(Sepal.Width ~ Species, data = iris)
 #' boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width), data = iris)
-#' boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width, .desc = TRUE), data = iris)
+#'
+#' # or with
+#' library(ggplot2)
+#' ggplot(iris, aes(fct_reorder(Species, Sepal.Width), Sepal.Width)) +
+#'   geom_boxplot()
+#'
+#' # fct_reorder2() -------------------------------------------------------------
+#' # Useful when a categorical variable is mapped to color, size, shape etc
 #'
 #' chks <- subset(ChickWeight, as.integer(Chick) < 10)
 #' chks <- transform(chks, Chick = fct_shuffle(Chick))
 #'
-#' if (require("ggplot2")) {
-#'   ggplot(chks, aes(Time, weight, colour = Chick)) +
-#'     geom_point() +
-#'     geom_line()
+#' # Without reordering it's hard to match line to legend
+#' ggplot(chks, aes(Time, weight, colour = Chick)) +
+#'   geom_point() +
+#'   geom_line()
 #'
-#'   # Note that lines match order in legend
-#'   ggplot(chks, aes(Time, weight, colour = fct_reorder2(Chick, Time, weight))) +
-#'     geom_point() +
-#'     geom_line() +
-#'     labs(colour = "Chick")
-#' }
-fct_reorder <- function(.f, .x, .fun = median, ..., .desc = FALSE) {
+#' # With reordering it's much easier
+#' ggplot(chks, aes(Time, weight, colour = fct_reorder2(Chick, Time, weight))) +
+#'   geom_point() +
+#'   geom_line() +
+#'   labs(colour = "Chick")
+fct_reorder <- function(
+  .f,
+  .x,
+  .fun = median,
+  ...,
+  .na_rm = NULL,
+  .default = Inf,
+  .desc = FALSE
+) {
   f <- check_factor(.f)
   stopifnot(length(f) == length(.x))
-  ellipsis::check_dots_used()
+  .fun <- as_function(.fun)
+  check_dots_used()
+  check_bool(.na_rm, allow_null = TRUE)
+  check_bool(.desc)
 
-  summary <- tapply(.x, .f, .fun, ...)
+  miss <- is.na(.x)
+  if (any(miss)) {
+    if (is.null(.na_rm)) {
+      cli::cli_warn(c(
+        "{.fn fct_reorder} removing {sum(miss)} missing value{?s}.",
+        i = "Use {.code .na_rm = TRUE} to silence this message.",
+        i = "Use {.code .na_rm = FALSE} to preserve NAs."
+      ))
+      .na_rm <- TRUE
+    }
+
+    if (isTRUE(.na_rm)) {
+      .x <- .x[!miss]
+      .f <- .f[!miss]
+    }
+  }
+
+  summary <- tapply(.x, .f, function(x) .fun(x, ...), default = .default)
   check_single_value_per_group(summary, ".fun")
-
   lvls_reorder(f, order(summary, decreasing = .desc))
 }
 
 #' @export
 #' @rdname fct_reorder
-fct_reorder2 <- function(.f, .x, .y, .fun = last2, ..., .desc = TRUE) {
-  f <- check_factor(.f)
-  stopifnot(length(f) == length(.x), length(.x) == length(.y))
-  ellipsis::check_dots_used()
+fct_reorder2 <- function(
+  .f,
+  .x,
+  .y,
+  .fun = last2,
+  ...,
+  .na_rm = NULL,
+  .default = -Inf,
+  .desc = TRUE
+) {
+  .f <- check_factor(.f)
+  stopifnot(length(.f) == length(.x), length(.x) == length(.y))
+  check_dots_used()
+  check_bool(.na_rm, allow_null = TRUE)
+  check_bool(.desc)
 
-  summary <- tapply(seq_along(.x), f, function(i) .fun(.x[i], .y[i], ...))
+  miss <- is.na(.x) | is.na(.y)
+  if (any(miss)) {
+    if (is.null(.na_rm)) {
+      cli::cli_warn(c(
+        "{.fn fct_reorder2} removing {sum(miss)} missing value{?s}.",
+        i = "Use {.code .na_rm = TRUE} to silence this message.",
+        i = "Use {.code .na_rm = FALSE} to preserve NAs."
+      ))
+      .na_rm <- TRUE
+    }
+
+    if (isTRUE(.na_rm)) {
+      .x <- .x[!miss]
+      .y <- .y[!miss]
+      .f <- .f[!miss]
+    }
+  }
+
+  summary <- tapply(
+    seq_along(.x),
+    .f,
+    function(i) .fun(.x[i], .y[i], ...),
+    default = .default
+  )
   check_single_value_per_group(summary, ".fun")
 
   lvls_reorder(.f, order(summary, decreasing = .desc))
@@ -99,7 +162,10 @@ check_single_value_per_group <- function(x, fun_arg, call = caller_env()) {
   # This is a bit of a weak test, but should detect the most common case
   # where `.fun` returns multiple values.
   if (is.list(x)) {
-    cli::cli_abort("{.arg {fun_arg}} must return a single value per group", call = call)
+    cli::cli_abort(
+      "{.arg {fun_arg}} must return a single value per group",
+      call = call
+    )
   }
 }
 
@@ -148,27 +214,31 @@ terminal <- function(x, y, desc) {
 #' fct_inseq(f)
 fct_inorder <- function(f, ordered = NA) {
   f <- check_factor(f)
+  check_bool(ordered, allow_na = TRUE)
 
   idx <- as.integer(f)[!duplicated(f)]
-  idx <- idx[!is.na(idx)]
+  idx <- union(idx[!is.na(idx)], lvls_seq(f))
   lvls_reorder(f, idx, ordered = ordered)
 }
 
 #' @export
 #' @rdname fct_inorder
-fct_infreq <- function(f, ordered = NA) {
+#' @inheritParams fct_lump
+fct_infreq <- function(f, w = NULL, ordered = NA) {
   f <- check_factor(f)
+  w <- compute_weights(f, w)
+  check_bool(ordered, allow_na = TRUE)
 
-  lvls_reorder(f, order(table(f), decreasing = TRUE), ordered = ordered)
+  lvls_reorder(f, order(w, decreasing = TRUE), ordered = ordered)
 }
 
 #' @export
 #' @rdname fct_inorder
 fct_inseq <- function(f, ordered = NA) {
   f <- check_factor(f)
+  check_bool(ordered, allow_na = TRUE)
 
   num_levels <- suppressWarnings(as.numeric(levels(f)))
-
   if (all(is.na(num_levels))) {
     cli::cli_abort("At least one existing level must be coercible to numeric.")
   }

@@ -34,3 +34,8 @@ test_that("function must return character vector", {
   f <- factor(c("a", "b"))
   expect_error(fct_relevel(f, ~1), "character vector")
 })
+
+test_that("dots must be unnamed", {
+  f <- fct(c("a", "b", "c"))
+  expect_snapshot(fct_relevel(f, a = "b"), error = TRUE)
+})

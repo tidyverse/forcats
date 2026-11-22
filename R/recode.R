@@ -35,6 +35,10 @@ fct_recode <- function(.f, ...) {
     new_levels <- new_levels[!nulls]
   }
 
+  lvls_revalue(f, lvls_rename(f, new_levels))
+}
+
+lvls_rename <- function(f, new_levels) {
   # Match old levels with new levels
   old_levels <- levels(f)
   idx <- match(new_levels, old_levels)
@@ -42,15 +46,18 @@ fct_recode <- function(.f, ...) {
   # Handle levels that don't exist
   if (any(is.na(idx))) {
     bad <- new_levels[is.na(idx)]
-    warning("Unknown levels in `f`: ", paste(bad, collapse = ", "), call. = FALSE)
+    warning(
+      "Unknown levels in `f`: ",
+      paste(bad, collapse = ", "),
+      call. = FALSE
+    )
 
     new_levels <- new_levels[!is.na(idx)]
     idx <- idx[!is.na(idx)]
   }
 
   old_levels[idx] <- names(new_levels)
-
-  lvls_revalue(f, old_levels)
+  old_levels
 }
 
 check_recode_levels <- function(..., call = caller_env()) {
@@ -64,10 +71,13 @@ check_recode_levels <- function(..., call = caller_env()) {
     indx[indx == ""] <- seq_along(levels)[indx == ""]
     problems <- indx[!ok]
 
-    cli::cli_abort(c(
-      "Each element of {.arg ...} must be a named string.",
-      i = "Problems with {length(problems)} argument{?s}: {problems}"
-    ), call = call)
+    cli::cli_abort(
+      c(
+        "Each element of {.arg ...} must be a named string.",
+        i = "Problems with {length(problems)} argument{?s}: {problems}"
+      ),
+      call = call
+    )
   }
 
   unlist(levels)

@@ -21,9 +21,7 @@ test_that("checks input types", {
 })
 
 test_that("clear error if levels are incomplete", {
-  expect_snapshot(error = TRUE,
-    fct(c("x", "y", "z"), c("x", "y"))
-  )
+  expect_snapshot(error = TRUE, fct(c("x", "y", "z"), c("x", "y")))
 })
 
 test_that("can covert values to implicit or explcit NA", {

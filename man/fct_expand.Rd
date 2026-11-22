@@ -4,13 +4,15 @@
 \alias{fct_expand}
 \title{Add additional levels to a factor}
 \usage{
-fct_expand(f, ...)
+fct_expand(f, ..., after = Inf)
 }
 \arguments{
 \item{f}{A factor (or character vector).}
 
-\item{...}{Additional levels to add to the factor.  Levels that already
+\item{...}{Additional levels to add to the factor. Levels that already
 exist will be silently ignored.}
+
+\item{after}{Where should the new values be placed?}
 }
 \description{
 Add additional levels to a factor
@@ -20,6 +22,7 @@ f <- factor(sample(letters[1:3], 20, replace = TRUE))
 f
 fct_expand(f, "d", "e", "f")
 fct_expand(f, letters[1:6])
+fct_expand(f, "Z", after = 0)
 }
 \seealso{
 \code{\link[=fct_drop]{fct_drop()}} to drop unused factor levels.

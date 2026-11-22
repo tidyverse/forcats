@@ -13,7 +13,7 @@
       lvls_revalue(f1, 1:5)
     Condition
       Error in `lvls_revalue()`:
-      ! `new_levels` must be a character vector
+      ! `new_levels` must be a character vector, not an integer vector.
     Code
       lvls_revalue(f1, c("a", "b", "c"))
     Condition

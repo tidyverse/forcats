@@ -27,7 +27,7 @@
 #' as_factor(z)
 #' as.factor(z)
 as_factor <- function(x, ...) {
-  ellipsis::check_dots_used()
+  check_dots_used()
   UseMethod("as_factor")
 }
 

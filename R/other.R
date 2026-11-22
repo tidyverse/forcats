@@ -1,4 +1,4 @@
-#' Replace levels with "other"
+#' Manually replace levels with "other"
 #'
 #' @inheritParams fct_lump
 #' @param keep,drop Pick one of `keep` and `drop`:
@@ -17,14 +17,25 @@
 fct_other <- function(f, keep, drop, other_level = "Other") {
   f <- check_factor(f)
   check_exclusive(keep, drop)
+  check_string(other_level, allow_na = TRUE)
 
-  levels <- levels(f)
   if (!missing(keep)) {
-    levels[!levels %in% keep] <- other_level
+    check_character(keep)
+    lvls_other(f, levels(f) %in% keep, other_level)
   } else {
-    levels[levels %in% drop] <- other_level
+    check_character(drop)
+    lvls_other(f, !levels(f) %in% drop, other_level)
   }
+}
 
-  f <- lvls_revalue(f, levels)
-  fct_relevel(f, other_level, after = Inf)
+# Replace specified levels (if any), with other.
+# @param keep A logical vector the same length as `levels(f)`
+lvls_other <- function(f, keep, other_level = "Other") {
+  if (all(keep)) {
+    f
+  } else {
+    new_levels <- ifelse(keep, levels(f), other_level)
+    f <- lvls_revalue(f, new_levels)
+    fct_relevel(f, other_level, after = Inf)
+  }
 }

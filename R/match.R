@@ -1,9 +1,9 @@
 #' Test for presence of levels in a factor
 #'
-#' Do any of `lvls` occur in `f`? Compared to [%in%], this function validates
-#' `lvls` to ensure that they're actually present in `f`. In other words,
-#' `x %in% "not present"` will return `FALSE`, but `fct_match(x, "not present")`
-#' will throw an error.
+#' Do any of `lvls` occur in `f`? Compared to [`%in%`][base::%in%], this
+#' function validates `lvls` to ensure that they're actually present in `f`.
+#' In other words, `x %in% "not present"` will return `FALSE`, but
+#' `fct_match(x, "not present")` will throw an error.
 #'
 #' @rdname fct_match
 #' @param f A factor (or character vector).
@@ -18,9 +18,12 @@
 #' \dontrun{
 #' table(fct_match(gss_cat$marital, c("Maried", "Davorced")))
 #' }
-#'
 fct_match <- function(f, lvls) {
   f <- check_factor(f)
+  if (identical(lvls, NA)) {
+    lvls <- NA_character_
+  }
+  check_character(lvls)
 
   bad_lvls <- setdiff(lvls, levels(f))
   bad_lvls <- bad_lvls[!is.na(bad_lvls)]

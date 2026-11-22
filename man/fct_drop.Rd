@@ -4,7 +4,7 @@
 \alias{fct_drop}
 \title{Drop unused levels}
 \usage{
-fct_drop(f, only)
+fct_drop(f, only = NULL)
 }
 \arguments{
 \item{f}{A factor (or character vector).}

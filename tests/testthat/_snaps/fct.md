@@ -4,17 +4,17 @@
       fct(1:3)
     Condition
       Error in `fct()`:
-      ! `x` must be a character vector
+      ! `x` must be a character vector, not an integer vector.
     Code
       fct("x", 1:3)
     Condition
       Error in `fct()`:
-      ! `levels` must be a character vector
+      ! `levels` must be a character vector or `NULL`, not an integer vector.
     Code
       fct("x", "y", na = 1)
     Condition
       Error in `fct()`:
-      ! `na` must be a character vector
+      ! `na` must be a character vector, not the number 1.
 
 # clear error if levels are incomplete
 

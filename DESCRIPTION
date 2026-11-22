@@ -1,9 +1,10 @@
 Package: forcats
 Title: Tools for Working with Categorical Variables (Factors)
-Version: 0.5.2.9000
+Version: 1.0.1.9000
 Authors@R: c(
-    person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
-    person("RStudio", role = c("cph", "fnd"))
+    person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut", "cre")),
+    person("Posit Software, PBC", role = c("cph", "fnd"),
+           comment = c(ROR = "03wc8by49"))
   )
 Description: Helpers for reordering factor levels (including moving
     specified levels to front, ordering by first appearance, reversing,
@@ -14,16 +15,14 @@ License: MIT + file LICENSE
 URL: https://forcats.tidyverse.org/, https://github.com/tidyverse/forcats
 BugReports: https://github.com/tidyverse/forcats/issues
 Depends: 
-    R (>= 3.4)
+    R (>= 4.1)
 Imports: 
-    cli,
-    ellipsis,
+    cli (>= 3.4.0),
     glue,
     lifecycle,
     magrittr,
     rlang (>= 1.0.0),
-    tibble,
-    withr
+    tibble
 Suggests: 
     covr,
     dplyr,
@@ -31,7 +30,8 @@ Suggests:
     knitr,
     readr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    withr
 VignetteBuilder: 
     knitr
 Config/Needs/website: tidyverse/tidytemplate
@@ -39,4 +39,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.3

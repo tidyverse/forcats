@@ -80,3 +80,29 @@ test_that("can change ordered status of output", {
   expect_equal(is.ordered(lvls_reorder(f2, 1:3, ordered = FALSE)), FALSE)
   expect_equal(is.ordered(lvls_reorder(f2, 1:3, ordered = TRUE)), TRUE)
 })
+
+# refactor ------------------------------------------------------------
+
+test_that("preserves attributes", {
+  f1 <- factor(letters[1:3])
+  attr(f1, "foo") <- "bar"
+
+  f2 <- refactor(f1, letters[1:4])
+
+  expect_equal(attr(f1, "foo"), attr(f2, "foo"))
+})
+
+test_that("preserves s3 subclasses", {
+  f1 <- structure(1:3, levels = c("a", "b", "c"), class = c("foo", "factor"))
+  f2 <- refactor(f1, letters[1:4])
+  expect_equal(class(f1), class(f2))
+})
+
+test_that("preserves s3 subclasses when toggling ordered", {
+  f1 <- structure(1:3, levels = c("a", "b", "c"), class = c("foo", "factor"))
+  f2 <- refactor(f1, letters[1:4], ordered = TRUE)
+  expect_equal(class(f2), c("foo", "ordered", "factor"))
+
+  f3 <- refactor(f2, letters[1:3], ordered = FALSE)
+  expect_equal(class(f3), c("foo", "factor"))
+})

@@ -44,6 +44,7 @@
 #' fct_relevel(f, "e")
 fct_relevel <- function(.f, ..., after = 0L) {
   f <- check_factor(.f)
+  check_dots_unnamed()
 
   old_levels <- levels(f)
   if (dots_n(...) == 1L && (is.function(..1) || is_formula(..1))) {
@@ -62,7 +63,11 @@ fct_relevel <- function(.f, ..., after = 0L) {
     first_levels <- intersect(first_levels, old_levels)
   }
 
-  new_levels <- append(setdiff(old_levels, first_levels), first_levels, after = after)
+  new_levels <- append(
+    setdiff(old_levels, first_levels),
+    first_levels,
+    after = after
+  )
 
   lvls_reorder(f, match(new_levels, old_levels))
 }

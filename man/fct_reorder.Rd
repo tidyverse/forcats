@@ -7,9 +7,26 @@
 \alias{first2}
 \title{Reorder factor levels by sorting along another variable}
 \usage{
-fct_reorder(.f, .x, .fun = median, ..., .desc = FALSE)
+fct_reorder(
+  .f,
+  .x,
+  .fun = median,
+  ...,
+  .na_rm = NULL,
+  .default = Inf,
+  .desc = FALSE
+)
 
-fct_reorder2(.f, .x, .y, .fun = last2, ..., .desc = TRUE)
+fct_reorder2(
+  .f,
+  .x,
+  .y,
+  .fun = last2,
+  ...,
+  .na_rm = NULL,
+  .default = -Inf,
+  .desc = TRUE
+)
 
 last2(.x, .y)
 
@@ -26,8 +43,16 @@ are in ascending order.}
 \code{fct_reorder}, and two vectors for \code{fct_reorder2}, and return a single
 value.}
 
-\item{...}{Other arguments passed on to \code{.fun}. A common argument is
-\code{na.rm = TRUE}.}
+\item{...}{Other arguments passed on to \code{.fun}.}
+
+\item{.na_rm}{Should \code{fct_reorder()} remove missing values?
+If \code{NULL}, the default, will remove missing values with a warning.
+Set to \code{FALSE} to preserve \code{NA}s (if your \code{.fun} already handles them) and
+\code{TRUE} to remove silently.}
+
+\item{.default}{What default value should we use for \code{.fun} for
+empty levels? Use this to control where empty levels appear in the
+output.}
 
 \item{.desc}{Order in descending order? Note the default is different
 between \code{fct_reorder} and \code{fct_reorder2}, in order to
@@ -40,36 +65,32 @@ a non-position aesthetic. \code{last2()} and \code{first2()} are helpers for \co
 \code{last2()} finds the last value of \code{y} when sorted by \code{x}; \code{first2()} finds the first value.
 }
 \examples{
-df <- tibble::tribble(
-  ~color,     ~a, ~b,
-  "blue",      1,  2,
-  "green",     6,  2,
-  "purple",    3,  3,
-  "red",       2,  3,
-  "yellow",    5,  1
-)
-df$color <- factor(df$color)
-fct_reorder(df$color, df$a, min)
-fct_reorder2(df$color, df$a, df$b)
-
+# fct_reorder() -------------------------------------------------------------
+# Useful when a categorical variable is mapped to position
 boxplot(Sepal.Width ~ Species, data = iris)
 boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width), data = iris)
-boxplot(Sepal.Width ~ fct_reorder(Species, Sepal.Width, .desc = TRUE), data = iris)
+
+# or with
+library(ggplot2)
+ggplot(iris, aes(fct_reorder(Species, Sepal.Width), Sepal.Width)) +
+  geom_boxplot()
+
+# fct_reorder2() -------------------------------------------------------------
+# Useful when a categorical variable is mapped to color, size, shape etc
 
 chks <- subset(ChickWeight, as.integer(Chick) < 10)
 chks <- transform(chks, Chick = fct_shuffle(Chick))
 
-if (require("ggplot2")) {
-  ggplot(chks, aes(Time, weight, colour = Chick)) +
-    geom_point() +
-    geom_line()
+# Without reordering it's hard to match line to legend
+ggplot(chks, aes(Time, weight, colour = Chick)) +
+  geom_point() +
+  geom_line()
 
-  # Note that lines match order in legend
-  ggplot(chks, aes(Time, weight, colour = fct_reorder2(Chick, Time, weight))) +
-    geom_point() +
-    geom_line() +
-    labs(colour = "Chick")
-}
+# With reordering it's much easier
+ggplot(chks, aes(Time, weight, colour = fct_reorder2(Chick, Time, weight))) +
+  geom_point() +
+  geom_line() +
+  labs(colour = "Chick")
 }
 \seealso{
 Other Reordering: 

@@ -13,15 +13,27 @@ fct_explicit_na(f, na_level = "(Missing)")
 changed to.}
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+This function is deprecated because the terminology is confusing;
+please use \code{\link[=fct_na_value_to_level]{fct_na_value_to_level()}} instead.
+
 This gives missing values an explicit factor level, ensuring that they
 appear in summaries and on plots.
 }
 \examples{
 f1 <- factor(c("a", "a", NA, NA, "a", "b", NA, "c", "a", "c", "b"))
 fct_count(f1)
-table(is.na(f1))
+table(f1)
+sum(is.na(f1))
 
+# previously
 f2 <- fct_explicit_na(f1)
+# now
+f2 <- fct_na_value_to_level(f1)
+
 fct_count(f2)
-table(is.na(f2))
+table(f2)
+sum(is.na(f2))
 }
+\keyword{internal}

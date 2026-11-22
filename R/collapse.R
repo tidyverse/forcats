@@ -17,35 +17,36 @@
 #'   dem = c("Not str democrat", "Strong democrat")
 #' )
 #' fct_count(partyid2)
-fct_collapse <- function(.f, ..., other_level = NULL, group_other = "DEPRECATED") {
+fct_collapse <- function(
+  .f,
+  ...,
+  other_level = NULL,
+  group_other = "DEPRECATED"
+) {
   f <- check_factor(.f)
+  check_string(other_level, allow_null = TRUE, allow_na = TRUE)
 
   if (!missing(group_other)) {
     lifecycle::deprecate_warn(
       when = "0.5.0",
       what = "fct_collapse(group_other)",
-      with = "fct_collapse(other_level)"
+      with = "fct_collapse(other_level)",
+      always = TRUE
     )
     if (isTRUE(group_other) && is.null(other_level)) {
       other_level <- "Other"
     }
   }
 
-  new <- rlang::list2(...)
-  levs <- as.list(unlist(new, use.names = FALSE))
+  dots <- rlang::list2(...)
+
+  old <- unlist(dots, use.names = FALSE) %||% character()
+  new <- rep(names(dots), lengths(dots))
+  out <- lvls_revalue(f, lvls_rename(f, set_names(old, new)))
 
   if (!is.null(other_level)) {
-    levels <- levels(f)
-    new[[other_level]] <- levels[!levels %in% levs]
-    levs <- c(levs, new[[other_level]])
+    out <- lvls_other(out, levels(out) %in% new, other_level)
   }
 
-  names(levs) <- names(new)[rep(seq_along(new), vapply(new, length, integer(1)))]
-  out <- fct_recode(.f, !!!levs)
-
-  if (any(levels(out) == other_level)) {
-    fct_relevel(out, other_level, after = Inf)
-  } else {
-    out
-  }
+  out
 }

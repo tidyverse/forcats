@@ -2,19 +2,30 @@
 % Please edit documentation in R/unique.R
 \name{fct_unique}
 \alias{fct_unique}
-\title{Unique values of a factor}
+\title{Unique values of a factor, as a factor}
 \usage{
 fct_unique(f)
 }
 \arguments{
 \item{f}{A factor.}
 }
+\value{
+A factor.
+}
 \description{
-Unique values of a factor
+\code{fct_unique()} extracts the complete set of possible values from the
+levels of the factor, rather than looking at the actual values, like
+\code{\link[=unique]{unique()}}.
+
+\code{fct_unique()} only uses the values of \code{f} in one way: it looks for
+implicit missing values so that they can be included in the result.
 }
 \examples{
-f <- factor(letters[rpois(100, 10)])
-
+f <- fct(letters[rpois(100, 10)])
 unique(f)     # in order of appearance
 fct_unique(f) # in order of levels
+
+f <- fct(letters[rpois(100, 2)], letters[1:20])
+unique(f)     # levels that appear in data
+fct_unique(f) # all possible levels
 }

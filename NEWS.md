@@ -2,6 +2,63 @@
 * `fct_reordern()` is a new function to order based on an arbitrary number of
   values (@billdenney, #16)
 
+# forcats 1.0.1
+
+* `fct_cross()` now varies the levels in the last factor fastest (@Adam-AKong, #373).
+* Functions that create a new factor (e.g. `lvls_expand()`, `lvls_reorder()`, `fct_lump_n()`, `fct_drop()`) now preserves the class of the original object in addition to the attributes (#83).
+* forcats now requires R 4.1.
+
+# forcats 1.0.0
+
+## New features
+
+* New `fct_na_value_to_level()` and `fct_na_level_to_value()` to convert 
+  NA values to NA levels and vice versa (#337).
+
+## Minor improvement and bug fixes
+
+* All functions now validate their inputs, giving more useful errors if you
+  accidentally misspecify an input.
+
+* `fct_collapse()` can now use `other_level = NA` (#291).
+
+* `fct_count()` works with factors that contain `NA`s in levels.
+
+* `fct_explicit_na()` is deprecated in favour of `fct_na_value_to_level()`.
+
+* `fct_expand()` gains an `after` argument so that you can choose where
+  the new levels are placed (#138).
+
+* `fct_infreq()` gains the ability to weight by another variable using the `w`
+  argument (#261).
+
+* `fct_inorder()` now works when not all levels appear in the data (#262).
+
+* `fct_lump_prop()` and friends now work correctly if you supply weights
+  and have empty levels (#292).
+
+* `fct_lump_n()` and `fct_lump_prop()` will now create an "Other" level even
+  if it only consists of a single level. This makes them consistent with the
+  other `fct_lump_*` functions (#274).
+
+* `fct_other()` no longer generates a warning if no levels are replaced with
+  other (#265).
+
+* `fct_relevel()`, `fct_cross()`, and `fct_expand()` now error if you name the
+  arguments in `...` since those names are ignored and your code probably 
+  doesn't do what you think it does (#319).
+
+* `fct_reorder()` and `fct_reorder2()` now remove `NA` values in `.x` with a 
+  warning (like  `ggplot2::geom_point()` and friends). You can suppress the 
+  warning by setting `.na_rm = TRUE` (#315).
+   
+* `fct_reorder()` and `fct_reorder2()` gain a new `.default` argument that 
+  controls the placement of  empty levels (including levels that might become 
+  empty after removing missing values in `.x`) (#266).
+
+* `fct_unique()` now captures implicit missing values if present (#293).
+
+
 # forcats 0.5.2
 
 * New `fct()` which works like `factor()` but errors if values of `x`

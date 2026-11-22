@@ -13,12 +13,17 @@
 #' fct_count(f, sort = TRUE)
 #' fct_count(f, sort = TRUE, prop = TRUE)
 fct_count <- function(f, sort = FALSE, prop = FALSE) {
-  f2 <- check_factor(f)
+  f <- check_factor(f)
+  check_bool(sort)
+  check_bool(prop)
+
   n_na <- sum(is.na(f))
 
+  n <- c(tabulate(f, nlevels(f)), if (n_na > 0) n_na)
+
   df <- tibble::tibble(
-    f = fct_inorder(c(levels(f2), if (n_na > 0) NA)),
-    n = c(tabulate(f2, nlevels(f)), if (n_na > 0) n_na)
+    f = fct_unique(f),
+    n = n
   )
 
   if (sort) {

@@ -42,6 +42,7 @@ fct_c <- function(...) {
 #' fct_unify(fs)
 fct_unify <- function(fs, levels = lvls_union(fs)) {
   fs <- check_factor_list(fs)
+  check_character(levels)
 
   lapply(fs, lvls_expand, new_levels = levels)
 }

@@ -20,11 +20,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Hadley Wickham \email{hadley@rstudio.com}
+\strong{Maintainer}: Hadley Wickham \email{hadley@posit.co}
 
 Other contributors:
 \itemize{
-  \item RStudio [copyright holder, funder]
+  \item Posit Software, PBC (\href{https://ror.org/03wc8by49}{ROR}) [copyright holder, funder]
 }
 
 }
