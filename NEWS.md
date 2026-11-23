@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* `fct_reorder()` and `fct_reorder2()` retain all observations and levels when
+  missing sort values are excluded from the summaries (@M-Colley, #348, #359).
+
 # forcats 1.0.1
 
 * `fct_cross()` now varies the levels in the last factor fastest (@Adam-AKong, #373).

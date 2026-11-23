@@ -40,6 +40,16 @@ test_that("can control the placement of levels with all missing data", {
   expect_equal(levels(f2), c("c", "a", "b"))
 })
 
+test_that("fct_reorder() retains character groups with missing sort values", {
+  f <- c("b", "a", "c", "b")
+  x <- c(20, 10, NA, 30)
+
+  expect_equal(
+    fct_reorder(f, x, .na_rm = TRUE, .default = -Inf),
+    factor(f, levels = c("c", "a", "b"))
+  )
+})
+
 test_that("fct_reorder() complains if summary doesn't return single value", {
   expect_snapshot(error = TRUE, {
     fct_reorder("a", 1, function(x) c(1, 2))
@@ -86,6 +96,17 @@ test_that("fct_reorder2() automatically removes missing values with a warning", 
   # unlike fct_reorder() the default summary function can handle missing values
   expect_no_warning(f3 <- fct_reorder2(f1, x, y, .na_rm = FALSE))
   expect_equal(levels(f2), c("c", "b", "a"))
+})
+
+test_that("fct_reorder2() preserves observations when removing missing pairs", {
+  f <- ordered(c("a", "b", "c", "b"), levels = c("a", "b", "c", "unused"))
+  x <- c(1, NA, 1, 2)
+  y <- c(1, 4, NA, 2)
+
+  expect_equal(
+    fct_reorder2(f, x, y, .na_rm = TRUE),
+    ordered(as.character(f), levels = c("b", "a", "c", "unused"))
+  )
 })
 
 test_that("can control the placement of empty levels", {

@@ -12,10 +12,11 @@
 #' @param .fun n summary function. It should take one vector for
 #'   `fct_reorder`, and two vectors for `fct_reorder2`, and return a single
 #'   value.
-#' @param .na_rm Should `fct_reorder()` remove missing values?
-#'   If `NULL`, the default, will remove missing values with a warning.
-#'   Set to `FALSE` to preserve `NA`s (if your `.fun` already handles them) and
-#'   `TRUE` to remove silently.
+#' @param .na_rm Should missing values in `.x` or `.y` be removed before
+#'   computing the summaries? The returned factor retains all observations.
+#'   The default, `NULL`, removes missing values with a warning.
+#'   Set to `FALSE` to pass missing values to `.fun`, or `TRUE` to remove
+#'   them silently.
 #' @param .default What default value should we use for `.fun` for
 #'   empty levels? Use this to control where empty levels appear in the
 #'   output.
@@ -61,6 +62,7 @@ fct_reorder <- function(
   .desc = FALSE
 ) {
   f <- check_factor(.f)
+  groups <- f
   stopifnot(length(f) == length(.x))
   .fun <- as_function(.fun)
   check_dots_used()
@@ -80,11 +82,11 @@ fct_reorder <- function(
 
     if (isTRUE(.na_rm)) {
       .x <- .x[!miss]
-      .f <- .f[!miss]
+      groups <- groups[!miss]
     }
   }
 
-  summary <- tapply(.x, .f, function(x) .fun(x, ...), default = .default)
+  summary <- tapply(.x, groups, function(x) .fun(x, ...), default = .default)
   check_single_value_per_group(summary, ".fun")
   lvls_reorder(f, order(summary, decreasing = .desc))
 }
@@ -101,8 +103,9 @@ fct_reorder2 <- function(
   .default = -Inf,
   .desc = TRUE
 ) {
-  .f <- check_factor(.f)
-  stopifnot(length(.f) == length(.x), length(.x) == length(.y))
+  f <- check_factor(.f)
+  groups <- f
+  stopifnot(length(f) == length(.x), length(.x) == length(.y))
   check_dots_used()
   check_bool(.na_rm, allow_null = TRUE)
   check_bool(.desc)
@@ -121,19 +124,19 @@ fct_reorder2 <- function(
     if (isTRUE(.na_rm)) {
       .x <- .x[!miss]
       .y <- .y[!miss]
-      .f <- .f[!miss]
+      groups <- groups[!miss]
     }
   }
 
   summary <- tapply(
     seq_along(.x),
-    .f,
+    groups,
     function(i) .fun(.x[i], .y[i], ...),
     default = .default
   )
   check_single_value_per_group(summary, ".fun")
 
-  lvls_reorder(.f, order(summary, decreasing = .desc))
+  lvls_reorder(f, order(summary, decreasing = .desc))
 }
 
 check_single_value_per_group <- function(x, fun_arg, call = caller_env()) {
