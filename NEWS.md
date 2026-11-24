@@ -1,5 +1,7 @@
 # forcats (development version)
 
+* forcats now preserves the `label` attribute when converting character input to a factor (@M-Colley, #346).
+
 # forcats 1.0.1
 
 * `fct_cross()` now varies the levels in the last factor fastest (@Adam-AKong, #373).
