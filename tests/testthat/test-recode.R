@@ -5,6 +5,20 @@ test_that("warns about unknown levels", {
   expect_equal(levels(f2), levels(f1))
 })
 
+test_that("preserves variable labels on character input", {
+  x <- c(first = "b", second = "a", missing = NA_character_)
+  expected <- fct_recode(x, c = "b")
+
+  expect_identical(
+    fct_recode(structure(x, label = "Species"), c = "b"),
+    structure(expected, label = "Species")
+  )
+  expect_identical(
+    fct_recode(structure(x, labels = c(B = "b")), c = "b"),
+    expected
+  )
+})
+
 test_that("can collapse levels", {
   f1 <- factor(c("a1", "a2", "b1", "b2"))
   f2 <- factor(c("a", "a", "b", "b"))

@@ -13,7 +13,9 @@ NULL
 
 check_factor <- function(x, arg = caller_arg(x), call = caller_env()) {
   if (is.character(x)) {
-    factor(x)
+    out <- factor(x)
+    attr(out, "label") <- attr(x, "label", exact = TRUE)
+    out
   } else if (is.factor(x)) {
     x
   } else {
