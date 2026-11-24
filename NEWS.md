@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* `fct_reorder2()` now accepts function names and one-sided formulas for
+  `.fun`, like `fct_reorder()` (#404).
+
 # forcats 1.0.1
 
 * `fct_cross()` now varies the levels in the last factor fastest (@Adam-AKong, #373).

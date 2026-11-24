@@ -41,7 +41,12 @@ are in ascending order.}
 
 \item{.fun}{n summary function. It should take one vector for
 \code{fct_reorder}, and two vectors for \code{fct_reorder2}, and return a single
-value.}
+value.
+You can supply a function object, a function name as a string, or a
+one-sided formula. For example, \code{fct_reorder()} accepts \code{median},
+\verb{\\(x) median(x)}, \code{"median"}, or \code{~ median(.x)}. In a formula, \code{.x}
+refers to the first vector and \code{.y} to the second vector for
+\code{fct_reorder2()}, as in \code{~ max(.x + .y)}.}
 
 \item{...}{Other arguments passed on to \code{.fun}.}
 
