@@ -12,6 +12,11 @@
 #' @param .fun n summary function. It should take one vector for
 #'   `fct_reorder`, and two vectors for `fct_reorder2`, and return a single
 #'   value.
+#'   You can supply a function object, a function name as a string, or a
+#'   one-sided formula. For example, `fct_reorder()` accepts `median`,
+#'   `\(x) median(x)`, `"median"`, or `~ median(.x)`. In a formula, `.x`
+#'   refers to the first vector and `.y` to the second vector for
+#'   `fct_reorder2()`, as in `~ max(.x + .y)`.
 #' @param .na_rm Should `fct_reorder()` remove missing values?
 #'   If `NULL`, the default, will remove missing values with a warning.
 #'   Set to `FALSE` to preserve `NA`s (if your `.fun` already handles them) and
@@ -106,6 +111,7 @@ fct_reorder2 <- function(
   check_dots_used()
   check_bool(.na_rm, allow_null = TRUE)
   check_bool(.desc)
+  .fun <- as_function(.fun)
 
   miss <- is.na(.x) | is.na(.y)
   if (any(miss)) {

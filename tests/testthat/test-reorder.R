@@ -73,6 +73,15 @@ test_that("can reorder by 2d summary", {
   expect_equal(levels(f2), c("a", "b"))
 })
 
+test_that("fct_reorder2() accepts formulas and function names", {
+  f <- factor(c("a", "a", "b", "b"), levels = c("b", "a"))
+  x <- c(1, 2, 1, 2)
+  y <- c(3, 5, 1, 2)
+
+  expect_equal(levels(fct_reorder2(f, x, y, ~ max(.x + .y))), c("a", "b"))
+  expect_equal(levels(fct_reorder2(f, x, y, "max")), c("a", "b"))
+})
+
 test_that("fct_reorder2() automatically removes missing values with a warning", {
   f1 <- fct(c("a", "b", "c", "c"))
   x <- c(1, 1, 1, 2)
